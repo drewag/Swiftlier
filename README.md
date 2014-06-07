@@ -14,7 +14,7 @@ that we can discuss to see if they should be added.
 Functionality Added to Swift
 =============================
 
-Optionals
+Optional
 ----------
 
 ### or
@@ -26,9 +26,9 @@ A short hand for unwrapping any Optional by providing a default value in the cas
     println(unwrappedString) // "Default Value"
 
     optionalString = "Other Value"
-    println(optionalString.or("Default Value") // "Other Value"
+    println(optionalString.or("Default Value")) // "Other Value"
 
-Strings
+String
 ----------
 
 ### repeat
@@ -37,6 +37,21 @@ Repeat a given string x number of times
 
     var aString = "Hello ".repeat(3)
     println(aString) // "Hello Hello Hello "
+
+Dictionary
+-----------
+
+### map
+
+Return a new dictionary with mapped values for each key
+
+    var foods = [
+        "fruit": ["Apple", "Cantelope", "Strawberry"],
+        "meat": ["Steak", "Chicken"],
+    ]
+
+    var foodsStartingWithC = foods.map { $1.filter { $0.hasPrefix("C") } }
+    println(foodsStartingWithC) // ["meat": ["Chicken"], "fruit": ["Cantelope"]]
 
 Commit Style
 =======
