@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 
 extension Dictionary {
+    /// Return a new dictionary with mapped values for each key and value
     func map(f: (KeyType, ValueType) -> ValueType) -> Dictionary<KeyType, ValueType> {
         var ret = Dictionary<KeyType, ValueType>()
         for (key, value) in self {

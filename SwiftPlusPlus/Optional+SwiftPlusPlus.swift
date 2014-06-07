@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 
 extension Optional {
+    /// Unwrap the value returning 'defaultValue' if the value is currently nil
     func or(defaultValue: T) -> T {
         switch(self) {
             case .None:

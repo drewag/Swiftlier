@@ -19,7 +19,7 @@ Optional
 
 ### or
 
-A short hand for unwrapping any Optional by providing a default value in the case that the optional is nil
+Unwrap the value returning 'defaultValue' if the value is currently nil
 
     var optionalString: String?
     var unwrappedString = optionalString.or("Default Value")
@@ -33,7 +33,7 @@ String
 
 ### repeat
 
-Repeat a given string x number of times
+Returns a string by repeating it 'times' times
 
     var aString = "Hello ".repeat(3)
     println(aString) // "Hello Hello Hello "

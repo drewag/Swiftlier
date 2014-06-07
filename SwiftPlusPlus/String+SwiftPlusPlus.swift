@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 
 extension String {
+    /// Returns a string by repeating it 'times' times
     func repeat(times: Int) -> String {
         var result = ""
         for i in 0..times {
