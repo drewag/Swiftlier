@@ -10,6 +10,7 @@
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
 		49FEA5141943922A00F2AFDB /* SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5131943922A00F2AFDB /* SwiftPlusPlusTests.swift */; };
+		49FEA5341943938600F2AFDB /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		49FEA50C1943922A00F2AFDB /* SwiftPlusPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPlusPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5121943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FEA5131943922A00F2AFDB /* SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlusPlusTests.swift; sourceTree = "<group>"; };
+		49FEA5331943938600F2AFDB /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		49FEA5031943922A00F2AFDB /* SwiftPlusPlus */ = {
 			isa = PBXGroup;
 			children = (
+				49FEA5331943938600F2AFDB /* String.swift */,
 				49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */,
 				49FEA5041943922A00F2AFDB /* Supporting Files */,
 			);
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FEA5341943938600F2AFDB /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +402,7 @@
 				49FEA5191943922A00F2AFDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49FEA51A1943922A00F2AFDB /* Build configuration list for PBXNativeTarget "SwiftPlusPlusTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +411,7 @@
 				49FEA51C1943922A00F2AFDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
