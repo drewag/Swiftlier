@@ -11,6 +11,17 @@ developers use. This would allow us to use more advanced features while maintain
 readability. You are encouraged to submit pull requests or issues with additional features
 that we can discuss to see if they should be added.
 
+Installation
+========
+
+As git submodule
+--------------
+
+Run `git submodule add https://github.com/drewag/SwiftPlusPlus.git external/SwiftPlusPlus`
+Drag 'SwiftPlusPlus.xcodeproj' into your project
+Add `import SwiftPlusPlus` to the top of any file you would like to use this library in
+
+
 Functionality Added to Swift
 =============================
 
@@ -43,7 +54,7 @@ Dictionary
 
 ### map
 
-Return a new dictionary with mapped values for each key
+Return a new dictionary with mapped values for each key and value
 
     var foods = [
         "fruit": ["Apple", "Cantelope", "Strawberry"],
