@@ -64,6 +64,14 @@ Return a new dictionary with mapped values for each key and value
     var foodsStartingWithC = foods.map { $1.filter { $0.hasPrefix("C") } }
     println(foodsStartingWithC) // ["meat": ["Chicken"], "fruit": ["Cantelope"]]
 
+## merge
+
+Merge two dictionaries together of the same type
+
+    var dict1 = ["Apples": 2, "Oranges": 3]
+    var dict2 = ["Apples": 3, "Cantaloupe": 1]
+    dict1.merge(with: dict2, by: +) // ["Oranges": 3, "Cantaloupe": 1, "Apples": 5]
+
 Commit Style
 =======
 

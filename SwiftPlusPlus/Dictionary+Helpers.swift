@@ -31,4 +31,17 @@ extension Dictionary {
         }
         return ret
     }
+
+    /// Merge two dictionaries together of the same type
+    ///
+    /// \param other a dictionary to merge with
+    /// \param merge a function to merge the values of keys that match betweent the two dictionary
+    func merge(with other:Dictionary<KeyType, ValueType>, by merge: (ValueType, ValueType) -> ValueType) -> Dictionary<KeyType, ValueType> {
+        var returnDict = self
+        for (key, value) in other {
+            var newValue = returnDict[key] ? merge(returnDict[key]!, value) : value
+            returnDict.updateValue(newValue, forKey: key)
+        }
+        return returnDict
+    }
 }
