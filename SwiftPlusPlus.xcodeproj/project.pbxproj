@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49732CF519439BDF00DE07EE /* Dictionary+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+Helpers.swift */; };
+		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
 		49FEA5141943922A00F2AFDB /* SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5131943922A00F2AFDB /* SwiftPlusPlusTests.swift */; };
@@ -26,7 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		49732CF419439BDF00DE07EE /* Dictionary+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Helpers.swift"; sourceTree = "<group>"; };
+		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5051943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPlusPlus.h; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 			children = (
 				49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */,
 				49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */,
-				49732CF419439BDF00DE07EE /* Dictionary+Helpers.swift */,
+				49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -229,7 +229,7 @@
 			files = (
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49FEA5371943962200F2AFDB /* Optional+SwiftPlusPlus.swift in Sources */,
-				49732CF519439BDF00DE07EE /* Dictionary+Helpers.swift in Sources */,
+				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
