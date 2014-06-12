@@ -8,14 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
+		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
+		498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */; };
+		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
-		49FEA5141943922A00F2AFDB /* SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5131943922A00F2AFDB /* SwiftPlusPlusTests.swift */; };
 		49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		49FEA5371943962200F2AFDB /* Optional+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		498DF37819494267004AE103 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49FEA4F81943922A00F2AFDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49FEA5001943922A00F2AFDB;
+			remoteInfo = SwiftPlusPlus;
+		};
 		49FEA50E1943922A00F2AFDB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 49FEA4F81943922A00F2AFDB /* Project object */;
@@ -27,12 +36,14 @@
 
 /* Begin PBXFileReference section */
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
+		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
+		498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
+		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5051943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPlusPlus.h; sourceTree = "<group>"; };
 		49FEA50C1943922A00F2AFDB /* SwiftPlusPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPlusPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5121943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49FEA5131943922A00F2AFDB /* SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlusPlusTests.swift; sourceTree = "<group>"; };
 		49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		498DF37719494249004AE103 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */,
+				498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */,
+				498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		49FEA4F71943922A00F2AFDB = {
 			isa = PBXGroup;
 			children = (
@@ -95,7 +116,7 @@
 		49FEA5101943922A00F2AFDB /* SwiftPlusPlusTests */ = {
 			isa = PBXGroup;
 			children = (
-				49FEA5131943922A00F2AFDB /* SwiftPlusPlusTests.swift */,
+				498DF37719494249004AE103 /* Extensions */,
 				49FEA5111943922A00F2AFDB /* Supporting Files */,
 			);
 			path = SwiftPlusPlusTests;
@@ -163,6 +184,7 @@
 			);
 			dependencies = (
 				49FEA50F1943922A00F2AFDB /* PBXTargetDependency */,
+				498DF37919494267004AE103 /* PBXTargetDependency */,
 			);
 			name = SwiftPlusPlusTests;
 			productName = SwiftPlusPlusTests;
@@ -237,13 +259,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49FEA5141943922A00F2AFDB /* SwiftPlusPlusTests.swift in Sources */,
+				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
+				498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */,
+				498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		498DF37919494267004AE103 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49FEA5001943922A00F2AFDB /* SwiftPlusPlus */;
+			targetProxy = 498DF37819494267004AE103 /* PBXContainerItemProxy */;
+		};
 		49FEA50F1943922A00F2AFDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 49FEA5001943922A00F2AFDB /* SwiftPlusPlus */;
