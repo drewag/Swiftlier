@@ -26,7 +26,7 @@ extension String {
     /// Returns a string by repeating it 'times' times
     func repeat(times: Int) -> String {
         var result = ""
-        for i in 0..times {
+        for i in 0..<times {
             result += self
         }
         return result
