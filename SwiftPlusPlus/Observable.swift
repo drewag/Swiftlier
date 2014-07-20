@@ -20,46 +20,48 @@ class Observable<ValueType> {
             }
         }
     }
+
     init(_ value: ValueType) {
         self.value = value
     }
 
-    func addObserverForOwner(owner: AnyObject, triggerImmediately: Bool = true, handler: DidChangeHandler) {
-        self._modifyHandlersForOwner(owner) { (handlers) in
-            var copy = handlers
-            copy.append(handler)
-            return copy
+    func addObserverForOwner(owner: AnyObject, triggerImmediately: Bool, handler: DidChangeHandler) {
+        if let index = self._indexOfOwner(owner) {
+            // since the owner exists, add the handler to the existing array
+            self._observers[index].handlers.append(handler)
         }
+        else {
+            // since the owner does not already exist, add a new tuple with the
+            // owner and an array with the handler
+            self._observers.append(owner: owner, handlers: [handler])
+        }
+
         if (triggerImmediately) {
+            // Trigger the handler immediately since it was requested
             handler(oldValue: nil, newValue: self.value)
         }
     }
 
     func removeObserversForOwner(owner: AnyObject) {
-        self._modifyHandlersForOwner(owner) { (_) in return nil }
+        if let index = self._indexOfOwner(owner) {
+            self._observers.removeAtIndex(index)
+        }
     }
 
     // #pragma mark - Private Properties
 
-    var _observers: [(AnyObject,[DidChangeHandler])] = []
+    var _observers: [(owner: AnyObject, handlers: [DidChangeHandler])] = []
 
     // #pragma mark - Private Methods
 
-    func _modifyHandlersForOwner(owner: AnyObject, modify: (handlers: [DidChangeHandler]) -> [DidChangeHandler]?) {
+    func _indexOfOwner(owner: AnyObject) -> Int? {
         var index : Int = 0
         for (possibleOwner, handlers) in self._observers {
             if possibleOwner === owner {
-                if let newHandlers = modify(handlers: handlers) {
-                    self._observers[index] = (owner, newHandlers)
-                }
-                else {
-                    self._observers.removeAtIndex(index)
-                }
-                break
+                return index
             }
+            index++
         }
-        if let newHandlers = modify(handlers: []) {
-            self._observers.append((owner, newHandlers))
-        }
+        return nil
     }
 }

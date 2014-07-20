@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		496D42F8197B78DE00250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42F7197B78DE00250A0A /* Observable.swift */; };
+		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		496D42F7197B78DE00250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		496D42F4197B506500250A0A /* Observation */ = {
 			isa = PBXGroup;
 			children = (
-				496D42F7197B78DE00250A0A /* Observable.swift */,
+				496D42FB197B842400250A0A /* Observable.swift */,
 			);
 			name = Observation;
 			path = SwiftPlusPlusTests;
@@ -261,7 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				496D42F8197B78DE00250A0A /* Observable.swift in Sources */,
+				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49FEA5371943962200F2AFDB /* Optional+SwiftPlusPlus.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
