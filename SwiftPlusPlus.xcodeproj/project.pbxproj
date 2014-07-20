@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		496D42F6197B509D00250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42F5197B509D00250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		496D42F5197B509D00250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		496D42F4197B506500250A0A /* Observation */ = {
+			isa = PBXGroup;
+			children = (
+				496D42F5197B509D00250A0A /* Observable.swift */,
+			);
+			name = Observation;
+			sourceTree = "<group>";
+		};
 		498DF37719494249004AE103 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 		49FEA5101943922A00F2AFDB /* SwiftPlusPlusTests */ = {
 			isa = PBXGroup;
 			children = (
+				496D42F4197B506500250A0A /* Observation */,
 				498DF37719494249004AE103 /* Extensions */,
 				49FEA5111943922A00F2AFDB /* Supporting Files */,
 			);
@@ -259,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496D42F6197B509D00250A0A /* Observable.swift in Sources */,
 				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
 				498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */,
 				498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */,
