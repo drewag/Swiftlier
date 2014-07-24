@@ -31,4 +31,20 @@ extension String {
         }
         return result
     }
+
+    func substringFromIndex(index: Int) -> String {
+        var pos = self.startIndex
+        for i in 0..<index {
+            pos++
+        }
+        return self.substringFromIndex(pos)
+    }
+
+    func substringToIndex(index: Int) -> String {
+        var pos = self.startIndex
+        for i in 0..<index {
+            pos++
+        }
+        return self.substringToIndex(pos)
+    }
 }
