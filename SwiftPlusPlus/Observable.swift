@@ -48,11 +48,11 @@ class Observable<ValueType> {
         }
     }
 
-    // #pragma mark - Private Properties
+    // MARK: Private Properties
 
     var _observers: [(owner: AnyObject, handlers: [DidChangeHandler])] = []
 
-    // #pragma mark - Private Methods
+    // MARK: Private Methods
 
     func _indexOfOwner(owner: AnyObject) -> Int? {
         var index : Int = 0
