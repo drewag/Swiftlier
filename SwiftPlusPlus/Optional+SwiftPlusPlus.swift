@@ -24,10 +24,10 @@
 
 extension Optional {
     /// Unwrap the value returning 'defaultValue' if the value is currently nil
-    func or(defaultValue: T) -> T {
+    func or(defaultValue: @auto_closure() -> T) -> T {
         switch(self) {
             case .None:
-                return defaultValue
+                return defaultValue()
             case .Some(let value):
                 return value
         }
