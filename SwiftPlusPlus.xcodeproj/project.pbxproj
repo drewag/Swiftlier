@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491039AC198342F200B467DB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
+		491039AD198342F500B467DB /* Optional+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */; };
+		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
+		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
@@ -272,9 +276,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */,
+				491039AC198342F200B467DB /* Observable.swift in Sources */,
+				491039AD198342F500B467DB /* Optional+SwiftPlusPlus.swift in Sources */,
 				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
 				498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */,
 				498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */,
+				491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

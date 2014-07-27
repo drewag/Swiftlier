@@ -11,6 +11,6 @@ import SwiftPlusPlus
 
 class String_SwiftPlusPlusTests: XCTestCase {
     func testRepeat() {
-        XCTAssertEqualObjects("Hello".repeat(3), "HelloHelloHello")
+        XCTAssertEqual("Hello".repeat(3), "HelloHelloHello")
     }
 }

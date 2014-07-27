@@ -15,17 +15,24 @@ class Dictionary_SwiftPlusPlusTest: XCTestCase {
         var dict2 = ["Apples": 3, "Cantaloupe": 1]
         var result = dict1.merge(with: dict2, by: +)
 
-        XCTAssertEqualObjects(result, ["Oranges": 3, "Cantaloupe": 1, "Apples": 5])
+        XCTAssertEqual(result["Oranges"]!, 3)
+        XCTAssertEqual(result["Cantaloupe"]!, 1)
+        XCTAssertEqual(result["Oranges"]!, 3)
+        XCTAssertEqual(result.count, 3)
     }
 
     func testMap() {
         var dict : Dictionary<String, Int> = ["One": 0, "Two": 1, "Three": 2]
-        dict.map { (key, value) -> Int in
+        var mappedDict = dict.map { (key, value) -> Int in
             return value + 1
         }
 
-        XCTAssertEqualObjects(dict["One"], 1)
-        XCTAssertEqualObjects(dict["Two"], 2)
-        XCTAssertEqualObjects(dict["Three"], 2)
+        XCTAssertEqual(dict["One"]!, 0)
+        XCTAssertEqual(dict["Two"]!, 1)
+        XCTAssertEqual(dict["Three"]!, 2)
+
+        XCTAssertEqual(mappedDict["One"]!, 1)
+        XCTAssertEqual(mappedDict["Two"]!, 2)
+        XCTAssertEqual(mappedDict["Three"]!, 3)
     }
 }

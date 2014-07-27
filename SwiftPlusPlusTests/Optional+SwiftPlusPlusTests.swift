@@ -13,11 +13,11 @@ class Optional_SwiftPlusPlusTests: XCTestCase {
     func testOrWithNil() {
         var optionalString : String?
         var result = optionalString.or("Default")
-        XCTAssertEqualObjects(result, "Default")
+        XCTAssertEqual(result, "Default")
     }
 
     func testOrWithValue() {
         var optionalString : String? = "Other"
-        XCTAssertEqualObjects(optionalString.or("Default"), "Other")
+        XCTAssertEqual(optionalString.or("Default"), "Other")
     }
 }
