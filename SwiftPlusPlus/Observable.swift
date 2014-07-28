@@ -11,6 +11,8 @@ import Foundation
 class Observable<ValueType> {
     typealias DidChangeHandler = (oldValue: ValueType?, newValue: ValueType) -> ()
 
+    // MARK: Properties
+
     var value : ValueType {
         didSet {
             for (owner, handlers) in self._observers {
@@ -21,9 +23,13 @@ class Observable<ValueType> {
         }
     }
 
+    // MARK: Initializers
+
     init(_ value: ValueType) {
         self.value = value
     }
+
+    // MARK: Methods
 
     func addObserverForOwner(owner: AnyObject, triggerImmediately: Bool, handler: DidChangeHandler) {
         if let index = self._indexOfOwner(owner) {
@@ -37,7 +43,6 @@ class Observable<ValueType> {
         }
 
         if (triggerImmediately) {
-            // Trigger the handler immediately since it was requested
             handler(oldValue: nil, newValue: self.value)
         }
     }
@@ -50,12 +55,12 @@ class Observable<ValueType> {
 
     // MARK: Private Properties
 
-    var _observers: [(owner: AnyObject, handlers: [DidChangeHandler])] = []
+    private var _observers: [(owner: AnyObject, handlers: [DidChangeHandler])] = []
 
     // MARK: Private Methods
 
-    func _indexOfOwner(owner: AnyObject) -> Int? {
-        var index : Int = 0
+    private func _indexOfOwner(owner: AnyObject) -> Int? {
+        var index: Int = 0
         for (possibleOwner, handlers) in self._observers {
             if possibleOwner === owner {
                 return index

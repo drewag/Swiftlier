@@ -16,6 +16,7 @@
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */; };
 		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
+		49F969AA19859F31006BF515 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F969A919859F31006BF515 /* ObservableTests.swift */; };
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
 		49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
@@ -45,6 +46,7 @@
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
+		49F969A919859F31006BF515 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5051943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPlusPlus.h; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		49F969A819859F14006BF515 /* Observation */ = {
+			isa = PBXGroup;
+			children = (
+				49F969A919859F31006BF515 /* ObservableTests.swift */,
+			);
+			name = Observation;
+			sourceTree = "<group>";
+		};
 		49FEA4F71943922A00F2AFDB = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 		49FEA5101943922A00F2AFDB /* SwiftPlusPlusTests */ = {
 			isa = PBXGroup;
 			children = (
+				49F969A819859F14006BF515 /* Observation */,
 				498DF37719494249004AE103 /* Extensions */,
 				49FEA5111943922A00F2AFDB /* Supporting Files */,
 			);
@@ -276,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F969AA19859F31006BF515 /* ObservableTests.swift in Sources */,
 				491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */,
 				491039AC198342F200B467DB /* Observable.swift in Sources */,
 				491039AD198342F500B467DB /* Optional+SwiftPlusPlus.swift in Sources */,
