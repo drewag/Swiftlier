@@ -14,8 +14,8 @@ class ObservableTests: XCTestCase {
         var observable = Observable<String>("Old Value")
         var called = false
         observable.addObserver(self) {
-            (change: Change<String>) in
-            XCTAssertEqual((change as Update<String>).oldValue, "Old Value")
+            (change) in
+            XCTAssertEqual((change as UpdateValue<String>).oldValue, "Old Value")
             XCTAssertEqual(change.newValue, "New Value")
             called = true
         }
@@ -27,7 +27,7 @@ class ObservableTests: XCTestCase {
         var observable = Observable<String>("Old Value")
         var called = false
         observable.addObserver(self) {
-            (change: Change<String>) in
+            (change) in
             called = true
         }
         observable.removeObserver(self)
@@ -39,8 +39,8 @@ class ObservableTests: XCTestCase {
         var observable = Observable<String>("Current Value")
         var called = false
         observable.addObserver(self, options: ObservationOptions.Initial) {
-            (change: Change<String>) in
-            XCTAssertNil(change as? Update<String>)
+            (change) in
+            XCTAssertNil(change as? UpdateValue<String>)
             XCTAssertEqual(change.newValue, "Current Value")
             called = true
         }
@@ -55,7 +55,7 @@ class ObservableTests: XCTestCase {
         func scope() {
             var observer = SomeClass()
             observable.addObserver(observer) {
-                (change: Change<String>) in
+                (change) in
                 called = true
             }
         }

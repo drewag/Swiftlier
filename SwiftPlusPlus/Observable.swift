@@ -21,7 +21,7 @@ struct ObservationOptions : RawOptionSet {
     static var Initial: ObservationOptions { return ObservationOptions(1) }
 }
 
-class Change<T> {
+class SetValue<T> {
     let newValue: T
 
     init(newValue: T) {
@@ -29,7 +29,7 @@ class Change<T> {
     }
 }
 
-class Update<T>: Change<T> {
+class UpdateValue<T>: SetValue<T> {
     let oldValue: T
 
     init(oldValue: T, newValue: T) {
@@ -39,7 +39,7 @@ class Update<T>: Change<T> {
 }
 
 class Observable<ValueType> {
-    typealias DidChangeHandler = (change: Change<ValueType>) -> ()
+    typealias DidChangeHandler = (change: SetValue<ValueType>) -> ()
 
     // MARK: Properties
 
@@ -48,7 +48,7 @@ class Observable<ValueType> {
             for (observer, handlers) in self._observers {
                 if observer.value {
                     for handler in handlers {
-                        handler(change: Update(oldValue: oldValue, newValue: value))
+                        handler(change: UpdateValue(oldValue: oldValue, newValue: value))
                     }
                 }
                 else {
@@ -85,7 +85,7 @@ class Observable<ValueType> {
         }
 
         if (options & ObservationOptions.Initial) {
-            handler(change: Change(newValue: self.value))
+            handler(change: SetValue(newValue: self.value))
         }
     }
 
