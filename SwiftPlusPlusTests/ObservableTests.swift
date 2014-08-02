@@ -14,9 +14,9 @@ class ObservableTests: XCTestCase {
         var observable = Observable<String>("Old Value")
         var called = false
         observable.addObserverForOwner(self, triggerImmediately: false) {
-            (oldValue: String?, newValue: String) in
-            XCTAssertEqual(oldValue!, "Old Value")
-            XCTAssertEqual(newValue, "New Value")
+            (change: Change<String>) in
+            XCTAssertEqual((change as Update<String>).oldValue, "Old Value")
+            XCTAssertEqual(change.newValue, "New Value")
             called = true
         }
         observable.value = "New Value"
@@ -27,7 +27,7 @@ class ObservableTests: XCTestCase {
         var observable = Observable<String>("Old Value")
         var called = false
         observable.addObserverForOwner(self, triggerImmediately: false) {
-            (oldValue: String?, newValue: String) in
+            (change: Change<String>) in
             called = true
         }
         observable.removeObserversForOwner(self)
@@ -39,9 +39,9 @@ class ObservableTests: XCTestCase {
         var observable = Observable<String>("Current Value")
         var called = false
         observable.addObserverForOwner(self, triggerImmediately: true) {
-            (oldValue: String?, newValue: String) in
-            XCTAssertNil(oldValue)
-            XCTAssertEqual(newValue, "Current Value")
+            (change: Change<String>) in
+            XCTAssertNil(change as? Update<String>)
+            XCTAssertEqual(change.newValue, "Current Value")
             called = true
         }
         XCTAssertTrue(called)

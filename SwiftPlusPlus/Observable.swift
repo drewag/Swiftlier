@@ -8,8 +8,25 @@
 
 import Foundation
 
+class Change<T> {
+    let newValue: T
+
+    init(newValue: T) {
+        self.newValue = newValue
+    }
+}
+
+class Update<T>: Change<T> {
+    let oldValue: T
+
+    init(oldValue: T, newValue: T) {
+        self.oldValue = oldValue
+        super.init(newValue: newValue)
+    }
+}
+
 class Observable<ValueType> {
-    typealias DidChangeHandler = (oldValue: ValueType?, newValue: ValueType) -> ()
+    typealias DidChangeHandler = (change: Change<ValueType>) -> ()
 
     // MARK: Properties
 
@@ -17,7 +34,7 @@ class Observable<ValueType> {
         didSet {
             for (owner, handlers) in self._observers {
                 for handler in handlers {
-                    handler(oldValue: oldValue, newValue: value)
+                    handler(change: Update(oldValue: oldValue, newValue: value))
                 }
             }
         }
@@ -43,7 +60,7 @@ class Observable<ValueType> {
         }
 
         if (triggerImmediately) {
-            handler(oldValue: nil, newValue: self.value)
+            handler(change: Change(newValue: self.value))
         }
     }
 
