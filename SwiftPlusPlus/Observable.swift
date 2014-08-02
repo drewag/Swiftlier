@@ -46,8 +46,15 @@ class Observable<ValueType> {
     var value : ValueType {
         didSet {
             for (observer, handlers) in self._observers {
-                for handler in handlers {
-                    handler(change: Update(oldValue: oldValue, newValue: value))
+                if observer.value {
+                    for handler in handlers {
+                        handler(change: Update(oldValue: oldValue, newValue: value))
+                    }
+                }
+                else {
+                    if let index = self._indexOfObserver(observer) {
+                        self._observers.removeAtIndex(index)
+                    }
                 }
             }
         }
@@ -74,7 +81,7 @@ class Observable<ValueType> {
         else {
             // since the observer does not already exist, add a new tuple with the
             // observer and an array with the handler
-            self._observers.append(observer: observer, handlers: [handler])
+            self._observers.append(observer: WeakWrapper(observer), handlers: [handler])
         }
 
         if (options & ObservationOptions.Initial) {
@@ -90,19 +97,26 @@ class Observable<ValueType> {
 
     // MARK: Private Properties
 
-    private var _observers: [(observer: AnyObject, handlers: [DidChangeHandler])] = []
+    private var _observers: [(observer: WeakWrapper<AnyObject>, handlers: [DidChangeHandler])] = []
 
     // MARK: Private Methods
 
     private func _indexOfObserver(observer: AnyObject) -> Int? {
         var index: Int = 0
         for (possibleObserver, handlers) in self._observers {
-            if possibleObserver === observer {
+            if possibleObserver.value === observer {
                 return index
             }
             index++
         }
         return nil
+    }
+}
+
+private class WeakWrapper<T : AnyObject> {
+    weak var value: T?
+    init(_ value: T) {
+        self.value = value
     }
 }
 

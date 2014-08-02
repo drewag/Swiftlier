@@ -46,4 +46,21 @@ class ObservableTests: XCTestCase {
         }
         XCTAssertTrue(called)
     }
+
+    func testAutomaticUnsubscribing() {
+        class SomeClass {
+        }
+        var observable = Observable<String>("Current Value")
+        var called = false
+        func scope() {
+            var observer = SomeClass()
+            observable.addObserver(observer) {
+                (change: Change<String>) in
+                called = true
+            }
+        }
+        scope()
+        observable.value = "New Value"
+        XCTAssertFalse(called)
+    }
 }
