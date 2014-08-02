@@ -13,7 +13,7 @@ class ObservableTests: XCTestCase {
     func testSubscribing() {
         var observable = Observable<String>("Old Value")
         var called = false
-        observable.addObserver(self, triggerImmediately: false) {
+        observable.addObserver(self) {
             (change: Change<String>) in
             XCTAssertEqual((change as Update<String>).oldValue, "Old Value")
             XCTAssertEqual(change.newValue, "New Value")
@@ -26,7 +26,7 @@ class ObservableTests: XCTestCase {
     func testUnsubscribing() {
         var observable = Observable<String>("Old Value")
         var called = false
-        observable.addObserver(self, triggerImmediately: false) {
+        observable.addObserver(self) {
             (change: Change<String>) in
             called = true
         }
@@ -38,7 +38,7 @@ class ObservableTests: XCTestCase {
     func testTriggerImmediately() {
         var observable = Observable<String>("Current Value")
         var called = false
-        observable.addObserver(self, triggerImmediately: true) {
+        observable.addObserver(self, options: ObservationOptions.Initial) {
             (change: Change<String>) in
             XCTAssertNil(change as? Update<String>)
             XCTAssertEqual(change.newValue, "Current Value")

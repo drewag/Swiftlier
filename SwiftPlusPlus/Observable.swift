@@ -8,6 +8,19 @@
 
 import Foundation
 
+
+struct ObservationOptions : RawOptionSet {
+    typealias RawType = UInt
+
+    var value: RawType
+    init(_ value: RawType) {
+        self.value = value
+    }
+
+    static var None: ObservationOptions { return ObservationOptions(0) }
+    static var Initial: ObservationOptions { return ObservationOptions(1) }
+}
+
 class Change<T> {
     let newValue: T
 
@@ -48,7 +61,12 @@ class Observable<ValueType> {
 
     // MARK: Methods
 
-    func addObserver(observer: AnyObject, triggerImmediately: Bool, handler: DidChangeHandler) {
+    func addObserver(observer: AnyObject, handler: DidChangeHandler) {
+        self.addObserver(observer, options: ObservationOptions.None, handler: handler)
+    }
+
+
+    func addObserver(observer: AnyObject, options: ObservationOptions, handler: DidChangeHandler) {
         if let index = self._indexOfObserver(observer) {
             // since the observer exists, add the handler to the existing array
             self._observers[index].handlers.append(handler)
@@ -59,7 +77,7 @@ class Observable<ValueType> {
             self._observers.append(observer: observer, handlers: [handler])
         }
 
-        if (triggerImmediately) {
+        if (options & ObservationOptions.Initial) {
             handler(change: Change(newValue: self.value))
         }
     }
@@ -86,4 +104,31 @@ class Observable<ValueType> {
         }
         return nil
     }
+}
+
+extension ObservationOptions {
+    static func fromMask(raw: RawType) -> ObservationOptions {
+        return ObservationOptions(raw)
+    }
+
+    static func convertFromNilLiteral() -> ObservationOptions {
+        return self.None
+    }
+
+    func getLogicValue() -> Bool {
+        return self.value > 0
+    }
+
+    static func fromRaw(raw: RawType) -> ObservationOptions? {
+        return ObservationOptions(raw)
+    }
+
+    func toRaw() -> RawType {
+        return self.value
+    }
+}
+
+
+func ==(lhs: ObservationOptions, rhs: ObservationOptions) -> Bool {
+    return lhs.value == rhs.value
 }
