@@ -32,7 +32,7 @@ class Observable<ValueType> {
 
     var value : ValueType {
         didSet {
-            for (owner, handlers) in self._observers {
+            for (observer, handlers) in self._observers {
                 for handler in handlers {
                     handler(change: Update(oldValue: oldValue, newValue: value))
                 }
@@ -48,15 +48,15 @@ class Observable<ValueType> {
 
     // MARK: Methods
 
-    func addObserverForOwner(owner: AnyObject, triggerImmediately: Bool, handler: DidChangeHandler) {
-        if let index = self._indexOfOwner(owner) {
-            // since the owner exists, add the handler to the existing array
+    func addObserver(observer: AnyObject, triggerImmediately: Bool, handler: DidChangeHandler) {
+        if let index = self._indexOfObserver(observer) {
+            // since the observer exists, add the handler to the existing array
             self._observers[index].handlers.append(handler)
         }
         else {
-            // since the owner does not already exist, add a new tuple with the
-            // owner and an array with the handler
-            self._observers.append(owner: owner, handlers: [handler])
+            // since the observer does not already exist, add a new tuple with the
+            // observer and an array with the handler
+            self._observers.append(observer: observer, handlers: [handler])
         }
 
         if (triggerImmediately) {
@@ -64,22 +64,22 @@ class Observable<ValueType> {
         }
     }
 
-    func removeObserversForOwner(owner: AnyObject) {
-        if let index = self._indexOfOwner(owner) {
+    func removeObserver(observer: AnyObject) {
+        if let index = self._indexOfObserver(observer) {
             self._observers.removeAtIndex(index)
         }
     }
 
     // MARK: Private Properties
 
-    private var _observers: [(owner: AnyObject, handlers: [DidChangeHandler])] = []
+    private var _observers: [(observer: AnyObject, handlers: [DidChangeHandler])] = []
 
     // MARK: Private Methods
 
-    private func _indexOfOwner(owner: AnyObject) -> Int? {
+    private func _indexOfObserver(observer: AnyObject) -> Int? {
         var index: Int = 0
-        for (possibleOwner, handlers) in self._observers {
-            if possibleOwner === owner {
+        for (possibleObserver, handlers) in self._observers {
+            if possibleObserver === observer {
                 return index
             }
             index++
