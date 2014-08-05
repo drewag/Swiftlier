@@ -25,20 +25,6 @@ Add `import SwiftPlusPlus` to the top of any file you would like to use this lib
 Functionality Added to Swift
 =============================
 
-Optional
-----------
-
-### or
-
-Unwrap the value returning 'defaultValue' if the value is currently nil
-
-    var optionalString: String?
-    var unwrappedString = optionalString.or("Default Value")
-    println(unwrappedString) // "Default Value"
-
-    optionalString = "Other Value"
-    println(optionalString.or("Default Value")) // "Other Value"
-
 String
 ----------
 

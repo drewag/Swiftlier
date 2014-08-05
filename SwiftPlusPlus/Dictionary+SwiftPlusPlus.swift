@@ -23,23 +23,32 @@
 // THE SOFTWARE.
 
 extension Dictionary {
-    /// Return a new dictionary with mapped values for each key and value
-    func map(f: (KeyType, ValueType) -> ValueType) -> Dictionary<KeyType, ValueType> {
-        var ret = Dictionary<KeyType, ValueType>()
+    /**
+        :param: f a function to map the key and value into a new value
+        
+        :returns: a new dictionary with a new value for each key
+    */
+    func map(f: (Key, Value) -> Value) -> Dictionary<Key, Value> {
+        var ret = Dictionary<Key, Value>()
         for (key, value) in self {
             ret[key] = f(key, value)
         }
         return ret
     }
 
-    /// Merge two dictionaries together of the same type
-    ///
-    /// \param other a dictionary to merge with
-    /// \param merge a function to merge the values of keys that match betweent the two dictionary
-    func merge(with other:Dictionary<KeyType, ValueType>, by merge: (ValueType, ValueType) -> ValueType) -> Dictionary<KeyType, ValueType> {
+    /**
+        Merge two dictionaries together of the same type
+
+        :param: other a dictionary to merge with
+        :param: merge a function to merge the values of keys that match betweent the two dictionary
+
+        :returns: a single merged dictionary
+    */
+    func merge(with other:Dictionary<Key, Value>, by merge: (Value, Value) -> Value) -> Dictionary<Key, Value> {
         var returnDict = self
         for (key, value) in other {
-            var newValue = returnDict[key] ? merge(returnDict[key]!, value) : value
+            var returnDictValue = returnDict[key]
+            var newValue = returnDictValue != nil ? merge(returnDict[key]!, value) : value
             returnDict.updateValue(newValue, forKey: key)
         }
         return returnDict

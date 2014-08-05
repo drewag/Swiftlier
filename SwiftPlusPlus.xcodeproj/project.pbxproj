@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		491039AC198342F200B467DB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
-		491039AD198342F500B467DB /* Optional+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */; };
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
-		498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */; };
 		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
 		49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
 		49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */; };
@@ -23,7 +21,6 @@
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
 		49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
-		49FEA5371943962200F2AFDB /* Optional+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +44,6 @@
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
-		498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
@@ -58,7 +54,6 @@
 		49FEA50C1943922A00F2AFDB /* SwiftPlusPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPlusPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5121943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
-		49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */,
-				498DF37219494246004AE103 /* Optional+SwiftPlusPlusTests.swift */,
 				498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */,
 				49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */,
 			);
@@ -167,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */,
-				49FEA5361943962200F2AFDB /* Optional+SwiftPlusPlus.swift */,
 				49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */,
 				49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */,
 			);
@@ -286,7 +279,6 @@
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */,
-				49FEA5371943962200F2AFDB /* Optional+SwiftPlusPlus.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,9 +291,7 @@
 				491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */,
 				49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */,
 				491039AC198342F200B467DB /* Observable.swift in Sources */,
-				491039AD198342F500B467DB /* Optional+SwiftPlusPlus.swift in Sources */,
 				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
-				498DF37519494246004AE103 /* Optional+SwiftPlusPlusTests.swift in Sources */,
 				49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */,
 				498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */,
 				491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */,

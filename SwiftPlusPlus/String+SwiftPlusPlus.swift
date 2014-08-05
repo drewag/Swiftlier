@@ -23,7 +23,11 @@
 // THE SOFTWARE.
 
 extension String {
-    /// Returns a string by repeating it 'times' times
+    /**
+        :param: times the number of times to repeat the string
+
+        :returns: a string by repeating it 'times' times
+    */
     func repeat(times: Int) -> String {
         var result = ""
         for i in 0..<times {

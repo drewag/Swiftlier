@@ -21,11 +21,4 @@ class Array_SwiftPlusPlusTests: XCTestCase {
         XCTAssertEqual(array.indexOfObjectPassingTest({$0 == "second"})!, 1)
         XCTAssertNil(array.indexOfObjectPassingTest({$0 == "other"}))
     }
-
-    func testLastObject() {
-        XCTAssertEqual(array.lastObject!, "third")
-
-        var emptyArray = []
-        XCTAssertNil(emptyArray.lastObject)
-    }
 }

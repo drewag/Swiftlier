@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct ObservationOptions : RawOptionSet {
+struct ObservationOptions: RawOptionSetType {
     typealias RawType = UInt
 
     var value: RawType
@@ -46,7 +46,7 @@ class Observable<ValueType> {
     var value : ValueType {
         didSet {
             for (observer, handlers) in self._observers {
-                if observer.value {
+                if observer.value != nil {
                     for handler in handlers {
                         handler(change: UpdateValue(oldValue: oldValue, newValue: value))
                     }
@@ -129,7 +129,7 @@ extension ObservationOptions {
         return self.None
     }
 
-    func getLogicValue() -> Bool {
+    var boolValue: Bool {
         return self.value > 0
     }
 
