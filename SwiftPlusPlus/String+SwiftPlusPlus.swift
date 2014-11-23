@@ -28,7 +28,7 @@ extension String {
 
         :returns: a string by repeating it 'times' times
     */
-    func repeat(times: Int) -> String {
+    public func repeat(times: Int) -> String {
         var result = ""
         for i in 0..<times {
             result += self
@@ -36,19 +36,15 @@ extension String {
         return result
     }
 
-    func substringFromIndex(index: Int) -> String {
+    public func substringFromIndex(index: Int) -> String {
         var pos = self.startIndex
-        for i in 0..<index {
-            pos++
-        }
+        advance(pos, index)
         return self.substringFromIndex(pos)
     }
 
-    func substringToIndex(index: Int) -> String {
+    public func substringToIndex(index: Int) -> String {
         var pos = self.startIndex
-        for i in 0..<index {
-            pos++
-        }
+        advance(pos, index)
         return self.substringToIndex(pos)
     }
 }
