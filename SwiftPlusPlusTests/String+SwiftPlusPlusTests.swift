@@ -13,4 +13,14 @@ class String_SwiftPlusPlusTests: XCTestCase {
     func testRepeat() {
         XCTAssertEqual("Hello".repeat(3), "HelloHelloHello")
     }
+
+    func testSubstringFromIndex() {
+        let string = "Hello World"
+        XCTAssertEqual(string.substringFromIndex(1), "ello World")
+    }
+
+    func testSubstringToIndex() {
+        let string = "Hello World"
+        XCTAssertEqual(string.substringToIndex(1), "H")
+    }
 }

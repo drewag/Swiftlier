@@ -38,13 +38,13 @@ extension String {
 
     public func substringFromIndex(index: Int) -> String {
         var pos = self.startIndex
-        advance(pos, index)
+        pos = advance(pos, index)
         return self.substringFromIndex(pos)
     }
 
     public func substringToIndex(index: Int) -> String {
         var pos = self.startIndex
-        advance(pos, index)
+        pos = advance(pos, index)
         return self.substringToIndex(pos)
     }
 }
