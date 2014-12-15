@@ -10,6 +10,7 @@
 		491039AC198342F200B467DB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
+		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */,
 				49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */,
 				49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */,
+				4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */,
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */,
