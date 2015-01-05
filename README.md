@@ -80,6 +80,19 @@ Returns the index of the first element passing the given test or nil if not foun
     numbers.containsObjectPassingTest({$0 > 3}) // 3
     numbers.containsObjectPassingTest({$0 > 5}) // nil
 
+EventCenter
+------------
+
+A type safe, closure based event center modeled after NSNotificationCenter. Every event is guaranteed
+to be unique by the compiler because it is based off of a custom subclass that implements EventType.
+That protocol simply requires that the event define a typealias for the parameter to be passed to
+registered closures. That type can be `void`, a single type, or a multiple types by using a tuple.
+Because the EventCenter is type safe, when registering a callback, the types specified by the event
+can be inferred and enforced by the compiler.
+
+See the [EventCenter.swift](SwiftPlusPlus/EventCenter.swift) file for more details.
+
+
 Commit Style
 =======
 

@@ -15,6 +15,11 @@
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
+		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
+		49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD31A59D8DB0031845A /* WeakWrapper.swift */; };
+		49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD81A5B468B0031845A /* EventCenterTests.swift */; };
+		49D06DDA1A5B470C0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
+		49D06DDB1A5B47100031845A /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD31A59D8DB0031845A /* WeakWrapper.swift */; };
 		49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
 		49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */; };
 		49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
@@ -47,6 +52,9 @@
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
+		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
+		49D06DD31A59D8DB0031845A /* WeakWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
+		49D06DD81A5B468B0031845A /* EventCenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenterTests.swift; sourceTree = "<group>"; };
 		49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		49F969A919859F31006BF515 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
@@ -96,6 +104,30 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		49D06DCF1A59D6390031845A /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				49D06DD01A59D64A0031845A /* EventCenter.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		49D06DD21A59D8CC0031845A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				49D06DD31A59D8DB0031845A /* WeakWrapper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		49D06DD71A5B46690031845A /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				49D06DD81A5B468B0031845A /* EventCenterTests.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
 		49F969A819859F14006BF515 /* Observation */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +157,8 @@
 		49FEA5031943922A00F2AFDB /* SwiftPlusPlus */ = {
 			isa = PBXGroup;
 			children = (
+				49D06DD21A59D8CC0031845A /* Helpers */,
+				49D06DCF1A59D6390031845A /* Events */,
 				496D42F4197B506500250A0A /* Observation */,
 				49FEA5351943961600F2AFDB /* Extensions */,
 				49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */,
@@ -144,6 +178,7 @@
 		49FEA5101943922A00F2AFDB /* SwiftPlusPlusTests */ = {
 			isa = PBXGroup;
 			children = (
+				49D06DD71A5B46690031845A /* Events */,
 				49F969A819859F14006BF515 /* Observation */,
 				498DF37719494249004AE103 /* Extensions */,
 				49FEA5111943922A00F2AFDB /* Supporting Files */,
@@ -279,9 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */,
 				4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */,
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
+				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
 			);
@@ -293,10 +330,13 @@
 			files = (
 				49F969AA19859F31006BF515 /* ObservableTests.swift in Sources */,
 				491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */,
+				49D06DDB1A5B47100031845A /* WeakWrapper.swift in Sources */,
 				49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */,
 				491039AC198342F200B467DB /* Observable.swift in Sources */,
 				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
+				49D06DDA1A5B470C0031845A /* EventCenter.swift in Sources */,
 				49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */,
+				49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */,
 				498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */,
 				491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */,
 			);

@@ -174,13 +174,6 @@ public final class Observable<T> {
     }
 }
 
-private class WeakWrapper {
-    weak var value: AnyObject?
-    init(_ value: AnyObject) {
-        self.value = value
-    }
-}
-
 func ==(lhs: ObservationOptions, rhs: ObservationOptions) -> Bool {
     return lhs.rawValue == rhs.rawValue
 }
