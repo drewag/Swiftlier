@@ -92,6 +92,12 @@ can be inferred and enforced by the compiler.
 
 See the [EventCenter.swift](SwiftPlusPlus/EventCenter.swift) file for more details.
 
+MultiCallback
+-------------
+
+Generic class that allows registration of multiple callbacks
+
+See the [MultiCallback.swift](SwiftPlusPlusTests/MultiCallback.swift) file for more details.
 
 Commit Style
 =======

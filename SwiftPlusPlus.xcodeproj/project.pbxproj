@@ -20,6 +20,9 @@
 		49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD81A5B468B0031845A /* EventCenterTests.swift */; };
 		49D06DDA1A5B470C0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
 		49D06DDB1A5B47100031845A /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD31A59D8DB0031845A /* WeakWrapper.swift */; };
+		49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DEE1A5B7AA00031845A /* MultiCallback.swift */; };
+		49D06DF01A5B7AC30031845A /* MultiCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DEE1A5B7AA00031845A /* MultiCallback.swift */; };
+		49D06DF21A5B7E7E0031845A /* MultiCallbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */; };
 		49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
 		49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */; };
 		49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
@@ -55,6 +58,8 @@
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		49D06DD31A59D8DB0031845A /* WeakWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 		49D06DD81A5B468B0031845A /* EventCenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenterTests.swift; sourceTree = "<group>"; };
+		49D06DEE1A5B7AA00031845A /* MultiCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiCallback.swift; path = ../SwiftPlusPlus/MultiCallback.swift; sourceTree = "<group>"; };
+		49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiCallbackTests.swift; sourceTree = "<group>"; };
 		49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		49F969A919859F31006BF515 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				496D42FB197B842400250A0A /* Observable.swift */,
+				49D06DEE1A5B7AA00031845A /* MultiCallback.swift */,
 			);
 			name = Observation;
 			path = SwiftPlusPlusTests;
@@ -132,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				49F969A919859F31006BF515 /* ObservableTests.swift */,
+				49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */,
 			);
 			name = Observation;
 			sourceTree = "<group>";
@@ -320,6 +327,7 @@
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */,
+				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,8 +340,10 @@
 				491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */,
 				49D06DDB1A5B47100031845A /* WeakWrapper.swift in Sources */,
 				49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */,
+				49D06DF21A5B7E7E0031845A /* MultiCallbackTests.swift in Sources */,
 				491039AC198342F200B467DB /* Observable.swift in Sources */,
 				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
+				49D06DF01A5B7AC30031845A /* MultiCallback.swift in Sources */,
 				49D06DDA1A5B470C0031845A /* EventCenter.swift in Sources */,
 				49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */,
 				49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */,

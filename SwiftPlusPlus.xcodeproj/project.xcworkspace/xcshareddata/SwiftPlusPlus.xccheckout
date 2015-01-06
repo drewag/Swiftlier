@@ -14,6 +14,8 @@
 		<string>github.com:drewag/SwiftPlusPlus.git</string>
 		<key>5598409B1923A29764CEAFB8194114E2D165D76E</key>
 		<string>learnbrigade.com:~/lists</string>
+		<key>E01FA46556BFE2DFBFF18CDDE90475315AD6FC03</key>
+		<string>github.com:chronosinteractivemedia/empower-retirement.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SwiftPlusPlus.xcodeproj</string>
@@ -23,6 +25,8 @@
 		<string>../..</string>
 		<key>5598409B1923A29764CEAFB8194114E2D165D76E</key>
 		<string>../../..</string>
+		<key>E01FA46556BFE2DFBFF18CDDE90475315AD6FC03</key>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:drewag/SwiftPlusPlus.git</string>
@@ -39,6 +43,14 @@
 			<string>5598409B1923A29764CEAFB8194114E2D165D76E</string>
 			<key>IDESourceControlWCCName</key>
 			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E01FA46556BFE2DFBFF18CDDE90475315AD6FC03</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
