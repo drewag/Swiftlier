@@ -48,3 +48,7 @@ extension String {
         return self.substringToIndex(pos)
     }
 }
+
+public func /(lhs: String, rhs: String) -> String {
+    return lhs.stringByAppendingPathComponent(rhs)
+}
