@@ -33,6 +33,8 @@ public class EventCenter {
         return Static.DefaultInsance
     }
     
+    public init() {}
+    
     /**
         Trigger an event causing all registered callbacks to be called
     
