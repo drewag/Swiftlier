@@ -9,9 +9,24 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>SwiftPlusPlusOSX.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>4966682B1A7F53D6002FC394</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>496668351A7F53D6002FC394</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>49FEA5001943922A00F2AFDB</key>
 		<dict>
 			<key>primary</key>

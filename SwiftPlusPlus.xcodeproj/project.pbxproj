@@ -11,6 +11,25 @@
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
+		496668311A7F53D6002FC394 /* SwiftPlusPlusOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 496668301A7F53D6002FC394 /* SwiftPlusPlusOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		496668371A7F53D6002FC394 /* SwiftPlusPlusOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4966682C1A7F53D6002FC394 /* SwiftPlusPlusOSX.framework */; };
+		4966683E1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4966683D1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift */; };
+		496668451A7F53E1002FC394 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD31A59D8DB0031845A /* WeakWrapper.swift */; };
+		496668461A7F53E4002FC394 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD31A59D8DB0031845A /* WeakWrapper.swift */; };
+		496668471A7F53E8002FC394 /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
+		496668481A7F53E8002FC394 /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
+		496668491A7F53EE002FC394 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
+		4966684A1A7F53EE002FC394 /* MultiCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DEE1A5B7AA00031845A /* MultiCallback.swift */; };
+		4966684B1A7F53EF002FC394 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
+		4966684C1A7F53EF002FC394 /* MultiCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DEE1A5B7AA00031845A /* MultiCallback.swift */; };
+		4966684D1A7F53FD002FC394 /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
+		4966684E1A7F53FD002FC394 /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
+		4966684F1A7F53FD002FC394 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
+		496668501A7F53FD002FC394 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
+		496668511A7F53FF002FC394 /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
+		496668521A7F53FF002FC394 /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
+		496668531A7F53FF002FC394 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
+		496668541A7F53FF002FC394 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
@@ -33,6 +52,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		496668381A7F53D6002FC394 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49FEA4F81943922A00F2AFDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4966682B1A7F53D6002FC394;
+			remoteInfo = SwiftPlusPlusOSX;
+		};
 		498DF37819494267004AE103 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 49FEA4F81943922A00F2AFDB /* Project object */;
@@ -51,6 +77,12 @@
 
 /* Begin PBXFileReference section */
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
+		4966682C1A7F53D6002FC394 /* SwiftPlusPlusOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlusOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4966682F1A7F53D6002FC394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		496668301A7F53D6002FC394 /* SwiftPlusPlusOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPlusPlusOSX.h; sourceTree = "<group>"; };
+		496668361A7F53D6002FC394 /* SwiftPlusPlusOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPlusPlusOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4966683C1A7F53D6002FC394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4966683D1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlusPlusOSXTests.swift; sourceTree = "<group>"; };
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
@@ -72,6 +104,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		496668281A7F53D6002FC394 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		496668331A7F53D6002FC394 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				496668371A7F53D6002FC394 /* SwiftPlusPlusOSX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49FEA4FD1943922A00F2AFDB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,6 +137,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4966682D1A7F53D6002FC394 /* SwiftPlusPlusOSX */ = {
+			isa = PBXGroup;
+			children = (
+				496668301A7F53D6002FC394 /* SwiftPlusPlusOSX.h */,
+				4966682E1A7F53D6002FC394 /* Supporting Files */,
+			);
+			path = SwiftPlusPlusOSX;
+			sourceTree = "<group>";
+		};
+		4966682E1A7F53D6002FC394 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4966682F1A7F53D6002FC394 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4966683A1A7F53D6002FC394 /* SwiftPlusPlusOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				4966683D1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift */,
+				4966683B1A7F53D6002FC394 /* Supporting Files */,
+			);
+			path = SwiftPlusPlusOSXTests;
+			sourceTree = "<group>";
+		};
+		4966683B1A7F53D6002FC394 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4966683C1A7F53D6002FC394 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		496D42F4197B506500250A0A /* Observation */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +229,8 @@
 			children = (
 				49FEA5031943922A00F2AFDB /* SwiftPlusPlus */,
 				49FEA5101943922A00F2AFDB /* SwiftPlusPlusTests */,
+				4966682D1A7F53D6002FC394 /* SwiftPlusPlusOSX */,
+				4966683A1A7F53D6002FC394 /* SwiftPlusPlusOSXTests */,
 				49FEA5021943922A00F2AFDB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,6 +240,8 @@
 			children = (
 				49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */,
 				49FEA50C1943922A00F2AFDB /* SwiftPlusPlusTests.xctest */,
+				4966682C1A7F53D6002FC394 /* SwiftPlusPlusOSX.framework */,
+				496668361A7F53D6002FC394 /* SwiftPlusPlusOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +300,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		496668291A7F53D6002FC394 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				496668311A7F53D6002FC394 /* SwiftPlusPlusOSX.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49FEA4FE1943922A00F2AFDB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,6 +319,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4966682B1A7F53D6002FC394 /* SwiftPlusPlusOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 496668431A7F53D6002FC394 /* Build configuration list for PBXNativeTarget "SwiftPlusPlusOSX" */;
+			buildPhases = (
+				496668271A7F53D6002FC394 /* Sources */,
+				496668281A7F53D6002FC394 /* Frameworks */,
+				496668291A7F53D6002FC394 /* Headers */,
+				4966682A1A7F53D6002FC394 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftPlusPlusOSX;
+			productName = SwiftPlusPlusOSX;
+			productReference = 4966682C1A7F53D6002FC394 /* SwiftPlusPlusOSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		496668351A7F53D6002FC394 /* SwiftPlusPlusOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 496668441A7F53D6002FC394 /* Build configuration list for PBXNativeTarget "SwiftPlusPlusOSXTests" */;
+			buildPhases = (
+				496668321A7F53D6002FC394 /* Sources */,
+				496668331A7F53D6002FC394 /* Frameworks */,
+				496668341A7F53D6002FC394 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				496668391A7F53D6002FC394 /* PBXTargetDependency */,
+			);
+			name = SwiftPlusPlusOSXTests;
+			productName = SwiftPlusPlusOSXTests;
+			productReference = 496668361A7F53D6002FC394 /* SwiftPlusPlusOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		49FEA5001943922A00F2AFDB /* SwiftPlusPlus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49FEA5171943922A00F2AFDB /* Build configuration list for PBXNativeTarget "SwiftPlusPlus" */;
@@ -272,6 +401,12 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Drewag LLC";
 				TargetAttributes = {
+					4966682B1A7F53D6002FC394 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					496668351A7F53D6002FC394 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					49FEA5001943922A00F2AFDB = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -295,11 +430,27 @@
 			targets = (
 				49FEA5001943922A00F2AFDB /* SwiftPlusPlus */,
 				49FEA50B1943922A00F2AFDB /* SwiftPlusPlusTests */,
+				4966682B1A7F53D6002FC394 /* SwiftPlusPlusOSX */,
+				496668351A7F53D6002FC394 /* SwiftPlusPlusOSXTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4966682A1A7F53D6002FC394 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		496668341A7F53D6002FC394 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49FEA4FF1943922A00F2AFDB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +468,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		496668271A7F53D6002FC394 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				496668451A7F53E1002FC394 /* WeakWrapper.swift in Sources */,
+				496668491A7F53EE002FC394 /* Observable.swift in Sources */,
+				4966684F1A7F53FD002FC394 /* Array+SwiftPlusPlus.swift in Sources */,
+				4966684A1A7F53EE002FC394 /* MultiCallback.swift in Sources */,
+				4966684D1A7F53FD002FC394 /* String+SwiftPlusPlus.swift in Sources */,
+				496668471A7F53E8002FC394 /* EventCenter.swift in Sources */,
+				496668501A7F53FD002FC394 /* NSFileManager+Directories.swift in Sources */,
+				4966684E1A7F53FD002FC394 /* Dictionary+SwiftPlusPlus.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		496668321A7F53D6002FC394 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				496668511A7F53FF002FC394 /* String+SwiftPlusPlus.swift in Sources */,
+				4966684B1A7F53EF002FC394 /* Observable.swift in Sources */,
+				4966684C1A7F53EF002FC394 /* MultiCallback.swift in Sources */,
+				496668531A7F53FF002FC394 /* Array+SwiftPlusPlus.swift in Sources */,
+				496668481A7F53E8002FC394 /* EventCenter.swift in Sources */,
+				4966683E1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift in Sources */,
+				496668461A7F53E4002FC394 /* WeakWrapper.swift in Sources */,
+				496668521A7F53FF002FC394 /* Dictionary+SwiftPlusPlus.swift in Sources */,
+				496668541A7F53FF002FC394 /* NSFileManager+Directories.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49FEA4FC1943922A00F2AFDB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,6 +537,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		496668391A7F53D6002FC394 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4966682B1A7F53D6002FC394 /* SwiftPlusPlusOSX */;
+			targetProxy = 496668381A7F53D6002FC394 /* PBXContainerItemProxy */;
+		};
 		498DF37919494267004AE103 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 49FEA5001943922A00F2AFDB /* SwiftPlusPlus */;
@@ -368,6 +555,90 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		4966683F1A7F53D6002FC394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftPlusPlusOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		496668401A7F53D6002FC394 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SwiftPlusPlusOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		496668411A7F53D6002FC394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftPlusPlusOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		496668421A7F53D6002FC394 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftPlusPlusOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		49FEA5151943922A00F2AFDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -518,6 +789,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		496668431A7F53D6002FC394 /* Build configuration list for PBXNativeTarget "SwiftPlusPlusOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4966683F1A7F53D6002FC394 /* Debug */,
+				496668401A7F53D6002FC394 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		496668441A7F53D6002FC394 /* Build configuration list for PBXNativeTarget "SwiftPlusPlusOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				496668411A7F53D6002FC394 /* Debug */,
+				496668421A7F53D6002FC394 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		49FEA4FB1943922A00F2AFDB /* Build configuration list for PBXProject "SwiftPlusPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
