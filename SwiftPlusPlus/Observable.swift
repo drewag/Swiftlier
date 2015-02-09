@@ -36,6 +36,10 @@ public struct ObservationOptions: BitwiseOperationsType, BooleanType  {
         Call the observation callback immediately with the current value
     */
     public static var Initial: ObservationOptions { return ObservationOptions(rawValue: 1) }
+    /**
+        Remove observer after first call
+    */
+    public static var OnlyOnce: ObservationOptions { return ObservationOptions(rawValue: 2) }
 
     public static var allZeros: ObservationOptions {
         return self.None
@@ -89,10 +93,24 @@ public final class Observable<T> {
     */
     public var value : T {
         didSet {
-            for (observer, handlers) in self._observers {
+            for observerIndex in reverse(0..<self._observers.count) {
+                let observer = self._observers[observerIndex].observer
+                var handlers = self._observers[observerIndex].handlers
+
                 if observer.value != nil {
-                    for handler in handlers {
-                        handler(change: UpdateValue(oldValue: oldValue, newValue: value))
+                    for handlerIndex in reverse(0..<handlers.count) {
+                        let handlerSpec = handlers[handlerIndex]
+                        handlerSpec.handler(change: UpdateValue(oldValue: oldValue, newValue: value))
+                        if handlerSpec.options & ObservationOptions.OnlyOnce {
+                            handlers.removeAtIndex(handlerIndex)
+                        }
+                    }
+                    
+                    if handlers.count == 0 {
+                        self._observers.removeAtIndex(observerIndex)
+                    }
+                    else {
+                        self._observers[observerIndex] = (observer: observer, handlers: handlers)
                     }
                 }
                 else {
@@ -132,12 +150,12 @@ public final class Observable<T> {
     public func addObserver(observer: AnyObject, options: ObservationOptions, handler: DidChangeHandler) {
         if let index = self._indexOfObserver(observer) {
             // since the observer exists, add the handler to the existing array
-            self._observers[index].handlers.append(handler)
+            self._observers[index].handlers.append((options: options, handler: handler))
         }
         else {
             // since the observer does not already exist, add a new tuple with the
             // observer and an array with the handler
-            self._observers.append(observer: WeakWrapper(observer), handlers: [handler])
+            self._observers.append(observer: WeakWrapper(observer), handlers: [(options: options, handler: handler)])
         }
 
         if (options & ObservationOptions.Initial) {
@@ -158,7 +176,8 @@ public final class Observable<T> {
 
     // MARK: Private Properties
 
-    private var _observers: [(observer: WeakWrapper, handlers: [DidChangeHandler])] = []
+    typealias HandlerSpec = (options: ObservationOptions, handler: DidChangeHandler)
+    private var _observers: [(observer: WeakWrapper, handlers: [HandlerSpec])] = []
 
     // MARK: Private Methods
 

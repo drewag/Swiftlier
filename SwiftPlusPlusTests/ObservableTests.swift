@@ -63,4 +63,39 @@ class ObservableTests: XCTestCase {
         observable.value = "New Value"
         XCTAssertFalse(called)
     }
+    
+    func testCallOnceOption() {
+        var observable = Observable<String>("Current Value")
+        var called = false
+        observable.addObserver(self, options: ObservationOptions.OnlyOnce) {
+            (change) in
+            XCTAssertEqual(change.newValue, "Second Value")
+            called = true
+        }
+        XCTAssertFalse(called)
+        
+        observable.value = "Second Value"
+        XCTAssertTrue(called)
+        
+        called = false
+        observable.value = "Third Value"
+        XCTAssertFalse(called)
+    }
+    
+    func testCallOnceOptionWithInitial() {
+        var observable = Observable<String>("Current Value")
+        var called = false
+        observable.addObserver(self, options: ObservationOptions.Initial | ObservationOptions.OnlyOnce) {
+            (change) in
+            called = true
+        }
+        XCTAssertTrue(called)
+        
+        observable.value = "Second Value"
+        XCTAssertTrue(called)
+        
+        called = false
+        observable.value = "Third Value"
+        XCTAssertFalse(called)
+    }
 }
