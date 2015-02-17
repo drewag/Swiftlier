@@ -65,9 +65,10 @@ public class EventCenter {
         let key = NSStringFromClass(event)
         let anyCallback: Callback = { callback($0 as E.CallbackParam) }
         
-        var callbackCollection = self._observations[key] ?? CallbackCollection()
-        addHandler(anyCallback, toHandlerCollection: &callbackCollection, forObserver: observer)
-        self._observations[key] = callbackCollection
+        if self._observations[key] == nil {
+            self._observations[key] = CallbackCollection()
+        }
+        addHandler(anyCallback, toHandlerCollection: &self._observations[key]!, forObserver: observer)
     }
     
     /**
