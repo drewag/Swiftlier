@@ -47,8 +47,15 @@ public class EventCenter {
         let key = NSStringFromClass(event)
         if let callbackCollection = self._observations[key] {
             for (_, callbacks) in callbackCollection {
-                for callback in callbacks {
-                    callback(params)
+                for spec in callbacks {
+                    if let operationQueue = spec.operationQueue {
+                        operationQueue.addOperationWithBlock {
+                            spec.callback(params)
+                        }
+                    }
+                    else {
+                        spec.callback(params)
+                    }
                 }
             }
         }
@@ -62,13 +69,25 @@ public class EventCenter {
         :param: callback callback to be called when the event is triggered
     */
     public func addObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type, callback: (E.CallbackParam) -> ()) {
+        self.addObserver(observer, forEvent: event, inQueue: nil, callback: callback)
+    }
+    
+    /**
+        Add a callback for when an event is triggered
+    
+        :param: observer observing object to be referenced later to remove the hundler
+        :param: forEvent the event to observe
+        :param: inQueue queue to call callback in (nil indicates the callback should be called on the same queue as the trigger)
+        :param: callback callback to be called when the event is triggered
+    */
+    public func addObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type, inQueue: NSOperationQueue?, callback: (E.CallbackParam) -> ()) {
         let key = NSStringFromClass(event)
         let anyCallback: Callback = { callback($0 as E.CallbackParam) }
         
         if self._observations[key] == nil {
             self._observations[key] = CallbackCollection()
         }
-        addHandler(anyCallback, toHandlerCollection: &self._observations[key]!, forObserver: observer)
+        addHandler((callback: anyCallback, operationQueue: inQueue), toHandlerCollection: &self._observations[key]!, forObserver: observer)
     }
     
     /**
@@ -100,19 +119,20 @@ public class EventCenter {
 
 private extension EventCenter {
     private typealias Callback = (Any) -> ()
-    private typealias CallbackCollection = [(observer: WeakWrapper, callbacks: [Callback])]
+    private typealias CallbackSpec = (callback: Callback, operationQueue: NSOperationQueue?)
+    private typealias CallbackCollection = [(observer: WeakWrapper, callbacks: [CallbackSpec])]
 
     private struct Static {
         static var DefaultInsance = EventCenter()
     }
 }
 
-private func addHandler(handler: EventCenter.Callback, inout toHandlerCollection collection: EventCenter.CallbackCollection, forObserver observer: AnyObject) {
+private func addHandler(handler: EventCenter.CallbackSpec, inout toHandlerCollection collection: EventCenter.CallbackCollection, forObserver observer: AnyObject) {
     var found = false
     var index = 0
     for (possibleObserver, var callbacks) in collection {
         if possibleObserver.value === observer {
-            callbacks.append(handler)
+            callbacks.append(callback: handler.callback, operationQueue: handler.operationQueue)
             collection[index] = (possibleObserver, callbacks)
             found = true
             break

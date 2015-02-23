@@ -89,4 +89,20 @@ class EventCenterTests: XCTestCase {
         XCTAssertEqual(triggeredString, "Trigger 1")
         XCTAssertEqual(triggeredInt, 2)
     }
+    
+    func testWithOperationQueue() {
+        var triggeredString = ""
+        let expectation = expectationWithDescription("Was Triggered")
+        eventCenter.addObserver(self, forEvent: TestStringEvent.self, inQueue: NSOperationQueue.mainQueue()) { param in
+            triggeredString = param
+            XCTAssertEqual(param, "Trigger 1")
+            expectation.fulfill()
+        }
+        XCTAssertEqual(triggeredString, "")
+        
+        eventCenter.triggerEvent(TestStringEvent.self, params: "Trigger 1")
+        XCTAssertEqual(triggeredString, "")
+        
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
 }

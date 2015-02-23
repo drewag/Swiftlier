@@ -26,7 +26,7 @@
 		<key>5598409B1923A29764CEAFB8194114E2D165D76E</key>
 		<string>../../..</string>
 		<key>E01FA46556BFE2DFBFF18CDDE90475315AD6FC03</key>
-		<string>../../../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:drewag/SwiftPlusPlus.git</string>
@@ -50,7 +50,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>E01FA46556BFE2DFBFF18CDDE90475315AD6FC03</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

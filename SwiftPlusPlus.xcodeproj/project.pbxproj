@@ -796,6 +796,7 @@
 				496668401A7F53D6002FC394 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		496668441A7F53D6002FC394 /* Build configuration list for PBXNativeTarget "SwiftPlusPlusOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -804,6 +805,7 @@
 				496668421A7F53D6002FC394 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49FEA4FB1943922A00F2AFDB /* Build configuration list for PBXProject "SwiftPlusPlus" */ = {
 			isa = XCConfigurationList;
