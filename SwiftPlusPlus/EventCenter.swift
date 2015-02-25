@@ -30,7 +30,7 @@ public class EventCenter {
         The main event center
     */
     public class func defaultCenter() -> EventCenter {
-        return Static.DefaultInsance
+        return self.DefaultInsance
     }
     
     public init() {}
@@ -82,7 +82,7 @@ public class EventCenter {
     */
     public func addObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type, inQueue: NSOperationQueue?, callback: (E.CallbackParam) -> ()) {
         let key = NSStringFromClass(event)
-        let anyCallback: Callback = { callback($0 as E.CallbackParam) }
+        let anyCallback: Callback = { callback($0 as! E.CallbackParam) }
         
         if self._observations[key] == nil {
             self._observations[key] = CallbackCollection()
@@ -122,9 +122,7 @@ private extension EventCenter {
     private typealias CallbackSpec = (callback: Callback, operationQueue: NSOperationQueue?)
     private typealias CallbackCollection = [(observer: WeakWrapper, callbacks: [CallbackSpec])]
 
-    private struct Static {
-        static var DefaultInsance = EventCenter()
-    }
+    static var DefaultInsance = EventCenter()
 }
 
 private func addHandler(handler: EventCenter.CallbackSpec, inout toHandlerCollection collection: EventCenter.CallbackCollection, forObserver observer: AnyObject) {

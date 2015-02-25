@@ -15,7 +15,7 @@ class ObservableTests: XCTestCase {
         var called = false
         observable.addObserver(self) {
             (change) in
-            XCTAssertEqual((change as UpdateValue<String>).oldValue, "Old Value")
+            XCTAssertEqual((change as! UpdateValue<String>).oldValue, "Old Value")
             XCTAssertEqual(change.newValue, "New Value")
             called = true
         }
