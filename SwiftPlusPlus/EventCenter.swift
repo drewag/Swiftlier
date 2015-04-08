@@ -82,7 +82,7 @@ public class EventCenter {
     */
     public func addObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type, inQueue: NSOperationQueue?, callback: (E.CallbackParam) -> ()) {
         let key = NSStringFromClass(event)
-        let anyCallback: Callback = { callback($0 as E.CallbackParam) }
+        let anyCallback: Callback = { callback($0 as! E.CallbackParam) }
         
         if self._observations[key] == nil {
             self._observations[key] = CallbackCollection()
