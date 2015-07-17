@@ -54,3 +54,40 @@ extension Dictionary {
         return returnDict
     }
 }
+
+public func URLEncodedDictionary(dict: [String:String]) -> [String:String]? {
+    var returnDict = [String:String]()
+    for (key, value) in dict {
+        if let encodedKey = key.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding),
+            let encodedValue = value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        {
+            returnDict[encodedKey] = encodedValue
+        }
+        else {
+            return nil
+        }
+    }
+    return returnDict
+}
+
+public func URLEncodedString(dict: [String:String]) -> String? {
+    if let encodedDict = URLEncodedDictionary(dict) {
+        var parts = [String]()
+        for (key, value) in encodedDict {
+            parts.append("\(key)=\(value)")
+        }
+        return (parts as NSArray).componentsJoinedByString("&")
+    }
+    else {
+        return nil
+    }
+}
+
+public func URLEncodedData(dict: [String:String]) -> NSData? {
+    if let encodedString = URLEncodedString(dict) {
+        return encodedString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+    }
+    else {
+        return nil
+    }
+}
