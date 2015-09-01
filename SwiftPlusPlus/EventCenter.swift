@@ -40,8 +40,8 @@ public class EventCenter {
     
         Callbacks are all executed on the same thread before this method returns
     
-        :param: event the event to trigger
-        :param: params the parameters to trigger the event with
+        - parameter event: the event to trigger
+        - parameter params: the parameters to trigger the event with
     */
     public func triggerEvent<E: EventType>(event: E.Type, params: E.CallbackParam) {
         let key = NSStringFromClass(event)
@@ -64,9 +64,9 @@ public class EventCenter {
     /**
         Add a callback for when an event is triggered
     
-        :param: observer observing object to be referenced later to remove the hundler
-        :param: event the event to observe
-        :param: callback callback to be called when the event is triggered
+        - parameter observer: observing object to be referenced later to remove the hundler
+        - parameter event: the event to observe
+        - parameter callback: callback to be called when the event is triggered
     */
     public func addObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type, callback: (E.CallbackParam) -> ()) {
         self.addObserver(observer, forEvent: event, inQueue: nil, callback: callback)
@@ -75,10 +75,10 @@ public class EventCenter {
     /**
         Add a callback for when an event is triggered
     
-        :param: observer observing object to be referenced later to remove the hundler
-        :param: forEvent the event to observe
-        :param: inQueue queue to call callback in (nil indicates the callback should be called on the same queue as the trigger)
-        :param: callback callback to be called when the event is triggered
+        - parameter observer: observing object to be referenced later to remove the hundler
+        - parameter forEvent: the event to observe
+        - parameter inQueue: queue to call callback in (nil indicates the callback should be called on the same queue as the trigger)
+        - parameter callback: callback to be called when the event is triggered
     */
     public func addObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type, inQueue: NSOperationQueue?, callback: (E.CallbackParam) -> ()) {
         let key = NSStringFromClass(event)
@@ -93,21 +93,23 @@ public class EventCenter {
     /**
         Remove a callback for when an event is triggered
     
-        :param: observer observing object passed in when registering the callback originally
-        :param: event the event to remove the observer for
+        - parameter observer: observing object passed in when registering the callback originally
+        - parameter event: the event to remove the observer for
     */
     public func removeObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type?) {
-        let key = NSStringFromClass(event)
-        if let var callbackCollection = self._observations[key] {
-            removecallbacksForObserver(observer, fromHandlerCollection: &callbackCollection)
-            self._observations[key] = callbackCollection
+        if let event = event {
+            let key = NSStringFromClass(event)
+            if var callbackCollection = self._observations[key] {
+                removecallbacksForObserver(observer, fromHandlerCollection: &callbackCollection)
+                self._observations[key] = callbackCollection
+            }
         }
     }
     
     /**
         Remove callbacks for all of the events that an observer is registered for
     
-        :param: observer observing object passed in when registering the callback originally
+        - parameter observer: observing object passed in when registering the callback originally
     */
     public func removeObserverForAllEvents(observer: AnyObject) {
         for (key, var callbackCollection) in self._observations {
@@ -141,13 +143,13 @@ private func addHandler(handler: EventCenter.CallbackSpec, inout toHandlerCollec
     }
     
     if !found {
-        collection.append(observer: WeakWrapper(observer), callbacks: [handler])
+        collection.append((observer: WeakWrapper(observer), callbacks: [handler]))
     }
 }
 
 private func removecallbacksForObserver(observer: AnyObject, inout fromHandlerCollection collection: EventCenter.CallbackCollection) {
     var index = 0
-    for (possibleObserver, var callbacks) in collection {
+    for (possibleObserver, _) in collection {
         if possibleObserver.value === observer {
             collection.removeAtIndex(index)
         }

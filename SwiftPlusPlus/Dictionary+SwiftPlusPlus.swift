@@ -26,9 +26,9 @@ import Foundation
 
 extension Dictionary {
     /**
-        :param: f a function to map the key and value into a new value
+        - parameter f: a function to map the key and value into a new value
         
-        :returns: a new dictionary with a new value for each key
+        - returns: a new dictionary with a new value for each key
     */
     func map(f: (Key, Value) -> Value) -> Dictionary<Key, Value> {
         var ret = Dictionary<Key, Value>()
@@ -41,16 +41,16 @@ extension Dictionary {
     /**
         Merge two dictionaries together of the same type
 
-        :param: other a dictionary to merge with
-        :param: merge a function to merge the values of keys that match betweent the two dictionary
+        - parameter other: a dictionary to merge with
+        - parameter merge: a function to merge the values of keys that match betweent the two dictionary
 
-        :returns: a single merged dictionary
+        - returns: a single merged dictionary
     */
     func merge(with other:Dictionary<Key, Value>, by merge: (Value, Value) -> Value) -> Dictionary<Key, Value> {
         var returnDict = self
         for (key, value) in other {
-            var returnDictValue = returnDict[key]
-            var newValue = returnDictValue != nil ? merge(returnDict[key]!, value) : value
+            let returnDictValue = returnDict[key]
+            let newValue = returnDictValue != nil ? merge(returnDict[key]!, value) : value
             returnDict.updateValue(newValue, forKey: key)
         }
         return returnDict
@@ -60,8 +60,8 @@ extension Dictionary {
 public func URLEncodedDictionary(dict: [String:String]) -> [String:String]? {
     var returnDict = [String:String]()
     for (key, value) in dict {
-        if let encodedKey = key.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding),
-            let encodedValue = value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        if let encodedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet()),
+            let encodedValue = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
         {
             returnDict[encodedKey] = encodedValue
         }

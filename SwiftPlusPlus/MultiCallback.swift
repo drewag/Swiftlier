@@ -12,7 +12,7 @@ import Foundation
     Object that allows the registration of multiple callbacks
 */
 public final class MultiCallback<CallbackArguments> {
-    typealias CallBackType = (CallbackArguments) -> ()
+    public typealias CallBackType = (CallbackArguments) -> ()
     
     // MARK: Properties
     
@@ -27,8 +27,8 @@ public final class MultiCallback<CallbackArguments> {
     /**
         Add a callback for when object is triggered
     
-        :param: observer observing object to be referenced later to remove the hundler
-        :param: callback callback to be called
+        - parameter observer: observing object to be referenced later to remove the hundler
+        - parameter callback: callback to be called
     */
     public func addObserver(observer: AnyObject, callback: CallBackType) {
         if let index = self.indexOfObserver(observer) {
@@ -38,14 +38,14 @@ public final class MultiCallback<CallbackArguments> {
         else {
             // since the observer does not already exist, add a new tuple with the
             // observer and an array with the callback
-            self.observers.append(observer: WeakWrapper(observer), callbacks: [callback])
+            self.observers.append((observer: WeakWrapper(observer), callbacks: [callback]))
         }
     }
     
     /**
         Remove a callback for when object is triggered
     
-        :param: observer observing object passed in when registering the callback originally
+        - parameter observer: observing object passed in when registering the callback originally
     */
     public func removeObserver(observer: AnyObject) {
         if let index = self.indexOfObserver(observer) {
@@ -58,7 +58,7 @@ public final class MultiCallback<CallbackArguments> {
     
         Callbacks are all executed on the same thread before this method returns
     
-        :param: arguments the arguments to trigger the callbacks with
+        - parameter arguments: the arguments to trigger the callbacks with
     */
     public func triggerWithArguments(arguments: CallbackArguments) {
         for (observer, callbacks) in self.observers {
@@ -81,7 +81,7 @@ public final class MultiCallback<CallbackArguments> {
 private extension MultiCallback {
     func indexOfObserver(observer: AnyObject) -> Int? {
         var index: Int = 0
-        for (possibleObserver, callbacks) in self.observers {
+        for (possibleObserver, _) in self.observers {
             if possibleObserver.value === observer {
                 return index
             }

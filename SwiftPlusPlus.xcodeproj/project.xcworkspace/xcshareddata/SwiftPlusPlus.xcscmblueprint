@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : 0,
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : 0,
+    "5598409B1923A29764CEAFB8194114E2D165D76E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7EAF8406-C1AF-4660-AF15-6A2333986374",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : "",
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : "SwiftPlusPlus",
+    "5598409B1923A29764CEAFB8194114E2D165D76E" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftPlusPlus",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftPlusPlus.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:drewag\/SwiftPlusPlus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "learnbrigade.com:~\/lists",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5598409B1923A29764CEAFB8194114E2D165D76E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/empower-retirement.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03"
+    }
+  ]
+}

@@ -26,13 +26,13 @@ import Foundation
 
 extension String {
     /**
-        :param: times the number of times to repeat the string
+        - parameter times: the number of times to repeat the string
 
-        :returns: a string by repeating it 'times' times
+        - returns: a string by repeating it 'times' times
     */
-    public func repeat(times: Int) -> String {
+    public func `repeat`(times: Int) -> String {
         var result = ""
-        for i in 0..<times {
+        for _ in 0..<times {
             result += self
         }
         return result
@@ -40,13 +40,13 @@ extension String {
 
     public func substringFromIndex(index: Int) -> String {
         var pos = self.startIndex
-        pos = advance(pos, index)
+        pos = pos.advancedBy(index)
         return self.substringFromIndex(pos)
     }
 
     public func substringToIndex(index: Int) -> String {
         var pos = self.startIndex
-        pos = advance(pos, index)
+        pos = pos.advancedBy(index)
         return self.substringToIndex(pos)
     }
 
@@ -59,5 +59,5 @@ extension String {
 }
 
 public func /(lhs: String, rhs: String) -> String {
-    return lhs.stringByAppendingPathComponent(rhs)
+    return (lhs as NSString).stringByAppendingPathComponent(rhs)
 }

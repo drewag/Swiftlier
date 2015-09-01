@@ -11,7 +11,7 @@ import XCTest
 
 class ObservableTests: XCTestCase {
     func testSubscribing() {
-        var observable = Observable<String>("Old Value")
+        let observable = Observable<String>("Old Value")
         var called = false
         observable.addObserver(self) {
             (change) in
@@ -24,7 +24,7 @@ class ObservableTests: XCTestCase {
     }
 
     func testUnsubscribing() {
-        var observable = Observable<String>("Old Value")
+        let observable = Observable<String>("Old Value")
         var called = false
         observable.addObserver(self) {
             (change) in
@@ -36,7 +36,7 @@ class ObservableTests: XCTestCase {
     }
 
     func testTriggerImmediately() {
-        var observable = Observable<String>("Current Value")
+        let observable = Observable<String>("Current Value")
         var called = false
         observable.addObserver(self, options: ObservationOptions.Initial) {
             (change) in
@@ -53,7 +53,7 @@ class ObservableTests: XCTestCase {
         var observable = Observable<String>("Current Value")
         var called = false
         func scope() {
-            var observer = SomeClass()
+            let observer = SomeClass()
             observable.addObserver(observer) {
                 (change) in
                 called = true
@@ -65,7 +65,7 @@ class ObservableTests: XCTestCase {
     }
     
     func testCallOnceOption() {
-        var observable = Observable<String>("Current Value")
+        let observable = Observable<String>("Current Value")
         var called = false
         observable.addObserver(self, options: ObservationOptions.OnlyOnce) {
             (change) in
@@ -83,7 +83,7 @@ class ObservableTests: XCTestCase {
     }
     
     func testCallOnceOptionWithInitial() {
-        var observable = Observable<String>("Current Value")
+        let observable = Observable<String>("Current Value")
         var called = false
         observable.addObserver(self, options: ObservationOptions.Initial | ObservationOptions.OnlyOnce) {
             (change) in

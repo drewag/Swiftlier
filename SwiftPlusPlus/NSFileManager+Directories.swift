@@ -10,24 +10,20 @@ import Foundation
 
 extension NSFileManager {
     public var documentsDirectoryPath: String {
-        let URL = self.URLForDirectory(
+        let URL = try? self.URLForDirectory(
             .DocumentDirectory,
             inDomain: .UserDomainMask,
             appropriateForURL: nil,
-            create: true,
-            error: nil
-        )
+            create: true)
         return URL!.relativePath!
     }
 
     public var cachesDirectoryPath: String {
-        let URL = self.URLForDirectory(
+        let URL = try? self.URLForDirectory(
             .CachesDirectory,
             inDomain: .UserDomainMask,
             appropriateForURL: nil,
-            create: true,
-            error: nil
-        )
+            create: true)
         return URL!.relativePath!
     }
 }

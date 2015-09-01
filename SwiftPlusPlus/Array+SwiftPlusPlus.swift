@@ -27,11 +27,11 @@ import Foundation
 
 extension Array {
     /**
-        :param: test function to test if an elemnt passes
+        - parameter test: function to test if an elemnt passes
         
-        :returns: true if any element passes the given test
+        - returns: true if any element passes the given test
     */
-    func containsObjectPassingTest(test: (object: T) -> Bool) -> Bool {
+    func containsObjectPassingTest(test: (object: Element) -> Bool) -> Bool {
         for object in self {
             if test(object: object) {
                 return true
@@ -41,11 +41,11 @@ extension Array {
     }
 
     /**
-        :param: test function to test if an element passes
+        - parameter test: function to test if an element passes
 
-        :returns: the index of a passing element or nil if none match
+        - returns: the index of a passing element or nil if none match
     */
-    func indexOfObjectPassingTest(test: (object: T) -> Bool) -> Int? {
+    func indexOfObjectPassingTest(test: (object: Element) -> Bool) -> Int? {
         var index : Int = 0
         for object in self {
             if test(object: object) {

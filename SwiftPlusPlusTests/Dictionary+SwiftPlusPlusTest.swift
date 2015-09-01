@@ -11,8 +11,8 @@ import SwiftPlusPlus
 
 class Dictionary_SwiftPlusPlusTest: XCTestCase {
     func testMerge() {
-        var dict1 = ["Apples": 2, "Oranges": 3]
-        var dict2 = ["Apples": 3, "Cantaloupe": 1]
+        let dict1 = ["Apples": 2, "Oranges": 3]
+        let dict2 = ["Apples": 3, "Cantaloupe": 1]
         var result = dict1.merge(with: dict2, by: +)
 
         XCTAssertEqual(result["Oranges"]!, 3)
