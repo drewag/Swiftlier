@@ -11,6 +11,12 @@
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
+		49478FF91B9F537F00C3D127 /* UIColor+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */; settings = {ASSET_TAGS = (); }; };
+		49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FFB1B9F577E00C3D127 /* ColorTests.swift */; settings = {ASSET_TAGS = (); }; };
+		49478FFD1B9F57FF00C3D127 /* UIColor+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */; settings = {ASSET_TAGS = (); }; };
+		49478FFE1B9F580300C3D127 /* UIColor+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */; settings = {ASSET_TAGS = (); }; };
+		49478FFF1B9F580400C3D127 /* UIColor+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */; settings = {ASSET_TAGS = (); }; };
+		494790001B9F58F500C3D127 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FFB1B9F577E00C3D127 /* ColorTests.swift */; settings = {ASSET_TAGS = (); }; };
 		496668311A7F53D6002FC394 /* SwiftPlusPlusOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 496668301A7F53D6002FC394 /* SwiftPlusPlusOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496668371A7F53D6002FC394 /* SwiftPlusPlusOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4966682C1A7F53D6002FC394 /* SwiftPlusPlusOSX.framework */; };
 		4966683E1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4966683D1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift */; };
@@ -77,6 +83,8 @@
 
 /* Begin PBXFileReference section */
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
+		49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Factory.swift"; sourceTree = "<group>"; };
+		49478FFB1B9F577E00C3D127 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		4966682C1A7F53D6002FC394 /* SwiftPlusPlusOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlusOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4966682F1A7F53D6002FC394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		496668301A7F53D6002FC394 /* SwiftPlusPlusOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPlusPlusOSX.h; sourceTree = "<group>"; };
@@ -137,6 +145,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49478FFA1B9F576A00C3D127 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				49478FFB1B9F577E00C3D127 /* ColorTests.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		4966682D1A7F53D6002FC394 /* SwiftPlusPlusOSX */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				49D06DD31A59D8DB0031845A /* WeakWrapper.swift */,
+				49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -270,6 +287,7 @@
 		49FEA5101943922A00F2AFDB /* SwiftPlusPlusTests */ = {
 			isa = PBXGroup;
 			children = (
+				49478FFA1B9F576A00C3D127 /* Helpers */,
 				49D06DD71A5B46690031845A /* Events */,
 				49F969A819859F14006BF515 /* Observation */,
 				498DF37719494249004AE103 /* Extensions */,
@@ -479,6 +497,7 @@
 				4966684F1A7F53FD002FC394 /* Array+SwiftPlusPlus.swift in Sources */,
 				4966684A1A7F53EE002FC394 /* MultiCallback.swift in Sources */,
 				4966684D1A7F53FD002FC394 /* String+SwiftPlusPlus.swift in Sources */,
+				49478FFD1B9F57FF00C3D127 /* UIColor+Factory.swift in Sources */,
 				496668471A7F53E8002FC394 /* EventCenter.swift in Sources */,
 				496668501A7F53FD002FC394 /* NSFileManager+Directories.swift in Sources */,
 				4966684E1A7F53FD002FC394 /* Dictionary+SwiftPlusPlus.swift in Sources */,
@@ -489,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494790001B9F58F500C3D127 /* ColorTests.swift in Sources */,
 				496668511A7F53FF002FC394 /* String+SwiftPlusPlus.swift in Sources */,
 				4966684B1A7F53EF002FC394 /* Observable.swift in Sources */,
 				4966684C1A7F53EF002FC394 /* MultiCallback.swift in Sources */,
@@ -497,6 +517,7 @@
 				4966683E1A7F53D6002FC394 /* SwiftPlusPlusOSXTests.swift in Sources */,
 				496668461A7F53E4002FC394 /* WeakWrapper.swift in Sources */,
 				496668521A7F53FF002FC394 /* Dictionary+SwiftPlusPlus.swift in Sources */,
+				49478FFF1B9F580400C3D127 /* UIColor+Factory.swift in Sources */,
 				496668541A7F53FF002FC394 /* NSFileManager+Directories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +531,7 @@
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
+				49478FF91B9F537F00C3D127 /* UIColor+Factory.swift in Sources */,
 				49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
@@ -525,8 +547,10 @@
 				49D06DDB1A5B47100031845A /* WeakWrapper.swift in Sources */,
 				49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */,
 				49D06DF21A5B7E7E0031845A /* MultiCallbackTests.swift in Sources */,
+				49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */,
 				491039AC198342F200B467DB /* Observable.swift in Sources */,
 				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
+				49478FFE1B9F580300C3D127 /* UIColor+Factory.swift in Sources */,
 				49D06DF01A5B7AC30031845A /* MultiCallback.swift in Sources */,
 				49D06DDA1A5B470C0031845A /* EventCenter.swift in Sources */,
 				49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */,

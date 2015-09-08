@@ -30,10 +30,13 @@ extension String {
 
         - returns: a string by repeating it 'times' times
     */
-    public func `repeat`(times: Int) -> String {
+    public func stringByRepeatingNTimes(times: Int, separator: String = "") -> String {
         var result = ""
-        for _ in 0..<times {
+        for i in 0..<times {
             result += self
+            if i < times - 1 {
+                result += separator
+            }
         }
         return result
     }

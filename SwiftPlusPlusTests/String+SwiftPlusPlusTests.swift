@@ -11,7 +11,8 @@ import SwiftPlusPlus
 
 class String_SwiftPlusPlusTests: XCTestCase {
     func testRepeat() {
-        XCTAssertEqual("Hello".`repeat`(3), "HelloHelloHello")
+        XCTAssertEqual("Hello".stringByRepeatingNTimes(3), "HelloHelloHello")
+        XCTAssertEqual("Hello".stringByRepeatingNTimes(4, separator: " "), "Hello Hello Hello Hello")
     }
 
     func testSubstringFromIndex() {
