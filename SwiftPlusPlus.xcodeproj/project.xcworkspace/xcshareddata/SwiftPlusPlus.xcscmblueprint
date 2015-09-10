@@ -4,15 +4,17 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : 0,
     "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : 0,
-    "5598409B1923A29764CEAFB8194114E2D165D76E" : 0
+    "5598409B1923A29764CEAFB8194114E2D165D76E" : 0,
+    "BA5090AE22728273530B5CBDE5E77CA0EE3FC730" : 0,
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7EAF8406-C1AF-4660-AF15-6A2333986374",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : "",
     "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : "SwiftPlusPlus",
-    "5598409B1923A29764CEAFB8194114E2D165D76E" : ""
+    "5598409B1923A29764CEAFB8194114E2D165D76E" : "",
+    "BA5090AE22728273530B5CBDE5E77CA0EE3FC730" : "..",
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftPlusPlus",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -27,6 +29,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "learnbrigade.com:~\/lists",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5598409B1923A29764CEAFB8194114E2D165D76E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/file-sync.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BA5090AE22728273530B5CBDE5E77CA0EE3FC730"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/empower-retirement.git",

@@ -10,12 +10,12 @@
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
-		49478FF91B9F537F00C3D127 /* UIColor+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */; settings = {ASSET_TAGS = (); }; };
 		49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FFB1B9F577E00C3D127 /* ColorTests.swift */; settings = {ASSET_TAGS = (); }; };
-		494790171B9FA5A500C3D127 /* DataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494790161B9FA5A500C3D127 /* DataSourceType.swift */; settings = {ASSET_TAGS = (); }; };
+		494790171B9FA5A500C3D127 /* iOS in Sources */ = {isa = PBXBuildFile; fileRef = 494790161B9FA5A500C3D127 /* iOS */; settings = {ASSET_TAGS = (); }; };
 		4947901A1B9FE96700C3D127 /* DataSourceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */; settings = {ASSET_TAGS = (); }; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
+		498AE6301BA12093008E8E33 /* UIColor+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498AE62F1BA12093008E8E33 /* UIColor+Factory.swift */; settings = {ASSET_TAGS = (); }; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
 		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
@@ -51,12 +51,12 @@
 
 /* Begin PBXFileReference section */
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
-		49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Factory.swift"; sourceTree = "<group>"; };
 		49478FFB1B9F577E00C3D127 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
-		494790161B9FA5A500C3D127 /* DataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceType.swift; sourceTree = "<group>"; };
+		494790161B9FA5A500C3D127 /* iOS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = iOS; sourceTree = "<group>"; };
 		494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceTypeTests.swift; sourceTree = "<group>"; };
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
+		498AE62F1BA12093008E8E33 /* UIColor+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Factory.swift"; path = "iOS/UIColor+Factory.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		494790101B9FA24F00C3D127 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				494790161B9FA5A500C3D127 /* DataSourceType.swift */,
+				494790161B9FA5A500C3D127 /* iOS */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -127,6 +127,34 @@
 			name = Observation;
 			path = SwiftPlusPlusTests;
 			sourceTree = SOURCE_ROOT;
+		};
+		498AE62E1BA12082008E8E33 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				494790101B9FA24F00C3D127 /* Controller */,
+				498AE6321BA120AA008E8E33 /* Helpers */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		498AE6311BA12098008E8E33 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				49D06DD21A59D8CC0031845A /* Helpers */,
+				49D06DCF1A59D6390031845A /* Events */,
+				496D42F4197B506500250A0A /* Observation */,
+				49FEA5351943961600F2AFDB /* Extensions */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		498AE6321BA120AA008E8E33 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				498AE62F1BA12093008E8E33 /* UIColor+Factory.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
 		};
 		498DF37719494249004AE103 /* Extensions */ = {
 			isa = PBXGroup;
@@ -150,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				49D06DD31A59D8DB0031845A /* WeakWrapper.swift */,
-				49478FF81B9F537F00C3D127 /* UIColor+Factory.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -193,11 +220,8 @@
 		49FEA5031943922A00F2AFDB /* SwiftPlusPlus */ = {
 			isa = PBXGroup;
 			children = (
-				494790101B9FA24F00C3D127 /* Controller */,
-				49D06DD21A59D8CC0031845A /* Helpers */,
-				49D06DCF1A59D6390031845A /* Events */,
-				496D42F4197B506500250A0A /* Observation */,
-				49FEA5351943961600F2AFDB /* Extensions */,
+				498AE62E1BA12082008E8E33 /* iOS */,
+				498AE6311BA12098008E8E33 /* General */,
 				49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */,
 				49FEA5041943922A00F2AFDB /* Supporting Files */,
 			);
@@ -360,10 +384,10 @@
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
-				49478FF91B9F537F00C3D127 /* UIColor+Factory.swift in Sources */,
-				494790171B9FA5A500C3D127 /* DataSourceType.swift in Sources */,
+				494790171B9FA5A500C3D127 /* iOS in Sources */,
 				49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
+				498AE6301BA12093008E8E33 /* UIColor+Factory.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
