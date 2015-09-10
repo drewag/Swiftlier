@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SwiftPlusPlus
 
 class MultiCallbackTests: XCTestCase {
     var callback = MultiCallback<String>()

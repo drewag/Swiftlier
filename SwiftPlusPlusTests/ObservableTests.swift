@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import SwiftPlusPlus
 
 class ObservableTests: XCTestCase {
     func testSubscribing() {

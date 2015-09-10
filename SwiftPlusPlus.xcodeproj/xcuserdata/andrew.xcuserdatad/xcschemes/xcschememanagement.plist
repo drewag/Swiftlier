@@ -7,7 +7,7 @@
 		<key>SwiftPlusPlus.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>SwiftPlusPlusOSX.xcscheme</key>
 		<dict>
@@ -23,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>496668351A7F53D6002FC394</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>498AE60B1BA10BD3008E8E33</key>
 		<dict>
 			<key>primary</key>
 			<true/>

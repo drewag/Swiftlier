@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import SwiftPlusPlus
 
 class TestStringEvent: EventType {
     typealias CallbackParam = String
