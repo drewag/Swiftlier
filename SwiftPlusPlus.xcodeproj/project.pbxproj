@@ -21,6 +21,8 @@
 		49A0CD901BA1DD9600E28B66 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0CD8F1BA1DD9600E28B66 /* Alert.swift */; settings = {ASSET_TAGS = (); }; };
 		49A2BBD11BA2597600E472D7 /* UIView+ImageCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2BBD01BA2597600E472D7 /* UIView+ImageCapture.swift */; settings = {ASSET_TAGS = (); }; };
 		49A2BC091BA36E5D00E472D7 /* UIView+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */; settings = {ASSET_TAGS = (); }; };
+		49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */; settings = {ASSET_TAGS = (); }; };
+		49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */; settings = {ASSET_TAGS = (); }; };
 		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
 		49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD31A59D8DB0031845A /* WeakWrapper.swift */; };
 		49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD81A5B468B0031845A /* EventCenterTests.swift */; };
@@ -65,6 +67,8 @@
 		49A0CD8F1BA1DD9600E28B66 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		49A2BBD01BA2597600E472D7 /* UIView+ImageCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ImageCapture.swift"; sourceTree = "<group>"; };
 		49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Video.swift"; sourceTree = "<group>"; };
+		49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutContraint+Factory.swift"; sourceTree = "<group>"; };
+		49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		49D06DD31A59D8DB0031845A /* WeakWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 		49D06DD81A5B468B0031845A /* EventCenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenterTests.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				49A0CD8D1BA1DD8E00E28B66 /* UIColor+Factory.swift */,
 				49A2BBD01BA2597600E472D7 /* UIView+ImageCapture.swift */,
 				49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */,
+				49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */,
+				49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */,
 				4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */,
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
@@ -401,6 +408,7 @@
 				49A0CD901BA1DD9600E28B66 /* Alert.swift in Sources */,
 				49A0CD8E1BA1DD8E00E28B66 /* UIColor+Factory.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
+				49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
