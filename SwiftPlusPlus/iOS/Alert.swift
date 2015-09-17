@@ -32,7 +32,7 @@ extension Alert: UIAlertViewDelegate {
 }
 
 extension UIViewController {
-    func showAlertWithTitle(
+    public func showAlertWithTitle(
         title: String,
         message: String,
         cancelButtonTitle: String? = nil,

@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIView {
-    func addFillingSubview(view: UIView) {
+    public func addFillingSubview(view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = self.bounds
         self.addSubview(view)

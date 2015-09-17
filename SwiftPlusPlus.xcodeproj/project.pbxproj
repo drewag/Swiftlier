@@ -12,6 +12,7 @@
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
 		49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FFB1B9F577E00C3D127 /* ColorTests.swift */; settings = {ASSET_TAGS = (); }; };
 		4947901A1B9FE96700C3D127 /* DataSourceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */; settings = {ASSET_TAGS = (); }; };
+		49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */; settings = {ASSET_TAGS = (); }; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
@@ -58,6 +59,7 @@
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
 		49478FFB1B9F577E00C3D127 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceTypeTests.swift; sourceTree = "<group>"; };
+		49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */,
 				49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */,
 				49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */,
+				49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
+				49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
 				49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
 				49A2BC091BA36E5D00E472D7 /* UIView+Video.swift in Sources */,
@@ -541,7 +545,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftPlusPlus/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drewagllc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,7 +562,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftPlusPlus/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drewagllc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
