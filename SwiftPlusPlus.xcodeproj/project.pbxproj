@@ -28,9 +28,9 @@
 		49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD81A5B468B0031845A /* EventCenterTests.swift */; };
 		49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DEE1A5B7AA00031845A /* MultiCallback.swift */; };
 		49D06DF21A5B7E7E0031845A /* MultiCallbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */; };
-		49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
+		49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */; };
 		49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */; };
-		49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */; };
+		49DC5760198C54F90051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */; };
 		49F969AA19859F31006BF515 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F969A919859F31006BF515 /* ObservableTests.swift */; };
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
@@ -74,7 +74,7 @@
 		49D06DD81A5B468B0031845A /* EventCenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenterTests.swift; sourceTree = "<group>"; };
 		49D06DEE1A5B7AA00031845A /* MultiCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiCallback.swift; path = ../SwiftPlusPlus/MultiCallback.swift; sourceTree = "<group>"; };
 		49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiCallbackTests.swift; sourceTree = "<group>"; };
-		49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
+		49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		49F969A919859F31006BF515 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,7 +277,7 @@
 			children = (
 				49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */,
 				49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */,
-				49DC575B198C53AC0051F266 /* Array+SwiftPlusPlus.swift */,
+				49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */,
 				4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */,
 			);
 			name = Extensions;
@@ -401,7 +401,7 @@
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
-				49DC575C198C53AC0051F266 /* Array+SwiftPlusPlus.swift in Sources */,
+				49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
 				49A2BC091BA36E5D00E472D7 /* UIView+Video.swift in Sources */,
 				49A2BBD11BA2597600E472D7 /* UIView+ImageCapture.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
@@ -423,7 +423,7 @@
 				49D06DF21A5B7E7E0031845A /* MultiCallbackTests.swift in Sources */,
 				49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */,
 				498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */,
-				49DC5760198C54F90051F266 /* Array+SwiftPlusPlus.swift in Sources */,
+				49DC5760198C54F90051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
 				49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */,
 				498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */,
 				491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */,

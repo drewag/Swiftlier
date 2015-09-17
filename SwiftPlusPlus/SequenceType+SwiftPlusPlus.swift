@@ -25,13 +25,13 @@
 
 import Foundation
 
-extension Array {
+extension SequenceType {
     /**
         - parameter test: function to test if an elemnt passes
         
         - returns: true if any element passes the given test
     */
-    func containsObjectPassingTest(test: (object: Element) -> Bool) -> Bool {
+    func containsObjectPassingTest(test: (object: Self.Generator.Element) -> Bool) -> Bool {
         for object in self {
             if test(object: object) {
                 return true
@@ -45,7 +45,7 @@ extension Array {
 
         - returns: the index of a passing element or nil if none match
     */
-    func indexOfObjectPassingTest(test: (object: Element) -> Bool) -> Int? {
+    func indexOfObjectPassingTest(test: (object: Self.Generator.Element) -> Bool) -> Int? {
         var index : Int = 0
         for object in self {
             if test(object: object) {
@@ -54,5 +54,13 @@ extension Array {
             index++
         }
         return nil
+    }
+
+
+    /**
+        - returns: an array of only elements that can be cast to the resulting type
+    */
+    func extractElements<C: SequenceType>() -> [C.Generator.Element] {
+        return self.map({$0 as? C.Generator.Element}).flatMap({$0})
     }
 }
