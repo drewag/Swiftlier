@@ -26,19 +26,6 @@ import Foundation
 
 extension Dictionary {
     /**
-        - parameter f: a function to map the key and value into a new value
-        
-        - returns: a new dictionary with a new value for each key
-    */
-    func map(f: (Key, Value) -> Value) -> Dictionary<Key, Value> {
-        var ret = Dictionary<Key, Value>()
-        for (key, value) in self {
-            ret[key] = f(key, value)
-        }
-        return ret
-    }
-
-    /**
         Merge two dictionaries together of the same type
 
         - parameter other: a dictionary to merge with
@@ -57,39 +44,32 @@ extension Dictionary {
     }
 }
 
-public func URLEncodedDictionary(dict: [String:String]) -> [String:String]? {
-    var returnDict = [String:String]()
-    for (key, value) in dict {
-        if let encodedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet()),
-            let encodedValue = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
-        {
-            returnDict[encodedKey] = encodedValue
-        }
-        else {
-            return nil
-        }
-    }
-    return returnDict
+public protocol EncodableType {
+    func stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters: NSCharacterSet) -> String?
 }
+extension String: EncodableType {}
 
-public func URLEncodedString(dict: [String:String]) -> String? {
-    if let encodedDict = URLEncodedDictionary(dict) {
-        var parts = [String]()
-        for (key, value) in encodedDict {
-            parts.append("\(key)=\(value)")
+extension Dictionary where Key: EncodableType, Value: EncodableType {
+    public var URLEncodedDictionary: [String:String]? {
+        var returnDict = [String:String]()
+        for (key, value) in self {
+            if let encodedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet()),
+                let encodedValue = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
+            {
+                returnDict[encodedKey] = encodedValue
+            }
+            else {
+                return nil
+            }
         }
-        return (parts as NSArray).componentsJoinedByString("&")
+        return returnDict
     }
-    else {
-        return nil
-    }
-}
 
-public func URLEncodedData(dict: [String:String]) -> NSData? {
-    if let encodedString = URLEncodedString(dict) {
-        return encodedString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+    public var URLEncodedString: String? {
+        return self.URLEncodedDictionary?.map({"\($0)=\($1)"}).joinWithSeparator("&")
     }
-    else {
-        return nil
+
+    public var URLEncodedData: NSData? {
+        return self.URLEncodedString?.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
     }
 }
