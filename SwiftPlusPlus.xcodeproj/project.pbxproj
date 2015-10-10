@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49000F041BC8B438002EF454 /* NSDate+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F031BC8B438002EF454 /* NSDate+Formatting.swift */; settings = {ASSET_TAGS = (); }; };
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49000F031BC8B438002EF454 /* NSDate+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Formatting.swift"; sourceTree = "<group>"; };
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
 		49478FFB1B9F577E00C3D127 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceTypeTests.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */,
 				49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */,
 				4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */,
+				49000F031BC8B438002EF454 /* NSDate+Formatting.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */,
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
+				49000F041BC8B438002EF454 /* NSDate+Formatting.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
