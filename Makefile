@@ -1,6 +1,6 @@
 all: src/SwiftPlusPlusiOSLib.swift src/SwiftPlusPlusOSXLib.swift
 
-src/SwiftPlusPlusiOSLib.swift: SwiftPlusPlus/*.swift
+src/SwiftPlusPlusiOSLib.swift: SwiftPlusPlus/*.swift SwiftPlusPlus/iOS/*.swift
 	@mkdir -p src
 	@find SwiftPlusPlus -path SwiftPlusPlus/OSX -prune -o -name '*.swift' -exec cat {} \; -exec echo \; -exec echo \; > src/SwiftPlusPlusiOSLib.swift
 
