@@ -19,6 +19,7 @@
 		49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FFB1B9F577E00C3D127 /* ColorTests.swift */; };
 		4947901A1B9FE96700C3D127 /* DataSourceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */; };
 		49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */; };
+		4954007D1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
@@ -72,6 +73,7 @@
 		49478FFB1B9F577E00C3D127 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceTypeTests.swift; sourceTree = "<group>"; };
 		49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
+		4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				4908FFCE1BEA8E10003EE9F3 /* UIViewController+Transitions.swift */,
 				4908FFCF1BEA8E10003EE9F3 /* ZoomThroughTransition.swift */,
+				4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */,
 			);
 			name = Transitions;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */,
+				4954007D1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift in Sources */,
 				4908FFE51BEAB085003EE9F3 /* WebViewController.swift in Sources */,
 				49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */,
 				4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */,
