@@ -32,3 +32,10 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         return self.valueStore.flatMap({$0})
     }
 }
+
+extension OrderedDictionary where Value: Equatable {
+    public func indexOfValueWithKey(key: Key) -> Int? {
+        let object = self[key]
+        return self.values.indexOfObjectPassingTest {$0 == object}
+    }
+}
