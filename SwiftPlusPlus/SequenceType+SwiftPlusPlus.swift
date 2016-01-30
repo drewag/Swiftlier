@@ -28,7 +28,7 @@ import Foundation
 extension SequenceType {
     /**
         - parameter test: function to test if an elemnt passes
-        
+
         - returns: true if any element passes the given test
     */
     func containsObjectPassingTest(test: (object: Self.Generator.Element) -> Bool) -> Bool {

@@ -65,6 +65,18 @@ extension NSLayoutConstraint {
         )
     }
 
+    convenience init(rightOfView view1: UIView, toLeftOfView view2: UIView, distance: CGFloat = 0) {
+        self.init(
+            item: view1,
+            attribute: .Right,
+            relatedBy: .Equal,
+            toItem: view2,
+            attribute: .Left,
+            multiplier: 1,
+            constant: distance
+        )
+    }
+
     convenience init(leftOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view1,
@@ -89,6 +101,18 @@ extension NSLayoutConstraint {
         )
     }
 
+    convenience init(leftOfView view1: UIView, toRightOfView view2: UIView, distance: CGFloat = 0) {
+        self.init(
+            item: view1,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: view2,
+            attribute: .Right,
+            multiplier: 1,
+            constant: distance
+        )
+    }
+
     convenience init(bottomOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view1,
@@ -96,6 +120,18 @@ extension NSLayoutConstraint {
             relatedBy: .Equal,
             toItem: view2,
             attribute: .Bottom,
+            multiplier: 1,
+            constant: distance
+        )
+    }
+
+    convenience init(topOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
+        self.init(
+            item: view1,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: view2,
+            attribute: .Top,
             multiplier: 1,
             constant: distance
         )
