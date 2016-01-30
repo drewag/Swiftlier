@@ -23,7 +23,7 @@ class ViewControllerTransition: NSObject {
     }
 }
 
-class PushTransition: ViewControllerTransition, UINavigationControllerDelegate {
+class NavigationPushTransition: ViewControllerTransition, UINavigationControllerDelegate {
     var performOnComplete: (() -> Void)?
     var reverseOnComplete: (() -> Void)?
     var manuallyTriggeredReverse = false

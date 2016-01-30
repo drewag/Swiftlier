@@ -86,7 +86,7 @@ class MenuViewController: UITableViewController {
             self.transitionToViewController(
                 viewController,
                 animated: true,
-                transition: PushTransition()
+                transition: NavigationPushTransition()
             )
             break
         }

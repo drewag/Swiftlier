@@ -12,6 +12,10 @@ class KeyboardConstraintAdjuster: NSObject {
     @IBOutlet var constraint: NSLayoutConstraint!
     @IBOutlet var view: UIView!
 
+    @IBInspectable var offset: CGFloat = 0
+
+    var onKeyboardIsBeingShown: (() -> ())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -31,12 +35,13 @@ class KeyboardConstraintAdjuster: NSObject {
         let options = UIViewAnimationOptions(rawValue: UInt((notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue << 16))
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
         if frame != nil && duration != nil {
+            self.onKeyboardIsBeingShown?()
             UIView.animateWithDuration(
                 duration!,
                 delay: 0,
                 options: options,
                 animations: { () -> Void in
-                    self.constraint.constant = frame!.size.height
+                    self.constraint.constant = frame!.size.height + self.offset
                     self.view.layoutIfNeeded()
                 },
                 completion: nil
@@ -50,7 +55,7 @@ class KeyboardConstraintAdjuster: NSObject {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
         if frame != nil && duration != nil {
             UIView.animateWithDuration(duration!, delay: 0, options: options, animations: { () -> Void in
-                self.constraint.constant = 0
+                self.constraint.constant = self.offset
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }

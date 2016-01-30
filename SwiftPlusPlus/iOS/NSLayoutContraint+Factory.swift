@@ -124,16 +124,4 @@ extension NSLayoutConstraint {
             constant: distance
         )
     }
-
-    convenience init(topOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
-        self.init(
-            item: view1,
-            attribute: .Top,
-            relatedBy: .Equal,
-            toItem: view2,
-            attribute: .Top,
-            multiplier: 1,
-            constant: distance
-        )
-    }
 }
