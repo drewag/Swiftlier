@@ -12,6 +12,8 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     private var valueStore = [Value?]()
     private var lookup = [Key:Int]()
 
+    var count: Int = 0
+
     public subscript(key: Key) -> Value? {
         get {
             if let index = lookup[key] {
@@ -22,14 +24,23 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         set {
             if let existingIndex = lookup[key] {
                 valueStore[existingIndex] = nil
+                count--
             }
-            valueStore.append(newValue)
-            lookup[key] = valueStore.count - 1
+            if let index = newValue {
+                valueStore.append(index)
+                lookup[key] = valueStore.count - 1
+                count++
+            }
         }
     }
 
     public var values: [Value] {
         return self.valueStore.flatMap({$0})
+    }
+
+    public mutating func removeAll() {
+        self.valueStore.removeAll()
+        self.lookup.removeAll()
     }
 }
 
