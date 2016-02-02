@@ -41,6 +41,7 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     public mutating func removeAll() {
         self.valueStore.removeAll()
         self.lookup.removeAll()
+        self.count = 0
     }
 }
 
