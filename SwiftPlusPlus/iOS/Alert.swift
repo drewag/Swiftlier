@@ -38,6 +38,7 @@ extension UIViewController {
         cancelButtonTitle: String? = nil,
         otherButtonTitles: [String]? = nil,
         textFieldPlaceholder: String? = nil,
+        textFieldDefault: String? = nil,
         onButtonClicked: ((buttonTitle: String?, textFieldText: String?) -> ())? = nil
         )
     {
@@ -48,6 +49,7 @@ extension UIViewController {
                 cancelButtonTitle: cancelButtonTitle,
                 otherButtonTitles: otherButtonTitles,
                 textFieldPlaceholder: textFieldPlaceholder,
+                textFieldDefault: textFieldDefault,
                 onButtonClicked: onButtonClicked,
                 fromViewController: self
             )
@@ -59,6 +61,7 @@ extension UIViewController {
                 cancelButtonTitle: cancelButtonTitle,
                 otherButtonTitles: otherButtonTitles,
                 textFieldPlaceholder: textFieldPlaceholder,
+                textFieldDefault: textFieldDefault,
                 onButtonClicked: onButtonClicked
             )
         }
@@ -77,6 +80,7 @@ private extension Alert {
         cancelButtonTitle: String?,
         otherButtonTitles: [String]?,
         textFieldPlaceholder: String? = nil,
+        textFieldDefault: String? = nil,
         onButtonClicked: ((buttonTitle: String?, textFieldText: String?) -> ())?
         )
     {
@@ -114,6 +118,7 @@ private extension Alert {
         cancelButtonTitle: String?,
         otherButtonTitles: [String]?,
         textFieldPlaceholder: String?,
+        textFieldDefault: String? = nil,
         onButtonClicked: ((buttonTitle: String?, textFieldText: String?) -> ())?,
         fromViewController: UIViewController
         )
@@ -124,6 +129,7 @@ private extension Alert {
         if let placeholder = textFieldPlaceholder {
             alert.addTextFieldWithConfigurationHandler { textField in
                 textField.placeholder = placeholder
+                textField.text = textFieldDefault
                 promptTextField = textField
             }
         }
