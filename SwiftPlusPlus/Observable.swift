@@ -93,6 +93,8 @@ public final class Observable<T> {
     */
     public var value : T {
         didSet {
+            var handlersToCall = [DidChangeHandler]()
+
             for observerIndex in Array((0..<self._observers.count).reverse()) {
                 let observer = self._observers[observerIndex].observer
                 var handlers = self._observers[observerIndex].handlers
@@ -100,7 +102,7 @@ public final class Observable<T> {
                 if observer.value != nil {
                     for handlerIndex in Array((0..<handlers.count).reverse()) {
                         let handlerSpec = handlers[handlerIndex]
-                        handlerSpec.handler(change: UpdateValue(oldValue: oldValue, newValue: value))
+                        handlersToCall.append(handlerSpec.handler)
                         if handlerSpec.options & ObservationOptions.OnlyOnce {
                             handlers.removeAtIndex(handlerIndex)
                         }
@@ -118,6 +120,11 @@ public final class Observable<T> {
                         self._observers.removeAtIndex(index)
                     }
                 }
+            }
+
+            let change = UpdateValue(oldValue: oldValue, newValue: value)
+            for handler in handlersToCall {
+                handler(change: change)
             }
         }
     }
