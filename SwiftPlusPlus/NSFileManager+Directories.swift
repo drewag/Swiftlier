@@ -9,21 +9,29 @@
 import Foundation
 
 extension NSFileManager {
-    public var documentsDirectoryPath: String {
+    public var documentsDirectoryURL: NSURL {
         let URL = try? self.URLForDirectory(
             .DocumentDirectory,
             inDomain: .UserDomainMask,
             appropriateForURL: nil,
             create: true)
-        return URL!.relativePath!
+        return URL!
     }
 
-    public var cachesDirectoryPath: String {
+    public var cachesDirectoryURL: NSURL {
         let URL = try? self.URLForDirectory(
             .CachesDirectory,
             inDomain: .UserDomainMask,
             appropriateForURL: nil,
             create: true)
-        return URL!.relativePath!
+        return URL!
+    }
+
+    public var documentsDirectoryPath: String {
+        return self.documentsDirectoryURL.relativePath!
+    }
+
+    public var cachesDirectoryPath: String {
+        return self.cachesDirectoryURL.relativePath!
     }
 }
