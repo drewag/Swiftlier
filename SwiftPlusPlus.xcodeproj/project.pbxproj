@@ -21,6 +21,7 @@
 		49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */; };
 		4954007D1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */; };
 		495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */; };
+		495CCCDB1C6307790075E49E /* Float+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495CCCDA1C6307790075E49E /* Float+Angle.swift */; };
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
@@ -78,6 +79,7 @@
 		49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
 		495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardConstraintAdjuster.swift; sourceTree = "<group>"; };
+		495CCCDA1C6307790075E49E /* Float+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Angle.swift"; sourceTree = "<group>"; };
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */,
 				49000F031BC8B438002EF454 /* NSDate+Formatting.swift */,
 				499178491BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift */,
+				495CCCDA1C6307790075E49E /* Float+Angle.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */,
 				49A2BBD11BA2597600E472D7 /* UIView+ImageCapture.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
+				495CCCDB1C6307790075E49E /* Float+Angle.swift in Sources */,
 				49A0CD901BA1DD9600E28B66 /* Alert.swift in Sources */,
 				4908FFBE1BEA8A3D003EE9F3 /* MenuViewController.swift in Sources */,
 				49A0CD8E1BA1DD8E00E28B66 /* UIColor+Factory.swift in Sources */,
