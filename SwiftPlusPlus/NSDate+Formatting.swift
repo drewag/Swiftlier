@@ -22,6 +22,13 @@ private let dateFormatter: NSDateFormatter = {
     return dateFormatter
 }()
 
+private let shortDateFormatter: NSDateFormatter = {
+    var dateFormatter = NSDateFormatter()
+    dateFormatter.locale = NSLocale(localeIdentifier:"en_US_POSIX")
+    dateFormatter.dateFormat = "MM'/'dd'/'yyyy"
+    return dateFormatter
+}()
+
 private let railsDateTimeFormatter: NSDateFormatter = {
     var dateFormatter = NSDateFormatter()
     let timeZone = NSTimeZone(name: "UTC")
@@ -49,6 +56,10 @@ extension NSDate {
 
     var asDate: String {
         return dateFormatter.stringFromDate(self)
+    }
+
+    var asShortDate: String {
+        return shortDateFormatter.stringFromDate(self)
     }
 
     var asRailsDateTimeString: String {

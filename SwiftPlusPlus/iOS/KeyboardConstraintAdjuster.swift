@@ -15,6 +15,7 @@ class KeyboardConstraintAdjuster: NSObject {
     @IBInspectable var offset: CGFloat = 0
 
     var onKeyboardIsBeingShown: (() -> ())?
+    var onKeyboardWasShown: (() -> ())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,7 +45,9 @@ class KeyboardConstraintAdjuster: NSObject {
                     self.constraint.constant = frame!.size.height + self.offset
                     self.view.layoutIfNeeded()
                 },
-                completion: nil
+                completion: { _ in
+                    self.onKeyboardWasShown?()
+                }
             )
         }
     }
