@@ -24,6 +24,16 @@ struct FileArchive {
         return NSKeyedArchiver.archiveRootObject(finalDict, toFile: file)
     }
 
+    static func archiveArrayOfEncodable<E: EncodableType>(array: [E], toFile file: String) -> Bool {
+        var finalArray = [[String:AnyObject]]()
+
+        for value in array {
+            finalArray.append(DictionaryEncoder.dictionaryFromEncodable(value))
+        }
+
+        return NSKeyedArchiver.archiveRootObject(finalArray, toFile: file)
+    }
+
     static func unarchiveEncodableFromFile<E: EncodableType>(file: String) -> E? {
         guard let dict = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [String:AnyObject] else {
             return nil
@@ -44,5 +54,21 @@ struct FileArchive {
         }
 
         return finalDict
+    }
+
+    static func unarchiveArrayOfEncodableFromFile<E: EncodableType>(file: String) -> [E]? {
+        guard let rawArray = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [[String:AnyObject]] else {
+            return nil
+        }
+
+        var finalArray = [E]()
+
+        for dict in rawArray {
+            if let object: E = DictionaryDecoder.decodableObjectFromDictionary(dict) {
+                finalArray.append(object)
+            }
+        }
+
+        return finalArray
     }
 }

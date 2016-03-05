@@ -12,4 +12,5 @@ public protocol DecoderType {
     func decode<K: CoderKeyType>(key: K.Type) -> K.ValueType
     func decode<K: OptionalCoderKeyType>(key: K.Type) -> K.ValueType?
     func decode<K: NestedCoderKeyType>(key: K.Type) -> K.ValueType?
+    func decode<K: OptionalNestedCoderKeyType>(key: K.Type) -> K.ValueType?
 }

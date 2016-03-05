@@ -35,4 +35,11 @@ public final class DictionaryDecoder: DecoderType {
         }
         return DictionaryDecoder.decodableObjectFromDictionary(dict)
     }
+
+    public func decode<K: OptionalNestedCoderKeyType>(key: K.Type) -> K.ValueType? {
+        guard let dict = self.dictionary[key.toString()] as? [String: AnyObject] else {
+            return nil
+        }
+        return DictionaryDecoder.decodableObjectFromDictionary(dict)
+    }
 }

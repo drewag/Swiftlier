@@ -32,6 +32,10 @@ public protocol NestedCoderKeyType {
     typealias ValueType: EncodableType
 }
 
+public protocol OptionalNestedCoderKeyType {
+    typealias ValueType: EncodableType
+}
+
 extension CoderKeyType {
     static func toString() -> String {
         return String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!
@@ -45,6 +49,12 @@ extension OptionalCoderKeyType {
 }
 
 extension NestedCoderKeyType {
+    static func toString() -> String {
+        return String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!
+    }
+}
+
+extension OptionalNestedCoderKeyType {
     static func toString() -> String {
         return String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!
     }

@@ -28,4 +28,13 @@ public final class DictionaryEncoder: EncoderType {
     public func encode<K: NestedCoderKeyType>(data: K.ValueType, forKey key: K.Type) {
         dict[key.toString()] = DictionaryEncoder.dictionaryFromEncodable(data)
     }
+
+    public func encode<K: OptionalNestedCoderKeyType>(data: K.ValueType?, forKey key: K.Type) {
+        if let data = data {
+            dict[key.toString()] = DictionaryEncoder.dictionaryFromEncodable(data)
+        }
+        else {
+            dict[key.toString()] = nil
+        }
+    }
 }
