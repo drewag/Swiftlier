@@ -15,6 +15,13 @@ private let dateAndTimeFormatter: NSDateFormatter = {
     return dateFormatter
 }()
 
+private let timeFormatter: NSDateFormatter = {
+    var dateFormatter = NSDateFormatter()
+    dateFormatter.locale = NSLocale(localeIdentifier:"en_US_POSIX")
+    dateFormatter.dateFormat = "h':'mm a"
+    return dateFormatter
+}()
+
 private let dateFormatter: NSDateFormatter = {
     var dateFormatter = NSDateFormatter()
     dateFormatter.locale = NSLocale(localeIdentifier:"en_US_POSIX")
@@ -56,6 +63,10 @@ extension NSDate {
 
     var asDate: String {
         return dateFormatter.stringFromDate(self)
+    }
+
+    var asTime: String {
+        return timeFormatter.stringFromDate(self)
     }
 
     var asShortDate: String {

@@ -10,36 +10,36 @@ import Foundation
 
 struct FileArchive {
     static func archiveEncodable(encodable: EncodableType, toFile file: String) -> Bool {
-        let dictionary = DictionaryEncoder.dictionaryFromEncodable(encodable)
-        return NSKeyedArchiver.archiveRootObject(dictionary, toFile: file)
+        let object = NativeTypesEncoder.objectFromEncodable(encodable)
+        return NSKeyedArchiver.archiveRootObject(object, toFile: file)
     }
 
     static func archiveDictionaryOfEncodable<E: EncodableType>(dictionary: [String:E], toFile file: String) -> Bool {
         var finalDict = [String:AnyObject]()
 
         for (key, value) in dictionary {
-            finalDict[key] = DictionaryEncoder.dictionaryFromEncodable(value)
+            finalDict[key] = NativeTypesEncoder.objectFromEncodable(value)
         }
 
         return NSKeyedArchiver.archiveRootObject(finalDict, toFile: file)
     }
 
     static func archiveArrayOfEncodable<E: EncodableType>(array: [E], toFile file: String) -> Bool {
-        var finalArray = [[String:AnyObject]]()
+        var finalArray = [AnyObject]()
 
         for value in array {
-            finalArray.append(DictionaryEncoder.dictionaryFromEncodable(value))
+            finalArray.append(NativeTypesEncoder.objectFromEncodable(value))
         }
 
         return NSKeyedArchiver.archiveRootObject(finalArray, toFile: file)
     }
 
     static func unarchiveEncodableFromFile<E: EncodableType>(file: String) -> E? {
-        guard let dict = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [String:AnyObject] else {
+        guard let object = NSKeyedUnarchiver.unarchiveObjectWithFile(file) else {
             return nil
         }
 
-        return DictionaryDecoder.decodableObjectFromDictionary(dict)
+        return NativeTypesDecoder.decodableTypeFromObject(object)
     }
 
     static func unarchiveDictionaryOfEncodableFromFile<E: EncodableType>(file: String) -> [String:E]? {
@@ -50,21 +50,21 @@ struct FileArchive {
         var finalDict = [String:E]()
 
         for (key, subDict) in rawDict {
-            finalDict[key] = DictionaryDecoder.decodableObjectFromDictionary(subDict)
+            finalDict[key] = NativeTypesDecoder.decodableTypeFromObject(subDict)
         }
 
         return finalDict
     }
 
     static func unarchiveArrayOfEncodableFromFile<E: EncodableType>(file: String) -> [E]? {
-        guard let rawArray = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [[String:AnyObject]] else {
+        guard let rawArray = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [AnyObject] else {
             return nil
         }
 
         var finalArray = [E]()
 
-        for dict in rawArray {
-            if let object: E = DictionaryDecoder.decodableObjectFromDictionary(dict) {
+        for rawObject in rawArray {
+            if let object: E = NativeTypesDecoder.decodableTypeFromObject(rawObject) {
                 finalArray.append(object)
             }
         }

@@ -13,4 +13,7 @@ public protocol EncoderType {
     func encode<K: OptionalCoderKeyType>(data: K.ValueType?, forKey key: K.Type)
     func encode<K: NestedCoderKeyType>(data: K.ValueType, forKey key: K.Type)
     func encode<K: OptionalNestedCoderKeyType>(data: K.ValueType?, forKey key: K.Type)
+
+    func encode<K: CoderKeyType>(data: [K.ValueType], forKey key: K.Type)
+    func encode<K: NestedCoderKeyType>(data: [K.ValueType], forKey key: K.Type)
 }

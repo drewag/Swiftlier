@@ -47,8 +47,8 @@
 		49E72FFA1C822AA900C9F4BF /* EncoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72FF91C822AA900C9F4BF /* EncoderType.swift */; };
 		49E72FFC1C822ADB00C9F4BF /* DecoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72FFB1C822ADB00C9F4BF /* DecoderType.swift */; };
 		49E72FFE1C822AE700C9F4BF /* CoderKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72FFD1C822AE700C9F4BF /* CoderKeyType.swift */; };
-		49E730091C82468900C9F4BF /* DictionaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E730081C82468900C9F4BF /* DictionaryEncoder.swift */; };
-		49E7300D1C82574800C9F4BF /* DictionaryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7300C1C82574800C9F4BF /* DictionaryDecoder.swift */; };
+		49E730091C82468900C9F4BF /* NativeTypesEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E730081C82468900C9F4BF /* NativeTypesEncoder.swift */; };
+		49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7300C1C82574800C9F4BF /* NativeTypesDecoder.swift */; };
 		49E7300F1C825A3200C9F4BF /* FileArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7300E1C825A3200C9F4BF /* FileArchiver.swift */; };
 		49F969AA19859F31006BF515 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F969A919859F31006BF515 /* ObservableTests.swift */; };
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -111,8 +111,8 @@
 		49E72FF91C822AA900C9F4BF /* EncoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderType.swift; sourceTree = "<group>"; };
 		49E72FFB1C822ADB00C9F4BF /* DecoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderType.swift; sourceTree = "<group>"; };
 		49E72FFD1C822AE700C9F4BF /* CoderKeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderKeyType.swift; sourceTree = "<group>"; };
-		49E730081C82468900C9F4BF /* DictionaryEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryEncoder.swift; sourceTree = "<group>"; };
-		49E7300C1C82574800C9F4BF /* DictionaryDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryDecoder.swift; sourceTree = "<group>"; };
+		49E730081C82468900C9F4BF /* NativeTypesEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeTypesEncoder.swift; sourceTree = "<group>"; };
+		49E7300C1C82574800C9F4BF /* NativeTypesDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeTypesDecoder.swift; sourceTree = "<group>"; };
 		49E7300E1C825A3200C9F4BF /* FileArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileArchiver.swift; sourceTree = "<group>"; };
 		49F969A919859F31006BF515 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,8 +284,8 @@
 				49E72FF71C822A9F00C9F4BF /* EncodableType.swift */,
 				49E72FF91C822AA900C9F4BF /* EncoderType.swift */,
 				49E72FFB1C822ADB00C9F4BF /* DecoderType.swift */,
-				49E730081C82468900C9F4BF /* DictionaryEncoder.swift */,
-				49E7300C1C82574800C9F4BF /* DictionaryDecoder.swift */,
+				49E730081C82468900C9F4BF /* NativeTypesEncoder.swift */,
+				49E7300C1C82574800C9F4BF /* NativeTypesDecoder.swift */,
 				49E7300E1C825A3200C9F4BF /* FileArchiver.swift */,
 			);
 			name = Encoding;
@@ -491,7 +491,7 @@
 				4908FFE51BEAB085003EE9F3 /* WebViewController.swift in Sources */,
 				49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */,
 				4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */,
-				49E730091C82468900C9F4BF /* DictionaryEncoder.swift in Sources */,
+				49E730091C82468900C9F4BF /* NativeTypesEncoder.swift in Sources */,
 				4908FFD11BEA8E10003EE9F3 /* ZoomThroughTransition.swift in Sources */,
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
@@ -499,7 +499,7 @@
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				4908FFD01BEA8E10003EE9F3 /* UIViewController+Transitions.swift in Sources */,
 				49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */,
-				49E7300D1C82574800C9F4BF /* DictionaryDecoder.swift in Sources */,
+				49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
 				49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
 				49A2BC091BA36E5D00E472D7 /* UIView+Video.swift in Sources */,
