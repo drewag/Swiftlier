@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct FileArchive {
-    static func archiveEncodable(encodable: EncodableType, toFile file: String) -> Bool {
+public struct FileArchive {
+    public static func archiveEncodable(encodable: EncodableType, toFile file: String) -> Bool {
         let object = NativeTypesEncoder.objectFromEncodable(encodable)
         return NSKeyedArchiver.archiveRootObject(object, toFile: file)
     }
 
-    static func archiveDictionaryOfEncodable<E: EncodableType>(dictionary: [String:E], toFile file: String) -> Bool {
+    public static func archiveDictionaryOfEncodable<E: EncodableType>(dictionary: [String:E], toFile file: String) -> Bool {
         var finalDict = [String:AnyObject]()
 
         for (key, value) in dictionary {
@@ -24,7 +24,7 @@ struct FileArchive {
         return NSKeyedArchiver.archiveRootObject(finalDict, toFile: file)
     }
 
-    static func archiveArrayOfEncodable<E: EncodableType>(array: [E], toFile file: String) -> Bool {
+    public static func archiveArrayOfEncodable<E: EncodableType>(array: [E], toFile file: String) -> Bool {
         var finalArray = [AnyObject]()
 
         for value in array {
@@ -34,7 +34,7 @@ struct FileArchive {
         return NSKeyedArchiver.archiveRootObject(finalArray, toFile: file)
     }
 
-    static func unarchiveEncodableFromFile<E: EncodableType>(file: String) -> E? {
+    public static func unarchiveEncodableFromFile<E: EncodableType>(file: String) -> E? {
         guard let object = NSKeyedUnarchiver.unarchiveObjectWithFile(file) else {
             return nil
         }
@@ -42,7 +42,7 @@ struct FileArchive {
         return NativeTypesDecoder.decodableTypeFromObject(object)
     }
 
-    static func unarchiveDictionaryOfEncodableFromFile<E: EncodableType>(file: String) -> [String:E]? {
+    public static func unarchiveDictionaryOfEncodableFromFile<E: EncodableType>(file: String) -> [String:E]? {
         guard let rawDict = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [String:[String: AnyObject]] else {
             return nil
         }
@@ -56,7 +56,7 @@ struct FileArchive {
         return finalDict
     }
 
-    static func unarchiveArrayOfEncodableFromFile<E: EncodableType>(file: String) -> [E]? {
+    public static func unarchiveArrayOfEncodableFromFile<E: EncodableType>(file: String) -> [E]? {
         guard let rawArray = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [AnyObject] else {
             return nil
         }
