@@ -29,7 +29,7 @@ extension NSLayoutConstraint {
         return self.fullWidthConstraintsWithView(view) + self.fullHeightConstraintsWithView(view)
     }
 
-    convenience init(sameWidthForView view1: UIView, andView view2: UIView) {
+    convenience init(sameWidthForView view1: UIView, andView view2: UIView, difference: CGFloat = 0) {
         self.init(
             item: view1,
             attribute: .Width,
@@ -37,7 +37,7 @@ extension NSLayoutConstraint {
             toItem: view2,
             attribute: .Width,
             multiplier: 1,
-            constant: 0
+            constant: difference
         )
     }
 
