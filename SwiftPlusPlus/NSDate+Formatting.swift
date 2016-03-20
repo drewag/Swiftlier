@@ -36,6 +36,20 @@ private let shortDateFormatter: NSDateFormatter = {
     return dateFormatter
 }()
 
+private let shortestDateFormatter: NSDateFormatter = {
+    var dateFormatter = NSDateFormatter()
+    dateFormatter.locale = NSLocale(localeIdentifier:"en_US_POSIX")
+    dateFormatter.dateFormat = "MM'/'dd'/'yy"
+    return dateFormatter
+}()
+
+private let dayAndMonthFormatter: NSDateFormatter = {
+    var dateFormatter = NSDateFormatter()
+    dateFormatter.locale = NSLocale(localeIdentifier:"en_US_POSIX")
+    dateFormatter.dateFormat = "MM'/'dd"
+    return dateFormatter
+}()
+
 private let railsDateTimeFormatter: NSDateFormatter = {
     var dateFormatter = NSDateFormatter()
     let timeZone = NSTimeZone(name: "UTC")
@@ -57,47 +71,55 @@ private let authTokenDate: NSDateFormatter = {
 }()
 
 extension NSDate {
-    var asDateAndTime: String {
+    public var asDateAndTime: String {
         return dateAndTimeFormatter.stringFromDate(self)
     }
 
-    var asDate: String {
+    public var asDate: String {
         return dateFormatter.stringFromDate(self)
     }
 
-    var asTime: String {
+    public var asTime: String {
         return timeFormatter.stringFromDate(self)
     }
 
-    var asShortDate: String {
+    public var asShortDate: String {
         return shortDateFormatter.stringFromDate(self)
     }
 
-    var asRailsDateTimeString: String {
+    public var asShortestDate: String {
+        return shortestDateFormatter.stringFromDate(self)
+    }
+
+    public var asDayAndMonth: String {
+        return dayAndMonthFormatter.stringFromDate(self)
+    }
+
+    public var asRailsDateTimeString: String {
         return railsDateTimeFormatter.stringFromDate(self)
     }
 
-    var asSQLiteDateTimeString: String {
+    public var asSQLiteDateTimeString: String {
         return railsDateTimeFormatter.stringFromDate(self)
     }
 
-    var asRailsDateString: String {
+    public var asRailsDateString: String {
         return railsDateFormatter.stringFromDate(self)
     }
 
-    var asSQLiteDateString: String {
+    public var asSQLiteDateString: String {
         return railsDateFormatter.stringFromDate(self)
     }
 
-    var asAuthToken: String {
+    public var asAuthToken: String {
         return authTokenDate.stringFromDate(self)
     }
 
-    class func fromRailsDateTimeString(railsString: String) -> NSDate? {
+    public class func fromRailsDateTimeString(railsString: String) -> NSDate? {
         return railsDateTimeFormatter.dateFromString(railsString)
     }
 
-    class func fromRailsDateString(railsString: String) -> NSDate? {
+    public class func fromRailsDateString(railsString: String) -> NSDate? {
         return railsDateFormatter.dateFromString(railsString)
     }
 }
