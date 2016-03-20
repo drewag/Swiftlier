@@ -8,16 +8,16 @@
 
 import Foundation
 
-class KeyboardConstraintAdjuster: NSObject {
-    @IBOutlet var constraint: NSLayoutConstraint!
-    @IBOutlet var view: UIView!
+public class KeyboardConstraintAdjuster: NSObject {
+    @IBOutlet public var constraint: NSLayoutConstraint!
+    @IBOutlet public var view: UIView!
 
-    @IBInspectable var offset: CGFloat = 0
+    @IBInspectable public var offset: CGFloat = 0
 
-    var onKeyboardIsBeingShown: (() -> ())?
-    var onKeyboardWasShown: (() -> ())?
+    public var onKeyboardIsBeingShown: (() -> ())?
+    public var onKeyboardWasShown: (() -> ())?
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
