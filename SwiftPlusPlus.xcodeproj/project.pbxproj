@@ -28,6 +28,8 @@
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
 		4991784A1BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499178491BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift */; };
+		499934E01C9F1D330050A86B /* NSDate+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499934DF1C9F1D330050A86B /* NSDate+Helpers.swift */; };
+		499934E21C9F1F440050A86B /* UITableView+EasyRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499934E11C9F1F440050A86B /* UITableView+EasyRegister.swift */; };
 		49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0CD8B1BA1DD8900E28B66 /* DataSourceType.swift */; };
 		49A0CD8E1BA1DD8E00E28B66 /* UIColor+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0CD8D1BA1DD8E00E28B66 /* UIColor+Factory.swift */; };
 		49A0CD901BA1DD9600E28B66 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A0CD8F1BA1DD9600E28B66 /* Alert.swift */; };
@@ -93,6 +95,8 @@
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		499178491BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+SwifPlusPlus.swift"; sourceTree = "<group>"; };
+		499934DF1C9F1D330050A86B /* NSDate+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Helpers.swift"; sourceTree = "<group>"; };
+		499934E11C9F1F440050A86B /* UITableView+EasyRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+EasyRegister.swift"; sourceTree = "<group>"; };
 		49A0CD8B1BA1DD8900E28B66 /* DataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceType.swift; sourceTree = "<group>"; };
 		49A0CD8D1BA1DD8E00E28B66 /* UIColor+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Factory.swift"; sourceTree = "<group>"; };
 		49A0CD8F1BA1DD9600E28B66 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 		498AE6321BA120AA008E8E33 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				499934E11C9F1F440050A86B /* UITableView+EasyRegister.swift */,
 				49A0CD8D1BA1DD8E00E28B66 /* UIColor+Factory.swift */,
 				49A2BBD01BA2597600E472D7 /* UIView+ImageCapture.swift */,
 				49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */,
@@ -264,6 +269,7 @@
 		49D06DD21A59D8CC0031845A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				499934DF1C9F1D330050A86B /* NSDate+Helpers.swift */,
 				49D06DD31A59D8DB0031845A /* WeakWrapper.swift */,
 			);
 			name = Helpers;
@@ -499,6 +505,7 @@
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				4908FFD01BEA8E10003EE9F3 /* UIViewController+Transitions.swift in Sources */,
 				49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */,
+				499934E01C9F1D330050A86B /* NSDate+Helpers.swift in Sources */,
 				49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
 				49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
@@ -506,6 +513,7 @@
 				4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */,
 				49A2BBD11BA2597600E472D7 /* UIView+ImageCapture.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
+				499934E21C9F1F440050A86B /* UITableView+EasyRegister.swift in Sources */,
 				49E7300F1C825A3200C9F4BF /* FileArchiver.swift in Sources */,
 				495CCCDB1C6307790075E49E /* Float+Angle.swift in Sources */,
 				49A0CD901BA1DD9600E28B66 /* Alert.swift in Sources */,
