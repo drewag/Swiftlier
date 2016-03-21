@@ -9,7 +9,7 @@
 import UIKit
 
 extension NSLayoutConstraint {
-    class func fullWidthConstraintsWithView(view: UIView) -> [NSLayoutConstraint] {
+    public class func fullWidthConstraintsWithView(view: UIView) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|",
             options: NSLayoutFormatOptions.DirectionLeftToRight,
             metrics: nil,
@@ -17,7 +17,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    class func fullHeightConstraintsWithView(view: UIView) -> [NSLayoutConstraint] {
+    public class func fullHeightConstraintsWithView(view: UIView) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|",
             options: NSLayoutFormatOptions.DirectionLeftToRight,
             metrics: nil,
@@ -25,11 +25,11 @@ extension NSLayoutConstraint {
         )
     }
 
-    class func fillConstraintsWithView(view: UIView) -> [NSLayoutConstraint] {
+    public class func fillConstraintsWithView(view: UIView) -> [NSLayoutConstraint] {
         return self.fullWidthConstraintsWithView(view) + self.fullHeightConstraintsWithView(view)
     }
 
-    convenience init(sameWidthForView view1: UIView, andView view2: UIView, difference: CGFloat = 0) {
+    public convenience init(sameWidthForView view1: UIView, andView view2: UIView, difference: CGFloat = 0) {
         self.init(
             item: view1,
             attribute: .Width,
@@ -41,7 +41,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    convenience init(sameHeightForView view1: UIView, andView view2: UIView, difference: CGFloat = 0) {
+    public convenience init(sameHeightForView view1: UIView, andView view2: UIView, difference: CGFloat = 0) {
         self.init(
             item: view1,
             attribute: .Height,
@@ -53,7 +53,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    convenience init(rightOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
+    public convenience init(rightOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view2,
             attribute: .Right,
@@ -65,7 +65,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    convenience init(rightOfView view1: UIView, toLeftOfView view2: UIView, distance: CGFloat = 0) {
+    public convenience init(rightOfView view1: UIView, toLeftOfView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view1,
             attribute: .Right,
@@ -77,7 +77,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    convenience init(leftOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
+    public convenience init(leftOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view1,
             attribute: .Left,
@@ -89,7 +89,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    convenience init(topOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
+    public convenience init(topOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view2,
             attribute: .Top,
@@ -101,7 +101,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    convenience init(leftOfView view1: UIView, toRightOfView view2: UIView, distance: CGFloat = 0) {
+    public convenience init(leftOfView view1: UIView, toRightOfView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view1,
             attribute: .Left,
@@ -113,7 +113,7 @@ extension NSLayoutConstraint {
         )
     }
 
-    convenience init(bottomOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
+    public convenience init(bottomOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
         self.init(
             item: view1,
             attribute: .Bottom,
