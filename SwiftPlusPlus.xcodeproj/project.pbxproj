@@ -45,6 +45,7 @@
 		49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */; };
 		49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */; };
 		49DC5760198C54F90051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */; };
+		49E26E0D1CA339D50026F15B /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E26E0C1CA339D50026F15B /* JSON.swift */; };
 		49E72FF81C822A9F00C9F4BF /* EncodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72FF71C822A9F00C9F4BF /* EncodableType.swift */; };
 		49E72FFA1C822AA900C9F4BF /* EncoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72FF91C822AA900C9F4BF /* EncoderType.swift */; };
 		49E72FFC1C822ADB00C9F4BF /* DecoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72FFB1C822ADB00C9F4BF /* DecoderType.swift */; };
@@ -111,6 +112,7 @@
 		49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiCallbackTests.swift; sourceTree = "<group>"; };
 		49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
+		49E26E0C1CA339D50026F15B /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		49E72FF71C822A9F00C9F4BF /* EncodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodableType.swift; sourceTree = "<group>"; };
 		49E72FF91C822AA900C9F4BF /* EncoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderType.swift; sourceTree = "<group>"; };
 		49E72FFB1C822ADB00C9F4BF /* DecoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderType.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */,
+				49E26E0C1CA339D50026F15B /* JSON.swift */,
 			);
 			name = Containers;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */,
 				49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */,
 				4991784A1BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */,
+				49E26E0D1CA339D50026F15B /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
