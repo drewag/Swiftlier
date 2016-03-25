@@ -12,7 +12,9 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     private var valueStore = [Value?]()
     private var lookup = [Key:Int]()
 
-    var count: Int = 0
+    public init() {}
+
+    public var count: Int = 0
 
     public subscript(key: Key) -> Value? {
         get {

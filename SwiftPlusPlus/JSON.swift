@@ -9,7 +9,7 @@
 import Foundation
 
 public struct JSON: CustomStringConvertible {
-    private let object: AnyObject
+    public let object: AnyObject
 
     public init(object: AnyObject) {
         self.object = object
