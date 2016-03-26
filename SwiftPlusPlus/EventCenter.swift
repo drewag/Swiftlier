@@ -12,7 +12,7 @@ import Foundation
     Protcol all events must implemenet to work with EventCenter
 */
 public protocol EventType: class {
-    typealias CallbackParam
+    associatedtype CallbackParam
 }
 
 /**
@@ -139,7 +139,7 @@ private func addHandler(handler: EventCenter.CallbackSpec, inout toHandlerCollec
             found = true
             break
         }
-        index++
+        index += 1
     }
     
     if !found {
@@ -153,6 +153,6 @@ private func removecallbacksForObserver(observer: AnyObject, inout fromHandlerCo
         if possibleObserver.value === observer {
             collection.removeAtIndex(index)
         }
-        index++
+        index += 1
     }
 }

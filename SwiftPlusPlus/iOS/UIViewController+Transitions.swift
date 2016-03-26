@@ -123,10 +123,10 @@ extension UIViewController {
     }
 
     func backBarButtonSystemItemWithType(type: UIBarButtonSystemItem) -> UIBarButtonItem {
-        return UIBarButtonItem(barButtonSystemItem: type, target: self, action: "didTapBackButton:")
+        return UIBarButtonItem(barButtonSystemItem: type, target: self, action: #selector(didTapBackButton(_:)))
     }
 
     func backBarButtonItemWithTitle(title: String, style: UIBarButtonItemStyle) -> UIBarButtonItem {
-        return UIBarButtonItem(title: title, style: style, target: self, action: "didTapBackButton:")
+        return UIBarButtonItem(title: title, style: style, target: self, action: #selector(didTapBackButton(_:)))
     }
 }

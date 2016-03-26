@@ -26,12 +26,12 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         set {
             if let existingIndex = lookup[key] {
                 valueStore[existingIndex] = nil
-                count--
+                count -= 1
             }
             if let index = newValue {
                 valueStore.append(index)
                 lookup[key] = valueStore.count - 1
-                count++
+                count += 1
             }
         }
     }

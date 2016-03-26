@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol DataSourceType {
-    typealias ValueType
+    associatedtype ValueType
     var count: Int {get}
     func itemAtIndex(index: Int) -> ValueType
 }

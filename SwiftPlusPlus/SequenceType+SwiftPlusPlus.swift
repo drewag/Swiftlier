@@ -51,7 +51,7 @@ extension SequenceType {
             if test(object: object) {
                 return index
             }
-            index++
+            index += 1
         }
         return nil
     }

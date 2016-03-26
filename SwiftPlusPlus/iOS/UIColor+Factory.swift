@@ -16,17 +16,18 @@ public extension UIColor {
         self.init(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1)
     }
 
-    convenience init?(var hexString: String) {
+    convenience init?(hexString: String) {
         if !hexString.hasPrefix("#") {
             return nil
         }
 
+        var finalHexString = hexString
         let length = hexString.characters.count
         switch length {
             case 3:
-                hexString = "#" + hexString.substringFromIndex(1).stringByRepeatingNTimes(3)
+                finalHexString = "#" + hexString.substringFromIndex(1).stringByRepeatingNTimes(3)
             case 4:
-                hexString = "#" + hexString.substringFromIndex(1).stringByRepeatingNTimes(2)
+                finalHexString = "#" + hexString.substringFromIndex(1).stringByRepeatingNTimes(2)
             case 7:
                 break
             default:
@@ -34,7 +35,7 @@ public extension UIColor {
         }
 
         var rgbValue: UInt32 = 0
-        let scanner = NSScanner(string: hexString)
+        let scanner = NSScanner(string: finalHexString)
         scanner.scanLocation = 1 // bypass '#' character
         scanner.scanHexInt(&rgbValue)
         let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0

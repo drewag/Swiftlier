@@ -85,7 +85,7 @@ private extension MultiCallback {
             if possibleObserver.value === observer {
                 return index
             }
-            index++
+            index += 1
         }
         return nil
     }

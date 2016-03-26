@@ -21,19 +21,19 @@ extension NSData: RawEncodableType { public var asObject: AnyObject { return sel
 extension NSDate: RawEncodableType { public var asObject: AnyObject { return self } }
 
 public protocol CoderKeyType {
-    typealias ValueType: RawEncodableType
+    associatedtype ValueType: RawEncodableType
 }
 
 public protocol OptionalCoderKeyType {
-    typealias ValueType: RawEncodableType
+    associatedtype ValueType: RawEncodableType
 }
 
 public protocol NestedCoderKeyType {
-    typealias ValueType: EncodableType
+    associatedtype ValueType: EncodableType
 }
 
 public protocol OptionalNestedCoderKeyType {
-    typealias ValueType: EncodableType
+    associatedtype ValueType: EncodableType
 }
 
 extension CoderKeyType {

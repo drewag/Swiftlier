@@ -194,7 +194,7 @@ public final class Observable<T> {
             if possibleObserver.value === observer {
                 return index
             }
-            index++
+            index += 1
         }
         return nil
     }

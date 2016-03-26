@@ -43,7 +43,7 @@ public class VideoController: NSObject {
     func resume() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "moviePlayerPreparedToPlayDidChange:",
+            selector: #selector(moviePlayerPreparedToPlayDidChange(_:)),
             name: MPMediaPlaybackIsPreparedToPlayDidChangeNotification,
             object: self.moviePlayer
         )
