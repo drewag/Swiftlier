@@ -10,7 +10,7 @@ import Foundation
 
 extension NSLayoutConstraint {
     @available(iOS 8.0, *)
-    func setMultiplier(multiplier:CGFloat) {
+    public func setMultiplier(multiplier:CGFloat) {
 
         let newConstraint = NSLayoutConstraint(
             item: firstItem,

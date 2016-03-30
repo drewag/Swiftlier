@@ -9,11 +9,11 @@
 import Foundation
 
 extension Float {
-    var toRadians: Float {
+    public var toRadians: Float {
         return self * Float(M_PI) / 180.0
     }
 
-    var toDegrees: Float {
+    public var toDegrees: Float {
         return self * 180.0 / Float(M_PI)
     }
 }
