@@ -16,6 +16,7 @@
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
+		493C48771CAF70E900D80A9B /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C48761CAF70E900D80A9B /* Array+SwiftPlusPlus.swift */; };
 		49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FFB1B9F577E00C3D127 /* ColorTests.swift */; };
 		4947901A1B9FE96700C3D127 /* DataSourceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */; };
 		49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */; };
@@ -84,6 +85,7 @@
 		4908FFCF1BEA8E10003EE9F3 /* ZoomThroughTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomThroughTransition.swift; sourceTree = "<group>"; };
 		4908FFE41BEAB085003EE9F3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
+		493C48761CAF70E900D80A9B /* Array+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49478FFB1B9F577E00C3D127 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceTypeTests.swift; sourceTree = "<group>"; };
 		49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				49000F031BC8B438002EF454 /* NSDate+Formatting.swift */,
 				499178491BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift */,
 				495CCCDA1C6307790075E49E /* Float+Angle.swift */,
+				493C48761CAF70E900D80A9B /* Array+SwiftPlusPlus.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				49E730091C82468900C9F4BF /* NativeTypesEncoder.swift in Sources */,
 				4908FFD11BEA8E10003EE9F3 /* ZoomThroughTransition.swift in Sources */,
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
+				493C48771CAF70E900D80A9B /* Array+SwiftPlusPlus.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
 				49000F041BC8B438002EF454 /* NSDate+Formatting.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
