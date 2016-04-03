@@ -38,6 +38,7 @@
 		49A2BC091BA36E5D00E472D7 /* UIView+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */; };
 		49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */; };
 		49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */; };
+		49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */; };
 		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
 		49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD31A59D8DB0031845A /* WeakWrapper.swift */; };
 		49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD81A5B468B0031845A /* EventCenterTests.swift */; };
@@ -107,6 +108,7 @@
 		49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Video.swift"; sourceTree = "<group>"; };
 		49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutContraint+Factory.swift"; sourceTree = "<group>"; };
 		49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		49D06DD31A59D8DB0031845A /* WeakWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 		49D06DD81A5B468B0031845A /* EventCenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenterTests.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				4908FFBD1BEA8A3D003EE9F3 /* MenuViewController.swift */,
 				4908FFE41BEAB085003EE9F3 /* WebViewController.swift */,
 				495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */,
+				49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */,
 				49A2BBD11BA2597600E472D7 /* UIView+ImageCapture.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
+				49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */,
 				499934E21C9F1F440050A86B /* UITableView+EasyRegister.swift in Sources */,
 				49E7300F1C825A3200C9F4BF /* FileArchiver.swift in Sources */,
 				495CCCDB1C6307790075E49E /* Float+Angle.swift in Sources */,
