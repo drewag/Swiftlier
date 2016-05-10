@@ -1,44 +1,58 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864+++9912AED",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : 0,
-    "5598409B1923A29764CEAFB8194114E2D165D76E" : 0,
-    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : 0,
-    "F38F6F9A954782DE47D982609A4F134D3E74A4E6" : 0
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++518C397" : 0,
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864+++9912AED" : 0,
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++A8B4800" : 0,
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864+++C85184D" : 0,
+    "5598409B1923A29764CEAFB8194114E2D165D76E+++8450D46" : 0,
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++62F3999" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7EAF8406-C1AF-4660-AF15-6A2333986374",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : "SwiftPlusPlus",
-    "5598409B1923A29764CEAFB8194114E2D165D76E" : "",
-    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03" : "",
-    "F38F6F9A954782DE47D982609A4F134D3E74A4E6" : ".."
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++518C397" : "",
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864+++9912AED" : "swift-plus-plus\/",
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++A8B4800" : "",
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864+++C85184D" : "SwiftPlusPlus",
+    "5598409B1923A29764CEAFB8194114E2D165D76E+++8450D46" : "",
+    "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++62F3999" : ".."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftPlusPlus",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftPlusPlus.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/drewag\/SwiftPlusPlus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864+++9912AED"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:drewag\/SwiftPlusPlus.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864+++C85184D"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "learnbrigade.com:~\/lists",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5598409B1923A29764CEAFB8194114E2D165D76E"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/empower-retirement.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5598409B1923A29764CEAFB8194114E2D165D76E+++8450D46"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/file-sync.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F38F6F9A954782DE47D982609A4F134D3E74A4E6"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++518C397"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/empower-retirement.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++62F3999"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/empower-retirement.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E01FA46556BFE2DFBFF18CDDE90475315AD6FC03+++A8B4800"
     }
   ]
 }

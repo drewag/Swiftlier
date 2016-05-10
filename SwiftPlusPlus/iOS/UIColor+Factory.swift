@@ -9,16 +9,16 @@
 import UIKit
 
 public extension UIColor {
-    convenience init(hex : Int) {
+    convenience public init(hex : Int) {
         let blue = CGFloat(hex & 0xFF)
         let green = CGFloat((hex >> 8) & 0xFF)
         let red = CGFloat((hex >> 16) & 0xFF)
         self.init(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1)
     }
 
-    convenience init?(hexString: String) {
+    convenience public init(hexString: String) throws {
         if !hexString.hasPrefix("#") {
-            return nil
+            throw NSError(domain: "UIColor.init(hexString:)", code: 0, userInfo: [NSLocalizedDescriptionKey:"Missing # prefix"])
         }
 
         var finalHexString = hexString
@@ -31,7 +31,7 @@ public extension UIColor {
             case 7:
                 break
             default:
-                return nil
+                throw NSError(domain: "UIColor.init(hexString:)", code: 0, userInfo: [NSLocalizedDescriptionKey:"Invalid length (only 2, 3, or 6 is valid)"])
         }
 
         var rgbValue: UInt32 = 0
@@ -44,7 +44,7 @@ public extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha:1.0)
     }
 
-    func darkerByPercent(percent: CGFloat) -> UIColor {
+    public func darkerByPercent(percent: CGFloat) -> UIColor {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
@@ -53,7 +53,7 @@ public extension UIColor {
         return UIColor(hue: hue, saturation: saturation, brightness: max(brightness - percent, 0), alpha: alpha)
     }
 
-    func lighterByPercent(percent: CGFloat) -> UIColor {
+    public func lighterByPercent(percent: CGFloat) -> UIColor {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
