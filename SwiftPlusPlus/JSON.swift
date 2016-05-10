@@ -11,6 +11,13 @@ import Foundation
 public struct JSON: CustomStringConvertible {
     public let object: AnyObject
 
+    public init(data: NSData) throws {
+        self.object = try NSJSONSerialization.JSONObjectWithData(
+            data,
+            options: NSJSONReadingOptions()
+        )
+    }
+
     public init(object: AnyObject) {
         self.object = object
     }
@@ -54,6 +61,17 @@ public struct JSON: CustomStringConvertible {
         return nil
     }
 
+    public var dictionary: [String:JSON]? {
+        guard let dict = self.object as? [String:AnyObject] else {
+            return nil
+        }
+        var output = [String:JSON]()
+        for (key, element) in dict {
+            output[key] = JSON(object: element)
+        }
+        return output
+    }
+
     public subscript(string: String) -> JSON? {
         if let dict = self.object as? [String:AnyObject],
             let foundValue = dict[string]
@@ -73,4 +91,12 @@ public struct JSON: CustomStringConvertible {
     public var description: String {
         return "\(self.object)"
     }
+
+    public func toData() throws -> NSData {
+        return try NSJSONSerialization.dataWithJSONObject(
+            self.object,
+            options: NSJSONWritingOptions()
+        )
+    }
+
 }
