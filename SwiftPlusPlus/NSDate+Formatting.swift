@@ -78,6 +78,14 @@ private let authTokenDate: NSDateFormatter = {
     return dateFormatter
 }()
 
+private let preciseTimeFormatter: NSDateFormatter = {
+    var dateFormatter = NSDateFormatter()
+    let timeZone = NSTimeZone(name: "UTC")
+    dateFormatter.dateFormat = "HH':'mm':'ss"
+    dateFormatter.timeZone = timeZone
+    return dateFormatter
+}()
+
 extension NSDate {
     public var asDateAndTime: String {
         return dateAndTimeFormatter.stringFromDate(self)
@@ -125,6 +133,10 @@ extension NSDate {
 
     public var asAuthToken: String {
         return authTokenDate.stringFromDate(self)
+    }
+
+    public var asPreciseTime: String {
+        return preciseTimeFormatter.stringFromDate(self)
     }
 
     public class func fromRailsDateTimeString(railsString: String) -> NSDate? {
