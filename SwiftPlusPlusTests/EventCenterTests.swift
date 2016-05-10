@@ -17,6 +17,10 @@ class TestStringEvent: EventType {
 class TestIntEvent: EventType {
     typealias CallbackParam = Int
 }
+
+class TestOptionalEvent: EventType {
+    typealias CallbackParam = String?
+}
             
 
 class EventCenterTests: XCTestCase {
@@ -105,5 +109,19 @@ class EventCenterTests: XCTestCase {
         XCTAssertEqual(triggeredString, "")
         
         waitForExpectationsWithTimeout(1, handler: nil)
+    }
+
+    func testOptionalEvent() {
+        var triggeredString: String? = ""
+        eventCenter.triggerEvent(TestOptionalEvent.self, params: "Trigger 1")
+        eventCenter.addObserver(self, forEvent: TestOptionalEvent.self) { param in
+            triggeredString = param
+        }
+        XCTAssertEqual(triggeredString, "")
+        eventCenter.triggerEvent(TestOptionalEvent.self, params: "Trigger 2")
+        XCTAssertEqual(triggeredString, "Trigger 2")
+
+        eventCenter.triggerEvent(TestOptionalEvent.self, params: nil)
+        XCTAssertNil(triggeredString)
     }
 }

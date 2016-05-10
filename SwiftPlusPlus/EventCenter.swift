@@ -50,11 +50,11 @@ public class EventCenter {
                 for spec in callbacks {
                     if let operationQueue = spec.operationQueue {
                         operationQueue.addOperationWithBlock {
-                            spec.callback(params)
+                            (spec.callback as! (E.CallbackParam) -> ())(params)
                         }
                     }
                     else {
-                        spec.callback(params)
+                        (spec.callback as! (E.CallbackParam) -> ())(params)
                     }
                 }
             }
@@ -82,12 +82,11 @@ public class EventCenter {
     */
     public func addObserver<E: EventType>(observer: AnyObject, forEvent event: E.Type, inQueue: NSOperationQueue?, callback: (E.CallbackParam) -> ()) {
         let key = NSStringFromClass(event)
-        let anyCallback: Callback = { callback($0 as! E.CallbackParam) }
-        
+
         if self._observations[key] == nil {
             self._observations[key] = CallbackCollection()
         }
-        addHandler((callback: anyCallback, operationQueue: inQueue), toHandlerCollection: &self._observations[key]!, forObserver: observer)
+        addHandler((callback: callback, operationQueue: inQueue), toHandlerCollection: &self._observations[key]!, forObserver: observer)
     }
     
     /**
@@ -120,7 +119,7 @@ public class EventCenter {
 }
 
 private extension EventCenter {
-    private typealias Callback = (Any) -> ()
+    private typealias Callback = Any
     private typealias CallbackSpec = (callback: Callback, operationQueue: NSOperationQueue?)
     private typealias CallbackCollection = [(observer: WeakWrapper, callbacks: [CallbackSpec])]
 
