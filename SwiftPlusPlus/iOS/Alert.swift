@@ -32,6 +32,15 @@ extension Alert: UIAlertViewDelegate {
 }
 
 extension UIViewController {
+    public func showAlertWithError(error: UserReportableError) {
+        self.showAlertWithTitle(
+            error.alertTitle,
+            message: error.alertMessage,
+            cancelButtonTitle: nil,
+            otherButtonTitles: ["OK"]
+        )
+    }
+
     public func showAlertWithTitle(
         title: String,
         message: String,
