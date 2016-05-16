@@ -10,6 +10,7 @@ public struct NetworkUserReportableError: UserReportableError {
     public enum Type {
         case Unauthorized
         case NoInternet
+        case NotFound
         case Internal(message: String)
         case User(message: String)
     }
@@ -41,7 +42,7 @@ public struct NetworkUserReportableError: UserReportableError {
         if let response = response {
             switch response.statusCode ?? 0 {
             case 404:
-                self.type = .Internal(message: "Endpoint not found")
+                self.type = .NotFound
             case 401:
                 self.type = .Unauthorized
             case let x where x >= 400 && x < 500:
@@ -85,6 +86,8 @@ public struct NetworkUserReportableError: UserReportableError {
             return "No Interent Connection"
         case .Unauthorized:
             return "Unauthorized"
+        case .NotFound:
+            return "Endpoint not found"
         }
     }
 
@@ -98,6 +101,8 @@ public struct NetworkUserReportableError: UserReportableError {
             return "Please make sure you are connected to the internet and try again"
         case .Unauthorized:
             return "You have been signed out. Please sign in again."
+        case .NotFound:
+            return "Please try again. If the problem persists please contact support"
         }
     }
 }
