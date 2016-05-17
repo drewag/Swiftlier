@@ -36,6 +36,16 @@ public struct JSON: CustomStringConvertible {
         return nil
     }
 
+    public var double: Double? {
+        if let double = self.object as? Double {
+            return double
+        }
+        else if let string = self.string {
+            return Double(string)
+        }
+        return nil
+    }
+
     public var bool: Bool? {
         if let bool = self.object as? Bool {
             return bool
