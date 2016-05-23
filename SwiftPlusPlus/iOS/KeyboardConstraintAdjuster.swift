@@ -16,6 +16,8 @@ public class KeyboardConstraintAdjuster: NSObject {
 
     public var onKeyboardIsBeingShown: (() -> ())?
     public var onKeyboardWasShown: (() -> ())?
+    public var onKeyboardIsBeingHidden: (() -> ())?
+    public var onKeyboardWasHidden: (() -> ())?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -36,12 +38,12 @@ public class KeyboardConstraintAdjuster: NSObject {
         let options = UIViewAnimationOptions(rawValue: UInt((notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue << 16))
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
         if frame != nil && duration != nil {
-            self.onKeyboardIsBeingShown?()
             UIView.animateWithDuration(
                 duration!,
                 delay: 0,
                 options: options,
                 animations: { () -> Void in
+                    self.onKeyboardIsBeingShown?()
                     self.constraint.constant = frame!.size.height + self.offset
                     self.view.layoutIfNeeded()
                 },
@@ -57,10 +59,19 @@ public class KeyboardConstraintAdjuster: NSObject {
         let options = UIViewAnimationOptions(rawValue: UInt((notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue << 16))
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
         if frame != nil && duration != nil {
-            UIView.animateWithDuration(duration!, delay: 0, options: options, animations: { () -> Void in
-                self.constraint.constant = self.offset
-                self.view.layoutIfNeeded()
-            }, completion: nil)
+            UIView.animateWithDuration(
+                duration!,
+                delay: 0,
+                options: options,
+                animations: {
+                    self.onKeyboardIsBeingHidden?()
+                    self.constraint.constant = self.offset
+                    self.view.layoutIfNeeded()
+                },
+                completion: { _ in
+                    self.onKeyboardWasHidden?()
+                }
+            )
         }
     }
 }
