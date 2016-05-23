@@ -9,42 +9,65 @@
 import Foundation
 
 public struct FileArchive {
-    public static func archiveEncodable(encodable: EncodableType, toFile file: String) -> Bool {
+    public static func archiveEncodable(encodable: EncodableType, toFile file: String, encrypt: (NSData) throws -> NSData = {return $0}) throws {
         let object = NativeTypesEncoder.objectFromEncodable(encodable)
-        return NSKeyedArchiver.archiveRootObject(object, toFile: file)
+        let data = try encrypt(NSKeyedArchiver.archivedDataWithRootObject(object))
+        try data.writeToFile(file, options: NSDataWritingOptions.AtomicWrite)
     }
 
-    public static func archiveDictionaryOfEncodable<E: EncodableType>(dictionary: [String:E], toFile file: String) -> Bool {
+    public static func archiveDictionaryOfEncodable<E: EncodableType>(dictionary: [String:E], toFile file: String, encrypt: (NSData) throws -> NSData = {return $0}) throws {
         var finalDict = [String:AnyObject]()
 
         for (key, value) in dictionary {
             finalDict[key] = NativeTypesEncoder.objectFromEncodable(value)
         }
 
-        return NSKeyedArchiver.archiveRootObject(finalDict, toFile: file)
+        let data = try encrypt(NSKeyedArchiver.archivedDataWithRootObject(finalDict))
+        try data.writeToFile(file, options: NSDataWritingOptions.AtomicWrite)
     }
 
-    public static func archiveArrayOfEncodable<E: EncodableType>(array: [E], toFile file: String) -> Bool {
+    public static func archiveArrayOfEncodable<E: EncodableType>(array: [E], toFile file: String, encrypt: (NSData) throws -> NSData = {return $0}) throws {
         var finalArray = [AnyObject]()
 
         for value in array {
             finalArray.append(NativeTypesEncoder.objectFromEncodable(value))
         }
 
-        return NSKeyedArchiver.archiveRootObject(finalArray, toFile: file)
+        let data = try encrypt(NSKeyedArchiver.archivedDataWithRootObject(finalArray))
+        try data.writeToFile(file, options: NSDataWritingOptions.AtomicWrite)
     }
 
-    public static func unarchiveEncodableFromFile<E: EncodableType>(file: String) -> E? {
-        guard let object = NSKeyedUnarchiver.unarchiveObjectWithFile(file) else {
+    public static func unarchiveEncodableFromFile<E: EncodableType>(file: String, decrypt: (NSData) throws -> NSData = {return $0}) throws -> E? {
+        guard var data = NSData(contentsOfFile: file) else {
             return nil
+        }
+        data = try decrypt(data)
+
+        guard let object = NSKeyedUnarchiver.unarchiveObjectWithData(data) else {
+            throw LocalUserReportableError(
+                source: "FileArchive",
+                operation: "loading data",
+                message: "Invalid file found",
+                type: .Internal
+            )
         }
 
         return NativeTypesDecoder.decodableTypeFromObject(object)
     }
 
-    public static func unarchiveDictionaryOfEncodableFromFile<E: EncodableType>(file: String) -> [String:E]? {
-        guard let rawDict = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [String:[String: AnyObject]] else {
+    public static func unarchiveDictionaryOfEncodableFromFile<E: EncodableType>(file: String, decrypt: (NSData) throws -> NSData = {return $0}) throws -> [String:E]? {
+        guard var data = NSData(contentsOfFile: file) else {
             return nil
+        }
+        data = try decrypt(data)
+
+        guard let rawDict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String:[String: AnyObject]] else {
+            throw LocalUserReportableError(
+                source: "FileArchive",
+                operation: "loading data",
+                message: "Invalid file found",
+                type: .Internal
+            )
         }
 
         var finalDict = [String:E]()
@@ -56,9 +79,19 @@ public struct FileArchive {
         return finalDict
     }
 
-    public static func unarchiveArrayOfEncodableFromFile<E: EncodableType>(file: String) -> [E]? {
-        guard let rawArray = NSKeyedUnarchiver.unarchiveObjectWithFile(file) as? [AnyObject] else {
+    public static func unarchiveArrayOfEncodableFromFile<E: EncodableType>(file: String, decrypt: (NSData) throws -> NSData = {return $0}) throws -> [E]? {
+        guard var data = NSData(contentsOfFile: file) else {
             return nil
+        }
+        data = try decrypt(data)
+
+        guard let rawArray = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject] else {
+            throw LocalUserReportableError(
+                source: "FileArchive",
+                operation: "loading data",
+                message: "Invalid file found",
+                type: .Internal
+            )
         }
 
         var finalArray = [E]()
