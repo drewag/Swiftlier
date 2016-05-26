@@ -29,6 +29,13 @@ extension NSLayoutConstraint {
         return self.fullWidthConstraintsWithView(view) + self.fullHeightConstraintsWithView(view)
     }
 
+    public class func centerConstraintsWithView(view1: UIView, inView view2: UIView, withOffset offset: CGPoint) -> [NSLayoutConstraint] {
+        return [
+            NSLayoutConstraint(item: view1, attribute: .CenterX, relatedBy: .Equal, toItem: view2, attribute: .CenterX, multiplier: 1, constant: offset.x),
+            NSLayoutConstraint(item: view1, attribute: .CenterY, relatedBy: .Equal, toItem: view2, attribute: .CenterY, multiplier: 1, constant: offset.y),
+        ]
+    }
+
     public convenience init(sameWidthForView view1: UIView, andView view2: UIView, difference: CGFloat = 0) {
         self.init(
             item: view1,

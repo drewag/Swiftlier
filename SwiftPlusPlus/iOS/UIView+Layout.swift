@@ -15,4 +15,10 @@ extension UIView {
         self.addSubview(view)
         self.addConstraints(NSLayoutConstraint.fillConstraintsWithView(view))
     }
+
+    public func addCenteredView(view: UIView, withOffset offset: CGPoint) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(view)
+        self.addConstraints(NSLayoutConstraint.centerConstraintsWithView(view, inView: self, withOffset: offset))
+    }
 }
