@@ -24,6 +24,21 @@ public struct LocalUserReportableError: UserReportableError {
         self.type = type
     }
 
+    public init(source: String, operation: String, error: ErrorType, type: Type = .Internal) {
+        if let error = error as? LocalUserReportableError {
+            self.source = error.source
+            self.operation = error.operation
+            self.message = error.message
+            self.type = error.type
+        }
+        else {
+            self.source = source
+            self.operation = operation
+            self.message = "\(error)"
+            self.type = type
+        }
+    }
+
     public var alertTitle: String {
         switch self.type {
         case .User:
