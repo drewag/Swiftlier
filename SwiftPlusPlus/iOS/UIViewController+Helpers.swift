@@ -17,4 +17,11 @@ extension UIViewController {
         viewController.popoverPresentationController!.permittedArrowDirections = .Any
         viewController.popoverPresentationController!.sourceView = sourceView
     }
+
+    public func presentOverlayViewController(viewController: UIViewController) {
+        viewController.modalPresentationStyle = .OverCurrentContext
+        viewController.modalTransitionStyle = .CrossDissolve
+
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
 }
