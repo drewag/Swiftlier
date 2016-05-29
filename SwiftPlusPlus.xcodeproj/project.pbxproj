@@ -43,6 +43,8 @@
 		49A2BC091BA36E5D00E472D7 /* UIView+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */; };
 		49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */; };
 		49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */; };
+		49C84D4C1CFB86E300F65546 /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */; };
+		49C84D4F1CFB87AB00F65546 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */; };
 		49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */; };
 		49CFCFAF1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */; };
 		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
@@ -119,6 +121,8 @@
 		49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Video.swift"; sourceTree = "<group>"; };
 		49C2F8FC1BA78818003C73A1 /* NSLayoutContraint+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutContraint+Factory.swift"; sourceTree = "<group>"; };
 		49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
+		49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Formatting.swift"; sourceTree = "<group>"; };
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 		498AE62E1BA12082008E8E33 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				49C84D4D1CFB86E500F65546 /* Views */,
 				4908FFBA1BEA89DB003EE9F3 /* Domain */,
 				494790101B9FA24F00C3D127 /* Controller */,
 				498AE6321BA120AA008E8E33 /* Helpers */,
@@ -289,6 +294,15 @@
 				4996336A1CCD5EAE00075E1D /* LocalUserReportableError.swift */,
 			);
 			name = "Error Handling";
+			sourceTree = "<group>";
+		};
+		49C84D4D1CFB86E500F65546 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */,
+				49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		49D06DCF1A59D6390031845A /* Events */ = {
@@ -542,6 +556,7 @@
 				49000F041BC8B438002EF454 /* NSDate+Formatting.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				4908FFD01BEA8E10003EE9F3 /* UIViewController+Transitions.swift in Sources */,
+				49C84D4F1CFB87AB00F65546 /* RoundedBorderButton.swift in Sources */,
 				49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */,
 				499934E01C9F1D330050A86B /* NSDate+Helpers.swift in Sources */,
 				49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */,
@@ -566,6 +581,7 @@
 				495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */,
 				49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */,
 				4991784A1BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */,
+				49C84D4C1CFB86E300F65546 /* RoundedBorderView.swift in Sources */,
 				4996336B1CCD5EAE00075E1D /* LocalUserReportableError.swift in Sources */,
 				499633691CCD5CF000075E1D /* NetworkUserReportableError.swift in Sources */,
 				49E26E0D1CA339D50026F15B /* JSON.swift in Sources */,
