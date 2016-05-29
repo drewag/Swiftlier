@@ -45,6 +45,7 @@
 		49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */; };
 		49C84D4C1CFB86E300F65546 /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */; };
 		49C84D4F1CFB87AB00F65546 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */; };
+		49C84D511CFB8C6B00F65546 /* ThinLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D501CFB8C6B00F65546 /* ThinLayoutConstraint.swift */; };
 		49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */; };
 		49CFCFAF1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */; };
 		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
@@ -123,6 +124,7 @@
 		49C2F8FE1BA7CBBD003C73A1 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
 		49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
+		49C84D501CFB8C6B00F65546 /* ThinLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThinLayoutConstraint.swift; sourceTree = "<group>"; };
 		49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Formatting.swift"; sourceTree = "<group>"; };
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			children = (
 				49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */,
 				49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */,
+				49C84D501CFB8C6B00F65546 /* ThinLayoutConstraint.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */,
 				49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */,
 				4991784A1BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */,
+				49C84D511CFB8C6B00F65546 /* ThinLayoutConstraint.swift in Sources */,
 				49C84D4C1CFB86E300F65546 /* RoundedBorderView.swift in Sources */,
 				4996336B1CCD5EAE00075E1D /* LocalUserReportableError.swift in Sources */,
 				499633691CCD5CF000075E1D /* NetworkUserReportableError.swift in Sources */,
