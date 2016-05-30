@@ -46,6 +46,8 @@
 		49C84D4C1CFB86E300F65546 /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */; };
 		49C84D4F1CFB87AB00F65546 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */; };
 		49C84D511CFB8C6B00F65546 /* ThinLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D501CFB8C6B00F65546 /* ThinLayoutConstraint.swift */; };
+		49C84D881CFCAB7B00F65546 /* SelectableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D871CFCAB7B00F65546 /* SelectableValue.swift */; };
+		49C84D8A1CFCB22700F65546 /* UserReportableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D891CFCB22700F65546 /* UserReportableResult.swift */; };
 		49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */; };
 		49CFCFAF1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */; };
 		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
@@ -125,6 +127,8 @@
 		49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
 		49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		49C84D501CFB8C6B00F65546 /* ThinLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThinLayoutConstraint.swift; sourceTree = "<group>"; };
+		49C84D871CFCAB7B00F65546 /* SelectableValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableValue.swift; sourceTree = "<group>"; };
+		49C84D891CFCB22700F65546 /* UserReportableResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReportableResult.swift; sourceTree = "<group>"; };
 		49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Formatting.swift"; sourceTree = "<group>"; };
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 			children = (
 				4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */,
 				49E26E0C1CA339D50026F15B /* JSON.swift */,
+				49C84D871CFCAB7B00F65546 /* SelectableValue.swift */,
+				49C84D891CFCB22700F65546 /* UserReportableResult.swift */,
 			);
 			name = Containers;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 				49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */,
 				499934E01C9F1D330050A86B /* NSDate+Helpers.swift in Sources */,
 				49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */,
+				49C84D881CFCAB7B00F65546 /* SelectableValue.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
 				49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
 				499ED2221CF62F8B00E4E902 /* NSDate+Comparison.swift in Sources */,
@@ -581,6 +588,7 @@
 				49E72FFC1C822ADB00C9F4BF /* DecoderType.swift in Sources */,
 				4908FFBC1BEA8A26003EE9F3 /* Menu.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
+				49C84D8A1CFCB22700F65546 /* UserReportableResult.swift in Sources */,
 				495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */,
 				49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */,
 				4991784A1BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */,
