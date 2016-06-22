@@ -9,4 +9,5 @@
 public protocol UserReportableError: ErrorType {
     var alertTitle: String {get}
     var alertMessage: String {get}
+    var otherInfo: [String:String]? {get}
 }

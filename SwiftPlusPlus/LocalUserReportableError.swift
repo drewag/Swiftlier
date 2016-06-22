@@ -16,6 +16,7 @@ public struct LocalUserReportableError: UserReportableError {
     let operation: String
     let message: String
     let type: Type
+    public let otherInfo: [String : String]? = nil
 
     public init(source: String, operation: String, message: String, type: Type) {
         self.source = source
