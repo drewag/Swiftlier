@@ -138,16 +138,18 @@ extension NSDate {
     public var asPreciseTime: String {
         return preciseTimeFormatter.stringFromDate(self)
     }
+}
 
-    public class func fromRailsDateTimeString(railsString: String) -> NSDate? {
-        return railsDateTimeFormatter.dateFromString(railsString)
+extension String {
+    public var railsDateTime: NSDate? {
+        return railsDateTimeFormatter.dateFromString(self)
     }
 
-    public class func fromRailsDateString(railsString: String) -> NSDate? {
-        return railsDateFormatter.dateFromString(railsString)
+    public var railsDate: NSDate? {
+        return railsDateFormatter.dateFromString(self)
     }
 
-    public class func fromIso8601DateTimeString(dateTimeString: String) -> NSDate? {
-        return iso8601DateTimeFormatter.dateFromString(dateTimeString)
+    public var iso8601DateTime: NSDate? {
+        return iso8601DateTimeFormatter.dateFromString(self)
     }
 }
