@@ -8,16 +8,29 @@
 
 import Foundation
 
+public enum PopoverPosition {
+    case Default
+    case TopMiddle
+    case Custom(sourceRect: CGRect)
+}
+
 extension UIViewController {
-    public func present(popoverViewController viewController: UIViewController, fromSourceView sourceView: UIView, sourceRect: CGRect? = nil, permittedArrowDirections: UIPopoverArrowDirection = .Any) {
+    public func present(popoverViewController viewController: UIViewController, fromSourceView sourceView: UIView, permittedArrowDirections: UIPopoverArrowDirection = .Any, position: PopoverPosition = .Default) {
         viewController.modalPresentationStyle = .Popover
 
         self.presentViewController(viewController, animated: true, completion: nil)
 
         viewController.popoverPresentationController!.permittedArrowDirections = permittedArrowDirections
         viewController.popoverPresentationController!.sourceView = sourceView
-        if let sourceRect = sourceRect {
-            viewController.popoverPresentationController!.sourceRect = sourceRect
+
+        switch position {
+        case .Default:
+            break
+        case .TopMiddle:
+            let rect = CGRect(origin: CGPoint(x: sourceView.bounds.midX, y: sourceView.bounds.minY), size: CGSize(width: 1, height: 1))
+            viewController.popoverPresentationController!.sourceRect = rect
+        case .Custom(sourceRect: let rect):
+            viewController.popoverPresentationController!.sourceRect = rect
         }
     }
 
