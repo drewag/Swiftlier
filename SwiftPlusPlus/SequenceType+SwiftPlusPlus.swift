@@ -64,3 +64,22 @@ extension SequenceType {
         return self.map({$0 as? C.Generator.Element}).flatMap({$0})
     }
 }
+
+extension SequenceType where Generator.Element: Equatable {
+    public func unioned<I: SequenceType where I.Generator.Element == Generator.Element>(with other: I) -> AnySequence<Generator.Element> {
+        var thisGenerator = self.generate()
+        let generate: () -> Generator.Element? = {
+            while let next = thisGenerator.next() {
+                for otherElement in other {
+                    if otherElement == next {
+                        return next
+                    }
+                }
+            }
+
+            return nil
+        }
+
+        return AnySequence({ AnyGenerator(body: generate) })
+    }
+}
