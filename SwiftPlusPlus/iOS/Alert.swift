@@ -19,6 +19,34 @@ class Alert: NSObject {
     }
 }
 
+public final class AlertAction {
+    let name: String
+    let handler: (() -> ())?
+
+    init(name: String, handler: (() -> ())?) {
+        self.name = name
+        self.handler = handler
+    }
+
+    public static func action(name: String, handler: (() -> ())? = nil) -> AlertAction {
+        return AlertAction(name: name, handler: handler)
+    }
+}
+
+public final class TextAction {
+    let name: String
+    let handler: ((text: String) -> ())?
+
+    init(name: String, handler: ((text: String) -> ())?) {
+        self.name = name
+        self.handler = handler
+    }
+
+    public static func action(name: String, handler: ((text: String) -> ())? = nil) -> TextAction {
+        return TextAction(name: name, handler: handler)
+    }
+}
+
 extension Alert: UIAlertViewDelegate {
     @available(iOS, introduced=2.0, deprecated=9.0, message="Use showAlertController instead")
     func alertView(alertView: UIAlertView, clickedButtonAtIndex: Int) {
@@ -32,34 +60,46 @@ extension Alert: UIAlertViewDelegate {
 }
 
 extension UIViewController {
-    public func showAlertWithError(error: UserReportableError) {
-        self.showAlertWithTitle(
-            error.alertTitle,
-            message: error.alertMessage,
-            cancelButtonTitle: nil,
-            otherButtonTitles: ["OK"]
+    public func showAlert(withError error: UserReportableError) {
+        self.showAlert(
+            withTitle: error.alertTitle,
+            message: error.alertMessage
         )
     }
 
-    public func showAlertWithTitle(
-        title: String,
+    public func showAlert(
+        withTitle title: String,
         message: String,
-        cancelButtonTitle: String? = nil,
-        otherButtonTitles: [String]? = nil,
-        textFieldPlaceholder: String? = nil,
-        textFieldDefault: String? = nil,
-        onButtonClicked: ((buttonTitle: String?, textFieldText: String?) -> ())? = nil
+        cancel: AlertAction? = nil,
+        other: [AlertAction] = []
         )
     {
+        func onTapped(buttonTitle: String?, textFieldText: String?) {
+            if let action = cancel where action.name == buttonTitle {
+                action.handler?()
+                return
+            }
+            for action in other {
+                if action.name == buttonTitle {
+                    action.handler?()
+                    return
+                }
+            }
+        }
+
+        var other = other
+        if cancel == nil && other.isEmpty {
+            other.append(.action("OK"))
+        }
         if #available(iOS 8.0, *) {
             Alert.showAlertController(
                 title,
                 message: message,
-                cancelButtonTitle: cancelButtonTitle,
-                otherButtonTitles: otherButtonTitles,
-                textFieldPlaceholder: textFieldPlaceholder,
-                textFieldDefault: textFieldDefault,
-                onButtonClicked: onButtonClicked,
+                cancelButtonTitle: cancel?.name,
+                otherButtonTitles: other.map({$0.name}),
+                textFieldPlaceholder: nil,
+                textFieldDefault: nil,
+                onButtonClicked: onTapped,
                 fromViewController: self
             )
         }
@@ -67,11 +107,62 @@ extension UIViewController {
             Alert.showAlertView(
                 title,
                 message: message,
-                cancelButtonTitle: cancelButtonTitle,
-                otherButtonTitles: otherButtonTitles,
-                textFieldPlaceholder: textFieldPlaceholder,
-                textFieldDefault: textFieldDefault,
-                onButtonClicked: onButtonClicked
+                cancelButtonTitle: cancel?.name,
+                otherButtonTitles: other.map({$0.name}),
+                textFieldPlaceholder: nil,
+                textFieldDefault: nil,
+                onButtonClicked: onTapped
+            )
+        }
+    }
+
+    public func showTextInput(
+        withTitle title: String,
+        message: String,
+        textFieldPlaceholder: String? = nil,
+        textFieldDefault: String? = nil,
+        cancel: TextAction? = nil,
+        other: [TextAction] = []
+    )
+    {
+        func onTapped(buttonTitle: String?, textFieldText: String?) {
+            if let action = cancel where action.name == buttonTitle {
+                action.handler?(text: textFieldText ?? "")
+                return
+            }
+            for action in other {
+                if action.name == buttonTitle {
+                    action.handler?(text: textFieldText ?? "")
+                    return
+                }
+            }
+        }
+
+        var other = other
+        if cancel == nil && other.isEmpty {
+            other.append(.action("OK"))
+        }
+        if #available(iOS 8.0, *) {
+            Alert.showAlertController(
+                title,
+                message: message,
+                cancelButtonTitle: cancel?.name,
+                otherButtonTitles: other.map({$0.name}),
+                textFieldPlaceholder: nil,
+                textFieldDefault: nil,
+                onButtonClicked: onTapped,
+                fromViewController: self
+            )
+        }
+        else {
+            Alert.showAlertView(
+                title,
+                message: message,
+                cancelButtonTitle: cancel?.name,
+                otherButtonTitles: other.map({$0.name}),
+                textFieldPlaceholder: nil,
+                textFieldDefault: nil,
+                onButtonClicked: onTapped
             )
         }
     }

@@ -75,9 +75,11 @@ class MenuViewController: UITableViewController {
                 UIApplication.sharedApplication().openURL(URL)
             }
             else {
-                self.showAlertWithTitle("Invalid URL", message: "The URL was '\(address)'. Please contact support.", otherButtonTitles: ["OK"], onButtonClicked: { _, _ in
-                    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-                })
+                self.showAlert(withTitle: "Invalid URL", message: "The URL was '\(address)'. Please contact support.", other: [
+                    .action("OK", {
+                        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    })
+                ])
             }
             break
         case let .HTML(content):
