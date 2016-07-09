@@ -129,10 +129,18 @@ public final class Observable<T> {
         }
     }
 
+    /**
+        Whether there is at least 1 current observer
+    */
+    public var hasObserver: Bool {
+        return _observers.count > 0
+    }
+
     // MARK: Initializers
 
-    public init(_ value: T) {
+    public init(_ value: T, onHasObserversChanged: ((Bool) -> ())? = nil) {
         self.value = value
+        self._onHasObserverChanged = onHasObserversChanged
     }
 
     // MARK: Methods
@@ -162,7 +170,11 @@ public final class Observable<T> {
         else {
             // since the observer does not already exist, add a new tuple with the
             // observer and an array with the handler
+            let oldCount = self._observers.count
             self._observers.append((observer: WeakWrapper(observer), handlers: [(options: options, handler: handler)]))
+            if oldCount == 0 {
+                self._onHasObserverChanged?(true)
+            }
         }
 
         if (options & ObservationOptions.Initial) {
@@ -178,6 +190,9 @@ public final class Observable<T> {
     public func removeObserver(observer: AnyObject) {
         if let index = self._indexOfObserver(observer) {
             self._observers.removeAtIndex(index)
+            if self._observers.count == 0 {
+                self._onHasObserverChanged?(false)
+            }
         }
     }
 
@@ -185,6 +200,7 @@ public final class Observable<T> {
 
     typealias HandlerSpec = (options: ObservationOptions, handler: DidChangeHandler)
     private var _observers: [(observer: WeakWrapper, handlers: [HandlerSpec])] = []
+    private var _onHasObserverChanged: ((Bool) -> ())?
 
     // MARK: Private Methods
 
