@@ -76,7 +76,7 @@ class MenuViewController: UITableViewController {
             }
             else {
                 self.showAlert(withTitle: "Invalid URL", message: "The URL was '\(address)'. Please contact support.", other: [
-                    .action("OK", {
+                    .action("OK", handler: {
                         tableView.deselectRowAtIndexPath(indexPath, animated: true)
                     })
                 ])
