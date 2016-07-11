@@ -55,6 +55,7 @@
 		49D06DD91A5B468B0031845A /* EventCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD81A5B468B0031845A /* EventCenterTests.swift */; };
 		49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DEE1A5B7AA00031845A /* MultiCallback.swift */; };
 		49D06DF21A5B7E7E0031845A /* MultiCallbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */; };
+		49D1C2321D3379800074ED33 /* ObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1C2311D3379800074ED33 /* ObservableArray.swift */; };
 		49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */; };
 		49DC575E198C54000051F266 /* Array+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */; };
 		49DC5760198C54F90051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */; };
@@ -136,6 +137,7 @@
 		49D06DD81A5B468B0031845A /* EventCenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenterTests.swift; sourceTree = "<group>"; };
 		49D06DEE1A5B7AA00031845A /* MultiCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiCallback.swift; path = ../SwiftPlusPlus/MultiCallback.swift; sourceTree = "<group>"; };
 		49D06DF11A5B7E7E0031845A /* MultiCallbackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiCallbackTests.swift; sourceTree = "<group>"; };
+		49D1C2311D3379800074ED33 /* ObservableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableArray.swift; path = SwiftPlusPlus/ObservableArray.swift; sourceTree = SOURCE_ROOT; };
 		49DC575B198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49DC575D198C54000051F266 /* Array+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		49E26E0C1CA339D50026F15B /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				496D42FB197B842400250A0A /* Observable.swift */,
+				49D1C2311D3379800074ED33 /* ObservableArray.swift */,
 				49D06DEE1A5B7AA00031845A /* MultiCallback.swift */,
 			);
 			name = Observation;
@@ -595,6 +598,7 @@
 				49C84D511CFB8C6B00F65546 /* ThinLayoutConstraint.swift in Sources */,
 				49C84D4C1CFB86E300F65546 /* RoundedBorderView.swift in Sources */,
 				4996336B1CCD5EAE00075E1D /* LocalUserReportableError.swift in Sources */,
+				49D1C2321D3379800074ED33 /* ObservableArray.swift in Sources */,
 				499633691CCD5CF000075E1D /* NetworkUserReportableError.swift in Sources */,
 				49E26E0D1CA339D50026F15B /* JSON.swift in Sources */,
 			);
