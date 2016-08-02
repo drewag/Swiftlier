@@ -26,6 +26,7 @@
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
+		498425A71D51159900046DCD /* ObservableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498425A61D51159900046DCD /* ObservableDictionary.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
 		4991784A1BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499178491BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift */; };
@@ -109,6 +110,7 @@
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
+		498425A61D51159900046DCD /* ObservableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableDictionary.swift; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
 		499178491BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+SwifPlusPlus.swift"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				496D42FB197B842400250A0A /* Observable.swift */,
 				49D1C2311D3379800074ED33 /* ObservableArray.swift */,
+				498425A61D51159900046DCD /* ObservableDictionary.swift */,
 				49D06DEE1A5B7AA00031845A /* MultiCallback.swift */,
 			);
 			name = Observation;
@@ -584,6 +587,7 @@
 				49A2BC091BA36E5D00E472D7 /* UIView+Video.swift in Sources */,
 				4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */,
 				49A2BBD11BA2597600E472D7 /* UIView+ImageCapture.swift in Sources */,
+				498425A71D51159900046DCD /* ObservableDictionary.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
 				49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */,
 				499934E21C9F1F440050A86B /* UITableView+EasyRegister.swift in Sources */,
