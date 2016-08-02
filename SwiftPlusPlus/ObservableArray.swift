@@ -10,7 +10,7 @@ public final class ObservableArray<Element> {
     public typealias DidChange = ([Element]) -> ()
     public typealias DidInsert = (Element, at: Int) -> ()
     public typealias DidRemove = (Element, at: Int) -> ()
-    public typealias DidRemoveAll = () -> ()
+    public typealias DidRemoveAll = (oldValues: [Element]) -> ()
     public typealias ObservationHandlers = (changed: DidChange?, insert: DidInsert?, remove: DidRemove?, removeAll: DidRemoveAll?)
 
     private var observers: [(observer: WeakWrapper, handlers: [ObservationHandlers])] = []
@@ -81,9 +81,10 @@ public final class ObservableArray<Element> {
     }
 
     public func removeAll() {
+        let oldValues = self.values
         self.values.removeAll()
         self.executeWithAllHandlers({ handler in
-            handler.removeAll?()
+            handler.removeAll?(oldValues: oldValues)
         })
     }
 }
