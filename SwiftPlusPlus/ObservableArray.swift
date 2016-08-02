@@ -7,11 +7,10 @@
 //
 
 public final class ObservableArray<Element> {
-    public typealias DidChange = ([Element]) -> ()
     public typealias DidInsert = (Element, at: Int) -> ()
     public typealias DidRemove = (Element, at: Int) -> ()
     public typealias DidRemoveAll = (oldValues: [Element]) -> ()
-    public typealias ObservationHandlers = (changed: DidChange?, insert: DidInsert?, remove: DidRemove?, removeAll: DidRemoveAll?)
+    public typealias ObservationHandlers = (insert: DidInsert?, remove: DidRemove?, removeAll: DidRemoveAll?)
 
     private var observers: [(observer: WeakWrapper, handlers: [ObservationHandlers])] = []
     private var onHasObserversChanged: ((Bool) -> ())?
@@ -25,17 +24,16 @@ public final class ObservableArray<Element> {
 
     public func add(
         observer observer: AnyObject,
-        onDidChange: DidChange? = nil,
         onDidInsert: DidInsert? = nil,
         onDidRemove: DidRemove? = nil,
         onDidRemoveAll: DidRemoveAll? = nil
         )
     {
-        guard onDidChange != nil || onDidInsert != nil || onDidRemove != nil || onDidRemoveAll != nil else {
+        guard onDidInsert != nil || onDidRemove != nil || onDidRemoveAll != nil else {
             return
         }
 
-        let handlers: ObservationHandlers = (changed: onDidChange, insert: onDidInsert, remove: onDidRemove, removeAll: onDidRemoveAll)
+        let handlers: ObservationHandlers = (insert: onDidInsert, remove: onDidRemove, removeAll: onDidRemoveAll)
         if let index = self.index(ofObserver: observer) {
             self.observers[index].handlers.append(handlers)
         }
