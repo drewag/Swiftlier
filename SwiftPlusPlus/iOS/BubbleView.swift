@@ -44,6 +44,7 @@ public class BubbleView: UIView {
         didSet {
             self.tickView.color = color
             self.subview.backgroundColor = color
+            self.setNeedsDisplay()
         }
     }
 
