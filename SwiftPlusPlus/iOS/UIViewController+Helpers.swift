@@ -15,6 +15,15 @@ public enum PopoverPosition {
 }
 
 extension UIViewController {
+    public func present(popoverViewController viewController: UIViewController, from sourceBarButtonItem: UIBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection = .Any) {
+        viewController.modalPresentationStyle = .Popover
+
+        self.presentViewController(viewController, animated: true, completion: nil)
+
+        viewController.popoverPresentationController!.permittedArrowDirections = permittedArrowDirections
+        viewController.popoverPresentationController!.barButtonItem = sourceBarButtonItem
+    }
+
     public func present(popoverViewController viewController: UIViewController, fromSourceView sourceView: UIView, permittedArrowDirections: UIPopoverArrowDirection = .Any, position: PopoverPosition = .Default) {
         viewController.modalPresentationStyle = .Popover
 
