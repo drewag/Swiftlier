@@ -11,6 +11,7 @@ import Foundation
 extension NSLayoutConstraint {
     @available(iOS 8.0, *)
     public func setMultiplier(multiplier:CGFloat) {
+        NSLayoutConstraint.deactivateConstraints([self])
 
         let newConstraint = NSLayoutConstraint(
             item: firstItem,
@@ -27,7 +28,6 @@ extension NSLayoutConstraint {
         newConstraint.active = self.active
         self.priority = 1
 
-        NSLayoutConstraint.deactivateConstraints([self])
         NSLayoutConstraint.activateConstraints([newConstraint])
     }
 }
