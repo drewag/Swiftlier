@@ -11,3 +11,17 @@ public protocol UserReportableError: ErrorType {
     var alertMessage: String {get}
     var otherInfo: [String:String]? {get}
 }
+
+extension NSError: UserReportableError {
+    public var alertTitle: String {
+        return "Error"
+    }
+
+    public var alertMessage: String {
+        return self.localizedDescription
+    }
+
+    public var otherInfo: [String : String]? {
+        return nil
+    }
+}
