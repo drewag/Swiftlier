@@ -17,6 +17,10 @@ public final class ObservableArray<Element> {
 
     public private(set) var values: [Element]
 
+    public convenience init() {
+        self.init([])
+    }
+
     public init(_ values: [Element], onHasObserversChanged: ((Bool) -> ())? = nil) {
         self.values = values
         self.onHasObserversChanged = onHasObserversChanged
