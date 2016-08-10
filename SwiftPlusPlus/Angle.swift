@@ -45,7 +45,7 @@ public struct Angle: Equatable, Comparable {
         case .degrees:
             return self.value
         case .radians:
-            return self.value * Float(M_PI) / 180
+            return self.value * 180 / Float(M_PI)
         }
     }
 
@@ -56,7 +56,7 @@ public struct Angle: Equatable, Comparable {
     public func radians() -> Float {
         switch self.unit {
         case .degrees:
-            return self.value * 180 / Float(M_PI)
+            return self.value * Float(M_PI) / 180
         case .radians:
             return self.value
         }
@@ -64,6 +64,22 @@ public struct Angle: Equatable, Comparable {
 
     public func radians() -> CGFloat {
         return CGFloat(self.radians() as Float)
+    }
+
+    public func cosine() -> Float {
+        return cos(self.radians())
+    }
+
+    public func sine() -> Float {
+        return sin(self.radians())
+    }
+
+    public func cosine() -> CGFloat {
+        return CGFloat(self.cosine() as Float)
+    }
+
+    public func sine() -> CGFloat {
+        return CGFloat(self.sine() as Float)
     }
 
     private static func normalized(value value: Float, with unit: Unit) -> Float {
