@@ -14,7 +14,7 @@ public final class NativeTypesEncoder: EncoderType {
     public class func objectFromEncodable(encodable: EncodableType) -> AnyObject {
         let encoder = NativeTypesEncoder()
         encodable.encode(encoder)
-        return encoder.raw!
+        return encoder.raw ?? [:]
     }
 
     public func encode<K: CoderKeyType>(data: K.ValueType, forKey key: K.Type) {
