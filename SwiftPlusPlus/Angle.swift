@@ -14,6 +14,8 @@ public struct Angle: Equatable, Comparable {
         case degrees
     }
 
+    public static let zero = Angle(radians: 0 as Float)
+
     private let value: Float
     private let unit: Unit
 
