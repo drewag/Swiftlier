@@ -41,8 +41,18 @@ public func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
 
+public func +=(inout lhs: CGPoint, rhs: CGPoint) {
+    lhs.x += rhs.x
+    lhs.y += rhs.y
+}
+
 public func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+}
+
+public func -=(inout lhs: CGPoint, rhs: CGPoint) {
+    lhs.x -= rhs.x
+    lhs.y -= rhs.y
 }
 
 public func *(lhs: CGPoint, rhs: CGFloat) -> CGPoint {
