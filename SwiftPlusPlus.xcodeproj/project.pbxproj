@@ -18,6 +18,7 @@
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
 		493610D11D58FA540029C7F1 /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493610D01D58FA540029C7F1 /* CGMath.swift */; };
 		493610D31D58FA8D0029C7F1 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493610D21D58FA8D0029C7F1 /* Angle.swift */; };
+		493610F11D5C149D0029C7F1 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493610F01D5C149D0029C7F1 /* TaskService.swift */; };
 		493C48771CAF70E900D80A9B /* Array+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C48761CAF70E900D80A9B /* Array+SwiftPlusPlus.swift */; };
 		49478FFC1B9F577E00C3D127 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49478FFB1B9F577E00C3D127 /* ColorTests.swift */; };
 		4947901A1B9FE96700C3D127 /* DataSourceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */; };
@@ -104,6 +105,7 @@
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
 		493610D01D58FA540029C7F1 /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
 		493610D21D58FA8D0029C7F1 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		493610F01D5C149D0029C7F1 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		493C48761CAF70E900D80A9B /* Array+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		49478FFB1B9F577E00C3D127 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		494790191B9FE96700C3D127 /* DataSourceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceTypeTests.swift; sourceTree = "<group>"; };
@@ -202,6 +204,14 @@
 			name = Transitions;
 			sourceTree = "<group>";
 		};
+		493610EF1D5C14930029C7F1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				493610F01D5C149D0029C7F1 /* TaskService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		49478FFA1B9F576A00C3D127 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +279,7 @@
 		498AE6311BA12098008E8E33 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				493610EF1D5C14930029C7F1 /* Services */,
 				499633651CCD59A200075E1D /* Error Handling */,
 				49E72FF61C822A4600C9F4BF /* Encoding */,
 				4972759C1BFFDE1100BAD6AB /* Containers */,
@@ -586,6 +597,7 @@
 				49508C131BAB3E2B00341A44 /* UIView+Helpers.swift in Sources */,
 				499934E01C9F1D330050A86B /* NSDate+Helpers.swift in Sources */,
 				49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */,
+				493610F11D5C149D0029C7F1 /* TaskService.swift in Sources */,
 				49C84D881CFCAB7B00F65546 /* SelectableValue.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
 				49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
