@@ -148,8 +148,8 @@ extension UIViewController {
                 message: message,
                 cancelButtonTitle: cancel?.name,
                 otherButtonTitles: other.map({$0.name}),
-                textFieldPlaceholder: nil,
-                textFieldDefault: nil,
+                textFieldPlaceholder: textFieldPlaceholder ?? "",
+                textFieldDefault: textFieldDefault,
                 onButtonClicked: onTapped,
                 fromViewController: self
             )
@@ -160,8 +160,8 @@ extension UIViewController {
                 message: message,
                 cancelButtonTitle: cancel?.name,
                 otherButtonTitles: other.map({$0.name}),
-                textFieldPlaceholder: nil,
-                textFieldDefault: nil,
+                textFieldPlaceholder: textFieldPlaceholder ?? "",
+                textFieldDefault: textFieldDefault,
                 onButtonClicked: onTapped
             )
         }
