@@ -13,6 +13,11 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     private var lookup = [Key:Int]()
 
     public init() {}
+    public init(values: [(Key,Value)]) {
+        for (key, value) in values {
+            self[key] = value
+        }
+    }
 
     public var count: Int = 0
 
