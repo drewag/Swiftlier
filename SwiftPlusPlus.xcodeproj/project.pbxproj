@@ -53,6 +53,7 @@
 		49C84D881CFCAB7B00F65546 /* SelectableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D871CFCAB7B00F65546 /* SelectableValue.swift */; };
 		49C84D8A1CFCB22700F65546 /* UserReportableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C84D891CFCB22700F65546 /* UserReportableResult.swift */; };
 		49CB14A41D4F0F0100632C4C /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB14A31D4F0F0100632C4C /* BubbleView.swift */; };
+		49CEBE951D65122E00F7C550 /* Transformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEBE941D65122E00F7C550 /* Transformation.swift */; };
 		49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */; };
 		49CFCFAF1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */; };
 		49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D06DD01A59D64A0031845A /* EventCenter.swift */; };
@@ -140,6 +141,7 @@
 		49C84D871CFCAB7B00F65546 /* SelectableValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableValue.swift; sourceTree = "<group>"; };
 		49C84D891CFCB22700F65546 /* UserReportableResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReportableResult.swift; sourceTree = "<group>"; };
 		49CB14A31D4F0F0100632C4C /* BubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
+		49CEBE941D65122E00F7C550 /* Transformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformation.swift; sourceTree = "<group>"; };
 		49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Formatting.swift"; sourceTree = "<group>"; };
 		49D06DD01A59D64A0031845A /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				49CFCFAE1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift */,
 				493610D01D58FA540029C7F1 /* CGMath.swift */,
 				493610D21D58FA8D0029C7F1 /* Angle.swift */,
+				49CEBE941D65122E00F7C550 /* Transformation.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				496D42FC197B842400250A0A /* Observable.swift in Sources */,
 				493C48771CAF70E900D80A9B /* Array+SwiftPlusPlus.swift in Sources */,
 				49FEA5341943938600F2AFDB /* String+SwiftPlusPlus.swift in Sources */,
+				49CEBE951D65122E00F7C550 /* Transformation.swift in Sources */,
 				49000F041BC8B438002EF454 /* NSDate+Formatting.swift in Sources */,
 				49D06DD11A59D64A0031845A /* EventCenter.swift in Sources */,
 				4908FFD01BEA8E10003EE9F3 /* UIViewController+Transitions.swift in Sources */,
