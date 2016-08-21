@@ -64,6 +64,52 @@ public final class ObservableArray<Element> {
         }
     }
 
+    public func add(observer observer: AnyObject, forSection section: Int, in tableView: UITableView, withIndexOffset indexOffset: Int = 0) {
+        self.add(
+            observer: observer,
+            onDidInsert: { _, index in
+                let indexPath = NSIndexPath(forItem: index + indexOffset, inSection: section)
+                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            },
+            onDidRemove: { _, index in
+                let indexPath = NSIndexPath(forItem: index + indexOffset, inSection: section)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            },
+            onDidRemoveAll: { _ in
+                tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
+            },
+            onDidMove: { _, from, to in
+                tableView.moveRowAtIndexPath(
+                    NSIndexPath(forRow: from + indexOffset, inSection: section),
+                    toIndexPath: NSIndexPath(forRow: to + indexOffset, inSection: section)
+                )
+            }
+        )
+    }
+
+    public func add(observer observer: AnyObject, forSection section: Int, in collectionView: UICollectionView, withIndexOffset indexOffset: Int = 0) {
+        self.add(
+            observer: observer,
+            onDidInsert: { _, index in
+                let indexPath = NSIndexPath(forItem: index + indexOffset, inSection: section)
+                collectionView.insertItemsAtIndexPaths([indexPath])
+            },
+            onDidRemove: { _, index in
+                let indexPath = NSIndexPath(forItem: index + indexOffset, inSection: section)
+                collectionView.deleteItemsAtIndexPaths([indexPath])
+            },
+            onDidRemoveAll: { _ in
+                collectionView.reloadData()
+            },
+            onDidMove: { _, from, to in
+                collectionView.moveItemAtIndexPath(
+                    NSIndexPath(forItem: from + indexOffset, inSection: section),
+                    toIndexPath: NSIndexPath(forItem: to + indexOffset, inSection: section)
+                )
+            }
+        )
+    }
+
     public func remove(observer observer: AnyObject) {
         if let index = self.index(ofObserver: observer) {
             self.observers.removeAtIndex(index)
