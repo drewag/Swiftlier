@@ -12,6 +12,8 @@ extension UIView {
     func captureImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 1)
         self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }
