@@ -16,8 +16,8 @@ public struct TaskService {
         return self.singleton.performInBackground(block)
     }
 
-    static public func performInForeground(block: () -> ()) {
-        return self.singleton.performInForeground(block)
+    static public func performInForeground(waitForCompletion wait: Bool = false, block: () -> ()) {
+        return self.singleton.performInForeground(wait, block: block)
     }
 
     private func performInBackground(block: () -> ()) {
@@ -25,7 +25,17 @@ public struct TaskService {
         self.backgroundOperationQueue.addOperation(operation)
     }
 
-    private func performInForeground(block: () -> ()) {
-        dispatch_async(dispatch_get_main_queue(), block)
+    private func performInForeground(waitForCompletion: Bool, block: () -> ()) {
+        if waitForCompletion {
+            let semaphore = dispatch_semaphore_create(0)
+            dispatch_async(dispatch_get_main_queue()) {
+                block()
+                dispatch_semaphore_signal(semaphore)
+            }
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), block)
+        }
     }
 }
