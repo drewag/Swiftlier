@@ -45,6 +45,14 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         return self.valueStore.flatMap({$0})
     }
 
+    public var keys: [Key] {
+        var all = [(Key,Int)]()
+        for (key, index) in self.lookup {
+            all.append((key, index))
+        }
+        return all.sort({$0.1 < $1.1}).map({$0.0})
+    }
+
     public mutating func removeAll() {
         self.valueStore.removeAll()
         self.lookup.removeAll()
