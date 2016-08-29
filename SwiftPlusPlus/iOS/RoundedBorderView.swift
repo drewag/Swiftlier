@@ -8,20 +8,26 @@
 
 import UIKit
 
-@IBDesignable class RoundedBorderView: UIView {
-    @IBInspectable var borderColor: UIColor = UIColor.blackColor() {
+@IBDesignable public class RoundedBorderView: UIView {
+    @IBInspectable public var borderColor: UIColor = UIColor.blackColor() {
         didSet {
             self.update()
         }
     }
 
-    @IBInspectable var cornerRadius: CGFloat = 10 {
+    @IBInspectable public var cornerRadius: CGFloat = 10 {
         didSet {
             self.update()
         }
     }
 
-    override func awakeFromNib() {
+    @IBInspectable public var shadowRadius: CGFloat = 0 {
+        didSet {
+            self.update()
+        }
+    }
+
+    override public func awakeFromNib() {
         super.awakeFromNib()
 
         self.update()
@@ -33,5 +39,9 @@ private extension RoundedBorderView {
         self.layer.borderWidth = 1 / UIScreen.mainScreen().scale
         self.layer.borderColor = self.borderColor.CGColor
         self.layer.cornerRadius = self.cornerRadius
+        self.layer.shadowRadius = self.shadowRadius
+        self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize()
     }
 }
