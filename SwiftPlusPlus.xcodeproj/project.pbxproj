@@ -77,6 +77,7 @@
 		49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7300C1C82574800C9F4BF /* NativeTypesDecoder.swift */; };
 		49E7300F1C825A3200C9F4BF /* FileArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7300E1C825A3200C9F4BF /* FileArchiver.swift */; };
 		49F563F51D75EAA000AEB1D9 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F563F41D75EAA000AEB1D9 /* ShadowView.swift */; };
+		49F563F71D75EB0200AEB1D9 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F563F61D75EB0200AEB1D9 /* PlaceholderTextView.swift */; };
 		49F969AA19859F31006BF515 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F969A919859F31006BF515 /* ObservableTests.swift */; };
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
@@ -168,6 +169,7 @@
 		49E7300C1C82574800C9F4BF /* NativeTypesDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeTypesDecoder.swift; sourceTree = "<group>"; };
 		49E7300E1C825A3200C9F4BF /* FileArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileArchiver.swift; sourceTree = "<group>"; };
 		49F563F41D75EAA000AEB1D9 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		49F563F61D75EB0200AEB1D9 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		49F969A919859F31006BF515 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5051943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 		49C84D4D1CFB86E500F65546 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				49F563F61D75EB0200AEB1D9 /* PlaceholderTextView.swift */,
 				49F563F41D75EAA000AEB1D9 /* ShadowView.swift */,
 				49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */,
 				49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */,
@@ -625,6 +628,7 @@
 				4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */,
 				49A2BBD11BA2597600E472D7 /* UIView+ImageCapture.swift in Sources */,
 				498425A71D51159900046DCD /* ObservableDictionary.swift in Sources */,
+				49F563F71D75EB0200AEB1D9 /* PlaceholderTextView.swift in Sources */,
 				49D06DEF1A5B7AA00031845A /* MultiCallback.swift in Sources */,
 				49CFCF8F1CB0D6FF00915768 /* UIViewController+Helpers.swift in Sources */,
 				499934E21C9F1F440050A86B /* UITableView+EasyRegister.swift in Sources */,
