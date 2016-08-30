@@ -76,6 +76,7 @@
 		49E730091C82468900C9F4BF /* NativeTypesEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E730081C82468900C9F4BF /* NativeTypesEncoder.swift */; };
 		49E7300D1C82574800C9F4BF /* NativeTypesDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7300C1C82574800C9F4BF /* NativeTypesDecoder.swift */; };
 		49E7300F1C825A3200C9F4BF /* FileArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7300E1C825A3200C9F4BF /* FileArchiver.swift */; };
+		49F563F51D75EAA000AEB1D9 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F563F41D75EAA000AEB1D9 /* ShadowView.swift */; };
 		49F969AA19859F31006BF515 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F969A919859F31006BF515 /* ObservableTests.swift */; };
 		49FEA5071943922A00F2AFDB /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FEA5061943922A00F2AFDB /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FEA50D1943922A00F2AFDB /* SwiftPlusPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */; };
@@ -166,6 +167,7 @@
 		49E730081C82468900C9F4BF /* NativeTypesEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeTypesEncoder.swift; sourceTree = "<group>"; };
 		49E7300C1C82574800C9F4BF /* NativeTypesDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeTypesDecoder.swift; sourceTree = "<group>"; };
 		49E7300E1C825A3200C9F4BF /* FileArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileArchiver.swift; sourceTree = "<group>"; };
+		49F563F41D75EAA000AEB1D9 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		49F969A919859F31006BF515 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		49FEA5011943922A00F2AFDB /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FEA5051943922A00F2AFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		49C84D4D1CFB86E500F65546 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				49F563F41D75EAA000AEB1D9 /* ShadowView.swift */,
 				49C84D4B1CFB86E300F65546 /* RoundedBorderView.swift */,
 				49C84D4E1CFB87AB00F65546 /* RoundedBorderButton.swift */,
 				49C84D501CFB8C6B00F65546 /* ThinLayoutConstraint.swift */,
@@ -588,6 +591,7 @@
 				499ED2201CF61AFF00E4E902 /* UIImage+Editing.swift in Sources */,
 				49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49E72FFE1C822AE700C9F4BF /* CoderKeyType.swift in Sources */,
+				49F563F51D75EAA000AEB1D9 /* ShadowView.swift in Sources */,
 				49E72FFA1C822AA900C9F4BF /* EncoderType.swift in Sources */,
 				49E72FF81C822A9F00C9F4BF /* EncodableType.swift in Sources */,
 				4954007D1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift in Sources */,
