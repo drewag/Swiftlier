@@ -6,7 +6,6 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
-
 // A collection of properties and methods to replace the built in UIGraphics functions
 // that work off of the graphic context stack. The stack is not reliable when trying to
 // draw from multiple threads at once. These properties and methods work directly off the
@@ -41,8 +40,14 @@ extension CGContext {
         CGContextRestoreGState(self)
     }
 
-    public static func createImageContext(withSize size: CGSize) -> CGContext? {
-        let scale = UIScreen.mainScreen().scale
+    public static func createImageContext(withSize size: CGSize, coordinateSystem: CoordinateSystem = .UIKit) -> CGContext? {
+        let scale: CGFloat
+        switch coordinateSystem {
+        case .UIKit:
+            scale = UIScreen.mainScreen().scale
+        case .PDF:
+            scale = 1
+        }
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedFirst.rawValue)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let context = CGBitmapContextCreate(
@@ -55,9 +60,19 @@ extension CGContext {
             bitmapInfo.rawValue
         )
 
-        CGContextTranslateCTM(context, 0, size.height * scale);
-        CGContextScaleCTM(context, scale, -scale)
+        switch coordinateSystem {
+        case .UIKit:
+            CGContextTranslateCTM(context, 0, size.height * scale);
+            CGContextScaleCTM(context, scale, -scale)
+        case .PDF:
+            break
+        }
 
         return context
     }
+}
+
+public enum CoordinateSystem {
+    case UIKit
+    case PDF
 }
