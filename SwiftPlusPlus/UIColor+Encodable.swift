@@ -14,10 +14,10 @@ public struct Color: EncodableType {
     }
 
     private struct Keys {
-        struct red: CoderKeyType { typealias ValueType = Float }
-        struct green: CoderKeyType { typealias ValueType = Float }
-        struct blue: CoderKeyType { typealias ValueType = Float }
-        struct alpha: CoderKeyType { typealias ValueType = Float }
+        class red: CoderKey<Float> {}
+        class green: CoderKey<Float> {}
+        class blue: CoderKey<Float> {}
+        class alpha: CoderKey<Float> {}
     }
 
     public func encode(encoder: EncoderType) {

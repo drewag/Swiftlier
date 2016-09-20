@@ -1,5 +1,5 @@
 //
-//  CoderKeyType.swift
+//  CoderKey.swift
 //  AtomicObjectFiles
 //
 //  Created by Andrew J Wagner on 10/9/15.
@@ -20,42 +20,46 @@ extension Float: RawEncodableType { public var asObject: AnyObject { return self
 extension NSData: RawEncodableType { public var asObject: AnyObject { return self } }
 extension NSDate: RawEncodableType { public var asObject: AnyObject { return self } }
 
-public protocol CoderKeyType {
-    associatedtype ValueType: RawEncodableType
+public class CoderKey<Value: RawEncodableType> {
+    public class var customKey: String? { return nil }
 }
 
-public protocol OptionalCoderKeyType {
-    associatedtype ValueType: RawEncodableType
+public class OptionalCoderKey<Value: RawEncodableType> {
+    public class var customKey: String? { return nil }
 }
 
-public protocol NestedCoderKeyType {
-    associatedtype ValueType: EncodableType
+public class NestedCoderKey<Value: EncodableType> {
+    public class var customKey: String? { return nil }
 }
 
-public protocol OptionalNestedCoderKeyType {
-    associatedtype ValueType: EncodableType
+public class OptionalNestedCoderKey<Value: EncodableType> {
+    public class var customKey: String? { return nil }
 }
 
-extension CoderKeyType {
-    static func toString() -> String {
-        return String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!
+extension CoderKey {
+    static var path: [String] {
+        return self.customKey?.componentsSeparatedByString(".")
+            ?? [String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!]
     }
 }
 
-extension OptionalCoderKeyType {
-    static func toString() -> String {
-        return String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!
+extension OptionalCoderKey {
+    static var path: [String] {
+        return self.customKey?.componentsSeparatedByString(".")
+            ?? [String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!]
     }
 }
 
-extension NestedCoderKeyType {
-    static func toString() -> String {
-        return String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!
+extension NestedCoderKey {
+    static var path: [String] {
+        return self.customKey?.componentsSeparatedByString(".")
+            ?? [String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!]
     }
 }
 
-extension OptionalNestedCoderKeyType {
-    static func toString() -> String {
-        return String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!
+extension OptionalNestedCoderKey {
+    static var path: [String] {
+        return self.customKey?.componentsSeparatedByString(".")
+            ?? [String(Mirror(reflecting: self).subjectType).componentsSeparatedByString(".").first!]
     }
 }

@@ -17,65 +17,75 @@ public final class NativeTypesEncoder: EncoderType {
         return encoder.raw ?? [:]
     }
 
-    public func encode<K: CoderKeyType>(data: K.ValueType, forKey key: K.Type) {
-        switch self.raw {
-        case var dict as [String:AnyObject]:
-            dict[key.toString()] = data.asObject
-            self.raw = dict
-        case nil:
-            self.raw = [key.toString():data.asObject]
-        default:
-            fatalError("Unexpected type")
-        }
+    public func encode<Value: RawEncodableType>(data: Value, forKey key: CoderKey<Value>.Type) {
+        self.addValue(data.asObject, keyPath: key.path)
     }
 
-    public func encode<K: OptionalCoderKeyType>(data: K.ValueType?, forKey key: K.Type) {
-        self.addValue(data?.asObject, key: key.toString())
+    public func encode<Value: RawEncodableType>(data: Value?, forKey key: OptionalCoderKey<Value>.Type) {
+        self.addValue(data?.asObject, keyPath: key.path)
     }
 
-    public func encode<K: NestedCoderKeyType>(data: K.ValueType, forKey key: K.Type) {
-        self.addValue(NativeTypesEncoder.objectFromEncodable(data), key: key.toString())
+    public func encode<Value: EncodableType>(data: Value, forKey key: NestedCoderKey<Value>.Type) {
+        self.addValue(NativeTypesEncoder.objectFromEncodable(data), keyPath: key.path)
     }
 
-    public func encode<K: OptionalNestedCoderKeyType>(data: K.ValueType?, forKey key: K.Type) {
+    public func encode<Value: EncodableType>(data: Value?, forKey key: OptionalNestedCoderKey<Value>.Type) {
         if let data = data {
-            self.addValue(NativeTypesEncoder.objectFromEncodable(data), key: key.toString())
+            self.addValue(NativeTypesEncoder.objectFromEncodable(data), keyPath: key.path)
         }
         else {
-            self.addValue(nil, key: key.toString())
+            self.addValue(nil, keyPath: key.path)
         }
     }
 
-    public func encode<K: CoderKeyType>(data: [K.ValueType], forKey key: K.Type) {
+    public func encode<Value: RawEncodableType>(data: [Value], forKey key: CoderKey<Value>.Type) {
         var array = [AnyObject]()
         for value in data {
             array.append(value.asObject)
         }
-        self.addValue(array, key: key.toString())
+        self.addValue(array, keyPath: key.path)
     }
 
-    public func encode<K: NestedCoderKeyType>(data: [K.ValueType], forKey key: K.Type) {
+    public func encode<Value: EncodableType>(data: [Value], forKey key: NestedCoderKey<Value>.Type) {
         var array = [AnyObject]()
         for value in data {
             let object = NativeTypesEncoder.objectFromEncodable(value)
             array.append(object)
         }
-        self.addValue(array, key: key.toString())
+        self.addValue(array, keyPath: key.path)
     }
 }
 
 private extension NativeTypesEncoder {
-    func addValue(value: AnyObject?, key: String) {
+    func addValue(value: AnyObject?, keyPath path: [String]) {
+        let rawDict: [String:AnyObject]
         switch self.raw {
         case var dict as [String:AnyObject]:
-            dict[key] = value
-            self.raw = dict
+            rawDict = dict
         case nil:
-            if let value = value {
-                self.raw = [key:value]
-            }
+            rawDict = [String:AnyObject]()
         default:
             fatalError("Unexpected type")
         }
+
+        self.raw = self.valueDict(forRemainingPath: path, withValue: value, andOriginalDict: rawDict)
+    }
+
+    func valueDict(forRemainingPath path: [String], withValue value: AnyObject?, andOriginalDict originalDict: [String:AnyObject]) -> [String:AnyObject] {
+        var originalDict = originalDict
+        var path = path
+        let object: AnyObject?
+        if path.count == 1 {
+            object = value
+        }
+        else if let nextDict = originalDict[path.removeFirst()] as? [String:AnyObject] {
+            object = self.valueDict(forRemainingPath: path, withValue: value, andOriginalDict: nextDict)
+        }
+        else {
+            object = self.valueDict(forRemainingPath: path, withValue: value, andOriginalDict: [String:AnyObject]())
+        }
+
+        originalDict[path.first!] = object
+        return originalDict
     }
 }

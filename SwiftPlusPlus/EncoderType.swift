@@ -9,11 +9,11 @@
 import Foundation
 
 public protocol EncoderType {
-    func encode<K: CoderKeyType>(data: K.ValueType, forKey key: K.Type)
-    func encode<K: OptionalCoderKeyType>(data: K.ValueType?, forKey key: K.Type)
-    func encode<K: NestedCoderKeyType>(data: K.ValueType, forKey key: K.Type)
-    func encode<K: OptionalNestedCoderKeyType>(data: K.ValueType?, forKey key: K.Type)
+    func encode<Value: RawEncodableType>(data: Value, forKey key: CoderKey<Value>.Type)
+    func encode<Value: RawEncodableType>(data: Value?, forKey key: OptionalCoderKey<Value>.Type)
+    func encode<Value: EncodableType>(data: Value, forKey key: NestedCoderKey<Value>.Type)
+    func encode<Value: EncodableType>(data: Value?, forKey key: OptionalNestedCoderKey<Value>.Type)
 
-    func encode<K: CoderKeyType>(data: [K.ValueType], forKey key: K.Type)
-    func encode<K: NestedCoderKeyType>(data: [K.ValueType], forKey key: K.Type)
+    func encode<Value: RawEncodableType>(data: [Value], forKey key: CoderKey<Value>.Type)
+    func encode<Value: EncodableType>(data: [Value], forKey key: NestedCoderKey<Value>.Type)
 }

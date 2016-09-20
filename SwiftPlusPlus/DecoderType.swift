@@ -9,11 +9,11 @@
 import Foundation
 
 public protocol DecoderType {
-    func decode<K: CoderKeyType>(key: K.Type) -> K.ValueType
-    func decode<K: OptionalCoderKeyType>(key: K.Type) -> K.ValueType?
-    func decode<K: NestedCoderKeyType>(key: K.Type) -> K.ValueType
-    func decode<K: OptionalNestedCoderKeyType>(key: K.Type) -> K.ValueType?
+    func decode<Value: RawEncodableType>(key: CoderKey<Value>.Type) -> Value
+    func decode<Value: RawEncodableType>(key: OptionalCoderKey<Value>.Type) -> Value?
+    func decode<Value: EncodableType>(key: NestedCoderKey<Value>.Type) -> Value
+    func decode<Value: EncodableType>(key: OptionalNestedCoderKey<Value>.Type) -> Value?
 
-    func decodeArray<K: CoderKeyType>(key: K.Type) -> [K.ValueType]
-    func decodeArray<K: NestedCoderKeyType>(key: K.Type) -> [K.ValueType]
+    func decodeArray<Value: RawEncodableType>(key: CoderKey<Value>.Type) -> [Value]
+    func decodeArray<Value: EncodableType>(key: NestedCoderKey<Value>.Type) -> [Value]
 }

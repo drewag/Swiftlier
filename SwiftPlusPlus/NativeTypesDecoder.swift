@@ -20,77 +20,65 @@ public final class NativeTypesDecoder: DecoderType {
         self.raw = raw
     }
 
-    public func decode<K: CoderKeyType>(key: K.Type) -> K.ValueType {
-        switch self.raw {
-        case let dict as [String:AnyObject]:
-            return dict[key.toString()] as! K.ValueType
-        default:
-            fatalError("Unexpected type")
-        }
+    public func decode<Value: RawEncodableType>(key: CoderKey<Value>.Type) -> Value {
+        return self.object(forKeyPath: key.path) as! Value
     }
 
-    public func decode<K: OptionalCoderKeyType>(key: K.Type) -> K.ValueType? {
-        switch self.raw {
-        case let dict as [String:AnyObject]:
-            return dict[key.toString()] as? K.ValueType
-        default:
-            fatalError("Unexpected type")
-        }
+    public func decode<Value: RawEncodableType>(key: OptionalCoderKey<Value>.Type) -> Value? {
+        return self.object(forKeyPath: key.path) as? Value
     }
 
 
-    public func decode<K: NestedCoderKeyType>(key: K.Type) -> K.ValueType {
-        switch self.raw {
-        case let dict as [String:AnyObject]:
-            guard let dict = dict[key.toString()] as? [String: AnyObject] else {
-                fatalError("Unexpected type")
-            }
-            return NativeTypesDecoder.decodableTypeFromObject(dict)!
-        default:
-            fatalError("Unexpected type")
-        }
+    public func decode<Value: EncodableType>(key: NestedCoderKey<Value>.Type) -> Value {
+        let object = self.object(forKeyPath: key.path)!
+        return NativeTypesDecoder.decodableTypeFromObject(object)!
     }
 
-    public func decode<K: OptionalNestedCoderKeyType>(key: K.Type) -> K.ValueType? {
-        switch self.raw {
-        case let dict as [String:AnyObject]:
-            guard let dict = dict[key.toString()] as? [String: AnyObject] else {
-                return nil
-            }
-            return NativeTypesDecoder.decodableTypeFromObject(dict)
-        default:
-            fatalError("Unexpected type")
+    public func decode<Value: EncodableType>(key: OptionalNestedCoderKey<Value>.Type) -> Value? {
+        guard let object = self.object(forKeyPath: key.path) else {
+            return nil
         }
+        return NativeTypesDecoder.decodableTypeFromObject(object)
     }
 
-    public func decodeArray<K: CoderKeyType>(key: K.Type) -> [K.ValueType] {
-        switch self.raw {
-        case let dict as [String:AnyObject]:
-            guard let array = dict[key.toString()] as? [AnyObject] else {
-                fatalError("Unexpected type")
-            }
-            var output: [K.ValueType] = []
-            for raw in array {
-                output.append(raw as! K.ValueType)
-            }
-            return output
-        default:
+    public func decodeArray<Value: RawEncodableType>(key: CoderKey<Value>.Type) -> [Value] {
+        guard let array = self.object(forKeyPath: key.path) as? [AnyObject] else {
             fatalError("Unexpected type")
         }
+        var output: [Value] = []
+        for raw in array {
+            output.append(raw as! Value)
+        }
+        return output
     }
 
-    public func decodeArray<K: NestedCoderKeyType>(key: K.Type) -> [K.ValueType] {
+    public func decodeArray<Value: EncodableType>(key: NestedCoderKey<Value>.Type) -> [Value] {
+        guard let array = self.object(forKeyPath: key.path) as? [AnyObject] else {
+            fatalError("Unexpected type")
+        }
+        var output: [Value] = []
+        for raw in array {
+            let object: Value = NativeTypesDecoder.decodableTypeFromObject(raw)!
+            output.append(object)
+        }
+        return output
+    }
+}
+
+private extension NativeTypesDecoder {
+    func object(forKeyPath path: [String]) -> AnyObject? {
         switch self.raw {
-        case let dict as [String:AnyObject]:
-            guard let array = dict[key.toString()] as? [AnyObject] else {
-                fatalError("Unexpected type")
+        case var dict as [String:AnyObject]:
+            for (i, key) in path.enumerate() {
+                guard i < path.count - 1 else {
+                    return dict[key]
+                }
+                guard let newDict = dict[key] as? [String:AnyObject] else {
+                    return nil
+                }
+                dict = newDict
             }
-            var output: [K.ValueType] = []
-            for raw in array {
-                let object: K.ValueType = NativeTypesDecoder.decodableTypeFromObject(raw)!
-                output.append(object)
-            }
-            return output
+            return nil
         default:
             fatalError("Unexpected type")
         }
