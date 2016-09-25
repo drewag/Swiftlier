@@ -544,6 +544,7 @@
 				TargetAttributes = {
 					49FEA5001943922A00F2AFDB = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 					};
 					49FEA50B1943922A00F2AFDB = {
 						CreatedOnToolsVersion = 6.0;
@@ -790,6 +791,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drewagllc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -807,6 +809,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drewagllc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

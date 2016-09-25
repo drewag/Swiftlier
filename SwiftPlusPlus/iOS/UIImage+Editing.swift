@@ -39,6 +39,6 @@ extension UIImage {
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
 
-        return scaledImage;
+        return scaledImage!;
     }
 }

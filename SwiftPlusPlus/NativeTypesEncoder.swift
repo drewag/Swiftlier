@@ -60,7 +60,7 @@ private extension NativeTypesEncoder {
     func addValue(value: AnyObject?, keyPath path: [String]) {
         let rawDict: [String:AnyObject]
         switch self.raw {
-        case var dict as [String:AnyObject]:
+        case let dict as [String:AnyObject]:
             rawDict = dict
         case nil:
             rawDict = [String:AnyObject]()

@@ -26,7 +26,7 @@ public class BubbleView: UIView {
             let center = round(rect.width * 2 / 3)
             let right = rect.maxX
 
-            let context = UIGraphicsGetCurrentContext()
+            let context = UIGraphicsGetCurrentContext()!
             CGContextMoveToPoint(context, right, top)
             CGContextAddLineToPoint(context, right, bottom)
             CGContextAddCurveToPoint(context, center, middle + width / 4, left, middle, left, middle)

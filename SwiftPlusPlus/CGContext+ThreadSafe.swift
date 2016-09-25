@@ -58,7 +58,7 @@ extension CGContext {
             Int(size.width * scale * 4),
             colorSpace,
             bitmapInfo.rawValue
-        )
+        )!
 
         switch coordinateSystem {
         case .UIKit:
