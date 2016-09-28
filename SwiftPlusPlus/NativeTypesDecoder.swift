@@ -21,11 +21,15 @@ public final class NativeTypesDecoder: DecoderType {
     }
 
     public func decode<Value: RawEncodableType>(key: CoderKey<Value>.Type) -> Value {
-        return self.object(forKeyPath: key.path) as! Value
+        let object = self.object(forKeyPath: key.path)
+        return object as! Value
     }
 
     public func decode<Value: RawEncodableType>(key: OptionalCoderKey<Value>.Type) -> Value? {
-        return self.object(forKeyPath: key.path) as? Value
+        guard let object = self.object(forKeyPath: key.path) else {
+           return nil
+        }
+        return object as? Value
     }
 
 

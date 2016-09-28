@@ -75,17 +75,21 @@ private extension NativeTypesEncoder {
         var originalDict = originalDict
         var path = path
         let object: AnyObject?
-        if path.count == 1 {
+        guard path.count > 1 else {
             object = value
+            originalDict[path.first!] = object
+            return originalDict
         }
-        else if let nextDict = originalDict[path.removeFirst()] as? [String:AnyObject] {
+
+        let key = path.removeFirst()
+        if let nextDict = originalDict[key] as? [String:AnyObject] {
             object = self.valueDict(forRemainingPath: path, withValue: value, andOriginalDict: nextDict)
         }
         else {
             object = self.valueDict(forRemainingPath: path, withValue: value, andOriginalDict: [String:AnyObject]())
         }
 
-        originalDict[path.first!] = object
+        originalDict[key] = object
         return originalDict
     }
 }
