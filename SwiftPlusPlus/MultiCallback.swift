@@ -17,11 +17,21 @@ public final class MultiCallback<CallbackArguments> {
     // MARK: Properties
     
     private var observers: [(observer: WeakWrapper, callbacks: [CallBackType])] = []
-    
+    private var onHasObserverChanged: ((Bool) -> ())?
+
+    /**
+     Whether there is at least 1 current observer
+     */
+    public var hasObserver: Bool {
+        return observers.count > 0
+    }
+
     // MARK: Initializers
     
-    public init() {}
-    
+    public init(onHasObserversChanged: ((Bool) -> ())? = nil) {
+        self.onHasObserverChanged = onHasObserversChanged
+    }
+
     // MARK: Methods
     
     /**
@@ -38,7 +48,11 @@ public final class MultiCallback<CallbackArguments> {
         else {
             // since the observer does not already exist, add a new tuple with the
             // observer and an array with the callback
+            let oldCount = self.observers.count
             self.observers.append((observer: WeakWrapper(observer), callbacks: [callback]))
+            if oldCount == 0 {
+                self.onHasObserverChanged?(true)
+            }
         }
     }
     
@@ -50,6 +64,9 @@ public final class MultiCallback<CallbackArguments> {
     public func removeObserver(observer: AnyObject) {
         if let index = self.indexOfObserver(observer) {
             self.observers.removeAtIndex(index)
+            if self.observers.count == 0 {
+                self.onHasObserverChanged?(false)
+            }
         }
     }
     
