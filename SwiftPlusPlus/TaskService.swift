@@ -53,7 +53,6 @@ public final class TaskService {
             return
         }
 
-        // TODO: Cancel any previously scheduled versions
         self.performTask(withIdentifier: task.uniqueIdentifier, with: period)
     }
 }
@@ -112,7 +111,8 @@ private extension TaskService {
                 self.scheduledTasks[uniqueIdentifier]!.task.lastSuccessfulRun = date
                 self.schedule(periodicTask: task, with: period, at: period.nextDate(date))
             case .error(_):
-                break
+                let date = NSDate().dateByAddingTimeInterval(60 * 60) // Retry in 1 hour
+                self.schedule(periodicTask: task, with: period, at: date)
             }
             self.scheduledTasks[uniqueIdentifier]!.task.isRunning = false
         }
