@@ -28,6 +28,8 @@
 		495CCCDB1C6307790075E49E /* Float+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495CCCDA1C6307790075E49E /* Float+Angle.swift */; };
 		496984371DA035F900491E25 /* PeriodicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496984361DA035F900491E25 /* PeriodicTask.swift */; };
 		4969843D1DA050D300491E25 /* BlockPeriodicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */; };
+		4969843F1DA0C2AE00491E25 /* SingleTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969843E1DA0C2AE00491E25 /* SingleTask.swift */; };
+		496984411DA17E2600491E25 /* BlockSingleTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496984401DA17E2600491E25 /* BlockSingleTask.swift */; };
 		496A02971D7137FD00174E1C /* CGContext+ThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A02961D7137FD00174E1C /* CGContext+ThreadSafe.swift */; };
 		496A029E1D72466100174E1C /* UIColor+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A029D1D72466100174E1C /* UIColor+Encodable.swift */; };
 		496A02A51D7354D500174E1C /* NSURL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A02A41D7354D500174E1C /* NSURL+Helpers.swift */; };
@@ -123,6 +125,8 @@
 		495CCCDA1C6307790075E49E /* Float+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Angle.swift"; sourceTree = "<group>"; };
 		496984361DA035F900491E25 /* PeriodicTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicTask.swift; sourceTree = "<group>"; };
 		4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockPeriodicTask.swift; sourceTree = "<group>"; };
+		4969843E1DA0C2AE00491E25 /* SingleTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTask.swift; sourceTree = "<group>"; };
+		496984401DA17E2600491E25 /* BlockSingleTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockSingleTask.swift; sourceTree = "<group>"; };
 		496A02961D7137FD00174E1C /* CGContext+ThreadSafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+ThreadSafe.swift"; sourceTree = "<group>"; };
 		496A029D1D72466100174E1C /* UIColor+Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Encodable.swift"; sourceTree = "<group>"; };
 		496A02A41D7354D500174E1C /* NSURL+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Helpers.swift"; sourceTree = "<group>"; };
@@ -224,8 +228,10 @@
 			isa = PBXGroup;
 			children = (
 				496984361DA035F900491E25 /* PeriodicTask.swift */,
+				4969843E1DA0C2AE00491E25 /* SingleTask.swift */,
 				4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */,
 				493610F01D5C149D0029C7F1 /* TaskService.swift */,
+				496984401DA17E2600491E25 /* BlockSingleTask.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				49C84D8A1CFCB22700F65546 /* UserReportableResult.swift in Sources */,
 				495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */,
 				49C2F8FF1BA7CBBD003C73A1 /* UIView+Layout.swift in Sources */,
+				496984411DA17E2600491E25 /* BlockSingleTask.swift in Sources */,
 				4991784A1BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */,
 				49C84D511CFB8C6B00F65546 /* ThinLayoutConstraint.swift in Sources */,
 				49C84D4C1CFB86E300F65546 /* RoundedBorderView.swift in Sources */,
@@ -661,6 +668,7 @@
 				49D1C2321D3379800074ED33 /* ObservableArray.swift in Sources */,
 				499633691CCD5CF000075E1D /* NetworkUserReportableError.swift in Sources */,
 				49E26E0D1CA339D50026F15B /* JSON.swift in Sources */,
+				4969843F1DA0C2AE00491E25 /* SingleTask.swift in Sources */,
 				493610D11D58FA540029C7F1 /* CGMath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,11 +6,6 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
-public enum TaskResult {
-    case success
-    case error(UserReportableError)
-}
-
 public enum TaskPeriod {
     case interval(seconds: Double)
 }
