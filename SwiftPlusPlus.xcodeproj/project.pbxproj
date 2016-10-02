@@ -26,6 +26,8 @@
 		4954007D1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */; };
 		495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */; };
 		495CCCDB1C6307790075E49E /* Float+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495CCCDA1C6307790075E49E /* Float+Angle.swift */; };
+		496984371DA035F900491E25 /* PeriodicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496984361DA035F900491E25 /* PeriodicTask.swift */; };
+		4969843D1DA050D300491E25 /* BlockPeriodicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */; };
 		496A02971D7137FD00174E1C /* CGContext+ThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A02961D7137FD00174E1C /* CGContext+ThreadSafe.swift */; };
 		496A029E1D72466100174E1C /* UIColor+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A029D1D72466100174E1C /* UIColor+Encodable.swift */; };
 		496A02A51D7354D500174E1C /* NSURL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A02A41D7354D500174E1C /* NSURL+Helpers.swift */; };
@@ -119,6 +121,8 @@
 		4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
 		495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardConstraintAdjuster.swift; sourceTree = "<group>"; };
 		495CCCDA1C6307790075E49E /* Float+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Angle.swift"; sourceTree = "<group>"; };
+		496984361DA035F900491E25 /* PeriodicTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicTask.swift; sourceTree = "<group>"; };
+		4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockPeriodicTask.swift; sourceTree = "<group>"; };
 		496A02961D7137FD00174E1C /* CGContext+ThreadSafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+ThreadSafe.swift"; sourceTree = "<group>"; };
 		496A029D1D72466100174E1C /* UIColor+Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Encodable.swift"; sourceTree = "<group>"; };
 		496A02A41D7354D500174E1C /* NSURL+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Helpers.swift"; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		493610EF1D5C14930029C7F1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				496984361DA035F900491E25 /* PeriodicTask.swift */,
+				4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */,
 				493610F01D5C149D0029C7F1 /* TaskService.swift */,
 			);
 			name = Services;
@@ -592,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496984371DA035F900491E25 /* PeriodicTask.swift in Sources */,
 				499ED2201CF61AFF00E4E902 /* UIImage+Editing.swift in Sources */,
 				49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49E72FFE1C822AE700C9F4BF /* CoderKeyType.swift in Sources */,
@@ -622,6 +629,7 @@
 				493610F11D5C149D0029C7F1 /* TaskService.swift in Sources */,
 				49C84D881CFCAB7B00F65546 /* SelectableValue.swift in Sources */,
 				49A0CD8C1BA1DD8900E28B66 /* DataSourceType.swift in Sources */,
+				4969843D1DA050D300491E25 /* BlockPeriodicTask.swift in Sources */,
 				49DC575C198C53AC0051F266 /* SequenceType+SwiftPlusPlus.swift in Sources */,
 				499ED2221CF62F8B00E4E902 /* NSDate+Comparison.swift in Sources */,
 				49CFCFAF1CB1CE8E00915768 /* NSTimeInterval+Formatting.swift in Sources */,

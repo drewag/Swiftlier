@@ -34,4 +34,14 @@ extension NSDate {
 
         return today == otherDate
     }
+
+    public var time: dispatch_time_t {
+        let seconds = self.timeIntervalSince1970
+        let wholeSecsFloor = floor(seconds)
+        let nanosOnly = seconds - wholeSecsFloor
+        let nanosFloor = floor(nanosOnly * Double(NSEC_PER_SEC))
+        var thisStruct = timespec(tv_sec: Int(wholeSecsFloor),
+                                  tv_nsec: Int(nanosFloor))
+        return dispatch_walltime(&thisStruct, 0)
+    }
 }
