@@ -7,6 +7,7 @@
 //
 
 public protocol SingleTask: class {
+    var identifier: String { get }
     var scheduledFor: NSDate? { get set }
 
     func perform()

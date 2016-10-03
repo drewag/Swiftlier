@@ -9,9 +9,11 @@
 public final class BlockSingleTask: SingleTask {
     private let block: () -> ()
 
+    public let identifier: String
     public var scheduledFor: NSDate?
 
-    public init(scheduleAt date: NSDate? = nil, block: () -> ()) {
+    public init(identifier: String, scheduleAt date: NSDate? = nil, block: () -> ()) {
+        self.identifier = identifier
         self.block = block
         if let date = date {
             self.schedule(at: date)

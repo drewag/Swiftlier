@@ -38,14 +38,18 @@ public final class TaskService {
         self.scheduledSingleTasks.append(task)
 
         dispatch_after(date.time, dispatch_get_main_queue(), {
-            guard let index = self.index(of: task) where date == task.scheduledFor else {
+            guard let _ = self.index(of: task) where date == task.scheduledFor else {
                 return
             }
-            print("Performing single task in foreground")
+            print("Performing \(task.identifier) in foreground")
             task.perform()
+
+            guard let index = self.index(of: task) else {
+                return
+            }
             self.scheduledSingleTasks.removeAtIndex(index)
         })
-        print("Scheduled single task for \(date)")
+        print("Scheduled \(task.identifier) for \(date)")
     }
 
     public func unschedule(singleTask task: SingleTask) {
