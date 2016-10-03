@@ -30,6 +30,10 @@ public final class TaskService {
     }
 
     public func schedule(singleTask task: SingleTask, at date: NSDate) {
+        guard date.timeIntervalSinceDate(NSDate()) >= 0 else {
+            return
+        }
+
         if let existingIndex = self.index(of: task) {
             self.scheduledSingleTasks.removeAtIndex(existingIndex)
         }
