@@ -21,6 +21,8 @@ public final class TaskService {
 
     private init() {}
 
+    var logTasks = false
+
     static public func performInBackground(block: () -> ()) {
         return self.singleton.performInBackground(block)
     }
@@ -45,7 +47,9 @@ public final class TaskService {
             guard let _ = self.index(of: task) where date == task.scheduledFor else {
                 return
             }
-            print("Performing \(task.identifier) in foreground")
+            if self.logTasks {
+                self.logTask("Performing \(task.identifier) in foreground")
+            }
             task.perform()
 
             guard let index = self.index(of: task) else {
@@ -53,7 +57,7 @@ public final class TaskService {
             }
             self.scheduledSingleTasks.removeAtIndex(index)
         })
-        print("Scheduled \(task.identifier) for \(date)")
+        logTask("Scheduled \(task.identifier) for \(date)")
     }
 
     public func unschedule(singleTask task: SingleTask) {
@@ -140,7 +144,7 @@ private extension TaskService {
             }
             self.performTask(withIdentifier: task.uniqueIdentifier, with: period)
         })
-        print("Scheduled \(task.uniqueIdentifier) for \(date)")
+        logTask("Scheduled \(task.uniqueIdentifier) for \(date)")
     }
 
     func performTask(withIdentifier uniqueIdentifier: String, with period: TaskPeriod) {
@@ -169,10 +173,10 @@ private extension TaskService {
 
         switch task.performIn {
         case .foreground:
-            print("Performing \(uniqueIdentifier) in foreground")
+            logTask("Performing \(uniqueIdentifier) in foreground")
             task.perform(onComplete)
         case .background:
-            print("Performing \(uniqueIdentifier) in background")
+            logTask("Performing \(uniqueIdentifier) in background")
             TaskService.performInBackground {
                 task.perform { result in
                     TaskService.performInForeground {
@@ -180,6 +184,12 @@ private extension TaskService {
                     }
                 }
             }
+        }
+    }
+
+    func logTask(message: String) {
+        if self.logTasks {
+            print(message)
         }
     }
 }
