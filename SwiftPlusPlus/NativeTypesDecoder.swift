@@ -12,6 +12,10 @@ public final class NativeTypesDecoder: DecoderType {
     let raw: AnyObject
 
     public class func decodableTypeFromObject<E: EncodableType>(raw: AnyObject) -> E? {
+        guard !(raw is NSNull) else {
+            return nil
+        }
+
         let decoder = NativeTypesDecoder(raw: raw)
         return E(decoder: decoder)
     }
