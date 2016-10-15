@@ -26,6 +26,7 @@
 		4954007D1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */; };
 		495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */; };
 		495CCCDB1C6307790075E49E /* Float+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495CCCDA1C6307790075E49E /* Float+Angle.swift */; };
+		4968D88B1DB183E800BF4823 /* Bool+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968D88A1DB183E800BF4823 /* Bool+SwiftPlusPlus.swift */; };
 		496984371DA035F900491E25 /* PeriodicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496984361DA035F900491E25 /* PeriodicTask.swift */; };
 		4969843D1DA050D300491E25 /* BlockPeriodicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */; };
 		4969843F1DA0C2AE00491E25 /* SingleTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969843E1DA0C2AE00491E25 /* SingleTask.swift */; };
@@ -123,6 +124,7 @@
 		4954007C1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
 		495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardConstraintAdjuster.swift; sourceTree = "<group>"; };
 		495CCCDA1C6307790075E49E /* Float+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Angle.swift"; sourceTree = "<group>"; };
+		4968D88A1DB183E800BF4823 /* Bool+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
 		496984361DA035F900491E25 /* PeriodicTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicTask.swift; sourceTree = "<group>"; };
 		4969843C1DA050D300491E25 /* BlockPeriodicTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockPeriodicTask.swift; sourceTree = "<group>"; };
 		4969843E1DA0C2AE00491E25 /* SingleTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTask.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				499178491BF3DC60001FCDFA /* NSLayoutConstraint+SwifPlusPlus.swift */,
 				495CCCDA1C6307790075E49E /* Float+Angle.swift */,
 				493C48761CAF70E900D80A9B /* Array+SwiftPlusPlus.swift */,
+				4968D88A1DB183E800BF4823 /* Bool+SwiftPlusPlus.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				49E72FFC1C822ADB00C9F4BF /* DecoderType.swift in Sources */,
 				4908FFBC1BEA8A26003EE9F3 /* Menu.swift in Sources */,
 				49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */,
+				4968D88B1DB183E800BF4823 /* Bool+SwiftPlusPlus.swift in Sources */,
 				496A029E1D72466100174E1C /* UIColor+Encodable.swift in Sources */,
 				49C84D8A1CFCB22700F65546 /* UserReportableResult.swift in Sources */,
 				495400B11BED15B00019A08B /* KeyboardConstraintAdjuster.swift in Sources */,
