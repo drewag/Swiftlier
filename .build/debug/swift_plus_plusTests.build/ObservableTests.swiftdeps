@@ -1,0 +1,343 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ObservableTests"
+provides-nominal:
+- "C20swift_plus_plusTests15ObservableTests"
+provides-member:
+- ["C20swift_plus_plusTests15ObservableTests", ""]
+provides-dynamic-lookup:
+- "testUnsubscribing"
+- "testTriggerImmediately"
+- "testAutomaticUnsubscribing"
+- "testSubscribing"
+- "testCallOnceOption"
+- "testCallOnceOptionWithInitial"
+depends-top-level:
+- !private "Observable"
+- "ObservableTests"
+- !private "BooleanLiteralType"
+- !private "XCTAssertEqual"
+- !private "StringLiteralType"
+- !private "XCTAssertNil"
+- !private "String"
+- "AssignmentPrecedence"
+- "XCTestCase"
+- !private "|"
+- !private "XCTAssertTrue"
+- !private "XCTAssertFalse"
+- !private "ObservationOptions"
+depends-member:
+- !private ["Ps9AnyObject", "Observable"]
+- !private ["Ps9AnyObject", "ObservationOptions"]
+- !private ["Ps9AnyObject", "XCTAssertEqual"]
+- !private ["Ps9AnyObject", "XCTAssertFalse"]
+- !private ["Ps9AnyObject", "XCTAssertNil"]
+- !private ["Ps9AnyObject", "XCTAssertTrue"]
+- !private ["Ps9AnyObject", "addChangeObserver"]
+- !private ["Ps9AnyObject", "addNewObserver"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "removeObserver"]
+- ["Ps9AnyObject", "testAutomaticUnsubscribing"]
+- ["Ps9AnyObject", "testCallOnceOption"]
+- ["Ps9AnyObject", "testCallOnceOptionWithInitial"]
+- ["Ps9AnyObject", "testSubscribing"]
+- ["Ps9AnyObject", "testTriggerImmediately"]
+- ["Ps9AnyObject", "testUnsubscribing"]
+- !private ["Ps9AnyObject", "value"]
+- ["Ps9AnyObject", ""]
+- !private ["Ps17BitwiseOperations", "Initial"]
+- !private ["Ps17BitwiseOperations", "OnlyOnce"]
+- ["Sb", "deinit"]
+- !private ["Ps7CVarArg", "Observable"]
+- !private ["Ps7CVarArg", "ObservationOptions"]
+- !private ["Ps7CVarArg", "XCTAssertEqual"]
+- !private ["Ps7CVarArg", "XCTAssertFalse"]
+- !private ["Ps7CVarArg", "XCTAssertNil"]
+- !private ["Ps7CVarArg", "XCTAssertTrue"]
+- !private ["Ps7CVarArg", "init"]
+- ["Ps7CVarArg", "testAutomaticUnsubscribing"]
+- ["Ps7CVarArg", "testCallOnceOption"]
+- ["Ps7CVarArg", "testCallOnceOptionWithInitial"]
+- ["Ps7CVarArg", "testSubscribing"]
+- ["Ps7CVarArg", "testTriggerImmediately"]
+- ["Ps7CVarArg", "testUnsubscribing"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "Observable"]
+- !private ["Ps28CustomDebugStringConvertible", "ObservationOptions"]
+- !private ["Ps28CustomDebugStringConvertible", "XCTAssertEqual"]
+- !private ["Ps28CustomDebugStringConvertible", "XCTAssertFalse"]
+- !private ["Ps28CustomDebugStringConvertible", "XCTAssertNil"]
+- !private ["Ps28CustomDebugStringConvertible", "XCTAssertTrue"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps28CustomDebugStringConvertible", "testAutomaticUnsubscribing"]
+- ["Ps28CustomDebugStringConvertible", "testCallOnceOption"]
+- ["Ps28CustomDebugStringConvertible", "testCallOnceOptionWithInitial"]
+- ["Ps28CustomDebugStringConvertible", "testSubscribing"]
+- ["Ps28CustomDebugStringConvertible", "testTriggerImmediately"]
+- ["Ps28CustomDebugStringConvertible", "testUnsubscribing"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "Observable"]
+- !private ["Ps23CustomStringConvertible", "ObservationOptions"]
+- !private ["Ps23CustomStringConvertible", "XCTAssertEqual"]
+- !private ["Ps23CustomStringConvertible", "XCTAssertFalse"]
+- !private ["Ps23CustomStringConvertible", "XCTAssertNil"]
+- !private ["Ps23CustomStringConvertible", "XCTAssertTrue"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "testAutomaticUnsubscribing"]
+- ["Ps23CustomStringConvertible", "testCallOnceOption"]
+- ["Ps23CustomStringConvertible", "testCallOnceOptionWithInitial"]
+- ["Ps23CustomStringConvertible", "testSubscribing"]
+- ["Ps23CustomStringConvertible", "testTriggerImmediately"]
+- ["Ps23CustomStringConvertible", "testUnsubscribing"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "Observable"]
+- !private ["Ps9Equatable", "ObservationOptions"]
+- !private ["Ps9Equatable", "XCTAssertEqual"]
+- !private ["Ps9Equatable", "XCTAssertFalse"]
+- !private ["Ps9Equatable", "XCTAssertNil"]
+- !private ["Ps9Equatable", "XCTAssertTrue"]
+- !private ["Ps9Equatable", "init"]
+- ["Ps9Equatable", "testAutomaticUnsubscribing"]
+- ["Ps9Equatable", "testCallOnceOption"]
+- ["Ps9Equatable", "testCallOnceOptionWithInitial"]
+- ["Ps9Equatable", "testSubscribing"]
+- ["Ps9Equatable", "testTriggerImmediately"]
+- ["Ps9Equatable", "testUnsubscribing"]
+- ["Ps9Equatable", ""]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps32ExpressibleByStringInterpolation", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "Observable"]
+- !private ["Ps8Hashable", "ObservationOptions"]
+- !private ["Ps8Hashable", "XCTAssertEqual"]
+- !private ["Ps8Hashable", "XCTAssertFalse"]
+- !private ["Ps8Hashable", "XCTAssertNil"]
+- !private ["Ps8Hashable", "XCTAssertTrue"]
+- !private ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "testAutomaticUnsubscribing"]
+- ["Ps8Hashable", "testCallOnceOption"]
+- ["Ps8Hashable", "testCallOnceOptionWithInitial"]
+- ["Ps8Hashable", "testSubscribing"]
+- ["Ps8Hashable", "testTriggerImmediately"]
+- ["Ps8Hashable", "testUnsubscribing"]
+- ["Ps8Hashable", ""]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo16NSMutableCopying", "init"]
+- !private ["CSo8NSObject", "Observable"]
+- !private ["CSo8NSObject", "ObservationOptions"]
+- !private ["CSo8NSObject", "String"]
+- !private ["CSo8NSObject", "XCTAssertEqual"]
+- !private ["CSo8NSObject", "XCTAssertFalse"]
+- !private ["CSo8NSObject", "XCTAssertNil"]
+- !private ["CSo8NSObject", "XCTAssertTrue"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "testAutomaticUnsubscribing"]
+- ["CSo8NSObject", "testCallOnceOption"]
+- ["CSo8NSObject", "testCallOnceOptionWithInitial"]
+- ["CSo8NSObject", "testSubscribing"]
+- ["CSo8NSObject", "testTriggerImmediately"]
+- ["CSo8NSObject", "testUnsubscribing"]
+- !private ["PSo16NSObjectProtocol", "Observable"]
+- !private ["PSo16NSObjectProtocol", "ObservationOptions"]
+- !private ["PSo16NSObjectProtocol", "XCTAssertEqual"]
+- !private ["PSo16NSObjectProtocol", "XCTAssertFalse"]
+- !private ["PSo16NSObjectProtocol", "XCTAssertNil"]
+- !private ["PSo16NSObjectProtocol", "XCTAssertTrue"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "testAutomaticUnsubscribing"]
+- ["PSo16NSObjectProtocol", "testCallOnceOption"]
+- ["PSo16NSObjectProtocol", "testCallOnceOptionWithInitial"]
+- ["PSo16NSObjectProtocol", "testSubscribing"]
+- ["PSo16NSObjectProtocol", "testTriggerImmediately"]
+- ["PSo16NSObjectProtocol", "testUnsubscribing"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo19NSPasteboardReading", "init"]
+- !private ["PSo19NSPasteboardWriting", "init"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "init"]
+- !private ["C13SwiftPlusPlus10Observable", "addChangeObserver"]
+- !private ["C13SwiftPlusPlus10Observable", "addNewObserver"]
+- ["C13SwiftPlusPlus10Observable", "deinit"]
+- !private ["C13SwiftPlusPlus10Observable", "init"]
+- !private ["C13SwiftPlusPlus10Observable", "removeObserver"]
+- !private ["C13SwiftPlusPlus10Observable", "value"]
+- !private ["C20swift_plus_plusTests15ObservableTests", "Observable"]
+- !private ["C20swift_plus_plusTests15ObservableTests", "ObservationOptions"]
+- !private ["C20swift_plus_plusTests15ObservableTests", "String"]
+- !private ["C20swift_plus_plusTests15ObservableTests", "XCTAssertEqual"]
+- !private ["C20swift_plus_plusTests15ObservableTests", "XCTAssertFalse"]
+- !private ["C20swift_plus_plusTests15ObservableTests", "XCTAssertNil"]
+- !private ["C20swift_plus_plusTests15ObservableTests", "XCTAssertTrue"]
+- ["C20swift_plus_plusTests15ObservableTests", "deinit"]
+- ["C20swift_plus_plusTests15ObservableTests", "init"]
+- ["C20swift_plus_plusTests15ObservableTests", "testAutomaticUnsubscribing"]
+- ["C20swift_plus_plusTests15ObservableTests", "testCallOnceOption"]
+- ["C20swift_plus_plusTests15ObservableTests", "testCallOnceOptionWithInitial"]
+- ["C20swift_plus_plusTests15ObservableTests", "testSubscribing"]
+- ["C20swift_plus_plusTests15ObservableTests", "testTriggerImmediately"]
+- ["C20swift_plus_plusTests15ObservableTests", "testUnsubscribing"]
+- !private ["V13SwiftPlusPlus18ObservationOptions", "Initial"]
+- !private ["V13SwiftPlusPlus18ObservationOptions", "OnlyOnce"]
+- ["V13SwiftPlusPlus18ObservationOptions", "deinit"]
+- ["Sq", "deinit"]
+- !private ["P13SwiftPlusPlus20PercentEncodableType", "init"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "init"]
+- ["V10ObjectiveC8Selector", "deinit"]
+- ["Vs12StaticString", "deinit"]
+- !private ["Vs12StaticString", "init"]
+- ["SS", "deinit"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- ["Su", "deinit"]
+- !private ["CSo6XCTest", "Observable"]
+- !private ["CSo6XCTest", "ObservationOptions"]
+- !private ["CSo6XCTest", "String"]
+- !private ["CSo6XCTest", "XCTAssertEqual"]
+- !private ["CSo6XCTest", "XCTAssertFalse"]
+- !private ["CSo6XCTest", "XCTAssertNil"]
+- !private ["CSo6XCTest", "XCTAssertTrue"]
+- ["CSo6XCTest", "init"]
+- ["CSo6XCTest", "testAutomaticUnsubscribing"]
+- ["CSo6XCTest", "testCallOnceOption"]
+- ["CSo6XCTest", "testCallOnceOptionWithInitial"]
+- ["CSo6XCTest", "testSubscribing"]
+- ["CSo6XCTest", "testTriggerImmediately"]
+- ["CSo6XCTest", "testUnsubscribing"]
+- !private ["CSo10XCTestCase", "Observable"]
+- !private ["CSo10XCTestCase", "ObservationOptions"]
+- !private ["CSo10XCTestCase", "String"]
+- !private ["CSo10XCTestCase", "XCTAssertEqual"]
+- !private ["CSo10XCTestCase", "XCTAssertFalse"]
+- !private ["CSo10XCTestCase", "XCTAssertNil"]
+- !private ["CSo10XCTestCase", "XCTAssertTrue"]
+- ["CSo10XCTestCase", "deinit"]
+- ["CSo10XCTestCase", "init"]
+- ["CSo10XCTestCase", "testAutomaticUnsubscribing"]
+- ["CSo10XCTestCase", "testCallOnceOption"]
+- ["CSo10XCTestCase", "testCallOnceOptionWithInitial"]
+- ["CSo10XCTestCase", "testSubscribing"]
+- ["CSo10XCTestCase", "testTriggerImmediately"]
+- ["CSo10XCTestCase", "testUnsubscribing"]
+- ["CSo10XCTestCase", ""]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "Observable"]
+- !private ["Ps9_Hashable", "ObservationOptions"]
+- !private ["Ps9_Hashable", "XCTAssertEqual"]
+- !private ["Ps9_Hashable", "XCTAssertFalse"]
+- !private ["Ps9_Hashable", "XCTAssertNil"]
+- !private ["Ps9_Hashable", "XCTAssertTrue"]
+- !private ["Ps9_Hashable", "init"]
+- ["Ps9_Hashable", "testAutomaticUnsubscribing"]
+- ["Ps9_Hashable", "testCallOnceOption"]
+- ["Ps9_Hashable", "testCallOnceOptionWithInitial"]
+- ["Ps9_Hashable", "testSubscribing"]
+- ["Ps9_Hashable", "testTriggerImmediately"]
+- ["Ps9_Hashable", "testUnsubscribing"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Ps17BitwiseOperations"
+- "Sb"
+- "Ps7CVarArg"
+- !private "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps32ExpressibleByStringInterpolation"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo19NSPasteboardReading"
+- !private "PSo19NSPasteboardWriting"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- "C13SwiftPlusPlus10Observable"
+- "C20swift_plus_plusTests15ObservableTests"
+- "V13SwiftPlusPlus18ObservationOptions"
+- "Sq"
+- !private "P13SwiftPlusPlus20PercentEncodableType"
+- !private "P13SwiftPlusPlus16RawEncodableType"
+- "V10ObjectiveC8Selector"
+- "Vs12StaticString"
+- "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- "Su"
+- "CSo6XCTest"
+- "CSo10XCTestCase"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XCTest.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIRemote.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIKeyboardKeys.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementQuery.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUICoordinate.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIDevice.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementTypeQueryProvider.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementTypes.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementAttributes.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElement.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIApplication.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestSuiteRun.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestSuite.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestProbe.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestObservation.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestObservationCenter.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestObserver.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestLog.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestExpectation.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestRun.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestCaseRun.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestCase+AsynchronousTesting.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestCase.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertionsImpl.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCAbstractTest.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestErrors.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestDefines.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTest.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+- "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.swiftmodule"
+interface-hash: "8dfb93988d9c467851b8b469d6407120"

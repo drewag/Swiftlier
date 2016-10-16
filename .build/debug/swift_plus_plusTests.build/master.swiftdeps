@@ -1,0 +1,13 @@
+version: "Apple Swift version 3.0 (swiftlang-800.0.46.2 clang-800.0.38)"
+options: "6d4de649ee676e6224981d264bb3d548"
+build_time: [529925470, 698664000]
+inputs:
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/Array+SwiftPlusPlusTests.swift": [529924607, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/ColorTests.swift": [529925313, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/DataSourceTypeTests.swift": [529925277, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/Dictionary+SwiftPlusPlusTest.swift": [529925026, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/EventCenterTests.swift": [529925215, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/MultiCallbackTests.swift": [529911757, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/ObservableDictionary.swift": [529925019, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/ObservableTests.swift": [529925240, 0]
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/String+SwiftPlusPlusTests.swift": [529925120, 0]

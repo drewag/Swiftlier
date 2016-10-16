@@ -1,0 +1,143 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["CSo11FileManager", ""]
+- ["CSo11FileManager", "documentsDirectoryURL"]
+- ["CSo11FileManager", "cachesDirectoryURL"]
+- ["CSo11FileManager", "documentsDirectoryPath"]
+- ["CSo11FileManager", "cachesDirectoryPath"]
+provides-dynamic-lookup:
+- "documentsDirectoryURL"
+- "cachesDirectoryURL"
+- "documentsDirectoryPath"
+- "cachesDirectoryPath"
+depends-top-level:
+- "String"
+- "URL"
+- "FileManager"
+- !private "BooleanLiteralType"
+depends-member:
+- ["Ps9AnyObject", "cachesDirectoryPath"]
+- ["Ps9AnyObject", "cachesDirectoryURL"]
+- ["Ps9AnyObject", "documentsDirectoryPath"]
+- ["Ps9AnyObject", "documentsDirectoryURL"]
+- !private ["Ps9AnyObject", "url"]
+- ["Sb", "deinit"]
+- ["Ps7CVarArg", "cachesDirectoryPath"]
+- ["Ps7CVarArg", "cachesDirectoryURL"]
+- ["Ps7CVarArg", "documentsDirectoryPath"]
+- ["Ps7CVarArg", "documentsDirectoryURL"]
+- !private ["Ps7CVarArg", "url"]
+- ["Ps28CustomDebugStringConvertible", "cachesDirectoryPath"]
+- ["Ps28CustomDebugStringConvertible", "cachesDirectoryURL"]
+- ["Ps28CustomDebugStringConvertible", "documentsDirectoryPath"]
+- ["Ps28CustomDebugStringConvertible", "documentsDirectoryURL"]
+- !private ["Ps28CustomDebugStringConvertible", "relativePath"]
+- !private ["Ps28CustomDebugStringConvertible", "url"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "relativePath"]
+- ["Ps23CustomStringConvertible", "cachesDirectoryPath"]
+- ["Ps23CustomStringConvertible", "cachesDirectoryURL"]
+- ["Ps23CustomStringConvertible", "documentsDirectoryPath"]
+- ["Ps23CustomStringConvertible", "documentsDirectoryURL"]
+- !private ["Ps23CustomStringConvertible", "relativePath"]
+- !private ["Ps23CustomStringConvertible", "url"]
+- !private ["Ps9Equatable", "cachesDirectory"]
+- ["Ps9Equatable", "cachesDirectoryPath"]
+- ["Ps9Equatable", "cachesDirectoryURL"]
+- !private ["Ps9Equatable", "documentDirectory"]
+- ["Ps9Equatable", "documentsDirectoryPath"]
+- ["Ps9Equatable", "documentsDirectoryURL"]
+- !private ["Ps9Equatable", "relativePath"]
+- !private ["Ps9Equatable", "url"]
+- !private ["Ps9Equatable", "userDomainMask"]
+- !private ["Ps25ExpressibleByArrayLiteral", "userDomainMask"]
+- ["CSo11FileManager", "String"]
+- ["CSo11FileManager", "URL"]
+- ["CSo11FileManager", "cachesDirectoryPath"]
+- ["CSo11FileManager", "cachesDirectoryURL"]
+- ["CSo11FileManager", "deinit"]
+- ["CSo11FileManager", "documentsDirectoryPath"]
+- ["CSo11FileManager", "documentsDirectoryURL"]
+- !private ["CSo11FileManager", "url"]
+- !private ["Ps8Hashable", "cachesDirectory"]
+- ["Ps8Hashable", "cachesDirectoryPath"]
+- ["Ps8Hashable", "cachesDirectoryURL"]
+- !private ["Ps8Hashable", "documentDirectory"]
+- ["Ps8Hashable", "documentsDirectoryPath"]
+- ["Ps8Hashable", "documentsDirectoryURL"]
+- !private ["Ps8Hashable", "relativePath"]
+- !private ["Ps8Hashable", "url"]
+- ["CSo8NSObject", "String"]
+- ["CSo8NSObject", "URL"]
+- ["CSo8NSObject", "cachesDirectoryPath"]
+- ["CSo8NSObject", "cachesDirectoryURL"]
+- ["CSo8NSObject", "documentsDirectoryPath"]
+- ["CSo8NSObject", "documentsDirectoryURL"]
+- !private ["CSo8NSObject", "url"]
+- ["PSo16NSObjectProtocol", "cachesDirectoryPath"]
+- ["PSo16NSObjectProtocol", "cachesDirectoryURL"]
+- ["PSo16NSObjectProtocol", "documentsDirectoryPath"]
+- ["PSo16NSObjectProtocol", "documentsDirectoryURL"]
+- !private ["PSo16NSObjectProtocol", "url"]
+- !private ["Ps9OptionSet", "userDomainMask"]
+- ["Sq", "deinit"]
+- !private ["Ps16RawRepresentable", "cachesDirectory"]
+- !private ["Ps16RawRepresentable", "documentDirectory"]
+- !private ["Ps16RawRepresentable", "userDomainMask"]
+- !private ["P10Foundation20ReferenceConvertible", "relativePath"]
+- !private ["OCSo11FileManager19SearchPathDirectory", "cachesDirectory"]
+- ["OCSo11FileManager19SearchPathDirectory", "deinit"]
+- !private ["OCSo11FileManager19SearchPathDirectory", "documentDirectory"]
+- ["VCSo11FileManager20SearchPathDomainMask", "deinit"]
+- !private ["VCSo11FileManager20SearchPathDomainMask", "userDomainMask"]
+- !private ["Ps10SetAlgebra", "userDomainMask"]
+- ["SS", "deinit"]
+- ["V10Foundation3URL", "deinit"]
+- !private ["V10Foundation3URL", "relativePath"]
+- !private ["Ps34_ExpressibleByFileReferenceLiteral", "relativePath"]
+- !private ["Ps9_Hashable", "cachesDirectory"]
+- ["Ps9_Hashable", "cachesDirectoryPath"]
+- ["Ps9_Hashable", "cachesDirectoryURL"]
+- !private ["Ps9_Hashable", "documentDirectory"]
+- ["Ps9_Hashable", "documentsDirectoryPath"]
+- ["Ps9_Hashable", "documentsDirectoryURL"]
+- !private ["Ps9_Hashable", "relativePath"]
+- !private ["Ps9_Hashable", "url"]
+- !private ["Ps21_ObjectiveCBridgeable", "relativePath"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Sb"
+- "Ps7CVarArg"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "Ps25ExpressibleByArrayLiteral"
+- "CSo11FileManager"
+- "Ps8Hashable"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "Ps9OptionSet"
+- "Sq"
+- !private "Ps16RawRepresentable"
+- !private "P10Foundation20ReferenceConvertible"
+- "OCSo11FileManager19SearchPathDirectory"
+- "VCSo11FileManager20SearchPathDomainMask"
+- !private "Ps10SetAlgebra"
+- "SS"
+- "V10Foundation3URL"
+- !private "Ps34_ExpressibleByFileReferenceLiteral"
+- "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+interface-hash: "df81f6c2ab273f692b07342e143b55b4"

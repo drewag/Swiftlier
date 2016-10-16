@@ -1,0 +1,67 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "BlockSingleTask"
+provides-nominal:
+- "C13SwiftPlusPlus15BlockSingleTask"
+provides-member:
+- ["C13SwiftPlusPlus15BlockSingleTask", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "SingleTask"
+- "String"
+- "BlockSingleTask"
+- "AssignmentPrecedence"
+- "Date"
+depends-member:
+- !private ["Ps9AnyObject", "block"]
+- ["Ps9AnyObject", "identifier"]
+- ["Ps9AnyObject", "perform"]
+- !private ["Ps9AnyObject", "schedule"]
+- ["Ps9AnyObject", "scheduledFor"]
+- !private ["Ps9AnyObject", "unschedule"]
+- ["Ps9AnyObject", ""]
+- ["C13SwiftPlusPlus15BlockSingleTask", "Date"]
+- ["C13SwiftPlusPlus15BlockSingleTask", "String"]
+- !private ["C13SwiftPlusPlus15BlockSingleTask", "block"]
+- ["C13SwiftPlusPlus15BlockSingleTask", "deinit"]
+- ["C13SwiftPlusPlus15BlockSingleTask", "identifier"]
+- ["C13SwiftPlusPlus15BlockSingleTask", "init"]
+- ["C13SwiftPlusPlus15BlockSingleTask", "perform"]
+- !private ["C13SwiftPlusPlus15BlockSingleTask", "schedule"]
+- ["C13SwiftPlusPlus15BlockSingleTask", "scheduledFor"]
+- !private ["C13SwiftPlusPlus15BlockSingleTask", "unschedule"]
+- ["Ps28CustomDebugStringConvertible", "some"]
+- ["Ps17CustomReflectable", "some"]
+- ["V10Foundation4Date", "deinit"]
+- ["Ps23ExpressibleByNilLiteral", "some"]
+- ["Sq", "deinit"]
+- ["Sq", "some"]
+- !private ["P13SwiftPlusPlus10SingleTask", "block"]
+- ["P13SwiftPlusPlus10SingleTask", "identifier"]
+- ["P13SwiftPlusPlus10SingleTask", "perform"]
+- !private ["P13SwiftPlusPlus10SingleTask", "schedule"]
+- ["P13SwiftPlusPlus10SingleTask", "scheduledFor"]
+- !private ["P13SwiftPlusPlus10SingleTask", "unschedule"]
+- ["P13SwiftPlusPlus10SingleTask", ""]
+- ["SS", "deinit"]
+depends-nominal:
+- "Ps9AnyObject"
+- "C13SwiftPlusPlus15BlockSingleTask"
+- "Ps28CustomDebugStringConvertible"
+- "Ps17CustomReflectable"
+- "V10Foundation4Date"
+- "Ps23ExpressibleByNilLiteral"
+- "Sq"
+- "P13SwiftPlusPlus10SingleTask"
+- "SS"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+interface-hash: "d286b2e83551cd3937724aae7fb7d450"

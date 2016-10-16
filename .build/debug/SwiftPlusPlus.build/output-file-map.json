@@ -1,0 +1,401 @@
+{
+  "": {
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/master.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Alert.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Alert.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Alert.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Alert~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Alert.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Angle.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Angle.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Angle.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Angle~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Angle.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Array+SwiftPlusPlus.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Array+SwiftPlusPlus.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Array+SwiftPlusPlus.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Array+SwiftPlusPlus~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Array+SwiftPlusPlus.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/BlockPeriodicTask.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockPeriodicTask.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockPeriodicTask.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockPeriodicTask~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockPeriodicTask.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/BlockSingleTask.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockSingleTask.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockSingleTask.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockSingleTask~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BlockSingleTask.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/BubbleView.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BubbleView.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BubbleView.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BubbleView~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/BubbleView.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/CGContext+ThreadSafe.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGContext+ThreadSafe.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGContext+ThreadSafe.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGContext+ThreadSafe~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGContext+ThreadSafe.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/CGMath.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGMath.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGMath.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGMath~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CGMath.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/CoderKeyType.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CoderKeyType.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CoderKeyType.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CoderKeyType~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/CoderKeyType.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/DataSourceType.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DataSourceType.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DataSourceType.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DataSourceType~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DataSourceType.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/DecoderType.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DecoderType.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DecoderType.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DecoderType~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/DecoderType.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Dictionary+SwiftPlusPlus.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Dictionary+SwiftPlusPlus.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Dictionary+SwiftPlusPlus.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Dictionary+SwiftPlusPlus~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Dictionary+SwiftPlusPlus.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/EncodableType.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncodableType.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncodableType.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncodableType~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncodableType.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/EncoderType.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncoderType.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncoderType.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncoderType~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EncoderType.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/EventCenter.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EventCenter.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EventCenter.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EventCenter~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/EventCenter.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/FileArchiver.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/FileArchiver.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/FileArchiver.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/FileArchiver~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/FileArchiver.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Float+Angle.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Float+Angle.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Float+Angle.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Float+Angle~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Float+Angle.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/JSON.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/JSON.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/JSON.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/JSON~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/JSON.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/KeyboardConstraintAdjuster.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/KeyboardConstraintAdjuster.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/KeyboardConstraintAdjuster.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/KeyboardConstraintAdjuster~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/KeyboardConstraintAdjuster.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/LocalUserReportableError.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/LocalUserReportableError.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/LocalUserReportableError.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/LocalUserReportableError~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/LocalUserReportableError.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Menu.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Menu.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Menu.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Menu~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Menu.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/MenuViewController.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MenuViewController.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MenuViewController.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MenuViewController~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MenuViewController.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/MultiCallback.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MultiCallback.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MultiCallback.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MultiCallback~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/MultiCallback.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NativeTypesDecoder.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesDecoder.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesDecoder.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesDecoder~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesDecoder.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NativeTypesEncoder.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesEncoder.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesEncoder.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesEncoder~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NativeTypesEncoder.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NetworkUserReportableError.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NetworkUserReportableError.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NetworkUserReportableError.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NetworkUserReportableError~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NetworkUserReportableError.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSDate+Comparison.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Comparison.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Comparison.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Comparison~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Comparison.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSDate+Formatting.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Formatting.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Formatting.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Formatting~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Formatting.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSDate+Helpers.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Helpers.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Helpers.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Helpers~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSDate+Helpers.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSFileManager+Directories.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSFileManager+Directories.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSFileManager+Directories.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSFileManager+Directories~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSFileManager+Directories.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSLayoutConstraint+SwifPlusPlus.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutConstraint+SwifPlusPlus.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutConstraint+SwifPlusPlus.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutConstraint+SwifPlusPlus~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutConstraint+SwifPlusPlus.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSLayoutContraint+Factory.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutContraint+Factory.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutContraint+Factory.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutContraint+Factory~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSLayoutContraint+Factory.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSTimeInterval+Formatting.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSTimeInterval+Formatting.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSTimeInterval+Formatting.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSTimeInterval+Formatting~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSTimeInterval+Formatting.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/NSURL+Helpers.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSURL+Helpers.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSURL+Helpers.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSURL+Helpers~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/NSURL+Helpers.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Observable.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Observable.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Observable.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Observable~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Observable.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/ObservableArray.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ObservableArray.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ObservableArray.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ObservableArray~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ObservableArray.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/OrderedDictionary.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/OrderedDictionary.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/OrderedDictionary.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/OrderedDictionary~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/OrderedDictionary.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/PeriodicTask.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PeriodicTask.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PeriodicTask.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PeriodicTask~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PeriodicTask.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/PlaceholderTextView.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PlaceholderTextView.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PlaceholderTextView.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PlaceholderTextView~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PlaceholderTextView.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/PresentUnderTopBarTransition.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PresentUnderTopBarTransition.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PresentUnderTopBarTransition.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PresentUnderTopBarTransition~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/PresentUnderTopBarTransition.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/RoundedBorderButton.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderButton.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderButton.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderButton~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderButton.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/RoundedBorderView.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderView.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderView.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderView~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/RoundedBorderView.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/SelectableValue.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SelectableValue.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SelectableValue.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SelectableValue~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SelectableValue.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/SequenceType+SwiftPlusPlus.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SequenceType+SwiftPlusPlus.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SequenceType+SwiftPlusPlus.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SequenceType+SwiftPlusPlus~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SequenceType+SwiftPlusPlus.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/ShadowView.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ShadowView.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ShadowView.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ShadowView~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ShadowView.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/SingleTask.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SingleTask.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SingleTask.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SingleTask~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/SingleTask.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/String+SwiftPlusPlus.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/String+SwiftPlusPlus.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/String+SwiftPlusPlus.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/String+SwiftPlusPlus~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/String+SwiftPlusPlus.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/swift_plus_plus.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/swift_plus_plus.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/swift_plus_plus.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/swift_plus_plus~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/swift_plus_plus.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/TaskService.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/TaskService.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/TaskService.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/TaskService~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/TaskService.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/ThinLayoutConstraint.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ThinLayoutConstraint.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ThinLayoutConstraint.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ThinLayoutConstraint~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ThinLayoutConstraint.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/Transformation.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Transformation.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Transformation.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Transformation~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/Transformation.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIColor+Encodable.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Encodable.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Encodable.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Encodable~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Encodable.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIColor+Factory.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Factory.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Factory.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Factory~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIColor+Factory.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIImage+Editing.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIImage+Editing.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIImage+Editing.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIImage+Editing~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIImage+Editing.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UITableView+EasyRegister.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UITableView+EasyRegister.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UITableView+EasyRegister.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UITableView+EasyRegister~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UITableView+EasyRegister.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIView+Helpers.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Helpers.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Helpers.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Helpers~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Helpers.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIView+ImageCapture.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+ImageCapture.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+ImageCapture.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+ImageCapture~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+ImageCapture.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIView+Layout.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Layout.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Layout.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Layout~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Layout.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIView+Video.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Video.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Video.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Video~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIView+Video.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIViewController+Helpers.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Helpers.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Helpers.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Helpers~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Helpers.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UIViewController+Transitions.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Transitions.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Transitions.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Transitions~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UIViewController+Transitions.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UserReportableError.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableError.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableError.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableError~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableError.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/UserReportableResult.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableResult.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableResult.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableResult~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/UserReportableResult.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/WeakWrapper.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WeakWrapper.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WeakWrapper.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WeakWrapper~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WeakWrapper.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/WebViewController.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WebViewController.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WebViewController.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WebViewController~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/WebViewController.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Sources/ZoomThroughTransition.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ZoomThroughTransition.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ZoomThroughTransition.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ZoomThroughTransition~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/SwiftPlusPlus.build/ZoomThroughTransition.swiftdeps"
+  }
+}

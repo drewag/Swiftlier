@@ -1,0 +1,173 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "UserReportableError"
+provides-nominal:
+- "P13SwiftPlusPlus19UserReportableError"
+- "CSo7NSError"
+provides-member:
+- ["P13SwiftPlusPlus19UserReportableError", ""]
+- ["CSo7NSError", ""]
+provides-dynamic-lookup:
+- "alertTitle"
+- "otherInfo"
+- "alertMessage"
+depends-top-level:
+- "String"
+- "UserReportableError"
+- "NSError"
+- !private "StringLiteralType"
+- "Error"
+depends-member:
+- ["Ps9AnyObject", "alertMessage"]
+- ["Ps9AnyObject", "alertTitle"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "localizedDescription"]
+- ["Ps9AnyObject", "otherInfo"]
+- ["Ps7CVarArg", "alertMessage"]
+- ["Ps7CVarArg", "alertTitle"]
+- !private ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "localizedDescription"]
+- ["Ps7CVarArg", "otherInfo"]
+- !private ["Ps10Comparable", "init"]
+- ["Ps28CustomDebugStringConvertible", "alertMessage"]
+- ["Ps28CustomDebugStringConvertible", "alertTitle"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "localizedDescription"]
+- ["Ps28CustomDebugStringConvertible", "otherInfo"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "init"]
+- ["Ps23CustomStringConvertible", "alertMessage"]
+- ["Ps23CustomStringConvertible", "alertTitle"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "localizedDescription"]
+- ["Ps23CustomStringConvertible", "otherInfo"]
+- ["Ps9Equatable", "alertMessage"]
+- ["Ps9Equatable", "alertTitle"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "localizedDescription"]
+- ["Ps9Equatable", "otherInfo"]
+- ["Ps5Error", "String"]
+- ["Ps5Error", "alertMessage"]
+- ["Ps5Error", "alertTitle"]
+- !private ["Ps5Error", "localizedDescription"]
+- ["Ps5Error", "otherInfo"]
+- ["Ps5Error", ""]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps32ExpressibleByStringInterpolation", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- ["Ps8Hashable", "alertMessage"]
+- ["Ps8Hashable", "alertTitle"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "localizedDescription"]
+- ["Ps8Hashable", "otherInfo"]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- ["PSo8NSCoding", "alertMessage"]
+- ["PSo8NSCoding", "alertTitle"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "localizedDescription"]
+- ["PSo8NSCoding", "otherInfo"]
+- ["PSo9NSCopying", "alertMessage"]
+- ["PSo9NSCopying", "alertTitle"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "localizedDescription"]
+- ["PSo9NSCopying", "otherInfo"]
+- ["CSo7NSError", "String"]
+- ["CSo7NSError", "alertMessage"]
+- ["CSo7NSError", "alertTitle"]
+- ["CSo7NSError", "deinit"]
+- !private ["CSo7NSError", "localizedDescription"]
+- ["CSo7NSError", "otherInfo"]
+- !private ["PSo16NSMutableCopying", "init"]
+- ["CSo8NSObject", "String"]
+- ["CSo8NSObject", "alertMessage"]
+- ["CSo8NSObject", "alertTitle"]
+- !private ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "localizedDescription"]
+- ["CSo8NSObject", "otherInfo"]
+- ["PSo16NSObjectProtocol", "alertMessage"]
+- ["PSo16NSObjectProtocol", "alertTitle"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "localizedDescription"]
+- ["PSo16NSObjectProtocol", "otherInfo"]
+- ["PSo14NSSecureCoding", "alertMessage"]
+- ["PSo14NSSecureCoding", "alertTitle"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "localizedDescription"]
+- ["PSo14NSSecureCoding", "otherInfo"]
+- !private ["CSo8NSString", "init"]
+- ["Sq", "deinit"]
+- !private ["P13SwiftPlusPlus20PercentEncodableType", "init"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "init"]
+- ["SS", "deinit"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- ["P13SwiftPlusPlus19UserReportableError", "String"]
+- ["P13SwiftPlusPlus19UserReportableError", "alertMessage"]
+- ["P13SwiftPlusPlus19UserReportableError", "alertTitle"]
+- !private ["P13SwiftPlusPlus19UserReportableError", "localizedDescription"]
+- ["P13SwiftPlusPlus19UserReportableError", "otherInfo"]
+- ["P13SwiftPlusPlus19UserReportableError", ""]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- ["Ps9_Hashable", "alertMessage"]
+- ["Ps9_Hashable", "alertTitle"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "localizedDescription"]
+- ["Ps9_Hashable", "otherInfo"]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Ps7CVarArg"
+- !private "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- "Ps5Error"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps32ExpressibleByStringInterpolation"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "CSo7NSError"
+- !private "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- "Sq"
+- !private "P13SwiftPlusPlus20PercentEncodableType"
+- !private "P13SwiftPlusPlus16RawEncodableType"
+- "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- "P13SwiftPlusPlus19UserReportableError"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+interface-hash: "64e6905e740c66e1cb3d75c5f9e6f2ff"

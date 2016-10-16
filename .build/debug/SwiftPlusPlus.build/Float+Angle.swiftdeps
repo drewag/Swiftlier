@@ -1,0 +1,132 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["Sf", ""]
+- ["Sf", "toRadians"]
+- ["Sf", "toDegrees"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "FloatLiteralType"
+- !private "M_PI"
+- "Float"
+- !private "/"
+- !private "*"
+depends-member:
+- !private ["Ps16AbsoluteValuable", "Float"]
+- !private ["Ps16AbsoluteValuable", "M_PI"]
+- !private ["Ps16AbsoluteValuable", "init"]
+- !private ["Ps19BinaryFloatingPoint", "Float"]
+- !private ["Ps19BinaryFloatingPoint", "M_PI"]
+- !private ["Ps19BinaryFloatingPoint", "init"]
+- !private ["Ps7CVarArg", "Float"]
+- !private ["Ps7CVarArg", "M_PI"]
+- !private ["Ps7CVarArg", "init"]
+- !private ["Ps10Comparable", "Float"]
+- !private ["Ps10Comparable", "M_PI"]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "Float"]
+- !private ["Ps28CustomDebugStringConvertible", "M_PI"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Float"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "M_PI"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "Float"]
+- !private ["Ps17CustomReflectable", "M_PI"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "Float"]
+- !private ["Ps23CustomStringConvertible", "M_PI"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- ["Sd", "deinit"]
+- !private ["Ps9Equatable", "Float"]
+- !private ["Ps9Equatable", "M_PI"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps25ExpressibleByFloatLiteral", "Float"]
+- !private ["Ps25ExpressibleByFloatLiteral", "M_PI"]
+- !private ["Ps25ExpressibleByFloatLiteral", "init"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "Float"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "M_PI"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "init"]
+- ["Sf", "Float"]
+- !private ["Sf", "M_PI"]
+- ["Sf", "deinit"]
+- !private ["Sf", "init"]
+- ["Sf", "toDegrees"]
+- ["Sf", "toRadians"]
+- !private ["Ps13FloatingPoint", "Float"]
+- !private ["Ps13FloatingPoint", "M_PI"]
+- !private ["Ps13FloatingPoint", "init"]
+- !private ["Ps8Hashable", "Float"]
+- !private ["Ps8Hashable", "M_PI"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps25LosslessStringConvertible", "Float"]
+- !private ["Ps25LosslessStringConvertible", "M_PI"]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "Float"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "M_PI"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "init"]
+- !private ["Ps12SignedNumber", "Float"]
+- !private ["Ps12SignedNumber", "M_PI"]
+- !private ["Ps12SignedNumber", "init"]
+- !private ["Ps10Strideable", "Float"]
+- !private ["Ps10Strideable", "M_PI"]
+- !private ["Ps10Strideable", "init"]
+- !private ["Ps15_CVarArgAligned", "Float"]
+- !private ["Ps15_CVarArgAligned", "M_PI"]
+- !private ["Ps15_CVarArgAligned", "init"]
+- !private ["Ps22_CVarArgPassedAsDouble", "Float"]
+- !private ["Ps22_CVarArgPassedAsDouble", "M_PI"]
+- !private ["Ps22_CVarArgPassedAsDouble", "init"]
+- !private ["Ps33_ExpressibleByBuiltinFloatLiteral", "Float"]
+- !private ["Ps33_ExpressibleByBuiltinFloatLiteral", "M_PI"]
+- !private ["Ps33_ExpressibleByBuiltinFloatLiteral", "init"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "Float"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "M_PI"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "init"]
+- !private ["Ps9_Hashable", "Float"]
+- !private ["Ps9_Hashable", "M_PI"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "Float"]
+- !private ["Ps21_ObjectiveCBridgeable", "M_PI"]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps11_Strideable", "Float"]
+- !private ["Ps11_Strideable", "M_PI"]
+- !private ["Ps11_Strideable", "init"]
+depends-nominal:
+- !private "Ps16AbsoluteValuable"
+- !private "Ps19BinaryFloatingPoint"
+- !private "Ps7CVarArg"
+- !private "Ps10Comparable"
+- !private "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- !private "Ps23CustomStringConvertible"
+- "Sd"
+- !private "Ps9Equatable"
+- !private "Ps25ExpressibleByFloatLiteral"
+- !private "Ps27ExpressibleByIntegerLiteral"
+- "Sf"
+- !private "Ps13FloatingPoint"
+- !private "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- !private "P13SwiftPlusPlus16RawEncodableType"
+- !private "Ps12SignedNumber"
+- !private "Ps10Strideable"
+- !private "Ps15_CVarArgAligned"
+- !private "Ps22_CVarArgPassedAsDouble"
+- !private "Ps33_ExpressibleByBuiltinFloatLiteral"
+- !private "Ps35_ExpressibleByBuiltinIntegerLiteral"
+- !private "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+- !private "Ps11_Strideable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+interface-hash: "c9d1fda5c8248d3e6aaa13d6eb4b4a2b"

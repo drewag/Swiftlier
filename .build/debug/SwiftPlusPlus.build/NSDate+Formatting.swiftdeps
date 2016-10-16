@@ -1,0 +1,402 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["V10Foundation4Date", ""]
+- ["SS", ""]
+- ["V10Foundation4Date", "asDateAndTime"]
+- ["V10Foundation4Date", "asDate"]
+- ["V10Foundation4Date", "asTime"]
+- ["V10Foundation4Date", "asShortDate"]
+- ["V10Foundation4Date", "asShortestDate"]
+- ["V10Foundation4Date", "asDayAndMonth"]
+- ["V10Foundation4Date", "asRailsDateTimeString"]
+- ["V10Foundation4Date", "asIso8601DateTimeString"]
+- ["V10Foundation4Date", "asSQLiteDateTimeString"]
+- ["V10Foundation4Date", "asRailsDateString"]
+- ["V10Foundation4Date", "asSQLiteDateString"]
+- ["V10Foundation4Date", "asAuthToken"]
+- ["V10Foundation4Date", "asPreciseTime"]
+- ["SS", "railsDateTime"]
+- ["SS", "railsDate"]
+- ["SS", "iso8601DateTime"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "timeFormatter"
+- "AssignmentPrecedence"
+- !private "dateAndTimeFormatter"
+- "Locale"
+- "DateFormatter"
+- !private "authTokenDate"
+- !private "iso8601DateTimeFormatter"
+- !private "dateFormatter"
+- "String"
+- !private "dayAndMonthFormatter"
+- !private "shortestDateFormatter"
+- !private "railsDateTimeFormatter"
+- "TimeZone"
+- "StringLiteralType"
+- !private "shortDateFormatter"
+- !private "railsDateFormatter"
+- !private "preciseTimeFormatter"
+- "Date"
+depends-member:
+- !private ["Ps9AnyObject", "date"]
+- ["Ps9AnyObject", "dateFormat"]
+- ["Ps9AnyObject", "init"]
+- ["Ps9AnyObject", "locale"]
+- !private ["Ps9AnyObject", "string"]
+- ["Ps9AnyObject", "timeZone"]
+- !private ["Ps7CVarArg", "date"]
+- ["Ps7CVarArg", "dateFormat"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "iso8601DateTimeFormatter"]
+- ["Ps7CVarArg", "locale"]
+- !private ["Ps7CVarArg", "railsDateFormatter"]
+- !private ["Ps7CVarArg", "railsDateTimeFormatter"]
+- !private ["Ps7CVarArg", "string"]
+- ["Ps7CVarArg", "timeZone"]
+- !private ["Ps10Comparable", "authTokenDate"]
+- !private ["Ps10Comparable", "dateAndTimeFormatter"]
+- !private ["Ps10Comparable", "dateFormatter"]
+- !private ["Ps10Comparable", "dayAndMonthFormatter"]
+- ["Ps10Comparable", "init"]
+- !private ["Ps10Comparable", "iso8601DateTimeFormatter"]
+- !private ["Ps10Comparable", "preciseTimeFormatter"]
+- !private ["Ps10Comparable", "railsDateFormatter"]
+- !private ["Ps10Comparable", "railsDateTimeFormatter"]
+- !private ["Ps10Comparable", "shortDateFormatter"]
+- !private ["Ps10Comparable", "shortestDateFormatter"]
+- !private ["Ps10Comparable", "timeFormatter"]
+- !private ["Ps28CustomDebugStringConvertible", "authTokenDate"]
+- !private ["Ps28CustomDebugStringConvertible", "date"]
+- !private ["Ps28CustomDebugStringConvertible", "dateAndTimeFormatter"]
+- ["Ps28CustomDebugStringConvertible", "dateFormat"]
+- !private ["Ps28CustomDebugStringConvertible", "dateFormatter"]
+- !private ["Ps28CustomDebugStringConvertible", "dayAndMonthFormatter"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "iso8601DateTimeFormatter"]
+- ["Ps28CustomDebugStringConvertible", "locale"]
+- !private ["Ps28CustomDebugStringConvertible", "preciseTimeFormatter"]
+- !private ["Ps28CustomDebugStringConvertible", "railsDateFormatter"]
+- !private ["Ps28CustomDebugStringConvertible", "railsDateTimeFormatter"]
+- !private ["Ps28CustomDebugStringConvertible", "shortDateFormatter"]
+- !private ["Ps28CustomDebugStringConvertible", "shortestDateFormatter"]
+- !private ["Ps28CustomDebugStringConvertible", "string"]
+- !private ["Ps28CustomDebugStringConvertible", "timeFormatter"]
+- ["Ps28CustomDebugStringConvertible", "timeZone"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "authTokenDate"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "dateAndTimeFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "dateFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "dayAndMonthFormatter"]
+- ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "iso8601DateTimeFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "preciseTimeFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "railsDateFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "railsDateTimeFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "shortDateFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "shortestDateFormatter"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "timeFormatter"]
+- !private ["Ps17CustomReflectable", "authTokenDate"]
+- !private ["Ps17CustomReflectable", "dateAndTimeFormatter"]
+- !private ["Ps17CustomReflectable", "dateFormatter"]
+- !private ["Ps17CustomReflectable", "dayAndMonthFormatter"]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "iso8601DateTimeFormatter"]
+- !private ["Ps17CustomReflectable", "preciseTimeFormatter"]
+- !private ["Ps17CustomReflectable", "railsDateFormatter"]
+- !private ["Ps17CustomReflectable", "railsDateTimeFormatter"]
+- !private ["Ps17CustomReflectable", "shortDateFormatter"]
+- !private ["Ps17CustomReflectable", "shortestDateFormatter"]
+- !private ["Ps17CustomReflectable", "timeFormatter"]
+- !private ["Ps23CustomStringConvertible", "authTokenDate"]
+- !private ["Ps23CustomStringConvertible", "date"]
+- !private ["Ps23CustomStringConvertible", "dateAndTimeFormatter"]
+- ["Ps23CustomStringConvertible", "dateFormat"]
+- !private ["Ps23CustomStringConvertible", "dateFormatter"]
+- !private ["Ps23CustomStringConvertible", "dayAndMonthFormatter"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "iso8601DateTimeFormatter"]
+- ["Ps23CustomStringConvertible", "locale"]
+- !private ["Ps23CustomStringConvertible", "preciseTimeFormatter"]
+- !private ["Ps23CustomStringConvertible", "railsDateFormatter"]
+- !private ["Ps23CustomStringConvertible", "railsDateTimeFormatter"]
+- !private ["Ps23CustomStringConvertible", "shortDateFormatter"]
+- !private ["Ps23CustomStringConvertible", "shortestDateFormatter"]
+- !private ["Ps23CustomStringConvertible", "string"]
+- !private ["Ps23CustomStringConvertible", "timeFormatter"]
+- ["Ps23CustomStringConvertible", "timeZone"]
+- ["V10Foundation4Date", "String"]
+- ["V10Foundation4Date", "asAuthToken"]
+- ["V10Foundation4Date", "asDate"]
+- ["V10Foundation4Date", "asDateAndTime"]
+- ["V10Foundation4Date", "asDayAndMonth"]
+- ["V10Foundation4Date", "asIso8601DateTimeString"]
+- ["V10Foundation4Date", "asPreciseTime"]
+- ["V10Foundation4Date", "asRailsDateString"]
+- ["V10Foundation4Date", "asRailsDateTimeString"]
+- ["V10Foundation4Date", "asSQLiteDateString"]
+- ["V10Foundation4Date", "asSQLiteDateTimeString"]
+- ["V10Foundation4Date", "asShortDate"]
+- ["V10Foundation4Date", "asShortestDate"]
+- ["V10Foundation4Date", "asTime"]
+- !private ["V10Foundation4Date", "authTokenDate"]
+- !private ["V10Foundation4Date", "dateAndTimeFormatter"]
+- !private ["V10Foundation4Date", "dateFormatter"]
+- !private ["V10Foundation4Date", "dayAndMonthFormatter"]
+- ["V10Foundation4Date", "deinit"]
+- !private ["V10Foundation4Date", "iso8601DateTimeFormatter"]
+- !private ["V10Foundation4Date", "preciseTimeFormatter"]
+- !private ["V10Foundation4Date", "railsDateFormatter"]
+- !private ["V10Foundation4Date", "railsDateTimeFormatter"]
+- !private ["V10Foundation4Date", "shortDateFormatter"]
+- !private ["V10Foundation4Date", "shortestDateFormatter"]
+- !private ["V10Foundation4Date", "timeFormatter"]
+- !private ["CSo13DateFormatter", "date"]
+- ["CSo13DateFormatter", "dateFormat"]
+- ["CSo13DateFormatter", "deinit"]
+- ["CSo13DateFormatter", "init"]
+- ["CSo13DateFormatter", "locale"]
+- !private ["CSo13DateFormatter", "string"]
+- ["CSo13DateFormatter", "timeZone"]
+- !private ["Ps9Equatable", "authTokenDate"]
+- !private ["Ps9Equatable", "date"]
+- !private ["Ps9Equatable", "dateAndTimeFormatter"]
+- ["Ps9Equatable", "dateFormat"]
+- !private ["Ps9Equatable", "dateFormatter"]
+- !private ["Ps9Equatable", "dayAndMonthFormatter"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "iso8601DateTimeFormatter"]
+- ["Ps9Equatable", "locale"]
+- !private ["Ps9Equatable", "preciseTimeFormatter"]
+- !private ["Ps9Equatable", "railsDateFormatter"]
+- !private ["Ps9Equatable", "railsDateTimeFormatter"]
+- !private ["Ps9Equatable", "shortDateFormatter"]
+- !private ["Ps9Equatable", "shortestDateFormatter"]
+- !private ["Ps9Equatable", "string"]
+- !private ["Ps9Equatable", "timeFormatter"]
+- ["Ps9Equatable", "timeZone"]
+- ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "iso8601DateTimeFormatter"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "railsDateFormatter"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "railsDateTimeFormatter"]
+- ["Ps32ExpressibleByStringInterpolation", "init"]
+- !private ["Ps32ExpressibleByStringInterpolation", "iso8601DateTimeFormatter"]
+- !private ["Ps32ExpressibleByStringInterpolation", "railsDateFormatter"]
+- !private ["Ps32ExpressibleByStringInterpolation", "railsDateTimeFormatter"]
+- ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "iso8601DateTimeFormatter"]
+- !private ["Ps26ExpressibleByStringLiteral", "railsDateFormatter"]
+- !private ["Ps26ExpressibleByStringLiteral", "railsDateTimeFormatter"]
+- ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "iso8601DateTimeFormatter"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "railsDateFormatter"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "railsDateTimeFormatter"]
+- !private ["CSo9Formatter", "date"]
+- ["CSo9Formatter", "dateFormat"]
+- ["CSo9Formatter", "init"]
+- ["CSo9Formatter", "locale"]
+- !private ["CSo9Formatter", "string"]
+- ["CSo9Formatter", "timeZone"]
+- !private ["Ps8Hashable", "authTokenDate"]
+- !private ["Ps8Hashable", "date"]
+- !private ["Ps8Hashable", "dateAndTimeFormatter"]
+- ["Ps8Hashable", "dateFormat"]
+- !private ["Ps8Hashable", "dateFormatter"]
+- !private ["Ps8Hashable", "dayAndMonthFormatter"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "iso8601DateTimeFormatter"]
+- ["Ps8Hashable", "locale"]
+- !private ["Ps8Hashable", "preciseTimeFormatter"]
+- !private ["Ps8Hashable", "railsDateFormatter"]
+- !private ["Ps8Hashable", "railsDateTimeFormatter"]
+- !private ["Ps8Hashable", "shortDateFormatter"]
+- !private ["Ps8Hashable", "shortestDateFormatter"]
+- !private ["Ps8Hashable", "string"]
+- !private ["Ps8Hashable", "timeFormatter"]
+- ["Ps8Hashable", "timeZone"]
+- ["SQ", "deinit"]
+- ["V10Foundation6Locale", "deinit"]
+- ["V10Foundation6Locale", "init"]
+- ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps25LosslessStringConvertible", "iso8601DateTimeFormatter"]
+- !private ["Ps25LosslessStringConvertible", "railsDateFormatter"]
+- !private ["Ps25LosslessStringConvertible", "railsDateTimeFormatter"]
+- ["Ps10MirrorPath", "init"]
+- !private ["Ps10MirrorPath", "iso8601DateTimeFormatter"]
+- !private ["Ps10MirrorPath", "railsDateFormatter"]
+- !private ["Ps10MirrorPath", "railsDateTimeFormatter"]
+- !private ["PSo8NSCoding", "date"]
+- ["PSo8NSCoding", "dateFormat"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "locale"]
+- !private ["PSo8NSCoding", "string"]
+- ["PSo8NSCoding", "timeZone"]
+- !private ["PSo9NSCopying", "date"]
+- ["PSo9NSCopying", "dateFormat"]
+- ["PSo9NSCopying", "init"]
+- ["PSo9NSCopying", "locale"]
+- !private ["PSo9NSCopying", "string"]
+- ["PSo9NSCopying", "timeZone"]
+- ["PSo16NSMutableCopying", "init"]
+- !private ["CSo8NSObject", "date"]
+- ["CSo8NSObject", "dateFormat"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "locale"]
+- !private ["CSo8NSObject", "string"]
+- ["CSo8NSObject", "timeZone"]
+- !private ["PSo16NSObjectProtocol", "date"]
+- ["PSo16NSObjectProtocol", "dateFormat"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "locale"]
+- !private ["PSo16NSObjectProtocol", "string"]
+- ["PSo16NSObjectProtocol", "timeZone"]
+- ["PSo14NSSecureCoding", "init"]
+- ["CSo8NSString", "init"]
+- ["Sq", "deinit"]
+- ["P13SwiftPlusPlus20PercentEncodableType", "init"]
+- !private ["P13SwiftPlusPlus20PercentEncodableType", "iso8601DateTimeFormatter"]
+- !private ["P13SwiftPlusPlus20PercentEncodableType", "railsDateFormatter"]
+- !private ["P13SwiftPlusPlus20PercentEncodableType", "railsDateTimeFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "authTokenDate"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "dateAndTimeFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "dateFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "dayAndMonthFormatter"]
+- ["P13SwiftPlusPlus16RawEncodableType", "init"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "iso8601DateTimeFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "preciseTimeFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "railsDateFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "railsDateTimeFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "shortDateFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "shortestDateFormatter"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "timeFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "authTokenDate"]
+- !private ["P10Foundation20ReferenceConvertible", "dateAndTimeFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "dateFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "dayAndMonthFormatter"]
+- ["P10Foundation20ReferenceConvertible", "init"]
+- !private ["P10Foundation20ReferenceConvertible", "iso8601DateTimeFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "preciseTimeFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "railsDateFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "railsDateTimeFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "shortDateFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "shortestDateFormatter"]
+- !private ["P10Foundation20ReferenceConvertible", "timeFormatter"]
+- ["SS", "Date"]
+- ["SS", "deinit"]
+- ["SS", "init"]
+- ["SS", "iso8601DateTime"]
+- !private ["SS", "iso8601DateTimeFormatter"]
+- ["SS", "railsDate"]
+- !private ["SS", "railsDateFormatter"]
+- ["SS", "railsDateTime"]
+- !private ["SS", "railsDateTimeFormatter"]
+- ["Ps16TextOutputStream", "init"]
+- !private ["Ps16TextOutputStream", "iso8601DateTimeFormatter"]
+- !private ["Ps16TextOutputStream", "railsDateFormatter"]
+- !private ["Ps16TextOutputStream", "railsDateTimeFormatter"]
+- ["Ps20TextOutputStreamable", "init"]
+- !private ["Ps20TextOutputStreamable", "iso8601DateTimeFormatter"]
+- !private ["Ps20TextOutputStreamable", "railsDateFormatter"]
+- !private ["Ps20TextOutputStreamable", "railsDateTimeFormatter"]
+- ["V10Foundation8TimeZone", "init"]
+- ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "iso8601DateTimeFormatter"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "railsDateFormatter"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "railsDateTimeFormatter"]
+- ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "iso8601DateTimeFormatter"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "railsDateFormatter"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "railsDateTimeFormatter"]
+- ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "iso8601DateTimeFormatter"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "railsDateFormatter"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "railsDateTimeFormatter"]
+- ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "iso8601DateTimeFormatter"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "railsDateFormatter"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "railsDateTimeFormatter"]
+- ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "authTokenDate"]
+- !private ["Ps9_Hashable", "date"]
+- !private ["Ps9_Hashable", "dateAndTimeFormatter"]
+- ["Ps9_Hashable", "dateFormat"]
+- !private ["Ps9_Hashable", "dateFormatter"]
+- !private ["Ps9_Hashable", "dayAndMonthFormatter"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "iso8601DateTimeFormatter"]
+- ["Ps9_Hashable", "locale"]
+- !private ["Ps9_Hashable", "preciseTimeFormatter"]
+- !private ["Ps9_Hashable", "railsDateFormatter"]
+- !private ["Ps9_Hashable", "railsDateTimeFormatter"]
+- !private ["Ps9_Hashable", "shortDateFormatter"]
+- !private ["Ps9_Hashable", "shortestDateFormatter"]
+- !private ["Ps9_Hashable", "string"]
+- !private ["Ps9_Hashable", "timeFormatter"]
+- ["Ps9_Hashable", "timeZone"]
+- !private ["Ps21_ObjectiveCBridgeable", "authTokenDate"]
+- !private ["Ps21_ObjectiveCBridgeable", "dateAndTimeFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "dateFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "dayAndMonthFormatter"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "iso8601DateTimeFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "preciseTimeFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "railsDateFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "railsDateTimeFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "shortDateFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "shortestDateFormatter"]
+- !private ["Ps21_ObjectiveCBridgeable", "timeFormatter"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Ps7CVarArg"
+- "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "V10Foundation4Date"
+- "CSo13DateFormatter"
+- "Ps9Equatable"
+- "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- "Ps32ExpressibleByStringInterpolation"
+- "Ps26ExpressibleByStringLiteral"
+- "Ps33ExpressibleByUnicodeScalarLiteral"
+- "CSo9Formatter"
+- "Ps8Hashable"
+- "SQ"
+- "V10Foundation6Locale"
+- "Ps25LosslessStringConvertible"
+- "Ps10MirrorPath"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "CSo8NSString"
+- "Sq"
+- "P13SwiftPlusPlus20PercentEncodableType"
+- "P13SwiftPlusPlus16RawEncodableType"
+- "P10Foundation20ReferenceConvertible"
+- "SS"
+- "Ps16TextOutputStream"
+- "Ps20TextOutputStreamable"
+- "V10Foundation8TimeZone"
+- "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- "Ps34_ExpressibleByBuiltinStringLiteral"
+- "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+interface-hash: "e630a5e6f297e5c630692c01d0e3f96e"

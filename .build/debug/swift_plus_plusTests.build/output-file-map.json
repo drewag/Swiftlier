@@ -1,0 +1,59 @@
+{
+  "": {
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/master.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/Array+SwiftPlusPlusTests.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Array+SwiftPlusPlusTests.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Array+SwiftPlusPlusTests.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Array+SwiftPlusPlusTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Array+SwiftPlusPlusTests.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/ColorTests.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ColorTests.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ColorTests.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ColorTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ColorTests.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/DataSourceTypeTests.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/DataSourceTypeTests.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/DataSourceTypeTests.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/DataSourceTypeTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/DataSourceTypeTests.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/Dictionary+SwiftPlusPlusTest.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Dictionary+SwiftPlusPlusTest.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Dictionary+SwiftPlusPlusTest.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Dictionary+SwiftPlusPlusTest~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/Dictionary+SwiftPlusPlusTest.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/EventCenterTests.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/EventCenterTests.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/EventCenterTests.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/EventCenterTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/EventCenterTests.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/MultiCallbackTests.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/MultiCallbackTests.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/MultiCallbackTests.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/MultiCallbackTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/MultiCallbackTests.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/ObservableDictionary.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableDictionary.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableDictionary.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableDictionary~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableDictionary.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/ObservableTests.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableTests.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableTests.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/ObservableTests.swiftdeps"
+  },
+  "/Users/andrew/git/lib/swift-plus-plus/Tests/swift-plus-plusTests/String+SwiftPlusPlusTests.swift": {
+    "dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/String+SwiftPlusPlusTests.d",
+    "object": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/String+SwiftPlusPlusTests.swift.o",
+    "swiftmodule": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/String+SwiftPlusPlusTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/andrew/git/lib/swift-plus-plus/.build/debug/swift_plus_plusTests.build/String+SwiftPlusPlusTests.swiftdeps"
+  }
+}

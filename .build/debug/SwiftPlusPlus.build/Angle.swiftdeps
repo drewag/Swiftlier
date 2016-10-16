@@ -1,0 +1,260 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "\u03C0"
+- "Angle"
+- "=="
+- "<"
+- "<="
+- ">"
+- ">="
+- "+"
+- "+="
+- "-"
+- "-="
+- "/"
+- "*"
+- "/"
+- "*"
+- "=="
+provides-nominal:
+- "V13SwiftPlusPlus5Angle"
+- "OV13SwiftPlusPlus5Angle4Unit"
+provides-member:
+- ["V13SwiftPlusPlus5Angle", ""]
+- ["OV13SwiftPlusPlus5Angle4Unit", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "/"
+- "M_PI"
+- "+"
+- "Float"
+- "<="
+- "Angle"
+- "Equatable"
+- "*"
+- "\u03C0"
+- ">"
+- "+="
+- ">="
+- "CastingPrecedence"
+- "=="
+- "AssignmentPrecedence"
+- "-"
+- "CGFloat"
+- "Comparable"
+- "IntegerLiteralType"
+- "-="
+- !private "sin"
+- "<"
+- !private "cos"
+- "FloatLiteralType"
+- "Bool"
+depends-member:
+- !private ["Ps16AbsoluteValuable", "Stride"]
+- ["Ps16AbsoluteValuable", "init"]
+- ["V13SwiftPlusPlus5Angle", "Angle"]
+- ["V13SwiftPlusPlus5Angle", "CGFloat"]
+- ["V13SwiftPlusPlus5Angle", "Float"]
+- !private ["V13SwiftPlusPlus5Angle", "M_PI"]
+- ["V13SwiftPlusPlus5Angle", "Unit"]
+- !private ["V13SwiftPlusPlus5Angle", "cos"]
+- ["V13SwiftPlusPlus5Angle", "cosine"]
+- ["V13SwiftPlusPlus5Angle", "degrees"]
+- ["V13SwiftPlusPlus5Angle", "deinit"]
+- ["V13SwiftPlusPlus5Angle", "init"]
+- !private ["V13SwiftPlusPlus5Angle", "normalized"]
+- ["V13SwiftPlusPlus5Angle", "radians"]
+- !private ["V13SwiftPlusPlus5Angle", "sin"]
+- ["V13SwiftPlusPlus5Angle", "sine"]
+- !private ["V13SwiftPlusPlus5Angle", "unit"]
+- !private ["V13SwiftPlusPlus5Angle", "value"]
+- ["V13SwiftPlusPlus5Angle", "zero"]
+- !private ["Ps19BinaryFloatingPoint", "Stride"]
+- ["Ps19BinaryFloatingPoint", "init"]
+- !private ["Ps17BitwiseOperations", "hashValue"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- ["Sb", "deinit"]
+- !private ["V12CoreGraphics7CGFloat", "Stride"]
+- ["V12CoreGraphics7CGFloat", "deinit"]
+- !private ["V12CoreGraphics7CGFloat", "init"]
+- !private ["Ps7CVarArg", "Stride"]
+- !private ["Ps7CVarArg", "hashValue"]
+- ["Ps7CVarArg", "init"]
+- ["Ps10Comparable", "Angle"]
+- !private ["Ps10Comparable", "CGFloat"]
+- !private ["Ps10Comparable", "Float"]
+- !private ["Ps10Comparable", "M_PI"]
+- !private ["Ps10Comparable", "Stride"]
+- !private ["Ps10Comparable", "cos"]
+- !private ["Ps10Comparable", "cosine"]
+- !private ["Ps10Comparable", "degrees"]
+- !private ["Ps10Comparable", "hashValue"]
+- ["Ps10Comparable", "init"]
+- !private ["Ps10Comparable", "normalized"]
+- !private ["Ps10Comparable", "radians"]
+- !private ["Ps10Comparable", "sin"]
+- !private ["Ps10Comparable", "sine"]
+- !private ["Ps10Comparable", "unit"]
+- !private ["Ps10Comparable", "value"]
+- ["Ps10Comparable", ""]
+- !private ["Ps28CustomDebugStringConvertible", "Stride"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Stride"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "hashValue"]
+- ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "Stride"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "hashValue"]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "Stride"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "hashValue"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Sd", "deinit"]
+- ["Ps9Equatable", "Angle"]
+- !private ["Ps9Equatable", "CGFloat"]
+- !private ["Ps9Equatable", "Float"]
+- !private ["Ps9Equatable", "M_PI"]
+- !private ["Ps9Equatable", "Stride"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- ["Ps9Equatable", "_toAnyHashable"]
+- !private ["Ps9Equatable", "cos"]
+- !private ["Ps9Equatable", "cosine"]
+- ["Ps9Equatable", "degrees"]
+- ["Ps9Equatable", "hashValue"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "normalized"]
+- ["Ps9Equatable", "radians"]
+- !private ["Ps9Equatable", "sin"]
+- !private ["Ps9Equatable", "sine"]
+- !private ["Ps9Equatable", "unit"]
+- !private ["Ps9Equatable", "value"]
+- ["Ps9Equatable", ""]
+- !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
+- !private ["Ps25ExpressibleByFloatLiteral", "Stride"]
+- ["Ps25ExpressibleByFloatLiteral", "init"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "Stride"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "hashValue"]
+- ["Ps27ExpressibleByIntegerLiteral", "init"]
+- !private ["Sf", "Stride"]
+- ["Sf", "deinit"]
+- ["Sf", "init"]
+- !private ["Ps13FloatingPoint", "Stride"]
+- ["Ps13FloatingPoint", "init"]
+- !private ["Ps8Hashable", "Stride"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- ["Ps8Hashable", "_toAnyHashable"]
+- ["Ps8Hashable", "degrees"]
+- ["Ps8Hashable", "hashValue"]
+- ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "radians"]
+- ["Ps8Hashable", ""]
+- ["Si", "deinit"]
+- !private ["Si", "hashValue"]
+- !private ["Ps7Integer", "hashValue"]
+- !private ["Ps17IntegerArithmetic", "hashValue"]
+- !private ["Ps25LosslessStringConvertible", "Stride"]
+- !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
+- ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "hashValue"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "Stride"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "_getBuiltinLogicValue"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "hashValue"]
+- ["P13SwiftPlusPlus16RawEncodableType", "init"]
+- !private ["Ps13SignedInteger", "hashValue"]
+- !private ["Ps12SignedNumber", "Stride"]
+- !private ["Ps12SignedNumber", "hashValue"]
+- ["Ps12SignedNumber", "init"]
+- !private ["Ps10Strideable", "Stride"]
+- !private ["Ps10Strideable", "hashValue"]
+- ["Ps10Strideable", "init"]
+- ["OV13SwiftPlusPlus5Angle4Unit", "=="]
+- ["OV13SwiftPlusPlus5Angle4Unit", "_toAnyHashable"]
+- ["OV13SwiftPlusPlus5Angle4Unit", "degrees"]
+- ["OV13SwiftPlusPlus5Angle4Unit", "deinit"]
+- ["OV13SwiftPlusPlus5Angle4Unit", "hashValue"]
+- ["OV13SwiftPlusPlus5Angle4Unit", "radians"]
+- !private ["Ps15_CVarArgAligned", "Stride"]
+- ["Ps15_CVarArgAligned", "init"]
+- !private ["Ps22_CVarArgPassedAsDouble", "Stride"]
+- ["Ps22_CVarArgPassedAsDouble", "init"]
+- !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
+- !private ["Ps33_ExpressibleByBuiltinFloatLiteral", "Stride"]
+- ["Ps33_ExpressibleByBuiltinFloatLiteral", "init"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "Stride"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "hashValue"]
+- ["Ps35_ExpressibleByBuiltinIntegerLiteral", "init"]
+- !private ["Ps9_Hashable", "Stride"]
+- !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
+- ["Ps9_Hashable", "_toAnyHashable"]
+- ["Ps9_Hashable", "degrees"]
+- ["Ps9_Hashable", "hashValue"]
+- ["Ps9_Hashable", "init"]
+- ["Ps9_Hashable", "radians"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps14_Incrementable", "hashValue"]
+- !private ["Ps8_Integer", "hashValue"]
+- !private ["Ps18_IntegerArithmetic", "hashValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "Stride"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "hashValue"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps14_SignedInteger", "hashValue"]
+- !private ["Ps11_Strideable", "Stride"]
+- !private ["Ps11_Strideable", "hashValue"]
+- ["Ps11_Strideable", "init"]
+depends-nominal:
+- "Ps16AbsoluteValuable"
+- "V13SwiftPlusPlus5Angle"
+- "Ps19BinaryFloatingPoint"
+- !private "Ps17BitwiseOperations"
+- "Sb"
+- "V12CoreGraphics7CGFloat"
+- "Ps7CVarArg"
+- "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Sd"
+- "Ps9Equatable"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- "Ps25ExpressibleByFloatLiteral"
+- "Ps27ExpressibleByIntegerLiteral"
+- "Sf"
+- "Ps13FloatingPoint"
+- "Ps8Hashable"
+- "Si"
+- !private "Ps7Integer"
+- !private "Ps17IntegerArithmetic"
+- "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- "P13SwiftPlusPlus16RawEncodableType"
+- !private "Ps13SignedInteger"
+- "Ps12SignedNumber"
+- "Ps10Strideable"
+- "OV13SwiftPlusPlus5Angle4Unit"
+- "Ps15_CVarArgAligned"
+- "Ps22_CVarArgPassedAsDouble"
+- !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
+- "Ps33_ExpressibleByBuiltinFloatLiteral"
+- "Ps35_ExpressibleByBuiltinIntegerLiteral"
+- "Ps9_Hashable"
+- !private "Ps14_Incrementable"
+- !private "Ps8_Integer"
+- !private "Ps18_IntegerArithmetic"
+- "Ps21_ObjectiveCBridgeable"
+- !private "Ps14_SignedInteger"
+- "Ps11_Strideable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+interface-hash: "818a805b3ca24264419784c6410b0fbf"

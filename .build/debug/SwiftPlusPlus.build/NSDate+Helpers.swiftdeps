@@ -1,0 +1,413 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["V10Foundation4Date", ""]
+- ["V10Foundation4Date", "isToday"]
+- ["V10Foundation4Date", "isThisYear"]
+- ["V10Foundation4Date", "time"]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- !private "=="
+- "Bool"
+- !private "floor"
+- !private "-"
+- !private "Calendar"
+- !private "Double"
+- !private "NSEC_PER_SEC"
+- !private "Array"
+- "Date"
+- !private "timespec"
+- !private "*"
+- "DispatchWallTime"
+- !private "Set"
+- !private "Int"
+depends-member:
+- !private ["Ps16AbsoluteValuable", "init"]
+- !private ["Sa", "Element"]
+- !private ["Sa", "Iterator"]
+- !private ["Sa", "_Element"]
+- ["Sa", "deinit"]
+- !private ["Ps23BidirectionalCollection", "Element"]
+- !private ["Ps23BidirectionalCollection", "Iterator"]
+- !private ["Ps23BidirectionalCollection", "_Element"]
+- !private ["Ps22BidirectionalIndexable", "Element"]
+- !private ["Ps22BidirectionalIndexable", "Iterator"]
+- !private ["Ps22BidirectionalIndexable", "_Element"]
+- !private ["Ps19BinaryFloatingPoint", "init"]
+- !private ["Ps17BitwiseOperations", "init"]
+- ["Sb", "deinit"]
+- !private ["Ps7CVarArg", "Element"]
+- !private ["Ps7CVarArg", "Iterator"]
+- !private ["Ps7CVarArg", "_Element"]
+- !private ["Ps7CVarArg", "init"]
+- ["V10Foundation8Calendar", "Component"]
+- !private ["V10Foundation8Calendar", "current"]
+- !private ["V10Foundation8Calendar", "date"]
+- !private ["V10Foundation8Calendar", "dateComponents"]
+- ["V10Foundation8Calendar", "deinit"]
+- !private ["Ps10Collection", "Element"]
+- !private ["Ps10Collection", "Iterator"]
+- !private ["Ps10Collection", "_Element"]
+- !private ["Ps10Collection", "init"]
+- !private ["Ps10Comparable", "Calendar"]
+- !private ["Ps10Comparable", "Date"]
+- !private ["Ps10Comparable", "DispatchWallTime"]
+- !private ["Ps10Comparable", "Double"]
+- !private ["Ps10Comparable", "Int"]
+- !private ["Ps10Comparable", "NSEC_PER_SEC"]
+- !private ["Ps10Comparable", "Set"]
+- !private ["Ps10Comparable", "floor"]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps10Comparable", "timeIntervalSince1970"]
+- !private ["Ps10Comparable", "timespec"]
+- !private ["OV10Foundation8Calendar9Component", "day"]
+- ["OV10Foundation8Calendar9Component", "deinit"]
+- !private ["OV10Foundation8Calendar9Component", "era"]
+- !private ["OV10Foundation8Calendar9Component", "month"]
+- !private ["OV10Foundation8Calendar9Component", "year"]
+- !private ["Ps28CustomDebugStringConvertible", "Calendar"]
+- ["Ps28CustomDebugStringConvertible", "Component"]
+- !private ["Ps28CustomDebugStringConvertible", "Date"]
+- !private ["Ps28CustomDebugStringConvertible", "DispatchWallTime"]
+- !private ["Ps28CustomDebugStringConvertible", "Double"]
+- !private ["Ps28CustomDebugStringConvertible", "Element"]
+- !private ["Ps28CustomDebugStringConvertible", "Int"]
+- !private ["Ps28CustomDebugStringConvertible", "Iterator"]
+- !private ["Ps28CustomDebugStringConvertible", "NSEC_PER_SEC"]
+- !private ["Ps28CustomDebugStringConvertible", "Set"]
+- !private ["Ps28CustomDebugStringConvertible", "_Element"]
+- !private ["Ps28CustomDebugStringConvertible", "current"]
+- !private ["Ps28CustomDebugStringConvertible", "date"]
+- !private ["Ps28CustomDebugStringConvertible", "dateComponents"]
+- !private ["Ps28CustomDebugStringConvertible", "floor"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "timeIntervalSince1970"]
+- !private ["Ps28CustomDebugStringConvertible", "timespec"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Calendar"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Date"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "DispatchWallTime"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Double"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Int"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "NSEC_PER_SEC"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Set"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "floor"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "timeIntervalSince1970"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "timespec"]
+- !private ["Ps17CustomReflectable", "Calendar"]
+- ["Ps17CustomReflectable", "Component"]
+- !private ["Ps17CustomReflectable", "Date"]
+- !private ["Ps17CustomReflectable", "DispatchWallTime"]
+- !private ["Ps17CustomReflectable", "Double"]
+- !private ["Ps17CustomReflectable", "Element"]
+- !private ["Ps17CustomReflectable", "Int"]
+- !private ["Ps17CustomReflectable", "Iterator"]
+- !private ["Ps17CustomReflectable", "NSEC_PER_SEC"]
+- !private ["Ps17CustomReflectable", "Set"]
+- !private ["Ps17CustomReflectable", "_Element"]
+- !private ["Ps17CustomReflectable", "current"]
+- !private ["Ps17CustomReflectable", "date"]
+- !private ["Ps17CustomReflectable", "dateComponents"]
+- !private ["Ps17CustomReflectable", "floor"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "timeIntervalSince1970"]
+- !private ["Ps17CustomReflectable", "timespec"]
+- !private ["Ps23CustomStringConvertible", "Calendar"]
+- ["Ps23CustomStringConvertible", "Component"]
+- !private ["Ps23CustomStringConvertible", "Date"]
+- !private ["Ps23CustomStringConvertible", "DispatchWallTime"]
+- !private ["Ps23CustomStringConvertible", "Double"]
+- !private ["Ps23CustomStringConvertible", "Element"]
+- !private ["Ps23CustomStringConvertible", "Int"]
+- !private ["Ps23CustomStringConvertible", "Iterator"]
+- !private ["Ps23CustomStringConvertible", "NSEC_PER_SEC"]
+- !private ["Ps23CustomStringConvertible", "Set"]
+- !private ["Ps23CustomStringConvertible", "_Element"]
+- !private ["Ps23CustomStringConvertible", "current"]
+- !private ["Ps23CustomStringConvertible", "date"]
+- !private ["Ps23CustomStringConvertible", "dateComponents"]
+- !private ["Ps23CustomStringConvertible", "floor"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "timeIntervalSince1970"]
+- !private ["Ps23CustomStringConvertible", "timespec"]
+- ["V10Foundation4Date", "Bool"]
+- !private ["V10Foundation4Date", "Calendar"]
+- !private ["V10Foundation4Date", "Date"]
+- ["V10Foundation4Date", "DispatchWallTime"]
+- !private ["V10Foundation4Date", "Double"]
+- !private ["V10Foundation4Date", "Int"]
+- !private ["V10Foundation4Date", "NSEC_PER_SEC"]
+- !private ["V10Foundation4Date", "Set"]
+- ["V10Foundation4Date", "deinit"]
+- !private ["V10Foundation4Date", "floor"]
+- !private ["V10Foundation4Date", "init"]
+- ["V10Foundation4Date", "isThisYear"]
+- ["V10Foundation4Date", "isToday"]
+- ["V10Foundation4Date", "time"]
+- !private ["V10Foundation4Date", "timeIntervalSince1970"]
+- !private ["V10Foundation4Date", "timespec"]
+- ["V10Foundation14DateComponents", "deinit"]
+- ["V8Dispatch16DispatchWallTime", "deinit"]
+- !private ["V8Dispatch16DispatchWallTime", "init"]
+- ["Sd", "deinit"]
+- !private ["Sd", "init"]
+- !private ["Ps9Equatable", "Calendar"]
+- ["Ps9Equatable", "Component"]
+- !private ["Ps9Equatable", "Date"]
+- !private ["Ps9Equatable", "DispatchWallTime"]
+- !private ["Ps9Equatable", "Double"]
+- !private ["Ps9Equatable", "Element"]
+- !private ["Ps9Equatable", "Int"]
+- !private ["Ps9Equatable", "NSEC_PER_SEC"]
+- !private ["Ps9Equatable", "Set"]
+- !private ["Ps9Equatable", "current"]
+- !private ["Ps9Equatable", "date"]
+- !private ["Ps9Equatable", "dateComponents"]
+- !private ["Ps9Equatable", "day"]
+- !private ["Ps9Equatable", "era"]
+- !private ["Ps9Equatable", "floor"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "month"]
+- !private ["Ps9Equatable", "timeIntervalSince1970"]
+- !private ["Ps9Equatable", "timespec"]
+- !private ["Ps9Equatable", "year"]
+- !private ["Ps25ExpressibleByArrayLiteral", "Element"]
+- !private ["Ps25ExpressibleByArrayLiteral", "Iterator"]
+- !private ["Ps25ExpressibleByArrayLiteral", "_Element"]
+- !private ["Ps25ExpressibleByArrayLiteral", "init"]
+- !private ["Ps25ExpressibleByFloatLiteral", "init"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "init"]
+- !private ["Ps13FloatingPoint", "init"]
+- !private ["Ps8Hashable", "Calendar"]
+- ["Ps8Hashable", "Component"]
+- !private ["Ps8Hashable", "Date"]
+- !private ["Ps8Hashable", "DispatchWallTime"]
+- !private ["Ps8Hashable", "Double"]
+- !private ["Ps8Hashable", "Element"]
+- !private ["Ps8Hashable", "Int"]
+- !private ["Ps8Hashable", "NSEC_PER_SEC"]
+- !private ["Ps8Hashable", "Set"]
+- !private ["Ps8Hashable", "current"]
+- !private ["Ps8Hashable", "date"]
+- !private ["Ps8Hashable", "dateComponents"]
+- !private ["Ps8Hashable", "day"]
+- !private ["Ps8Hashable", "era"]
+- !private ["Ps8Hashable", "floor"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "month"]
+- !private ["Ps8Hashable", "timeIntervalSince1970"]
+- !private ["Ps8Hashable", "timespec"]
+- !private ["Ps8Hashable", "year"]
+- !private ["Ps9Indexable", "Element"]
+- !private ["Ps9Indexable", "Iterator"]
+- !private ["Ps9Indexable", "_Element"]
+- !private ["Ps9Indexable", "init"]
+- !private ["Ps13IndexableBase", "Element"]
+- !private ["Ps13IndexableBase", "Iterator"]
+- !private ["Ps13IndexableBase", "_Element"]
+- !private ["Ps13IndexableBase", "init"]
+- !private ["Vs16IndexingIterator", "Element"]
+- ["Si", "deinit"]
+- !private ["Si", "init"]
+- !private ["Ps7Integer", "init"]
+- !private ["Ps17IntegerArithmetic", "init"]
+- !private ["Ps16IteratorProtocol", "Element"]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- !private ["Ps17MutableCollection", "Element"]
+- !private ["Ps17MutableCollection", "Iterator"]
+- !private ["Ps17MutableCollection", "_Element"]
+- !private ["Ps16MutableIndexable", "Element"]
+- !private ["Ps16MutableIndexable", "Iterator"]
+- !private ["Ps16MutableIndexable", "_Element"]
+- ["Sq", "deinit"]
+- !private ["Ps22RandomAccessCollection", "Element"]
+- !private ["Ps22RandomAccessCollection", "Iterator"]
+- !private ["Ps22RandomAccessCollection", "_Element"]
+- !private ["Ps21RandomAccessIndexable", "Element"]
+- !private ["Ps21RandomAccessIndexable", "Iterator"]
+- !private ["Ps21RandomAccessIndexable", "_Element"]
+- !private ["Ps26RangeReplaceableCollection", "Element"]
+- !private ["Ps26RangeReplaceableCollection", "Iterator"]
+- !private ["Ps26RangeReplaceableCollection", "_Element"]
+- !private ["Ps25RangeReplaceableIndexable", "Element"]
+- !private ["Ps25RangeReplaceableIndexable", "Iterator"]
+- !private ["Ps25RangeReplaceableIndexable", "_Element"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "Calendar"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "Date"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "DispatchWallTime"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "Double"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "Int"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "NSEC_PER_SEC"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "Set"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "floor"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "init"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "timeIntervalSince1970"]
+- !private ["P13SwiftPlusPlus16RawEncodableType", "timespec"]
+- !private ["P10Foundation20ReferenceConvertible", "Calendar"]
+- ["P10Foundation20ReferenceConvertible", "Component"]
+- !private ["P10Foundation20ReferenceConvertible", "Date"]
+- !private ["P10Foundation20ReferenceConvertible", "DispatchWallTime"]
+- !private ["P10Foundation20ReferenceConvertible", "Double"]
+- !private ["P10Foundation20ReferenceConvertible", "Int"]
+- !private ["P10Foundation20ReferenceConvertible", "NSEC_PER_SEC"]
+- !private ["P10Foundation20ReferenceConvertible", "Set"]
+- !private ["P10Foundation20ReferenceConvertible", "current"]
+- !private ["P10Foundation20ReferenceConvertible", "date"]
+- !private ["P10Foundation20ReferenceConvertible", "dateComponents"]
+- !private ["P10Foundation20ReferenceConvertible", "floor"]
+- !private ["P10Foundation20ReferenceConvertible", "init"]
+- !private ["P10Foundation20ReferenceConvertible", "timeIntervalSince1970"]
+- !private ["P10Foundation20ReferenceConvertible", "timespec"]
+- !private ["Ps8Sequence", "Element"]
+- !private ["Ps8Sequence", "Iterator"]
+- !private ["Ps8Sequence", "_Element"]
+- !private ["Ps8Sequence", "init"]
+- !private ["Vs3Set", "Element"]
+- ["Vs3Set", "deinit"]
+- !private ["Vs3Set", "init"]
+- !private ["Ps10SetAlgebra", "Element"]
+- !private ["Ps10SetAlgebra", "init"]
+- !private ["Ps13SignedInteger", "init"]
+- !private ["Ps12SignedNumber", "init"]
+- !private ["Ps10Strideable", "init"]
+- ["Vs6UInt64", "deinit"]
+- !private ["Ps14_ArrayProtocol", "Element"]
+- !private ["Ps14_ArrayProtocol", "Iterator"]
+- !private ["Ps14_ArrayProtocol", "_Element"]
+- !private ["Ps15_CVarArgAligned", "init"]
+- !private ["Ps22_CVarArgPassedAsDouble", "init"]
+- !private ["Ps24_DestructorSafeContainer", "Element"]
+- !private ["Ps24_DestructorSafeContainer", "Iterator"]
+- !private ["Ps24_DestructorSafeContainer", "_Element"]
+- !private ["Ps33_ExpressibleByBuiltinFloatLiteral", "init"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "init"]
+- !private ["Ps9_Hashable", "Calendar"]
+- ["Ps9_Hashable", "Component"]
+- !private ["Ps9_Hashable", "Date"]
+- !private ["Ps9_Hashable", "DispatchWallTime"]
+- !private ["Ps9_Hashable", "Double"]
+- !private ["Ps9_Hashable", "Element"]
+- !private ["Ps9_Hashable", "Int"]
+- !private ["Ps9_Hashable", "NSEC_PER_SEC"]
+- !private ["Ps9_Hashable", "Set"]
+- !private ["Ps9_Hashable", "current"]
+- !private ["Ps9_Hashable", "date"]
+- !private ["Ps9_Hashable", "dateComponents"]
+- !private ["Ps9_Hashable", "day"]
+- !private ["Ps9_Hashable", "era"]
+- !private ["Ps9_Hashable", "floor"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "month"]
+- !private ["Ps9_Hashable", "timeIntervalSince1970"]
+- !private ["Ps9_Hashable", "timespec"]
+- !private ["Ps9_Hashable", "year"]
+- !private ["Ps14_Incrementable", "init"]
+- !private ["Ps8_Integer", "init"]
+- !private ["Ps18_IntegerArithmetic", "init"]
+- ["P10Foundation14_MutableBoxing", "Component"]
+- !private ["P10Foundation14_MutableBoxing", "current"]
+- !private ["P10Foundation14_MutableBoxing", "date"]
+- !private ["P10Foundation14_MutableBoxing", "dateComponents"]
+- !private ["Ps21_ObjectiveCBridgeable", "Calendar"]
+- ["Ps21_ObjectiveCBridgeable", "Component"]
+- !private ["Ps21_ObjectiveCBridgeable", "Date"]
+- !private ["Ps21_ObjectiveCBridgeable", "DispatchWallTime"]
+- !private ["Ps21_ObjectiveCBridgeable", "Double"]
+- !private ["Ps21_ObjectiveCBridgeable", "Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "Int"]
+- !private ["Ps21_ObjectiveCBridgeable", "Iterator"]
+- !private ["Ps21_ObjectiveCBridgeable", "NSEC_PER_SEC"]
+- !private ["Ps21_ObjectiveCBridgeable", "Set"]
+- !private ["Ps21_ObjectiveCBridgeable", "_Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "current"]
+- !private ["Ps21_ObjectiveCBridgeable", "date"]
+- !private ["Ps21_ObjectiveCBridgeable", "dateComponents"]
+- !private ["Ps21_ObjectiveCBridgeable", "floor"]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "timeIntervalSince1970"]
+- !private ["Ps21_ObjectiveCBridgeable", "timespec"]
+- !private ["Ps14_SignedInteger", "init"]
+- !private ["Ps11_Strideable", "init"]
+- ["VSC8timespec", "deinit"]
+- !private ["VSC8timespec", "init"]
+depends-nominal:
+- !private "Ps16AbsoluteValuable"
+- "Sa"
+- !private "Ps23BidirectionalCollection"
+- !private "Ps22BidirectionalIndexable"
+- !private "Ps19BinaryFloatingPoint"
+- !private "Ps17BitwiseOperations"
+- "Sb"
+- !private "Ps7CVarArg"
+- "V10Foundation8Calendar"
+- !private "Ps10Collection"
+- !private "Ps10Comparable"
+- "OV10Foundation8Calendar9Component"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "V10Foundation4Date"
+- "V10Foundation14DateComponents"
+- "V8Dispatch16DispatchWallTime"
+- "Sd"
+- "Ps9Equatable"
+- !private "Ps25ExpressibleByArrayLiteral"
+- !private "Ps25ExpressibleByFloatLiteral"
+- !private "Ps27ExpressibleByIntegerLiteral"
+- !private "Ps13FloatingPoint"
+- "Ps8Hashable"
+- !private "Ps9Indexable"
+- !private "Ps13IndexableBase"
+- !private "Vs16IndexingIterator"
+- "Si"
+- !private "Ps7Integer"
+- !private "Ps17IntegerArithmetic"
+- !private "Ps16IteratorProtocol"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- !private "Ps17MutableCollection"
+- !private "Ps16MutableIndexable"
+- "Sq"
+- !private "Ps22RandomAccessCollection"
+- !private "Ps21RandomAccessIndexable"
+- !private "Ps26RangeReplaceableCollection"
+- !private "Ps25RangeReplaceableIndexable"
+- !private "P13SwiftPlusPlus16RawEncodableType"
+- "P10Foundation20ReferenceConvertible"
+- !private "Ps8Sequence"
+- "Vs3Set"
+- !private "Ps10SetAlgebra"
+- !private "Ps13SignedInteger"
+- !private "Ps12SignedNumber"
+- !private "Ps10Strideable"
+- "Vs6UInt64"
+- !private "Ps14_ArrayProtocol"
+- !private "Ps15_CVarArgAligned"
+- !private "Ps22_CVarArgPassedAsDouble"
+- !private "Ps24_DestructorSafeContainer"
+- !private "Ps33_ExpressibleByBuiltinFloatLiteral"
+- !private "Ps35_ExpressibleByBuiltinIntegerLiteral"
+- "Ps9_Hashable"
+- !private "Ps14_Incrementable"
+- !private "Ps8_Integer"
+- !private "Ps18_IntegerArithmetic"
+- "P10Foundation14_MutableBoxing"
+- "Ps21_ObjectiveCBridgeable"
+- !private "Ps14_SignedInteger"
+- !private "Ps11_Strideable"
+- "VSC8timespec"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+interface-hash: "2e71a9340eb4afc86f40411421698ed5"
