@@ -37,6 +37,7 @@
 		496D42FC197B842400250A0A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D42FB197B842400250A0A /* Observable.swift */; };
 		4972759E1BFFDE1D00BAD6AB /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */; };
 		49732CF519439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
+		497AD1371DB4403100A2C90B /* UICollectionView+EasyRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AD1361DB4403100A2C90B /* UICollectionView+EasyRegister.swift */; };
 		498425A71D51159900046DCD /* ObservableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498425A61D51159900046DCD /* ObservableDictionary.swift */; };
 		498DF37419494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */; };
 		498DF37619494246004AE103 /* String+SwiftPlusPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */; };
@@ -135,6 +136,7 @@
 		496D42FB197B842400250A0A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = SwiftPlusPlus/Observable.swift; sourceTree = SOURCE_ROOT; };
 		4972759D1BFFDE1D00BAD6AB /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlus.swift"; sourceTree = "<group>"; };
+		497AD1361DB4403100A2C90B /* UICollectionView+EasyRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+EasyRegister.swift"; sourceTree = "<group>"; };
 		498425A61D51159900046DCD /* ObservableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableDictionary.swift; sourceTree = "<group>"; };
 		498DF37119494246004AE103 /* Dictionary+SwiftPlusPlusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwiftPlusPlusTest.swift"; sourceTree = "<group>"; };
 		498DF37319494246004AE103 /* String+SwiftPlusPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SwiftPlusPlusTests.swift"; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				499934E11C9F1F440050A86B /* UITableView+EasyRegister.swift */,
+				497AD1361DB4403100A2C90B /* UICollectionView+EasyRegister.swift */,
 				49A0CD8D1BA1DD8E00E28B66 /* UIColor+Factory.swift */,
 				49A2BBD01BA2597600E472D7 /* UIView+ImageCapture.swift */,
 				49A2BC081BA36E5D00E472D7 /* UIView+Video.swift */,
@@ -616,6 +619,7 @@
 				49E72FF81C822A9F00C9F4BF /* EncodableType.swift in Sources */,
 				4954007D1BEBD6F90019A08B /* PresentUnderTopBarTransition.swift in Sources */,
 				493610D31D58FA8D0029C7F1 /* Angle.swift in Sources */,
+				497AD1371DB4403100A2C90B /* UICollectionView+EasyRegister.swift in Sources */,
 				49CB14A41D4F0F0100632C4C /* BubbleView.swift in Sources */,
 				4908FFE51BEAB085003EE9F3 /* WebViewController.swift in Sources */,
 				49D06DD41A59D8DB0031845A /* WeakWrapper.swift in Sources */,
