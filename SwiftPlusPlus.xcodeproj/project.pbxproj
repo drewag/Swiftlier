@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49000F041BC8B438002EF454 /* NSDate+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F031BC8B438002EF454 /* NSDate+Formatting.swift */; };
+		4907402A1DB8254700B5489A /* UIButton+BlockTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490740291DB8254700B5489A /* UIButton+BlockTarget.swift */; };
 		4908FFBC1BEA8A26003EE9F3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908FFBB1BEA8A26003EE9F3 /* Menu.swift */; };
 		4908FFBE1BEA8A3D003EE9F3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908FFBD1BEA8A3D003EE9F3 /* MenuViewController.swift */; };
 		4908FFD01BEA8E10003EE9F3 /* UIViewController+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908FFCE1BEA8E10003EE9F3 /* UIViewController+Transitions.swift */; };
@@ -109,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		49000F031BC8B438002EF454 /* NSDate+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Formatting.swift"; sourceTree = "<group>"; };
+		490740291DB8254700B5489A /* UIButton+BlockTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+BlockTarget.swift"; path = "../UIButton+BlockTarget.swift"; sourceTree = "<group>"; };
 		4908FFBB1BEA8A26003EE9F3 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		4908FFBD1BEA8A3D003EE9F3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4908FFCE1BEA8E10003EE9F3 /* UIViewController+Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transitions.swift"; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				49508C121BAB3E2B00341A44 /* UIView+Helpers.swift */,
 				499ED21F1CF61AFF00E4E902 /* UIImage+Editing.swift */,
 				499ED2211CF62F8B00E4E902 /* NSDate+Comparison.swift */,
+				490740291DB8254700B5489A /* UIButton+BlockTarget.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				4996336B1CCD5EAE00075E1D /* LocalUserReportableError.swift in Sources */,
 				49D1C2321D3379800074ED33 /* ObservableArray.swift in Sources */,
 				499633691CCD5CF000075E1D /* NetworkUserReportableError.swift in Sources */,
+				4907402A1DB8254700B5489A /* UIButton+BlockTarget.swift in Sources */,
 				49E26E0D1CA339D50026F15B /* JSON.swift in Sources */,
 				4969843F1DA0C2AE00491E25 /* SingleTask.swift in Sources */,
 				493610D11D58FA540029C7F1 /* CGMath.swift in Sources */,
