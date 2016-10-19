@@ -27,8 +27,8 @@ public final class TaskService {
         return self.singleton.performInBackground(block)
     }
 
-    static public func performInForeground(waitForCompletion wait: Bool = false, block: () -> ()) {
-        return self.singleton.performInForeground(wait, block: block)
+    static public func performInForeground(afterDelay delay: NSTimeInterval? = nil, waitForCompletion wait: Bool = false, block: () -> ()) {
+        return self.singleton.performInForeground(afterDelay: delay, waitForCompletion: wait, block: block)
     }
 
     public func schedule(singleTask task: SingleTask, at date: NSDate) {
@@ -117,17 +117,30 @@ private extension TaskService {
         self.backgroundOperationQueue.addOperation(operation)
     }
 
-    func performInForeground(waitForCompletion: Bool, block: () -> ()) {
+    func performInForeground(afterDelay delay: NSTimeInterval?, waitForCompletion: Bool, block: () -> ()) {
         if waitForCompletion {
             let semaphore = dispatch_semaphore_create(0)
-            dispatch_async(dispatch_get_main_queue()) {
+            func execute() {
                 block()
                 dispatch_semaphore_signal(semaphore)
+            }
+            if let delay = delay {
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue(), execute)
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), execute)
             }
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         }
         else {
-            dispatch_async(dispatch_get_main_queue(), block)
+            if let delay = delay {
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue(), block)
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), block)
+            }
         }
     }
 
