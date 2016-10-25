@@ -15,30 +15,35 @@ public enum ImageResizeMode {
 
 extension UIImage {
     public func resizeImage(toSize size:CGSize, withMode mode: ImageResizeMode) -> UIImage {
-        var scaledImageRect = CGRect.zero;
+        var scaledImageRect = CGRect()
 
-        let aspectWidth: CGFloat = size.width / self.size.width;
-        let aspectHeight: CGFloat = size.height / self.size.height;
+        let aspectWidth: CGFloat = size.width / self.size.width
+        let aspectHeight: CGFloat = size.height / self.size.height
         let aspectRatio: CGFloat
         switch mode {
         case .AspectFill:
-            aspectRatio = max(aspectWidth, aspectHeight);
+            aspectRatio = max(aspectWidth, aspectHeight)
         case .AspectFit:
-            aspectRatio = max(aspectWidth, aspectHeight);
+            aspectRatio = min(aspectWidth, aspectHeight)
         }
 
-        scaledImageRect.size.width = self.size.width * aspectRatio;
-        scaledImageRect.size.height = self.size.height * aspectRatio;
-        scaledImageRect.origin.x = (size.width - scaledImageRect.size.width) / 2.0;
-        scaledImageRect.origin.y = (size.height - scaledImageRect.size.height) / 2.0;
+        scaledImageRect.size.width = round(self.size.width * aspectRatio)
+        scaledImageRect.size.height = round(self.size.height * aspectRatio)
 
-        UIGraphicsBeginImageContextWithOptions(size, false, 0);
+        switch mode {
+        case .AspectFill:
+            scaledImageRect.origin.x = (size.width - scaledImageRect.size.width) / 2.0
+            scaledImageRect.origin.y = (size.height - scaledImageRect.size.height) / 2.0
+            UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        case .AspectFit:
+            UIGraphicsBeginImageContextWithOptions(scaledImageRect.size, false, 0)
+        }
 
-        self.drawInRect(scaledImageRect);
+        self.drawInRect(scaledImageRect)
 
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
 
-        return scaledImage!;
+        return scaledImage!
     }
 }
