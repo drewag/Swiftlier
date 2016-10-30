@@ -6,6 +6,7 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 public protocol SingleTask: class {
@@ -30,3 +31,4 @@ extension SingleTask {
         TaskService.singleton.unschedule(singleTask: self)
     }
 }
+#endif

@@ -15,26 +15,21 @@ import Foundation
 
 #if os(iOS)
 import UIKit
-#endif
 
 extension CGContext {
-    #if os(iOS)
     public var image: UIImage? {
         guard let CGImage = self.makeImage() else {
             return nil
         }
         return UIImage(cgImage: CGImage)
     }
-    #endif
 
-    #if os(iOS)
     public func draw(_ image: UIImage?, inRect rect: CGRect) {
         guard let image = image else {
             return
         }
         self.draw(image, inRect: rect)
     }
-    #endif
 
     public func draw(_ image: CGImage?, inRect rect: CGRect) {
         guard let image = image else {
@@ -50,7 +45,6 @@ extension CGContext {
         self.restoreGState()
     }
 
-    #if os(iOS)
     public static func createImageContext(withSize size: CGSize, coordinateSystem: CoordinateSystem = .uiKit) -> CGContext? {
         let scale: CGFloat
         switch coordinateSystem {
@@ -81,10 +75,10 @@ extension CGContext {
 
         return context
     }
-    #endif
 }
 
 public enum CoordinateSystem {
     case uiKit
     case pdf
 }
+#endif

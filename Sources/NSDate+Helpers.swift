@@ -31,6 +31,7 @@ extension Date {
         return today == otherDate
     }
 
+    #if os(iOS)
     public var time: DispatchWallTime {
         let seconds = self.timeIntervalSince1970
         let wholeSecsFloor = floor(seconds)
@@ -40,4 +41,5 @@ extension Date {
                                   tv_nsec: Int(nanosFloor))
         return DispatchWallTime(timespec: spec)
     }
+    #endif
 }

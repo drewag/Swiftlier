@@ -10,15 +10,15 @@ import Foundation
 
 public protocol RawEncodableType {
     init()
-    var asObject: AnyObject { get }
+    var asObject: Any { get }
 }
-extension String: RawEncodableType { public var asObject: AnyObject { return self as AnyObject } }
-extension Bool: RawEncodableType { public var asObject: AnyObject { return self as AnyObject } }
-extension Int: RawEncodableType { public var asObject: AnyObject { return self as AnyObject } }
-extension Double: RawEncodableType { public var asObject: AnyObject { return self as AnyObject } }
-extension Float: RawEncodableType { public var asObject: AnyObject { return self as AnyObject } }
-extension Data: RawEncodableType { public var asObject: AnyObject { return self as AnyObject } }
-extension Date: RawEncodableType { public var asObject: AnyObject { return self as AnyObject } }
+extension String: RawEncodableType { public var asObject: Any { return self as Any } }
+extension Bool: RawEncodableType { public var asObject: Any { return self as Any } }
+extension Int: RawEncodableType { public var asObject: Any { return self as Any } }
+extension Double: RawEncodableType { public var asObject: Any { return self as Any } }
+extension Float: RawEncodableType { public var asObject: Any { return self as Any } }
+extension Data: RawEncodableType { public var asObject: Any { return self as Any } }
+extension Date: RawEncodableType { public var asObject: Any { return self as Any } }
 
 open class CoderKey<Value: RawEncodableType> {
     open class var customKey: String? { return nil }

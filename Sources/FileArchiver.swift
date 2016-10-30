@@ -6,13 +6,14 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 public struct FileArchive {
     public static func archiveEncodable(_ encodable: EncodableType, toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
         let object = NativeTypesEncoder.objectFromEncodable(encodable)
         let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
-        try data.write(to: URL(fileURLWithPath: file), options: NSData.WritingOptions.atomicWrite)
+        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
     public static func archiveDictionaryOfEncodable<E: EncodableType>(_ dictionary: [String:E], toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
@@ -23,7 +24,7 @@ public struct FileArchive {
         }
 
         let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: finalDict))
-        try data.write(to: URL(fileURLWithPath: file), options: NSData.WritingOptions.atomicWrite)
+        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
     public static func archiveArrayOfEncodable<E: EncodableType>(_ array: [E], toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
@@ -34,7 +35,7 @@ public struct FileArchive {
         }
 
         let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: finalArray))
-        try data.write(to: URL(fileURLWithPath: file), options: NSData.WritingOptions.atomicWrite)
+        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
     public static func unarchiveEncodableFromFile<E: EncodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> E? {
@@ -105,3 +106,4 @@ public struct FileArchive {
         return finalArray
     }
 }
+#endif

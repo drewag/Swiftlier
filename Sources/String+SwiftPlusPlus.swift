@@ -56,11 +56,13 @@ extension String {
     public var isValidEmail: Bool {
         let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
 
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", argumentArray: [emailRegEx])
         return emailTest.evaluate(with: self)
     }
 }
 
+#if os(iOS)
 public func /(lhs: String, rhs: String) -> String {
-    return (lhs as NSString).appendingPathComponent(rhs)
+    return lhs.appendingPathComponent(rhs)
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 public final class BlockSingleTask: SingleTask {
@@ -30,3 +31,4 @@ public final class BlockSingleTask: SingleTask {
         return self.block()
     }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
+#if os(iOS)
 public final class BlockPeriodicTask: PeriodicTask {
     public let uniqueIdentifier: String
     public let performIn: TaskQueue
@@ -31,3 +32,4 @@ public final class BlockPeriodicTask: PeriodicTask {
         return self.block(onComplete)
     }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 public enum TaskPeriod {
@@ -78,3 +79,4 @@ extension TaskPeriod {
         }
     }
 }
+#endif

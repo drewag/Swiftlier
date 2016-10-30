@@ -19,12 +19,14 @@ public struct Transform {
         self.translation = translation
     }
 
+   #if os(iOS)
     public var affineTransform: CGAffineTransform {
         var transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
         transform = transform.translatedBy(x: self.translation.x, y: self.translation.y)
         transform = transform.rotated(by: self.rotation.radians())
         return transform
     }
+    #endif
 }
 
 #if os(iOS)

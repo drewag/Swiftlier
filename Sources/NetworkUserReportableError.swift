@@ -41,6 +41,7 @@ public struct NetworkUserReportableError: UserReportableError {
         }
     }
 
+    #if os(iOS)
     public init?(source: String, operation: String, response: HTTPURLResponse?, data: Data?) {
         self.source = source
         self.operation = operation
@@ -76,6 +77,7 @@ public struct NetworkUserReportableError: UserReportableError {
             return nil
         }
     }
+    #endif
 
     public var alertTitle: String {
         switch self.reason {
@@ -109,6 +111,7 @@ public struct NetworkUserReportableError: UserReportableError {
 }
 
 private extension NetworkUserReportableError {
+    #if os(iOS)
     static func typeAndOtherInfo(fromData data: Data, andResponse response: HTTPURLResponse) -> (reason: Reason, otherInfo: [String:String]?){
         let encoding: String.Encoding
         if let encodingName = response.textEncodingName {
@@ -128,4 +131,5 @@ private extension NetworkUserReportableError {
             return (reason: .user(message: string ?? ""), otherInfo: nil)
         }
     }
+    #endif
 }
