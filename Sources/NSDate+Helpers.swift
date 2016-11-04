@@ -31,6 +31,15 @@ extension Date {
         return today == otherDate
     }
 
+    public var yearsOld: Int {
+        let components = Calendar.current.dateComponents(
+            Set([Calendar.Component.year]),
+            from: self,
+            to: Date()
+        )
+        return components.year!
+    }
+
     #if os(iOS)
     public var time: DispatchWallTime {
         let seconds = self.timeIntervalSince1970
