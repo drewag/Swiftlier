@@ -87,55 +87,55 @@ private let preciseTimeFormatter: DateFormatter = {
 }()
 
 extension Date {
-    public var asDateAndTime: String {
+    public var dateAndTime: String {
         return dateAndTimeFormatter.string(from: self)
     }
 
-    public var asDate: String {
+    public var date: String {
         return dateFormatter.string(from: self)
     }
 
-    public var asTime: String {
+    public var time: String {
         return timeFormatter.string(from: self)
     }
 
-    public var asShortDate: String {
+    public var shortDate: String {
         return shortDateFormatter.string(from: self)
     }
 
-    public var asShortestDate: String {
+    public var shortestDate: String {
         return shortestDateFormatter.string(from: self)
     }
 
-    public var asDayAndMonth: String {
+    public var dayAndMonth: String {
         return dayAndMonthFormatter.string(from: self)
     }
 
-    public var asRailsDateTimeString: String {
+    public var railsDateTime: String {
         return railsDateTimeFormatter.string(from: self)
     }
 
-    public var asIso8601DateTimeString: String {
+    public var iso8601DateTime: String {
         return iso8601DateTimeFormatter.string(from: self)
     }
 
-    public var asSQLiteDateTimeString: String {
+    public var sqliteDateTime: String {
         return railsDateTimeFormatter.string(from: self)
     }
 
-    public var asRailsDateString: String {
+    public var railsDate: String {
         return railsDateFormatter.string(from: self)
     }
 
-    public var asSQLiteDateString: String {
+    public var sqliteDate: String {
         return railsDateFormatter.string(from: self)
     }
 
-    public var asAuthToken: String {
+    public var authToken: String {
         return authTokenDate.string(from: self)
     }
 
-    public var asPreciseTime: String {
+    public var preciseTime: String {
         return preciseTimeFormatter.string(from: self)
     }
 }
@@ -151,5 +151,9 @@ extension String {
 
     public var iso8601DateTime: Date? {
         return iso8601DateTimeFormatter.date(from: self)
+    }
+
+    public var date: Date? {
+        return dateFormatter.date(from: self)
     }
 }
