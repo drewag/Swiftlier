@@ -16,20 +16,7 @@ public struct ShellCommand: CustomStringConvertible {
     }
 
     public func execute() -> String {
-        #if os(iOS)
-            let process = Process()
-
-            process.launchPath = "/usr/bin/env"
-            process.arguments = self.command
-
-            let outputPipe = Pipe()
-            process.standardOutput = outputPipe
-
-            process.launch()
-
-            let outputString = String(data: outputPipe.fileHandleForReading.availableData, encoding: .utf8) ?? ""
-            return outputString
-        #else
+        #if os(Linux)
             let BUFSIZE = 1024
             let fullCommand = "/bin/sh -c \'\(command)\'"
             let pp = popen(fullCommand, "r")
@@ -47,6 +34,19 @@ public struct ShellCommand: CustomStringConvertible {
             } else {
                 return output
             }
+        #else
+            let process = Process()
+
+            process.launchPath = "/usr/bin/env"
+            process.arguments = self.command
+
+            let outputPipe = Pipe()
+            process.standardOutput = outputPipe
+
+            process.launch()
+
+            let outputString = String(data: outputPipe.fileHandleForReading.availableData, encoding: .utf8) ?? ""
+            return outputString
         #endif
     }
 
