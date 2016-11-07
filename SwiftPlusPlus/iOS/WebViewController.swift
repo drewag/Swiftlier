@@ -8,29 +8,29 @@
 
 import UIKit
 
-class WebViewController: UIViewController {
+public class WebViewController: UIViewController {
     let webView = UIWebView()
 
-    convenience init(URL: NSURL) {
+    public convenience init(URL: NSURL) {
         self.init()
 
         let request = NSURLRequest(URL: URL)
         self.webView.loadRequest(request)
     }
 
-    convenience init(HTML: String) {
+    public convenience init(HTML: String) {
         self.init()
 
         self.webView.loadHTMLString(HTML, baseURL: nil)
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.addFillingSubview(self.webView)
     }
 
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         self.webView.scrollView.scrollEnabled = self.webView.scrollView.contentSize.height > self.webView.bounds.height
