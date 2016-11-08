@@ -54,10 +54,14 @@ extension String {
     }
 
     public var isValidEmail: Bool {
-        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+        #if os(Linux)
+            return true
+        #else
+            let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
 
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", argumentArray: [emailRegEx])
-        return emailTest.evaluate(with: self)
+            let emailTest = NSPredicate(format:"SELF MATCHES %@", argumentArray: [emailRegEx])
+            return emailTest.evaluate(with: self)
+        #endif
     }
 }
 
