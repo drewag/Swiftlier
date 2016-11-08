@@ -32,12 +32,18 @@ extension Date {
     }
 
     public var yearsOld: Int {
-        let components = Calendar.current.dateComponents(
-            Set([Calendar.Component.year]),
-            from: self,
-            to: Date()
-        )
-        return components.year!
+        #if os(Linux)
+            let seconds = NSDate().timeIntervalSince1970 - self.timeIntervalSince1970
+            let years = Int(seconds / 365 / 24 / 60 / 60)
+            return years
+        #else
+            let components = Calendar.current.dateComponents(
+                Set([Calendar.Component.year]),
+                from: self,
+                to: Date()
+            )
+            return components.year!
+        #endif
     }
 
     #if os(iOS)
