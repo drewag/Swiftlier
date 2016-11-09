@@ -40,6 +40,9 @@ public struct JSON: CustomStringConvertible {
         if let double = self.object as? Double {
             return double
         }
+        else if let int = self.object as? Int {
+            return Double(int)
+        }
         else if let string = self.string {
             return Double(string)
         }
