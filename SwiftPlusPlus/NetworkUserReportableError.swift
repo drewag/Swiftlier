@@ -11,6 +11,7 @@ public struct NetworkUserReportableError: UserReportableError {
         case Unauthorized
         case NoInternet
         case NotFound
+        case Gone
         case Internal(message: String)
         case User(message: String)
     }
@@ -50,6 +51,9 @@ public struct NetworkUserReportableError: UserReportableError {
             case 401:
                 self.type = .Unauthorized
                 self.otherInfo = nil
+            case 410:
+                self.type = .Gone
+                self.otherInfo = nil
             case let x where x >= 400 && x < 500:
                 if let data = data {
                     (self.type, self.otherInfo) = NetworkUserReportableError.typeAndOtherInfo(fromData: data, andResponse: response)
@@ -87,6 +91,8 @@ public struct NetworkUserReportableError: UserReportableError {
             return "Unauthorized"
         case .NotFound:
             return "Endpoint not found"
+        case .Gone:
+            return "App Out of Date"
         }
     }
 
@@ -102,6 +108,8 @@ public struct NetworkUserReportableError: UserReportableError {
             return "You have been signed out. Please sign in again."
         case .NotFound:
             return "Please try again. If the problem persists please contact support"
+        case .Gone:
+            return "This app is out of date. Please update to the latest version."
         }
     }
 }
