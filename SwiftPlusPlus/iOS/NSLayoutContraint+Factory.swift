@@ -131,4 +131,16 @@ extension NSLayoutConstraint {
             constant: distance
         )
     }
+
+    public convenience init(verticalCenterOfView view1: UIView, toView view2: UIView, distance: CGFloat = 0) {
+        self.init(
+            item: view1,
+            attribute: .CenterY,
+            relatedBy: .Equal,
+            toItem: view2,
+            attribute: .CenterY,
+            multiplier: 1,
+            constant: distance
+        )
+    }
 }
