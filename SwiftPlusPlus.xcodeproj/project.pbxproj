@@ -17,6 +17,7 @@
 		491039AE198342F800B467DB /* String+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEA5331943938600F2AFDB /* String+SwiftPlusPlus.swift */; };
 		491039AF198342FC00B467DB /* Dictionary+SwiftPlusPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49732CF419439BDF00DE07EE /* Dictionary+SwiftPlusPlus.swift */; };
 		4933538B1A3EC4A1003A2B51 /* NSFileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */; };
+		4935D1D71DE015D3006637D3 /* LimitedSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935D1D61DE015D3006637D3 /* LimitedSizeViewController.swift */; };
 		493610D11D58FA540029C7F1 /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493610D01D58FA540029C7F1 /* CGMath.swift */; };
 		493610D31D58FA8D0029C7F1 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493610D21D58FA8D0029C7F1 /* Angle.swift */; };
 		493610F11D5C149D0029C7F1 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493610F01D5C149D0029C7F1 /* TaskService.swift */; };
@@ -119,6 +120,7 @@
 		4908FFCF1BEA8E10003EE9F3 /* ZoomThroughTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomThroughTransition.swift; sourceTree = "<group>"; };
 		4908FFE41BEAB085003EE9F3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4933538A1A3EC4A1003A2B51 /* NSFileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Directories.swift"; sourceTree = "<group>"; };
+		4935D1D61DE015D3006637D3 /* LimitedSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedSizeViewController.swift; sourceTree = "<group>"; };
 		493610D01D58FA540029C7F1 /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
 		493610D21D58FA8D0029C7F1 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		493610F01D5C149D0029C7F1 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				495400B01BED15B00019A08B /* KeyboardConstraintAdjuster.swift */,
 				49CFCF8E1CB0D6FF00915768 /* UIViewController+Helpers.swift */,
 				49CEB8431DDF71DB0082ADC3 /* FormViewController.swift */,
+				4935D1D61DE015D3006637D3 /* LimitedSizeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				499ED2201CF61AFF00E4E902 /* UIImage+Editing.swift in Sources */,
 				49C2F8FD1BA78818003C73A1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49E72FFE1C822AE700C9F4BF /* CoderKeyType.swift in Sources */,
+				4935D1D71DE015D3006637D3 /* LimitedSizeViewController.swift in Sources */,
 				49F563F51D75EAA000AEB1D9 /* ShadowView.swift in Sources */,
 				49E72FFA1C822AA900C9F4BF /* EncoderType.swift in Sources */,
 				49E72FF81C822A9F00C9F4BF /* EncodableType.swift in Sources */,
