@@ -66,6 +66,14 @@ private let iso8601DateTimeFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+private let localIso8601DateTimeFormatter: DateFormatter = {
+    var dateFormatter = DateFormatter()
+    let timeZone = TimeZone(identifier: "UTC")
+    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'S"
+    dateFormatter.timeZone = timeZone
+    return dateFormatter
+}()
+
 private let railsDateFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy'-'MM'-'dd"
@@ -119,6 +127,10 @@ extension Date {
         return iso8601DateTimeFormatter.string(from: self)
     }
 
+    public var localIso8601DateTime: String {
+        return localIso8601DateTimeFormatter.string(from: self)
+    }
+
     public var sqliteDateTime: String {
         return railsDateTimeFormatter.string(from: self)
     }
@@ -151,6 +163,10 @@ extension String {
 
     public var iso8601DateTime: Date? {
         return iso8601DateTimeFormatter.date(from: self)
+    }
+
+    public var localIso8601DateTime: Date? {
+        return localIso8601DateTimeFormatter.date(from: self)
     }
 
     public var date: Date? {
