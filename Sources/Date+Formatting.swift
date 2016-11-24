@@ -68,9 +68,7 @@ private let iso8601DateTimeFormatter: DateFormatter = {
 
 private let localIso8601DateTimeFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
-    let timeZone = TimeZone(identifier: "UTC")
     dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'S"
-    dateFormatter.timeZone = timeZone
     return dateFormatter
 }()
 
