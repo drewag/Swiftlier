@@ -27,7 +27,10 @@ public class FormViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44
         self.tableView.registerClass(SimpleFieldTableViewCell.self, forCellReuseIdentifier: SimpleFieldTableViewCell.identifier)
+
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(done))
     }
@@ -56,38 +59,43 @@ public class FormViewController: UITableViewController {
     }
 
     func textFieldDidChange(textField: UITextField) {
-        let field = self.form.fields.values[textField.superview!.tag].values[textField.tag]
+        let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         (field as! SimpleField).update(with: textField.text ?? "")
+    }
+
+    func didTap(helpButton helpButton: UIButton) {
+        let formSection = self.form.sections.values[helpButton.tag]
+        UIApplication.sharedApplication().openURL(formSection.helpURL!)
     }
 }
 
 extension FormViewController/*: UITableViewDataSource*/ {
     public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.form.fields.count
+        return self.form.sections.count
     }
 
     public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.form.fields.values[section].count
+        return self.form.sections.values[section].fields.count
     }
 
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let field = self.form.fields.values[indexPath.section].values[indexPath.row]
+        let field = self.form.sections.values[indexPath.section].fields.values[indexPath.row]
         switch field {
         case let simpleField as SimpleField:
             let cell = tableView.dequeueReusableCellWithIdentifier(SimpleFieldTableViewCell.identifier, forIndexPath: indexPath) as! SimpleFieldTableViewCell
 
+            cell.selectionStyle = .None
             cell.nameLabel.text = field.label
             cell.valueField.placeholder = simpleField.placeholder
             cell.valueField.keyboardType = simpleField.keyboard
             cell.valueField.autocapitalizationType = simpleField.autoCapitalize
             cell.valueField.secureTextEntry = simpleField.isSecureEntry
             cell.valueField.text = simpleField.displayValue
-            cell.nameLabelWidthConstraint.constant = self.nameLabelWidth
+            cell.nameLabelWidth = self.nameLabelWidth
             cell.valueField.superview!.tag = indexPath.section
             cell.valueField.tag = indexPath.row
             cell.valueField.removeTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .AllEvents)
             cell.valueField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
-
 
             return cell
         default:
@@ -98,7 +106,52 @@ extension FormViewController/*: UITableViewDataSource*/ {
 
 extension FormViewController/*: UITableViewDelegat*/ {
     public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.form.fields.keys[section]
+        return self.form.sections.values[section].name
+    }
+
+    public override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let formSection = self.form.sections.values[section]
+        let view = UIView()
+
+        let label = UILabel()
+        label.text = formSection.name.uppercaseString
+        label.textColor = UIColor(hex: 0x6d6d72)
+        label.font = UIFont.systemFontOfSize(12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(label)
+        view.addConstraints([
+            NSLayoutConstraint(leftOfView: label, toView: view, distance: 8),
+            NSLayoutConstraint(topOfView: label, toView: view, distance: -10),
+            NSLayoutConstraint(bottomOfView: label, toView: view, distance: 0),
+        ])
+
+        if let _ = formSection.helpURL {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle("Help", forState: .Normal)
+            button.tag = section
+            button.titleLabel?.font = UIFont.systemFontOfSize(14)
+            button.setTitleColor(UIColor(hex: 0x007aff), forState: .Normal)
+            button.addTarget(self, action: #selector(didTap(helpButton:)), forControlEvents: .TouchUpInside)
+            view.addSubview(button)
+
+            view.addConstraints([
+                NSLayoutConstraint(rightOfView: label, toLeftOfView: button, distance: 8),
+                NSLayoutConstraint(topOfView: button, toView: view, distance: -6),
+                NSLayoutConstraint(bottomOfView: label, toView: button, distance: 0),
+                NSLayoutConstraint(rightOfView: button, toView: view, distance: 8),
+            ])
+        }
+        else {
+            view.addConstraint(NSLayoutConstraint(rightOfView: label, toView: view, distance: 8))
+        }
+
+        return view
+    }
+
+    public override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return self.form.sections.values[section].help
     }
 }
 
@@ -107,8 +160,8 @@ private extension FormViewController {
 
     static func calculateMaximumLabelWidth(for form: Form) -> CGFloat {
         var maxWidth: CGFloat = 0
-        for fields in form.fields.values {
-            for field in fields.values {
+        for section in form.sections.values {
+            for field in section.fields.values {
                 let width = (field.label as NSString).sizeWithAttributes([NSFontAttributeName:self.font]).width
                 maxWidth = max(maxWidth, width)
             }
@@ -117,12 +170,17 @@ private extension FormViewController {
     }
 }
 
+private enum Cell {
+    case field(Field)
+    case help(String)
+}
+
 private class SimpleFieldTableViewCell: UITableViewCell {
     static let identifier = "SimpleField"
 
     let nameLabel = UILabel()
     let valueField = UITextField()
-    var nameLabelWidthConstraint: NSLayoutConstraint!
+    var nameLabelWidth: CGFloat = 100
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -134,19 +192,18 @@ private class SimpleFieldTableViewCell: UITableViewCell {
 
         self.contentView.addSubview(self.nameLabel)
         self.contentView.addSubview(self.valueField)
+    }
 
-        self.nameLabelWidthConstraint = NSLayoutConstraint(item: self.nameLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 100)
+    private override func layoutSubviews() {
+        super.layoutSubviews()
 
-        self.contentView.addConstraints([
-            self.nameLabelWidthConstraint,
-            NSLayoutConstraint(leftOfView: self.nameLabel, toView: self.contentView, distance: 8),
-            NSLayoutConstraint(topOfView: self.nameLabel, toView: self.contentView, distance: 2),
-            NSLayoutConstraint(bottomOfView: self.nameLabel, toView: self.contentView, distance: 2),
-            NSLayoutConstraint(rightOfView: self.nameLabel, toLeftOfView: self.valueField, distance: -8),
-            NSLayoutConstraint(rightOfView: self.valueField, toView: self.contentView, distance: 8),
-            NSLayoutConstraint(topOfView: self.valueField, toView: self.contentView, distance: 2),
-            NSLayoutConstraint(bottomOfView: self.valueField, toView: self.contentView, distance: 2),
-        ])
+        self.nameLabel.frame = CGRect(x: 8, y: 2, width: self.nameLabelWidth, height: self.contentView.bounds.height - 4)
+        self.valueField.frame = CGRect(
+            x: self.nameLabel.frame.maxX + 8,
+            y: self.nameLabel.frame.minY,
+            width: self.contentView.bounds.width - self.nameLabel.frame.maxX - 16,
+            height: self.nameLabel.frame.height
+        )
     }
 
     required init?(coder aDecoder: NSCoder) {

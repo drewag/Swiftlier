@@ -37,17 +37,59 @@ public protocol SimpleField: Field {
 }
 
 public struct Form {
-    public var fields: OrderedDictionary<String, OrderedDictionary<String, Field>>
+    public struct Builder {
+        var sections = OrderedDictionary<String, Section>()
 
-    public init(fields: [(String, [(String, Field)])]) {
-        self.fields = OrderedDictionary(values: fields.map({
-            ($0.0, OrderedDictionary<String, Field>(values: $0.1))
-        }))
+        public subscript(name: String) -> Section? {
+            get {
+                return self.sections[name]
+            }
+            set {
+                self.sections[name] = newValue
+            }
+        }
+    }
+
+    public struct Section {
+        public struct Builder {
+            var fields = OrderedDictionary<String, Field>()
+
+            public subscript(name: String) -> Field? {
+                get {
+                    return self.fields[name]
+                }
+                set {
+                    self.fields[name] = newValue
+                }
+            }
+        }
+
+        public let name: String
+        public let help: String?
+        public let helpURL: NSURL?
+        public let fields: OrderedDictionary<String, Field>
+
+        public init(name: String, help: String? = nil, helpURL: NSURL? = nil, build: (inout Builder) -> ()) {
+            self.name = name
+            self.help = help
+            self.helpURL = helpURL
+            var builder = Builder()
+            build(&builder)
+            self.fields = builder.fields
+        }
+    }
+
+    public var sections: OrderedDictionary<String, Section>
+
+    public init(build: (inout Builder) -> ()) {
+        var builder = Builder()
+        build(&builder)
+        self.sections = builder.sections
     }
 
     public func validate() throws {
-        for fields in self.fields.values {
-            for field in fields.values {
+        for section in self.sections.values {
+            for field in section.fields.values {
                 let result = field.validate()
                 switch result {
                 case .passed:
@@ -193,7 +235,6 @@ public class IntegerField: SimpleField {
             unit: unit,
             minimum: minimum,
             maximum: maximum
-
         )
     }
 
