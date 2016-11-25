@@ -50,6 +50,14 @@ private let dayAndMonthFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+private let gmtDateTimeFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+    dateFormatter.timeZone = TimeZone(identifier: "GMT")
+    dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss 'GMT'"
+    return dateFormatter
+}()
+
 private let railsDateTimeFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
     let timeZone = TimeZone(identifier: "UTC")
@@ -121,6 +129,10 @@ extension Date {
         return railsDateTimeFormatter.string(from: self)
     }
 
+    public var gmtDateTime: String {
+        return gmtDateTimeFormatter.string(from: self)
+    }
+
     public var iso8601DateTime: String {
         return iso8601DateTimeFormatter.string(from: self)
     }
@@ -157,6 +169,10 @@ extension String {
 
     public var railsDate: Date? {
         return railsDateFormatter.date(from: self)
+    }
+
+    public var gmtDate: Date? {
+        return gmtDateTimeFormatter.date(from: self)
     }
 
     public var iso8601DateTime: Date? {
