@@ -66,6 +66,12 @@ private let iso8601DateTimeFormatter: NSDateFormatter = {
     return dateFormatter
 }()
 
+private let localIso8601DateTimeFormatter: NSDateFormatter = {
+    var dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'S'Z'"
+    return dateFormatter
+}()
+
 private let railsDateFormatter: NSDateFormatter = {
     var dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "yyyy'-'MM'-'dd"
@@ -119,6 +125,10 @@ extension NSDate {
         return iso8601DateTimeFormatter.stringFromDate(self)
     }
 
+    public var asLocalIso8601DateTimeString: String {
+        return localIso8601DateTimeFormatter.stringFromDate(self)
+    }
+
     public var asSQLiteDateTimeString: String {
         return railsDateTimeFormatter.stringFromDate(self)
     }
@@ -151,5 +161,9 @@ extension String {
 
     public var iso8601DateTime: NSDate? {
         return iso8601DateTimeFormatter.dateFromString(self)
+    }
+
+    public var localIso8601DateTime: NSDate? {
+        return localIso8601DateTimeFormatter.dateFromString(self)
     }
 }
