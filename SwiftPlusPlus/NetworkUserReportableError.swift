@@ -12,6 +12,7 @@ public struct NetworkUserReportableError: UserReportableError {
         case NoInternet
         case NotFound
         case Gone
+        case Untrusted
         case Internal(message: String)
         case User(message: String)
     }
@@ -32,8 +33,16 @@ public struct NetworkUserReportableError: UserReportableError {
         self.source = source
         self.operation = operation
         self.otherInfo = nil
-        if error.domain == "NSURLErrorDomain" && error.code == -1009 {
-            self.type = .NoInternet
+        if error.domain == "NSURLErrorDomain" {
+            switch error.code {
+            case -1009:
+                self.type = .NoInternet
+            case -999:
+                self.type = .Untrusted
+            default:
+                self.type = .Internal(message: error.localizedDescription)
+
+            }
         }
         else {
             self.type = .Internal(message: error.localizedDescription)
@@ -93,6 +102,8 @@ public struct NetworkUserReportableError: UserReportableError {
             return "Endpoint not found"
         case .Gone:
             return "App Out of Date"
+        case .Untrusted:
+            return "Untrusted Web Server"
         }
     }
 
@@ -110,6 +121,8 @@ public struct NetworkUserReportableError: UserReportableError {
             return "Please try again. If the problem persists please contact support"
         case .Gone:
             return "This app is out of date. Please update to the latest version."
+        case .Untrusted:
+            return "The web server can no longer be trusted. Please update to the latest version. If this problem still occures please contact us immediately."
         }
     }
 }
