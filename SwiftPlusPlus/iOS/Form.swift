@@ -277,3 +277,21 @@ public class IntegerField: SimpleField {
         return .passed
     }
 }
+
+public class BoolField: Field {
+    public let label: String
+    public var value: Bool
+
+    public init(label: String, value: Bool) {
+        self.label = label
+        self.value = value
+    }
+
+    public var displayValue: String {
+        return self.value ? "Yes" : "No"
+    }
+
+    public func validate() -> ValidationResult {
+        return .passed
+    }
+}

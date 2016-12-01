@@ -30,6 +30,7 @@ public class FormViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
         self.tableView.registerClass(SimpleFieldTableViewCell.self, forCellReuseIdentifier: SimpleFieldTableViewCell.identifier)
+        self.tableView.registerClass(BoolFieldTableViewCell.self, forCellReuseIdentifier: BoolFieldTableViewCell.identifier)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(done))
@@ -61,6 +62,11 @@ public class FormViewController: UITableViewController {
     func textFieldDidChange(textField: UITextField) {
         let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         (field as! SimpleField).update(with: textField.text ?? "")
+    }
+
+    func valueSwitchDidChange(valueSwitch: UISwitch) {
+        let field = self.form.sections.values[valueSwitch.superview!.tag].fields.values[valueSwitch.tag]
+        (field as! BoolField).value = valueSwitch.on
     }
 
     func didTap(helpButton helpButton: UIButton) {
@@ -96,6 +102,19 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.tag = indexPath.row
             cell.valueField.removeTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .AllEvents)
             cell.valueField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+
+            return cell
+        case let boolField as BoolField:
+            let cell = tableView.dequeueReusableCellWithIdentifier(BoolFieldTableViewCell.identifier, forIndexPath: indexPath) as! BoolFieldTableViewCell
+
+            cell.selectionStyle = .None
+            cell.nameLabel.text = field.label
+            cell.valueSwitch.on = boolField.value
+            cell.nameLabelWidth = self.nameLabelWidth
+            cell.valueSwitch.superview!.tag = indexPath.section
+            cell.valueSwitch.tag = indexPath.row
+            cell.valueSwitch.removeTarget(self, action: #selector(valueSwitchDidChange(_:)), forControlEvents: .AllEvents)
+            cell.valueSwitch.addTarget(self, action: #selector(valueSwitchDidChange(_:)), forControlEvents: .ValueChanged)
 
             return cell
         default:
@@ -203,6 +222,41 @@ private class SimpleFieldTableViewCell: UITableViewCell {
             y: self.nameLabel.frame.minY,
             width: self.contentView.bounds.width - self.nameLabel.frame.maxX - 16,
             height: self.nameLabel.frame.height
+        )
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private class BoolFieldTableViewCell: UITableViewCell {
+    static let identifier = "BoolField"
+
+    let nameLabel = UILabel()
+    let valueSwitch = UISwitch()
+    var nameLabelWidth: CGFloat = 100
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        self.nameLabel.font = FormViewController.font
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.valueSwitch.translatesAutoresizingMaskIntoConstraints = false
+
+        self.contentView.addSubview(self.nameLabel)
+        self.contentView.addSubview(self.valueSwitch)
+    }
+
+    private override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.nameLabel.frame = CGRect(x: 8, y: 2, width: self.nameLabelWidth, height: self.contentView.bounds.height - 4)
+        self.valueSwitch.frame = CGRect(
+            x: self.nameLabel.frame.maxX + 8,
+            y: (self.contentView.bounds.height - self.valueSwitch.bounds.height) / 2,
+            width: self.contentView.bounds.width - self.nameLabel.frame.maxX - 16,
+            height: self.valueSwitch.bounds.height
         )
     }
 
