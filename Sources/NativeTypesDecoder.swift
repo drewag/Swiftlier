@@ -61,8 +61,14 @@ public final class NativeTypesDecoder: DecoderType {
     }
 
     public func decodeArray<Value: EncodableType>(_ key: NestedCoderKey<Value>.Type) -> [Value] {
-        guard let array = self.object(forKeyPath: key.path) as? [Any] else {
-            fatalError("Unexpected type")
+        let object = self.object(forKeyPath: key.path)
+        guard let array = object as? [Any] else {
+            if object is NSNull || object == nil {
+                return []
+            }
+            else {
+                fatalError("Unexpected type")
+            }
         }
         var output: [Value] = []
         for raw in array {

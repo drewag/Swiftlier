@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "9999"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SwiftPlusPlus"
+               BlueprintIdentifier = "49E637611DF73FB100855BC1"
                BuildableName = "SwiftPlusPlus.framework"
                BlueprintName = "SwiftPlusPlus"
                ReferencedContainer = "container:SwiftPlusPlus.xcodeproj">
@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_swift_plus_plusTests"
-               BuildableName = "swift-plus-plusTests.xctest"
-               BlueprintName = "swift-plus-plusTests"
-               ReferencedContainer = "container:SwiftPlusPlus.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <AdditionalOptions>
       </AdditionalOptions>
@@ -55,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "______Target_SwiftPlusPlus"
+            BlueprintIdentifier = "49E637611DF73FB100855BC1"
             BuildableName = "SwiftPlusPlus.framework"
             BlueprintName = "SwiftPlusPlus"
             ReferencedContainer = "container:SwiftPlusPlus.xcodeproj">
@@ -70,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "49E637611DF73FB100855BC1"
+            BuildableName = "SwiftPlusPlus.framework"
+            BlueprintName = "SwiftPlusPlus"
+            ReferencedContainer = "container:SwiftPlusPlus.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

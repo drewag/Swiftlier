@@ -30,8 +30,8 @@ public final class TaskService {
         return self.singleton.performInBackground(block)
     }
 
-    static public func performInForeground(waitForCompletion wait: Bool = false, block: @escaping () -> ()) {
-        return self.singleton.performInForeground(wait, block: block)
+    static public func performInForeground(afterDelay delay: TimeInterval? = nil, waitForCompletion wait: Bool = false, block: @escaping () -> ()) {
+        return self.singleton.performInForeground(afterDelay: delay, waitForCompletion: wait, block: block)
     }
 
     public func schedule(singleTask task: SingleTask, at date: Date) {
@@ -46,7 +46,7 @@ public final class TaskService {
         task.scheduledFor = date
         self.scheduledSingleTasks.append(task)
 
-        DispatchQueue.main.asyncAfter(wallDeadline: date.time) {
+        DispatchQueue.main.asyncAfter(wallDeadline: date.dispatchTime) {
             guard let _ = self.index(of: task), date == task.scheduledFor else {
                 return
             }
@@ -120,17 +120,28 @@ private extension TaskService {
         self.backgroundOperationQueue.addOperation(operation)
     }
 
-    func performInForeground(_ waitForCompletion: Bool, block: @escaping () -> ()) {
+    func performInForeground(afterDelay delay: TimeInterval?, waitForCompletion: Bool, block: @escaping () -> ()) {
         if waitForCompletion {
             let semaphore = DispatchSemaphore(value: 0)
-            DispatchQueue.main.async {
+            func execute() {
                 block()
                 semaphore.signal()
+            }
+            if let delay = delay {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: execute)
+            }
+            else {
+                DispatchQueue.main.async(execute: execute)
             }
             semaphore.wait()
         }
         else {
-            DispatchQueue.main.async(execute: block)
+            if let delay = delay {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block)
+            }
+            else {
+                DispatchQueue.main.async(execute: block)
+            }
         }
     }
 
@@ -141,7 +152,7 @@ private extension TaskService {
 
         let scheduledCount = task.scheduleCount + 1
         self.scheduledPeriodicTasks[task.uniqueIdentifier]!.task.scheduleCount = scheduledCount
-        DispatchQueue.main.asyncAfter(wallDeadline: date.time) {
+        DispatchQueue.main.asyncAfter(wallDeadline: date.dispatchTime) {
             guard scheduledCount == self.scheduledPeriodicTasks[task.uniqueIdentifier]!.task.scheduleCount else {
                 return
             }

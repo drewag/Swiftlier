@@ -6,6 +6,7 @@
 //
 //
 
+#if os(Linux) || os(macOS)
 import Foundation
 
 public struct ShellCommand: CustomStringConvertible {
@@ -54,3 +55,4 @@ public struct ShellCommand: CustomStringConvertible {
         return self.command.joined(separator: " ")
     }
 }
+#endif

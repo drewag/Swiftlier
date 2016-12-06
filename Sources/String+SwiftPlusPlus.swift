@@ -67,6 +67,6 @@ extension String {
 
 #if os(iOS)
 public func /(lhs: String, rhs: String) -> String {
-    return lhs.appendingPathComponent(rhs)
+    return (lhs as NSString).appendingPathComponent(rhs)
 }
 #endif

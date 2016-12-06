@@ -11,6 +11,8 @@
 import UIKit
 import ObjectiveC
 
+public class ErrorOccured: EventType { public typealias CallbackParam = UserReportableError }
+
 class Alert: NSObject {
     private let onButtonClicked: (_ buttonTitle: String?, _ textFieldText: String?) -> ()
 
@@ -51,6 +53,7 @@ public final class TextAction {
 
 extension UIViewController {
     public func showAlert(withError error: UserReportableError) {
+        EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: error)
         self.showAlert(
             withTitle: error.alertTitle,
             message: error.alertMessage

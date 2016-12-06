@@ -47,7 +47,7 @@ extension Date {
     }
 
     #if os(iOS)
-    public var time: DispatchWallTime {
+    public var dispatchTime: DispatchWallTime {
         let seconds = self.timeIntervalSince1970
         let wholeSecsFloor = floor(seconds)
         let nanosOnly = seconds - wholeSecsFloor

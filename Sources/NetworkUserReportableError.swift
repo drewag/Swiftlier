@@ -13,6 +13,8 @@ public struct NetworkUserReportableError: UserReportableError {
         case unauthorized
         case noInternet
         case notFound
+        case gone
+        case untrusted
         case `internal`(message: String)
         case user(message: String)
     }
@@ -33,8 +35,16 @@ public struct NetworkUserReportableError: UserReportableError {
         self.source = source
         self.operation = operation
         self.otherInfo = nil
-        if error.domain == "NSURLErrorDomain" && error.code == -1009 {
-            self.reason = .noInternet
+        if error.domain == "NSURLErrorDomain" {
+            switch error.code {
+            case -1009:
+                self.reason = .noInternet
+            case -999:
+                self.reason = .untrusted
+            default:
+                self.reason = .internal(message: error.localizedDescription)
+
+            }
         }
         else {
             self.reason = .internal(message: error.localizedDescription)
@@ -52,6 +62,9 @@ public struct NetworkUserReportableError: UserReportableError {
                 self.otherInfo = nil
             case 401:
                 self.reason = .unauthorized
+                self.otherInfo = nil
+            case 410:
+                self.reason = .gone
                 self.otherInfo = nil
             case let x where x >= 400 && x < 500:
                 if let data = data {
@@ -91,6 +104,10 @@ public struct NetworkUserReportableError: UserReportableError {
             return "Unauthorized"
         case .notFound:
             return "Endpoint not found"
+        case .gone:
+            return "App Out of Date"
+        case .untrusted:
+            return "Untrusted Web Server"
         }
     }
 
@@ -106,6 +123,10 @@ public struct NetworkUserReportableError: UserReportableError {
             return "You have been signed out. Please sign in again."
         case .notFound:
             return "Please try again. If the problem persists please contact support"
+        case .gone:
+            return "This app is out of date. Please update to the latest version."
+        case .untrusted:
+            return "The web server can no longer be trusted. Please update to the latest version. If this problem still occures please contact us immediately."
         }
     }
 }
@@ -124,6 +145,7 @@ private extension NetworkUserReportableError {
             , let dict = json as? [String:String]
             , let message = dict["message"]
         {
+            dump(dict)
             return (reason: .user(message: message), otherInfo: dict)
         }
         else {
