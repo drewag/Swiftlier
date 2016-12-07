@@ -74,7 +74,11 @@ class MenuViewController: UITableViewController {
             self.transition(to: viewController, animated: true, embeddedInNavigationController: false)
         case let .externalURL(address):
             if let URL = URL(string: address) {
-                UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(URL)
+                }
             }
             else {
                 self.showAlert(withTitle: "Invalid URL", message: "The URL was '\(address)'. Please contact support.", other: [

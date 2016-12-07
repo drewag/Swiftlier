@@ -72,7 +72,11 @@ public class FormViewController: UITableViewController {
 
     func didTap(helpButton: UIButton) {
         let formSection = self.form.sections.values[helpButton.tag]
-        UIApplication.shared.open(formSection.helpURL!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(formSection.helpURL!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(formSection.helpURL!)
+        }
     }
 }
 
