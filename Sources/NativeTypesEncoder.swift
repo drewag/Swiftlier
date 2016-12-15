@@ -76,7 +76,7 @@ private extension NativeTypesEncoder {
         var path = path
         let object: Any?
         guard path.count > 1 else {
-            object = value
+            object = value ?? NSNull()
             originalDict[path.first!] = object
             return originalDict
         }
