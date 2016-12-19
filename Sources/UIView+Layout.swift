@@ -22,5 +22,13 @@ extension UIView {
         self.addSubview(view)
         self.addConstraints(NSLayoutConstraint.center(with: view, in: self, withOffset: offset))
     }
+
+    public func addConstraint(forWidth width: CGFloat) {
+        self.addConstraint(NSLayoutConstraint(width: width, of: self))
+    }
+
+    public func addConstraint(forHeight height: CGFloat) {
+        self.addConstraint(NSLayoutConstraint(height: height, of: self))
+    }
 }
 #endif

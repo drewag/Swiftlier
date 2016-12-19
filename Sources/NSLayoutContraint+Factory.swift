@@ -144,5 +144,29 @@ extension NSLayoutConstraint {
             constant: distance
         )
     }
+
+    public convenience init(width: CGFloat, of view: UIView, multiplier: CGFloat = 1) {
+        self.init(
+            item: view,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: multiplier,
+            constant: width
+        )
+    }
+
+    public convenience init(height: CGFloat, of view: UIView, multiplier: CGFloat = 1) {
+        self.init(
+            item: view,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: multiplier,
+            constant: height
+        )
+    }
 }
 #endif
