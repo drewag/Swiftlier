@@ -10,53 +10,95 @@ import Foundation
 
 public final class NativeTypesEncoder: EncoderType {
     fileprivate var raw: Any?
+    fileprivate var wasCanceled = false
+    public let mode: EncodingMode
 
-    public class func objectFromEncodable(_ encodable: EncodableType) -> Any {
-        let encoder = NativeTypesEncoder()
-        encodable.encode(encoder)
+    public class func objectFromEncodable(_ encodable: EncodableType, mode: EncodingMode) -> Any {
+        return self.objectFromCombiningEncodables([encodable], mode: mode)
+    }
+
+    public class func objectFromCombiningEncodables(_ encodables: [EncodableType], mode: EncodingMode) -> Any {
+        let encoder = NativeTypesEncoder(raw: nil, mode: mode)
+        for encodable in encodables {
+            encodable.encode(encoder)
+        }
         return encoder.raw ?? [:]
     }
 
-    public func encode<Value: RawEncodableType>(_ data: Value, forKey key: CoderKey<Value>.Type) {
-        self.addValue(data.asObject, keyPath: key.path)
+    public func encodeAsEntireValue<Value: RawEncodableType>(_ data: Value) {
+        self.raw = data
     }
 
-    public func encode<Value: RawEncodableType>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type) {
-        self.addValue(data?.asObject, keyPath: key.path)
+    fileprivate init(raw: Any?, mode: EncodingMode) {
+        self.raw = raw
+        self.mode = mode
     }
 
-    public func encode<Value: EncodableType>(_ data: Value, forKey key: NestedCoderKey<Value>.Type) {
-        self.addValue(NativeTypesEncoder.objectFromEncodable(data), keyPath: key.path)
+    public func encode<Value: EncodableType>(_ data: Value, forKey key: CoderKey<Value>.Type) {
+        if let raw = data as? RawEncodableType {
+            self.addValue(raw.asObject, keyPath: key.path)
+        }
+        else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(data, mode: self.mode) {
+            self.addValue(object, keyPath: key.path)
+        }
     }
 
-    public func encode<Value: EncodableType>(_ data: Value?, forKey key: OptionalNestedCoderKey<Value>.Type) {
+    public func encode<Value: EncodableType>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type) {
         if let data = data {
-            self.addValue(NativeTypesEncoder.objectFromEncodable(data), keyPath: key.path)
+            if let raw = data as? RawEncodableType {
+                self.addValue(raw.asObject, keyPath: key.path)
+            }
+            else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(data, mode: self.mode) {
+                self.addValue(object, keyPath: key.path)
+            }
         }
         else {
             self.addValue(nil, keyPath: key.path)
         }
     }
 
-    public func encode<Value: RawEncodableType>(_ data: [Value], forKey key: CoderKey<Value>.Type) {
+    public func encode<Value: EncodableType>(_ data: [Value], forKey key: CoderKey<Value>.Type) {
         var array = [Any]()
         for value in data {
-            array.append(value.asObject)
+            if let raw = value as? RawEncodableType {
+                array.append(raw.asObject)
+            }
+            else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(value, mode: self.mode) {
+                array.append(object)
+            }
         }
         self.addValue(array as Any?, keyPath: key.path)
     }
 
-    public func encode<Value: EncodableType>(_ data: [Value], forKey key: NestedCoderKey<Value>.Type) {
-        var array = [Any]()
-        for value in data {
-            let object = NativeTypesEncoder.objectFromEncodable(value)
-            array.append(object)
+    public func encodeAsEntireValue<Value: EncodableType>(_ data: Value?) {
+        guard let data = data else {
+            self.raw = nil
+            return
         }
-        self.addValue(array as Any?, keyPath: key.path)
+        if let raw = data as? RawEncodableType {
+            self.raw = raw.asObject
+        }
+        else {
+            self.raw = NativeTypesEncoder.objectFromEncodable(data, mode: self.mode)
+        }
+    }
+
+    public func cancelEncoding() {
+        self.raw = nil
+        self.wasCanceled = true
     }
 }
 
 private extension NativeTypesEncoder {
+    class func cancelableObjectFromEncodable(_ encodable: EncodableType, mode: EncodingMode) -> Any? {
+        let encoder = NativeTypesEncoder(raw: nil, mode: mode)
+        encodable.encode(encoder)
+        if encoder.wasCanceled {
+            return nil
+        }
+        return encoder.raw ?? [:]
+    }
+
     func addValue(_ value: Any?, keyPath path: [String]) {
         let rawDict: [String:Any]
         switch self.raw {

@@ -8,59 +8,52 @@
 
 import Foundation
 
+struct DecodingError: Error {
+    let description: String
+}
+
 public final class NativeTypesDecoder: DecoderType {
     let raw: Any
+    public let mode: DecodingMode
 
-    public class func decodableTypeFromObject<E: EncodableType>(_ raw: Any) -> E? {
+    public class func decodableTypeFromObject<E: DecodableType>(_ raw: Any, mode: DecodingMode) throws -> E {
         guard !(raw is NSNull) else {
-            return nil
+            throw DecodingError(description: "Was null")
         }
 
-        let decoder = NativeTypesDecoder(raw: raw)
-        return E(decoder: decoder)
+        let decoder = NativeTypesDecoder(raw: raw, mode: mode)
+        return try E(decoder: decoder)
     }
 
-    fileprivate init(raw: Any) {
+    fileprivate init(raw: Any, mode: DecodingMode) {
         self.raw = raw
+        self.mode = mode
     }
 
-    public func decode<Value: RawEncodableType>(_ key: CoderKey<Value>.Type) -> Value {
-        let object = self.object(forKeyPath: key.path)
-        return object as! Value
-    }
-
-    public func decode<Value: RawEncodableType>(_ key: OptionalCoderKey<Value>.Type) -> Value? {
+    public func decode<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> Value {
         guard let object = self.object(forKeyPath: key.path) else {
-           return nil
+            throw DecodingError(description: "Required value not found for key \(key.path)")
         }
-        return object as? Value
+        if Value.self is RawEncodableType.Type {
+            guard let value = object as? Value else {
+                throw DecodingError(description: "Value of wrong type found for key \(key.path)")
+            }
+            return value
+        }
+        return try NativeTypesDecoder.decodableTypeFromObject(object, mode: self.mode)
     }
 
-
-    public func decode<Value: EncodableType>(_ key: NestedCoderKey<Value>.Type) -> Value {
-        let object = self.object(forKeyPath: key.path)!
-        return NativeTypesDecoder.decodableTypeFromObject(object)!
-    }
-
-    public func decode<Value: EncodableType>(_ key: OptionalNestedCoderKey<Value>.Type) -> Value? {
+    public func decode<Value: DecodableType>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
         guard let object = self.object(forKeyPath: key.path) else {
             return nil
         }
-        return NativeTypesDecoder.decodableTypeFromObject(object)
+        if Value.self is RawEncodableType.Type {
+            return object as? Value
+        }
+        return try? NativeTypesDecoder.decodableTypeFromObject(object, mode: self.mode)
     }
 
-    public func decodeArray<Value: RawEncodableType>(_ key: CoderKey<Value>.Type) -> [Value] {
-        guard let array = self.object(forKeyPath: key.path) as? [Any] else {
-            fatalError("Unexpected type")
-        }
-        var output: [Value] = []
-        for raw in array {
-            output.append(raw as! Value)
-        }
-        return output
-    }
-
-    public func decodeArray<Value: EncodableType>(_ key: NestedCoderKey<Value>.Type) -> [Value] {
+    public func decodeArray<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> [Value] {
         let object = self.object(forKeyPath: key.path)
         guard let array = object as? [Any] else {
             if object is NSNull || object == nil {
@@ -72,10 +65,30 @@ public final class NativeTypesDecoder: DecoderType {
         }
         var output: [Value] = []
         for raw in array {
-            let object: Value = NativeTypesDecoder.decodableTypeFromObject(raw)!
-            output.append(object)
+            if raw is RawEncodableType {
+                guard let value = raw as? Value else {
+                    throw DecodingError(description: "Value of wrong type found in array for key \(key.path)")
+                }
+                output.append(raw as! Value)
+            }
+            else {
+                let object: Value = try NativeTypesDecoder.decodableTypeFromObject(raw, mode: self.mode)
+                output.append(object)
+            }
         }
         return output
+    }
+
+    public func decodeAsEntireValue<Value: DecodableType>() throws -> Value {
+        if Value.self is RawEncodableType.Type {
+            guard let value = self.raw as? Value else {
+                throw DecodingError(description: "Value of wrong type found as entire value")
+            }
+            return value
+        }
+        else {
+            return try NativeTypesDecoder.decodableTypeFromObject(self.raw, mode: self.mode)
+        }
     }
 }
 

@@ -11,7 +11,7 @@ import Foundation
 
 public struct FileArchive {
     public static func archiveEncodable(_ encodable: EncodableType, toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
-        let object = NativeTypesEncoder.objectFromEncodable(encodable)
+        let object = NativeTypesEncoder.objectFromEncodable(encodable, mode: .saveLocally)
         let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
         try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
@@ -20,7 +20,7 @@ public struct FileArchive {
         var finalDict = [String:Any]()
 
         for (key, value) in dictionary {
-            finalDict[key] = NativeTypesEncoder.objectFromEncodable(value)
+            finalDict[key] = NativeTypesEncoder.objectFromEncodable(value, mode: .saveLocally)
         }
 
         let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: finalDict))
@@ -31,14 +31,14 @@ public struct FileArchive {
         var finalArray = [Any]()
 
         for value in array {
-            finalArray.append(NativeTypesEncoder.objectFromEncodable(value))
+            finalArray.append(NativeTypesEncoder.objectFromEncodable(value, mode: .saveLocally))
         }
 
         let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: finalArray))
         try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
-    public static func unarchiveEncodableFromFile<E: EncodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> E? {
+    public static func unarchiveEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> E? {
         guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
             return nil
         }
@@ -53,10 +53,11 @@ public struct FileArchive {
             )
         }
 
-        return NativeTypesDecoder.decodableTypeFromObject(object)
+        let value: E = try NativeTypesDecoder.decodableTypeFromObject(object, mode: .saveLocally)
+        return value
     }
 
-    public static func unarchiveDictionaryOfEncodableFromFile<E: EncodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [String:E]? {
+    public static func unarchiveDictionaryOfEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [String:E]? {
         guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
             return nil
         }
@@ -74,13 +75,13 @@ public struct FileArchive {
         var finalDict = [String:E]()
 
         for (key, subDict) in rawDict {
-            finalDict[key] = NativeTypesDecoder.decodableTypeFromObject(subDict)
+            finalDict[key] = try NativeTypesDecoder.decodableTypeFromObject(subDict, mode: .saveLocally) as E
         }
 
         return finalDict
     }
 
-    public static func unarchiveArrayOfEncodableFromFile<E: EncodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [E]? {
+    public static func unarchiveArrayOfEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [E]? {
         guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
             return nil
         }
@@ -98,7 +99,7 @@ public struct FileArchive {
         var finalArray = [E]()
 
         for rawObject in rawArray {
-            if let object: E = NativeTypesDecoder.decodableTypeFromObject(rawObject) {
+            if let object: E = try? NativeTypesDecoder.decodableTypeFromObject(rawObject, mode: .saveLocally) {
                 finalArray.append(object)
             }
         }

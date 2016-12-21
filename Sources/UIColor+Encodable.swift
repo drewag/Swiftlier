@@ -36,11 +36,11 @@ public struct Color: EncodableType {
         encoder.encode(Float(alpha), forKey: Keys.alpha.self)
     }
 
-    public init?(decoder: DecoderType) {
-        let red = CGFloat(decoder.decode(Keys.red.self))
-        let green = CGFloat(decoder.decode(Keys.red.self))
-        let blue = CGFloat(decoder.decode(Keys.red.self))
-        let alpha = CGFloat(decoder.decode(Keys.red.self))
+    public init(decoder: DecoderType) throws {
+        let red = CGFloat(try decoder.decode(Keys.red.self))
+        let green = CGFloat(try decoder.decode(Keys.red.self))
+        let blue = CGFloat(try decoder.decode(Keys.red.self))
+        let alpha = CGFloat(try decoder.decode(Keys.red.self))
 
         self.color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }

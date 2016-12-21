@@ -8,12 +8,18 @@
 
 import Foundation
 
-public protocol DecoderType {
-    func decode<Value: RawEncodableType>(_ key: CoderKey<Value>.Type) -> Value
-    func decode<Value: RawEncodableType>(_ key: OptionalCoderKey<Value>.Type) -> Value?
-    func decode<Value: EncodableType>(_ key: NestedCoderKey<Value>.Type) -> Value
-    func decode<Value: EncodableType>(_ key: OptionalNestedCoderKey<Value>.Type) -> Value?
+public enum DecodingMode {
+    case saveLocally
+    case remote
+}
 
-    func decodeArray<Value: RawEncodableType>(_ key: CoderKey<Value>.Type) -> [Value]
-    func decodeArray<Value: EncodableType>(_ key: NestedCoderKey<Value>.Type) -> [Value]
+public protocol DecoderType {
+    var mode: DecodingMode {get}
+
+    func decode<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> Value
+    func decode<Value: DecodableType>(_ key: OptionalCoderKey<Value>.Type) throws -> Value?
+
+    func decodeArray<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> [Value]
+
+    func decodeAsEntireValue<Value: DecodableType>() throws -> Value
 }

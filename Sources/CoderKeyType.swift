@@ -8,10 +8,23 @@
 
 import Foundation
 
-public protocol RawEncodableType {
+public protocol RawEncodableType: CodableType {
     init()
     var asObject: Any { get }
 }
+
+extension RawEncodableType {
+    public func encode(_ encoder: EncoderType) {
+        encoder.encodeAsEntireValue(self)
+    }
+}
+
+extension RawEncodableType {
+    public init(decoder: DecoderType) throws {
+        self = try decoder.decodeAsEntireValue()
+    }
+}
+
 extension String: RawEncodableType { public var asObject: Any { return self as Any } }
 extension Bool: RawEncodableType { public var asObject: Any { return self as Any } }
 extension Int: RawEncodableType { public var asObject: Any { return self as Any } }
@@ -20,19 +33,11 @@ extension Float: RawEncodableType { public var asObject: Any { return self as An
 extension Data: RawEncodableType { public var asObject: Any { return self as Any } }
 extension Date: RawEncodableType { public var asObject: Any { return self as Any } }
 
-open class CoderKey<Value: RawEncodableType> {
+open class CoderKey<Value: EncodableType> {
     open class var customKey: String? { return nil }
 }
 
-open class OptionalCoderKey<Value: RawEncodableType> {
-    open class var customKey: String? { return nil }
-}
-
-open class NestedCoderKey<Value: EncodableType> {
-    open class var customKey: String? { return nil }
-}
-
-open class OptionalNestedCoderKey<Value: EncodableType> {
+open class OptionalCoderKey<Value: EncodableType> {
     open class var customKey: String? { return nil }
 }
 
@@ -44,20 +49,6 @@ extension CoderKey {
 }
 
 extension OptionalCoderKey {
-    static var path: [String] {
-        return self.customKey?.components(separatedBy: ".")
-            ?? [String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!]
-    }
-}
-
-extension NestedCoderKey {
-    static var path: [String] {
-        return self.customKey?.components(separatedBy: ".")
-            ?? [String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!]
-    }
-}
-
-extension OptionalNestedCoderKey {
     static var path: [String] {
         return self.customKey?.components(separatedBy: ".")
             ?? [String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!]

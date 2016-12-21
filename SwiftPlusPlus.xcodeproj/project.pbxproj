@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
-		49E6377C1DF7408B00855BC1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49E6377A1DF7408B00855BC1 /* Info.plist */; };
+		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
+		49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */; };
 		49E6377D1DF7408B00855BC1 /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E6377B1DF7408B00855BC1 /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E637CB1DF743AB00855BC1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6377F1DF743AB00855BC1 /* Alert.swift */; };
 		49E637CC1DF743AB00855BC1 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637801DF743AB00855BC1 /* Angle.swift */; };
@@ -88,7 +90,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
+		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
+		49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableType.swift; sourceTree = "<group>"; };
 		49E637621DF73FB100855BC1 /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E6377A1DF7408B00855BC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Project/Info.plist; sourceTree = SOURCE_ROOT; };
 		49E6377B1DF7408B00855BC1 /* SwiftPlusPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftPlusPlus.h; path = Project/SwiftPlusPlus.h; sourceTree = SOURCE_ROOT; };
@@ -295,6 +300,9 @@
 				49E637C91DF743AB00855BC1 /* WebViewController.swift */,
 				49E637CA1DF743AB00855BC1 /* ZoomThroughTransition.swift */,
 				49ADCA5E1E0758540063CC63 /* Float+Factory.swift */,
+				49ADCA741E09CD580063CC63 /* Syncable.swift */,
+				4950303F1E09D14400E22334 /* DecodableType.swift */,
+				49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -337,7 +345,7 @@
 		49E637591DF73FB100855BC1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Drewag;
 				TargetAttributes = {
 					49E637611DF73FB100855BC1 = {
@@ -368,7 +376,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49E6377C1DF7408B00855BC1 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,12 +411,14 @@
 				49E637EB1DF743AB00855BC1 /* NativeTypesDecoder.swift in Sources */,
 				49E637CB1DF743AB00855BC1 /* Alert.swift in Sources */,
 				49E637FD1DF743AB00855BC1 /* ShadowView.swift in Sources */,
+				49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */,
 				49E637F31DF743AB00855BC1 /* Observable.swift in Sources */,
 				49E637E91DF743AB00855BC1 /* MenuViewController.swift in Sources */,
 				49E638061DF743AB00855BC1 /* UIButton+BlockTarget.swift in Sources */,
 				49E637D71DF743AB00855BC1 /* Date+Formatting.swift in Sources */,
 				49E637EC1DF743AB00855BC1 /* NativeTypesEncoder.swift in Sources */,
 				49E637F91DF743AB00855BC1 /* RoundedBorderButton.swift in Sources */,
+				49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */,
 				49E6380B1DF743AB00855BC1 /* UITableView+EasyRegister.swift in Sources */,
 				49E637FF1DF743AB00855BC1 /* SingleTask.swift in Sources */,
 				49E637E21DF743AB00855BC1 /* FormViewController.swift in Sources */,
@@ -441,6 +450,7 @@
 				49E637EE1DF743AB00855BC1 /* NSFileManager+Directories.swift in Sources */,
 				49E637E01DF743AB00855BC1 /* Float+Angle.swift in Sources */,
 				49E637DE1DF743AB00855BC1 /* EventCenter.swift in Sources */,
+				495030401E09D14400E22334 /* DecodableType.swift in Sources */,
 				49E637E81DF743AB00855BC1 /* Menu.swift in Sources */,
 				49E638111DF743AB00855BC1 /* UIViewController+Transitions.swift in Sources */,
 				49E6380D1DF743AB00855BC1 /* UIView+ImageCapture.swift in Sources */,
@@ -479,6 +489,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -532,6 +543,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
