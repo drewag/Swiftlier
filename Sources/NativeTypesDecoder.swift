@@ -8,8 +8,14 @@
 
 import Foundation
 
-struct DecodingError: Error {
-    let description: String
+struct DecodingError: UserReportableError {
+    let alertTitle: String = "Error Decoding"
+    let alertMessage: String
+    let otherInfo: [String : String]? = nil
+
+    init(description: String) {
+        self.alertMessage = description
+    }
 }
 
 public final class NativeTypesDecoder: DecoderType {
@@ -66,7 +72,7 @@ public final class NativeTypesDecoder: DecoderType {
         var output: [Value] = []
         for raw in array {
             if raw is RawEncodableType {
-                guard let value = raw as? Value else {
+                guard let _ = raw as? Value else {
                     throw DecodingError(description: "Value of wrong type found in array for key \(key.path)")
                 }
                 output.append(raw as! Value)
