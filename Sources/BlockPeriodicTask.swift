@@ -10,12 +10,12 @@
 public final class BlockPeriodicTask: PeriodicTask {
     public let uniqueIdentifier: String
     public let performIn: TaskQueue
-    private let block: ((TaskResult) -> ()) -> ()
+    private let block: (@escaping (TaskResult) -> ()) -> ()
 
     public var isRunning = false
     public var scheduleCount: Int = 0
 
-    public init(uniqueIdentifier: String, performIn: TaskQueue, scheduleNowWith period: TaskPeriod?, block: @escaping ((TaskResult) -> ()) -> ()) {
+    public init(uniqueIdentifier: String, performIn: TaskQueue, scheduleNowWith period: TaskPeriod?, block: @escaping (@escaping (TaskResult) -> ()) -> ()) {
         self.uniqueIdentifier = uniqueIdentifier
         self.performIn = performIn
         self.block = block
@@ -28,7 +28,7 @@ public final class BlockPeriodicTask: PeriodicTask {
         self.unschedule()
     }
 
-    public func perform(_ onComplete: (TaskResult) -> ()) {
+    public func perform(_ onComplete: @escaping (TaskResult) -> ()) {
         return self.block(onComplete)
     }
 }

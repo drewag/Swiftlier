@@ -24,7 +24,7 @@ public protocol PeriodicTask {
     var isRunning: Bool { get set }
     var scheduleCount: Int { get set }
 
-    func perform(_ onComplete: (TaskResult) -> ())
+    func perform(_ onComplete: @escaping (TaskResult) -> ())
 }
 
 extension PeriodicTask {

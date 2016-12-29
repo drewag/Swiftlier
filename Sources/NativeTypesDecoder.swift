@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct DecodingError: UserReportableError {
-    let alertTitle: String = "Error Decoding"
-    let alertMessage: String
-    let otherInfo: [String : String]? = nil
+public struct DecodingError: UserReportableError {
+    public let alertTitle: String = "Error Decoding"
+    public let alertMessage: String
+    public let otherInfo: [String : String]? = nil
 
-    init(description: String) {
+    public init(description: String) {
         self.alertMessage = description
     }
 }

@@ -38,9 +38,9 @@ public struct FileArchive {
         try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
-    public static func unarchiveEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> E? {
+    public static func unarchiveEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> E {
         guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
-            return nil
+            throw DecodingError(description: "File does not exist")
         }
         data = try decrypt(data)
 

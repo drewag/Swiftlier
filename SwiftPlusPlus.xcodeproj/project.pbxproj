@@ -11,6 +11,7 @@
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
 		49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */; };
+		49DE00901E1460BD00A314F6 /* ObservableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */; };
 		49E6377D1DF7408B00855BC1 /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E6377B1DF7408B00855BC1 /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E637CB1DF743AB00855BC1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6377F1DF743AB00855BC1 /* Alert.swift */; };
 		49E637CC1DF743AB00855BC1 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637801DF743AB00855BC1 /* Angle.swift */; };
@@ -23,7 +24,6 @@
 		49E637D31DF743AB00855BC1 /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637871DF743AB00855BC1 /* CGMath.swift */; };
 		49E637D41DF743AB00855BC1 /* CoderKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637881DF743AB00855BC1 /* CoderKeyType.swift */; };
 		49E637D51DF743AB00855BC1 /* DataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637891DF743AB00855BC1 /* DataSourceType.swift */; };
-		49E637D61DF743AB00855BC1 /* Date+Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6378A1DF743AB00855BC1 /* Date+Comparison.swift */; };
 		49E637D71DF743AB00855BC1 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6378B1DF743AB00855BC1 /* Date+Formatting.swift */; };
 		49E637D81DF743AB00855BC1 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6378C1DF743AB00855BC1 /* Date+Helpers.swift */; };
 		49E637D91DF743AB00855BC1 /* DecoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6378D1DF743AB00855BC1 /* DecoderType.swift */; };
@@ -94,6 +94,7 @@
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
 		49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableType.swift; sourceTree = "<group>"; };
+		49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableDictionary.swift; sourceTree = "<group>"; };
 		49E637621DF73FB100855BC1 /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E6377A1DF7408B00855BC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Project/Info.plist; sourceTree = SOURCE_ROOT; };
 		49E6377B1DF7408B00855BC1 /* SwiftPlusPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftPlusPlus.h; path = Project/SwiftPlusPlus.h; sourceTree = SOURCE_ROOT; };
@@ -108,7 +109,6 @@
 		49E637871DF743AB00855BC1 /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
 		49E637881DF743AB00855BC1 /* CoderKeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderKeyType.swift; sourceTree = "<group>"; };
 		49E637891DF743AB00855BC1 /* DataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceType.swift; sourceTree = "<group>"; };
-		49E6378A1DF743AB00855BC1 /* Date+Comparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparison.swift"; sourceTree = "<group>"; };
 		49E6378B1DF743AB00855BC1 /* Date+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
 		49E6378C1DF743AB00855BC1 /* Date+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		49E6378D1DF743AB00855BC1 /* DecoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderType.swift; sourceTree = "<group>"; };
@@ -234,7 +234,6 @@
 				49E637871DF743AB00855BC1 /* CGMath.swift */,
 				49E637881DF743AB00855BC1 /* CoderKeyType.swift */,
 				49E637891DF743AB00855BC1 /* DataSourceType.swift */,
-				49E6378A1DF743AB00855BC1 /* Date+Comparison.swift */,
 				49E6378B1DF743AB00855BC1 /* Date+Formatting.swift */,
 				49E6378C1DF743AB00855BC1 /* Date+Helpers.swift */,
 				49E6378D1DF743AB00855BC1 /* DecoderType.swift */,
@@ -303,6 +302,7 @@
 				49ADCA741E09CD580063CC63 /* Syncable.swift */,
 				4950303F1E09D14400E22334 /* DecodableType.swift */,
 				49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */,
+				49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -390,7 +390,6 @@
 				49E638121DF743AB00855BC1 /* UserReportableError.swift in Sources */,
 				49E638041DF743AB00855BC1 /* ThinLayoutConstraint.swift in Sources */,
 				49E637F81DF743AB00855BC1 /* PresentUnderTopBarTransition.swift in Sources */,
-				49E637D61DF743AB00855BC1 /* Date+Comparison.swift in Sources */,
 				49E637E51DF743AB00855BC1 /* KeyboardConstraintAdjuster.swift in Sources */,
 				49E637F61DF743AB00855BC1 /* PeriodicTask.swift in Sources */,
 				49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */,
@@ -450,6 +449,7 @@
 				49E637EE1DF743AB00855BC1 /* NSFileManager+Directories.swift in Sources */,
 				49E637E01DF743AB00855BC1 /* Float+Angle.swift in Sources */,
 				49E637DE1DF743AB00855BC1 /* EventCenter.swift in Sources */,
+				49DE00901E1460BD00A314F6 /* ObservableDictionary.swift in Sources */,
 				495030401E09D14400E22334 /* DecodableType.swift in Sources */,
 				49E637E81DF743AB00855BC1 /* Menu.swift in Sources */,
 				49E638111DF743AB00855BC1 /* UIViewController+Transitions.swift in Sources */,

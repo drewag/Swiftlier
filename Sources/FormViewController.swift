@@ -9,7 +9,7 @@
 #if os(iOS)
 import UIKit
 
-public class FormViewController: UITableViewController {
+open class FormViewController: UITableViewController {
     public var form: Form
 
     let nameLabelWidth: CGFloat
@@ -25,7 +25,7 @@ public class FormViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -37,11 +37,11 @@ public class FormViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
     }
 
-    public func submit() {
+    open func submit() {
         fatalError("Must be overridden")
     }
 
-    public func extraValidation() throws {}
+    open func extraValidation() throws {}
 
     func cancel() {
         self.dismiss(animated: true, completion: nil)
@@ -81,15 +81,15 @@ public class FormViewController: UITableViewController {
 }
 
 extension FormViewController/*: UITableViewDataSource*/ {
-    public override func numberOfSections(in tableView: UITableView) -> Int {
+    open override func numberOfSections(in tableView: UITableView) -> Int {
         return self.form.sections.count
     }
 
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.form.sections.values[section].fields.count
     }
 
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let field = self.form.sections.values[indexPath.section].fields.values[indexPath.row]
         switch field {
         case let simpleField as SimpleField:
@@ -129,11 +129,11 @@ extension FormViewController/*: UITableViewDataSource*/ {
 }
 
 extension FormViewController/*: UITableViewDelegat*/ {
-    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    open override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.form.sections.values[section].name
     }
 
-    public override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let formSection = self.form.sections.values[section]
         let view = UIView()
 
@@ -174,7 +174,7 @@ extension FormViewController/*: UITableViewDelegat*/ {
         return view
     }
 
-    public override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    open override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return self.form.sections.values[section].help
     }
 }
