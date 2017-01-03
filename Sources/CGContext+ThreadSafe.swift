@@ -28,7 +28,7 @@ extension CGContext {
         guard let image = image else {
             return
         }
-        self.draw(image, inRect: rect)
+        self.draw(image.cgImage, inRect: rect)
     }
 
     public func draw(_ image: CGImage?, inRect rect: CGRect) {
