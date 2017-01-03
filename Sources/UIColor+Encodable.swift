@@ -9,7 +9,7 @@
 #if os(iOS)
 import UIKit
 
-public struct Color: EncodableType {
+public struct Color: CodableType {
     public let color: UIColor
 
     public init(_ color: UIColor) {
