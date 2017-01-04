@@ -24,14 +24,12 @@ public class BubbleView: UIView {
             let bottom = round(rect.midY + width / 2)
 
             let left = rect.minX
-            let center = round(rect.width * 2 / 3)
             let right = rect.maxX
 
             let context = UIGraphicsGetCurrentContext()!
             context.move(to: CGPoint(x: right, y: top))
             context.addLine(to: CGPoint(x: right, y: bottom))
-            context.addCurve(to: CGPoint(x: center, y: middle + width / 4), control1: CGPoint(x: left, y: middle), control2: CGPoint(x: left, y: middle))
-            context.addCurve(to: CGPoint(x: center, y: middle - width / 4), control1: CGPoint(x: right, y: top), control2: CGPoint(x: right, y: top))
+            context.addLine(to: CGPoint(x: left, y: middle))
             self.color.setFill()
             context.fillPath()
         }
