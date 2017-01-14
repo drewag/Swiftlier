@@ -20,6 +20,17 @@ extension Date {
         return today == otherDate
     }
 
+    public var isTomorrow: Bool {
+        let cal = Calendar.current
+        let units = Set<Calendar.Component>([.era, .year, .month, .day])
+        var components = cal.dateComponents(units, from: Date(timeIntervalSinceNow: 60 * 60 * 24))
+        let tomorrow = cal.date(from: components)
+        components = cal.dateComponents(units, from: self)
+        let otherDate = cal.date(from: components)
+
+        return tomorrow == otherDate
+    }
+
     public var isThisWeek: Bool {
         let cal = Calendar.current
         let units = Set<Calendar.Component>([.era, .year, .weekOfYear])
