@@ -57,6 +57,13 @@ private let monthFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+private let yearFormatter: DateFormatter = {
+    var dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+    dateFormatter.dateFormat = "yyyy"
+    return dateFormatter
+}()
+
 private let gmtDateTimeFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier:"en_US_POSIX")
@@ -134,6 +141,10 @@ extension Date {
 
     public var month: String {
         return monthFormatter.string(from: self)
+    }
+
+    public var year: String {
+        return yearFormatter.string(from: self)
     }
 
     public var railsDateTime: String {
