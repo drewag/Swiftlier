@@ -19,6 +19,7 @@ struct CommandLine {
         while fgets(&buf, Int32(BUFSIZE), pp) != nil {
             output += String(cString: buf)
         }
+        pclose(pp)
         return output
     }
 }
