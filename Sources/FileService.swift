@@ -9,6 +9,10 @@
 import Foundation
 
 public class FileService {
+    public enum FileError: Error {
+        case doesNotExist
+    }
+
     fileprivate let fileManager = FileManager.default
 
     public static let `default` = FileService()
@@ -63,6 +67,9 @@ public class FileService {
 
     public func jsonObject(at url: URL) throws -> Any {
         #if os(Linux)
+            guard self.fileManager.fileExists(atPath: url.relativePath) else {
+                throw FileError.doesNotExist
+            }
             let string = CommandLine.execute("cat \"\(url.relativePath)\"")
             let data = string.data(using: .utf8) ?? Data()
         #else
