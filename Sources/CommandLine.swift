@@ -10,7 +10,7 @@
 import Foundation
 
 struct CommandLine {
-    static func execute(command: String) -> Stringg {
+    static func execute(_ command: String) -> String {
         let BUFSIZE = 1024
         let pp = popen(command, "r")
         var buf = [CChar](repeating: CChar(0), count:BUFSIZE)
