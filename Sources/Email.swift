@@ -16,10 +16,10 @@ public struct Email {
     let from: String
 
     public init(to: String, subject: String, from: String, HTMLBody: String) {
-        self.recipient = to
+        self.recipient = Email.sanitize(to)
         self.HTMLBody = HTMLBody
-        self.subject = subject
-        self.from = from
+        self.subject = Email.sanitize(subject)
+        self.from = Email.sanitize(from)
     }
 
     @discardableResult
@@ -40,12 +40,19 @@ public struct Email {
                 return task.terminationStatus == 0
             }
             catch {
+                print("Error sending email: \(error)")
                 return false
             }
         #else
             print("Sent email to '\(self.recipient)' with subject '\(self.subject)' and body '\(self.HTMLBody)'")
             return true
         #endif
+    }
+}
+
+private extension Email {
+    static func sanitize(_ parameter: String) -> String {
+        return parameter.replacingOccurrences(of: "'", with: "\\'")
     }
 }
 #endif
