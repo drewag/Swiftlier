@@ -45,7 +45,7 @@ public struct Email {
             do {
                 FileService.default.createDirectory(at: URL(fileURLWithPath: "tmp"))
                 let tempPath = "tmp/email.html"
-                try self.HTMLBody.write(toFile: tempPath, atomically: true, encoding: .utf8)
+                try self.body.write(toFile: tempPath, atomically: true, encoding: .utf8)
                 let task = Task()
                 task.launchPath = "/bin/sh"
                 var command = "cat \(tempPath) | mail '\(self.recipient)' -s '\(self.subject)' -a 'From:\(self.from)'"
