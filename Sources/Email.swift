@@ -10,14 +10,29 @@
 import Foundation
 
 public struct Email {
+    enum ContentType {
+        case html
+        case plain
+    }
+
     let subject: String
-    let HTMLBody: String
+    let body: String
     let recipient: String
     let from: String
+    let contentType: ContentType
 
     public init(to: String, subject: String, from: String, HTMLBody: String) {
         self.recipient = Email.sanitize(to)
-        self.HTMLBody = HTMLBody
+        self.body = HTMLBody
+        self.contentType = .html
+        self.subject = Email.sanitize(subject)
+        self.from = Email.sanitize(from)
+    }
+
+    public init(to: String, subject: String, from: String, plainBody: String) {
+        self.recipient = Email.sanitize(to)
+        self.body = plainBody
+        self.contentType = .plain
         self.subject = Email.sanitize(subject)
         self.from = Email.sanitize(from)
     }
@@ -33,7 +48,14 @@ public struct Email {
                 try self.HTMLBody.write(toFile: tempPath, atomically: true, encoding: .utf8)
                 let task = Task()
                 task.launchPath = "/bin/sh"
-                task.arguments = ["-c", "cat \(tempPath) | mail '\(self.recipient)' -s '\(self.subject)' -a 'From:\(self.from)' -a 'Content-Type: text/html'"]
+                var command = "cat \(tempPath) | mail '\(self.recipient)' -s '\(self.subject)' -a 'From:\(self.from)'"
+                switch self.contentType {
+                case .html:
+                    command += " -a 'Content-Type: text/html'"
+                case .plain:
+                    break
+                }
+                task.arguments = ["-c", command]
 
                 task.launch()
                 task.waitUntilExit()
@@ -44,7 +66,7 @@ public struct Email {
                 return false
             }
         #else
-            print("Sent email to '\(self.recipient)' with subject '\(self.subject)' and body '\(self.HTMLBody)'")
+            print("Sent email to '\(self.recipient)' with subject '\(self.subject)' and body '\(self.body)'")
             return true
         #endif
     }
