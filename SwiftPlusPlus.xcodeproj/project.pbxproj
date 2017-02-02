@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */; };
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
@@ -90,6 +91,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				4950303F1E09D14400E22334 /* DecodableType.swift */,
 				49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */,
 				49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */,
+				4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -395,6 +398,7 @@
 				49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */,
 				49E637F01DF743AB00855BC1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49E638001DF743AB00855BC1 /* String+SwiftPlusPlus.swift in Sources */,
+				4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */,
 				49E6380F1DF743AB00855BC1 /* UIView+Video.swift in Sources */,
 				49E637E41DF743AB00855BC1 /* JSON.swift in Sources */,
 				49E637F51DF743AB00855BC1 /* OrderedDictionary.swift in Sources */,
