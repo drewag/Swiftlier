@@ -68,9 +68,20 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     }
 }
 
-extension OrderedDictionary where Value: Equatable {
+extension OrderedDictionary {
     public func indexOfValueWithKey(_ key: Key) -> Int? {
-        let object = self[key]
-        return self.values.indexOfValue(passing: {$0 == object})
+        guard let object = self[key]
+            , let internalIndex = self.lookup[key]
+            else
+        {
+            return nil
+        }
+        var index = -1
+        for i in 0 ... internalIndex {
+            if self.values[i] != nil {
+                index += 1
+            }
+        }
+        return index
     }
 }
