@@ -12,7 +12,8 @@ import Foundation
 public struct FileArchive {
     public static func archiveEncodable(_ encodable: EncodableType, toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
         let object = NativeTypesEncoder.objectFromEncodable(encodable, mode: .saveLocally)
-        let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
+
+        let data = try self.data(from: object, encrypt: encrypt)
         try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
@@ -23,7 +24,7 @@ public struct FileArchive {
             finalDict[key] = NativeTypesEncoder.objectFromEncodable(value, mode: .saveLocally)
         }
 
-        let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: finalDict))
+        let data = try self.data(from: finalDict, encrypt: encrypt)
         try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
@@ -34,7 +35,7 @@ public struct FileArchive {
             finalArray.append(NativeTypesEncoder.objectFromEncodable(value, mode: .saveLocally))
         }
 
-        let data = try encrypt(NSKeyedArchiver.archivedData(withRootObject: finalArray))
+        let data = try self.data(from: finalArray, encrypt: encrypt)
         try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
     }
 
@@ -44,7 +45,7 @@ public struct FileArchive {
         }
         data = try decrypt(data)
 
-        guard let object = NSKeyedUnarchiver.unarchiveObject(with: data) else {
+        guard let object = try self.object(from: data, decrypt: decrypt) else {
             throw LocalUserReportableError(
                 source: "FileArchive",
                 operation: "loading data",
@@ -61,9 +62,8 @@ public struct FileArchive {
         guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
             return nil
         }
-        data = try decrypt(data)
 
-        guard let rawDict = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String:[String: Any]] else {
+        guard let rawDict = try self.object(from: data, decrypt: decrypt) as? [String:[String: Any]] else {
             throw LocalUserReportableError(
                 source: "FileArchive",
                 operation: "loading data",
@@ -85,9 +85,8 @@ public struct FileArchive {
         guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
             return nil
         }
-        data = try decrypt(data)
 
-        guard let rawArray = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Any] else {
+        guard let rawArray = try self.object(from: data, decrypt: decrypt) as? [Any] else {
             throw LocalUserReportableError(
                 source: "FileArchive",
                 operation: "loading data",
@@ -107,4 +106,18 @@ public struct FileArchive {
         return finalArray
     }
 }
+
+private extension FileArchive {
+    static func data(from object: Any, encrypt: (Data) throws -> Data) throws -> Data {
+        return try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
+        //return try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+    }
+
+    static func object(from data: Data, decrypt: (Data) throws -> Data) throws -> Any? {
+        let data = try decrypt(data)
+        return try NSKeyedUnarchiver.unarchiveObject(with: data)
+        //return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
+    }
+}
+
 #endif
