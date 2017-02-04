@@ -31,7 +31,20 @@ extension Int: RawEncodableType { public var asObject: Any { return self as Any 
 extension Double: RawEncodableType { public var asObject: Any { return self as Any } }
 extension Float: RawEncodableType { public var asObject: Any { return self as Any } }
 extension Data: RawEncodableType { public var asObject: Any { return self as Any } }
-extension Date: RawEncodableType { public var asObject: Any { return self as Any } }
+
+extension Date: CodableType {
+    public func encode(_ encoder: EncoderType) {
+        encoder.encodeAsEntireValue(self.iso8601DateTime)
+    }
+
+    public init(decoder: DecoderType) throws {
+        let string: String = try decoder.decodeAsEntireValue()
+        guard let date = string.iso8601DateTime else {
+            throw DecodingError(description: "Invalid date: \(string)")
+        }
+        self = date
+    }
+}
 
 open class CoderKey<Value: EncodableType> {
     open class var customKey: String? { return nil }
