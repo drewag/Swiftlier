@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */; };
+=======
+		490D0B3D1E3BC6C8004A18FE /* Enum+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */; };
+		490D0B501E3ED8F0004A18FE /* ObservableReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */; };
+>>>>>>> [NF] Added count property to enumerations with Int raw value
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
@@ -91,7 +96,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
+=======
+		490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+Convenience.swift"; sourceTree = "<group>"; };
+		490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableReference.swift; sourceTree = "<group>"; };
+>>>>>>> [NF] Added count property to enumerations with Int raw value
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
@@ -265,6 +275,7 @@
 				49E637A51DF743AB00855BC1 /* NSTimeInterval+Formatting.swift */,
 				49E637A61DF743AB00855BC1 /* NSURL+Helpers.swift */,
 				49E637A71DF743AB00855BC1 /* Observable.swift */,
+				490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */,
 				49E637A81DF743AB00855BC1 /* ObservableArray.swift */,
 				49E637A91DF743AB00855BC1 /* OrderedDictionary.swift */,
 				49E637AA1DF743AB00855BC1 /* PeriodicTask.swift */,
@@ -304,8 +315,12 @@
 				49ADCA741E09CD580063CC63 /* Syncable.swift */,
 				4950303F1E09D14400E22334 /* DecodableType.swift */,
 				49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */,
+<<<<<<< HEAD
 				49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */,
 				4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */,
+=======
+				490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */,
+>>>>>>> [NF] Added count property to enumerations with Int raw value
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -398,11 +413,16 @@
 				49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */,
 				49E637F01DF743AB00855BC1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49E638001DF743AB00855BC1 /* String+SwiftPlusPlus.swift in Sources */,
+<<<<<<< HEAD
 				4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */,
+=======
+				490D0B501E3ED8F0004A18FE /* ObservableReference.swift in Sources */,
+>>>>>>> [NF] Added count property to enumerations with Int raw value
 				49E6380F1DF743AB00855BC1 /* UIView+Video.swift in Sources */,
 				49E637E41DF743AB00855BC1 /* JSON.swift in Sources */,
 				49E637F51DF743AB00855BC1 /* OrderedDictionary.swift in Sources */,
 				49E6380A1DF743AB00855BC1 /* UIImage+Editing.swift in Sources */,
+				490D0B3D1E3BC6C8004A18FE /* Enum+Convenience.swift in Sources */,
 				49E637CF1DF743AB00855BC1 /* BlockSingleTask.swift in Sources */,
 				49E637D41DF743AB00855BC1 /* CoderKeyType.swift in Sources */,
 				49E637FC1DF743AB00855BC1 /* SequenceType+SwiftPlusPlus.swift in Sources */,
