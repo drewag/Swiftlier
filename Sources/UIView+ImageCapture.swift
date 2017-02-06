@@ -10,7 +10,7 @@
 import UIKit
 
 extension UIView {
-    func captureImage() -> UIImage {
+    public func captureImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 1)
         self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
