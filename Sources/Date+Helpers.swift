@@ -34,12 +34,12 @@ extension Date {
     public var isThisWeek: Bool {
         let cal = Calendar.current
         let units = Set<Calendar.Component>([.era, .year, .weekOfYear])
-        var components = cal.dateComponents(units, from: Date())
-        let today = cal.date(from: components)
-        components = cal.dateComponents(units, from: self)
-        let otherDate = cal.date(from: components)
+        let today = cal.dateComponents(units, from: Date())
+        let other = cal.dateComponents(units, from: self)
 
-        return today == otherDate
+        return today.era == other.era
+            && today.year == other.year
+            && today.weekOfYear == other.weekOfYear
     }
 
     public var isThisYear: Bool {
