@@ -70,7 +70,7 @@ public struct OrderedDictionary<Key: Hashable, Value> {
 
 extension OrderedDictionary {
     public func indexOfValueWithKey(_ key: Key) -> Int? {
-        guard let object = self[key]
+        guard let _ = self[key]
             , let internalIndex = self.lookup[key]
             else
         {
@@ -78,7 +78,7 @@ extension OrderedDictionary {
         }
         var index = -1
         for i in 0 ... internalIndex {
-            if self.values[i] != nil {
+            if self.valueStore[i] != nil {
                 index += 1
             }
         }

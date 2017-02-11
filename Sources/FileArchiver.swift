@@ -59,7 +59,7 @@ public struct FileArchive {
     }
 
     public static func unarchiveDictionaryOfEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [String:E]? {
-        guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
             return nil
         }
 
@@ -82,7 +82,7 @@ public struct FileArchive {
     }
 
     public static func unarchiveArrayOfEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [E]? {
-        guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
             return nil
         }
 
@@ -115,7 +115,7 @@ private extension FileArchive {
 
     static func object(from data: Data, decrypt: (Data) throws -> Data) throws -> Any? {
         let data = try decrypt(data)
-        return try NSKeyedUnarchiver.unarchiveObject(with: data)
+        return NSKeyedUnarchiver.unarchiveObject(with: data)
         //return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
     }
 }
