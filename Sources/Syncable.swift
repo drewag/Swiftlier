@@ -162,7 +162,7 @@ public struct SyncableOptional<Value: CodableType>: AnySyncable, DecodableType {
         }
     }
 
-    public mutating func update(to value: Value, from source: SyncChangeSource) {
+    public mutating func update(to value: Value?, from source: SyncChangeSource) {
         switch source {
         case .remote:
             self.remoteValue = value
