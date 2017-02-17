@@ -10,14 +10,14 @@
 import Foundation
 
 public struct FileArchive {
-    public static func archiveEncodable(_ encodable: EncodableType, toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
+    public static func archiveEncodable(_ encodable: EncodableType, toFile file: String, options: Data.WritingOptions = .atomicWrite, encrypt: (Data) throws -> Data = {return $0}) throws {
         let object = NativeTypesEncoder.objectFromEncodable(encodable, mode: .saveLocally)
 
         let data = try self.data(from: object, encrypt: encrypt)
-        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
+        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite.union(options))
     }
 
-    public static func archiveDictionaryOfEncodable<E: EncodableType>(_ dictionary: [String:E], toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
+    public static func archiveDictionaryOfEncodable<E: EncodableType>(_ dictionary: [String:E], toFile file: String, options: Data.WritingOptions = .atomicWrite, encrypt: (Data) throws -> Data = {return $0}) throws {
         var finalDict = [String:Any]()
 
         for (key, value) in dictionary {
@@ -25,10 +25,10 @@ public struct FileArchive {
         }
 
         let data = try self.data(from: finalDict, encrypt: encrypt)
-        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
+        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite.union(options))
     }
 
-    public static func archiveArrayOfEncodable<E: EncodableType>(_ array: [E], toFile file: String, encrypt: (Data) throws -> Data = {return $0}) throws {
+    public static func archiveArrayOfEncodable<E: EncodableType>(_ array: [E], toFile file: String, options: Data.WritingOptions = .atomicWrite, encrypt: (Data) throws -> Data = {return $0}) throws {
         var finalArray = [Any]()
 
         for value in array {
@@ -36,7 +36,7 @@ public struct FileArchive {
         }
 
         let data = try self.data(from: finalArray, encrypt: encrypt)
-        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite)
+        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite.union(options))
     }
 
     public static func unarchiveEncodableFromFile<E: DecodableType>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> E {
