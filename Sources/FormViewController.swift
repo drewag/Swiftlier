@@ -11,6 +11,7 @@ import UIKit
 
 open class FormViewController: UITableViewController {
     public var form: Form
+    public var onBack: ((_ canceled: Bool) -> ())?
 
     let nameLabelWidth: CGFloat
 
@@ -44,7 +45,7 @@ open class FormViewController: UITableViewController {
     open func extraValidation() throws {}
 
     func cancel() {
-        self.dismiss(animated: true, completion: nil)
+        self.onBack?(true)
     }
 
     func done() {
@@ -95,6 +96,7 @@ extension FormViewController/*: UITableViewDataSource*/ {
         case let simpleField as SimpleField:
             let cell = tableView.dequeueReusableCell(withIdentifier: SimpleFieldTableViewCell.identifier, for: indexPath) as! SimpleFieldTableViewCell
 
+            cell.valueField.isUserInteractionEnabled = true
             cell.selectionStyle = .none
             cell.nameLabel.text = field.label
             cell.valueField.placeholder = simpleField.placeholder
@@ -107,6 +109,7 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.tag = indexPath.row
             cell.valueField.removeTarget(self, action: #selector(didChange(textField:)), for: .allEvents)
             cell.valueField.addTarget(self, action: #selector(didChange(textField:)), for: .editingChanged)
+            cell.accessoryType = .none
 
             return cell
         case let boolField as BoolField:
@@ -122,13 +125,47 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueSwitch.addTarget(self, action: #selector(didChange(valueSwitch:)), for: .valueChanged)
 
             return cell
+        case let customField as CustomViewControllerField:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SimpleFieldTableViewCell.identifier, for: indexPath) as! SimpleFieldTableViewCell
+
+            cell.valueField.isUserInteractionEnabled = false
+            cell.selectionStyle = customField.isEditable ? .default : .none
+            cell.nameLabel.text = field.label
+            cell.valueField.placeholder = ""
+            cell.valueField.keyboardType = .default
+            cell.valueField.autocapitalizationType = .none
+            cell.valueField.isSecureTextEntry = false
+            cell.valueField.text = field.displayValue
+            cell.nameLabelWidth = self.nameLabelWidth
+            cell.valueField.superview!.tag = indexPath.section
+            cell.valueField.tag = indexPath.row
+            cell.valueField.removeTarget(self, action: #selector(didChange(textField:)), for: .allEvents)
+            cell.accessoryType = customField.isEditable ? .disclosureIndicator : .none
+
+            return cell
         default:
-            fatalError("Unreocgnized form type")
+            let cell = tableView.dequeueReusableCell(withIdentifier: SimpleFieldTableViewCell.identifier, for: indexPath) as! SimpleFieldTableViewCell
+
+            cell.valueField.isUserInteractionEnabled = false
+            cell.selectionStyle = .none
+            cell.nameLabel.text = field.label
+            cell.valueField.placeholder = ""
+            cell.valueField.keyboardType = .default
+            cell.valueField.autocapitalizationType = .none
+            cell.valueField.isSecureTextEntry = false
+            cell.valueField.text = field.displayValue
+            cell.nameLabelWidth = self.nameLabelWidth
+            cell.valueField.superview!.tag = indexPath.section
+            cell.valueField.tag = indexPath.row
+            cell.valueField.removeTarget(self, action: #selector(didChange(textField:)), for: .allEvents)
+            cell.accessoryType = .none
+
+            return cell
         }
     }
 }
 
-extension FormViewController/*: UITableViewDelegat*/ {
+extension FormViewController/*: UITableViewDelegate*/ {
     open override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.form.sections.values[section].name
     }
@@ -176,6 +213,24 @@ extension FormViewController/*: UITableViewDelegat*/ {
 
     open override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return self.form.sections.values[section].help
+    }
+
+    open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let field = self.form.sections.values[indexPath.section].fields.values[indexPath.row]
+        switch field {
+        case let customField as CustomViewControllerField:
+            guard customField.isEditable else {
+                return
+            }
+
+            let viewController = customField.buildViewController() { [unowned customField, unowned self] newValue in
+                customField.value = newValue
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+            self.navigationController?.pushViewController(viewController, animated: true)
+        default:
+            break
+        }
     }
 }
 

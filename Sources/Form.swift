@@ -103,6 +103,24 @@ public struct Form {
     }
 }
 
+public class DisplayOnlyField: Field {
+    public let label: String
+    public var value: String
+
+    public init(label: String = "Email", value: String) {
+        self.label = label
+        self.value = value
+    }
+
+    public var displayValue: String {
+        return value
+    }
+
+    public func validate() -> ValidationResult {
+        return .passed
+    }
+}
+
 public class EmailField: SimpleField {
     public typealias Value = String
 
@@ -294,4 +312,38 @@ public class BoolField: Field {
         return .passed
     }
 }
+
+public class CustomViewControllerField: Field {
+    public let label: String
+
+    let buildViewController: (_ setValue: @escaping (String?) -> ()) -> (UIViewController)
+    let isRequired: Bool
+    let isEditable: Bool
+    var value: String?
+
+    public init(label: String, value: String?, isRequired: Bool = true, isEditable: Bool = true, build: @escaping (_ setValue: @escaping (String?) -> ()) -> (UIViewController)) {
+        self.label = label
+        self.isRequired = isRequired
+        self.isEditable = isEditable
+        self.buildViewController = build
+        self.value = value
+    }
+
+    public var displayValue: String {
+        return self.value ?? ""
+    }
+
+    public func validate() -> ValidationResult {
+        guard let value = self.value, !value.isEmpty else {
+            if self.isRequired {
+                return .failedWithReason("is required")
+            }
+            else {
+                return .passed
+            }
+        }
+        return .passed
+    }
+}
+
 #endif
