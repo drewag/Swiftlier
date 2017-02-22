@@ -10,7 +10,7 @@
 import UIKit
 import ObjectiveC
 
-var ActionBlockKey: UInt8 = 0
+private var ActionBlockKey: UInt8 = 0
 
 private class ActionBlockWrapper: NSObject {
     let block: () -> ()

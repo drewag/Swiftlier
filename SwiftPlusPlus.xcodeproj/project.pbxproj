@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */; };
 		490D0B3D1E3BC6C8004A18FE /* Enum+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */; };
 		490D0B501E3ED8F0004A18FE /* ObservableReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */; };
+		490FAF971E5D3EDF00B2D50E /* ObjectPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FAF961E5D3EDF00B2D50E /* ObjectPersistenceService.swift */; };
+		490FAFA51E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FAFA41E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift */; };
+		4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */; };
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
@@ -93,9 +95,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 		490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+Convenience.swift"; sourceTree = "<group>"; };
 		490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableReference.swift; sourceTree = "<group>"; };
+		490FAF961E5D3EDF00B2D50E /* ObjectPersistenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPersistenceService.swift; sourceTree = "<group>"; };
+		490FAFA41E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+BlockTarget.swift"; sourceTree = "<group>"; };
+		4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
@@ -312,6 +316,8 @@
 				49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */,
 				4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */,
 				490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */,
+				490FAF961E5D3EDF00B2D50E /* ObjectPersistenceService.swift */,
+				490FAFA41E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -398,6 +404,7 @@
 				49E637F21DF743AB00855BC1 /* NSURL+Helpers.swift in Sources */,
 				49E638121DF743AB00855BC1 /* UserReportableError.swift in Sources */,
 				49E638041DF743AB00855BC1 /* ThinLayoutConstraint.swift in Sources */,
+				490FAF971E5D3EDF00B2D50E /* ObjectPersistenceService.swift in Sources */,
 				49E637F81DF743AB00855BC1 /* PresentUnderTopBarTransition.swift in Sources */,
 				49E637E51DF743AB00855BC1 /* KeyboardConstraintAdjuster.swift in Sources */,
 				49E637F61DF743AB00855BC1 /* PeriodicTask.swift in Sources */,
@@ -471,6 +478,7 @@
 				49E637F11DF743AB00855BC1 /* NSTimeInterval+Formatting.swift in Sources */,
 				49E637F71DF743AB00855BC1 /* PlaceholderTextView.swift in Sources */,
 				49E637CE1DF743AB00855BC1 /* BlockPeriodicTask.swift in Sources */,
+				490FAFA51E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift in Sources */,
 				49E637ED1DF743AB00855BC1 /* NetworkUserReportableError.swift in Sources */,
 				49E638101DF743AB00855BC1 /* UIViewController+Helpers.swift in Sources */,
 				49E637FE1DF743AB00855BC1 /* ShellCommand.swift in Sources */,
