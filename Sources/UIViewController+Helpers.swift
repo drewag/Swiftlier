@@ -13,6 +13,7 @@ public enum PopoverPosition {
     case `default`
     case topMiddle
     case bottomMiddle
+    case middle
     case custom(sourceRect: CGRect)
 }
 
@@ -42,6 +43,9 @@ extension UIViewController {
             viewController.popoverPresentationController!.sourceRect = rect
         case .bottomMiddle:
             let rect = CGRect(origin: CGPoint(x: sourceView.bounds.midX, y: sourceView.bounds.maxY), size: CGSize(width: 1, height: 1))
+            viewController.popoverPresentationController!.sourceRect = rect
+        case .middle:
+            let rect = CGRect(origin: CGPoint(x: sourceView.bounds.midX, y: sourceView.bounds.midY), size: CGSize(width: 1, height: 1))
             viewController.popoverPresentationController!.sourceRect = rect
         case .custom(sourceRect: let rect):
             viewController.popoverPresentationController!.sourceRect = rect
