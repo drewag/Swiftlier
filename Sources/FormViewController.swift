@@ -42,7 +42,7 @@ open class FormViewController: UITableViewController {
         fatalError("Must be overridden")
     }
 
-    open func extraValidation() throws {}
+    open func extraValidation() -> ValidationResult { return .passed }
 
     open func didEndEditing(field: Field) {}
 
@@ -53,6 +53,14 @@ open class FormViewController: UITableViewController {
     func done() {
         do {
             try self.form.validate()
+            switch self.extraValidation() {
+            case .passed:
+                break
+            case .failed:
+                throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "Unkown reason", reason: .user)
+            case .failedWithReason(let reason):
+                throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "\(reason)", reason: .user)
+            }
             self.submit()
         }
         catch let error as UserReportableError {

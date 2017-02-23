@@ -94,9 +94,9 @@ public struct Form {
                 case .passed:
                     continue
                 case .failed:
-                    throw LocalUserReportableError(source: "FormViewController", operation: "updating account information", message: "\(field.label) is not valid", reason: .user)
+                    throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "\(field.label) is not valid", reason: .user)
                 case .failedWithReason(let reason):
-                    throw LocalUserReportableError(source: "FormViewController", operation: "updating account information", message: "\(field.label) \(reason)", reason: .user)
+                    throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "\(field.label) \(reason)", reason: .user)
                 }
             }
         }
@@ -362,7 +362,7 @@ public class CustomViewControllerField: Field {
     let isEditable: Bool
     public var value: String?
 
-    public init(label: String, value: String?, isRequired: Bool = true, isEditable: Bool = true, build: @escaping (_ setValue: @escaping (String?) -> ()) -> (UIViewController)) {
+    public init(label: String, value: String?, isRequired: Bool = false, isEditable: Bool = true, build: @escaping (_ setValue: @escaping (String?) -> ()) -> (UIViewController)) {
         self.label = label
         self.isRequired = isRequired
         self.isEditable = isEditable
