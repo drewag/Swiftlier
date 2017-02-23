@@ -44,6 +44,8 @@ open class FormViewController: UITableViewController {
 
     open func extraValidation() throws {}
 
+    open func didEndEditing(field: Field) {}
+
     func cancel() {
         self.onBack?(true)
     }
@@ -64,6 +66,27 @@ open class FormViewController: UITableViewController {
     func didChange(textField: UITextField) {
         let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         (field as! SimpleField).update(with: textField.text ?? "")
+    }
+
+    func didStartEditing(textField: UITextField) {
+        let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
+        switch field {
+        case let integerField as IntegerField:
+            textField.text = integerField.value?.description ?? ""
+        default:
+            break
+        }
+    }
+
+    func didEndEditing(textField: UITextField) {
+        let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
+        switch field {
+        case let integerField as IntegerField:
+            textField.text = integerField.displayValue
+        default:
+            break
+        }
+        self.didEndEditing(field: field)
     }
 
     func didChange(valueSwitch: UISwitch) {
@@ -109,6 +132,11 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.tag = indexPath.row
             cell.valueField.removeTarget(self, action: #selector(didChange(textField:)), for: .allEvents)
             cell.valueField.addTarget(self, action: #selector(didChange(textField:)), for: .editingChanged)
+            cell.valueField.addTarget(self, action: #selector(didEndEditing(textField:)), for: .editingDidEnd)
+            cell.valueField.delegate = self
+            if simpleField is IntegerField {
+                cell.valueField.addTarget(self, action: #selector(didStartEditing(textField:)), for: .editingDidBegin)
+            }
             cell.accessoryType = .none
 
             return cell
@@ -141,6 +169,13 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.tag = indexPath.row
             cell.valueField.removeTarget(self, action: #selector(didChange(textField:)), for: .allEvents)
             cell.accessoryType = customField.isEditable ? .disclosureIndicator : .none
+
+            return cell
+        case let actionField as ActionField:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Action")
+                ?? UITableViewCell(style: .default, reuseIdentifier: "Action")
+
+            cell.textLabel?.text = actionField.label
 
             return cell
         default:
@@ -228,9 +263,72 @@ extension FormViewController/*: UITableViewDelegate*/ {
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             self.navigationController?.pushViewController(viewController, animated: true)
+        case let actionField as ActionField:
+            actionField.block()
+            tableView.deselectRow(at: indexPath, animated: true)
+        case let dateField as DateField:
+            let viewController = ChooseDateViewController(date: dateField.value)
+            let navController = UINavigationController(rootViewController: viewController)
+            viewController.title = "Choose Date"
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: { [unowned viewController] in
+                viewController.dismiss(animated: true, completion: nil)
+            })
+            viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: { [unowned viewController] in
+                dateField.value = viewController.datePicker.date
+                viewController.dismiss(animated: true, completion: nil)
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+                self.didEndEditing(field: dateField)
+            })
+            self.present(
+                popoverViewController: navController,
+                fromSourceView: tableView.cellForRow(at: indexPath)?.contentView ?? tableView,
+                permittedArrowDirections: UIPopoverArrowDirection.down.union(.up),
+                position: .middle
+            )
+        case let selectField as SelectField:
+            let viewController = SelectListViewController(options: selectField.options, onOptionChosen: { [weak self] option in
+                selectField.value = option
+                self?.dismiss(animated: true, completion: nil)
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+                self?.didEndEditing(field: selectField)
+            })
+            let navController = UINavigationController(rootViewController: viewController)
+            viewController.title = "Choose Option"
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: { [unowned viewController] in
+                viewController.dismiss(animated: true, completion: nil)
+            })
+            self.present(
+                popoverViewController: navController,
+                fromSourceView: tableView.cellForRow(at: indexPath)?.contentView ?? tableView,
+                permittedArrowDirections: UIPopoverArrowDirection.down.union(.up),
+                position: .middle
+            )
+
         default:
             break
         }
+    }
+}
+
+extension FormViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+
+        let nextRowIndexPath = IndexPath(row: textField.tag + 1, section: textField.superview!.tag)
+        let nextSectionIndexPath = IndexPath(row: 0, section: textField.superview!.tag + 1)
+        guard let cell = self.tableView.cellForRow(at: nextRowIndexPath)
+            ?? self.tableView.cellForRow(at: nextSectionIndexPath)
+            else
+        {
+            return true
+        }
+
+        guard let simpleCell = cell as? SimpleFieldTableViewCell else {
+            return true
+        }
+
+        simpleCell.valueField.becomeFirstResponder()
+        return true
     }
 }
 
@@ -241,6 +339,9 @@ private extension FormViewController {
         var maxWidth: CGFloat = 0
         for section in form.sections.values {
             for field in section.fields.values {
+                guard !(field is ActionField) else {
+                    continue
+                }
                 let width = (field.label as NSString).size(attributes: [NSFontAttributeName:self.font]).width
                 maxWidth = max(maxWidth, width)
             }

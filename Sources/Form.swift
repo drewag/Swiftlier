@@ -267,10 +267,13 @@ public class IntegerField: SimpleField {
     }
 
     public var displayValue: String {
-        if let unit = self.unit {
-            return "\(self.value) \(unit)"
+        guard let value = self.value else {
+            return ""
         }
-        return self.value?.description ?? ""
+        if let unit = self.unit {
+            return "\(value) \(unit)"
+        }
+        return value.description
     }
 
     public func update(with string: String) {
@@ -313,13 +316,51 @@ public class BoolField: Field {
     }
 }
 
+public class DateField: Field {
+    public let label: String
+    public var value: Date
+
+    public init(label: String, value: Date) {
+        self.label = label
+        self.value = value
+    }
+
+    public var displayValue: String {
+        return self.value.shortDate
+    }
+
+    public func validate() -> ValidationResult {
+        return .passed
+    }
+}
+
+public class SelectField: Field {
+    public let label: String
+    public var value: String
+    public var options: [String]
+
+    public init(label: String, value: String, options: [String]) {
+        self.label = label
+        self.value = value
+        self.options = options
+    }
+
+    public var displayValue: String {
+        return self.value
+    }
+
+    public func validate() -> ValidationResult {
+        return .passed
+    }
+}
+
 public class CustomViewControllerField: Field {
     public let label: String
 
     let buildViewController: (_ setValue: @escaping (String?) -> ()) -> (UIViewController)
     let isRequired: Bool
     let isEditable: Bool
-    var value: String?
+    public var value: String?
 
     public init(label: String, value: String?, isRequired: Bool = true, isEditable: Bool = true, build: @escaping (_ setValue: @escaping (String?) -> ()) -> (UIViewController)) {
         self.label = label
@@ -342,6 +383,24 @@ public class CustomViewControllerField: Field {
                 return .passed
             }
         }
+        return .passed
+    }
+}
+
+public class ActionField: Field {
+    public let label: String
+    let block: () -> ()
+
+    public init(label: String, block: @escaping () -> ()) {
+        self.label = label
+        self.block = block
+    }
+
+    public var displayValue: String {
+        return ""
+    }
+
+    public func validate() -> ValidationResult {
         return .passed
     }
 }
