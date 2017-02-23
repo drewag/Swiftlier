@@ -145,7 +145,6 @@ private extension NetworkUserReportableError {
             , let dict = json as? [String:String]
             , let message = dict["message"]
         {
-            dump(dict)
             return (reason: .user(message: message), otherInfo: dict)
         }
         else {
