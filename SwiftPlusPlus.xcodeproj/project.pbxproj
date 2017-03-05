@@ -15,6 +15,11 @@
 		490FAFAB1E5E41C500B2D50E /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FAFAA1E5E41C500B2D50E /* DatePickerViewController.swift */; };
 		490FAFAD1E5E463800B2D50E /* UIDevice+AppIdioms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FAFAC1E5E463800B2D50E /* UIDevice+AppIdioms.swift */; };
 		4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */; };
+		490D0B3D1E3BC6C8004A18FE /* Enum+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */; };
+		490D0B501E3ED8F0004A18FE /* ObservableReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */; };
+		4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */; };
+		493A02C01E6B37D00096CE87 /* PrioritizedOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */; };
+		493A02C21E6B5C7F0096CE87 /* AlwaysEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */; };
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
@@ -106,6 +111,11 @@
 		490FAFAA1E5E41C500B2D50E /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		490FAFAC1E5E463800B2D50E /* UIDevice+AppIdioms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+AppIdioms.swift"; sourceTree = "<group>"; };
 		4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
+		490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+Convenience.swift"; sourceTree = "<group>"; };
+		490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableReference.swift; sourceTree = "<group>"; };
+		4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
+		493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritizedOperationQueue.swift; sourceTree = "<group>"; };
+		493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysEqual.swift; sourceTree = "<group>"; };
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
@@ -327,6 +337,8 @@
 				490FAFAA1E5E41C500B2D50E /* DatePickerViewController.swift */,
 				490FAFAC1E5E463800B2D50E /* UIDevice+AppIdioms.swift */,
 				490241501E5E54D2003BC002 /* SelectListViewController.swift */,
+				493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */,
+				493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -466,6 +478,7 @@
 				49E638131DF743AB00855BC1 /* UserReportableResult.swift in Sources */,
 				49E638051DF743AB00855BC1 /* Transformation.swift in Sources */,
 				49E638141DF743AB00855BC1 /* WeakWrapper.swift in Sources */,
+				493A02C01E6B37D00096CE87 /* PrioritizedOperationQueue.swift in Sources */,
 				49E637D01DF743AB00855BC1 /* Bool+SwiftPlusPlus.swift in Sources */,
 				49E637DF1DF743AB00855BC1 /* FileArchiver.swift in Sources */,
 				49E637FA1DF743AB00855BC1 /* RoundedBorderView.swift in Sources */,
@@ -495,6 +508,7 @@
 				49E638101DF743AB00855BC1 /* UIViewController+Helpers.swift in Sources */,
 				49E637FE1DF743AB00855BC1 /* ShellCommand.swift in Sources */,
 				49E637D31DF743AB00855BC1 /* CGMath.swift in Sources */,
+				493A02C21E6B5C7F0096CE87 /* AlwaysEqual.swift in Sources */,
 				49E637DA1DF743AB00855BC1 /* Dictionary+SwiftPlusPlus.swift in Sources */,
 				49E637EF1DF743AB00855BC1 /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */,
 			);
