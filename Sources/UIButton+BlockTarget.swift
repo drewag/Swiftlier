@@ -21,9 +21,16 @@ private class ActionBlockWrapper: NSObject {
 }
 
 extension UIButton {
-    public func addBlock(forControlEvents events: UIControlEvents = .touchUpInside, block: @escaping () -> ()) {
+    public func setBlock(forControlEvents events: UIControlEvents = .touchUpInside, block: @escaping () -> ()) {
         objc_setAssociatedObject(self, &ActionBlockKey, ActionBlockWrapper(block: block), objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         self.addTarget(self, action: #selector(handleBlockCall), for: events)
+    }
+
+    public func removeBlock(forControlEvents events: UIControlEvents = .touchUpInside) {
+        if let target = objc_getAssociatedObject(self, &ActionBlockKey) as? ActionBlockWrapper {
+            self.removeTarget(target, action: nil, for: events)
+        }
+        objc_setAssociatedObject(self, &ActionBlockKey, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
     public func handleBlockCall() {
