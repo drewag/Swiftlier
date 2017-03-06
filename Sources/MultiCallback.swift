@@ -16,7 +16,7 @@ public final class MultiCallback<CallbackArguments> {
     
     // MARK: Properties
     
-    fileprivate var observers: [(observer: WeakWrapper, callbacks: [CallBackType])] = []
+    fileprivate var observers: [(observer: WeakWrapper<AnyObject>, callbacks: [CallBackType])] = []
     fileprivate var onHasObserverChanged: ((Bool) -> ())?
 
     /**

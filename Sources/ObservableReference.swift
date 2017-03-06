@@ -143,7 +143,7 @@ public final class ObservableReference<T: Referenceable> {
 
     // MARK: Private Properties
 
-    fileprivate var _observers: [(observer: WeakWrapper, handlers: [HandlerSpec])] = []
+    fileprivate var _observers: [(observer: WeakWrapper<AnyObject>, handlers: [HandlerSpec])] = []
     fileprivate var _onHasObserverChanged: ((Bool) -> ())?
 }
 

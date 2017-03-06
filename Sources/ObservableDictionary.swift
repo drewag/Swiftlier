@@ -13,7 +13,7 @@ public final class ObservableDictionary<Key: Hashable, Value> {
     public typealias DidRemoveAll = (_ oldValues: [Key:Value]) -> ()
     public typealias ObservationHandlers = (changed: DidChange?, insert: DidInsert?, remove: DidRemove?, removeAll: DidRemoveAll?)
 
-    fileprivate var observers: [(observer: WeakWrapper, handlers: [ObservationHandlers])] = []
+    fileprivate var observers: [(observer: WeakWrapper<AnyObject>, handlers: [ObservationHandlers])] = []
     private var onHasObserversChanged: ((Bool) -> ())?
 
     public private(set) var values: [Key:Value]

@@ -17,7 +17,7 @@ public final class ObservableArray<Element> {
     public typealias DidMove = (Element, _ from: Int, _ to: Int) -> ()
     public typealias ObservationHandlers = (insert: DidInsert?, remove: DidRemove?, removeAll: DidRemoveAll?, didMove: DidMove?)
 
-    fileprivate var observers: [(observer: WeakWrapper, handlers: [ObservationHandlers])] = []
+    fileprivate var observers: [(observer: WeakWrapper<AnyObject>, handlers: [ObservationHandlers])] = []
     fileprivate var onHasObserversChanged: ((Bool) -> ())?
     fileprivate var isOrderedBefore: ((_ lhs: Element, _ rhs: Element) -> Bool)?
 

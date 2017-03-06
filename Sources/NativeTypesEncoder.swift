@@ -51,6 +51,9 @@ public final class NativeTypesEncoder: EncoderType {
             else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(data, mode: self.mode) {
                 self.addValue(object, keyPath: key.path)
             }
+            else {
+                print("Invalid optional value data")
+            }
         }
         else {
             self.addValue(nil, keyPath: key.path)
@@ -65,6 +68,9 @@ public final class NativeTypesEncoder: EncoderType {
             }
             else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(value, mode: self.mode) {
                 array.append(object)
+            }
+            else {
+                print("Invalid data array value: \(value)")
             }
         }
         self.addValue(array as Any?, keyPath: key.path)

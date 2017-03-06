@@ -121,7 +121,7 @@ open class EventCenter {
 private extension EventCenter {
     typealias Callback = Any
     typealias CallbackSpec = (callback: Callback, operationQueue: OperationQueue?)
-    typealias CallbackCollection = [(observer: WeakWrapper, callbacks: [CallbackSpec])]
+    typealias CallbackCollection = [(observer: WeakWrapper<AnyObject>, callbacks: [CallbackSpec])]
 
     struct Static {
         static var DefaultInsance = EventCenter()

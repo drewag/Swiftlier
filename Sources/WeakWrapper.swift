@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class WeakWrapper {
-    weak public var value: AnyObject?
-    public init(_ value: AnyObject) {
+public class WeakWrapper<Value: AnyObject> {
+    weak public var value: Value?
+    public init(_ value: Value) {
         self.value = value
     }
 }
