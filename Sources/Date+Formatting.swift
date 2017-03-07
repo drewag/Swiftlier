@@ -193,6 +193,10 @@ extension String {
         return railsDateFormatter.date(from: self)
     }
 
+    public var shortDate: Date? {
+        return shortDateFormatter.date(from: self)
+    }
+
     public var gmtDate: Date? {
         return gmtDateTimeFormatter.date(from: self)
     }
