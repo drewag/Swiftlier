@@ -6,9 +6,11 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 extension DispatchQueue {
     public func asyncAfter(seconds: Double, execute work: @escaping @convention(block) () -> ()) {
         let time = DispatchTime.now() + seconds
         self.asyncAfter(deadline: time, execute: work)
     }
 }
+#endif

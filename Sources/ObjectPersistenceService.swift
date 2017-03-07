@@ -6,6 +6,7 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 public protocol InstanceEquatable {
@@ -104,3 +105,4 @@ private extension ObjectPersistenceService {
         try FileArchive.archiveArrayOfEncodable(values, toFile: self.filePath, options: .completeFileProtection)
     }
 }
+#endif
