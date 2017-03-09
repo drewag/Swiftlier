@@ -29,6 +29,7 @@ public protocol Field: class {
 public protocol SimpleField: Field {
     var keyboard: UIKeyboardType { get}
     var autoCapitalize: UITextAutocapitalizationType {get}
+    var autoCorrect: Bool {get}
     var isSecureEntry: Bool {get}
     var placeholder: String {get}
 
@@ -130,15 +131,17 @@ public class EmailField: SimpleField {
     public let isSecureEntry = false
     public let isRequired: Bool
     public let autoCapitalize = UITextAutocapitalizationType.none
+    public let autoCorrect: Bool
     public let originalValue: String
     public var value: String
 
-    public init(label: String = "Email", placeholder: String = "email@example.com", isRequired: Bool = false, value: String) {
+    public init(label: String = "Email", placeholder: String = "email@example.com", isRequired: Bool = false, autoCorrect: Bool = false, value: String) {
         self.label = label
         self.placeholder = placeholder
         self.originalValue = value
         self.value = value
         self.isRequired = isRequired
+        self.autoCorrect = autoCorrect
     }
 
     public var displayValue: String {
@@ -167,15 +170,17 @@ public class NameField: SimpleField {
     public let isSecureEntry = false
     public let isRequired: Bool
     public let autoCapitalize = UITextAutocapitalizationType.words
+    public let autoCorrect: Bool
     public let originalValue: String
     public var value: String
 
-    public init(label: String, placeholder: String = "", isRequired: Bool = false, value: String) {
+    public init(label: String, placeholder: String = "", isRequired: Bool = false, autoCorrect: Bool = false, value: String) {
         self.label = label
         self.placeholder = placeholder
         self.originalValue = value
         self.value = value
         self.isRequired = isRequired
+        self.autoCorrect = autoCorrect
     }
 
     public var displayValue: String {
@@ -201,14 +206,16 @@ public class PasswordField: SimpleField {
     public let isSecureEntry = true
     public let isRequired: Bool
     public let autoCapitalize = UITextAutocapitalizationType.words
+    public let autoCorrect: Bool
     public let originalValue: String
     public var value: String = ""
 
-    public init(label: String = "Password", isRequired: Bool = false, placeholder: String = "•••••••••••••") {
+    public init(label: String = "Password", isRequired: Bool = false, autoCorrect: Bool = false, placeholder: String = "•••••••••••••") {
         self.label = label
         self.placeholder = placeholder
         self.originalValue = value
         self.isRequired = isRequired
+        self.autoCorrect = autoCorrect
     }
 
     public var displayValue: String {
@@ -233,6 +240,7 @@ public class IntegerField: SimpleField {
     public let keyboard = UIKeyboardType.numberPad
     public let isSecureEntry = false
     public let autoCapitalize = UITextAutocapitalizationType.none
+    public let autoCorrect: Bool
     public let isRequired: Bool
     public let originalValue: Int?
     public let minimumValue: Int
@@ -255,7 +263,7 @@ public class IntegerField: SimpleField {
         )
     }
 
-    public init(label: String, placeholder: String, value: Int?, isRequired: Bool = false, unit: String? = nil, minimum: Int = 0, maximum: Int = Int.max) {
+    public init(label: String, placeholder: String, value: Int?, isRequired: Bool = false, autoCorrect: Bool = false, unit: String? = nil, minimum: Int = 0, maximum: Int = Int.max) {
         self.label = label
         self.placeholder = placeholder
         self.value = value
@@ -264,6 +272,7 @@ public class IntegerField: SimpleField {
         self.maximumValue = maximum
         self.unit = unit
         self.isRequired = isRequired
+        self.autoCorrect = autoCorrect
     }
 
     public var displayValue: String {

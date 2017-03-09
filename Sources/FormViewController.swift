@@ -133,6 +133,7 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.placeholder = simpleField.placeholder
             cell.valueField.keyboardType = simpleField.keyboard
             cell.valueField.autocapitalizationType = simpleField.autoCapitalize
+            cell.valueField.autocorrectionType = simpleField.autoCorrect ? .yes : .no
             cell.valueField.isSecureTextEntry = simpleField.isSecureEntry
             cell.valueField.text = simpleField.displayValue
             cell.nameLabelWidth = self.nameLabelWidth
@@ -170,6 +171,7 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.placeholder = ""
             cell.valueField.keyboardType = .default
             cell.valueField.autocapitalizationType = .none
+            cell.valueField.autocorrectionType = .no
             cell.valueField.isSecureTextEntry = false
             cell.valueField.text = field.displayValue
             cell.nameLabelWidth = self.nameLabelWidth
