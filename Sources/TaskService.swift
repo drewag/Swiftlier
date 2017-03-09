@@ -153,7 +153,7 @@ private extension TaskService {
         let scheduledCount = task.scheduleCount + 1
         self.scheduledPeriodicTasks[task.uniqueIdentifier]!.task.scheduleCount = scheduledCount
         DispatchQueue.main.asyncAfter(wallDeadline: date.dispatchTime) {
-            guard scheduledCount == self.scheduledPeriodicTasks[task.uniqueIdentifier]!.task.scheduleCount else {
+            guard scheduledCount == self.scheduledPeriodicTasks[task.uniqueIdentifier]?.task.scheduleCount else {
                 return
             }
             self.performTask(withIdentifier: task.uniqueIdentifier, with: period)
