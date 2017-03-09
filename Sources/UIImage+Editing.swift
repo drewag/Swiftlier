@@ -15,7 +15,7 @@ public enum ImageResizeMode {
 }
 
 extension UIImage {
-    public func resizeImage(toSize size:CGSize, withMode mode: ImageResizeMode) -> UIImage {
+    public func resizeImage(toSize size:CGSize, withMode mode: ImageResizeMode, andScale scale: CGFloat = 0) -> UIImage {
         var scaledImageRect = CGRect()
 
         let aspectWidth: CGFloat = size.width / self.size.width
@@ -35,9 +35,9 @@ extension UIImage {
         case .aspectFill:
             scaledImageRect.origin.x = (size.width - scaledImageRect.size.width) / 2.0
             scaledImageRect.origin.y = (size.height - scaledImageRect.size.height) / 2.0
-            UIGraphicsBeginImageContextWithOptions(size, false, 0)
+            UIGraphicsBeginImageContextWithOptions(size, false, scale)
         case .aspectFit:
-            UIGraphicsBeginImageContextWithOptions(scaledImageRect.size, false, 0)
+            UIGraphicsBeginImageContextWithOptions(scaledImageRect.size, false, scale)
         }
 
         self.draw(in: scaledImageRect)
