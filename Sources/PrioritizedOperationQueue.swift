@@ -70,6 +70,7 @@ public class PrioritizedOperationQueue {
             return
         }
 
+        self.isExecuting.value = true
         self.executeRemainingOperations()
     }
 }
@@ -175,6 +176,7 @@ private extension PrioritizedOperationQueue {
             block(result)
         }
         self.onFinishedAllRemainingOperations.removeAll()
+        self.isExecuting.value = false
     }
 }
 
