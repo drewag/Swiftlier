@@ -179,6 +179,15 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.tag = indexPath.row
             cell.valueField.removeTarget(self, action: #selector(didChange(textField:)), for: .allEvents)
             cell.accessoryType = customField.isEditable ? .disclosureIndicator : .none
+            if customField.canBeCleared {
+                cell.set(clearCallback: { [weak self] button in
+                    guard button.tag == indexPath.row && button.superview!.tag == indexPath.section else { return }
+
+                    customField.value = nil
+                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                })
+                cell.clearButton!.tag = indexPath.row
+            }
 
             return cell
         case let actionField as ActionField:
@@ -367,9 +376,13 @@ private enum Cell {
 
 private class SimpleFieldTableViewCell: UITableViewCell {
     static let identifier = "SimpleField"
+    var buttonSize: CGFloat {
+        return self.contentView.bounds.height
+    }
 
     let nameLabel = UILabel()
     let valueField = UITextField()
+    private(set) var clearButton: RoundedBorderButton?
     var nameLabelWidth: CGFloat = 100
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -384,20 +397,54 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.valueField)
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     fileprivate override func layoutSubviews() {
         super.layoutSubviews()
 
         self.nameLabel.frame = CGRect(x: 8, y: 2, width: self.nameLabelWidth, height: self.contentView.bounds.height - 4)
+        var valueFieldWidth = self.contentView.bounds.width - self.nameLabel.frame.maxX - 16
+
+        if let button = self.clearButton {
+            valueFieldWidth -= self.contentView.bounds.height + self.buttonSize
+
+            button.frame = CGRect(
+                x: self.contentView.bounds.width - 44,
+                y: (self.contentView.bounds.height - self.buttonSize) / 2,
+                width: self.buttonSize,
+                height: self.buttonSize
+            )
+        }
+
         self.valueField.frame = CGRect(
             x: self.nameLabel.frame.maxX + 8,
             y: self.nameLabel.frame.minY,
-            width: self.contentView.bounds.width - self.nameLabel.frame.maxX - 16,
+            width: valueFieldWidth,
             height: self.nameLabel.frame.height
         )
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func set(clearCallback: @escaping (UIButton) -> ()) {
+        let button = self.clearButton ?? RoundedBorderButton()
+        button.setImage(UIImage(named: "clear-icon"), for: .normal)
+        button.setBlock { [unowned button] in
+            clearCallback(button)
+        }
+        self.contentView.addSubview(button)
+        self.clearButton = button
+    }
+
+    func resetClearCallback() {
+        self.clearButton?.removeFromSuperview()
+        self.clearButton = nil
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        self.resetClearCallback()
     }
 }
 

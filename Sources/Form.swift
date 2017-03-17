@@ -369,12 +369,14 @@ public class CustomViewControllerField: Field {
     let buildViewController: (_ setValue: @escaping (String?) -> ()) -> (UIViewController)
     let isRequired: Bool
     let isEditable: Bool
+    let canBeCleared: Bool
     public var value: String?
 
-    public init(label: String, value: String?, isRequired: Bool = false, isEditable: Bool = true, build: @escaping (_ setValue: @escaping (String?) -> ()) -> (UIViewController)) {
+    public init(label: String, value: String?, isRequired: Bool = false, isEditable: Bool = true, canBeCleared: Bool = false, build: @escaping (_ setValue: @escaping (String?) -> ()) -> (UIViewController)) {
         self.label = label
         self.isRequired = isRequired
         self.isEditable = isEditable
+        self.canBeCleared = canBeCleared
         self.buildViewController = build
         self.value = value
     }
