@@ -173,15 +173,14 @@ private extension TaskService {
                 return
             }
 
+            let date = Date()
             switch result {
             case .success:
-                let date = Date()
                 self.scheduledPeriodicTasks[uniqueIdentifier]!.task.lastSuccessfulRun = date
-                self.schedule(periodicTask: task, with: period, at: period.nextDate(date))
             case .error(_):
-                let date = Date().addingTimeInterval(60 * 60) // Retry in 1 hour
-                self.schedule(periodicTask: task, with: period, at: date)
+                break
             }
+            self.schedule(periodicTask: task, with: period, at: period.nextDate(date))
             self.scheduledPeriodicTasks[uniqueIdentifier]!.task.isRunning = false
         }
 
