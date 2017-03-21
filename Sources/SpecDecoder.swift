@@ -26,7 +26,7 @@ public class SpecDecoder: DecoderType {
         let name = key.path.joined(separator: "")
         let value: Value
         let type: String
-        (type, value) = self.typeAndValue(withName: name)
+        (type, value) = self.typeAndValue(withName: name, isOptional: false)
         specDict[name] = type
         return value
     }
@@ -35,7 +35,7 @@ public class SpecDecoder: DecoderType {
         let name = key.path.joined(separator: "")
         let value: Value
         let type: String
-        (type, value) = self.typeAndValue(withName: name)
+        (type, value) = self.typeAndValue(withName: name, isOptional: true)
         specDict[name] = type
         return value
     }
@@ -50,31 +50,34 @@ public class SpecDecoder: DecoderType {
 }
 
 private extension SpecDecoder {
-    func typeAndValue<Value: DecodableType>(withName name: String) -> (String,Value) {
+    func typeAndValue<Value: DecodableType>(withName name: String, isOptional: Bool) -> (String,Value) {
+        let value: Value
+        let type: String
         if Value.self == String.self {
-            return ("string", "" as! Value)
+            (type, value) = ("string", "" as! Value)
         }
         else if Value.self == Bool.self {
-            return ("bool", true as! Value)
+            (type, value) = ("bool", true as! Value)
         }
         else if Value.self == Int.self {
-            return ("int", Int(0) as! Value)
+            (type, value) = ("int", Int(0) as! Value)
         }
         else if Value.self == Double.self {
-            return ("double", Double(0) as! Value)
+            (type, value) = ("double", Double(0) as! Value)
         }
         else if Value.self == Float.self {
-            return ("float", Float(0) as! Value)
-
+            (type, value) = ("float", Float(0) as! Value)
         }
         else if Value.self == Data.self {
-            return ("data", Data() as! Value)
+            (type, value) = ("data", Data() as! Value)
         }
         else if Value.self == Date.self {
-            return ("date", Date() as! Value)
+            (type, value) = ("date", Date() as! Value)
         }
         else {
             fatalError("Unknown raw value type")
         }
+
+        return (type + (isOptional ? "?" : ""), value)
     }
 }
