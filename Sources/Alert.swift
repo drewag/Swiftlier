@@ -101,6 +101,7 @@ extension UIViewController {
         message: String,
         textFieldPlaceholder: String? = nil,
         textFieldDefault: String? = nil,
+        keyboardType: UIKeyboardType = .default,
         cancel: TextAction? = nil,
         other: [TextAction] = []
         )
@@ -129,6 +130,7 @@ extension UIViewController {
             otherButtonTitles: other.map({$0.name}),
             textFieldPlaceholder: textFieldPlaceholder ?? "",
             textFieldDefault: textFieldDefault,
+            keyboardType: keyboardType,
             onButtonClicked: onTapped,
             fromViewController: self
         )
@@ -147,6 +149,7 @@ private extension Alert {
         otherButtonTitles: [String]?,
         textFieldPlaceholder: String?,
         textFieldDefault: String? = nil,
+        keyboardType: UIKeyboardType = .default,
         onButtonClicked: ((_ buttonTitle: String?, _ textFieldText: String?) -> ())?,
         fromViewController: UIViewController
         )
@@ -158,6 +161,7 @@ private extension Alert {
             alert.addTextField { textField in
                 textField.placeholder = placeholder
                 textField.text = textFieldDefault
+                textField.keyboardType = keyboardType
                 promptTextField = textField
             }
         }
