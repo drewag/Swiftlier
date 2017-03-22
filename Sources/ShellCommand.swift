@@ -63,13 +63,7 @@ public final class ShellCommand: CustomStringConvertible {
         self.process.waitUntilExit()
 
         guard self.process.terminationStatus == 0 else {
-            if let errorPipe = self.process.standardError as? Pipe {
-                let outputString = String(data: errorPipe.fileHandleForReading.availableData, encoding: .utf8) ?? ""
-                throw LocalUserReportableError(source: "ShellCommand", operation: "executing command", message: outputString, reason: .user)
-            }
-            else {
-                throw LocalUserReportableError(source: "ShellCommand", operation: "executing command", message: "", reason: .user)
-            }
+            throw LocalUserReportableError(source: "ShellCommand", operation: "executing command", message: "Stopping execution", reason: .user)
         }
 
         if let outputPipe = process.standardOutput as? Pipe {
