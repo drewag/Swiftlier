@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol UserReportableError: Error {
+public protocol UserReportableError: Error, CustomStringConvertible {
     var alertTitle: String {get}
     var alertMessage: String {get}
     var otherInfo: [String:String]? {get}
@@ -25,5 +25,11 @@ extension NSError: UserReportableError {
 
     public var otherInfo: [String : String]? {
         return nil
+    }
+}
+
+extension UserReportableError {
+    public var description: String {
+        return "\(self.alertTitle): \(self.alertMessage)"
     }
 }

@@ -71,14 +71,14 @@ private extension CommandLineDecoder {
             }
             else if Value.self == Double.self {
                 guard let value = Double(input) else {
-                    print("Must be an decimal")
+                    print("Must be a decimal")
                     continue
                 }
                 return value as? Value
             }
             else if Value.self == Float.self {
                 guard let value = Float(input) else {
-                    print("Must be an decimal")
+                    print("Must be a decimal")
                     continue
                 }
                 return value as? Value
