@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : 9223372036854775807,
+    "0D4243BA86D71FC499E296F0BF56090738A233EF" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3DD6EFC5-3323-46BA-9C34-8D680A606ADF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : "swift-plus-plus\/",
+    "0D4243BA86D71FC499E296F0BF56090738A233EF" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftPlusPlus",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftPlusPlus.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/ride-designs_ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0D4243BA86D71FC499E296F0BF56090738A233EF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/drewag\/SwiftPlusPlus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864"
+    }
+  ]
+}
