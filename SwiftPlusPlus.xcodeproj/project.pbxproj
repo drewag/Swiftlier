@@ -98,6 +98,7 @@
 		49E638141DF743AB00855BC1 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637C81DF743AB00855BC1 /* WeakWrapper.swift */; };
 		49E638151DF743AB00855BC1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637C91DF743AB00855BC1 /* WebViewController.swift */; };
 		49E638161DF743AB00855BC1 /* ZoomThroughTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637CA1DF743AB00855BC1 /* ZoomThroughTransition.swift */; };
+		53F13D4B1E8319B3005B1782 /* NetworkUserReportableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F13D4A1E8319B3005B1782 /* NetworkUserReportableError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +196,7 @@
 		49E637C81DF743AB00855BC1 /* WeakWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 		49E637C91DF743AB00855BC1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		49E637CA1DF743AB00855BC1 /* ZoomThroughTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomThroughTransition.swift; sourceTree = "<group>"; };
+		53F13D4A1E8319B3005B1782 /* NetworkUserReportableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUserReportableError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +272,7 @@
 				49E637961DF743AB00855BC1 /* FormViewController.swift */,
 				49E637971DF743AB00855BC1 /* HTML.swift */,
 				49E637981DF743AB00855BC1 /* JSON.swift */,
+				53F13D4A1E8319B3005B1782 /* NetworkUserReportableError.swift */,
 				49E637991DF743AB00855BC1 /* KeyboardConstraintAdjuster.swift */,
 				49E6379A1DF743AB00855BC1 /* LimitedSizeViewController.swift */,
 				49E6379B1DF743AB00855BC1 /* LocalUserReportableError.swift */,
@@ -430,6 +433,7 @@
 				49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */,
 				49E637F01DF743AB00855BC1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49E638001DF743AB00855BC1 /* String+SwiftPlusPlus.swift in Sources */,
+				53F13D4B1E8319B3005B1782 /* NetworkUserReportableError.swift in Sources */,
 				4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */,
 				490D0B501E3ED8F0004A18FE /* ObservableReference.swift in Sources */,
 				49E6380F1DF743AB00855BC1 /* UIView+Video.swift in Sources */,
