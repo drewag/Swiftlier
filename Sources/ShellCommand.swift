@@ -13,12 +13,12 @@ public final class ShellCommand: CustomStringConvertible {
     private let command: [String]
 
     #if os(Linux)
-        private let process = Task()
+        fileprivate let process = Task()
     #else
-        private let process = Process()
+        fileprivate let process = Process()
     #endif
 
-    private let parentCommand: ShellCommand?
+    fileprivate let parentCommand: ShellCommand?
 
     private init(_ command: [String], parentCommand: ShellCommand?, captureOutput: Bool) {
         self.command = command
@@ -35,6 +35,10 @@ public final class ShellCommand: CustomStringConvertible {
         }
     }
 
+    deinit {
+        self.process.terminate()
+    }
+
     public convenience init(_ command: [String], captureOutput: Bool = true) {
         self.init(command, parentCommand: nil, captureOutput: captureOutput)
     }
@@ -49,16 +53,7 @@ public final class ShellCommand: CustomStringConvertible {
 
     @discardableResult
     public func execute() throws -> String {
-        var commands = [ShellCommand]()
-        var command: ShellCommand? = self
-        repeat {
-            commands.append(command!)
-            command = command!.parentCommand
-        } while command != nil
-
-        for command in commands {
-            command.process.launch()
-        }
+        self.startExecution()
 
         self.process.waitUntilExit()
 
@@ -75,12 +70,39 @@ public final class ShellCommand: CustomStringConvertible {
         }
     }
 
+    public func executeAsync() {
+        self.startExecution()
+    }
+
+    public func terminate() {
+        self.process.terminate()
+    }
+
+    public func waitUntilExit() {
+        self.process.waitUntilExit()
+    }
+
     public func pipe(to: String) -> ShellCommand {
         return ShellCommand(to, parentCommand: self)
     }
 
     public var description: String {
         return self.command.joined(separator: " ")
+    }
+}
+
+private extension ShellCommand {
+    func startExecution() {
+        var commands = [ShellCommand]()
+        var command: ShellCommand? = self
+        repeat {
+            commands.append(command!)
+            command = command!.parentCommand
+        } while command != nil
+
+        for command in commands {
+            command.process.launch()
+        }
     }
 }
 #endif
