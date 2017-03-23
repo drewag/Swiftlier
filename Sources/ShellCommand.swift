@@ -12,6 +12,14 @@ import Foundation
 public final class ShellCommand: CustomStringConvertible {
     private let command: [String]
 
+    static let once: Void = {
+        signal(SIGINT, { _ in
+            for command in commandsToKill {
+                command.terminate()
+            }
+        })
+    }()
+
     #if os(Linux)
         fileprivate let process = Task()
     #else
@@ -33,6 +41,8 @@ public final class ShellCommand: CustomStringConvertible {
         else if captureOutput {
             self.process.standardOutput = Pipe()
         }
+
+        ShellCommand.once
     }
 
     deinit {
@@ -55,7 +65,10 @@ public final class ShellCommand: CustomStringConvertible {
     public func execute() throws -> String {
         self.startExecution()
 
+        commandsToKill.append(self)
+
         self.process.waitUntilExit()
+        self.removeFromCommandsToKill()
 
         guard self.process.terminationStatus == 0 else {
             throw LocalUserReportableError(source: "ShellCommand", operation: "executing command", message: "Stopping execution", reason: .user)
@@ -76,20 +89,23 @@ public final class ShellCommand: CustomStringConvertible {
 
     public func terminate() {
         self.process.terminate()
+        self.removeFromCommandsToKill()
     }
 
     public func waitUntilExit() {
         self.process.waitUntilExit()
     }
 
-    public func pipe(to: String) -> ShellCommand {
-        return ShellCommand(to, parentCommand: self)
+    public func pipe(to: String, captureOutput: Bool = true) -> ShellCommand {
+        return ShellCommand(to, parentCommand: self, captureOutput: captureOutput)
     }
 
     public var description: String {
         return self.command.joined(separator: " ")
     }
 }
+
+private var commandsToKill = [ShellCommand]()
 
 private extension ShellCommand {
     func startExecution() {
@@ -102,6 +118,12 @@ private extension ShellCommand {
 
         for command in commands {
             command.process.launch()
+        }
+    }
+
+    func removeFromCommandsToKill() {
+        if let index = commandsToKill.indexOfValue(passing: {$0 === self}) {
+            commandsToKill.remove(at: index)
         }
     }
 }
