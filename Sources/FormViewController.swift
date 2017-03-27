@@ -33,6 +33,7 @@ open class FormViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 44
         self.tableView.register(SimpleFieldTableViewCell.self, forCellReuseIdentifier: SimpleFieldTableViewCell.identifier)
         self.tableView.register(BoolFieldTableViewCell.self, forCellReuseIdentifier: BoolFieldTableViewCell.identifier)
+        self.tableView.register(SegmentedControlTableViewCell.self, forCellReuseIdentifier: SegmentedControlTableViewCell.identifier)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
@@ -100,6 +101,11 @@ open class FormViewController: UITableViewController {
     func didChange(valueSwitch: UISwitch) {
         let field = self.form.sections.values[valueSwitch.superview!.tag].fields.values[valueSwitch.tag]
         (field as! BoolField).value = valueSwitch.isOn
+    }
+
+    func didChange(segmentedControl: UISegmentedControl) {
+        let field = self.form.sections.values[segmentedControl.superview!.tag].fields.values[segmentedControl.tag]
+        (field as! SelectField).value = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!
     }
 
     func didTap(helpButton: UIButton) {
@@ -195,6 +201,25 @@ extension FormViewController/*: UITableViewDataSource*/ {
                 ?? UITableViewCell(style: .default, reuseIdentifier: "Action")
 
             cell.textLabel?.text = actionField.label
+
+            return cell
+        case let selectField as SelectField where selectField.options.count <= 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SegmentedControlTableViewCell.identifier, for: indexPath) as! SegmentedControlTableViewCell
+
+            cell.selectionStyle = .none
+            cell.nameLabel.text = field.label
+            cell.segmentedControl.removeAllSegments()
+            for (i, option) in selectField.options.enumerated() {
+                cell.segmentedControl.insertSegment(withTitle: option, at: i, animated: false)
+                if selectField.value == option {
+                    cell.segmentedControl.selectedSegmentIndex = i
+                }
+            }
+            cell.segmentedControl.superview!.tag = indexPath.section
+            cell.segmentedControl.tag = indexPath.row
+            cell.segmentedControl.removeTarget(self, action: #selector(didChange(segmentedControl:)), for: .allEvents)
+            cell.segmentedControl.addTarget(self, action: #selector(didChange(segmentedControl:)), for: .valueChanged)
+            cell.nameLabelWidth = self.nameLabelWidth
 
             return cell
         default:
@@ -304,7 +329,7 @@ extension FormViewController/*: UITableViewDelegate*/ {
                 permittedArrowDirections: UIPopoverArrowDirection.down.union(.up),
                 position: .middle
             )
-        case let selectField as SelectField:
+        case let selectField as SelectField where selectField.options.count > 2:
             let viewController = SelectListViewController(options: selectField.options, onOptionChosen: { [weak self] option in
                 selectField.value = option
                 self?.dismiss(animated: true, completion: nil)
@@ -478,6 +503,41 @@ private class BoolFieldTableViewCell: UITableViewCell {
         )
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private class SegmentedControlTableViewCell: UITableViewCell {
+    static let identifier = "SegmentedField"
+
+    let nameLabel = UILabel()
+    let segmentedControl = UISegmentedControl()
+    var nameLabelWidth: CGFloat = 100
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        self.nameLabel.font = FormViewController.font
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+
+        self.contentView.addSubview(self.nameLabel)
+        self.contentView.addSubview(self.segmentedControl)
+    }
+
+    fileprivate override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.nameLabel.frame = CGRect(x: 8, y: 2, width: self.nameLabelWidth, height: self.contentView.bounds.height - 4)
+        self.segmentedControl.frame = CGRect(
+            x: self.nameLabel.frame.maxX + 8,
+            y: (self.contentView.bounds.height - 30) / 2,
+            width: self.contentView.bounds.width - self.nameLabel.frame.maxX - 16,
+            height: 30
+        )
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
