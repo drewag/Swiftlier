@@ -1,5 +1,5 @@
 //
-//  ObjectPersistenceService.swift
+//  ValueTypePersistenceService.swift
 //  SwiftPlusPlus
 //
 //  Created by Andrew J Wagner on 2/21/17.
@@ -13,14 +13,7 @@ public protocol InstanceEquatable {
     func isSameInstanceAs(_ other: Self) -> Bool
 }
 
-open class ObjectPersistenceService<Value: CodableType> where Value: InstanceEquatable, Value: Equatable {
-    public var values: [Value]!
-
-    public init() throws {
-        self.values = try self.loadValues()
-    }
-
-
+open class ValueTypePersistenceService<Value: CodableType>: PersistenceService<Value> where Value: InstanceEquatable, Value: Equatable {
     public func save(value: Value) throws {
         for existingValue in self.values {
             if value.isSameInstanceAs(existingValue) {
@@ -85,24 +78,6 @@ open class ObjectPersistenceService<Value: CodableType> where Value: InstanceEqu
     public func replace(values: [Value]) throws {
         try self.save(values: values)
         self.values = values
-    }
-}
-
-private extension ObjectPersistenceService {
-    var valueName: String {
-        return "\(Value.self)"
-    }
-
-    var filePath: String {
-        return FileManager.default.documentsDirectoryPath / "\(self.valueName.lowercased())s.plist"
-    }
-
-    func loadValues() throws -> [Value] {
-        return try FileArchive.unarchiveArrayOfEncodableFromFile(self.filePath) ?? []
-    }
-
-    func save(values: [Value]) throws {
-        try FileArchive.archiveArrayOfEncodable(values, toFile: self.filePath, options: .completeFileProtection)
     }
 }
 #endif
