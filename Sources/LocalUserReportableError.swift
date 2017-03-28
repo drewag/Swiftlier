@@ -58,3 +58,9 @@ public struct LocalUserReportableError: UserReportableError {
         }
     }
 }
+
+extension Error {
+    public func userReportable(from source: String, for operation: String) -> LocalUserReportableError {
+        return LocalUserReportableError(source: source, operation: operation, error: self)
+    }
+}
