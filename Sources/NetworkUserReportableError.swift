@@ -31,11 +31,11 @@ public struct NetworkUserReportableError: UserReportableError {
         self.otherInfo = nil
     }
 
-    public init(source: String, operation: String, error: NSError) {
+    public init(source: String, operation: String, error: Error) {
         self.source = source
         self.operation = operation
         self.otherInfo = nil
-        if error.domain == "NSURLErrorDomain" {
+        if let error = error as? NSError, error.domain == "NSURLErrorDomain" {
             switch error.code {
             case -1009:
                 self.reason = .noInternet
@@ -52,7 +52,8 @@ public struct NetworkUserReportableError: UserReportableError {
     }
 
     #if os(iOS)
-    public init?(source: String, operation: String, response: HTTPURLResponse?, data: Data?) {
+    public init?(source: String, operation: String, response: URLResponse?, data: Data?) {
+        let response = response as? HTTPURLResponse
         self.source = source
         self.operation = operation
         if let response = response {
@@ -139,7 +140,7 @@ private extension NetworkUserReportableError {
             encoding = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(encodingName as CFString!)))
         }
         else {
-            encoding = String.Encoding.utf8
+            encoding = .utf8
         }
         if let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
             , let dict = json as? [String:String]
