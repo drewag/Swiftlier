@@ -8,16 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		490241511E5E54D2003BC002 /* SelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490241501E5E54D2003BC002 /* SelectListViewController.swift */; };
+		490AC4E41E8ABD1600C37971 /* String+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490AC4E31E8ABD1600C37971 /* String+Random.swift */; };
 		490D0B3D1E3BC6C8004A18FE /* Enum+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */; };
 		490D0B501E3ED8F0004A18FE /* ObservableReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */; };
 		490FAFA51E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FAFA41E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift */; };
 		490FAFAB1E5E41C500B2D50E /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FAFAA1E5E41C500B2D50E /* DatePickerViewController.swift */; };
 		490FAFAD1E5E463800B2D50E /* UIDevice+AppIdioms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FAFAC1E5E463800B2D50E /* UIDevice+AppIdioms.swift */; };
 		4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */; };
-		4929B4C31E831E1700020379 /* NetworkUserReportableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929B4C21E831E1700020379 /* NetworkUserReportableResult.swift */; };
 		492634A61E88B4A100AF05E1 /* ReferenceTypePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492634A51E88B4A100AF05E1 /* ReferenceTypePersistenceService.swift */; };
 		492634A81E88B4B400AF05E1 /* ValueTypePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492634A71E88B4B400AF05E1 /* ValueTypePersistenceService.swift */; };
 		492634AA1E88B54D00AF05E1 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492634A91E88B54D00AF05E1 /* PersistenceService.swift */; };
+		4929B4C31E831E1700020379 /* NetworkUserReportableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929B4C21E831E1700020379 /* NetworkUserReportableResult.swift */; };
 		493A02C01E6B37D00096CE87 /* PrioritizedOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */; };
 		493A02C21E6B5C7F0096CE87 /* AlwaysEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */; };
 		493A02D71E6CA8CB0096CE87 /* PassThroughTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */; };
@@ -25,6 +26,7 @@
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
 		49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */; };
+		49D338EE1E8A0C7C003AA4B0 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D338ED1E8A0C7C003AA4B0 /* URL+Helpers.swift */; };
 		49DE00901E1460BD00A314F6 /* ObservableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */; };
 		49E6377D1DF7408B00855BC1 /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E6377B1DF7408B00855BC1 /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E637CB1DF743AB00855BC1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6377F1DF743AB00855BC1 /* Alert.swift */; };
@@ -105,16 +107,17 @@
 
 /* Begin PBXFileReference section */
 		490241501E5E54D2003BC002 /* SelectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectListViewController.swift; sourceTree = "<group>"; };
+		490AC4E31E8ABD1600C37971 /* String+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Random.swift"; sourceTree = "<group>"; };
 		490D0B3C1E3BC6C8004A18FE /* Enum+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+Convenience.swift"; sourceTree = "<group>"; };
 		490D0B4F1E3ED8F0004A18FE /* ObservableReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableReference.swift; sourceTree = "<group>"; };
 		490FAFA41E5D5D4B00B2D50E /* UIBarButtonItem+BlockTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+BlockTarget.swift"; sourceTree = "<group>"; };
 		490FAFAA1E5E41C500B2D50E /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		490FAFAC1E5E463800B2D50E /* UIDevice+AppIdioms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+AppIdioms.swift"; sourceTree = "<group>"; };
 		4918C37C1E43ABAC0083145E /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
-		4929B4C21E831E1700020379 /* NetworkUserReportableResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUserReportableResult.swift; sourceTree = "<group>"; };
 		492634A51E88B4A100AF05E1 /* ReferenceTypePersistenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTypePersistenceService.swift; sourceTree = "<group>"; };
 		492634A71E88B4B400AF05E1 /* ValueTypePersistenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTypePersistenceService.swift; sourceTree = "<group>"; };
 		492634A91E88B54D00AF05E1 /* PersistenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		4929B4C21E831E1700020379 /* NetworkUserReportableResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUserReportableResult.swift; sourceTree = "<group>"; };
 		493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritizedOperationQueue.swift; sourceTree = "<group>"; };
 		493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysEqual.swift; sourceTree = "<group>"; };
 		493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughTouchView.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
 		49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableType.swift; sourceTree = "<group>"; };
+		49D338ED1E8A0C7C003AA4B0 /* URL+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Helpers.swift"; sourceTree = "<group>"; };
 		49DE008F1E1460BD00A314F6 /* ObservableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableDictionary.swift; sourceTree = "<group>"; };
 		49E637621DF73FB100855BC1 /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E6377A1DF7408B00855BC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Project/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -265,6 +269,7 @@
 				49E637891DF743AB00855BC1 /* DataSourceType.swift */,
 				49E6378B1DF743AB00855BC1 /* Date+Formatting.swift */,
 				49E6378C1DF743AB00855BC1 /* Date+Helpers.swift */,
+				490AC4E31E8ABD1600C37971 /* String+Random.swift */,
 				49E6378D1DF743AB00855BC1 /* DecoderType.swift */,
 				49E6378E1DF743AB00855BC1 /* Dictionary+SwiftPlusPlus.swift */,
 				49E6378F1DF743AB00855BC1 /* Double+Formatting.swift */,
@@ -345,6 +350,7 @@
 				493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */,
 				493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */,
 				493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */,
+				49D338ED1E8A0C7C003AA4B0 /* URL+Helpers.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -463,6 +469,7 @@
 				49E637E91DF743AB00855BC1 /* MenuViewController.swift in Sources */,
 				49E638061DF743AB00855BC1 /* UIButton+BlockTarget.swift in Sources */,
 				49E637D71DF743AB00855BC1 /* Date+Formatting.swift in Sources */,
+				49D338EE1E8A0C7C003AA4B0 /* URL+Helpers.swift in Sources */,
 				49E637EC1DF743AB00855BC1 /* NativeTypesEncoder.swift in Sources */,
 				49E637F91DF743AB00855BC1 /* RoundedBorderButton.swift in Sources */,
 				49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */,
@@ -488,6 +495,7 @@
 				492634A61E88B4A100AF05E1 /* ReferenceTypePersistenceService.swift in Sources */,
 				49E638141DF743AB00855BC1 /* WeakWrapper.swift in Sources */,
 				493A02C01E6B37D00096CE87 /* PrioritizedOperationQueue.swift in Sources */,
+				490AC4E41E8ABD1600C37971 /* String+Random.swift in Sources */,
 				49E637D01DF743AB00855BC1 /* Bool+SwiftPlusPlus.swift in Sources */,
 				49E637DF1DF743AB00855BC1 /* FileArchiver.swift in Sources */,
 				49E637FA1DF743AB00855BC1 /* RoundedBorderView.swift in Sources */,
