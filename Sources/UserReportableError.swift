@@ -33,3 +33,22 @@ extension UserReportableError {
         return "\(self.alertTitle): \(self.alertMessage)"
     }
 }
+
+public func ==(lhs: UserReportableError, rhs: UserReportableError) -> Bool {
+    return lhs.alertTitle == rhs.alertTitle
+        && lhs.alertMessage == rhs.alertMessage
+}
+
+public func ==(lhs: UserReportableError?, rhs: UserReportableError?) -> Bool {
+    if let lhs = lhs, let rhs = rhs {
+        return lhs.alertTitle == rhs.alertTitle
+            && lhs.alertMessage == rhs.alertMessage
+    }
+    if let _ = lhs {
+        return false
+    }
+    if let _ = rhs {
+        return false
+    }
+    return true
+}
