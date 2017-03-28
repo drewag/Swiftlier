@@ -34,4 +34,8 @@ extension FileManager {
     public var cachesDirectoryPath: String {
         return self.cachesDirectoryURL.relativePath
     }
+
+    public func fileExists(at: URL) -> Bool {
+        return self.fileExists(atPath: at.relativePath)
+    }
 }
