@@ -22,6 +22,14 @@
 		493A02C01E6B37D00096CE87 /* PrioritizedOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */; };
 		493A02C21E6B5C7F0096CE87 /* AlwaysEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */; };
 		493A02D71E6CA8CB0096CE87 /* PassThroughTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */; };
+		494F7D8C1E8B110F00749B9B /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D841E8B110F00749B9B /* FileSystem.swift */; };
+		494F7D8D1E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D851E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift */; };
+		494F7D8E1E8B110F00749B9B /* FileSystemExistingReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D861E8B110F00749B9B /* FileSystemExistingReferenceType.swift */; };
+		494F7D8F1E8B110F00749B9B /* FileSystemExtendableReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D871E8B110F00749B9B /* FileSystemExtendableReferenceType.swift */; };
+		494F7D901E8B110F00749B9B /* FileSystemReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D881E8B110F00749B9B /* FileSystemReferenceType.swift */; };
+		494F7D911E8B110F00749B9B /* FileSystemResourceReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D891E8B110F00749B9B /* FileSystemResourceReferenceType.swift */; };
+		494F7D921E8B110F00749B9B /* FileSystemUnkownReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D8A1E8B110F00749B9B /* FileSystemUnkownReferenceType.swift */; };
+		494F7D931E8B110F00749B9B /* ReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D8B1E8B110F00749B9B /* ReferenceType.swift */; };
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
@@ -121,6 +129,14 @@
 		493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritizedOperationQueue.swift; sourceTree = "<group>"; };
 		493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysEqual.swift; sourceTree = "<group>"; };
 		493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughTouchView.swift; sourceTree = "<group>"; };
+		494F7D841E8B110F00749B9B /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
+		494F7D851E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemDirectoryReferenceType.swift; sourceTree = "<group>"; };
+		494F7D861E8B110F00749B9B /* FileSystemExistingReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemExistingReferenceType.swift; sourceTree = "<group>"; };
+		494F7D871E8B110F00749B9B /* FileSystemExtendableReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemExtendableReferenceType.swift; sourceTree = "<group>"; };
+		494F7D881E8B110F00749B9B /* FileSystemReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemReferenceType.swift; sourceTree = "<group>"; };
+		494F7D891E8B110F00749B9B /* FileSystemResourceReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemResourceReferenceType.swift; sourceTree = "<group>"; };
+		494F7D8A1E8B110F00749B9B /* FileSystemUnkownReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemUnkownReferenceType.swift; sourceTree = "<group>"; };
+		494F7D8B1E8B110F00749B9B /* ReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceType.swift; sourceTree = "<group>"; };
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
@@ -313,6 +329,14 @@
 				49E637B41DF743AB00855BC1 /* String+SwiftPlusPlus.swift */,
 				49E637B51DF743AB00855BC1 /* swift_plus_plus.swift */,
 				49E637B61DF743AB00855BC1 /* SwiftPlusPlus.h */,
+				494F7D841E8B110F00749B9B /* FileSystem.swift */,
+				494F7D851E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift */,
+				494F7D861E8B110F00749B9B /* FileSystemExistingReferenceType.swift */,
+				494F7D871E8B110F00749B9B /* FileSystemExtendableReferenceType.swift */,
+				494F7D881E8B110F00749B9B /* FileSystemReferenceType.swift */,
+				494F7D891E8B110F00749B9B /* FileSystemResourceReferenceType.swift */,
+				494F7D8A1E8B110F00749B9B /* FileSystemUnkownReferenceType.swift */,
+				494F7D8B1E8B110F00749B9B /* ReferenceType.swift */,
 				49E637B71DF743AB00855BC1 /* TaskService.swift */,
 				49E637B81DF743AB00855BC1 /* ThinLayoutConstraint.swift */,
 				49E637B91DF743AB00855BC1 /* Transformation.swift */,
@@ -442,6 +466,7 @@
 				49E637E51DF743AB00855BC1 /* KeyboardConstraintAdjuster.swift in Sources */,
 				49E637F61DF743AB00855BC1 /* PeriodicTask.swift in Sources */,
 				49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */,
+				494F7D921E8B110F00749B9B /* FileSystemUnkownReferenceType.swift in Sources */,
 				49E637F01DF743AB00855BC1 /* NSLayoutContraint+Factory.swift in Sources */,
 				49E638001DF743AB00855BC1 /* String+SwiftPlusPlus.swift in Sources */,
 				53F13D4B1E8319B3005B1782 /* NetworkUserReportableError.swift in Sources */,
@@ -450,6 +475,7 @@
 				49E6380F1DF743AB00855BC1 /* UIView+Video.swift in Sources */,
 				492634AA1E88B54D00AF05E1 /* PersistenceService.swift in Sources */,
 				49E637E41DF743AB00855BC1 /* JSON.swift in Sources */,
+				494F7D8C1E8B110F00749B9B /* FileSystem.swift in Sources */,
 				49E637F51DF743AB00855BC1 /* OrderedDictionary.swift in Sources */,
 				49E6380A1DF743AB00855BC1 /* UIImage+Editing.swift in Sources */,
 				490D0B3D1E3BC6C8004A18FE /* Enum+Convenience.swift in Sources */,
@@ -467,6 +493,7 @@
 				49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */,
 				49E637F31DF743AB00855BC1 /* Observable.swift in Sources */,
 				49E637E91DF743AB00855BC1 /* MenuViewController.swift in Sources */,
+				494F7D901E8B110F00749B9B /* FileSystemReferenceType.swift in Sources */,
 				49E638061DF743AB00855BC1 /* UIButton+BlockTarget.swift in Sources */,
 				49E637D71DF743AB00855BC1 /* Date+Formatting.swift in Sources */,
 				49D338EE1E8A0C7C003AA4B0 /* URL+Helpers.swift in Sources */,
@@ -476,10 +503,13 @@
 				49E6380B1DF743AB00855BC1 /* UITableView+EasyRegister.swift in Sources */,
 				49E637FF1DF743AB00855BC1 /* SingleTask.swift in Sources */,
 				49E637E21DF743AB00855BC1 /* FormViewController.swift in Sources */,
+				494F7D8E1E8B110F00749B9B /* FileSystemExistingReferenceType.swift in Sources */,
 				49E638161DF743AB00855BC1 /* ZoomThroughTransition.swift in Sources */,
+				494F7D8D1E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift in Sources */,
 				49E638031DF743AB00855BC1 /* TaskService.swift in Sources */,
 				49E637D11DF743AB00855BC1 /* BubbleView.swift in Sources */,
 				492634A81E88B4B400AF05E1 /* ValueTypePersistenceService.swift in Sources */,
+				494F7D931E8B110F00749B9B /* ReferenceType.swift in Sources */,
 				49E637D51DF743AB00855BC1 /* DataSourceType.swift in Sources */,
 				49E637FB1DF743AB00855BC1 /* SelectableValue.swift in Sources */,
 				49E638151DF743AB00855BC1 /* WebViewController.swift in Sources */,
@@ -505,6 +535,7 @@
 				493A02D71E6CA8CB0096CE87 /* PassThroughTouchView.swift in Sources */,
 				49E6380E1DF743AB00855BC1 /* UIView+Layout.swift in Sources */,
 				49E637E11DF743AB00855BC1 /* Form.swift in Sources */,
+				494F7D8F1E8B110F00749B9B /* FileSystemExtendableReferenceType.swift in Sources */,
 				49E637DB1DF743AB00855BC1 /* Double+Formatting.swift in Sources */,
 				49E637DD1DF743AB00855BC1 /* EncoderType.swift in Sources */,
 				4929B4C31E831E1700020379 /* NetworkUserReportableResult.swift in Sources */,
@@ -526,6 +557,7 @@
 				49E638101DF743AB00855BC1 /* UIViewController+Helpers.swift in Sources */,
 				49E637FE1DF743AB00855BC1 /* ShellCommand.swift in Sources */,
 				49E637D31DF743AB00855BC1 /* CGMath.swift in Sources */,
+				494F7D911E8B110F00749B9B /* FileSystemResourceReferenceType.swift in Sources */,
 				493A02C21E6B5C7F0096CE87 /* AlwaysEqual.swift in Sources */,
 				49E637DA1DF743AB00855BC1 /* Dictionary+SwiftPlusPlus.swift in Sources */,
 				49E637EF1DF743AB00855BC1 /* NSLayoutConstraint+SwifPlusPlus.swift in Sources */,

@@ -60,7 +60,13 @@ public struct LocalUserReportableError: UserReportableError {
 }
 
 extension Error {
-    public func userReportable(from source: String, for operation: String) -> LocalUserReportableError {
+    public func userReportable(from source: String, for operation: String) -> UserReportableError {
+        if let userReportable = self as? LocalUserReportableError {
+            return userReportable
+        }
+        else if let networkReportable = self as? NetworkUserReportableError {
+            return networkReportable
+        }
         return LocalUserReportableError(source: source, operation: operation, error: self)
     }
 }

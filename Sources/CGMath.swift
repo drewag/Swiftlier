@@ -21,11 +21,11 @@ extension CGPoint {
         case (true, true):
             return Angle(radians: angle)
         case (false, true):
-            return Angle(radians: CGFloat(M_PI) - angle)
+            return Angle(radians: .pi - angle)
         case (false, false):
-            return Angle(radians: CGFloat(M_PI) + angle)
+            return Angle(radians: .pi + angle)
         case (true, false):
-            return Angle(radians: CGFloat(2 * M_PI) - angle)
+            return Angle(radians: 2 * .pi - angle)
         }
     }
 

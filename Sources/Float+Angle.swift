@@ -10,10 +10,10 @@ import Foundation
 
 extension Float {
     public var toRadians: Float {
-        return self * Float(M_PI) / 180.0
+        return self * .pi / 180.0
     }
 
     public var toDegrees: Float {
-        return self * 180.0 / Float(M_PI)
+        return self * 180.0 / .pi
     }
 }

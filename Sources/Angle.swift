@@ -12,7 +12,7 @@
     import Foundation
 #endif
 
-public let π = Angle(radians: Float(M_PI))
+public let π = Angle(radians: Float.pi)
 
 public struct Angle: Equatable, Comparable {
     public enum Unit {
@@ -53,7 +53,7 @@ public struct Angle: Equatable, Comparable {
         case .degrees:
             return self.value
         case .radians:
-            return self.value * 180 / Float(M_PI)
+            return self.value * 180 / .pi
         }
     }
 
@@ -64,7 +64,7 @@ public struct Angle: Equatable, Comparable {
     public func radians() -> Float {
         switch self.unit {
         case .degrees:
-            return self.value * Float(M_PI) / 180
+            return self.value * .pi / 180
         case .radians:
             return self.value
         }
@@ -104,10 +104,10 @@ public struct Angle: Equatable, Comparable {
             }
         case .radians:
             if value < 0 {
-                return value + Float(2 * M_PI)
+                return value + 2 * .pi
             }
-            else if value > Float(2 * M_PI) {
-                return value - Float(2 * M_PI)
+            else if value > 2 * .pi {
+                return value - 2 * .pi
             }
             else {
                 return value

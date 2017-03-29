@@ -16,7 +16,7 @@ extension UIView {
         static var VideoController = "VideoController"
     }
 
-    func playVideoWithURL(_ URL: URL) -> VideoController {
+    public func playVideoWithURL(_ URL: URL) -> VideoController {
         let videoController = VideoController(URL: URL, inView: self)
         objc_setAssociatedObject(
             self,
@@ -41,7 +41,7 @@ open class VideoController: NSObject {
         self.moviePlayer.view.autoresizingMask = UIViewAutoresizing.flexibleWidth.union(UIViewAutoresizing.flexibleHeight)
     }
 
-    func resume() {
+    public func resume() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(moviePlayerPreparedToPlayDidChange(_:)),
@@ -56,7 +56,7 @@ open class VideoController: NSObject {
         }
     }
 
-    func pause() {
+    public func pause() {
         NotificationCenter.default.removeObserver(
             self,
             name: .MPMediaPlaybackIsPreparedToPlayDidChange,
@@ -65,7 +65,7 @@ open class VideoController: NSObject {
         self.moviePlayer.pause()
     }
 
-    func stop() {
+    public func stop() {
         self.pause()
         self.moviePlayer.stop()
         self.moviePlayer.view.removeFromSuperview()
