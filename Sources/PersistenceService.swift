@@ -6,6 +6,9 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS)
+import Foundation
+
 open class PersistenceService<Value: CodableType> {
     public var values: [Value]!
 
@@ -31,3 +34,4 @@ extension PersistenceService {
         try FileArchive.archiveArrayOfEncodable(values, toFile: self.filePath, options: .completeFileProtection)
     }
 }
+#endif
