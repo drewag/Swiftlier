@@ -23,31 +23,40 @@ class Alert: NSObject {
     }
 }
 
-public final class AlertAction {
+protocol AnyAlertAction {
+    var name: String {get}
+    var isDestructive: Bool {get}
+}
+
+public final class AlertAction: AnyAlertAction {
     let name: String
+    let isDestructive: Bool
     let handler: (() -> ())?
 
-    init(name: String, handler: (() -> ())?) {
+    init(name: String, isDestructive: Bool = false, handler: (() -> ())?) {
         self.name = name
+        self.isDestructive = isDestructive
         self.handler = handler
     }
 
-    public static func action(_ name: String, handler: (() -> ())? = nil) -> AlertAction {
-        return AlertAction(name: name, handler: handler)
+    public static func action(_ name: String, isDestructive: Bool = false, handler: (() -> ())? = nil) -> AlertAction {
+        return AlertAction(name: name, isDestructive: isDestructive, handler: handler)
     }
 }
 
-public final class TextAction {
+public final class TextAction: AnyAlertAction {
     let name: String
+    let isDestructive: Bool
     let handler: ((_ text: String) -> ())?
 
-    init(name: String, handler: ((_ text: String) -> ())?) {
+    init(name: String, isDestructive: Bool = false, handler: ((_ text: String) -> ())?) {
         self.name = name
+        self.isDestructive = isDestructive
         self.handler = handler
     }
 
-    public static func action(_ name: String, handler: ((_ text: String) -> ())? = nil) -> TextAction {
-        return TextAction(name: name, handler: handler)
+    public static func action(_ name: String, isDestructive: Bool = false, handler: ((_ text: String) -> ())? = nil) -> TextAction {
+        return TextAction(name: name, isDestructive: isDestructive, handler: handler)
     }
 }
 
@@ -64,76 +73,89 @@ extension UIViewController {
         withTitle title: String,
         message: String,
         cancel: AlertAction? = nil,
+        preferred: AlertAction? = nil,
         other: [AlertAction] = []
         )
     {
-        func onTapped(buttonTitle: String?, textFieldText: String?) {
-            if let action = cancel, action.name == buttonTitle {
-                action.handler?()
-                return
-            }
-            for action in other {
-                if action.name == buttonTitle {
-                    action.handler?()
-                    return
-                }
-            }
-        }
-
         var other = other
         if cancel == nil && other.isEmpty {
             other.append(.action("OK"))
         }
-        Alert.showAlertController(
-            title: title,
+
+        let alert = Alert.buildAlert(
+            withTitle: title,
             message: message,
-            cancelButtonTitle: cancel?.name,
-            otherButtonTitles: other.map({$0.name}),
-            textFieldPlaceholder: nil,
-            textFieldDefault: nil,
-            onButtonClicked: onTapped,
-            fromViewController: self
+            cancel: cancel,
+            preferred: preferred,
+            other: other,
+            onTapped: { tappedAction in
+                if let action = cancel, action.name == tappedAction.title {
+                    action.handler?()
+                    return
+                }
+                if let preferred = preferred, preferred.name == tappedAction.title {
+                    preferred.handler?()
+                    return
+                }
+                for action in other {
+                    if action.name == tappedAction.title {
+                        action.handler?()
+                        return
+                    }
+                }
+            }
         )
+        self.present(alert, animated: true, completion: nil)
     }
 
     public func showTextInput(
         withTitle title: String,
         message: String,
-        textFieldPlaceholder: String? = nil,
+        textFieldPlaceholder: String = "",
         textFieldDefault: String? = nil,
         keyboardType: UIKeyboardType = .default,
         cancel: TextAction? = nil,
+        preferred: TextAction? = nil,
         other: [TextAction] = []
         )
     {
-        func onTapped(buttonTitle: String?, textFieldText: String?) {
-            if let action = cancel, action.name == buttonTitle {
-                action.handler?(textFieldText ?? "")
-                return
-            }
-            for action in other {
-                if action.name == buttonTitle {
-                    action.handler?(textFieldText ?? "")
-                    return
-                }
-            }
-        }
-
         var other = other
         if cancel == nil && other.isEmpty {
             other.append(.action("OK"))
         }
-        Alert.showAlertController(
-            title: title,
+
+        var promptTextField: UITextField?
+        let alert = Alert.buildAlert(
+            withTitle: title,
             message: message,
-            cancelButtonTitle: cancel?.name,
-            otherButtonTitles: other.map({$0.name}),
-            textFieldPlaceholder: textFieldPlaceholder ?? "",
-            textFieldDefault: textFieldDefault,
-            keyboardType: keyboardType,
-            onButtonClicked: onTapped,
-            fromViewController: self
+            cancel: cancel,
+            preferred: preferred,
+            other: other,
+            onTapped: { tappedAction in
+                if let action = cancel, action.name == tappedAction.title {
+                    action.handler?(promptTextField?.text ?? "")
+                    return
+                }
+                if let preferred = preferred, preferred.name == tappedAction.title {
+                    preferred.handler?(promptTextField?.text ?? "")
+                    return
+                }
+                for action in other {
+                    if action.name == tappedAction.title {
+                        action.handler?(promptTextField?.text ?? "")
+                        return
+                    }
+                }
+            }
         )
+
+        alert.addTextField { textField in
+            textField.placeholder = textFieldPlaceholder
+            textField.text = textFieldDefault
+            textField.keyboardType = keyboardType
+            promptTextField = textField
+        }
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -142,53 +164,44 @@ private extension Alert {
         static var Delegate = "Delegate"
     }
 
-    class func showAlertController(
-        title: String,
+    class func buildAlert(
+        withTitle title: String,
         message: String,
-        cancelButtonTitle: String?,
-        otherButtonTitles: [String]?,
-        textFieldPlaceholder: String?,
-        textFieldDefault: String? = nil,
-        keyboardType: UIKeyboardType = .default,
-        onButtonClicked: ((_ buttonTitle: String?, _ textFieldText: String?) -> ())?,
-        fromViewController: UIViewController
-        )
+        cancel: AnyAlertAction? = nil,
+        preferred: AnyAlertAction? = nil,
+        other: [AnyAlertAction] = [],
+        onTapped: @escaping (UIAlertAction) -> ()
+        ) -> UIAlertController
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        var promptTextField: UITextField?
-        if let placeholder = textFieldPlaceholder {
-            alert.addTextField { textField in
-                textField.placeholder = placeholder
-                textField.text = textFieldDefault
-                textField.keyboardType = keyboardType
-                promptTextField = textField
-            }
-        }
-
-        func handler(action: UIAlertAction!) {
-            if let block = onButtonClicked {
-                block(action.title, promptTextField?.text)
-            }
-        }
-
-
-        if let cancelButtonTitle = cancelButtonTitle {
+        if let cancel = cancel {
             alert.addAction(UIAlertAction(
-                title: cancelButtonTitle,
+                title: cancel.name,
                 style: .cancel,
-                handler: handler
-                ))
-        }
-        for otherTitle in otherButtonTitles ?? [] {
-            alert.addAction(UIAlertAction(
-                title: otherTitle,
-                style: .default,
-                handler: handler
-                ))
+                handler: onTapped
+            ))
         }
 
-        fromViewController.present(alert, animated: true, completion: nil)
+        if let preferred = preferred {
+            let action = UIAlertAction(
+                title: preferred.name,
+                style: preferred.isDestructive ? .destructive : .default,
+                handler: onTapped
+            )
+            alert.addAction(action)
+            alert.preferredAction = action
+        }
+
+        for action in other {
+            alert.addAction(UIAlertAction(
+                title: action.name,
+                style: action.isDestructive ? .destructive : .default,
+                handler: onTapped
+            ))
+        }
+
+        return alert
     }
 }
 
