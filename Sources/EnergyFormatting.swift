@@ -8,6 +8,7 @@
 
 import Foundation
 
+#if os(iOS)
 private let energyFormatter = EnergyFormatter()
 
 extension Double {
@@ -27,3 +28,4 @@ extension Float {
         return Double(self).energyFromCalries
     }
 }
+#endif

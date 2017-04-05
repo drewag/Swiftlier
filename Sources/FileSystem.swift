@@ -51,8 +51,9 @@ public struct FileSystem {
     }
 
     func createFile(at path: String, with data: Data) {
-        try! self.manager.createDirectory(atPath: (path as NSString).deletingLastPathComponent, withIntermediateDirectories: true, attributes: nil)
-        self.manager.createFile(atPath: path, contents: data, attributes: nil)
+        let directory = URL(fileURLWithPath: path).deletingLastPathComponent().relativePath
+        try! self.manager.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
+        let _ = self.manager.createFile(atPath: path, contents: data, attributes: nil)
     }
 
     func createDirectory(at path: String) {
@@ -78,7 +79,7 @@ public struct FileSystem {
             var contents = [ExistingReferenceType]()
             while let fileOrDirectory = enumerator.nextObject() as? String {
                 enumerator.skipDescendants()
-                let fullPath = (path as NSString).appendingPathComponent(fileOrDirectory)
+                let fullPath = URL(fileURLWithPath: path).appendingPathComponent(fileOrDirectory).relativePath
                 contents.append(self.reference(forPath: fullPath) as! ExistingReferenceType)
             }
             return contents

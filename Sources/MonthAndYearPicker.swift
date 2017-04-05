@@ -6,7 +6,7 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
-//#if os(iOS)
+#if os(iOS)
 import UIKit
 
 public protocol DatePicker: class {
@@ -48,7 +48,7 @@ public class MonthAndYearPicker: UIPickerView, DatePicker {
         self.dataSource = self
         self.delegate = self
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -80,4 +80,4 @@ extension MonthAndYearPicker: UIPickerViewDelegate {
     }
 }
 
-//#endif
+#endif

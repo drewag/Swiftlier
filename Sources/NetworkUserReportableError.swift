@@ -35,8 +35,7 @@ public struct NetworkUserReportableError: UserReportableError {
         self.source = source
         self.operation = operation
         self.otherInfo = nil
-        let error = error as NSError
-        if error.domain == "NSURLErrorDomain" {
+        if let error = error as? NSError, error.domain == "NSURLErrorDomain" {
             switch error.code {
             case -1009:
                 self.reason = .noInternet

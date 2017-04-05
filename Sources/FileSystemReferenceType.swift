@@ -10,6 +10,6 @@ import Foundation
 
 extension FileSystemReferenceType where Self: ReferenceType {
     public var name: String {
-        return (self.path as NSString).lastPathComponent
+        return URL(fileURLWithPath: self.path).lastPathComponent
     }
 }

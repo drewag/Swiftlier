@@ -10,7 +10,7 @@ import Foundation
 
 extension FileSystemReferenceType where Self: ExtendableReferenceType {
     public func append(component: String) -> ReferenceType {
-        let newPath = (self.path as NSString).appendingPathComponent(component)
+        let newPath = URL(fileURLWithPath: self.path).appendingPathComponent(component).relativePath
         return self.fileSystem.reference(forPath: newPath)
     }
 }

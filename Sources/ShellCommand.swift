@@ -20,11 +20,7 @@ public final class ShellCommand: CustomStringConvertible {
         })
     }()
 
-    #if os(Linux)
-        fileprivate let process = Task()
-    #else
-        fileprivate let process = Process()
-    #endif
+    fileprivate let process = Process()
 
     fileprivate let parentCommand: ShellCommand?
 
