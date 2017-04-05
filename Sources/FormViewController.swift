@@ -311,7 +311,7 @@ extension FormViewController/*: UITableViewDelegate*/ {
             actionField.block()
             tableView.deselectRow(at: indexPath, animated: true)
         case let dateField as DateField:
-            let viewController = ChooseDateViewController(date: dateField.value)
+            let viewController = ChooseDateViewController(date: dateField.value, includesDay: dateField.includesDay)
             let navController = UINavigationController(rootViewController: viewController)
             viewController.title = "Choose Date"
             viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: { [unowned viewController] in

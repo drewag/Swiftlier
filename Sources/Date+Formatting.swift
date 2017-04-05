@@ -46,6 +46,12 @@ private let dayAndMonthFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+private let monthAndYearFormatter: DateFormatter = {
+    var dateFormatter = DateFormatter()
+    dateFormatter.setLocalizedDateFormatFromTemplate("MMyyyy")
+    return dateFormatter
+}()
+
 private let monthFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier:"en_US_POSIX")
@@ -133,6 +139,10 @@ extension Date {
 
     public var dayAndMonth: String {
         return dayAndMonthFormatter.string(from: self)
+    }
+
+    public var monthAndYear: String {
+        return monthAndYearFormatter.string(from: self)
     }
 
     public var month: String {

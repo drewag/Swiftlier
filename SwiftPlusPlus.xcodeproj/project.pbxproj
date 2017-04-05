@@ -33,6 +33,7 @@
 		494F7D931E8B110F00749B9B /* ReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D8B1E8B110F00749B9B /* ReferenceType.swift */; };
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49658BC01E92A3170076F50B /* EnergyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49658BBF1E92A3170076F50B /* EnergyFormatting.swift */; };
+		497BD2DD1E948D5E00428116 /* MonthAndYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BD2DC1E948D5E00428116 /* MonthAndYearPicker.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
 		49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */; };
@@ -142,6 +143,7 @@
 		494F7D8B1E8B110F00749B9B /* ReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceType.swift; sourceTree = "<group>"; };
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49658BBF1E92A3170076F50B /* EnergyFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyFormatting.swift; sourceTree = "<group>"; };
+		497BD2DC1E948D5E00428116 /* MonthAndYearPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthAndYearPicker.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
 		49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableType.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				49D338ED1E8A0C7C003AA4B0 /* URL+Helpers.swift */,
 				494AE5181E91BC1500BE4BAB /* HeartRateFormatter.swift */,
 				49658BBF1E92A3170076F50B /* EnergyFormatting.swift */,
+				497BD2DC1E948D5E00428116 /* MonthAndYearPicker.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -521,6 +524,7 @@
 				49E637FB1DF743AB00855BC1 /* SelectableValue.swift in Sources */,
 				49E638151DF743AB00855BC1 /* WebViewController.swift in Sources */,
 				494AE5191E91BC1500BE4BAB /* HeartRateFormatter.swift in Sources */,
+				497BD2DD1E948D5E00428116 /* MonthAndYearPicker.swift in Sources */,
 				49E6380C1DF743AB00855BC1 /* UIView+Helpers.swift in Sources */,
 				490FAFAB1E5E41C500B2D50E /* DatePickerViewController.swift in Sources */,
 				49E637F41DF743AB00855BC1 /* ObservableArray.swift in Sources */,

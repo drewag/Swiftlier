@@ -330,14 +330,21 @@ public class BoolField: Field {
 public class DateField: Field {
     public let label: String
     public var value: Date
+    public let includesDay: Bool
 
-    public init(label: String, value: Date) {
+    public init(label: String, value: Date, includesDay: Bool = true) {
         self.label = label
         self.value = value
+        self.includesDay = includesDay
     }
 
     public var displayValue: String {
-        return self.value.shortDate
+        if self.includesDay {
+            return self.value.shortDate
+        }
+        else {
+            return self.value.monthAndYear
+        }
     }
 
     public func validate() -> ValidationResult {
