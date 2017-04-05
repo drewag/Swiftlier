@@ -245,10 +245,10 @@ public class IntegerField: SimpleField {
     public let originalValue: Int?
     public let minimumValue: Int
     public let maximumValue: Int
-    public let unit: String?
+    public let formatter: Formatter?
     public var value: Int?
 
-    public convenience init(label: String, placeholder: String, value: String?, isRequired: Bool = false, unit: String? = nil, minimum: Int = 0, maximum: Int = Int.max) {
+    public convenience init(label: String, placeholder: String, value: String?, isRequired: Bool = false, formatter: Formatter? = nil, minimum: Int = 0, maximum: Int = Int.max) {
         var intValue: Int? = nil
         if let value = value {
             intValue = Int(value)
@@ -257,20 +257,20 @@ public class IntegerField: SimpleField {
             label: label,
             placeholder: placeholder,
             value: intValue,
-            unit: unit,
+            formatter: formatter,
             minimum: minimum,
             maximum: maximum
         )
     }
 
-    public init(label: String, placeholder: String, value: Int?, isRequired: Bool = false, autoCorrect: Bool = false, unit: String? = nil, minimum: Int = 0, maximum: Int = Int.max) {
+    public init(label: String, placeholder: String, value: Int?, isRequired: Bool = false, autoCorrect: Bool = false, formatter: Formatter? = nil, minimum: Int = 0, maximum: Int = Int.max) {
         self.label = label
         self.placeholder = placeholder
         self.value = value
         self.originalValue = value
         self.minimumValue = minimum
         self.maximumValue = maximum
-        self.unit = unit
+        self.formatter = formatter
         self.isRequired = isRequired
         self.autoCorrect = autoCorrect
     }
@@ -279,8 +279,10 @@ public class IntegerField: SimpleField {
         guard let value = self.value else {
             return ""
         }
-        if let unit = self.unit {
-            return "\(value) \(unit)"
+        if let formatter = self.formatter,
+            let string = formatter.string(for: value)
+        {
+            return string
         }
         return value.description
     }
