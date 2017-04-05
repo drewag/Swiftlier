@@ -328,7 +328,7 @@ extension FormViewController/*: UITableViewDelegate*/ {
                 fromSourceView: tableView.cellForRow(at: indexPath)?.contentView ?? tableView,
                 permittedArrowDirections: UIPopoverArrowDirection.down.union(.up),
                 position: .middle
-            )
+            ).delegate = self
         case let selectField as SelectField where selectField.options.count > 2:
             let viewController = SelectListViewController(options: selectField.options, onOptionChosen: { [weak self] option in
                 selectField.value = option
@@ -372,6 +372,20 @@ extension FormViewController: UITextFieldDelegate {
         }
 
         simpleCell.valueField.becomeFirstResponder()
+        return true
+    }
+}
+
+extension FormViewController: UIPopoverPresentationControllerDelegate {
+    public func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        guard let nav = popoverPresentationController.presentedViewController as? UINavigationController
+            , let button = nav.topViewController?.navigationItem.rightBarButtonItem
+            , let action = button.action
+            else
+        {
+            return true
+        }
+        button.target?.performSelector(onMainThread: action, with: nil, waitUntilDone: true)
         return true
     }
 }

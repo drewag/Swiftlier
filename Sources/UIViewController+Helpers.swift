@@ -18,16 +18,20 @@ public enum PopoverPosition {
 }
 
 extension UIViewController {
-    public func present(popoverViewController viewController: UIViewController, from sourceBarButtonItem: UIBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection = .any) {
+    @discardableResult
+    public func present(popoverViewController viewController: UIViewController, from sourceBarButtonItem: UIBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection = .any) -> UIPopoverPresentationController {
         viewController.modalPresentationStyle = .popover
 
         self.present(viewController, animated: true, completion: nil)
 
         viewController.popoverPresentationController!.permittedArrowDirections = permittedArrowDirections
         viewController.popoverPresentationController!.barButtonItem = sourceBarButtonItem
+
+        return viewController.popoverPresentationController!
     }
 
-    public func present(popoverViewController viewController: UIViewController, fromSourceView sourceView: UIView, permittedArrowDirections: UIPopoverArrowDirection = .any, position: PopoverPosition = .default) {
+    @discardableResult
+    public func present(popoverViewController viewController: UIViewController, fromSourceView sourceView: UIView, permittedArrowDirections: UIPopoverArrowDirection = .any, position: PopoverPosition = .default) -> UIPopoverPresentationController {
         viewController.modalPresentationStyle = .popover
 
         self.present(viewController, animated: true, completion: nil)
@@ -50,6 +54,7 @@ extension UIViewController {
         case .custom(sourceRect: let rect):
             viewController.popoverPresentationController!.sourceRect = rect
         }
+        return viewController.popoverPresentationController!
     }
 
     public func present(overlayViewController viewController: UIViewController) {
