@@ -22,6 +22,7 @@
 		493A02C01E6B37D00096CE87 /* PrioritizedOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */; };
 		493A02C21E6B5C7F0096CE87 /* AlwaysEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */; };
 		493A02D71E6CA8CB0096CE87 /* PassThroughTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */; };
+		494AE5191E91BC1500BE4BAB /* HeartRateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494AE5181E91BC1500BE4BAB /* HeartRateFormatter.swift */; };
 		494F7D8C1E8B110F00749B9B /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D841E8B110F00749B9B /* FileSystem.swift */; };
 		494F7D8D1E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D851E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift */; };
 		494F7D8E1E8B110F00749B9B /* FileSystemExistingReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D861E8B110F00749B9B /* FileSystemExistingReferenceType.swift */; };
@@ -31,6 +32,7 @@
 		494F7D921E8B110F00749B9B /* FileSystemUnkownReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D8A1E8B110F00749B9B /* FileSystemUnkownReferenceType.swift */; };
 		494F7D931E8B110F00749B9B /* ReferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F7D8B1E8B110F00749B9B /* ReferenceType.swift */; };
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
+		49658BC01E92A3170076F50B /* EnergyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49658BBF1E92A3170076F50B /* EnergyFormatting.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
 		49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */; };
@@ -129,6 +131,7 @@
 		493A02BF1E6B37D00096CE87 /* PrioritizedOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritizedOperationQueue.swift; sourceTree = "<group>"; };
 		493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysEqual.swift; sourceTree = "<group>"; };
 		493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughTouchView.swift; sourceTree = "<group>"; };
+		494AE5181E91BC1500BE4BAB /* HeartRateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateFormatter.swift; sourceTree = "<group>"; };
 		494F7D841E8B110F00749B9B /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		494F7D851E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemDirectoryReferenceType.swift; sourceTree = "<group>"; };
 		494F7D861E8B110F00749B9B /* FileSystemExistingReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemExistingReferenceType.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		494F7D8A1E8B110F00749B9B /* FileSystemUnkownReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemUnkownReferenceType.swift; sourceTree = "<group>"; };
 		494F7D8B1E8B110F00749B9B /* ReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceType.swift; sourceTree = "<group>"; };
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
+		49658BBF1E92A3170076F50B /* EnergyFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyFormatting.swift; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
 		49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableType.swift; sourceTree = "<group>"; };
@@ -375,6 +379,8 @@
 				493A02C11E6B5C7F0096CE87 /* AlwaysEqual.swift */,
 				493A02D61E6CA8CB0096CE87 /* PassThroughTouchView.swift */,
 				49D338ED1E8A0C7C003AA4B0 /* URL+Helpers.swift */,
+				494AE5181E91BC1500BE4BAB /* HeartRateFormatter.swift */,
+				49658BBF1E92A3170076F50B /* EnergyFormatting.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -490,6 +496,7 @@
 				49E637EB1DF743AB00855BC1 /* NativeTypesDecoder.swift in Sources */,
 				49E637CB1DF743AB00855BC1 /* Alert.swift in Sources */,
 				49E637FD1DF743AB00855BC1 /* ShadowView.swift in Sources */,
+				49658BC01E92A3170076F50B /* EnergyFormatting.swift in Sources */,
 				49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */,
 				49E637F31DF743AB00855BC1 /* Observable.swift in Sources */,
 				49E637E91DF743AB00855BC1 /* MenuViewController.swift in Sources */,
@@ -513,6 +520,7 @@
 				49E637D51DF743AB00855BC1 /* DataSourceType.swift in Sources */,
 				49E637FB1DF743AB00855BC1 /* SelectableValue.swift in Sources */,
 				49E638151DF743AB00855BC1 /* WebViewController.swift in Sources */,
+				494AE5191E91BC1500BE4BAB /* HeartRateFormatter.swift in Sources */,
 				49E6380C1DF743AB00855BC1 /* UIView+Helpers.swift in Sources */,
 				490FAFAB1E5E41C500B2D50E /* DatePickerViewController.swift in Sources */,
 				49E637F41DF743AB00855BC1 /* ObservableArray.swift in Sources */,
