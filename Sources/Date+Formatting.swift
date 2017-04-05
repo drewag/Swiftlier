@@ -17,8 +17,7 @@ private let dateAndTimeFormatter: DateFormatter = {
 
 private let timeFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
-    dateFormatter.dateFormat = "h':'mm a"
+    dateFormatter.timeStyle = .short
     return dateFormatter
 }()
 
@@ -31,22 +30,19 @@ private let dateFormatter: DateFormatter = {
 
 private let shortDateFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
-    dateFormatter.dateFormat = "MM'/'dd'/'yyyy"
+    dateFormatter.setLocalizedDateFormatFromTemplate("MMddyyyy")
     return dateFormatter
 }()
 
 private let shortestDateFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
-    dateFormatter.dateFormat = "MM'/'dd'/'yy"
+    dateFormatter.dateStyle = .short
     return dateFormatter
 }()
 
 private let dayAndMonthFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
-    dateFormatter.dateFormat = "MM'/'dd"
+    dateFormatter.setLocalizedDateFormatFromTemplate("MMdd")
     return dateFormatter
 }()
 
