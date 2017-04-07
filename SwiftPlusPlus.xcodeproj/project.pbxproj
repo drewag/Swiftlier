@@ -113,6 +113,13 @@
 		49E638141DF743AB00855BC1 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637C81DF743AB00855BC1 /* WeakWrapper.swift */; };
 		49E638151DF743AB00855BC1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637C91DF743AB00855BC1 /* WebViewController.swift */; };
 		49E638161DF743AB00855BC1 /* ZoomThroughTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E637CA1DF743AB00855BC1 /* ZoomThroughTransition.swift */; };
+		536F3AC71E98331900846D23 /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F3AC11E98331900846D23 /* Age.swift */; };
+		536F3AC81E98331900846D23 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F3AC21E98331900846D23 /* CommandLine.swift */; };
+		536F3AC91E98331900846D23 /* CommandLineDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F3AC31E98331900846D23 /* CommandLineDecoder.swift */; };
+		536F3ACA1E98331900846D23 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F3AC41E98331900846D23 /* Email.swift */; };
+		536F3ACB1E98331900846D23 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F3AC51E98331900846D23 /* FileService.swift */; };
+		536F3ACC1E98331900846D23 /* SpecDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F3AC61E98331900846D23 /* SpecDecoder.swift */; };
+		536F3ACE1E9834B200846D23 /* ValidEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F3ACD1E9834B200846D23 /* ValidEmail.swift */; };
 		53F13D4B1E8319B3005B1782 /* NetworkUserReportableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F13D4A1E8319B3005B1782 /* NetworkUserReportableError.swift */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +233,13 @@
 		49E637C81DF743AB00855BC1 /* WeakWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 		49E637C91DF743AB00855BC1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		49E637CA1DF743AB00855BC1 /* ZoomThroughTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomThroughTransition.swift; sourceTree = "<group>"; };
+		536F3AC11E98331900846D23 /* Age.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
+		536F3AC21E98331900846D23 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		536F3AC31E98331900846D23 /* CommandLineDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLineDecoder.swift; sourceTree = "<group>"; };
+		536F3AC41E98331900846D23 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		536F3AC51E98331900846D23 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		536F3AC61E98331900846D23 /* SpecDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecDecoder.swift; sourceTree = "<group>"; };
+		536F3ACD1E9834B200846D23 /* ValidEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidEmail.swift; sourceTree = "<group>"; };
 		53F13D4A1E8319B3005B1782 /* NetworkUserReportableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUserReportableError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,11 +305,18 @@
 				49E637891DF743AB00855BC1 /* DataSourceType.swift */,
 				49E6378B1DF743AB00855BC1 /* Date+Formatting.swift */,
 				49E6378C1DF743AB00855BC1 /* Date+Helpers.swift */,
+				536F3ACD1E9834B200846D23 /* ValidEmail.swift */,
 				490AC4E31E8ABD1600C37971 /* String+Random.swift */,
 				49E6378D1DF743AB00855BC1 /* DecoderType.swift */,
 				49E6378E1DF743AB00855BC1 /* Dictionary+SwiftPlusPlus.swift */,
 				49E6378F1DF743AB00855BC1 /* Double+Formatting.swift */,
 				49E637901DF743AB00855BC1 /* EncodableType.swift */,
+				536F3AC11E98331900846D23 /* Age.swift */,
+				536F3AC21E98331900846D23 /* CommandLine.swift */,
+				536F3AC31E98331900846D23 /* CommandLineDecoder.swift */,
+				536F3AC41E98331900846D23 /* Email.swift */,
+				536F3AC51E98331900846D23 /* FileService.swift */,
+				536F3AC61E98331900846D23 /* SpecDecoder.swift */,
 				49E637911DF743AB00855BC1 /* EncoderType.swift */,
 				49E637921DF743AB00855BC1 /* EventCenter.swift */,
 				49E637931DF743AB00855BC1 /* FileArchiver.swift */,
@@ -482,6 +503,7 @@
 				4918C37D1E43ABAC0083145E /* DispatchQueue+Helpers.swift in Sources */,
 				490D0B501E3ED8F0004A18FE /* ObservableReference.swift in Sources */,
 				49E6380F1DF743AB00855BC1 /* UIView+Video.swift in Sources */,
+				536F3AC81E98331900846D23 /* CommandLine.swift in Sources */,
 				492634AA1E88B54D00AF05E1 /* PersistenceService.swift in Sources */,
 				49E637E41DF743AB00855BC1 /* JSON.swift in Sources */,
 				494F7D8C1E8B110F00749B9B /* FileSystem.swift in Sources */,
@@ -492,8 +514,10 @@
 				49E637D41DF743AB00855BC1 /* CoderKeyType.swift in Sources */,
 				49E637FC1DF743AB00855BC1 /* SequenceType+SwiftPlusPlus.swift in Sources */,
 				49E638081DF743AB00855BC1 /* UIColor+Encodable.swift in Sources */,
+				536F3ACA1E98331900846D23 /* Email.swift in Sources */,
 				49E638071DF743AB00855BC1 /* UICollectionView+EasyRegister.swift in Sources */,
 				49E637DC1DF743AB00855BC1 /* EncodableType.swift in Sources */,
+				536F3AC91E98331900846D23 /* CommandLineDecoder.swift in Sources */,
 				49E638091DF743AB00855BC1 /* UIColor+Factory.swift in Sources */,
 				49E637EA1DF743AB00855BC1 /* MultiCallback.swift in Sources */,
 				49E637EB1DF743AB00855BC1 /* NativeTypesDecoder.swift in Sources */,
@@ -525,6 +549,7 @@
 				49E638151DF743AB00855BC1 /* WebViewController.swift in Sources */,
 				494AE5191E91BC1500BE4BAB /* HeartRateFormatter.swift in Sources */,
 				497BD2DD1E948D5E00428116 /* MonthAndYearPicker.swift in Sources */,
+				536F3AC71E98331900846D23 /* Age.swift in Sources */,
 				49E6380C1DF743AB00855BC1 /* UIView+Helpers.swift in Sources */,
 				490FAFAB1E5E41C500B2D50E /* DatePickerViewController.swift in Sources */,
 				49E637F41DF743AB00855BC1 /* ObservableArray.swift in Sources */,
@@ -544,6 +569,7 @@
 				49E637D91DF743AB00855BC1 /* DecoderType.swift in Sources */,
 				49E637D81DF743AB00855BC1 /* Date+Helpers.swift in Sources */,
 				49E637CC1DF743AB00855BC1 /* Angle.swift in Sources */,
+				536F3ACE1E9834B200846D23 /* ValidEmail.swift in Sources */,
 				493A02D71E6CA8CB0096CE87 /* PassThroughTouchView.swift in Sources */,
 				49E6380E1DF743AB00855BC1 /* UIView+Layout.swift in Sources */,
 				49E637E11DF743AB00855BC1 /* Form.swift in Sources */,
@@ -552,9 +578,11 @@
 				49E637DD1DF743AB00855BC1 /* EncoderType.swift in Sources */,
 				4929B4C31E831E1700020379 /* NetworkUserReportableResult.swift in Sources */,
 				49E637EE1DF743AB00855BC1 /* NSFileManager+Directories.swift in Sources */,
+				536F3ACB1E98331900846D23 /* FileService.swift in Sources */,
 				490241511E5E54D2003BC002 /* SelectListViewController.swift in Sources */,
 				49E637E01DF743AB00855BC1 /* Float+Angle.swift in Sources */,
 				49E637DE1DF743AB00855BC1 /* EventCenter.swift in Sources */,
+				536F3ACC1E98331900846D23 /* SpecDecoder.swift in Sources */,
 				49DE00901E1460BD00A314F6 /* ObservableDictionary.swift in Sources */,
 				495030401E09D14400E22334 /* DecodableType.swift in Sources */,
 				49E637E81DF743AB00855BC1 /* Menu.swift in Sources */,
