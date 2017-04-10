@@ -56,12 +56,12 @@ public struct FileSystem {
     }
 
     func copyAndOverwrite(from: String, to: String) {
-        self.deleteItem(at: to)
+        let _ = try? self.manager.removeItem(atPath: to)
         try! self.manager.copyItem(atPath: from, toPath: to)
     }
 
     func moveAndOverwrite(from: String, to: String) {
-        self.deleteItem(at: to)
+        let _ = try? self.manager.removeItem(atPath: to)
         try! self.manager.moveItem(atPath: from, toPath: to)
     }
 

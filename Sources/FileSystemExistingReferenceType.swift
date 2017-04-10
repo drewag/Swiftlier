@@ -18,6 +18,6 @@ extension FileSystemReferenceType where Self: ExistingReferenceType {
     }
 
     public func moveAndOverwriteTo(reference: ReferenceType) {
-        self.fileSystem.copyAndOverwrite(from: self.path, to: reference.fullPath())
+        self.fileSystem.moveAndOverwrite(from: self.path, to: reference.fullPath())
     }
 }
