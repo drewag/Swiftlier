@@ -8,18 +8,45 @@
 
 import Foundation
 
-enum ReferenceError: Error {
+public enum ReferenceError: UserReportableError {
     case AlreadyExists
     case NotFound
     case NotADirectory
     case NotAResource
     case NotExtendable
+    case InvalidPath
+
+    public var alertTitle: String {
+        return "Error Referencing File"
+    }
+
+    public var alertMessage: String {
+        switch self {
+        case .AlreadyExists:
+            return "already exists"
+        case .NotFound:
+            return "not found"
+        case .NotADirectory:
+            return "not a directory"
+        case .NotAResource:
+            return "not a resource"
+        case .NotExtendable:
+            return "not extendable"
+        case .InvalidPath:
+            return "invalid path"
+        }
+    }
+
+    public var otherInfo: [String:String]? {
+        return nil
+    }
 }
 
 public protocol ReferenceType {
     var name: String {get}
     func fullPath() -> String
     func refresh() -> ReferenceType
+    func validateIsPossible() throws
 }
 
 extension ReferenceType {
@@ -29,7 +56,7 @@ extension ReferenceType {
 }
 
 public protocol ExtendableReferenceType: ReferenceType {
-    func append(component: String) -> ReferenceType
+    func append(component: String) throws -> ReferenceType
 }
 
 public protocol UnknownReferenceType: ExtendableReferenceType {
@@ -43,7 +70,7 @@ public protocol ExistingReferenceType: ReferenceType {
     func moveAndOverwriteTo(reference: ReferenceType)
 }
 
-public protocol DirectoryReferenceType: ExtendableReferenceType {
+public protocol DirectoryReferenceType: ExtendableReferenceType, ExistingReferenceType {
     func contents() -> [ExistingReferenceType]
 }
 
@@ -52,8 +79,8 @@ public protocol ResourceReferenceType: ExistingReferenceType {
     func asURL() -> URL
 }
 
-public func /(lhs: ExtendableReferenceType, rhs: String) -> ReferenceType {
-    return lhs.append(component: rhs)
+public func /(lhs: ExtendableReferenceType, rhs: String) throws -> ReferenceType {
+    return try lhs.append(component: rhs)
 }
 
 public func /(lhs: ReferenceType, rhs: String) throws -> ReferenceType {
@@ -117,7 +144,9 @@ extension ReferenceType {
 
     public func append(component: String) throws -> ReferenceType {
         if let extendableSelf = self as? ExtendableReferenceType {
-            return extendableSelf.append(component: component)
+            let result = try extendableSelf.append(component: component)
+            try result.validateIsPossible()
+            return result
         }
         else {
             throw ReferenceError.NotExtendable

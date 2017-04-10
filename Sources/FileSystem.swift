@@ -13,11 +13,6 @@ public protocol FileSystemReferenceType {
     var fileSystem: FileSystem {get}
 }
 
-
-enum FileSystemError: Error {
-    case NotFound
-}
-
 public struct FileSystem {
     public static let main = FileSystem()
 
@@ -35,10 +30,10 @@ public struct FileSystem {
         return Directory(path: url.relativePath, fileSystem: self)
     }
 
-    public func reference(forPath path: String) -> ReferenceType {
+    public func reference(forPath path: String) throws -> ReferenceType {
+        try self.validate(path: path)
         do {
-            let attributes = try self.manager.attributesOfItem(atPath: path)
-            if let attribute = attributes[.type] as? FileAttributeType, attribute == .typeDirectory {
+            if try self.isDirectory(at: path) {
                 return Directory(path: path, fileSystem: self)
             }
             else {
@@ -80,12 +75,40 @@ public struct FileSystem {
             while let fileOrDirectory = enumerator.nextObject() as? String {
                 enumerator.skipDescendants()
                 let fullPath = URL(fileURLWithPath: path).appendingPathComponent(fileOrDirectory).relativePath
-                contents.append(self.reference(forPath: fullPath) as! ExistingReferenceType)
+                contents.append(try! self.reference(forPath: fullPath) as! ExistingReferenceType)
             }
             return contents
         }
         else {
-            throw FileSystemError.NotFound
+            throw ReferenceError.NotFound
+        }
+    }
+
+    func validate(path: String) throws {
+        var components = URL(fileURLWithPath: path).pathComponents
+        guard components.count > 0 else {
+            return
+        }
+        let first = components.removeFirst()
+        var url = URL(fileURLWithPath: first)
+
+        for component in components {
+            guard try self.isDirectory(at: url.relativePath) else {
+                throw ReferenceError.InvalidPath
+            }
+            url = url.appendingPathComponent(component)
+        }
+    }
+}
+
+private extension FileSystem {
+    func isDirectory(at path: String) throws -> Bool {
+        let attributes = try self.manager.attributesOfItem(atPath: path)
+        if let attribute = attributes[.type] as? FileAttributeType, attribute == .typeDirectory {
+            return true
+        }
+        else {
+            return false
         }
     }
 }
@@ -119,6 +142,10 @@ public struct NotFoundPath: FileSystemReferenceType, UnknownReferenceType, Exten
 
 extension FileSystemReferenceType {
     public func refresh() -> ReferenceType {
-        return self.fileSystem.reference(forPath: self.path)
+        return try! self.fileSystem.reference(forPath: self.path)
+    }
+
+    public func validateIsPossible() throws {
+        try self.fileSystem.validate(path: self.path)
     }
 }
