@@ -9,8 +9,9 @@
 import Foundation
 
 extension FileSystemReferenceType where Self: ExistingReferenceType {
-    public func delete() {
+    public func delete() -> ReferenceType {
         self.fileSystem.deleteItem(at: self.path)
+        return try! self.fileSystem.reference(forPath: self.path)
     }
 
     public func copyAndOverwriteTo(reference: ReferenceType) {

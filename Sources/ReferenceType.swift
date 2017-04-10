@@ -65,7 +65,7 @@ public protocol UnknownReferenceType: ExtendableReferenceType {
 }
 
 public protocol ExistingReferenceType: ReferenceType {
-    func delete()
+    func delete() -> ReferenceType
     func copyAndOverwriteTo(reference: ReferenceType)
     func moveAndOverwriteTo(reference: ReferenceType)
 }
@@ -153,9 +153,10 @@ extension ReferenceType {
         }
     }
 
-    public func delete() throws {
+    @discardableResult
+    public func delete() throws -> ReferenceType {
         if let existingSelf = self as? ExistingReferenceType {
-            existingSelf.delete()
+            return existingSelf.delete()
         }
         else {
             throw ReferenceError.NotFound
