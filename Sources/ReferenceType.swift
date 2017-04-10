@@ -108,6 +108,14 @@ extension ResourceReferenceType {
             return nil
         }
     }
+
+    public func overwriteFile(content: Data) throws -> ResourceReferenceType {
+        return try self.delete().createFile(content: content)
+    }
+
+    public func overwriteFile(content: String) throws -> ResourceReferenceType {
+        return try self.delete().createFile(content: content)
+    }
 }
 
 extension ReferenceType {
@@ -131,6 +139,22 @@ extension ReferenceType {
 
     public func createFile(content: String) throws -> ResourceReferenceType {
         return try self.createFile(content: content.data(using: .utf8)!)
+    }
+
+    public func overwriteFile(content: Data) throws -> ResourceReferenceType {
+        if let unkownSelf = self as? UnknownReferenceType {
+            return unkownSelf.createFile(content: content)
+        }
+        else if let resource = self as? ResourceReferenceType {
+            return try resource.overwriteFile(content: content)
+        }
+        else {
+            throw ReferenceError.NotAResource
+        }
+    }
+
+    public func overwriteFile(content: String) throws -> ResourceReferenceType {
+        return try self.overwriteFile(content: content.data(using: .utf8)!)
     }
 
     public func createDirectory() throws -> DirectoryReferenceType {
