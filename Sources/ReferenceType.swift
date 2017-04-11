@@ -75,7 +75,8 @@ public protocol DirectoryReferenceType: ExtendableReferenceType, ExistingReferen
 }
 
 public protocol ResourceReferenceType: ExistingReferenceType {
-    func contents() -> Data
+    func fileHandleForReading() -> FileHandle
+    func fileHandleForWriting() -> FileHandle
     func asURL() -> URL
 }
 
@@ -94,6 +95,10 @@ extension UnknownReferenceType {
 }
 
 extension ResourceReferenceType {
+    public func contents() -> Data {
+        return self.fileHandleForReading().readDataToEndOfFile()
+    }
+
     public func string() -> String? {
         let data: Data = self.contents()
         return String(data: data, encoding: .utf8)
