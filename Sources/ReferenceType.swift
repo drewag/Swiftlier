@@ -122,6 +122,24 @@ extension ResourceReferenceType {
     public func overwriteFile(content: String) throws -> ResourceReferenceType {
         return self.delete().createFile(content: content)
     }
+
+    public func isIdentical(to: ResourceReferenceType) throws -> Bool {
+        let lFileHandle = self.fileHandleForReading()
+        let rFileHandle = to.fileHandleForReading()
+
+        var lData: Data
+        var rData: Data
+        repeat {
+            lData = lFileHandle.readData(ofLength: 16000)
+            rData = rFileHandle.readData(ofLength: 16000)
+
+            guard lData == rData else {
+                return false
+            }
+        } while !lData.isEmpty
+
+        return true
+    }
 }
 
 extension ReferenceType {
