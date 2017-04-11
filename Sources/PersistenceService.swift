@@ -13,6 +13,10 @@ open class PersistenceService<Value: CodableType> {
     public var values: [Value]!
 
     public init() throws {
+        try self.reload()
+    }
+
+    public func reload() throws {
         self.values = try self.loadValues()
     }
 }
