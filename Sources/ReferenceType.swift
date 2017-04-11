@@ -62,12 +62,13 @@ public protocol ExtendableReferenceType: ReferenceType {
 public protocol UnknownReferenceType: ExtendableReferenceType {
     func createFile(content: Data) -> ResourceReferenceType
     func createDirectory() -> DirectoryReferenceType
+    func createLink(to: ResourceReferenceType) -> ResourceReferenceType
 }
 
 public protocol ExistingReferenceType: ReferenceType {
-    func delete() -> ReferenceType
-    func copyAndOverwriteTo(reference: ReferenceType)
-    func moveAndOverwriteTo(reference: ReferenceType)
+    func delete() -> UnknownReferenceType
+    func copyAndOverwriteTo(reference: ReferenceType) -> ExistingReferenceType
+    func moveAndOverwriteTo(reference: ReferenceType) -> ExistingReferenceType
 }
 
 public protocol DirectoryReferenceType: ExtendableReferenceType, ExistingReferenceType {
@@ -115,11 +116,11 @@ extension ResourceReferenceType {
     }
 
     public func overwriteFile(content: Data) throws -> ResourceReferenceType {
-        return try self.delete().createFile(content: content)
+        return self.delete().createFile(content: content)
     }
 
     public func overwriteFile(content: String) throws -> ResourceReferenceType {
-        return try self.delete().createFile(content: content)
+        return self.delete().createFile(content: content)
     }
 }
 
@@ -204,7 +205,7 @@ extension ReferenceType {
     }
 
     @discardableResult
-    public func delete() throws -> ReferenceType {
+    public func delete() throws -> UnknownReferenceType {
         if let existingSelf = self as? ExistingReferenceType {
             return existingSelf.delete()
         }

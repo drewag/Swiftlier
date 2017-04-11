@@ -9,16 +9,18 @@
 import Foundation
 
 extension FileSystemReferenceType where Self: ExistingReferenceType {
-    public func delete() -> ReferenceType {
+    public func delete() -> UnknownReferenceType {
         self.fileSystem.deleteItem(at: self.path)
-        return try! self.fileSystem.reference(forPath: self.path)
+        return try! self.fileSystem.reference(forPath: self.path) as! UnknownReferenceType
     }
 
-    public func copyAndOverwriteTo(reference: ReferenceType) {
+    public func copyAndOverwriteTo(reference: ReferenceType) -> ExistingReferenceType {
         self.fileSystem.copyAndOverwrite(from: self.path, to: reference.fullPath())
+        return try! self.fileSystem.reference(forPath: reference.fullPath()) as! ExistingReferenceType
     }
 
-    public func moveAndOverwriteTo(reference: ReferenceType) {
+    public func moveAndOverwriteTo(reference: ReferenceType) -> ExistingReferenceType {
         self.fileSystem.moveAndOverwrite(from: self.path, to: reference.fullPath())
+        return try! self.fileSystem.reference(forPath: reference.fullPath()) as! ExistingReferenceType
     }
 }
