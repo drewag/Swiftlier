@@ -10,15 +10,7 @@ import Foundation
 
 extension FileSystemReferenceType where Self: ResourceReferenceType {
     public func fileHandleForReading() -> FileHandle {
-        let attributes = try! self.fileSystem.manager.attributesOfItem(atPath: self.path)
-        let path: String
-        switch attributes[.type] as! FileAttributeType {
-        case FileAttributeType.typeSymbolicLink:
-            path = try! self.fileSystem.manager.destinationOfSymbolicLink(atPath: self.path)
-        default:
-            path = self.path
-        }
-        return FileHandle(forReadingAtPath: path)!
+        return FileHandle(forReadingAtPath: self.resolvingSymLinks().fullPath())!
     }
 
     public func fileHandleForWriting() -> FileHandle {
@@ -27,5 +19,16 @@ extension FileSystemReferenceType where Self: ResourceReferenceType {
 
     public func asURL() -> URL {
         return URL(fileURLWithPath: self.path)
+    }
+
+    public func resolvingSymLinks() -> ResourceReferenceType {
+        let attributes = try! self.fileSystem.manager.attributesOfItem(atPath: self.path)
+        switch attributes[.type] as! FileAttributeType {
+        case FileAttributeType.typeSymbolicLink:
+            let path = try! self.fileSystem.manager.destinationOfSymbolicLink(atPath: self.path)
+            return try! self.fileSystem.reference(forPath: path) as! ResourceReferenceType
+        default:
+            return self
+        }
     }
 }
