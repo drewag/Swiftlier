@@ -157,6 +157,27 @@ extension ReferenceType {
         return try self.overwriteFile(content: content.data(using: .utf8)!)
     }
 
+    public func createLink(to: ResourceReferenceType) throws -> ResourceReferenceType {
+        if let unknownSelf = self as? UnknownReferenceType {
+            return unknownSelf.createLink(to: to)
+        }
+        else {
+            throw ReferenceError.NotAResource
+        }
+    }
+
+    public func overwriteLink(to: ResourceReferenceType) throws -> ResourceReferenceType {
+        if let unknownSelf = self as? UnknownReferenceType {
+            return unknownSelf.createLink(to: to)
+        }
+        else if let existing = self as? ExistingReferenceType {
+            return existing.delete().createLink(to: to)
+        }
+        else {
+            throw ReferenceError.NotAResource
+        }
+    }
+
     public func createDirectory() throws -> DirectoryReferenceType {
         if let unkownSelf = self as? UnknownReferenceType {
             return unkownSelf.createDirectory()

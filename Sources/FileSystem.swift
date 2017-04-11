@@ -51,6 +51,10 @@ public struct FileSystem {
         let _ = self.manager.createFile(atPath: path, contents: data, attributes: nil)
     }
 
+    func createLink(from: String, to: String) {
+        try! self.manager.createSymbolicLink(atPath: from, withDestinationPath: to)
+    }
+
     func createDirectory(at path: String) {
         try! self.manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
     }
@@ -137,6 +141,11 @@ public struct NotFoundPath: FileSystemReferenceType, UnknownReferenceType, Exten
 
     public func fullPath() -> String {
         return self.path
+    }
+
+    public func createLink(to: ResourceReferenceType) -> ResourceReferenceType {
+        self.fileSystem.createLink(from: self.fullPath(), to: to.fullPath())
+        return to.refresh() as! ResourceReferenceType
     }
 }
 
