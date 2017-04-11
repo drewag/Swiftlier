@@ -140,6 +140,14 @@ extension ResourceReferenceType {
 
         return true
     }
+
+    public var `extension`: String {
+        return URL(fileURLWithPath: self.fullPath()).pathExtension
+    }
+
+    public var nameWithoutExtension: String {
+        return URL(fileURLWithPath: self.fullPath()).deletingPathExtension().lastPathComponent
+    }
 }
 
 extension ReferenceType {
