@@ -106,10 +106,7 @@ public struct JSON: CustomStringConvertible {
     }
 
     public func toData() throws -> Data {
-        return try JSONSerialization.data(
-            withJSONObject: self.object,
-            options: JSONSerialization.WritingOptions()
-        )
+        return try JSON.encode(self.object)
     }
 
 }
