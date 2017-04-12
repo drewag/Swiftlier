@@ -21,12 +21,12 @@ extension FileSystemReferenceType where Self: ResourceReferenceType {
         return URL(fileURLWithPath: self.path)
     }
 
-    public func resolvingSymLinks() -> ResourceReferenceType {
+    public func resolvingSymLinks() -> ReferenceType {
         let attributes = try! self.fileSystem.manager.attributesOfItem(atPath: self.path)
         switch attributes[.type] as! FileAttributeType {
         case FileAttributeType.typeSymbolicLink:
             let path = try! self.fileSystem.manager.destinationOfSymbolicLink(atPath: self.path)
-            return try! self.fileSystem.reference(forPath: path) as! ResourceReferenceType
+            return try! self.fileSystem.reference(forPath: path)
         default:
             return self
         }
