@@ -97,7 +97,7 @@ public struct FileSystem {
         var url = URL(fileURLWithPath: first)
 
         for component in components {
-            guard try self.isDirectory(at: url.relativePath) else {
+            guard try self.isNotFile(at: url.relativePath) else {
                 throw ReferenceError.InvalidPath
             }
             url = url.appendingPathComponent(component)
@@ -108,6 +108,18 @@ public struct FileSystem {
 private extension FileSystem {
     func isDirectory(at path: String) throws -> Bool {
         let attributes = try self.manager.attributesOfItem(atPath: path)
+        if let attribute = attributes[.type] as? FileAttributeType, attribute == .typeDirectory {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+    func isNotFile(at path: String) throws -> Bool {
+        guard let attributes = try? self.manager.attributesOfItem(atPath: path) else {
+            return true
+        }
         if let attribute = attributes[.type] as? FileAttributeType, attribute == .typeDirectory {
             return true
         }
