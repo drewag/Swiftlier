@@ -79,6 +79,7 @@ public protocol ResourceReferenceType: ExistingReferenceType {
     func fileHandleForReading() -> FileHandle
     func fileHandleForWriting() -> FileHandle
     func asURL() -> URL
+    func lastModified() -> Date
 }
 
 public func /(lhs: ExtendableReferenceType, rhs: String) throws -> ReferenceType {

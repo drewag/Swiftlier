@@ -145,6 +145,13 @@ public struct File: FileSystemReferenceType, ResourceReferenceType, ExistingRefe
     public func fullPath() -> String {
         return self.path
     }
+
+    public func lastModified() -> Date {
+        guard let attributes = try? self.fileSystem.manager.attributesOfItem(atPath: self.path) else {
+            return Date()
+        }
+        return attributes[.modificationDate] as? Date ?? Date()
+    }
 }
 
 public struct NotFoundPath: FileSystemReferenceType, UnknownReferenceType, ExtendableReferenceType {
