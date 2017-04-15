@@ -34,6 +34,8 @@
 		495030401E09D14400E22334 /* DecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950303F1E09D14400E22334 /* DecodableType.swift */; };
 		49658BC01E92A3170076F50B /* EnergyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49658BBF1E92A3170076F50B /* EnergyFormatting.swift */; };
 		497BD2DD1E948D5E00428116 /* MonthAndYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BD2DC1E948D5E00428116 /* MonthAndYearPicker.swift */; };
+		49A85C2D1EA1CA30009D6192 /* JSON+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A85C2C1EA1CA30009D6192 /* JSON+Encoding.swift */; };
+		49A85C2F1EA1CEBA009D6192 /* Data+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A85C2E1EA1CEBA009D6192 /* Data+Base64.swift */; };
 		49ADCA5F1E0758540063CC63 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA5E1E0758540063CC63 /* Float+Factory.swift */; };
 		49ADCA751E09CD580063CC63 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCA741E09CD580063CC63 /* Syncable.swift */; };
 		49C68DBF1E0A2CF9001A1A8F /* CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */; };
@@ -144,6 +146,8 @@
 		4950303F1E09D14400E22334 /* DecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableType.swift; sourceTree = "<group>"; };
 		49658BBF1E92A3170076F50B /* EnergyFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyFormatting.swift; sourceTree = "<group>"; };
 		497BD2DC1E948D5E00428116 /* MonthAndYearPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthAndYearPicker.swift; sourceTree = "<group>"; };
+		49A85C2C1EA1CA30009D6192 /* JSON+Encoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Encoding.swift"; sourceTree = "<group>"; };
+		49A85C2E1EA1CEBA009D6192 /* Data+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Base64.swift"; sourceTree = "<group>"; };
 		49ADCA5E1E0758540063CC63 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		49ADCA741E09CD580063CC63 /* Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
 		49C68DBE1E0A2CF9001A1A8F /* CodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableType.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 		49E6377E1DF743AB00855BC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				49A85C2E1EA1CEBA009D6192 /* Data+Base64.swift */,
 				4929B4C21E831E1700020379 /* NetworkUserReportableResult.swift */,
 				49E6377F1DF743AB00855BC1 /* Alert.swift */,
 				49E637801DF743AB00855BC1 /* Angle.swift */,
@@ -304,6 +309,7 @@
 				49E637961DF743AB00855BC1 /* FormViewController.swift */,
 				49E637971DF743AB00855BC1 /* HTML.swift */,
 				49E637981DF743AB00855BC1 /* JSON.swift */,
+				49A85C2C1EA1CA30009D6192 /* JSON+Encoding.swift */,
 				53F13D4A1E8319B3005B1782 /* NetworkUserReportableError.swift */,
 				49E637991DF743AB00855BC1 /* KeyboardConstraintAdjuster.swift */,
 				49E6379A1DF743AB00855BC1 /* LimitedSizeViewController.swift */,
@@ -485,6 +491,7 @@
 				492634AA1E88B54D00AF05E1 /* PersistenceService.swift in Sources */,
 				49E637E41DF743AB00855BC1 /* JSON.swift in Sources */,
 				494F7D8C1E8B110F00749B9B /* FileSystem.swift in Sources */,
+				49A85C2D1EA1CA30009D6192 /* JSON+Encoding.swift in Sources */,
 				49E637F51DF743AB00855BC1 /* OrderedDictionary.swift in Sources */,
 				49E6380A1DF743AB00855BC1 /* UIImage+Editing.swift in Sources */,
 				490D0B3D1E3BC6C8004A18FE /* Enum+Convenience.swift in Sources */,
@@ -516,6 +523,7 @@
 				494F7D8E1E8B110F00749B9B /* FileSystemExistingReferenceType.swift in Sources */,
 				49E638161DF743AB00855BC1 /* ZoomThroughTransition.swift in Sources */,
 				494F7D8D1E8B110F00749B9B /* FileSystemDirectoryReferenceType.swift in Sources */,
+				49A85C2F1EA1CEBA009D6192 /* Data+Base64.swift in Sources */,
 				49E638031DF743AB00855BC1 /* TaskService.swift in Sources */,
 				49E637D11DF743AB00855BC1 /* BubbleView.swift in Sources */,
 				492634A81E88B4B400AF05E1 /* ValueTypePersistenceService.swift in Sources */,
