@@ -44,12 +44,12 @@ extension Dictionary {
     }
 }
 
-public protocol PercentEncodableType {
+public protocol PercentEncodable {
     func addingPercentEncoding(withAllowedCharacters allowedCharacters: CharacterSet) -> String?
 }
-extension String: PercentEncodableType {}
+extension String: PercentEncodable {}
 
-extension Dictionary where Key: PercentEncodableType, Value: PercentEncodableType {
+extension Dictionary where Key: PercentEncodable, Value: PercentEncodable {
     public var URLEncodedDictionary: [String:String]? {
         var returnDict = [String:String]()
         for (key, value) in self {

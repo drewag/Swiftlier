@@ -19,7 +19,7 @@ private enum SyncableStatus {
     case remote(Date)
 }
 
-public struct Syncable<Value: CodableType>: AnySyncable, DecodableType {
+public struct Syncable<Value: Codable>: AnySyncable, Decodable {
     public fileprivate(set) var value: Value
     public fileprivate(set) var remoteValue: Value? = nil
 
@@ -69,7 +69,7 @@ public struct Syncable<Value: CodableType>: AnySyncable, DecodableType {
         }
     }
 
-    public func converted<OtherValue: EncodableType>(by: (Value) -> (OtherValue)) -> Syncable<OtherValue> where OtherValue: DecodableType {
+    public func converted<OtherValue: Encodable>(by: (Value) -> (OtherValue)) -> Syncable<OtherValue> where OtherValue: Decodable {
         let convertedValue = by(self.value)
         var converted = Syncable<OtherValue>(convertedValue)
         if let remoteValue = self.remoteValue {
@@ -100,7 +100,7 @@ public struct Syncable<Value: CodableType>: AnySyncable, DecodableType {
         }
     }
 
-    public init(decoder: DecoderType) throws {
+    public init(decoder: Decoder) throws {
         switch decoder.mode {
         case .saveLocally:
             self.value = try decoder.decode(ValueKey.self)
@@ -124,7 +124,7 @@ public struct Syncable<Value: CodableType>: AnySyncable, DecodableType {
     }
 }
 
-public struct SyncableOptional<Value: CodableType>: AnySyncable, DecodableType {
+public struct SyncableOptional<Value: Codable>: AnySyncable, Decodable {
     public fileprivate(set) var value: Value?
     public fileprivate(set) var remoteValue: Value? = nil
 
@@ -174,7 +174,7 @@ public struct SyncableOptional<Value: CodableType>: AnySyncable, DecodableType {
         }
     }
 
-    public func converted<OtherValue: EncodableType>(by: (Value) -> (OtherValue?)) -> SyncableOptional<OtherValue> where OtherValue: DecodableType {
+    public func converted<OtherValue: Encodable>(by: (Value) -> (OtherValue?)) -> SyncableOptional<OtherValue> where OtherValue: Decodable {
         var convertedValue: OtherValue? = nil
         if let value = self.value {
             convertedValue = by(value)
@@ -209,7 +209,7 @@ public struct SyncableOptional<Value: CodableType>: AnySyncable, DecodableType {
         }
     }
 
-    public init(decoder: DecoderType) throws {
+    public init(decoder: Decoder) throws {
         switch decoder.mode {
         case .saveLocally:
             self.value = try decoder.decode(OptionalValueKey.self)
@@ -233,14 +233,14 @@ public struct SyncableOptional<Value: CodableType>: AnySyncable, DecodableType {
     }
 }
 
-class ValueKey<Value: EncodableType>: CoderKey<Value> {}
-class OptionalValueKey<Value: EncodableType>: OptionalCoderKey<Value> {}
-class RemoteValueKey<Value: EncodableType>: OptionalCoderKey<Value> {}
+class ValueKey<Value: Encodable>: CoderKey<Value> {}
+class OptionalValueKey<Value: Encodable>: OptionalCoderKey<Value> {}
+class RemoteValueKey<Value: Encodable>: OptionalCoderKey<Value> {}
 class LastLocalChangedKey: OptionalCoderKey<Date> {}
 class LastRemoteChangedKey: OptionalCoderKey<Date> {}
 
-extension Syncable: EncodableType {
-    public func encode(_ encoder: EncoderType) {
+extension Syncable: Encodable {
+    public func encode(_ encoder: Encoder) {
         switch encoder.mode {
         case .saveLocally:
             encoder.encode(self.value, forKey: ValueKey.self)
@@ -334,8 +334,8 @@ fileprivate extension Syncable {
     }
 }
 
-extension SyncableOptional: EncodableType {
-    public func encode(_ encoder: EncoderType) {
+extension SyncableOptional: Encodable {
+    public func encode(_ encoder: Encoder) {
         switch encoder.mode {
         case .saveLocally:
             encoder.encode(self.value, forKey: OptionalValueKey.self)

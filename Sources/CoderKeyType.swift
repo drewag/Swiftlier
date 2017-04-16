@@ -8,49 +8,49 @@
 
 import Foundation
 
-public protocol RawEncodableType: CodableType {
+public protocol RawCodable: Codable {
     init()
     var asObject: Any { get }
 }
 
-extension RawEncodableType {
-    public func encode(_ encoder: EncoderType) {
+extension RawCodable {
+    public func encode(_ encoder: Encoder) {
         encoder.encodeAsEntireValue(self)
     }
 }
 
-extension RawEncodableType {
-    public init(decoder: DecoderType) throws {
+extension RawCodable {
+    public init(decoder: Decoder) throws {
         self = try decoder.decodeAsEntireValue()
     }
 }
 
-extension String: RawEncodableType { public var asObject: Any { return self as Any } }
-extension Bool: RawEncodableType { public var asObject: Any { return self as Any } }
-extension Int: RawEncodableType { public var asObject: Any { return self as Any } }
-extension Double: RawEncodableType { public var asObject: Any { return self as Any } }
-extension Float: RawEncodableType { public var asObject: Any { return self as Any } }
-extension Data: RawEncodableType { public var asObject: Any { return self as Any } }
+extension String: RawCodable { public var asObject: Any { return self as Any } }
+extension Bool: RawCodable { public var asObject: Any { return self as Any } }
+extension Int: RawCodable { public var asObject: Any { return self as Any } }
+extension Double: RawCodable { public var asObject: Any { return self as Any } }
+extension Float: RawCodable { public var asObject: Any { return self as Any } }
+extension Data: RawCodable { public var asObject: Any { return self as Any } }
 
-extension Date: CodableType {
-    public func encode(_ encoder: EncoderType) {
+extension Date: Codable {
+    public func encode(_ encoder: Encoder) {
         encoder.encodeAsEntireValue(self.iso8601DateTime)
     }
 
-    public init(decoder: DecoderType) throws {
+    public init(decoder: Decoder) throws {
         let string: String = try decoder.decodeAsEntireValue()
         guard let date = string.iso8601DateTime else {
-            throw DecodingError(description: "Invalid date: \(string)")
+            throw Date.error("decoding date from \(string)", because: "it is an invalid date")
         }
         self = date
     }
 }
 
-open class CoderKey<Value: EncodableType> {
+open class CoderKey<Value: Encodable> {
     open class var customKey: String? { return nil }
 }
 
-open class OptionalCoderKey<Value: EncodableType> {
+open class OptionalCoderKey<Value: Encodable> {
     open class var customKey: String? { return nil }
 }
 

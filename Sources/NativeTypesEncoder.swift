@@ -8,16 +8,16 @@
 
 import Foundation
 
-public final class NativeTypesEncoder: EncoderType {
+public final class NativeTypesEncoder: Encoder {
     fileprivate var raw: Any?
     fileprivate var wasCanceled = false
     public let mode: EncodingMode
 
-    public class func objectFromEncodable(_ encodable: EncodableType, mode: EncodingMode) -> Any {
+    public class func objectFromEncodable(_ encodable: Encodable, mode: EncodingMode) -> Any {
         return self.objectFromCombiningEncodables([encodable], mode: mode)
     }
 
-    public class func objectFromCombiningEncodables(_ encodables: [EncodableType], mode: EncodingMode) -> Any {
+    public class func objectFromCombiningEncodables(_ encodables: [Encodable], mode: EncodingMode) -> Any {
         let encoder = NativeTypesEncoder(raw: nil, mode: mode)
         for encodable in encodables {
             encodable.encode(encoder)
@@ -25,7 +25,7 @@ public final class NativeTypesEncoder: EncoderType {
         return encoder.raw ?? [:]
     }
 
-    public func encodeAsEntireValue<Value: RawEncodableType>(_ data: Value) {
+    public func encodeAsEntireValue<Value: RawCodable>(_ data: Value) {
         self.raw = data
     }
 
@@ -34,8 +34,8 @@ public final class NativeTypesEncoder: EncoderType {
         self.mode = mode
     }
 
-    public func encode<Value: EncodableType>(_ data: Value, forKey key: CoderKey<Value>.Type) {
-        if let raw = data as? RawEncodableType {
+    public func encode<Value: Encodable>(_ data: Value, forKey key: CoderKey<Value>.Type) {
+        if let raw = data as? RawCodable {
             self.addValue(raw.asObject, keyPath: key.path)
         }
         else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(data, mode: self.mode) {
@@ -43,9 +43,9 @@ public final class NativeTypesEncoder: EncoderType {
         }
     }
 
-    public func encode<Value: EncodableType>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type) {
+    public func encode<Value: Encodable>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type) {
         if let data = data {
-            if let raw = data as? RawEncodableType {
+            if let raw = data as? RawCodable {
                 self.addValue(raw.asObject, keyPath: key.path)
             }
             else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(data, mode: self.mode) {
@@ -60,10 +60,10 @@ public final class NativeTypesEncoder: EncoderType {
         }
     }
 
-    public func encode<Value: EncodableType>(_ data: [Value], forKey key: CoderKey<Value>.Type) {
+    public func encode<Value: Encodable>(_ data: [Value], forKey key: CoderKey<Value>.Type) {
         var array = [Any]()
         for value in data {
-            if let raw = value as? RawEncodableType {
+            if let raw = value as? RawCodable {
                 array.append(raw.asObject)
             }
             else if let object = NativeTypesEncoder.cancelableObjectFromEncodable(value, mode: self.mode) {
@@ -76,12 +76,12 @@ public final class NativeTypesEncoder: EncoderType {
         self.addValue(array as Any?, keyPath: key.path)
     }
 
-    public func encodeAsEntireValue<Value: EncodableType>(_ data: Value?) {
+    public func encodeAsEntireValue<Value: Encodable>(_ data: Value?) {
         guard let data = data else {
             self.raw = nil
             return
         }
-        if let raw = data as? RawEncodableType {
+        if let raw = data as? RawCodable {
             self.raw = raw.asObject
         }
         else {
@@ -96,7 +96,7 @@ public final class NativeTypesEncoder: EncoderType {
 }
 
 private extension NativeTypesEncoder {
-    class func cancelableObjectFromEncodable(_ encodable: EncodableType, mode: EncodingMode) -> Any? {
+    class func cancelableObjectFromEncodable(_ encodable: Encodable, mode: EncodingMode) -> Any? {
         let encoder = NativeTypesEncoder(raw: nil, mode: mode)
         encodable.encode(encoder)
         if encoder.wasCanceled {

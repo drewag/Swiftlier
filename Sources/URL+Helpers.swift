@@ -20,4 +20,24 @@ extension URL {
         components.query = nil
         return components.url ?? self
     }
+
+    public func pathComponents(differentFrom URL: URL) -> [String] {
+        let left = self.resolvingSymlinksInPath().pathComponents
+        let right = URL.resolvingSymlinksInPath().pathComponents
+
+        var components = [String]()
+        for i in 0 ..< left.count {
+            guard i < right.count else {
+                components.append(left[i])
+                continue
+            }
+
+            guard left[i] != right[i] else {
+                continue
+            }
+
+            components.append(left[i])
+        }
+        return components
+    }
 }

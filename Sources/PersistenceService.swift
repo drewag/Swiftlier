@@ -9,7 +9,7 @@
 #if os(iOS)
 import Foundation
 
-open class PersistenceService<Value: CodableType> {
+open class PersistenceService<Value: Codable> {
     public var values: [Value]!
 
     public init() throws {

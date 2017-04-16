@@ -9,7 +9,7 @@
 #if os(Linux) || os(macOS)
 import Foundation
 
-public final class ShellCommand: CustomStringConvertible {
+public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
     private let command: [String]
 
     static let once: Void = {
@@ -67,7 +67,7 @@ public final class ShellCommand: CustomStringConvertible {
         self.removeFromCommandsToKill()
 
         guard self.process.terminationStatus == 0 else {
-            throw LocalUserReportableError(source: "ShellCommand", operation: "executing command", message: "Stopping execution", reason: .user)
+            throw self.error("executing command", because: "it returned a bad response code \(self.process.terminationStatus)")
         }
 
         if let outputPipe = process.standardOutput as? Pipe {

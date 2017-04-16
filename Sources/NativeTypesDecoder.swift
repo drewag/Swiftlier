@@ -8,23 +8,13 @@
 
 import Foundation
 
-public struct DecodingError: UserReportableError {
-    public let alertTitle: String = "Error Decoding"
-    public let alertMessage: String
-    public let otherInfo: [String : String]? = nil
-
-    public init(description: String) {
-        self.alertMessage = description
-    }
-}
-
-public final class NativeTypesDecoder: DecoderType {
+public final class NativeTypesDecoder: Decoder, ErrorGenerating {
     let raw: Any
     public let mode: DecodingMode
 
-    public class func decodableTypeFromObject<E: DecodableType>(_ raw: Any, mode: DecodingMode) throws -> E {
+    public class func decodableTypeFromObject<E: Decodable>(_ raw: Any, mode: DecodingMode) throws -> E {
         guard !(raw is NSNull) else {
-            throw DecodingError(description: "Was null")
+            throw self.error("decoding a \(self)", because: "root value was null")
         }
 
         let decoder = NativeTypesDecoder(raw: raw, mode: mode)
@@ -36,30 +26,30 @@ public final class NativeTypesDecoder: DecoderType {
         self.mode = mode
     }
 
-    public func decode<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> Value {
+    public func decode<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> Value {
         guard let object = self.object(forKeyPath: key.path) else {
-            throw DecodingError(description: "Required value not found for key \(key.path)")
+            throw self.error("decoding a \(type(of: self))", because: "a required value was not found for key \(key.path)")
         }
-        if Value.self is RawEncodableType.Type {
+        if Value.self is RawCodable.Type {
             guard let value = object as? Value else {
-                throw DecodingError(description: "Value of wrong type found for key \(key.path)")
+                throw self.error("decoding a \(type(of: self))", because: "the wrong type was found for key \(key.path)")
             }
             return value
         }
         return try NativeTypesDecoder.decodableTypeFromObject(object, mode: self.mode)
     }
 
-    public func decode<Value: DecodableType>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
+    public func decode<Value: Decodable>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
         guard let object = self.object(forKeyPath: key.path) else {
             return nil
         }
-        if Value.self is RawEncodableType.Type {
+        if Value.self is RawCodable.Type {
             return object as? Value
         }
         return try? NativeTypesDecoder.decodableTypeFromObject(object, mode: self.mode)
     }
 
-    public func decodeArray<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> [Value] {
+    public func decodeArray<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> [Value] {
         let object = self.object(forKeyPath: key.path)
         guard let array = object as? [Any] else {
             if object is NSNull || object == nil {
@@ -71,9 +61,9 @@ public final class NativeTypesDecoder: DecoderType {
         }
         var output: [Value] = []
         for raw in array {
-            if raw is RawEncodableType {
+            if raw is RawCodable {
                 guard let _ = raw as? Value else {
-                    throw DecodingError(description: "Value of wrong type found in array for key \(key.path)")
+                    throw self.error("decoding a \(type(of: self))", because: "the wrong type was found in array for key \(key.path)")
                 }
                 output.append(raw as! Value)
             }
@@ -85,10 +75,10 @@ public final class NativeTypesDecoder: DecoderType {
         return output
     }
 
-    public func decodeAsEntireValue<Value: DecodableType>() throws -> Value {
-        if Value.self is RawEncodableType.Type {
+    public func decodeAsEntireValue<Value: Decodable>() throws -> Value {
+        if Value.self is RawCodable.Type {
             guard let value = self.raw as? Value else {
-                throw DecodingError(description: "Value of wrong type found as entire value")
+                throw self.error("decoding a \(type(of: self))", because: "the wrong type was found as the entire value")
             }
             return value
         }

@@ -6,7 +6,7 @@
 //
 //
 
-public protocol NativeTypesStructured: Structured, CustomStringConvertible {
+public protocol NativeTypesStructured: Structured, CustomStringConvertible, ErrorGenerating {
     var object: Any {get}
     init(object: Any)
 }

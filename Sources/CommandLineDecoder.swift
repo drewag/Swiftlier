@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class CommandLineDecoder: DecoderType {
+public class CommandLineDecoder: Decoder {
     public let mode = DecodingMode.saveLocally
 
-    public class func prompt<E: DecodableType>() throws -> E {
+    public class func prompt<E: Decodable>() throws -> E {
         let decoder = CommandLineDecoder()
 
         return try E(decoder: decoder)
@@ -19,7 +19,7 @@ public class CommandLineDecoder: DecoderType {
 
     fileprivate init() {}
 
-    public func decode<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> Value {
+    public func decode<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> Value {
         var value: Value?
         repeat {
             value = self.promptForValue(withName: key.path.joined(separator: " "))
@@ -32,21 +32,21 @@ public class CommandLineDecoder: DecoderType {
         return value!
     }
 
-    public func decode<Value: DecodableType>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
+    public func decode<Value: Decodable>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
         return self.promptForValue(withName: key.path.joined(separator: " "))
     }
 
-    public func decodeArray<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> [Value] {
+    public func decodeArray<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> [Value] {
         fatalError("Not available")
     }
 
-    public func decodeAsEntireValue<Value: DecodableType>() throws -> Value {
+    public func decodeAsEntireValue<Value: Decodable>() throws -> Value {
         fatalError("Not available")
     }
 }
 
 private extension CommandLineDecoder {
-    func promptForValue<Value: DecodableType>(withName name: String) -> Value? {
+    func promptForValue<Value: Decodable>(withName name: String) -> Value? {
         var input: String = ""
         repeat {
             print("\(name)? ", terminator: "")

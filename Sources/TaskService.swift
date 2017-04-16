@@ -11,7 +11,7 @@ import Foundation
 
 public enum TaskResult {
     case success
-    case error(UserReportableError)
+    case error(ReportableError)
 }
 
 public final class TaskService {

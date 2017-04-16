@@ -9,7 +9,7 @@
 #if os(iOS)
 import UIKit
 
-open class FormViewController: UITableViewController {
+open class FormViewController: UITableViewController, ErrorGenerating {
     public var form: Form
     public var onBack: ((_ canceled: Bool) -> ())?
 
@@ -58,17 +58,15 @@ open class FormViewController: UITableViewController {
             case .passed:
                 break
             case .failed:
-                throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "Unkown reason", reason: .user)
+                throw self.userError("saving", because: "of an unknown reason")
             case .failedWithReason(let reason):
-                throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "\(reason)", reason: .user)
+                throw self.userError("saving", because: reason)
             }
             self.submit()
         }
-        catch let error as UserReportableError {
-            self.showAlert(withError: error)
-        }
         catch let error {
-            fatalError("\(error)")
+            let error = self.error("saving", from: error)
+            self.showAlert(withError: error)
         }
     }
 

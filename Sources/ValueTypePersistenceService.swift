@@ -13,16 +13,11 @@ public protocol InstanceEquatable {
     func isSameInstanceAs(_ other: Self) -> Bool
 }
 
-open class ValueTypePersistenceService<Value: CodableType>: PersistenceService<Value> where Value: InstanceEquatable, Value: Equatable {
+open class ValueTypePersistenceService<Value: Codable>: PersistenceService<Value>, ErrorGenerating where Value: InstanceEquatable, Value: Equatable {
     public func save(value: Value) throws {
         for existingValue in self.values {
             if value.isSameInstanceAs(existingValue) {
-                throw LocalUserReportableError(
-                    source: "ObjectPersistenceService",
-                    operation: "creating \(self.valueName.lowercased())",
-                    message: "That \(self.valueName.lowercased()) exists. Please make it unique and try again.",
-                    reason: .user
-                )
+                throw self.error("creating \(self.valueName.lowercased())", because: "it already exists")
             }
         }
 
@@ -43,12 +38,7 @@ open class ValueTypePersistenceService<Value: CodableType>: PersistenceService<V
             }
         }
 
-        throw LocalUserReportableError(
-            source: "ObjectPersistenceService",
-            operation: "deleting \(self.valueName.lowercased())",
-            message: "\(self.valueName) not found",
-            reason: .internal
-        )
+        throw self.error("deleting \(self.valueName.lowercased())", because: "it could not be found")
     }
 
     public func update(value: Value, withUpdatedValue updatedValue: Value) throws {
@@ -67,12 +57,7 @@ open class ValueTypePersistenceService<Value: CodableType>: PersistenceService<V
             }
         }
 
-        throw LocalUserReportableError(
-            source: "ObjectPersistenceService",
-            operation: "updating \(self.valueName.lowercased())",
-            message: "\(self.valueName) not found",
-            reason: .internal
-        )
+        throw self.error("updating \(self.valueName.lowercased())", because: "it could not be found")
     }
 
     public func replace(values: [Value]) throws {

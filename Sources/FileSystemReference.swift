@@ -1,5 +1,5 @@
 //
-//  FileSystemReferenceType.swift
+//  FileSystemReference.swift
 //  ResourceReferences
 //
 //  Created by Andrew J Wagner on 8/31/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension FileSystemReferenceType where Self: ReferenceType {
+extension FileSystemReference where Self: Reference {
     public var name: String {
         return URL(fileURLWithPath: self.path).lastPathComponent
     }

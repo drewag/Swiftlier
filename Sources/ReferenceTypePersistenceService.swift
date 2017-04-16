@@ -1,5 +1,5 @@
 //
-//  ReferenceTypePersistenceService.swift
+//  ReferencePersistenceService.swift
 //  SwiftPlusPlus
 //
 //  Created by Andrew J Wagner on 2/21/17.
@@ -9,7 +9,7 @@
 #if os(iOS)
 import Foundation
 
-open class ReferenceTypePersistenceService<Value: CodableType>: PersistenceService<Value> where Value: AnyObject {
+open class ReferencePersistenceService<Value: Codable>: PersistenceService<Value>, ErrorGenerating where Value: AnyObject {
     public func saveAllValues() throws {
         try self.save(values: self.values)
     }
@@ -35,12 +35,7 @@ open class ReferenceTypePersistenceService<Value: CodableType>: PersistenceServi
             }
         }
 
-        throw LocalUserReportableError(
-            source: "ObjectPersistenceService",
-            operation: "deleting \(self.valueName.lowercased())",
-            message: "\(self.valueName) not found",
-            reason: .internal
-        )
+        throw self.error("deleting \(self.valueName.lowercased())", because: "\(self.valueName) could not be not found")
     }
 }
 #endif

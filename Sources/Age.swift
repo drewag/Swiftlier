@@ -6,7 +6,7 @@
 //
 //
 
-public enum Age: EncodableType {
+public enum Age: Encodable {
     case Years(Int)
 
     public var years: Int {
@@ -17,11 +17,11 @@ public enum Age: EncodableType {
     }
 
     class SelfKey: CoderKey<Int> {}
-    public init(decoder: DecoderType) throws {
+    public init(decoder: Decoder) throws {
         self = Age.Years(try decoder.decode(SelfKey.self))
     }
 
-    public func encode(_ encoder: EncoderType) {
+    public func encode(_ encoder: Encoder) {
         encoder.encode(self.years, forKey: SelfKey.self)
     }
 }

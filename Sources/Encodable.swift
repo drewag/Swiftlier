@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol EncodableType {
-    func encode(_ encoder: EncoderType)
+public protocol Encodable {
+    func encode(_ encoder: Encoder)
 }
 
-extension EncodableType where Self: DecodableType {
+extension Encodable where Self: Decodable {
     public func copyUsingEncoding() -> Self {
         let object = NativeTypesEncoder.objectFromEncodable(self, mode: .saveLocally)
         return try! NativeTypesDecoder.decodableTypeFromObject(object, mode: .saveLocally)

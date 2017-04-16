@@ -1,5 +1,5 @@
 //
-//  FileSystemExtendableReferenceType.swift
+//  FileSystemExtendableReference.swift
 //  ResourceReferences
 //
 //  Created by Andrew J Wagner on 8/31/15.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension FileSystemReferenceType where Self: ExtendableReferenceType {
-    public func append(component: String) throws -> ReferenceType {
+extension FileSystemReference where Self: ExtendableReference {
+    public func append(component: String) throws -> Reference {
         let newPath = URL(fileURLWithPath: self.path).appendingPathComponent(component).relativePath
         return try self.fileSystem.reference(forPath: newPath)
     }

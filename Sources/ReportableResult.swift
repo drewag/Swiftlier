@@ -6,7 +6,7 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
-public enum UserReportableResult<Value> {
+public enum ReportableResult<Value> {
     case success(Value)
-    case error(UserReportableError)
+    case error(ReportableError)
 }

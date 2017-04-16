@@ -36,14 +36,14 @@ public class PrioritizedOperationQueue {
         self.parentQueue = parent
     }
 
-    fileprivate var onFinishedAllRemainingOperations: [(UserReportableResult<Void>) -> ()] = []
+    fileprivate var onFinishedAllRemainingOperations: [(ReportableResult<Void>) -> ()] = []
     public let isExecuting = Observable(false)
 
     public func queueOperation<Result, Identifier: PrioritizedOperationIdentifier>(
         _ identifier: Identifier,
         prioritizedAs priority: Priority,
-        execute: @escaping (_ childOperationQueue: PrioritizedOperationQueue, _ completion: @escaping (UserReportableResult<Result>) -> ()) -> (),
-        onError: ((UserReportableError) -> ())?,
+        execute: @escaping (_ childOperationQueue: PrioritizedOperationQueue, _ completion: @escaping (ReportableResult<Result>) -> ()) -> (),
+        onError: ((ReportableError) -> ())?,
         onSuccess: ((Result) -> ())?
         )
     {
@@ -61,7 +61,7 @@ public class PrioritizedOperationQueue {
         self.insert(new: existingOperation)
     }
 
-    public func execute(onFinishedAllRemainingOperations: ((UserReportableResult<Void>) -> ())? = nil) {
+    public func execute(onFinishedAllRemainingOperations: ((ReportableResult<Void>) -> ())? = nil) {
         if let onFinishedAllRemainingOperations = onFinishedAllRemainingOperations {
             self.onFinishedAllRemainingOperations.append(onFinishedAllRemainingOperations)
         }
@@ -77,8 +77,8 @@ public class PrioritizedOperationQueue {
 
 private protocol AnyOperation {
     var priority: PrioritizedOperationQueue.Priority {set get}
-    var onError: [(UserReportableError) -> ()] {get set}
-    func execute(on queue: PrioritizedOperationQueue, onComplete: @escaping (UserReportableError?) -> ())
+    var onError: [(ReportableError) -> ()] {get set}
+    func execute(on queue: PrioritizedOperationQueue, onComplete: @escaping (ReportableError?) -> ())
 }
 
 private class Operation<Result, Identifier: PrioritizedOperationIdentifier>: AnyOperation {
@@ -86,15 +86,15 @@ private class Operation<Result, Identifier: PrioritizedOperationIdentifier>: Any
 
     var isExecuting = false
 
-    var execute: (_ childOperationQueue: PrioritizedOperationQueue, _ completion: @escaping (UserReportableResult<Result>) -> ()) -> ()
-    var onError: [(UserReportableError) -> ()]
+    var execute: (_ childOperationQueue: PrioritizedOperationQueue, _ completion: @escaping (ReportableResult<Result>) -> ()) -> ()
+    var onError: [(ReportableError) -> ()]
     var onSuccess: [(Result) -> ()]
     var priority: PrioritizedOperationQueue.Priority
 
     init(
         identifier: Identifier,
-        execute: @escaping (_ childOperationQueue: PrioritizedOperationQueue, _ completion: @escaping (UserReportableResult<Result>) -> ()) -> (),
-        onError: ((UserReportableError) -> ())?,
+        execute: @escaping (_ childOperationQueue: PrioritizedOperationQueue, _ completion: @escaping (ReportableResult<Result>) -> ()) -> (),
+        onError: ((ReportableError) -> ())?,
         onSuccess: ((Result) -> ())?,
         priority: PrioritizedOperationQueue.Priority
         )
@@ -163,7 +163,7 @@ private extension PrioritizedOperationQueue {
         }
     }
 
-    func cancelRemainingOperations(dueToError error: UserReportableError) {
+    func cancelRemainingOperations(dueToError error: ReportableError) {
         for operation in self.operations {
             operation.report(error: error)
         }
@@ -171,7 +171,7 @@ private extension PrioritizedOperationQueue {
         self.reportFinishedRemainign(withResult: .error(error))
     }
 
-    func reportFinishedRemainign(withResult result: UserReportableResult<Void>) {
+    func reportFinishedRemainign(withResult result: ReportableResult<Void>) {
         for block in self.onFinishedAllRemainingOperations {
             block(result)
         }
@@ -181,7 +181,7 @@ private extension PrioritizedOperationQueue {
 }
 
 private extension AnyOperation {
-    func report(error: UserReportableError) {
+    func report(error: ReportableError) {
         for block in self.onError {
             block(error)
         }
@@ -189,7 +189,7 @@ private extension AnyOperation {
 }
 
 private extension Operation {
-    func addListeners(onError: ((UserReportableError) -> ())?, onSuccess: ((Result) -> ())?) {
+    func addListeners(onError: ((ReportableError) -> ())?, onSuccess: ((Result) -> ())?) {
         if let onError = onError {
             self.onError.append(onError)
         }
@@ -204,7 +204,7 @@ private extension Operation {
         }
     }
 
-    func execute(on queue: PrioritizedOperationQueue, onComplete: @escaping (UserReportableError?) -> ()) {
+    func execute(on queue: PrioritizedOperationQueue, onComplete: @escaping (ReportableError?) -> ()) {
         let childQueue = PrioritizedOperationQueue(parent: queue)
         self.execute(childQueue) { result in
             switch result {

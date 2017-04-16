@@ -1,5 +1,5 @@
 //
-//  FileSystemUnkownReferenceType.swift
+//  FileSystemUnkownReference.swift
 //  ResourceReferences
 //
 //  Created by Andrew J Wagner on 8/30/15.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension FileSystemReferenceType where Self: UnknownReferenceType {
-    public func createFile(content: Data) -> ResourceReferenceType {
+extension FileSystemReference where Self: UnknownReference {
+    public func createFile(content: Data) -> ResourceReference {
         self.fileSystem.createFile(at: self.path, with: content)
         return File(path: self.path, fileSystem: self.fileSystem)
     }
 
-    public func createDirectory() -> DirectoryReferenceType {
+    public func createDirectory() -> DirectoryReference {
         self.fileSystem.createDirectory(at: self.path)
         return Directory(path: self.path, fileSystem: self.fileSystem)
     }

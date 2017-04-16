@@ -23,7 +23,7 @@ public struct XML: NativeTypesStructured {
         let delegate = ParserDelegate()
         parser.delegate = delegate
         guard parser.parse(), let object = delegate.object else {
-            throw LocalUserReportableError(source: "XML", operation: "parsing xml", message: "failed to parse xml", reason: .internal)
+            throw XML.error("parsing xml", because: "of an unknown reason")
         }
         self.object = object
     }

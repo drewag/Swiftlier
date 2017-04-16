@@ -1,5 +1,5 @@
 //
-//  EncoderType.swift
+//  Encoder.swift
 //  AtomicObjectFiles
 //
 //  Created by Andrew J Wagner on 10/9/15.
@@ -14,14 +14,14 @@ public enum EncodingMode {
     case update
 }
 
-public protocol EncoderType {
+public protocol Encoder {
     var mode: EncodingMode {get}
 
-    func encode<Value: EncodableType>(_ data: Value, forKey key: CoderKey<Value>.Type)
-    func encode<Value: EncodableType>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type)
-    func encode<Value: EncodableType>(_ data: [Value], forKey key: CoderKey<Value>.Type)
+    func encode<Value: Encodable>(_ data: Value, forKey key: CoderKey<Value>.Type)
+    func encode<Value: Encodable>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type)
+    func encode<Value: Encodable>(_ data: [Value], forKey key: CoderKey<Value>.Type)
 
     // Only the last call to this will apply as it replaces the entire value dictionary with this value
-    func encodeAsEntireValue<Value: EncodableType>(_ data: Value?)
+    func encodeAsEntireValue<Value: Encodable>(_ data: Value?)
     func cancelEncoding()
 }

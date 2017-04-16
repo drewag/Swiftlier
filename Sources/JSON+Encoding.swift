@@ -10,21 +10,21 @@ import Foundation
 
 
 extension JSON {
-    public static func encode(_ encodable: EncodableType, mode: EncodingMode) -> String {
+    public static func encode(_ encodable: Encodable, mode: EncodingMode) -> String {
         let object = NativeTypesEncoder.objectFromEncodable(encodable, mode: mode)
         return try! self.valueString(fromRaw: object)
     }
 
-    public static func encode(_ encodable: EncodableType, mode: EncodingMode) -> Data {
+    public static func encode(_ encodable: Encodable, mode: EncodingMode) -> Data {
         return self.encode(encodable, mode: mode).data(using: .utf8)!
     }
 
-    public static func encode(_ encodables: [EncodableType], mode: EncodingMode) -> String {
+    public static func encode(_ encodables: [Encodable], mode: EncodingMode) -> String {
         let object = NativeTypesEncoder.objectFromCombiningEncodables(encodables, mode: mode)
         return try! self.valueString(fromRaw: object)
     }
 
-    public static func encode(_ encodables: [String:EncodableType], mode: EncodingMode) -> String {
+    public static func encode(_ encodables: [String:Encodable], mode: EncodingMode) -> String {
         var object = [String:Any]()
 
         for (key, value) in encodables {
@@ -34,11 +34,11 @@ extension JSON {
         return try! self.valueString(fromRaw: object)
     }
 
-    public static func encode(_ encodables: [String:EncodableType], mode: EncodingMode) -> Data {
+    public static func encode(_ encodables: [String:Encodable], mode: EncodingMode) -> Data {
         return self.encode(encodables, mode: mode).data(using: .utf8)!
     }
 
-    public static func encode(_ encodables: [EncodableType], mode: EncodingMode) -> Data {
+    public static func encode(_ encodables: [Encodable], mode: EncodingMode) -> Data {
         return self.encode(encodables, mode: mode).data(using: .utf8)!
     }
 
@@ -79,7 +79,7 @@ private extension JSON {
             let output = try array.map({try self.valueString(fromRaw: $0)}).joined(separator: ",")
             return "[\(output)]"
         default:
-            throw LocalUserReportableError(source: "JSONEncoder", operation: "encoding", message: "Found unrecognized value", reason: .internal)
+            throw self.error("encoding raw \(raw)", because: "it is of an unrecognized type")
         }
     }
 

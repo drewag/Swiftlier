@@ -8,12 +8,12 @@
 
 import Foundation
 
-public protocol FileSystemReferenceType {
+public protocol FileSystemReference {
     var path: String {get}
     var fileSystem: FileSystem {get}
 }
 
-public struct FileSystem {
+public struct FileSystem: ErrorGenerating {
     public static let main = FileSystem()
 
     let manager = FileManager.default
@@ -30,7 +30,7 @@ public struct FileSystem {
         return Directory(path: url.relativePath, fileSystem: self)
     }
 
-    public func reference(forPath path: String) throws -> ReferenceType {
+    public func reference(forPath path: String) throws -> Reference {
         try self.validate(path: path)
         do {
             if try self.isDirectory(at: path) {
@@ -73,18 +73,18 @@ public struct FileSystem {
         try! self.manager.removeItem(atPath: path)
     }
 
-    func contentsOfDirectory(at path: String) throws -> [ExistingReferenceType] {
+    func contentsOfDirectory(at path: String) throws -> [ExistingReference] {
         if let enumerator = self.manager.enumerator(atPath: path) {
-            var contents = [ExistingReferenceType]()
+            var contents = [ExistingReference]()
             while let fileOrDirectory = enumerator.nextObject() as? String {
                 enumerator.skipDescendants()
                 let fullPath = URL(fileURLWithPath: path).appendingPathComponent(fileOrDirectory).relativePath
-                contents.append(try! self.reference(forPath: fullPath) as! ExistingReferenceType)
+                contents.append(try! self.reference(forPath: fullPath) as! ExistingReference)
             }
             return contents
         }
         else {
-            throw ReferenceError.NotFound
+            throw self.error("loading contents of directory at \(path)", because: ReferenceErrorReason.notFound)
         }
     }
 
@@ -98,7 +98,7 @@ public struct FileSystem {
 
         for component in components {
             guard try self.isNotFile(at: url.relativePath) else {
-                throw ReferenceError.InvalidPath
+                throw self.error("creating reference to \(path)", because: ReferenceErrorReason.invalidPath)
             }
             url = url.appendingPathComponent(component)
         }
@@ -129,7 +129,7 @@ private extension FileSystem {
     }
 }
 
-public struct Directory: FileSystemReferenceType, DirectoryReferenceType, ExistingReferenceType, ExtendableReferenceType {
+public struct Directory: FileSystemReference, DirectoryReference, ExistingReference, ExtendableReference {
     public let path: String
     public let fileSystem: FileSystem
 
@@ -138,7 +138,7 @@ public struct Directory: FileSystemReferenceType, DirectoryReferenceType, Existi
     }
 }
 
-public struct File: FileSystemReferenceType, ResourceReferenceType, ExistingReferenceType, ExtendableReferenceType {
+public struct File: FileSystemReference, ResourceReference, ExistingReference, ExtendableReference {
     public let path: String
     public let fileSystem: FileSystem
 
@@ -154,7 +154,7 @@ public struct File: FileSystemReferenceType, ResourceReferenceType, ExistingRefe
     }
 }
 
-public struct NotFoundPath: FileSystemReferenceType, UnknownReferenceType, ExtendableReferenceType {
+public struct NotFoundPath: FileSystemReference, UnknownReference, ExtendableReference {
     public let path: String
     public let fileSystem: FileSystem
 
@@ -162,14 +162,14 @@ public struct NotFoundPath: FileSystemReferenceType, UnknownReferenceType, Exten
         return self.path
     }
 
-    public func createLink(to: ResourceReferenceType) -> ResourceReferenceType {
+    public func createLink(to: ResourceReference) -> ResourceReference {
         self.fileSystem.createLink(from: self.fullPath(), to: to.fullPath())
-        return to.refresh() as! ResourceReferenceType
+        return to.refresh() as! ResourceReference
     }
 }
 
-extension FileSystemReferenceType {
-    public func refresh() -> ReferenceType {
+extension FileSystemReference {
+    public func refresh() -> Reference {
         return try! self.fileSystem.reference(forPath: self.path)
     }
 

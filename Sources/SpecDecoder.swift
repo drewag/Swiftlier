@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class SpecDecoder: DecoderType {
+public class SpecDecoder: Decoder {
     public let mode = DecodingMode.saveLocally
     private var specDict = [String:String]()
 
-    public class func spec<E: DecodableType>(forType: E.Type) throws -> String {
+    public class func spec<E: Decodable>(forType: E.Type) throws -> String {
         let decoder = SpecDecoder()
 
         let _ = try E(decoder: decoder)
@@ -22,7 +22,7 @@ public class SpecDecoder: DecoderType {
 
     fileprivate init() {}
 
-    public func decode<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> Value {
+    public func decode<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> Value {
         let name = key.path.joined(separator: "")
         let value: Value
         let type: String
@@ -31,7 +31,7 @@ public class SpecDecoder: DecoderType {
         return value
     }
 
-    public func decode<Value: DecodableType>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
+    public func decode<Value: Decodable>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
         let name = key.path.joined(separator: "")
         let value: Value
         let type: String
@@ -40,17 +40,17 @@ public class SpecDecoder: DecoderType {
         return value
     }
 
-    public func decodeArray<Value: DecodableType>(_ key: CoderKey<Value>.Type) throws -> [Value] {
+    public func decodeArray<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> [Value] {
         fatalError("Not available")
     }
 
-    public func decodeAsEntireValue<Value: DecodableType>() throws -> Value {
+    public func decodeAsEntireValue<Value: Decodable>() throws -> Value {
         fatalError("Not available")
     }
 }
 
 private extension SpecDecoder {
-    func typeAndValue<Value: DecodableType>(withName name: String, isOptional: Bool) -> (String,Value) {
+    func typeAndValue<Value: Decodable>(withName name: String, isOptional: Bool) -> (String,Value) {
         let value: Value
         let type: String
         if Value.self == String.self {

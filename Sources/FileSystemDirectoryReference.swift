@@ -1,5 +1,5 @@
 //
-//  FileSystemDirectoryReferenceType.swift
+//  FileSystemDirectoryReference.swift
 //  ResourceReferences
 //
 //  Created by Andrew J Wagner on 8/30/15.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension FileSystemReferenceType where Self: DirectoryReferenceType {
-    public func contents() -> [ExistingReferenceType] {
+extension FileSystemReference where Self: DirectoryReference {
+    public func contents() -> [ExistingReference] {
         return try! self.fileSystem.contentsOfDirectory(at: self.path)
     }
 }

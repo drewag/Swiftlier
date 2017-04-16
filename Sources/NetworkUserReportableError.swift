@@ -8,81 +8,32 @@
 
 import Foundation
 
-public struct NetworkUserReportableError: UserReportableError {
-    public enum Reason {
-        case unauthorized
-        case noInternet
-        case notFound
-        case gone
-        case untrusted
-        case `internal`(message: String)
-        case user(message: String)
-    }
+public struct NetworkResponseErrorReason {
+    public static let unauthorized = ErrorReason("you are not authorized")
+    public static let noInternet = ErrorReason("you are not connected to the internet")
+    public static let notFound = ErrorReason("the requested endpoint could not be found")
+    public static let gone = ErrorReason("this app is out of date. Please update to the latest version.")
+    public static let untrusted = ErrorReason("the web server can no longer be trusted. Please update to the latest version of this app.")
+    public static let invalid = ErrorReason("the request was invalid")
+    public static let unknown = ErrorReason("there was an unknown error")
+}
 
-    let source: String
-    public let operation: String
-    public let reason: Reason
-    public let otherInfo: [String : String]?
-
-    public init(source: String, operation: String, reason: Reason) {
-        self.source = source
-        self.operation = operation
-        self.reason = reason
-        self.otherInfo = nil
-    }
-
-    public init(source: String, operation: String, error: Error) {
-        self.source = source
-        self.operation = operation
-        self.otherInfo = nil
-        if let error = error as? NSError, error.domain == "NSURLErrorDomain" {
-            switch error.code {
-            case -1009:
-                self.reason = .noInternet
-            case -999:
-                self.reason = .untrusted
-            default:
-                self.reason = .internal(message: error.localizedDescription)
-
-            }
-        }
-        else {
-            self.reason = .internal(message: error.localizedDescription)
-        }
-    }
-
-    #if os(iOS)
-    public init?(source: String, operation: String, response: URLResponse?, data: Data?) {
-        let response = response as? HTTPURLResponse
-        self.source = source
-        self.operation = operation
-        if let response = response {
+extension ErrorGenerating {
+    public func error(_ doing: String, from response: URLResponse?, and data: Data?) -> ReportableError? {
+        if let response = response as? HTTPURLResponse {
             switch response.statusCode {
             case 404:
-                self.reason = .notFound
-                self.otherInfo = nil
+                return self.error(doing, because: NetworkResponseErrorReason.notFound)
             case 401:
-                self.reason = .unauthorized
-                self.otherInfo = nil
+                return self.error(doing, because: NetworkResponseErrorReason.unauthorized)
             case 410:
-                self.reason = .gone
-                self.otherInfo = nil
+                return self.error(doing, because: NetworkResponseErrorReason.gone)
             case let x where x >= 400 && x < 500:
-                if let data = data {
-                    (self.reason, self.otherInfo) = NetworkUserReportableError.typeAndOtherInfo(fromData: data, andResponse: response)
-                }
-                else {
-                    self.reason = .user(message: "Invalid request")
-                    self.otherInfo = nil
-                }
+                return self.error(doing, fromNetworkData: data, for: response)
+                    ?? self.error(doing, because: NetworkResponseErrorReason.invalid)
             case let x where x >= 500 && x < 600:
-                if let data = data {
-                    (self.reason, self.otherInfo) = NetworkUserReportableError.typeAndOtherInfo(fromData: data, andResponse: response)
-                }
-                else {
-                    self.reason = .internal(message: "Unknown error")
-                    self.otherInfo = nil
-                }
+                return self.error(doing, fromNetworkData: data, for: response)
+                ?? self.error(doing, because: NetworkResponseErrorReason.unknown)
             default:
                 return nil
             }
@@ -91,50 +42,12 @@ public struct NetworkUserReportableError: UserReportableError {
             return nil
         }
     }
-    #endif
 
-    public var alertTitle: String {
-        switch self.reason {
-        case .user:
-            return "Problem \(self.operation)"
-        case .internal:
-            return "Internal Error"
-        case .noInternet:
-            return "No Interent Connection"
-        case .unauthorized:
-            return "Unauthorized"
-        case .notFound:
-            return "Endpoint not found"
-        case .gone:
-            return "App Out of Date"
-        case .untrusted:
-            return "Untrusted Web Server"
+    private func error(_ doing: String, fromNetworkData data: Data?, for response: HTTPURLResponse) -> ReportableError? {
+        guard let data = data else {
+            return nil
         }
-    }
 
-    public var alertMessage: String {
-        switch self.reason {
-        case .internal(let message):
-            return "Please try again. If the problem persists please contact support with the following description: \(message)"
-        case .user(let message):
-            return message
-        case .noInternet:
-            return "Please make sure you are connected to the internet and try again"
-        case .unauthorized:
-            return "You have been signed out. Please sign in again."
-        case .notFound:
-            return "Please try again. If the problem persists please contact support"
-        case .gone:
-            return "This app is out of date. Please update to the latest version."
-        case .untrusted:
-            return "The web server can no longer be trusted. Please update to the latest version. If this problem still occures please contact us immediately."
-        }
-    }
-}
-
-private extension NetworkUserReportableError {
-    #if os(iOS)
-    static func typeAndOtherInfo(fromData data: Data, andResponse response: HTTPURLResponse) -> (reason: Reason, otherInfo: [String:String]?){
         let encoding: String.Encoding
         if let encodingName = response.textEncodingName {
             encoding = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(encodingName as CFString!)))
@@ -142,16 +55,15 @@ private extension NetworkUserReportableError {
         else {
             encoding = .utf8
         }
-        if let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
-            , let dict = json as? [String:String]
-            , let message = dict["message"]
+        if let json = try? JSON(data: data)
+            , let message = json["message"]?.string
         {
-            return (reason: .user(message: message), otherInfo: dict)
+            let reason = ErrorReasonWithExtraInfo(because: message, extraInfo: json)
+            return self.error(doing, because: reason)
         }
         else {
-            let string = String(data: data, encoding: encoding)
-            return (reason: .user(message: string ?? ""), otherInfo: nil)
+            let string = String(data: data, encoding: encoding) ?? ""
+            return self.error(doing, because: ErrorReason(string))
         }
     }
-    #endif
 }

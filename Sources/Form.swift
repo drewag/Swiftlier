@@ -36,7 +36,7 @@ public protocol SimpleField: Field {
     func update(with string: String)
 }
 
-public struct Form {
+public struct Form: ErrorGenerating {
     public struct Builder {
         var sections = OrderedDictionary<String, Section>()
 
@@ -95,9 +95,9 @@ public struct Form {
                 case .passed:
                     continue
                 case .failed:
-                    throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "\(field.label) is not valid", reason: .user)
+                    throw self.userError("saving", because: "\(field.label) is not valid")
                 case .failedWithReason(let reason):
-                    throw LocalUserReportableError(source: "FormViewController", operation: "saving", message: "\(field.label) \(reason)", reason: .user)
+                    throw self.userError("saving", because: "\(field.label) \(reason)")
                 }
             }
         }

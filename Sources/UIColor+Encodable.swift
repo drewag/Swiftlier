@@ -9,7 +9,7 @@
 #if os(iOS)
 import UIKit
 
-public struct Color: CodableType {
+public struct Color: Codable {
     public let color: UIColor
 
     public init(_ color: UIColor) {
@@ -23,7 +23,7 @@ public struct Color: CodableType {
         class alpha: CoderKey<Float> {}
     }
 
-    public func encode(_ encoder: EncoderType) {
+    public func encode(_ encoder: Encoder) {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -36,7 +36,7 @@ public struct Color: CodableType {
         encoder.encode(Float(alpha), forKey: Keys.alpha.self)
     }
 
-    public init(decoder: DecoderType) throws {
+    public init(decoder: Decoder) throws {
         let red = CGFloat(try decoder.decode(Keys.red.self))
         let green = CGFloat(try decoder.decode(Keys.red.self))
         let blue = CGFloat(try decoder.decode(Keys.red.self))

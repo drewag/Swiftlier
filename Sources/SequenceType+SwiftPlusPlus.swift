@@ -27,20 +27,6 @@ import Foundation
 
 extension Sequence {
     /**
-        - parameter test: function to test if an elemnt passes
-
-        - returns: true if any element passes the given test
-    */
-    public func containsValue(passing test: (_ object: Self.Iterator.Element) -> Bool) -> Bool {
-        for object in self {
-            if test(object) {
-                return true
-            }
-        }
-        return false
-    }
-
-    /**
         - parameter test: function to test if an element passes
 
         - returns: the index of a passing element or nil if none match
