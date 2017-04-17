@@ -50,11 +50,11 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
     }
 
     public convenience init(_ command: String, captureOutput: Bool = true) {
-        self.init(command.components(separatedBy: " "), parentCommand: nil, captureOutput: captureOutput)
+        self.init(ShellCommand.commands(from: command), parentCommand: nil, captureOutput: captureOutput)
     }
 
     private convenience init(_ command: String, parentCommand: ShellCommand?, captureOutput: Bool = true) {
-        self.init(command.components(separatedBy: " "), parentCommand: parentCommand, captureOutput: captureOutput)
+        self.init(ShellCommand.commands(from: command), parentCommand: parentCommand, captureOutput: captureOutput)
     }
 
     @discardableResult
@@ -104,6 +104,44 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
 private var commandsToKill = [ShellCommand]()
 
 private extension ShellCommand {
+    enum CommandMode {
+        case singleQuotes
+        case doubleQuotes
+        case none
+    }
+
+    static func commands(from: String) -> [String] {
+        var mode = CommandMode.none
+        var output = [String]()
+
+        var currentCommand = ""
+        for character in from.characters {
+            switch (character, mode) {
+            case (" ", .none):
+                if !currentCommand.isEmpty {
+                    output.append(currentCommand)
+                    currentCommand = ""
+                }
+            case ("\"", .none):
+                mode = .doubleQuotes
+            case ("\"", .doubleQuotes):
+                mode = .none
+            case ("'", .none):
+                mode = .singleQuotes
+            case ("'", .singleQuotes):
+                mode = .none
+            default:
+                currentCommand.append(character)
+            }
+        }
+
+        if !currentCommand.isEmpty {
+            output.append(currentCommand)
+        }
+
+        return output
+    }
+
     func startExecution() {
         var commands = [ShellCommand]()
         var command: ShellCommand? = self
