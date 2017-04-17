@@ -25,6 +25,28 @@
 
 import Foundation
 
+private struct ByTwoSequenceIterator<S: Sequence>: IteratorProtocol {
+    var sourceIterator: S.Iterator
+    var previous: S.Iterator.Element? = nil
+
+    init(source: S) {
+        self.sourceIterator = source.makeIterator()
+    }
+
+    mutating func next() -> (S.Iterator.Element, S.Iterator.Element)? {
+        while let element = self.sourceIterator.next() {
+            guard let previous = previous else {
+                self.previous = element
+                continue
+            }
+            self.previous = element
+            return (previous, element)
+        }
+
+        return nil
+    }
+}
+
 extension Sequence {
     /**
         - parameter test: function to test if an element passes
@@ -48,6 +70,12 @@ extension Sequence {
     */
     public func extractElements<C: Sequence>() -> [C.Iterator.Element] {
         return self.map({$0 as? C.Iterator.Element}).flatMap({$0})
+    }
+
+    public func enumerateByTwos() -> AnySequence<(Self.Iterator.Element, Self.Iterator.Element)> {
+        return AnySequence({
+            return ByTwoSequenceIterator(source: self)
+        })
     }
 }
 
