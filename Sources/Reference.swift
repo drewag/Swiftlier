@@ -37,6 +37,10 @@ extension Reference {
     public func fileUrl() -> URL {
         return URL(fileURLWithPath: self.fullPath())
     }
+
+    public var `extension`: String {
+        return URL(fileURLWithPath: self.fullPath()).pathExtension
+    }
 }
 
 public protocol ExtendableReference: Reference {
@@ -124,10 +128,6 @@ extension ResourceReference {
         } while !lData.isEmpty
 
         return true
-    }
-
-    public var `extension`: String {
-        return URL(fileURLWithPath: self.fullPath()).pathExtension
     }
 
     public var nameWithoutExtension: String {
