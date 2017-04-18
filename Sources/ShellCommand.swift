@@ -12,6 +12,7 @@ import Foundation
 public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
     private let command: [String]
 
+    #if os(macOS)
     static let once: Void = {
         signal(SIGINT, { _ in
             for command in commandsToKill {
@@ -19,6 +20,7 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
             }
         })
     }()
+    #endif
 
     fileprivate let process = Process()
 
@@ -38,11 +40,15 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
             self.process.standardOutput = Pipe()
         }
 
+        #if os(macOS)
         ShellCommand.once
+        #endif
     }
 
     deinit {
+        #if os(macOS)
         self.process.terminate()
+        #endif
     }
 
     public convenience init(_ command: [String], captureOutput: Bool = true) {
@@ -79,6 +85,7 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
         }
     }
 
+    #if os(macOS)
     public func executeAsync() {
         self.startExecution()
     }
@@ -91,6 +98,7 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
     public func waitUntilExit() {
         self.process.waitUntilExit()
     }
+    #endif
 
     public func pipe(to: String, captureOutput: Bool = true) -> ShellCommand {
         return ShellCommand(to, parentCommand: self, captureOutput: captureOutput)
