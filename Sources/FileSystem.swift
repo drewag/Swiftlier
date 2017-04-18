@@ -32,54 +32,59 @@ public struct FileSystem: ErrorGenerating {
 
     public func reference(forPath path: String) throws -> Reference {
         try self.validate(path: path)
-        do {
-            if try self.isDirectory(at: path) {
-                return Directory(path: path, fileSystem: self)
-            }
-            else {
-                return File(path: path, fileSystem: self)
-            }
+        if self.isDirectory(at: path) {
+            return Directory(path: path, fileSystem: self)
         }
-        catch {}
-
+        else if !self.isNotFile(at: path) {
+            return File(path: path, fileSystem: self)
+        }
         return NotFoundPath(path: path, fileSystem: self)
     }
 
     func createFile(at path: String, with data: Data) {
-        let directory = URL(fileURLWithPath: path).deletingLastPathComponent().relativePath
-        try! self.manager.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
-        let _ = self.manager.createFile(atPath: path, contents: data, attributes: nil)
+        let url = URL(fileURLWithPath: path)
+        let directory = url.deletingLastPathComponent()
+        try! self.manager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
+        try! data.write(to: url)
     }
 
     func createLink(from: String, to: String) {
-        try! self.manager.createSymbolicLink(atPath: from, withDestinationPath: to)
+        let from = URL(fileURLWithPath: from)
+        let to = URL(fileURLWithPath: to)
+        try! self.manager.createSymbolicLink(at: from, withDestinationURL: to)
     }
 
     func createDirectory(at path: String) {
-        try! self.manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+        let url = URL(fileURLWithPath: path)
+        try! self.manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
     }
 
     func copyAndOverwrite(from: String, to: String) {
-        let _ = try? self.manager.removeItem(atPath: to)
-        try! self.manager.copyItem(atPath: from, toPath: to)
+        let from = URL(fileURLWithPath: from)
+        let to = URL(fileURLWithPath: to)
+        let _ = try? self.manager.removeItem(at: to)
+        try! self.manager.copyItem(at: from, to: to)
     }
 
     func moveAndOverwrite(from: String, to: String) {
-        let _ = try? self.manager.removeItem(atPath: to)
-        try! self.manager.moveItem(atPath: from, toPath: to)
+        let from = URL(fileURLWithPath: from)
+        let to = URL(fileURLWithPath: to)
+        let _ = try? self.manager.removeItem(at: to)
+        try! self.manager.moveItem(at: from, to: to)
     }
 
     func deleteItem(at path: String) {
-        try! self.manager.removeItem(atPath: path)
+        let url = URL(fileURLWithPath: path)
+        try! self.manager.removeItem(at: url)
     }
 
     func contentsOfDirectory(at path: String) throws -> [ExistingReference] {
-        if let enumerator = self.manager.enumerator(atPath: path) {
+        let url = URL(fileURLWithPath: path)
+        if let enumerator = self.manager.enumerator(at: url, includingPropertiesForKeys: nil) {
             var contents = [ExistingReference]()
-            while let fileOrDirectory = enumerator.nextObject() as? String {
+            while let fileOrDirectory = enumerator.nextObject() as? URL {
                 enumerator.skipDescendants()
-                let fullPath = URL(fileURLWithPath: path).appendingPathComponent(fileOrDirectory).relativePath
-                contents.append(try! self.reference(forPath: fullPath) as! ExistingReference)
+                contents.append(try! self.reference(forPath: fileOrDirectory.relativePath) as! ExistingReference)
             }
             return contents
         }
@@ -97,7 +102,7 @@ public struct FileSystem: ErrorGenerating {
         var url = URL(fileURLWithPath: first)
 
         for component in components {
-            guard try self.isNotFile(at: url.relativePath) else {
+            guard self.isNotFile(at: url.relativePath) else {
                 throw self.error("creating reference to \(path)", because: ReferenceErrorReason.invalidPath)
             }
             url = url.appendingPathComponent(component)
@@ -106,26 +111,20 @@ public struct FileSystem: ErrorGenerating {
 }
 
 private extension FileSystem {
-    func isDirectory(at path: String) throws -> Bool {
-        let attributes = try self.manager.attributesOfItem(atPath: path)
-        if let attribute = attributes[.type] as? FileAttributeType, attribute == .typeDirectory {
-            return true
-        }
-        else {
+    func isDirectory(at path: String) -> Bool {
+        var isDirectory = false
+        guard FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) else {
             return false
         }
+        return isDirectory
     }
 
-    func isNotFile(at path: String) throws -> Bool {
-        guard let attributes = try? self.manager.attributesOfItem(atPath: path) else {
+    func isNotFile(at path: String) -> Bool {
+        var isDirectory = false
+        guard FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) else {
             return true
         }
-        if let attribute = attributes[.type] as? FileAttributeType, attribute == .typeDirectory {
-            return true
-        }
-        else {
-            return false
-        }
+        return isDirectory
     }
 }
 
@@ -147,10 +146,18 @@ public struct File: FileSystemReference, ResourceReference, ExistingReference, E
     }
 
     public func lastModified() -> Date {
-        guard let attributes = try? self.fileSystem.manager.attributesOfItem(atPath: self.path) else {
-            return Date()
-        }
-        return attributes[.modificationDate] as? Date ?? Date()
+        #if os(Linux)
+            var st = stat()
+            stat(self.path, &st)
+            let ts = st.st_mtim
+            let double = Double(ts.tv_nsec) * 1.0E-9 + Double(ts.tv_sec)
+            return Date(timeIntervalSince1970: double)
+        #else
+            guard let attributes = try? self.fileSystem.manager.attributesOfItem(atPath: self.path) else {
+                return Date()
+            }
+            return attributes[.modificationDate] as? Date ?? Date()
+        #endif
     }
 }
 

@@ -48,13 +48,7 @@ extension ErrorGenerating {
             return nil
         }
 
-        let encoding: String.Encoding
-        if let encodingName = response.textEncodingName {
-            encoding = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(encodingName as CFString!)))
-        }
-        else {
-            encoding = .utf8
-        }
+        let encoding = String.Encoding.utf8
         if let json = try? JSON(data: data)
             , let message = json["message"]?.string
         {

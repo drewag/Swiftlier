@@ -22,13 +22,9 @@ extension FileSystemReference where Self: ResourceReference {
     }
 
     public func resolvingSymLinks() -> Reference {
-        let attributes = try! self.fileSystem.manager.attributesOfItem(atPath: self.path)
-        switch attributes[.type] as! FileAttributeType {
-        case FileAttributeType.typeSymbolicLink:
-            let path = try! self.fileSystem.manager.destinationOfSymbolicLink(atPath: self.path)
-            return try! self.fileSystem.reference(forPath: path)
-        default:
+        guard let newPath = try? self.fileSystem.manager.destinationOfSymbolicLink(atPath: self.path) else {
             return self
         }
+        return try! self.fileSystem.reference(forPath: newPath)
     }
 }

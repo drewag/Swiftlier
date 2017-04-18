@@ -68,6 +68,7 @@ public protocol ResourceReference: ExistingReference {
     func fileHandleForWriting() -> FileHandle
     func asURL() -> URL
     func lastModified() -> Date
+    func resolvingSymLinks() -> Reference
 }
 
 public func /(lhs: ExtendableReference, rhs: String) throws -> Reference {

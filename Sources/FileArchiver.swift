@@ -6,6 +6,7 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 public struct FileArchive: ErrorGenerating {
@@ -103,3 +104,4 @@ private extension FileArchive {
         //return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
     }
 }
+#endif
