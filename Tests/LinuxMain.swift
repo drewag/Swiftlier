@@ -1,6 +1,9 @@
 import XCTest
-@testable import swift_plus_plusTests
+@testable import SwiftPlusPlusTests
 
 XCTMain([
-     testCase(swift_plus_plusTests.allTests),
+     testCase(EventCenterTests.allTests),
+     testCase(Dictionary_SwiftPlusPlusTest.allTests),
+     testCase(MultiCallbackTests.allTests),
+     testCase(String_SwiftPlusPlusTests.allTests),
 ])

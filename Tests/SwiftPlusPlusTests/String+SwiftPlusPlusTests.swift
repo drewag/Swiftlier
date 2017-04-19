@@ -24,4 +24,12 @@ class String_SwiftPlusPlusTests: XCTestCase {
         let string = "Hello World"
         XCTAssertEqual(string.substring(to: 1), "H")
     }
+
+    static var allTests : [(String, (String_SwiftPlusPlusTests) -> () throws -> Void)] {
+        return [
+            ("testRepeat", testRepeat),
+            ("testSubstringFromIndex", testSubstringFromIndex),
+            ("testSubstringToIndex", testSubstringToIndex),
+        ]
+    }
 }

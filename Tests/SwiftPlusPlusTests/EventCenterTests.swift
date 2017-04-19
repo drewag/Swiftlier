@@ -20,11 +20,11 @@ class TestIntEvent: EventType {
 class TestOptionalEvent: EventType {
     typealias CallbackParam = String?
 }
-            
+
 
 class EventCenterTests: XCTestCase {
     let eventCenter = EventCenter()
-    
+
     func testObserving() {
         var triggeredString = ""
         eventCenter.triggerEvent(TestStringEvent.self, params: "Trigger 1")
@@ -35,7 +35,7 @@ class EventCenterTests: XCTestCase {
         eventCenter.triggerEvent(TestStringEvent.self, params: "Trigger 2")
         XCTAssertEqual(triggeredString, "Trigger 2")
     }
-    
+
     func testRemovingObserverForEvent() {
         var triggeredString = ""
         eventCenter.addObserver(self, forEvent: TestStringEvent.self) { param in
@@ -45,7 +45,7 @@ class EventCenterTests: XCTestCase {
         eventCenter.triggerEvent(TestStringEvent.self, params: "Trigger 2")
         XCTAssertEqual(triggeredString, "")
     }
-    
+
     func testRemovingObserverForAllEvents() {
         var triggeredString = ""
         var triggeredInt = 0
@@ -61,7 +61,7 @@ class EventCenterTests: XCTestCase {
         XCTAssertEqual(triggeredString, "")
         XCTAssertEqual(triggeredInt, 0)
     }
-    
+
     func testMultipleEvents() {
         var triggeredString = ""
         var triggeredInt = 0
@@ -82,18 +82,18 @@ class EventCenterTests: XCTestCase {
         eventCenter.triggerEvent(TestIntEvent.self, params: 1)
         XCTAssertEqual(triggeredString, "Trigger 1")
         XCTAssertEqual(triggeredInt, 1)
-        
+
         eventCenter.removeObserver(self, forEvent: TestStringEvent.self)
-        
+
         eventCenter.triggerEvent(TestStringEvent.self, params: "Trigger 2")
         XCTAssertEqual(triggeredString, "Trigger 1")
         XCTAssertEqual(triggeredInt, 1)
-        
+
         eventCenter.triggerEvent(TestIntEvent.self, params: 2)
         XCTAssertEqual(triggeredString, "Trigger 1")
         XCTAssertEqual(triggeredInt, 2)
     }
-    
+
     func testWithOperationQueue() {
         var triggeredString = ""
         let expectation = self.expectation(description: "Was Triggered")
@@ -103,10 +103,10 @@ class EventCenterTests: XCTestCase {
             expectation.fulfill()
         }
         XCTAssertEqual(triggeredString, "")
-        
+
         eventCenter.triggerEvent(TestStringEvent.self, params: "Trigger 1")
         XCTAssertEqual(triggeredString, "")
-        
+
         waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -122,5 +122,16 @@ class EventCenterTests: XCTestCase {
 
         eventCenter.triggerEvent(TestOptionalEvent.self, params: nil)
         XCTAssertNil(triggeredString)
+    }
+
+    static var allTests : [(String, (EventCenterTests) -> () throws -> Void)] {
+        return [
+            ("testObserving", testObserving),
+            ("testRemovingObserverForEvent", testRemovingObserverForEvent),
+            ("testRemovingObserverForAllEvents", testRemovingObserverForAllEvents),
+            ("testWithOperationQueue", testWithOperationQueue),
+            ("testMultipleEvents", testMultipleEvents),
+            ("testOptionalEvent", testOptionalEvent),
+        ]
     }
 }

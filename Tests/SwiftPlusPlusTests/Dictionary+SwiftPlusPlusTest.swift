@@ -20,4 +20,10 @@ class Dictionary_SwiftPlusPlusTest: XCTestCase {
         XCTAssertEqual(result["Oranges"]!, 3)
         XCTAssertEqual(result.count, 3)
     }
+
+    static var allTests : [(String, (Dictionary_SwiftPlusPlusTest) -> () throws -> Void)] {
+        return [
+            ("testMerge", testMerge),
+        ]
+    }
 }

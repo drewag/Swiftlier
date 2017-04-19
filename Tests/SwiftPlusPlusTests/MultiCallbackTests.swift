@@ -11,30 +11,30 @@ import SwiftPlusPlus
 
 class MultiCallbackTests: XCTestCase {
     var callback = MultiCallback<String>()
-    
+
     func testAddingObservers() {
         var triggeredString = ""
         callback.addObserver(self) { param in
             triggeredString = param
         }
         XCTAssertEqual(triggeredString, "")
-        
+
         callback.triggerWithArguments("Trigger 1")
         XCTAssertEqual(triggeredString, "Trigger 1")
     }
-    
+
     func testRemovingObservers() {
         var triggeredString = ""
         callback.addObserver(self) { param in
             triggeredString = param
         }
         XCTAssertEqual(triggeredString, "")
-        
+
         callback.removeObserver(self)
         callback.triggerWithArguments("Trigger 1")
         XCTAssertEqual(triggeredString, "")
     }
-    
+
     func testWithMultipleObservers() {
         var triggeredString = ""
         callback.addObserver(self) { param in
@@ -46,15 +46,23 @@ class MultiCallbackTests: XCTestCase {
         }
         XCTAssertEqual(triggeredString, "")
         XCTAssertEqual(triggeredString2, "")
-        
+
         callback.triggerWithArguments("Trigger 1")
         XCTAssertEqual(triggeredString, "Trigger 1")
         XCTAssertEqual(triggeredString2, "Trigger 1")
-        
+
         callback.removeObserver(self)
-        
+
         callback.triggerWithArguments("Trigger 2")
         XCTAssertEqual(triggeredString, "Trigger 1")
         XCTAssertEqual(triggeredString2, "Trigger 1")
+    }
+
+    static var allTests : [(String, (MultiCallbackTests) -> () throws -> Void)] {
+        return [
+            ("testAddingObservers", testAddingObservers),
+            ("testRemovingObservers", testRemovingObservers),
+            ("testWithMultipleObservers", testWithMultipleObservers),
+        ]
     }
 }
