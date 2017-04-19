@@ -6,4 +6,5 @@ XCTMain([
      testCase(Dictionary_SwiftPlusPlusTest.allTests),
      testCase(MultiCallbackTests.allTests),
      testCase(String_SwiftPlusPlusTests.allTests),
+     testCase(ObservableTests.allTests),
 ])

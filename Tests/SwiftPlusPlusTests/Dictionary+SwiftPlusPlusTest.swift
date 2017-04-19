@@ -9,7 +9,7 @@
 import XCTest
 import SwiftPlusPlus
 
-class Dictionary_SwiftPlusPlusTest: XCTestCase {
+final class Dictionary_SwiftPlusPlusTest: XCTestCase, LinuxEnforcedTestCase {
     func testMerge() {
         let dict1 = ["Apples": 2, "Oranges": 3]
         let dict2 = ["Apples": 3, "Cantaloupe": 1]
@@ -21,7 +21,7 @@ class Dictionary_SwiftPlusPlusTest: XCTestCase {
         XCTAssertEqual(result.count, 3)
     }
 
-    static var allTests : [(String, (Dictionary_SwiftPlusPlusTest) -> () throws -> Void)] {
+    static var allTests: [(String, (Dictionary_SwiftPlusPlusTest) -> () throws -> Void)] {
         return [
             ("testMerge", testMerge),
         ]

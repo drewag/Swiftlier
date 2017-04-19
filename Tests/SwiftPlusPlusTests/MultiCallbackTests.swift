@@ -9,7 +9,7 @@
 import XCTest
 import SwiftPlusPlus
 
-class MultiCallbackTests: XCTestCase {
+final class MultiCallbackTests: XCTestCase, LinuxEnforcedTestCase {
     var callback = MultiCallback<String>()
 
     func testAddingObservers() {
@@ -58,7 +58,7 @@ class MultiCallbackTests: XCTestCase {
         XCTAssertEqual(triggeredString2, "Trigger 1")
     }
 
-    static var allTests : [(String, (MultiCallbackTests) -> () throws -> Void)] {
+    static var allTests: [(String, (MultiCallbackTests) -> () throws -> Void)] {
         return [
             ("testAddingObservers", testAddingObservers),
             ("testRemovingObservers", testRemovingObservers),

@@ -9,7 +9,7 @@
 import XCTest
 import SwiftPlusPlus
 
-class String_SwiftPlusPlusTests: XCTestCase {
+final class String_SwiftPlusPlusTests: XCTestCase, LinuxEnforcedTestCase {
     func testRepeat() {
         XCTAssertEqual("Hello".repeating(nTimes: 3), "HelloHelloHello")
         XCTAssertEqual("Hello".repeating(nTimes: 4, separator: " "), "Hello Hello Hello Hello")
@@ -25,7 +25,7 @@ class String_SwiftPlusPlusTests: XCTestCase {
         XCTAssertEqual(string.substring(to: 1), "H")
     }
 
-    static var allTests : [(String, (String_SwiftPlusPlusTests) -> () throws -> Void)] {
+    static var allTests: [(String, (String_SwiftPlusPlusTests) -> () throws -> Void)] {
         return [
             ("testRepeat", testRepeat),
             ("testSubstringFromIndex", testSubstringFromIndex),

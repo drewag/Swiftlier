@@ -9,7 +9,7 @@
 import XCTest
 import SwiftPlusPlus
 
-class ObservableTests: XCTestCase {
+final class ObservableTests: XCTestCase, LinuxEnforcedTestCase {
     func testSubscribing() {
         let observable = Observable<String>("Old Value")
         var called = false
@@ -91,5 +91,16 @@ class ObservableTests: XCTestCase {
         called = false
         observable.value = "Third Value"
         XCTAssertFalse(called)
+    }
+
+    static var allTests: [(String, (ObservableTests) -> () throws -> Void)] {
+        return [
+            ("testSubscribing", testSubscribing),
+            ("testUnsubscribing", testUnsubscribing),
+            ("testTriggerImmediately", testTriggerImmediately),
+            ("testAutomaticUnsubscribing", testAutomaticUnsubscribing),
+            ("testCallOnceOption", testCallOnceOption),
+            ("testCallOnceOptionWithInitial", testCallOnceOptionWithInitial),
+        ]
     }
 }

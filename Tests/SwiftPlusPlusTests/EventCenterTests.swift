@@ -22,7 +22,7 @@ class TestOptionalEvent: EventType {
 }
 
 
-class EventCenterTests: XCTestCase {
+final class EventCenterTests: XCTestCase, LinuxEnforcedTestCase {
     let eventCenter = EventCenter()
 
     func testObserving() {
