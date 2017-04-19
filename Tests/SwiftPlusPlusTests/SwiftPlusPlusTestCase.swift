@@ -17,6 +17,7 @@ protocol LinuxEnforcedTestCase: AnyLinuxEnforcedTestCase {
 }
 
 extension XCTestCase {
+#if os(macOS)
     override open func tearDown() {
         guard let enforced = self as? AnyLinuxEnforcedTestCase else {
             XCTFail("All test cases must implement LinuxEnforcedTestCase protocol")
@@ -27,6 +28,7 @@ extension XCTestCase {
 
         super.tearDown()
     }
+#endif
 }
 
 extension LinuxEnforcedTestCase {
