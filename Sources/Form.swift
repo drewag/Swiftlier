@@ -7,6 +7,8 @@
 //
 
 #if os(iOS)
+import UIKit
+
 public protocol FieldValueType: Equatable {
 }
 extension String: FieldValueType {}

@@ -7,6 +7,8 @@
 //
 
 #if os(iOS)
+import UIKit
+
 public enum AppIdiom {
     case phone, pad
 }

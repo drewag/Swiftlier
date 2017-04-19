@@ -7,6 +7,8 @@
 //
 
 #if os(iOS)
+import Foundation
+
 extension DispatchQueue {
     public func asyncAfter(seconds: Double, execute work: @escaping @convention(block) () -> ()) {
         let time = DispatchTime.now() + seconds

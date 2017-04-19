@@ -6,6 +6,7 @@
 //
 //
 
+#if os(Linux) || os(macOS)
 import Foundation
 
 public struct Zip: ErrorGenerating {
@@ -54,3 +55,4 @@ public struct Zip: ErrorGenerating {
         return try self.unzip(to: Zip.temporaryDirectory, keepingPaths: keepingPaths, excluding: excluding)
     }
 }
+#endif

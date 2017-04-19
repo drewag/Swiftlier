@@ -112,19 +112,36 @@ public struct FileSystem: ErrorGenerating {
 
 private extension FileSystem {
     func isDirectory(at path: String) -> Bool {
+        #if os(Linux)
         var isDirectory = false
+        #else
+        var isDirectory = ObjCBool(false)
+        #endif
         guard FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) else {
             return false
         }
+        #if os(Linux)
         return isDirectory
+        #else
+        return isDirectory.boolValue
+        #endif
+
     }
 
     func isNotFile(at path: String) -> Bool {
+        #if os(Linux)
         var isDirectory = false
+        #else
+        var isDirectory = ObjCBool(false)
+        #endif
         guard FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) else {
             return true
         }
+        #if os(Linux)
         return isDirectory
+        #else
+        return isDirectory.boolValue
+        #endif
     }
 }
 

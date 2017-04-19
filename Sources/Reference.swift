@@ -6,6 +6,9 @@
 //  Copyright © 2015 Drewag LLC. All rights reserved.
 //
 
+#if os(iOS)
+import UIKit
+#endif
 import Foundation
 
 public struct ReferenceErrorReason {

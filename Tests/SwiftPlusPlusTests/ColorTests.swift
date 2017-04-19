@@ -23,13 +23,13 @@ class ColorTests: XCTestCase {
         XCTAssertEqual(try! UIColor(hexString: "#CC"), UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
         XCTAssertEqual(try! UIColor(hexString: "#CCC"), UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
 
-//        XCTAssertThrowsError(try UIColor(hexString: "#F"))
-//        XCTAssertThrowsError(try UIColor(hexString: "#FFFF"))
-//        XCTAssertThrowsError(try UIColor(hexString: "#FFFFF"))
-//        XCTAssertThrowsError(try UIColor(hexString: "#FFFFFFF"))
-//        XCTAssertThrowsError(try UIColor(hexString: "FF"))
-//        XCTAssertThrowsError(try UIColor(hexString: "FFF"))
-//        XCTAssertThrowsError(try UIColor(hexString: "FFFFFF"))
+        XCTAssertThrowsError(try UIColor(hexString: "#F"))
+        XCTAssertThrowsError(try UIColor(hexString: "#FFFF"))
+        XCTAssertThrowsError(try UIColor(hexString: "#FFFFF"))
+        XCTAssertThrowsError(try UIColor(hexString: "#FFFFFFF"))
+        XCTAssertThrowsError(try UIColor(hexString: "FF"))
+        XCTAssertThrowsError(try UIColor(hexString: "FFF"))
+        XCTAssertThrowsError(try UIColor(hexString: "FFFFFF"))
     }
 }
 #endif
