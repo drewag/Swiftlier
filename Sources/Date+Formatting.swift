@@ -82,6 +82,27 @@ private let railsDateTimeFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+private let iso8601DateTimeFormatters: [DateFormatter] = {
+    var dateFormatter1 = DateFormatter()
+    let timeZone = TimeZone(identifier: "UTC")
+    dateFormatter1.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'S'Z'"
+    dateFormatter1.timeZone = timeZone
+
+    var dateFormatter2 = DateFormatter()
+    dateFormatter2.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'S'Z'"
+    dateFormatter2.timeZone = timeZone
+
+    var dateFormatter3 = DateFormatter()
+    dateFormatter3.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'SSSSSS'Z'"
+    dateFormatter3.timeZone = timeZone
+
+    var dateFormatter4 = DateFormatter()
+    dateFormatter4.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSSSS'Z'"
+    dateFormatter4.timeZone = timeZone
+
+    return [dateFormatter1, dateFormatter2, dateFormatter3, dateFormatter4]
+}()
+
 private let localIso8601DateTimeFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'S"
@@ -154,7 +175,7 @@ extension Date {
     }
 
     public var iso8601DateTime: String {
-        return CustomISO8601Formatter.shared.string(date: self)
+        return iso8601DateTimeFormatters.first!.string(from: self)
     }
 
     public var localIso8601DateTime: String {
@@ -200,7 +221,12 @@ extension String {
     }
 
     public var iso8601DateTime: Date? {
-        return CustomISO8601Formatter.shared.date(string: self)
+        for formatter in iso8601DateTimeFormatters {
+            if let date = formatter.date(from: self) {
+                return date
+            }
+        }
+        return nil
     }
 
     public var localIso8601DateTime: Date? {
