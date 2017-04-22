@@ -6,6 +6,8 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+import Foundation
+
 public enum HTTPStatus: RawRepresentable {
     // Successful
     case ok
