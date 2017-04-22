@@ -60,6 +60,17 @@ public final class TextAction: AnyAlertAction {
     }
 }
 
+extension ErrorGenerating where Self: UIViewController {
+    public func showAlert(withError error: Error, _ doing: String) {
+        let error = self.error(doing, from: error)
+        EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: error)
+        self.showAlert(
+            withTitle: error.alertDescription.title,
+            message: error.alertDescription.message
+        )
+    }
+}
+
 extension UIViewController {
     public func showAlert(withError error: ReportableError) {
         EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: error)
