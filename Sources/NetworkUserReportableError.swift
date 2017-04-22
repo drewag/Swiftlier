@@ -18,22 +18,55 @@ public struct NetworkResponseErrorReason {
     public static let unknown = ErrorReason("there was an unknown error")
 }
 
+public struct NetworkError: ReportableError {
+    public let perpetrator: ErrorPerpitrator
+    public let doing: String
+    public let reason: AnyErrorReason
+    public let source: ErrorGenerating.Type
+    public let status: HTTPStatus
+
+    struct Keys {
+        class status: CoderKey<Int> {}
+    }
+
+    public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason, status: HTTPStatus) {
+        self.source = source
+        self.perpetrator = by
+        self.doing = doing
+        self.reason = because
+        self.status = status
+    }
+
+    public init(from error: ReportableError, status: HTTPStatus) {
+        self.source = error.source
+        self.perpetrator = error.perpetrator
+        self.doing = error.doing
+        self.reason = error.reason
+        self.status = status
+    }
+
+    public func encode(_ encoder: Encoder) {
+        self.encodeStandard(encoder)
+        encoder.encode(self.status.rawValue, forKey: Keys.status.self)
+    }
+}
+
 extension ErrorGenerating {
-    public static func error(_ doing: String, from response: URLResponse?, and data: Data?) -> ReportableError? {
+    public static func error(_ doing: String, from response: URLResponse?, and data: Data?) -> NetworkError? {
         if let response = response as? HTTPURLResponse {
             switch response.statusCode {
             case 404:
-                return self.error(doing, because: NetworkResponseErrorReason.notFound)
+                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason.notFound), status: HTTPStatus(from: response))
             case 401:
-                return self.error(doing, because: NetworkResponseErrorReason.unauthorized)
+                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason.unauthorized), status: HTTPStatus(from: response))
             case 410:
-                return self.error(doing, because: NetworkResponseErrorReason.gone)
+                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason.gone), status: HTTPStatus(from: response))
             case let x where x >= 400 && x < 500:
                 return self.error(doing, fromNetworkData: data, for: response)
-                    ?? self.error(doing, because: NetworkResponseErrorReason.invalid)
+                    ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason.invalid), status: HTTPStatus(from: response))
             case let x where x >= 500 && x < 600:
                 return self.error(doing, fromNetworkData: data, for: response)
-                    ?? self.error(doing, because: NetworkResponseErrorReason.unknown)
+                    ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason.unknown), status: HTTPStatus(from: response))
             default:
                 return nil
             }
@@ -43,11 +76,11 @@ extension ErrorGenerating {
         }
     }
 
-    public func error(_ doing: String, from response: URLResponse?, and data: Data?) -> ReportableError? {
+    public func error(_ doing: String, from response: URLResponse?, and data: Data?) -> NetworkError? {
         return type(of: self).error(doing, from: response, and: data)
     }
 
-    private static func error(_ doing: String, fromNetworkData data: Data?, for response: HTTPURLResponse) -> ReportableError? {
+    private static func error(_ doing: String, fromNetworkData data: Data?, for response: HTTPURLResponse) -> NetworkError? {
         guard let data = data else {
             return nil
         }
@@ -58,15 +91,15 @@ extension ErrorGenerating {
         {
             let reason = ErrorReasonWithExtraInfo(because: message, extraInfo: json)
             if json["perpitrator"]?.string == "user" {
-                return self.userError(doing, because: reason)
+                return NetworkError(from: self.userError(json["doing"]?.string ?? doing, because: reason), status: HTTPStatus(from: response))
             }
             else {
-                return self.error(doing, because: reason)
+                return NetworkError(from: self.error(json["doing"]?.string ?? doing, because: reason), status: HTTPStatus(from: response))
             }
         }
         else {
             let string = String(data: data, encoding: encoding) ?? ""
-            return self.error(doing, because: ErrorReason(string))
+            return NetworkError(from: self.error(doing, because: ErrorReason(string)), status: HTTPStatus(from: response))
         }
     }
 }

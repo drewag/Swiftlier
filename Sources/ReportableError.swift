@@ -50,7 +50,7 @@ extension ReportableError {
         case .user:
             return (
                 title: "Error \(self.doing.capitalized)",
-                message: "This happened because \(self.reason.because)"
+                message: "Because \(self.reason.because)"
             )
         case .system:
             return (
@@ -60,7 +60,7 @@ extension ReportableError {
         case .temporaryEnvironment:
             return (
                 title: "Temporary Error \(self.doing.capitalized)",
-                message: "This happened because \(self.reason.because). Please try again."
+                message: "Because \(self.reason.because). Please try again."
             )
         }
     }
