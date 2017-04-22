@@ -19,7 +19,7 @@ public struct NetworkResponseErrorReason {
 }
 
 extension ErrorGenerating {
-    public func error(_ doing: String, from response: URLResponse?, and data: Data?) -> ReportableError? {
+    public static func error(_ doing: String, from response: URLResponse?, and data: Data?) -> ReportableError? {
         if let response = response as? HTTPURLResponse {
             switch response.statusCode {
             case 404:
@@ -33,7 +33,7 @@ extension ErrorGenerating {
                     ?? self.error(doing, because: NetworkResponseErrorReason.invalid)
             case let x where x >= 500 && x < 600:
                 return self.error(doing, fromNetworkData: data, for: response)
-                ?? self.error(doing, because: NetworkResponseErrorReason.unknown)
+                    ?? self.error(doing, because: NetworkResponseErrorReason.unknown)
             default:
                 return nil
             }
@@ -43,17 +43,26 @@ extension ErrorGenerating {
         }
     }
 
-    private func error(_ doing: String, fromNetworkData data: Data?, for response: HTTPURLResponse) -> ReportableError? {
+    public func error(_ doing: String, from response: URLResponse?, and data: Data?) -> ReportableError? {
+        return type(of: self).error(doing, from: response, and: data)
+    }
+
+    private static func error(_ doing: String, fromNetworkData data: Data?, for response: HTTPURLResponse) -> ReportableError? {
         guard let data = data else {
             return nil
         }
 
         let encoding = String.Encoding.utf8
         if let json = try? JSON(data: data)
-            , let message = json["message"]?.string
+            , let message = json["because"]?.string
         {
             let reason = ErrorReasonWithExtraInfo(because: message, extraInfo: json)
-            return self.error(doing, because: reason)
+            if json["perpitrator"]?.string == "user" {
+                return self.userError(doing, because: reason)
+            }
+            else {
+                return self.error(doing, because: reason)
+            }
         }
         else {
             let string = String(data: data, encoding: encoding) ?? ""
