@@ -180,4 +180,8 @@ struct ConcreteReportableError: ReportableError, ErrorGenerating, Codable {
         self.doing = doing
         self.reason = because
     }
+
+    func encode(_ encoder: Encoder) {
+        self.encodeStandard(encoder)
+    }
 }

@@ -24,7 +24,7 @@ extension ErrorPerpitrator {
 }
 
 extension ReportableError {
-    public func encode(_ encoder: Encoder) {
+    public func encodeStandard(_ encoder: Encoder) {
         encoder.encode(self.description, forKey: ReportableErrorKeys.message.self)
         encoder.encode(self.doing, forKey: ReportableErrorKeys.doing.self)
         encoder.encode(self.reason.because, forKey: ReportableErrorKeys.because.self)
