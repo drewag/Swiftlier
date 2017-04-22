@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4980D8EF1EABE59E006CE38C /* HTTPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980D8EE1EABE59E006CE38C /* HTTPStatus.swift */; };
+		4980D9AB1EABF925006CE38C /* HTTPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980D9AA1EABF925006CE38C /* HTTPStatus.swift */; };
 		49E6377D1DF7408B00855BC1 /* SwiftPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E6377B1DF7408B00855BC1 /* SwiftPlusPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49F091D01EA6E8C6006D4F25 /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0915A1EA6E8C6006D4F25 /* Age.swift */; };
 		49F091D11EA6E8C6006D4F25 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0915B1EA6E8C6006D4F25 /* Alert.swift */; };
@@ -148,7 +148,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4980D8EE1EABE59E006CE38C /* HTTPStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPStatus.swift; path = ../../../OnBeat/HTTPStatus.swift; sourceTree = "<group>"; };
+		4980D9AA1EABF925006CE38C /* HTTPStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStatus.swift; sourceTree = "<group>"; };
 		49E637621DF73FB100855BC1 /* SwiftPlusPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPlusPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E6377A1DF7408B00855BC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Project/Info.plist; sourceTree = SOURCE_ROOT; };
 		49E6377B1DF7408B00855BC1 /* SwiftPlusPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftPlusPlus.h; path = Project/SwiftPlusPlus.h; sourceTree = SOURCE_ROOT; };
@@ -458,10 +458,10 @@
 				49F091CD1EA6E8C6006D4F25 /* XML.swift */,
 				49F091CE1EA6E8C6006D4F25 /* Zip.swift */,
 				49F091CF1EA6E8C6006D4F25 /* ZoomThroughTransition.swift */,
-				4980D8EE1EABE59E006CE38C /* HTTPStatus.swift */,
+				4980D9AA1EABF925006CE38C /* HTTPStatus.swift */,
 			);
 			name = Sources;
-			path = ../../Sources;
+			path = ../Sources;
 			sourceTree = "<group>";
 		};
 		49F0925A1EA6E92B006D4F25 /* SwiftPlusPlusTestsInfo */ = {
@@ -653,7 +653,7 @@
 				49F0923E1EA6E8C6006D4F25 /* UIViewController+Transitions.swift in Sources */,
 				49F091D41EA6E8C6006D4F25 /* Array+SwiftPlusPlus.swift in Sources */,
 				49F092331EA6E8C6006D4F25 /* UICollectionView+EasyRegister.swift in Sources */,
-				4980D8EF1EABE59E006CE38C /* HTTPStatus.swift in Sources */,
+				4980D9AB1EABF925006CE38C /* HTTPStatus.swift in Sources */,
 				49F092361EA6E8C6006D4F25 /* UIDevice+AppIdioms.swift in Sources */,
 				49F092061EA6E8C6006D4F25 /* MenuViewController.swift in Sources */,
 				49F091EB1EA6E8C6006D4F25 /* Encodable.swift in Sources */,
