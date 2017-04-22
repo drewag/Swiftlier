@@ -20,8 +20,11 @@ extension JSON {
     }
 
     public static func encode(_ encodables: [Encodable], mode: EncodingMode) -> String {
-        let object = NativeTypesEncoder.objectFromCombiningEncodables(encodables, mode: mode)
-        return try! self.valueString(fromRaw: object)
+        var objects = [Any]()
+        for encodable in encodables {
+            objects.append(NativeTypesEncoder.objectFromEncodable(encodable, mode: mode))
+        }
+        return try! self.valueString(fromRaw: objects)
     }
 
     public static func encode(_ encodables: [String:Encodable], mode: EncodingMode) -> String {
