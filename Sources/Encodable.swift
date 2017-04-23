@@ -18,3 +18,9 @@ extension Encodable where Self: Decodable {
         return try! NativeTypesDecoder.decodableTypeFromObject(object, mode: .saveLocally)
     }
 }
+
+extension RawRepresentable where RawValue: RawCodable {
+    public func encode(_ encoder: Encoder) {
+        encoder.encodeAsEntireValue(self.rawValue)
+    }
+}
