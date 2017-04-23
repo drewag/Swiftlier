@@ -34,7 +34,7 @@ extension XCTestCase {
 extension LinuxEnforcedTestCase {
     func validateIncludesTest(named: String) {
         let contains = type(of: self).allTests.contains(where: { test in
-            return test.0 == named
+            return test.0 == named || "\(test.0)AndReturnError:" == named
         })
 
         XCTAssert(contains, "Test '\(named)' is missing from the allTests array")
