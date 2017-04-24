@@ -19,22 +19,25 @@ public struct Email {
     let body: String
     let recipient: String
     let from: String
+    let replyTo: String?
     let contentType: ContentType
 
-    public init(to: String, subject: String, from: String, HTMLBody: String) {
+    public init(to: String, subject: String, from: String, replyTo: String? = nil, HTMLBody: String) {
         self.recipient = Email.sanitize(to)
         self.body = HTMLBody
         self.contentType = .html
         self.subject = Email.sanitize(subject)
         self.from = Email.sanitize(from)
+        self.replyTo = Email.sanitize(replyTo)
     }
 
-    public init(to: String, subject: String, from: String, plainBody: String) {
+    public init(to: String, subject: String, from: String, replyTo: String? = nil, plainBody: String) {
         self.recipient = Email.sanitize(to)
         self.body = plainBody
         self.contentType = .plain
         self.subject = Email.sanitize(subject)
         self.from = Email.sanitize(from)
+        self.replyTo = Email.sanitize(replyTo)
     }
 
     @discardableResult
@@ -49,6 +52,9 @@ public struct Email {
                 let task = Process()
                 task.launchPath = "/bin/sh"
                 var command = "cat \(tempPath) | mail '\(self.recipient)' -s '\(self.subject)' -a 'From:\(self.from)'"
+                if let replyTo = self.replyTo {
+                    command += " -a 'Reply-To:\(replyTo)'"
+                }
                 switch self.contentType {
                 case .html:
                     command += " -a 'Content-Type: text/html'"
@@ -75,6 +81,13 @@ public struct Email {
 private extension Email {
     static func sanitize(_ parameter: String) -> String {
         return parameter.replacingOccurrences(of: "'", with: "\\'")
+    }
+
+    static func sanitize(_ parameter: String?) -> String? {
+        guard let param = parameter else {
+            return nil
+        }
+        return self.sanitize(param)
     }
 }
 #endif
