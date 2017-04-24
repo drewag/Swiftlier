@@ -100,7 +100,11 @@ private let iso8601DateTimeFormatters: [DateFormatter] = {
     dateFormatter4.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSSSS'Z'"
     dateFormatter4.timeZone = timeZone
 
-    return [dateFormatter1, dateFormatter2, dateFormatter3, dateFormatter4]
+    var dateFormatter5 = DateFormatter()
+    dateFormatter5.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'Z'"
+    dateFormatter5.timeZone = timeZone
+
+    return [dateFormatter1, dateFormatter2, dateFormatter3, dateFormatter4, dateFormatter5]
 }()
 
 private let localIso8601DateTimeFormatter: DateFormatter = {
