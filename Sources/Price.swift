@@ -38,7 +38,7 @@ public struct Price: CustomStringConvertible {
         case .pennies(let pennies):
             return pennies
         case .dollars(let dollars):
-            return Int(dollars * 100)
+            return Int(round(dollars * 100))
         }
     }
 
