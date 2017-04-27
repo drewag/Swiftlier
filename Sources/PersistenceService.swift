@@ -43,6 +43,6 @@ extension PersistenceService {
     }
 
     func save(values: [Value]) throws {
-        try self.archivePath().createFile(containingEncodable: values, canOverwrite: true)
+        try self.archivePath().createFile(containingEncodableArray: values, canOverwrite: true)
     }
 }

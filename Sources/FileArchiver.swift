@@ -17,7 +17,7 @@ extension DirectoryPath {
     }
 
     @discardableResult
-    public func addFile<E: Encodable>(named: String, containingEncodable dict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func addFile<E: Encodable>(named: String, containingEncodableDict dict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         var finalDict = [String:Any]()
 
         for (key, value) in dict {
@@ -29,7 +29,7 @@ extension DirectoryPath {
     }
 
     @discardableResult
-    public func addFile<E: Encodable>(named: String, containingEncodable array: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func addFile<E: Encodable>(named: String, containingEncodableArray array: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         var finalArray = [Any]()
 
         for value in array {
@@ -50,17 +50,17 @@ extension Path {
     }
 
     @discardableResult
-    public func createFile<E: Encodable>(containingEncodable encodableDict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func createFile<E: Encodable>(containingEncodableDict encodableDict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         let name = self.basename
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
-        return try parentDirectory.addFile(named: name, containingEncodable: encodableDict, canOverwrite: canOverwrite, encrypt: encrypt)
+        return try parentDirectory.addFile(named: name, containingEncodableDict: encodableDict, canOverwrite: canOverwrite, encrypt: encrypt)
     }
 
     @discardableResult
-    public func createFile<E: Encodable>(containingEncodable encodableArray: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func createFile<E: Encodable>(containingEncodableArray encodableArray: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         let name = self.basename
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
-        return try parentDirectory.addFile(named: name, containingEncodable: encodableArray, canOverwrite: canOverwrite, encrypt: encrypt)
+        return try parentDirectory.addFile(named: name, containingEncodableArray: encodableArray, canOverwrite: canOverwrite, encrypt: encrypt)
     }
 }
 
@@ -107,13 +107,19 @@ extension FilePath {
 
 private struct FileArchive: ErrorGenerating {
     static func data(from object: Any, encrypt: (Data) throws -> Data) throws -> Data {
-        return try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
-        //return try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+        #if os(Linux)
+            return try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+        #else
+            return try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
+        #endif
     }
 
     static func object(from data: Data, decrypt: (Data) throws -> Data) throws -> Any? {
-        return NSKeyedUnarchiver.unarchiveObject(with: try decrypt(data))
-        //return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
+        #if os(Linux)
+            return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
+        #else
+            return NSKeyedUnarchiver.unarchiveObject(with: try decrypt(data))
+        #endif
     }
 }
 

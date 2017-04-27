@@ -46,12 +46,11 @@ public struct Email {
             print("Sending email to '\(self.recipient)' with subject '\(self.subject)'")
 
             do {
-                FileService.default.createDirectory(at: URL(fileURLWithPath: "tmp"))
-                let tempPath = "tmp/email.html"
-                try self.body.write(toFile: tempPath, atomically: true, encoding: .utf8)
+                let file = try FileSystem.default.workingDirectory.subdirectory("tmp")
+                    .addFile(named: "email.html", containing: self.body.data(using: .utf8), canOverwrite: true)
                 let task = Process()
                 task.launchPath = "/bin/sh"
-                var command = "cat \(tempPath) | mail '\(self.recipient)' -s '\(self.subject)' -a 'From:\(self.from)'"
+                var command = "cat \(file.url.relativePath) | mail '\(self.recipient)' -s '\(self.subject)' -a 'From:\(self.from)'"
                 if let replyTo = self.replyTo {
                     command += " -a 'Reply-To:\(replyTo)'"
                 }
@@ -65,6 +64,7 @@ public struct Email {
 
                 task.launch()
                 task.waitUntilExit()
+                let _ = try? file.delete()
                 return task.terminationStatus == 0
             }
             catch {

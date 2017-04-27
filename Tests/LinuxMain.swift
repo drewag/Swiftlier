@@ -10,4 +10,5 @@ XCTMain([
      testCase(PathTests.allTests),
      testCase(EmailAddressTests.allTests),
      testCase(FileArchiveTests.allTests),
+     testCase(PersistenceServiceTests.allTests),
 ])
