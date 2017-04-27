@@ -105,7 +105,7 @@ public struct Syncable<Value: Codable>: AnySyncable, Decodable {
         case .saveLocally:
             self.value = try decoder.decode(ValueKey.self)
             self.remoteValue = try decoder.decode(RemoteValueKey.self)
-            switch (try decoder.decode(LastLocalChangedKey.self), try decoder.decode(LastRemoteChangedKey.self)) {
+            switch (try decoder.decode(LastLocalChangedKey.self)?.iso8601DateTime, try decoder.decode(LastRemoteChangedKey.self)?.iso8601DateTime) {
             case (nil, nil):
                 fatalError()
             case (.some(let local), nil):
@@ -214,7 +214,7 @@ public struct SyncableOptional<Value: Codable>: AnySyncable, Decodable {
         case .saveLocally:
             self.value = try decoder.decode(OptionalValueKey.self)
             self.remoteValue = try decoder.decode(RemoteValueKey.self)
-            switch (try decoder.decode(LastLocalChangedKey.self), try decoder.decode(LastRemoteChangedKey.self)) {
+            switch (try decoder.decode(LastLocalChangedKey.self)?.iso8601DateTime, try decoder.decode(LastRemoteChangedKey.self)?.iso8601DateTime) {
             case (nil, nil):
                 fatalError()
             case (.some(let local), nil):
@@ -236,8 +236,8 @@ public struct SyncableOptional<Value: Codable>: AnySyncable, Decodable {
 class ValueKey<Value: Encodable>: CoderKey<Value> {}
 class OptionalValueKey<Value: Encodable>: OptionalCoderKey<Value> {}
 class RemoteValueKey<Value: Encodable>: OptionalCoderKey<Value> {}
-class LastLocalChangedKey: OptionalCoderKey<Date> {}
-class LastRemoteChangedKey: OptionalCoderKey<Date> {}
+class LastLocalChangedKey: OptionalCoderKey<String> {}
+class LastRemoteChangedKey: OptionalCoderKey<String> {}
 
 extension Syncable: Encodable {
     public func encode(_ encoder: Encoder) {
@@ -245,8 +245,8 @@ extension Syncable: Encodable {
         case .saveLocally:
             encoder.encode(self.value, forKey: ValueKey.self)
             encoder.encode(self.remoteValue, forKey: RemoteValueKey.self)
-            encoder.encode(self.lastLocalChanged, forKey: LastLocalChangedKey.self)
-            encoder.encode(self.lastRemoteChanged, forKey: LastRemoteChangedKey.self)
+            encoder.encode(self.lastLocalChanged?.iso8601DateTime, forKey: LastLocalChangedKey.self)
+            encoder.encode(self.lastRemoteChanged?.iso8601DateTime, forKey: LastRemoteChangedKey.self)
         case .update:
             if self.isDifferentLocally {
                 encoder.encodeAsEntireValue(self.value)
@@ -340,8 +340,8 @@ extension SyncableOptional: Encodable {
         case .saveLocally:
             encoder.encode(self.value, forKey: OptionalValueKey.self)
             encoder.encode(self.remoteValue, forKey: RemoteValueKey.self)
-            encoder.encode(self.lastLocalChanged, forKey: LastLocalChangedKey.self)
-            encoder.encode(self.lastRemoteChanged, forKey: LastRemoteChangedKey.self)
+            encoder.encode(self.lastLocalChanged?.iso8601DateTime, forKey: LastLocalChangedKey.self)
+            encoder.encode(self.lastRemoteChanged?.iso8601DateTime, forKey: LastRemoteChangedKey.self)
         case .update:
             if self.isDifferentLocally {
                 encoder.encodeAsEntireValue(self.value)

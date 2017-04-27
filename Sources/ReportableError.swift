@@ -44,6 +44,11 @@ public protocol ReportableError: Error, CustomStringConvertible, Encodable {
     var source: ErrorGenerating.Type {get}
 }
 
+public enum ReportableResult<Value> {
+    case success(Value)
+    case error(ReportableError)
+}
+
 extension ReportableError {
     public var alertDescription: (title: String, message: String) {
         switch self.perpetrator {

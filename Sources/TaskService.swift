@@ -105,6 +105,80 @@ public final class TaskService {
     }
 }
 
+public enum TaskPeriod {
+    case interval(seconds: Double)
+}
+
+public enum TaskQueue {
+    case foreground
+    case background
+}
+
+public protocol PeriodicTask {
+    var uniqueIdentifier: String { get }
+    var performIn: TaskQueue { get }
+    var isRunning: Bool { get set }
+    var scheduleCount: Int { get set }
+
+    func perform(_ onComplete: @escaping (TaskResult) -> ())
+}
+
+public final class BlockSingleTask: SingleTask {
+    private let block: () -> ()
+
+    public let identifier: String
+    public var scheduledFor: Date?
+
+    public init(identifier: String, scheduleAt date: Date? = nil, block: @escaping () -> ()) {
+        self.identifier = identifier
+        self.block = block
+        if let date = date {
+            self.schedule(at: date)
+        }
+    }
+
+    deinit {
+        self.unschedule()
+    }
+    
+    public func perform() {
+        return self.block()
+    }
+}
+
+public protocol SingleTask: class {
+    var identifier: String { get }
+    var scheduledFor: Date? { get set }
+
+    func perform()
+}
+
+public final class BlockPeriodicTask: PeriodicTask {
+    public let uniqueIdentifier: String
+    public let performIn: TaskQueue
+    private let block: (@escaping (TaskResult) -> ()) -> ()
+
+    public var isRunning = false
+    public var scheduleCount: Int = 0
+
+    public init(uniqueIdentifier: String, performIn: TaskQueue, scheduleNowWith period: TaskPeriod?, block: @escaping (@escaping (TaskResult) -> ()) -> ()) {
+        self.uniqueIdentifier = uniqueIdentifier
+        self.performIn = performIn
+        self.block = block
+        if let period = period {
+            self.schedule(with: period)
+        }
+    }
+
+    deinit {
+        self.unschedule()
+    }
+
+    public func perform(_ onComplete: @escaping (TaskResult) -> ()) {
+        return self.block(onComplete)
+    }
+}
+
 private extension TaskService {
     func index(of singleTask: SingleTask) -> Int? {
         for (index, task) in self.scheduledSingleTasks.enumerated() {
@@ -204,6 +278,75 @@ private extension TaskService {
         if self.logTasks {
             print(message)
         }
+    }
+}
+
+extension PeriodicTask {
+    private var defaultsKey: String {
+        return "PeriodicTask-\(self.uniqueIdentifier)"
+    }
+
+    var lastSuccessfulRun: Date? {
+        get {
+            let defaults = UserDefaults.standard
+            let seconds = defaults.double(forKey: self.defaultsKey)
+            guard seconds > 0 else {
+                return nil
+            }
+
+            return Date(timeIntervalSince1970: seconds)
+        }
+
+        set {
+            let defaults = UserDefaults.standard
+
+            let seconds = newValue?.timeIntervalSince1970 ?? 0
+            defaults.set(seconds, forKey: self.defaultsKey)
+        }
+    }
+
+    public func schedule(with period: TaskPeriod) {
+        TaskService.singleton.schedule(periodicTask: self, with: period)
+    }
+
+    public func unschedule() {
+        TaskService.singleton.unschedule(periodicTask: self)
+    }
+
+    public func performManually() {
+        TaskService.singleton.manuallyPerform(periodicTask: self)
+    }
+}
+
+extension TaskPeriod {
+    func contains(_ date: Date) -> Bool {
+        switch self {
+        case .interval(seconds: let seconds):
+            return Date().timeIntervalSince(date) <= seconds
+        }
+    }
+    
+    func nextDate(_ after: Date) -> Date {
+        switch self {
+        case .interval(seconds: let seconds):
+            return after.addingTimeInterval(seconds)
+        }
+    }
+}
+
+extension SingleTask {
+    var isScheduled: Bool {
+        return self.scheduledFor != nil
+    }
+}
+
+extension SingleTask {
+    public func schedule(at date: Date) {
+        TaskService.singleton.schedule(singleTask: self, at: date)
+    }
+
+    public func unschedule() {
+        TaskService.singleton.unschedule(singleTask: self)
     }
 }
 #endif

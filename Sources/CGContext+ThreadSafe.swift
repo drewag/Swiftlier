@@ -11,8 +11,6 @@
 // draw from multiple threads at once. These properties and methods work directly off the
 // context so you don't have to worry what is currently on the stack.
 
-import Foundation
-
 #if os(iOS)
 import UIKit
 
