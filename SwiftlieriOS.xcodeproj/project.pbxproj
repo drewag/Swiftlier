@@ -123,6 +123,9 @@
 		4935A6DF1EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */; };
 		499AF5AA1EB1A6C500A13C6B /* PercentEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */; };
 		499AF5AD1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */; };
+		499AF5B41EB1CEAD00A13C6B /* FileArchiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */; };
+		499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */; };
+		499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B71EB1D22800A13C6B /* TestCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +258,9 @@
 		4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxEnforcedTestCase.swift; sourceTree = "<group>"; };
 		499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentEncodable.swift; sourceTree = "<group>"; };
 		499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
+		499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileArchiveTests.swift; sourceTree = "<group>"; };
+		499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
+		499AF5B71EB1D22800A13C6B /* TestCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +445,9 @@
 				4935A6D31EB1A52E00B0CCF8 /* PathTests.swift */,
 				4935A6D41EB1A52E00B0CCF8 /* String_HelpersTests.swift */,
 				4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */,
+				499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */,
+				499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */,
+				499AF5B71EB1D22800A13C6B /* TestCodable.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -674,6 +683,9 @@
 				4935A6DE1EB1A52E00B0CCF8 /* String_HelpersTests.swift in Sources */,
 				4935A6DB1EB1A52E00B0CCF8 /* MultiCallbackTests.swift in Sources */,
 				4935A6D61EB1A52E00B0CCF8 /* ColorTests.swift in Sources */,
+				499AF5B41EB1CEAD00A13C6B /* FileArchiveTests.swift in Sources */,
+				499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */,
+				499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */,
 				4935A6D81EB1A52E00B0CCF8 /* Dictionary_MergingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

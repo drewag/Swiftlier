@@ -6,46 +6,67 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
-#if os(iOS)
 import Foundation
 
-public struct FileArchive: ErrorGenerating {
-    public static func archiveEncodable(_ encodable: Encodable, toFile file: String, options: Data.WritingOptions = .atomicWrite, encrypt: (Data) throws -> Data = {return $0}) throws {
+extension DirectoryPath {
+    @discardableResult
+    public func addFile(named: String, containingEncodable encodable: Encodable, canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         let object = NativeTypesEncoder.objectFromEncodable(encodable, mode: .saveLocally)
-
-        let data = try self.data(from: object, encrypt: encrypt)
-        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite.union(options))
+        let data = try FileArchive.data(from: object, encrypt: encrypt)
+        return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite)
     }
 
-    public static func archiveDictionaryOfEncodable<E: Encodable>(_ dictionary: [String:E], toFile file: String, options: Data.WritingOptions = .atomicWrite, encrypt: (Data) throws -> Data = {return $0}) throws {
+    @discardableResult
+    public func addFile<E: Encodable>(named: String, containingEncodable dict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         var finalDict = [String:Any]()
 
-        for (key, value) in dictionary {
+        for (key, value) in dict {
             finalDict[key] = NativeTypesEncoder.objectFromEncodable(value, mode: .saveLocally)
         }
 
-        let data = try self.data(from: finalDict, encrypt: encrypt)
-        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite.union(options))
+        let data = try FileArchive.data(from: finalDict, encrypt: encrypt)
+        return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite)
     }
 
-    public static func archiveArrayOfEncodable<E: Encodable>(_ array: [E], toFile file: String, options: Data.WritingOptions = .atomicWrite, encrypt: (Data) throws -> Data = {return $0}) throws {
+    @discardableResult
+    public func addFile<E: Encodable>(named: String, containingEncodable array: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         var finalArray = [Any]()
 
         for value in array {
             finalArray.append(NativeTypesEncoder.objectFromEncodable(value, mode: .saveLocally))
         }
 
-        let data = try self.data(from: finalArray, encrypt: encrypt)
-        try data.write(to: URL(fileURLWithPath: file), options: Data.WritingOptions.atomicWrite.union(options))
+        let data = try FileArchive.data(from: finalArray, encrypt: encrypt)
+        return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite)
+    }
+}
+
+extension Path {
+    @discardableResult
+    public func createFile(containingEncodable encodable: Encodable, canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+        let name = self.basename
+        let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
+        return try parentDirectory.addFile(named: name, containingEncodable: encodable, canOverwrite: canOverwrite, encrypt: encrypt)
     }
 
-    public static func unarchiveEncodableFromFile<E: Decodable>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> E {
-        guard var data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
-            throw self.error("unarching \(E.self)", because: "the file does not exist")
-        }
-        data = try decrypt(data)
+    @discardableResult
+    public func createFile<E: Encodable>(containingEncodable encodableDict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+        let name = self.basename
+        let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
+        return try parentDirectory.addFile(named: name, containingEncodable: encodableDict, canOverwrite: canOverwrite, encrypt: encrypt)
+    }
 
-        guard let object = try self.object(from: data, decrypt: decrypt) else {
+    @discardableResult
+    public func createFile<E: Encodable>(containingEncodable encodableArray: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+        let name = self.basename
+        let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
+        return try parentDirectory.addFile(named: name, containingEncodable: encodableArray, canOverwrite: canOverwrite, encrypt: encrypt)
+    }
+}
+
+extension FilePath {
+    public func decodable<E: Decodable>(decrypt: (Data) throws -> Data = {return $0}) throws -> E {
+        guard let object = try FileArchive.object(from: try self.contents(), decrypt: decrypt) else {
             throw self.error("unarching \(E.self)", because: "the file is invalid")
         }
 
@@ -53,12 +74,8 @@ public struct FileArchive: ErrorGenerating {
         return value
     }
 
-    public static func unarchiveDictionaryOfEncodableFromFile<E: Decodable>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [String:E]? {
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
-            return nil
-        }
-
-        guard let rawDict = try self.object(from: data, decrypt: decrypt) as? [String:[String: Any]] else {
+    public func decodableDict<E: Decodable>(decrypt: (Data) throws -> Data = {return $0}) throws -> [String:E] {
+        guard let rawDict = try FileArchive.object(from: try self.contents(), decrypt: decrypt) as? [String:[String: Any]] else {
             throw self.error("unarching \(E.self)", because: "the file is invalid")
         }
 
@@ -71,12 +88,8 @@ public struct FileArchive: ErrorGenerating {
         return finalDict
     }
 
-    public static func unarchiveArrayOfEncodableFromFile<E: Decodable>(_ file: String, decrypt: (Data) throws -> Data = {return $0}) throws -> [E]? {
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
-            return nil
-        }
-
-        guard let rawArray = try self.object(from: data, decrypt: decrypt) as? [Any] else {
+    public func decodableArray<E: Decodable>(decrypt: (Data) throws -> Data = {return $0}) throws -> [E] {
+        guard let rawArray = try FileArchive.object(from: try self.contents(), decrypt: decrypt) as? [Any] else {
             throw self.error("unarching \(E.self)", because: "the file is invalid")
         }
 
@@ -92,16 +105,15 @@ public struct FileArchive: ErrorGenerating {
     }
 }
 
-private extension FileArchive {
+private struct FileArchive: ErrorGenerating {
     static func data(from object: Any, encrypt: (Data) throws -> Data) throws -> Data {
         return try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
         //return try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
     }
 
     static func object(from data: Data, decrypt: (Data) throws -> Data) throws -> Any? {
-        let data = try decrypt(data)
-        return NSKeyedUnarchiver.unarchiveObject(with: data)
+        return NSKeyedUnarchiver.unarchiveObject(with: try decrypt(data))
         //return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
     }
 }
-#endif
+

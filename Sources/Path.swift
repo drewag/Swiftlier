@@ -206,7 +206,7 @@ extension DirectoryPath {
     }
 }
 
-extension NonExistingPath {
+extension Path {
     public func createFile(containing data: Data? = nil, canOverwrite: Bool) throws -> FilePath {
         let name = self.basename
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
@@ -234,11 +234,8 @@ extension NonExistingPath {
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
         return try parentDirectory.addLink(named: name, to: to, canOverwrite: canOverwrite)
     }
-}
 
-extension Path {
     func refresh() -> Path {
         return type(of: self).build(self.url)
     }
 }
-
