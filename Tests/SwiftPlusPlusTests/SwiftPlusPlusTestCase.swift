@@ -18,12 +18,14 @@ protocol LinuxEnforcedTestCase: AnyLinuxEnforcedTestCase {
 
 extension XCTestCase {
     func checkTestIncludedForLinux() {
+#if os(macOS)
         guard let enforced = self as? AnyLinuxEnforcedTestCase else {
             XCTFail("All test cases must implement LinuxEnforcedTestCase protocol")
             return
         }
 
         enforced.validateIncludesTest(named: invocation!.selector.description)
+#endif
     }
 
 #if os(macOS)

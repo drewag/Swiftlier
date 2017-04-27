@@ -15,6 +15,10 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
         return try! FileSystem.default.workingDirectory.subdirectory("tests")
     }
 
+    func string(at url: URL) throws -> String? {
+        return try String(data: Data(contentsOf: url), encoding: .utf8)
+    }
+
     override func setUp() {
         if let nonExistent = self.base as? NonExistingPath {
             let _ = try? nonExistent.createDirectory()
@@ -148,17 +152,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.move(into: self.base, named: "other.txt", canOverwrite: true).description, "File(./tests/other.txt)")
         XCTAssertFalse(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.move(into: self.base, named: "other.txt", canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testMoveFileToDifferentDirectoryWithSameName() throws {
@@ -181,17 +185,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.move(into: toDirectory, canOverwrite: true).description, "File(./tests/sub2/file.txt)")
         XCTAssertFalse(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.move(into: toDirectory, canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testMoveFileToDifferentDirectoryWithDifferentName() throws {
@@ -214,17 +218,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.move(into: toDirectory, named: "other.txt", canOverwrite: true).description, "File(./tests/sub2/other.txt)")
         XCTAssertFalse(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.move(into: toDirectory, named: "other.txt", canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testMoveFileDirectlyToPath() throws {
@@ -246,17 +250,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.move(to: toPath, canOverwrite: true).description, "File(./tests/other.txt)")
         XCTAssertFalse(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.move(to: toPath, canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testMoveDirectoryWithinDirectory() throws {
@@ -407,17 +411,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.copy(into: self.base, named: "other.txt", canOverwrite: true).description, "File(./tests/other.txt)")
         XCTAssertTrue(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.copy(into: self.base, named: "other.txt", canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testCopyFileToDifferentDirectoryWithSameName() throws {
@@ -440,17 +444,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.copy(into: toDirectory, canOverwrite: true).description, "File(./tests/sub2/file.txt)")
         XCTAssertTrue(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.copy(into: toDirectory, canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testCopyFileToDifferentDirectoryWithDifferentName() throws {
@@ -473,17 +477,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.copy(into: toDirectory, named: "other.txt", canOverwrite: true).description, "File(./tests/sub2/other.txt)")
         XCTAssertTrue(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.copy(into: toDirectory, named: "other.txt", canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testCopyFileDirectlyToPath() throws {
@@ -505,17 +509,17 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         // Move and overwrite
         try "second".data(using: .utf8)?.write(to: fromFileUrl)
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "test")
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "test")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "second")
         XCTAssertEqual(try file.copy(to: toPath, canOverwrite: true).description, "File(./tests/other.txt)")
         XCTAssertTrue(FileManager.default.fileExists(at: fromFileUrl))
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
 
         // Move and fail to overwrite
         try "third".data(using: .utf8)?.write(to: fromFileUrl)
         XCTAssertThrowsError(try file.copy(to: toPath, canOverwrite: false))
-        XCTAssertEqual(try String(contentsOf: fromFileUrl), "third")
-        XCTAssertEqual(try String(contentsOf: toFileUrl), "second")
+        XCTAssertEqual(try self.string(at: fromFileUrl), "third")
+        XCTAssertEqual(try self.string(at: toFileUrl), "second")
     }
 
     func testLastModified() throws {
@@ -571,36 +575,6 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         try "test".data(using: .ascii)?.write(to: url)
         XCTAssertEqual(try file.string(encoding: .ascii), "test")
-    }
-
-    func testDictionary() throws {
-        let url = URL(fileURLWithPath: "tests/file.txt")
-        try "test".data(using: .utf8)?.write(to: url)
-
-        guard let file = try self.base.file("file.txt").file else {
-            XCTFail("Failed to find file")
-            return
-        }
-
-        XCTAssertNil(try file.dictionary())
-
-        let dict = ["key":"value"]
-        try PropertyListSerialization.data(fromPropertyList: dict, format: .binary, options: .allZeros).write(to: url)
-        guard let outputDict = try file.dictionary() as? [String:String] else {
-            XCTFail("No dict returned")
-            return
-        }
-        XCTAssertEqual(outputDict, dict)
-
-        try PropertyListSerialization.data(fromPropertyList: dict, format: .xml, options: .allZeros).write(to: url)
-        guard let outputDict2 = try file.dictionary() as? [String:String] else {
-            XCTFail("No dict returned")
-            return
-        }
-        XCTAssertEqual(outputDict2, dict)
-
-        try FileManager.default.removeItem(at: url)
-        XCTAssertThrowsError(try file.dictionary())
     }
 
     #if os(iOS)
@@ -858,7 +832,6 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
             ("testLastModified", testLastModified),
             ("testFileContents", testFileContents),
             ("testString", testString),
-            ("testDictionary", testDictionary),
             ("testHandleForReading", testHandleForReading),
             ("testHandleForWriting", testHandleForWriting),
             ("testResolveSymLink", testResolveSymLink),

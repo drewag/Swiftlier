@@ -111,16 +111,6 @@ extension FilePath {
         return String(data: try self.contents(), encoding: encoding)
     }
 
-    public func dictionary() throws -> [String:AnyObject]? {
-        let data: Data = try self.contents()
-        do {
-            return try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:AnyObject]
-        }
-        catch {
-            return nil
-        }
-    }
-
     #if os(iOS)
     public func image() throws -> UIImage? {
         let data = try self.contents()

@@ -183,7 +183,19 @@ public struct FileSystem: ErrorGenerating {
                 try self.manager.removeItem(at: to)
                 fallthrough
             default:
-                try self.manager.copyItem(at: at, to: to)
+                #if os(Linux)
+                    let source = try FileHandle(forReadingFrom: at)
+                    try Data().write(to: to)
+                    let destination = try FileHandle(forWritingTo: to)
+
+                    var data: Data
+                    repeat {
+                        data = source.readData(ofLength: 16000)
+                        destination.write(data)
+                    } while !data.isEmpty
+                #else
+                    try self.manager.copyItem(at: at, to: to)
+                #endif
             }
 
             guard let existingPath = self.path(from: to) as? ExistingPath else {
@@ -226,7 +238,7 @@ public struct FileSystem: ErrorGenerating {
     func lastModified(at url: URL) throws -> Date {
         #if os(Linux)
             var st = stat()
-            stat(self.path, &st)
+            stat(url.relativePath, &st)
             let ts = st.st_mtim
             let double = Double(ts.tv_nsec) * 1.0E-9 + Double(ts.tv_sec)
             guard double > 0 else {
