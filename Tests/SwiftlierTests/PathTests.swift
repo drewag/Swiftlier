@@ -531,7 +531,7 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
             return
         }
 
-        XCTAssertEqualWithAccuracy(try file.lastModified().timeIntervalSince1970, Date().timeIntervalSince1970, accuracy: 1)
+        XCTAssertEqualWithAccuracy(try file.lastModified().timeIntervalSince1970, Date().timeIntervalSince1970, accuracy: 5)
 
         try FileManager.default.removeItem(at: url)
 
