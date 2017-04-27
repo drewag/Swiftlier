@@ -1,6 +1,6 @@
 //
 //  PersistenceService.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 3/26/17.
 //  Copyright © 2017 Drewag. All rights reserved.
@@ -27,7 +27,7 @@ extension PersistenceService {
     }
 
     var filePath: String {
-        return FileManager.default.documentsDirectoryPath / "\(self.valueName.lowercased())s.plist"
+        return FileManager.default.documentsDirectoryURL.appendingPathComponent("\(self.valueName.lowercased())s.plist").relativePath
     }
 
     func loadValues() throws -> [Value] {

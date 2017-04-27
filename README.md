@@ -2,110 +2,56 @@
 ![platforms](https://img.shields.io/badge/platform-iOS%20macOS%20Linux-orange.svg?style=flat)
 ![SPM](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange.svg?style=flat)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
-[![Build Status](https://travis-ci.org/drewag/SwiftPlusPlus.svg?branch=master)](https://travis-ci.org/drewag/SwiftPlusPlus)
+[![Build Status](https://travis-ci.org/drewag/Swiftlier.svg?branch=master)](https://travis-ci.org/drewag/Swiftlier)
 
-SwiftPlusPlus
+Swiftlier
 =============
 
-Library for common enhancements to the Swift language developed by Apple
+Library for common enhancements to the Swift language as well as for Foundation and UIKit frameworks with
+support for iOS, macOS, and Linux.
+
+**Note:** Certain functionality is only available on specific platforms. For example, helpers on UIViewController
+will only be available on iOS while the ability to run a shell command is only available on OS X and Linux.
 
 Goals
 =====
 
-Create a common library of helpful extensions and classes that many
-developers use. This would allow us to use more advanced features while maintaining
+Create a common library of generic extensions and types that are useful across many
+projects. This would allow developers to use more advanced features while maintaining
 readability. You are encouraged to submit pull requests or issues with additional features
 that we can discuss to see if they should be added.
 
 Installation
 ========
 
-As git submodule
+iOS
 --------------
 
-- Run `git submodle add https://github.com/drewag/SwiftPlusPlus.git external/SwiftPlusPlus`
-- Drag 'SwiftPlusPlus.xcodeproj' into your project
-- Add `import SwiftPlusPlus` to the top of any file you would like to use this library in
+### As git submodule
 
-Note: With this installation you will not be able to access extensions to Array and Dictionary
-as there is a limitation in Swift that will not allow extensions to generic types from frameworks.
-To get around this, you can link SwiftPlusPlus files directly into your main target.
+- Run `git submodle add https://github.com/drewag/Swiftlier.git external/Swiftlier`
+- Drag 'SwiftlieriOS.xcodeproj' into your project
+- Add `import Swiftlier` to the top of any file you would like to use this library in
 
+Linux and macOS
+----------------
 
-Functionality Added to Swift
-=============================
+### Using Swift Package Manager
 
-String
-----------
+    import PackageDescription
 
-### repeat
+    let package = Package(
+        name: "web",
+        dependencies: [
+            .Package(url: "https://github.com/drewag/Swiftlier.git", majorVersion: 3),
+        ]
+    )
 
-Returns a string by repeating it 'times' times
+High Level Tasks
+=================
 
-    var aString = "Hello ".repeat(3)
-    println(aString) // "Hello Hello Hello "
-
-Dictionary
------------
-
-### map
-
-Return a new dictionary with mapped values for each key and value
-
-    var foods = [
-        "fruit": ["Apple", "Cantelope", "Strawberry"],
-        "meat": ["Steak", "Chicken"],
-    ]
-
-    var foodsStartingWithC = foods.map { $1.filter { $0.hasPrefix("C") } }
-    println(foodsStartingWithC) // ["meat": ["Chicken"], "fruit": ["Cantelope"]]
-
-## merge
-
-Merge two dictionaries together of the same type
-
-    var dict1 = ["Apples": 2, "Oranges": 3]
-    var dict2 = ["Apples": 3, "Cantaloupe": 1]
-    dict1.merge(with: dict2, by: +) // ["Oranges": 3, "Cantaloupe": 1, "Apples": 5]
-
-Array
----------
-
-### containsObjectPassingTest:
-
-Checks if the array contains a value that passes the given test
-
-    var numbers = [1,2,3,4,5]
-    numbers.containsObjectPassingTest({$0 > 3}) // true
-
-### indexOfObjectPassingTest
-
-Returns the index of the first element passing the given test or nil if not found
-
-    var numbers = [1,2,3,4,5]
-    numbers.containsObjectPassingTest({$0 > 3}) // 3
-    numbers.containsObjectPassingTest({$0 > 5}) // nil
-
-EventCenter
-------------
-
-A type safe, closure based event center modeled after NSNotificationCenter. Every event is guaranteed
-to be unique by the compiler because it is based off of a custom subclass that implements EventType.
-That protocol simply requires that the event define a typealias for the parameter to be passed to
-registered closures. That type can be `void`, a single type, or a multiple types by using a tuple.
-Because the EventCenter is type safe, when registering a callback, the types specified by the event
-can be inferred and enforced by the compiler.
-
-See the [EventCenter.swift](SwiftPlusPlus/EventCenter.swift) file for more details.
-
-MultiCallback
--------------
-
-Generic class that allows registration of multiple callbacks
-
-See the [MultiCallback.swift](SwiftPlusPlusTests/MultiCallback.swift) file for more details.
-
-Commit Style
-=======
-
-My commit messages follow these guidlines: [CAAG Commit Style](http://drewag.me/posts/changes-at-a-glance?source=github)
+- [x] CI for macOS and Linux
+- [ ] CI for iOS
+- [ ] Comprehensive unit test coverage
+- [ ] High level documentation to describe the major components
+- [ ] In-line documentation for quick help in Xcode

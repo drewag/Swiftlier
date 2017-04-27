@@ -1,6 +1,6 @@
 //
 //  Codable.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 12/20/16.
 //  Copyright © 2016 Drewag. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  UIView+ImageCapture.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 9/10/15.
 //  Copyright © 2015 Drewag LLC. All rights reserved.

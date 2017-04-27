@@ -1,6 +1,6 @@
 //
 //  CommandLine.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew Wagner on 1/15/17.
 //

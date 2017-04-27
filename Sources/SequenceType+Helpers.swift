@@ -1,6 +1,6 @@
 //
-//  Array+SwiftPlusPlus.swift
-//  SwiftPlusPlus
+//  SequenceType+Helpers.swift
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 8/1/14.
 //  Copyright (c) 2014 Drewag LLC. All rights reserved.

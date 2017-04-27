@@ -1,6 +1,6 @@
 //
 //  DataSourceTypeTests.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 9/8/15.
 //  Copyright © 2015 Drewag LLC. All rights reserved.
@@ -8,7 +8,7 @@
 
 #if os(iOS)
 import XCTest
-import SwiftPlusPlus
+import Swiftlier
 
 extension Array: DataSourceType {
     public typealias ValueType = Element

@@ -54,3 +54,10 @@ extension EmailAddress: Codable {
         try self.init(string: string)
     }
 }
+
+extension String {
+    public var isValidEmail: Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return self.range(of: emailRegEx, options: .regularExpression) != nil
+    }
+}

@@ -1,13 +1,13 @@
 //
 //  EventCenterTests.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 1/5/15.
 //  Copyright (c) 2015 Drewag LLC. All rights reserved.
 //
 
 import XCTest
-import SwiftPlusPlus
+import Swiftlier
 
 class TestStringEvent: EventType {
     typealias CallbackParam = String

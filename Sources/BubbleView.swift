@@ -1,6 +1,6 @@
 //
 //  BubbleView.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 7/31/16.
 //  Copyright © 2016 Drewag LLC. All rights reserved.

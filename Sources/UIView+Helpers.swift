@@ -1,6 +1,6 @@
 //
 //  UIView+Helpers.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 9/17/15.
 //  Copyright © 2015 Drewag LLC. All rights reserved.

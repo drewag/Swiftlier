@@ -1,6 +1,6 @@
 //
 //  ObservableReference.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 1/29/17.
 //  Copyright © 2017 Drewag. All rights reserved.

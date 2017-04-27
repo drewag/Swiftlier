@@ -52,15 +52,4 @@ extension String {
         pos = self.index(pos, offsetBy: index)
         return self.substring(to: pos)
     }
-
-    public var isValidEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        return self.range(of: emailRegEx, options: .regularExpression) != nil
-    }
 }
-
-#if os(iOS)
-public func /(lhs: String, rhs: String) -> String {
-    return (lhs as NSString).appendingPathComponent(rhs)
-}
-#endif

@@ -1,6 +1,6 @@
 //
 //  Float+Factory.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 12/18/16.
 //  Copyright © 2016 Drewag. All rights reserved.

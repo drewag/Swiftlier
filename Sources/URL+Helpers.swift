@@ -1,6 +1,6 @@
 //
 //  URL+Helpers.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 3/27/17.
 //  Copyright © 2017 Drewag. All rights reserved.

@@ -1,13 +1,13 @@
 //
 //  EmailAddressTests.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 4/22/17.
 //
 //
 
 import XCTest
-import SwiftPlusPlus
+import Swiftlier
 
 final class EmailAddressTests: XCTestCase, LinuxEnforcedTestCase {
     func testNilString() {

@@ -1,6 +1,6 @@
 //
 //  WebViewController.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 11/4/15.
 //  Copyright © 2015 Drewag LLC. All rights reserved.

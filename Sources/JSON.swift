@@ -1,6 +1,6 @@
 //
 //  JSON.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 3/23/16.
 //  Copyright © 2016 Drewag LLC. All rights reserved.

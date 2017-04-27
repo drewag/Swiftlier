@@ -1,6 +1,6 @@
 //
 //  CGContext+ThreadSafe.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 8/26/16.
 //  Copyright © 2016 Drewag LLC. All rights reserved.

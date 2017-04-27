@@ -1,13 +1,13 @@
 //
 //  ObservableTests.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 7/27/14.
 //  Copyright (c) 2014 Drewag LLC. All rights reserved.
 //
 
 import XCTest
-import SwiftPlusPlus
+import Swiftlier
 
 final class ObservableTests: XCTestCase, LinuxEnforcedTestCase {
     func testSubscribing() {

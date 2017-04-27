@@ -1,6 +1,6 @@
 //
 //  NSFileManager+Directories.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 12/15/14.
 //  Copyright (c) 2014 Drewag LLC. All rights reserved.

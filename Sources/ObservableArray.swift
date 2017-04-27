@@ -1,6 +1,6 @@
 //
 //  ObservableArray.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 7/9/16.
 //  Copyright © 2016 Drewag LLC. All rights reserved.

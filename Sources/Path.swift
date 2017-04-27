@@ -1,6 +1,6 @@
 //
 //  Path.swift
-//  SwiftPlusPlus
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 4/18/17.
 //

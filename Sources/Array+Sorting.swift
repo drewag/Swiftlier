@@ -1,6 +1,6 @@
 //
-//  Array+SwiftPlusPlus.swift
-//  SwiftPlusPlus
+//  Array+Sorting.swift
+//  Swiftlier
 //
 //  Created by Andrew J Wagner on 4/1/16.
 //  Copyright © 2016 Drewag LLC. All rights reserved.
