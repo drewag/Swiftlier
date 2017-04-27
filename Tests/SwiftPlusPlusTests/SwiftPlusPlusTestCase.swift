@@ -17,14 +17,18 @@ protocol LinuxEnforcedTestCase: AnyLinuxEnforcedTestCase {
 }
 
 extension XCTestCase {
-#if os(macOS)
-    override open func tearDown() {
+    func checkTestIncludedForLinux() {
         guard let enforced = self as? AnyLinuxEnforcedTestCase else {
             XCTFail("All test cases must implement LinuxEnforcedTestCase protocol")
             return
         }
 
         enforced.validateIncludesTest(named: invocation!.selector.description)
+    }
+
+#if os(macOS)
+    override open func tearDown() {
+        self.checkTestIncludedForLinux()
 
         super.tearDown()
     }
@@ -33,11 +37,12 @@ extension XCTestCase {
 
 extension LinuxEnforcedTestCase {
     func validateIncludesTest(named: String) {
+#if os(macOS)
         let contains = type(of: self).allTests.contains(where: { test in
             return test.0 == named || "\(test.0)AndReturnError:" == named
         })
 
         XCTAssert(contains, "Test '\(named)' is missing from the allTests array")
-
+#endif
     }
 }

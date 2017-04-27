@@ -14,190 +14,252 @@ public protocol FileSystemReference {
 }
 
 public struct FileSystem: ErrorGenerating {
-    public static let main = FileSystem()
+    public static let `default` = FileSystem()
+
+    public var documentsDirectory: DirectoryPath {
+        let url = self.manager.documentsDirectoryURL
+        return try! self.createDirectoryIfNotExists(at: url)
+    }
+
+    public var cachesDirectory: DirectoryPath {
+        let url = self.manager.cachesDirectoryURL
+        return try! self.createDirectoryIfNotExists(at: url)
+    }
+
+    public var workingDirectory: DirectoryPath {
+        let path = self.path(from: URL(fileURLWithPath: ""))
+        return path as! DirectoryPath
+    }
+
+
+    enum ItemKind {
+        case none
+        case file
+        case directory
+    }
 
     let manager = FileManager.default
 
-    public var documentsDirectory: Directory {
-        let url = self.manager.documentsDirectoryURL
-        let _ = try? self.manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-        return Directory(path: url.relativePath, fileSystem: self)
-    }
-
-    public var cachesDirectory: Directory {
-        let url = self.manager.cachesDirectoryURL
-        let _ = try? self.manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-        return Directory(path: url.relativePath, fileSystem: self)
-    }
-
-    public func reference(forPath path: String) throws -> Reference {
-        try self.validate(path: path)
-        if self.isDirectory(at: path) {
-            return Directory(path: path, fileSystem: self)
-        }
-        else if !self.isNotFile(at: path) {
-            return File(path: path, fileSystem: self)
-        }
-        return NotFoundPath(path: path, fileSystem: self)
-    }
-
-    func createFile(at path: String, with data: Data) {
-        let url = URL(fileURLWithPath: path)
-        let directory = url.deletingLastPathComponent()
-        try! self.manager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
-        try! data.write(to: url)
-    }
-
-    func createLink(from: String, to: String) {
-        let from = URL(fileURLWithPath: from)
-        let to = URL(fileURLWithPath: to)
-        try! self.manager.createSymbolicLink(at: from, withDestinationURL: to)
-    }
-
-    func createDirectory(at path: String) {
-        let url = URL(fileURLWithPath: path)
-        try! self.manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-    }
-
-    func copyAndOverwrite(from: String, to: String) {
-        let from = URL(fileURLWithPath: from)
-        let to = URL(fileURLWithPath: to)
-        let _ = try? self.manager.removeItem(at: to)
-        try! self.manager.copyItem(at: from, to: to)
-    }
-
-    func moveAndOverwrite(from: String, to: String) {
-        let from = URL(fileURLWithPath: from)
-        let to = URL(fileURLWithPath: to)
-        let _ = try? self.manager.removeItem(at: to)
-        try! self.manager.moveItem(at: from, to: to)
-    }
-
-    func deleteItem(at path: String) {
-        let url = URL(fileURLWithPath: path)
-        try! self.manager.removeItem(at: url)
-    }
-
-    func contentsOfDirectory(at path: String) throws -> [ExistingReference] {
-        let url = URL(fileURLWithPath: path)
-        if let enumerator = self.manager.enumerator(at: url, includingPropertiesForKeys: nil) {
-            var contents = [ExistingReference]()
-            while let fileOrDirectory = enumerator.nextObject() as? URL {
-                enumerator.skipDescendants()
-                contents.append(try! self.reference(forPath: fileOrDirectory.relativePath) as! ExistingReference)
+    public func path(from url: URL, resolvingSymLinks: Bool = false) -> Path {
+        switch self.itemKind(at: url) {
+        case .directory:
+            return ConcreteDirectoryPath(url: url)
+        case .file:
+            if resolvingSymLinks
+                , let newPath = try? self.manager.destinationOfSymbolicLink(atPath: url.relativePath)
+            {
+                return self.path(from: URL(fileURLWithPath: newPath), resolvingSymLinks: resolvingSymLinks)
             }
-            return contents
-        }
-        else {
-            throw self.error("loading contents of directory at \(path)", because: ReferenceErrorReason.notFound)
+            return ConcreteFilePath(url: url)
+        case .none:
+            return ConcreteNonExistentPath(url: url)
         }
     }
 
-    func validate(path: String) throws {
-        var components = URL(fileURLWithPath: path).pathComponents
-        guard components.count > 0 else {
-            return
+    func itemKind(at url: URL) -> ItemKind {
+        #if os(Linux)
+            var isDirectory = false
+        #else
+            var isDirectory = ObjCBool(false)
+        #endif
+        guard FileManager.default.fileExists(atPath: url.relativePath, isDirectory: &isDirectory) else {
+            return .none
         }
-        let first = components.removeFirst()
-        var url = URL(fileURLWithPath: first)
+        #if os(Linux)
+            return isDirectory ? .directory : .file
+        #else
+            return isDirectory.boolValue ? .directory : .file
+        #endif
+    }
 
-        for component in components {
-            guard self.isNotFile(at: url.relativePath) else {
-                throw self.error("creating reference to \(path)", because: ReferenceErrorReason.invalidPath)
+    func contentsOfDirectory(at url: URL) throws -> [ExistingPath] {
+        switch self.itemKind(at: url) {
+        case .file:
+            throw self.error("loading Contents of Directory", because: "'\(url.relativePath)' is a file")
+        case .none:
+            throw self.error("loading Contents of Directory", because: "a directory at '\(url.relativePath)' does not exist")
+        case .directory:
+            break
+        }
+
+        guard let enumerator = self.manager.enumerator(at: url, includingPropertiesForKeys: nil) else {
+            throw self.error("loading Contents of Directory", because: "a directory at '\(url.relativePath)' does not exist")
+        }
+
+        var contents = [ExistingPath]()
+        while let possible = enumerator.nextObject() as? URL {
+            enumerator.skipDescendants()
+            guard let existing = self.path(from: possible) as? ExistingPath else {
+                continue
             }
-            url = url.appendingPathComponent(component)
+            contents.append(existing)
+        }
+        return contents
+    }
+
+    func createFile(at url: URL, with data: Data?, canOverwrite: Bool) throws -> FilePath {
+        switch (self.itemKind(at: url), canOverwrite) {
+        case (.file, false):
+            throw self.error("creating file", because: "a file at '\(url.relativePath)' already exists")
+        case (.directory, _):
+            throw self.error("creating file", because: "'\(url.relativePath)' is already a directory")
+        case (.file, true):
+            try self.manager.removeItem(at: url)
+            fallthrough
+        default:
+            let data = data ?? Data()
+            try data.write(to: url)
+
+            guard let filePath = self.path(from: url) as? FilePath else {
+                throw self.error("creating File", because: "the new file could not be found")
+            }
+            return filePath
         }
     }
-}
 
-private extension FileSystem {
-    func isDirectory(at path: String) -> Bool {
-        #if os(Linux)
-        var isDirectory = false
-        #else
-        var isDirectory = ObjCBool(false)
-        #endif
-        guard FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) else {
-            return false
+    func createLink(at: URL, to: URL, canOverwrite: Bool) throws -> FilePath {
+        switch (self.itemKind(at: at), canOverwrite) {
+        case (.file, false):
+            throw self.error("creating link", because: "a file at '\(at.relativePath)' already exists")
+        case (.directory, false):
+            throw self.error("creating link", because: "'\(at.relativePath)' is already a directory")
+        case (.file, true), (.directory, true):
+            try self.manager.removeItem(at: at)
+            fallthrough
+        default:
+            switch self.itemKind(at: to) {
+            case .file:
+                try self.manager.createSymbolicLink(at: at, withDestinationURL: to)
+            case .none:
+                throw self.error("creating link", because: "the destination '\(to.relativePath)' does not exist")
+            case .directory:
+                throw self.error("creating link", because: "the destination '\(to.relativePath)' is a directory")
+            }
+
+            guard let filePath = self.path(from: at) as? FilePath else {
+                throw self.error("creating link", because: "the new link could not be found")
+            }
+            return filePath
         }
-        #if os(Linux)
-        return isDirectory
-        #else
-        return isDirectory.boolValue
-        #endif
-
     }
 
-    func isNotFile(at path: String) -> Bool {
-        #if os(Linux)
-        var isDirectory = false
-        #else
-        var isDirectory = ObjCBool(false)
-        #endif
-        guard FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) else {
-            return true
+    func moveItem(at: URL, to: URL, canOverwrite: Bool) throws -> ExistingPath {
+        switch self.itemKind(at: at) {
+        case .file, .directory:
+            switch (self.itemKind(at: to), canOverwrite) {
+            case (.file, false):
+                throw self.error("moving item", because: "a file at '\(to.relativePath)' already exists")
+            case (.directory, false):
+                throw self.error("moving item", because: "a directory at '\(to.relativePath)' already exists")
+            case (.file, true), (.directory, true):
+                try self.manager.removeItem(at: to)
+                fallthrough
+            default:
+                try self.manager.moveItem(at: at, to: to)
+            }
+
+            guard let existingPath = self.path(from: to) as? ExistingPath else {
+                throw self.error("moving item", because: "the item at the new location could not be found")
+            }
+            return existingPath
+        case .none:
+            throw self.error("moving item", because: "an item at '\(at.relativePath)' does not exist")
         }
-        #if os(Linux)
-        return isDirectory
-        #else
-        return isDirectory.boolValue
-        #endif
-    }
-}
-
-public struct Directory: FileSystemReference, DirectoryReference, ExistingReference, ExtendableReference {
-    public let path: String
-    public let fileSystem: FileSystem
-
-    public func fullPath() -> String {
-        return self.path
-    }
-}
-
-public struct File: FileSystemReference, ResourceReference, ExistingReference, ExtendableReference {
-    public let path: String
-    public let fileSystem: FileSystem
-
-    public func fullPath() -> String {
-        return self.path
     }
 
-    public func lastModified() -> Date {
+    func copyFile(at: URL, to: URL, canOverwrite: Bool) throws -> ExistingPath {
+        switch self.itemKind(at: at) {
+        case .directory:
+            throw self.error("copying file", because: "'\(at.relativePath)' is a directory")
+        case .none:
+            throw self.error("copying file", because: "an item at '\(at.relativePath)' does not exist")
+        case .file:
+            switch (self.itemKind(at: to), canOverwrite) {
+            case (.file, false):
+                throw self.error("copying file", because: "a file at '\(to.relativePath)' already exists")
+            case (.directory, _):
+                throw self.error("copying item", because: "'\(to.relativePath)' is a directory")
+            case (.file, true):
+                try self.manager.removeItem(at: to)
+                fallthrough
+            default:
+                try self.manager.copyItem(at: at, to: to)
+            }
+
+            guard let existingPath = self.path(from: to) as? ExistingPath else {
+                throw self.error("moving item", because: "the item at the new location could not be found")
+            }
+            return existingPath
+        }
+    }
+
+    func createDirectoryIfNotExists(at url: URL) throws -> DirectoryPath {
+        switch self.itemKind(at: url) {
+        case .none:
+            try self.manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        case .file:
+            throw self.error("creating directory", because: "a file already exists at '\(url.relativePath)'")
+        case .directory:
+            break
+        }
+
+        guard let directoryPath = self.path(from: url) as? DirectoryPath else {
+            throw self.error("creating directory", because: "the new directory could not be found")
+        }
+        return directoryPath
+    }
+
+    func deleteItem(at url: URL) throws -> NonExistingPath {
+        switch self.itemKind(at: url) {
+        case .none:
+            throw self.error("deleting item", because: "an item does not exist at '\(url.relativePath)'")
+        case .file, .directory:
+            try self.manager.removeItem(at: url)
+        }
+
+        guard let nonExistingPath = self.path(from: url) as? NonExistingPath else {
+            throw self.error("deleting item", because: "the item still exists after deleting")
+        }
+        return nonExistingPath
+    }
+
+    func lastModified(at url: URL) throws -> Date {
         #if os(Linux)
             var st = stat()
             stat(self.path, &st)
             let ts = st.st_mtim
             let double = Double(ts.tv_nsec) * 1.0E-9 + Double(ts.tv_sec)
+            guard double > 0 else {
+                throw self.error("getting last modified", because: "\(url.relativePath) is not a file")
+            }
             return Date(timeIntervalSince1970: double)
         #else
-            guard let attributes = try? self.fileSystem.manager.attributesOfItem(atPath: self.path) else {
-                return Date()
-            }
+            let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
             return attributes[.modificationDate] as? Date ?? Date()
         #endif
     }
 }
 
-public struct NotFoundPath: FileSystemReference, UnknownReference, ExtendableReference {
-    public let path: String
-    public let fileSystem: FileSystem
-
-    public func fullPath() -> String {
-        return self.path
+struct ConcreteFilePath: FilePath {
+    static func build(_ url: URL) -> Path {
+        return FileSystem.default.path(from: url)
     }
 
-    public func createLink(to: ResourceReference) -> ResourceReference {
-        self.fileSystem.createLink(from: self.fullPath(), to: to.fullPath())
-        return to.refresh() as! ResourceReference
-    }
+    let url: URL
 }
 
-extension FileSystemReference {
-    public func refresh() -> Reference {
-        return try! self.fileSystem.reference(forPath: self.path)
+struct ConcreteDirectoryPath: DirectoryPath {
+    static func build(_ url: URL) -> Path {
+        return FileSystem.default.path(from: url)
     }
 
-    public func validateIsPossible() throws {
-        try self.fileSystem.validate(path: self.path)
+    let url: URL
+}
+
+struct ConcreteNonExistentPath: NonExistingPath {
+    static func build(_ url: URL) -> Path {
+        return FileSystem.default.path(from: url)
     }
+
+    let url: URL
 }

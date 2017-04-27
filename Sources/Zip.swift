@@ -10,49 +10,50 @@
 import Foundation
 
 public struct Zip: ErrorGenerating {
-    let reference: ResourceReference
+    let path: Path
 
-    private static var temporaryDirectory: Reference {
-        return try! FileSystem.main.reference(forPath: "tmp/unzipped")
+    private static func temporaryDirectory() throws -> DirectoryPath {
+        return try FileSystem.default.workingDirectory.subdirectory("tmp")
     }
 
-    private static var temporaryZip: Reference {
-        return try! FileSystem.main.reference(forPath: "tmp/to-unzip.zip")
+    private static func temporaryUnzipLocation() throws -> Path {
+        return try self.temporaryDirectory().subdirectory("unzipped")
     }
 
-    public init(reference: ResourceReference) {
-        self.reference = reference
+    public init(path: FilePath) {
+        self.path = path
     }
 
     public init(data: Data) throws {
-        self.reference = try Zip.temporaryZip.overwriteFile(content: data)
+        self.path = try Zip.temporaryDirectory().addFile(named: "to-unzip.zip", containing: data, canOverwrite: true)
     }
 
-    public func unzip(to: Reference, keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryReference {
-        guard let destination = to as? UnknownReference else {
-            throw self.error("unzipping", because: "the destination '\(to.fullPath())' already exists")
+    public func unzip(to: Path, keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryPath {
+        guard let destination = to as? NonExistingPath else {
+            throw self.error("unzipping", because: "the destination '\(to.url.relativePath)' already exists")
         }
 
         var command = "unzip"
         if !keepingPaths {
             command += " -j"
         }
-        command += " \"\(reference.fullPath())\" -d \"\(destination.fullPath())\""
+        command += " \"\(self.path.url.relativePath)\" -d \"\(destination.url.relativePath)\""
         for exclude in excluding {
             command += " -x '\(exclude)'"
         }
 
         try ShellCommand(command).execute()
-        guard let directory = to.refresh() as? DirectoryReference else {
+        guard let directory = to.refresh() as? DirectoryPath else {
             throw self.error("unzipping", because: "the destination zip directory could not be found")
         }
         return directory
 
     }
 
-    public func unzipToTemporaryDirectory(keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryReference {
-        let _ = try? Zip.temporaryDirectory.delete()
-        return try self.unzip(to: Zip.temporaryDirectory, keepingPaths: keepingPaths, excluding: excluding)
+    public func unzipToTemporaryDirectory(keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryPath {
+        let destination = try Zip.temporaryUnzipLocation()
+        let _ = try? destination.directory?.delete()
+        return try self.unzip(to: destination, keepingPaths: keepingPaths, excluding: excluding)
     }
 }
 #endif
