@@ -11,6 +11,8 @@
 import UIKit
 import ObjectiveC
 
+var MakeAlertAction: (String?, UIAlertActionStyle, ((UIAlertAction) -> Swift.Void)?) -> UIAlertAction = UIAlertAction.init
+
 public class ErrorOccured: EventType { public typealias CallbackParam = ReportableError }
 
 class Alert: NSObject {
@@ -187,28 +189,28 @@ private extension Alert {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         if let cancel = cancel {
-            alert.addAction(UIAlertAction(
-                title: cancel.name,
-                style: .cancel,
-                handler: onTapped
+            alert.addAction(MakeAlertAction(
+                cancel.name,
+                .cancel,
+                onTapped
             ))
         }
 
         if let preferred = preferred {
-            let action = UIAlertAction(
-                title: preferred.name,
-                style: preferred.isDestructive ? .destructive : .default,
-                handler: onTapped
+            let action = MakeAlertAction(
+                preferred.name,
+                preferred.isDestructive ? .destructive : .default,
+                onTapped
             )
             alert.addAction(action)
             alert.preferredAction = action
         }
 
         for action in other {
-            alert.addAction(UIAlertAction(
-                title: action.name,
-                style: action.isDestructive ? .destructive : .default,
-                handler: onTapped
+            alert.addAction(MakeAlertAction(
+                action.name,
+                action.isDestructive ? .destructive : .default,
+                onTapped
             ))
         }
 
