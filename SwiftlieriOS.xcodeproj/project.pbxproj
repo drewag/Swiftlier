@@ -121,6 +121,7 @@
 		4935A6DD1EB1A52E00B0CCF8 /* PathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6D31EB1A52E00B0CCF8 /* PathTests.swift */; };
 		4935A6DE1EB1A52E00B0CCF8 /* String_HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6D41EB1A52E00B0CCF8 /* String_HelpersTests.swift */; };
 		4935A6DF1EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */; };
+		496BB90B1EB5003A00D60ECF /* AgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BB90A1EB5003A00D60ECF /* AgeTests.swift */; };
 		499AF5AA1EB1A6C500A13C6B /* PercentEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */; };
 		499AF5AD1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */; };
 		499AF5B41EB1CEAD00A13C6B /* FileArchiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */; };
@@ -256,6 +257,7 @@
 		4935A6D31EB1A52E00B0CCF8 /* PathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathTests.swift; sourceTree = "<group>"; };
 		4935A6D41EB1A52E00B0CCF8 /* String_HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String_HelpersTests.swift; sourceTree = "<group>"; };
 		4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxEnforcedTestCase.swift; sourceTree = "<group>"; };
+		496BB90A1EB5003A00D60ECF /* AgeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeTests.swift; sourceTree = "<group>"; };
 		499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentEncodable.swift; sourceTree = "<group>"; };
 		499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
 		499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileArchiveTests.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */,
 				499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */,
 				499AF5B71EB1D22800A13C6B /* TestCodable.swift */,
+				496BB90A1EB5003A00D60ECF /* AgeTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -676,6 +679,7 @@
 				4935A6DD1EB1A52E00B0CCF8 /* PathTests.swift in Sources */,
 				4935A6DC1EB1A52E00B0CCF8 /* ObservableTests.swift in Sources */,
 				4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */,
+				496BB90B1EB5003A00D60ECF /* AgeTests.swift in Sources */,
 				4935A6DF1EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift in Sources */,
 				4935A6D71EB1A52E00B0CCF8 /* DataSourceTypeTests.swift in Sources */,
 				4935A6D91EB1A52E00B0CCF8 /* EmailAddressTests.swift in Sources */,
