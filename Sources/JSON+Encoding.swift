@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension JSON {
     public static func encode(_ encodable: Encodable, mode: EncodingMode) -> String {
         let object = NativeTypesEncoder.objectFromEncodable(encodable, mode: mode)

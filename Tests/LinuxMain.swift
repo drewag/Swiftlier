@@ -8,8 +8,8 @@ XCTMain([
      testCase(String_HelpersTests.allTests),
      testCase(ObservableTests.allTests),
      testCase(PathTests.allTests),
+     testCase(Path_CodingTests.allTests),
      testCase(EmailAddressTests.allTests),
-     testCase(FileArchiveTests.allTests),
      testCase(PersistenceServiceTests.allTests),
      testCase(AgeTests.allTests),
 ])

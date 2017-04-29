@@ -1,5 +1,5 @@
 //
-//  FileArchiveTests.swift
+//  Path_CodingTests.swift
 //  Swiftlier
 //
 //  Created by Andrew J Wagner on 4/27/17.
@@ -19,7 +19,7 @@ func decode(_ data: Data) throws -> Data {
     return Data(base64Encoded: string)!
 }
 
-final class FileArchiveTests: XCTestCase, LinuxEnforcedTestCase {
+final class Path_CodingTests: XCTestCase, LinuxEnforcedTestCase {
     var base: DirectoryPath {
         return try! FileSystem.default.workingDirectory.subdirectory("tmp")
     }
@@ -165,7 +165,7 @@ final class FileArchiveTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(decoded["three"]?.int, 3)
     }
 
-    static var allTests: [(String, (FileArchiveTests) -> () throws -> Void)] {
+    static var allTests: [(String, (Path_CodingTests) -> () throws -> Void)] {
         return [
             ("testAddEncodable", testAddEncodable),
             ("testCreateEncodable", testCreateEncodable),

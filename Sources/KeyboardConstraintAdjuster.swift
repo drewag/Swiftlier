@@ -15,8 +15,6 @@ public class KeyboardConstraintAdjuster: NSObject {
 
     @IBInspectable public var offset: CGFloat = 0
 
-//    private var currentKeyboardHeight = 0
-
     public var onKeyboardIsBeingShown: (() -> ())?
     public var onKeyboardWasShown: (() -> ())?
     public var onKeyboardIsBeingHidden: (() -> ())?

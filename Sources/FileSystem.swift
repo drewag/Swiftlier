@@ -17,12 +17,12 @@ public struct FileSystem: ErrorGenerating {
     public static let `default` = FileSystem()
 
     public var documentsDirectory: DirectoryPath {
-        let url = self.manager.documentsDirectoryURL
+        let url = try! self.manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return try! self.createDirectoryIfNotExists(at: url)
     }
 
     public var cachesDirectory: DirectoryPath {
-        let url = self.manager.cachesDirectoryURL
+        let url = try! self.manager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return try! self.createDirectoryIfNotExists(at: url)
     }
 
@@ -30,7 +30,6 @@ public struct FileSystem: ErrorGenerating {
         let path = self.path(from: URL(fileURLWithPath: ""))
         return path as! DirectoryPath
     }
-
 
     enum ItemKind {
         case none

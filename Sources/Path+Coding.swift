@@ -1,5 +1,5 @@
 //
-//  FileArchiver.swift
+//  Path+Coding.swift
 //  Swiftlier
 //
 //  Created by Andrew J Wagner on 2/27/16.

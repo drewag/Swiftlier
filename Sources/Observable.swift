@@ -66,9 +66,9 @@ public final class Observable<T> {
         didSet {
             var handlersToCall: [Handlers] = []
 
-            for observerIndex in Array((0..<self._observers.count).reversed()) {
-                let observer = self._observers[observerIndex].observer
-                var handlers = self._observers[observerIndex].handlers
+            for observerIndex in Array((0..<self.observers.count).reversed()) {
+                let observer = self.observers[observerIndex].observer
+                var handlers = self.observers[observerIndex].handlers
 
                 if observer.value != nil {
                     for handlerIndex in Array((0..<handlers.count).reversed()) {
@@ -80,15 +80,15 @@ public final class Observable<T> {
                     }
                     
                     if handlers.count == 0 {
-                        self._observers.remove(at: observerIndex)
+                        self.observers.remove(at: observerIndex)
                     }
                     else {
-                        self._observers[observerIndex] = (observer: observer, handlers: handlers)
+                        self.observers[observerIndex] = (observer: observer, handlers: handlers)
                     }
                 }
                 else {
-                    if let index = self._indexOfObserver(observer) {
-                        self._observers.remove(at: index)
+                    if let index = self.indexOfObserver(observer) {
+                        self.observers.remove(at: index)
                     }
                 }
             }
@@ -104,14 +104,14 @@ public final class Observable<T> {
         Whether there is at least 1 current observer
     */
     public var hasObserver: Bool {
-        return _observers.count > 0
+        return observers.count > 0
     }
 
     // MARK: Initializers
 
     public init(_ value: T, onHasObserversChanged: ((Bool) -> ())? = nil) {
         self.value = value
-        self._onHasObserverChanged = onHasObserversChanged
+        self.onHasObserverChanged = onHasObserversChanged
     }
 
     // MARK: Methods
@@ -153,24 +153,24 @@ public final class Observable<T> {
         - parameter observer: the observer to remove handlers from
     */
     public func removeObserver(_ observer: AnyObject) {
-        if let index = self._indexOfObserver(observer) {
-            self._observers.remove(at: index)
-            if self._observers.count == 0 {
-                self._onHasObserverChanged?(false)
+        if let index = self.indexOfObserver(observer) {
+            self.observers.remove(at: index)
+            if self.observers.count == 0 {
+                self.onHasObserverChanged?(false)
             }
         }
     }
 
     // MARK: Private Properties
 
-    fileprivate var _observers: [(observer: WeakWrapper<AnyObject>, handlers: [HandlerSpec])] = []
-    fileprivate var _onHasObserverChanged: ((Bool) -> ())?
+    fileprivate var observers: [(observer: WeakWrapper<AnyObject>, handlers: [HandlerSpec])] = []
+    fileprivate var onHasObserverChanged: ((Bool) -> ())?
 }
 
 private extension Observable {
-    func _indexOfObserver(_ observer: AnyObject) -> Int? {
+    func indexOfObserver(_ observer: AnyObject) -> Int? {
         var index: Int = 0
-        for (possibleObserver, _) in self._observers {
+        for (possibleObserver, _) in self.observers {
             if possibleObserver.value === observer {
                 return index
             }
@@ -180,17 +180,17 @@ private extension Observable {
     }
 
     func addObserver(_ observer: AnyObject, options: ObservationOptions, handlers: Handlers) {
-        if let index = self._indexOfObserver(observer) {
+        if let index = self.indexOfObserver(observer) {
             // since the observer exists, add the handler to the existing array
-            self._observers[index].handlers.append((options: options, handlers: handlers))
+            self.observers[index].handlers.append((options: options, handlers: handlers))
         }
         else {
             // since the observer does not already exist, add a new tuple with the
             // observer and an array with the handler
-            let oldCount = self._observers.count
-            self._observers.append((observer: WeakWrapper(observer), handlers: [(options: options, handlers: handlers)]))
+            let oldCount = self.observers.count
+            self.observers.append((observer: WeakWrapper(observer), handlers: [(options: options, handlers: handlers)]))
             if oldCount == 0 {
-                self._onHasObserverChanged?(true)
+                self.onHasObserverChanged?(true)
             }
         }
 

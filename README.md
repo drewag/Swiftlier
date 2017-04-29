@@ -55,3 +55,109 @@ High Level Tasks
 - [ ] Comprehensive unit test coverage
 - [ ] High level documentation to describe the major components
 - [ ] In-line documentation for quick help in Xcode
+
+Code Coverage
+==============
+
+- [x] Age
+- [x] Alert
+- [ ] AlwaysEqual
+- [ ] Angle
+- [ ] Array+Sorting
+- [ ] Bool+Formatting
+- [ ] BubbleView
+- [ ] CGContext+ThreadSafe
+- [ ] CGMath
+- [ ] Coding
+- [ ] CommandLineDecoder
+- [ ] Data+Base64
+- [ ] Data+Processing
+- [x] DataSourceType
+- [ ] Date+Formatting
+- [ ] Date+Helpers
+- [ ] DatePickerViewController
+- [x] Dictionary+Merging
+- [ ] DispatchQueue+Helpers
+- [ ] Double+Formatting
+- [ ] Email
+- [x] EmailAddress
+- [ ] EnergyFormatting
+- [ ] Enum+Convenience
+- [ ] ErrorGenerating+ErrorFactory
+- [x] EventCenter
+- [ ] FileSystem
+- [ ] Float+Factory
+- [ ] Form
+- [ ] FormViewController
+- [ ] HTML
+- [ ] HTTPStatus
+- [ ] HeartRateFormatter
+- [ ] Int+Random
+- [ ] JSON+Encoding
+- [ ] JSON
+- [ ] KeyboardConstraintAdjuster
+- [ ] LimitedSizeViewController
+- [ ] Menu
+- [ ] MenuViewController
+- [ ] MonthAndYearPicker
+- [x] MultiCallback
+- [ ] NSLayoutConstraint+SwifPlusPlus
+- [ ] NSLayoutContraint+Factory
+- [ ] NativeTypesDecoder
+- [ ] NativeTypesEncoder
+- [ ] NativeTypesStructured
+- [ ] NetworkUserReportableError
+- [x] Observable
+- [ ] ObservableArray
+- [ ] ObservableDictionary
+- [ ] ObservableReference
+- [ ] OrderedDictionary
+- [ ] PassThroughTouchView
+- [x] Path+Coding
+- [x] Path
+- [ ] PercentEncodable
+- [x] PersistenceService
+- [ ] PlaceholderTextView
+- [ ] PresentUnderTopBarTransition
+- [ ] Price
+- [ ] PrioritizedOperationQueue
+- [ ] ReferenceTypePersistenceService
+- [ ] ReportableError+Coding
+- [ ] ReportableError
+- [ ] RoundedBorderButton
+- [ ] RoundedBorderView
+- [ ] SelectListViewController
+- [ ] SelectableValue
+- [ ] SequenceType+Helpers
+- [ ] ShadowView
+- [ ] ShellCommand
+- [ ] SpecDecoder
+- [x] String+Helpers
+- [ ] String+Random
+- [ ] Structured
+- [ ] Syncable
+- [ ] TaskService
+- [ ] ThinLayoutConstraint
+- [ ] TimeInterval+Formatting
+- [ ] Transformation
+- [ ] UIBarButtonItem+BlockTarget
+- [ ] UIButton+BlockTarget
+- [ ] UICollectionView+EasyRegister
+- [ ] UIColor+Encodable
+- [x] UIColor+Factory
+- [ ] UIDevice+AppIdioms
+- [ ] UIImage+Editing
+- [ ] UITableView+EasyRegister
+- [ ] UIView+Helpers
+- [ ] UIView+ImageCapture
+- [ ] UIView+Layout
+- [ ] UIView+Video
+- [ ] UIViewController+Helpers
+- [ ] UIViewController+Transitions
+- [ ] URL+Helpers
+- [ ] ValueTypePersistenceService
+- [ ] WeakWrapper
+- [ ] WebViewController
+- [ ] XML
+- [ ] ZipFilePath
+- [ ] ZoomThroughTransition

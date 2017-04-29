@@ -36,8 +36,7 @@
 		4935A65E1EB1A50600B0CCF8 /* Enum+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5EA1EB1A50600B0CCF8 /* Enum+Convenience.swift */; };
 		4935A65F1EB1A50600B0CCF8 /* ErrorGenerating+ErrorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5EB1EB1A50600B0CCF8 /* ErrorGenerating+ErrorFactory.swift */; };
 		4935A6601EB1A50600B0CCF8 /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5EC1EB1A50600B0CCF8 /* EventCenter.swift */; };
-		4935A6611EB1A50600B0CCF8 /* FileArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5ED1EB1A50600B0CCF8 /* FileArchiver.swift */; };
-		4935A6621EB1A50600B0CCF8 /* FileManager+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5EE1EB1A50600B0CCF8 /* FileManager+Directories.swift */; };
+		4935A6611EB1A50600B0CCF8 /* Path+Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5ED1EB1A50600B0CCF8 /* Path+Coding.swift */; };
 		4935A6641EB1A50600B0CCF8 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5F01EB1A50600B0CCF8 /* FileSystem.swift */; };
 		4935A6661EB1A50600B0CCF8 /* Float+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5F21EB1A50600B0CCF8 /* Float+Factory.swift */; };
 		4935A6671EB1A50600B0CCF8 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5F31EB1A50600B0CCF8 /* Form.swift */; };
@@ -109,7 +108,7 @@
 		4935A6AE1EB1A50600B0CCF8 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A63A1EB1A50600B0CCF8 /* WeakWrapper.swift */; };
 		4935A6AF1EB1A50600B0CCF8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A63B1EB1A50600B0CCF8 /* WebViewController.swift */; };
 		4935A6B01EB1A50600B0CCF8 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A63C1EB1A50600B0CCF8 /* XML.swift */; };
-		4935A6B11EB1A50600B0CCF8 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A63D1EB1A50600B0CCF8 /* Zip.swift */; };
+		4935A6B11EB1A50600B0CCF8 /* ZipFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A63D1EB1A50600B0CCF8 /* ZipFilePath.swift */; };
 		4935A6B21EB1A50600B0CCF8 /* ZoomThroughTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */; };
 		4935A6D61EB1A52E00B0CCF8 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6CC1EB1A52E00B0CCF8 /* ColorTests.swift */; };
 		4935A6D71EB1A52E00B0CCF8 /* DataSourceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6CD1EB1A52E00B0CCF8 /* DataSourceTypeTests.swift */; };
@@ -125,7 +124,7 @@
 		496BB90D1EB5047E00D60ECF /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BB90C1EB5047E00D60ECF /* AlertTests.swift */; };
 		499AF5AA1EB1A6C500A13C6B /* PercentEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */; };
 		499AF5AD1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */; };
-		499AF5B41EB1CEAD00A13C6B /* FileArchiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */; };
+		499AF5B41EB1CEAD00A13C6B /* Path_CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */; };
 		499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */; };
 		499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B71EB1D22800A13C6B /* TestCodable.swift */; };
 /* End PBXBuildFile section */
@@ -173,8 +172,7 @@
 		4935A5EA1EB1A50600B0CCF8 /* Enum+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+Convenience.swift"; sourceTree = "<group>"; };
 		4935A5EB1EB1A50600B0CCF8 /* ErrorGenerating+ErrorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorGenerating+ErrorFactory.swift"; sourceTree = "<group>"; };
 		4935A5EC1EB1A50600B0CCF8 /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
-		4935A5ED1EB1A50600B0CCF8 /* FileArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileArchiver.swift; sourceTree = "<group>"; };
-		4935A5EE1EB1A50600B0CCF8 /* FileManager+Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Directories.swift"; sourceTree = "<group>"; };
+		4935A5ED1EB1A50600B0CCF8 /* Path+Coding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+Coding.swift"; sourceTree = "<group>"; };
 		4935A5F01EB1A50600B0CCF8 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		4935A5F21EB1A50600B0CCF8 /* Float+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Factory.swift"; sourceTree = "<group>"; };
 		4935A5F31EB1A50600B0CCF8 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
@@ -246,7 +244,7 @@
 		4935A63A1EB1A50600B0CCF8 /* WeakWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 		4935A63B1EB1A50600B0CCF8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4935A63C1EB1A50600B0CCF8 /* XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
-		4935A63D1EB1A50600B0CCF8 /* Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
+		4935A63D1EB1A50600B0CCF8 /* ZipFilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipFilePath.swift; sourceTree = "<group>"; };
 		4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomThroughTransition.swift; sourceTree = "<group>"; };
 		4935A6CC1EB1A52E00B0CCF8 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		4935A6CD1EB1A52E00B0CCF8 /* DataSourceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceTypeTests.swift; sourceTree = "<group>"; };
@@ -262,7 +260,7 @@
 		496BB90C1EB5047E00D60ECF /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentEncodable.swift; sourceTree = "<group>"; };
 		499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
-		499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileArchiveTests.swift; sourceTree = "<group>"; };
+		499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path_CodingTests.swift; sourceTree = "<group>"; };
 		499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
 		499AF5B71EB1D22800A13C6B /* TestCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -355,8 +353,7 @@
 				4935A5EA1EB1A50600B0CCF8 /* Enum+Convenience.swift */,
 				4935A5EB1EB1A50600B0CCF8 /* ErrorGenerating+ErrorFactory.swift */,
 				4935A5EC1EB1A50600B0CCF8 /* EventCenter.swift */,
-				4935A5ED1EB1A50600B0CCF8 /* FileArchiver.swift */,
-				4935A5EE1EB1A50600B0CCF8 /* FileManager+Directories.swift */,
+				4935A5ED1EB1A50600B0CCF8 /* Path+Coding.swift */,
 				4935A5F01EB1A50600B0CCF8 /* FileSystem.swift */,
 				4935A5F21EB1A50600B0CCF8 /* Float+Factory.swift */,
 				4935A5F31EB1A50600B0CCF8 /* Form.swift */,
@@ -429,7 +426,7 @@
 				4935A63A1EB1A50600B0CCF8 /* WeakWrapper.swift */,
 				4935A63B1EB1A50600B0CCF8 /* WebViewController.swift */,
 				4935A63C1EB1A50600B0CCF8 /* XML.swift */,
-				4935A63D1EB1A50600B0CCF8 /* Zip.swift */,
+				4935A63D1EB1A50600B0CCF8 /* ZipFilePath.swift */,
 				4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */,
 				499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */,
 			);
@@ -449,7 +446,7 @@
 				4935A6D31EB1A52E00B0CCF8 /* PathTests.swift */,
 				4935A6D41EB1A52E00B0CCF8 /* String_HelpersTests.swift */,
 				4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */,
-				499AF5B21EB1CEA000A13C6B /* FileArchiveTests.swift */,
+				499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */,
 				499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */,
 				499AF5B71EB1D22800A13C6B /* TestCodable.swift */,
 				496BB90A1EB5003A00D60ECF /* AgeTests.swift */,
@@ -589,7 +586,6 @@
 				4935A6761EB1A50600B0CCF8 /* NativeTypesEncoder.swift in Sources */,
 				4935A6A91EB1A50600B0CCF8 /* UIView+Video.swift in Sources */,
 				4935A69C1EB1A50600B0CCF8 /* TimeInterval+Formatting.swift in Sources */,
-				4935A6621EB1A50600B0CCF8 /* FileManager+Directories.swift in Sources */,
 				4935A6831EB1A50600B0CCF8 /* PersistenceService.swift in Sources */,
 				4935A6721EB1A50600B0CCF8 /* MenuViewController.swift in Sources */,
 				4935A66D1EB1A50600B0CCF8 /* JSON+Encoding.swift in Sources */,
@@ -611,7 +607,7 @@
 				4935A68E1EB1A50600B0CCF8 /* SelectableValue.swift in Sources */,
 				4935A6591EB1A50600B0CCF8 /* Email.swift in Sources */,
 				4935A6421EB1A50600B0CCF8 /* Angle.swift in Sources */,
-				4935A6611EB1A50600B0CCF8 /* FileArchiver.swift in Sources */,
+				4935A6611EB1A50600B0CCF8 /* Path+Coding.swift in Sources */,
 				4935A6971EB1A50600B0CCF8 /* Structured.swift in Sources */,
 				4935A6991EB1A50600B0CCF8 /* Syncable.swift in Sources */,
 				4935A69A1EB1A50600B0CCF8 /* TaskService.swift in Sources */,
@@ -629,7 +625,7 @@
 				4935A6521EB1A50600B0CCF8 /* Date+Helpers.swift in Sources */,
 				4935A6881EB1A50600B0CCF8 /* ReferenceTypePersistenceService.swift in Sources */,
 				4935A6AE1EB1A50600B0CCF8 /* WeakWrapper.swift in Sources */,
-				4935A6B11EB1A50600B0CCF8 /* Zip.swift in Sources */,
+				4935A6B11EB1A50600B0CCF8 /* ZipFilePath.swift in Sources */,
 				499AF5AA1EB1A6C500A13C6B /* PercentEncodable.swift in Sources */,
 				4935A6A51EB1A50600B0CCF8 /* UITableView+EasyRegister.swift in Sources */,
 				4935A6741EB1A50600B0CCF8 /* MultiCallback.swift in Sources */,
@@ -691,7 +687,7 @@
 				4935A6DE1EB1A52E00B0CCF8 /* String_HelpersTests.swift in Sources */,
 				4935A6DB1EB1A52E00B0CCF8 /* MultiCallbackTests.swift in Sources */,
 				4935A6D61EB1A52E00B0CCF8 /* ColorTests.swift in Sources */,
-				499AF5B41EB1CEAD00A13C6B /* FileArchiveTests.swift in Sources */,
+				499AF5B41EB1CEAD00A13C6B /* Path_CodingTests.swift in Sources */,
 				499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */,
 				499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */,
 				4935A6D81EB1A52E00B0CCF8 /* Dictionary_MergingTests.swift in Sources */,
@@ -751,7 +747,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -799,7 +795,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

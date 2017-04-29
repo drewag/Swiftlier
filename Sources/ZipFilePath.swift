@@ -1,5 +1,5 @@
 //
-//  Zip.swift
+//  ZipFilePath.swift
 //  file-sync-services
 //
 //  Created by Andrew J Wagner on 4/17/17.
@@ -9,7 +9,17 @@
 #if os(Linux) || os(macOS)
 import Foundation
 
-public struct Zip: ErrorGenerating {
+extension FilePath {
+    public func unzip(to: Path, keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryPath {
+        return try ZipFilePath(path: self).unzip(to: to, keepingPaths: keepingPaths, excluding: excluding)
+    }
+
+    public func unzipToTemporaryDirectory(keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryPath {
+        return try ZipFilePath(path: self).unzipToTemporaryDirectory(keepingPaths: keepingPaths, excluding: excluding)
+    }
+}
+
+public struct ZipFilePath: ErrorGenerating {
     let path: Path
 
     private static func temporaryDirectory() throws -> DirectoryPath {
@@ -20,12 +30,12 @@ public struct Zip: ErrorGenerating {
         return try self.temporaryDirectory().subdirectory("unzipped")
     }
 
-    public init(path: FilePath) {
+    init(path: FilePath) {
         self.path = path
     }
 
     public init(data: Data) throws {
-        self.path = try Zip.temporaryDirectory().addFile(named: "to-unzip.zip", containing: data, canOverwrite: true)
+        self.path = try ZipFilePath.temporaryDirectory().addFile(named: "to-unzip.zip", containing: data, canOverwrite: true)
     }
 
     public func unzip(to: Path, keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryPath {
@@ -51,7 +61,7 @@ public struct Zip: ErrorGenerating {
     }
 
     public func unzipToTemporaryDirectory(keepingPaths: Bool, excluding: [String] = ["__MACOSX/*"]) throws -> DirectoryPath {
-        let destination = try Zip.temporaryUnzipLocation()
+        let destination = try ZipFilePath.temporaryUnzipLocation()
         let _ = try? destination.directory?.delete()
         return try self.unzip(to: destination, keepingPaths: keepingPaths, excluding: excluding)
     }

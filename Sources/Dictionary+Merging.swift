@@ -33,7 +33,7 @@ extension Dictionary {
 
         - returns: a single merged dictionary
     */
-    public func merge(with other:Dictionary<Key, Value>, by merge: (Value, Value) -> Value) -> Dictionary<Key, Value> {
+    public func merge(with other: [Key:Value], by merge: (Value, Value) -> Value) -> [Key:Value] {
         var returnDict = self
         for (key, value) in other {
             let returnDictValue = returnDict[key]

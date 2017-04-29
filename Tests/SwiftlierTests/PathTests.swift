@@ -847,3 +847,9 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
         ]
     }
 }
+
+extension FileManager {
+    func fileExists(at: URL) -> Bool {
+        return self.fileExists(atPath: at.relativePath)
+    }
+}
