@@ -14,10 +14,12 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     public var onBack: ((_ canceled: Bool) -> ())?
 
     let nameLabelWidth: CGFloat
+    let isEditable: Bool
 
-    public init(form: Form) {
+    public init(form: Form, isEditable: Bool = true) {
         self.nameLabelWidth = FormViewController.calculateMaximumLabelWidth(for: form)
         self.form = form
+        self.isEditable = isEditable
 
         super.init(style: .grouped)
     }
@@ -35,8 +37,13 @@ open class FormViewController: UITableViewController, ErrorGenerating {
         self.tableView.register(BoolFieldTableViewCell.self, forCellReuseIdentifier: BoolFieldTableViewCell.identifier)
         self.tableView.register(SegmentedControlTableViewCell.self, forCellReuseIdentifier: SegmentedControlTableViewCell.identifier)
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        if self.isEditable {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        }
+        else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cancel))
+        }
     }
 
     open func submit() {
@@ -152,6 +159,10 @@ extension FormViewController/*: UITableViewDataSource*/ {
             }
             cell.accessoryType = .none
 
+            if !self.isEditable {
+                cell.isUserInteractionEnabled = false
+            }
+
             return cell
         case let boolField as BoolField:
             let cell = tableView.dequeueReusableCell(withIdentifier: BoolFieldTableViewCell.identifier, for: indexPath) as! BoolFieldTableViewCell
@@ -164,6 +175,10 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueSwitch.tag = indexPath.row
             cell.valueSwitch.removeTarget(self, action: #selector(didChange(valueSwitch:)), for: .allEvents)
             cell.valueSwitch.addTarget(self, action: #selector(didChange(valueSwitch:)), for: .valueChanged)
+
+            if !self.isEditable {
+                cell.isUserInteractionEnabled = false
+            }
 
             return cell
         case let customField as CustomViewControllerField:
@@ -193,12 +208,20 @@ extension FormViewController/*: UITableViewDataSource*/ {
                 cell.clearButton!.tag = indexPath.row
             }
 
+            if !self.isEditable {
+                cell.isUserInteractionEnabled = false
+            }
+
             return cell
         case let actionField as ActionField:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Action")
                 ?? UITableViewCell(style: .default, reuseIdentifier: "Action")
 
             cell.textLabel?.text = actionField.label
+
+            if !self.isEditable {
+                cell.isUserInteractionEnabled = false
+            }
 
             return cell
         case let selectField as SelectField where selectField.options.count <= 2:
@@ -219,6 +242,10 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.segmentedControl.addTarget(self, action: #selector(didChange(segmentedControl:)), for: .valueChanged)
             cell.nameLabelWidth = self.nameLabelWidth
 
+            if !self.isEditable {
+                cell.isUserInteractionEnabled = false
+            }
+
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: SimpleFieldTableViewCell.identifier, for: indexPath) as! SimpleFieldTableViewCell
@@ -236,6 +263,10 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.tag = indexPath.row
             cell.valueField.removeTarget(self, action: #selector(didChange(textField:)), for: .allEvents)
             cell.accessoryType = .none
+
+            if !self.isEditable {
+                cell.isUserInteractionEnabled = false
+            }
 
             return cell
         }
