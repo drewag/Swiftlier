@@ -236,7 +236,44 @@ public class PasswordField: SimpleField {
     }
 }
 
-public class IntegerField: SimpleField {
+public protocol NumberFieldValue: SignedNumber, CustomStringConvertible {
+    static var max: Self { get }
+    static var min: Self { get }
+    init?(_ string: String)
+}
+
+extension Int: NumberFieldValue {
+    public init?(_ string: String) {
+        self.init(string, radix: 10)
+    }
+}
+
+extension Double: NumberFieldValue {
+    public static var max: Double {
+        return self.greatestFiniteMagnitude
+    }
+
+    public static var min: Double {
+        return self.leastNormalMagnitude
+    }
+}
+
+extension Float: NumberFieldValue {
+    public static var max: Float {
+        return self.greatestFiniteMagnitude
+    }
+
+    public static var min: Float {
+        return self.leastNormalMagnitude
+    }
+}
+
+public protocol AnyNumberField: SimpleField {
+    var text: String {get}
+}
+
+public class IntegerField: NumberField<Int> {}
+public class NumberField<Value: NumberFieldValue>: AnyNumberField {
     public let label: String
     public let placeholder: String
     public let keyboard = UIKeyboardType.numberPad
@@ -244,28 +281,38 @@ public class IntegerField: SimpleField {
     public let autoCapitalize = UITextAutocapitalizationType.none
     public let autoCorrect: Bool
     public let isRequired: Bool
-    public let originalValue: Int?
-    public let minimumValue: Int
-    public let maximumValue: Int
+    public let originalValue: Value?
+    public var minimumValue: Value
+    public var maximumValue: Value
     public let formatter: Formatter?
-    public var value: Int?
+    public var value: Value?
 
-    public convenience init(label: String, placeholder: String, value: String?, isRequired: Bool = false, formatter: Formatter? = nil, minimum: Int = 0, maximum: Int = Int.max) {
-        var intValue: Int? = nil
+    private let numberFormatter = NumberFormatter()
+    public var text: String {
         if let value = value {
-            intValue = Int(value)
+            return self.numberFormatter.string(for: value) ?? ""
+        }
+        else {
+            return ""
+        }
+    }
+
+    public convenience init(label: String, placeholder: String, value: String?, isRequired: Bool = false, formatter: Formatter? = nil, minimum: Value = 0, maximum: Value = Value.max) {
+        var numberValue: Value? = nil
+        if let value = value {
+            numberValue = Value(value)
         }
         self.init(
             label: label,
             placeholder: placeholder,
-            value: intValue,
+            value: numberValue,
             formatter: formatter,
             minimum: minimum,
             maximum: maximum
         )
     }
 
-    public init(label: String, placeholder: String, value: Int?, isRequired: Bool = false, autoCorrect: Bool = false, formatter: Formatter? = nil, minimum: Int = 0, maximum: Int = Int.max) {
+    public init(label: String, placeholder: String, value: Value?, isRequired: Bool = false, autoCorrect: Bool = false, formatter: Formatter? = nil, minimum: Value = 0, maximum: Value = Value.max) {
         self.label = label
         self.placeholder = placeholder
         self.value = value
@@ -275,6 +322,9 @@ public class IntegerField: SimpleField {
         self.formatter = formatter
         self.isRequired = isRequired
         self.autoCorrect = autoCorrect
+
+        self.numberFormatter.maximumFractionDigits = 2
+        self.numberFormatter.minimumFractionDigits = 0
     }
 
     public var displayValue: String {
@@ -286,11 +336,11 @@ public class IntegerField: SimpleField {
         {
             return string
         }
-        return value.description
+        return "\(value)"
     }
 
     public func update(with string: String) {
-        self.value = Int(string)
+        self.value = Value(string)
     }
 
     public func validate() -> ValidationResult {

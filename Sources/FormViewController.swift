@@ -85,8 +85,8 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     func didStartEditing(textField: UITextField) {
         let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         switch field {
-        case let integerField as IntegerField:
-            textField.text = integerField.value?.description ?? ""
+        case let numberField as AnyNumberField:
+            textField.text = numberField.text
         default:
             break
         }
@@ -95,8 +95,8 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     func didEndEditing(textField: UITextField) {
         let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         switch field {
-        case let integerField as IntegerField:
-            textField.text = integerField.displayValue
+        case let numberField as AnyNumberField:
+            textField.text = numberField.displayValue
         default:
             break
         }
@@ -106,11 +106,13 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     func didChange(valueSwitch: UISwitch) {
         let field = self.form.sections.values[valueSwitch.superview!.tag].fields.values[valueSwitch.tag]
         (field as! BoolField).value = valueSwitch.isOn
+        self.didEndEditing(field: field)
     }
 
     func didChange(segmentedControl: UISegmentedControl) {
         let field = self.form.sections.values[segmentedControl.superview!.tag].fields.values[segmentedControl.tag]
         (field as! SelectField).value = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!
+        self.didEndEditing(field: field)
     }
 
     func didTap(helpButton: UIButton) {
@@ -154,7 +156,7 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.addTarget(self, action: #selector(didChange(textField:)), for: .editingChanged)
             cell.valueField.addTarget(self, action: #selector(didEndEditing(textField:)), for: .editingDidEnd)
             cell.valueField.delegate = self
-            if simpleField is IntegerField {
+            if simpleField is AnyNumberField {
                 cell.valueField.addTarget(self, action: #selector(didStartEditing(textField:)), for: .editingDidBegin)
             }
             cell.accessoryType = .none
@@ -224,7 +226,7 @@ extension FormViewController/*: UITableViewDataSource*/ {
             }
 
             return cell
-        case let selectField as SelectField where selectField.options.count <= 2:
+        case let selectField as SelectField where selectField.options.count <= 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: SegmentedControlTableViewCell.identifier, for: indexPath) as! SegmentedControlTableViewCell
 
             cell.selectionStyle = .none
@@ -358,7 +360,7 @@ extension FormViewController/*: UITableViewDelegate*/ {
                 permittedArrowDirections: UIPopoverArrowDirection.down.union(.up),
                 position: .middle
             ).delegate = self
-        case let selectField as SelectField where selectField.options.count > 2:
+        case let selectField as SelectField where selectField.options.count > 3:
             let viewController = SelectListViewController(options: selectField.options, onOptionChosen: { [weak self] option in
                 selectField.value = option
                 self?.dismiss(animated: true, completion: nil)
