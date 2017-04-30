@@ -233,6 +233,13 @@ extension String {
         return nil
     }
 
+    public func asIso8601DateTime() throws -> Date {
+        guard let date = self.iso8601DateTime else {
+            throw self.error("parsing date", because: "the date is invalid")
+        }
+        return date
+    }
+
     public var localIso8601DateTime: Date? {
         return localIso8601DateTimeFormatter.date(from: self)
     }
