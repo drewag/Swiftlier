@@ -13,4 +13,5 @@ XCTMain([
      testCase(PersistenceServiceTests.allTests),
      testCase(AgeTests.allTests),
      testCase(AlwaysEqualTests.allTests),
+     testCase(AngleTests.allTests),
 ])

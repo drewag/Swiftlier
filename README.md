@@ -62,7 +62,7 @@ Code Coverage
 - [x] Age
 - [x] Alert
 - [x] AlwaysEqual
-- [ ] Angle
+- [x] Angle
 - [ ] Array+Sorting
 - [ ] Bool+Formatting
 - [ ] BubbleView

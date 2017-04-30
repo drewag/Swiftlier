@@ -13,7 +13,7 @@ import Foundation
 #endif
 
 extension CGPoint {
-    public func angle(to point: CGPoint) -> Angle {
+    public func angle(to point: CGPoint) -> Angle<CGFloat> {
         let x = point.x - self.x
         let y = point.y - self.y
         let angle = atan(abs(y) / abs(x))
