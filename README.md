@@ -61,7 +61,7 @@ Code Coverage
 
 - [x] Age
 - [x] Alert
-- [ ] AlwaysEqual
+- [x] AlwaysEqual
 - [ ] Angle
 - [ ] Array+Sorting
 - [ ] Bool+Formatting
