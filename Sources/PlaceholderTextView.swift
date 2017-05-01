@@ -66,6 +66,12 @@ import UIKit
             self.placeholderTextView.isHidden = !text.isEmpty
         }
     }
+
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+
+        self.layoutSubviews()
+    }
     
     override open func layoutSubviews() {
         super.layoutSubviews()
