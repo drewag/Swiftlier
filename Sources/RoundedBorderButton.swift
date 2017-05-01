@@ -16,6 +16,12 @@ import UIKit
         }
     }
 
+    @IBInspectable var borderSize: CGFloat = 1 / UIScreen.main.scale {
+        didSet {
+            self.update()
+        }
+    }
+
     @IBInspectable var cornerRadius: CGFloat = 10 {
         didSet {
             self.update()
@@ -31,7 +37,7 @@ import UIKit
 
 private extension RoundedBorderButton {
     func update() {
-        self.layer.borderWidth = 1 / UIScreen.main.scale
+        self.layer.borderWidth = self.borderSize
         self.layer.borderColor = self.borderColor.cgColor
         self.layer.cornerRadius = self.cornerRadius
     }
