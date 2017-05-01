@@ -9,7 +9,7 @@
 import Foundation
 
 extension TimeInterval {
-    public var displayString: String {
+    public var shortDisplay: String {
         let seconds = Int(self.truncatingRemainder(dividingBy: 60))
         let minutes = Int((self / 60).truncatingRemainder(dividingBy: 60))
         let hours = Int((self / 60 / 60).truncatingRemainder(dividingBy: 60))
@@ -33,6 +33,62 @@ extension TimeInterval {
             else {
                 return "\(hours)h"
             }
+        }
+    }
+
+    public var longDisplay: String {
+        let seconds = Int(self.truncatingRemainder(dividingBy: 60))
+        let minutes = Int((self / 60).truncatingRemainder(dividingBy: 60))
+        let hours = Int((self / 60 / 60).truncatingRemainder(dividingBy: 60))
+        switch Int(self) {
+        case 0:
+            return "0 seconds"
+        case 1:
+            return "\(seconds) second"
+        case let x where x < 60:
+            return "\(seconds) seconds"
+        case let x where x < 60 * 60:
+            var output = ""
+            switch minutes {
+            case 1:
+                output += "1 minute"
+            default:
+                output += "\(minutes) minutes"
+            }
+            switch seconds {
+            case 0:
+                break
+            case 1:
+                output += ", 1 second"
+            default:
+                output += ", \(seconds) seconds"
+            }
+            return output
+        default:
+            var output = ""
+            switch hours {
+            case 1:
+                output += "1 hour"
+            default:
+                output += "\(hours) hours"
+            }
+            switch minutes {
+            case 0:
+                break
+            case 1:
+                output += "1 minute"
+            default:
+                output += "\(minutes) minutes"
+            }
+            switch seconds {
+            case 0:
+                break
+            case 1:
+                output += ", 1 second"
+            default:
+                output += ", \(seconds) seconds"
+            }
+            return output
         }
     }
 }
