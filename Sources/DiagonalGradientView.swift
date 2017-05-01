@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 public class DiagonalGradientView: UIView {
     @IBInspectable
     public var startColor: UIColor = UIColor.red {
