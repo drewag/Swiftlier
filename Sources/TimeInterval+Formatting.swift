@@ -9,10 +9,22 @@
 import Foundation
 
 extension TimeInterval {
+    public var seconds: Int {
+        return Int(self.truncatingRemainder(dividingBy: 60))
+    }
+
+    public var minutes: Int {
+        return Int((self / 60).truncatingRemainder(dividingBy: 60))
+    }
+
+    public var hours: Int {
+        return Int((self / 60 / 60).truncatingRemainder(dividingBy: 60))
+    }
+
     public var shortDisplay: String {
-        let seconds = Int(self.truncatingRemainder(dividingBy: 60))
-        let minutes = Int((self / 60).truncatingRemainder(dividingBy: 60))
-        let hours = Int((self / 60 / 60).truncatingRemainder(dividingBy: 60))
+        let seconds = self.seconds
+        let minutes = self.minutes
+        let hours = self.hours
         switch self {
         case 0:
             return "0"
