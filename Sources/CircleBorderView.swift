@@ -18,8 +18,10 @@ open class CircleBorderView: UIView {
 
     var color: UIColor!
 
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    open override func didMoveToSuperview() {
+        guard self.color == nil else {
+            return
+        }
 
         self.color = self.backgroundColor ?? UIColor.clear
         self.backgroundColor = UIColor.clear
