@@ -67,7 +67,7 @@ Code Coverage
 - [x] Bool+Formatting
 - [ ] BubbleView
 - [ ] CGContext+ThreadSafe
-- [ ] CGMath
+- [x] CGMath
 - [ ] CircleBorderView
 - [ ] Coding
 - [ ] CommandLineDecoder
