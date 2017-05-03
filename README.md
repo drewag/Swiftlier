@@ -63,11 +63,12 @@ Code Coverage
 - [x] Alert
 - [x] AlwaysEqual
 - [x] Angle
-- [ ] Array+Sorting
+- [x] Array+Sorting
 - [ ] Bool+Formatting
 - [ ] BubbleView
 - [ ] CGContext+ThreadSafe
 - [ ] CGMath
+- [ ] CircleBorderView
 - [ ] Coding
 - [ ] CommandLineDecoder
 - [ ] Data+Base64
@@ -76,6 +77,7 @@ Code Coverage
 - [ ] Date+Formatting
 - [ ] Date+Helpers
 - [ ] DatePickerViewController
+- [ ] DiagonalGradientView
 - [x] Dictionary+Merging
 - [ ] DispatchQueue+Helpers
 - [ ] Double+Formatting
