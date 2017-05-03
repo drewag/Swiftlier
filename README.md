@@ -64,7 +64,7 @@ Code Coverage
 - [x] AlwaysEqual
 - [x] Angle
 - [x] Array+Sorting
-- [ ] Bool+Formatting
+- [x] Bool+Formatting
 - [ ] BubbleView
 - [ ] CGContext+ThreadSafe
 - [ ] CGMath

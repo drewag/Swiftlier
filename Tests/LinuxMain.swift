@@ -15,4 +15,5 @@ XCTMain([
      testCase(AlwaysEqualTests.allTests),
      testCase(AngleTests.allTests),
      testCase(Array_SortingTests.allTests),
+     testCase(Bool_FormattingTests.allTests),
 ])
