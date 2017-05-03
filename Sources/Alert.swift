@@ -82,6 +82,46 @@ extension UIViewController {
         )
     }
 
+    public func showActionSheet(
+        withTitle title: String,
+        message: String? = nil,
+        cancel: AlertAction? = nil,
+        preferred: AlertAction? = nil,
+        other: [AlertAction] = []
+        )
+    {
+        var other = other
+        if cancel == nil && other.isEmpty {
+            other.append(.action("OK"))
+        }
+
+        let alert = Alert.buildAlert(
+            withTitle: title,
+            message: message,
+            style: .actionSheet,
+            cancel: cancel,
+            preferred: preferred,
+            other: other,
+            onTapped: { tappedAction in
+                if let action = cancel, action.name == tappedAction.title {
+                    action.handler?()
+                    return
+                }
+                if let preferred = preferred, preferred.name == tappedAction.title {
+                    preferred.handler?()
+                    return
+                }
+                for action in other {
+                    if action.name == tappedAction.title {
+                        action.handler?()
+                        return
+                    }
+                }
+            }
+        )
+        self.present(alert, animated: true, completion: nil)
+    }
+
     public func showAlert(
         withTitle title: String,
         message: String,
@@ -98,6 +138,7 @@ extension UIViewController {
         let alert = Alert.buildAlert(
             withTitle: title,
             message: message,
+            style: .alert,
             cancel: cancel,
             preferred: preferred,
             other: other,
@@ -141,6 +182,7 @@ extension UIViewController {
         let alert = Alert.buildAlert(
             withTitle: title,
             message: message,
+            style: .alert,
             cancel: cancel,
             preferred: preferred,
             other: other,
@@ -179,14 +221,15 @@ private extension Alert {
 
     class func buildAlert(
         withTitle title: String,
-        message: String,
+        message: String?,
+        style: UIAlertControllerStyle,
         cancel: AnyAlertAction? = nil,
         preferred: AnyAlertAction? = nil,
         other: [AnyAlertAction] = [],
         onTapped: @escaping (UIAlertAction) -> ()
         ) -> UIAlertController
     {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
 
         if let cancel = cancel {
             alert.addAction(MakeAlertAction(

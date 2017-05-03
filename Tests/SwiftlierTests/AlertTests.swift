@@ -99,6 +99,101 @@ final class AlertTests: XCTestCase, ErrorGenerating {
         }
     }
 
+    func testActionSheetWithNoParameters() {
+        let viewController = TestViewController()
+        viewController.showActionSheet(withTitle: "Some Title")
+
+        if let alert = viewController.didPresent as? UIAlertController {
+            XCTAssertEqual(alert.title, "Some Title")
+            XCTAssertEqual(alert.preferredStyle, .actionSheet)
+            XCTAssertNil(alert.message)
+            XCTAssertEqual(alert.actions.count, 1)
+            XCTAssertEqual(alert.actions[0].title, "OK")
+            XCTAssertEqual(alert.actions[0].style, .default)
+            XCTAssertNil(alert.preferredAction)
+            XCTAssertEqual((alert.textFields ?? []).count, 0)
+        }
+        else {
+            XCTFail("Did not present an alert")
+            return
+        }
+    }
+
+    func testActionSheetWithParameters() {
+        var didCancel = false
+        var didPrefer = false
+        var didOther = false
+        var didDestroy = false
+
+        let viewController = TestViewController()
+        viewController.showActionSheet(
+            withTitle: "Different Title",
+            message: "Different Message",
+            cancel: .action("Cancel", handler: { didCancel = true }),
+            preferred: .action("Prefered", handler: { didPrefer = true}),
+            other: [
+                .action("Other", handler: { didOther = true}),
+                .action("Destroy", isDestructive: true, handler: { didDestroy = true}),
+            ]
+        )
+        if let alert = viewController.didPresent as? UIAlertController {
+            XCTAssertEqual(alert.title, "Different Title")
+            XCTAssertEqual(alert.preferredStyle, .actionSheet)
+            XCTAssertEqual(alert.message, "Different Message")
+            XCTAssertEqual(alert.actions.count, 4)
+
+            XCTAssertEqual(alert.actions[0].title, "Cancel")
+            XCTAssertEqual(alert.actions[0].style, .cancel)
+
+            XCTAssertEqual(alert.actions[1].title, "Prefered")
+            XCTAssertEqual(alert.actions[1].style, .default)
+
+            XCTAssertEqual(alert.actions[2].title, "Other")
+            XCTAssertEqual(alert.actions[2].style, .default)
+
+            XCTAssertEqual(alert.actions[3].title, "Destroy")
+            XCTAssertEqual(alert.actions[3].style, .destructive)
+
+            XCTAssertEqual(alert.preferredAction?.title, "Prefered")
+            XCTAssertEqual(alert.preferredAction?.style, .default)
+
+            XCTAssertEqual(alert.textFields ?? [], [])
+
+            XCTAssertFalse(didCancel)
+            XCTAssertFalse(didPrefer)
+            XCTAssertFalse(didOther)
+            XCTAssertFalse(didDestroy)
+
+            (alert.actions[0] as! MockAlertAction).handler?(alert.actions[0])
+            XCTAssertTrue(didCancel)
+            XCTAssertFalse(didPrefer)
+            XCTAssertFalse(didOther)
+            XCTAssertFalse(didDestroy)
+
+            (alert.actions[1] as! MockAlertAction).handler?(alert.actions[1])
+            XCTAssertTrue(didCancel)
+            XCTAssertTrue(didPrefer)
+            XCTAssertFalse(didOther)
+            XCTAssertFalse(didDestroy)
+
+            (alert.actions[2] as! MockAlertAction).handler?(alert.actions[2])
+            XCTAssertTrue(didCancel)
+            XCTAssertTrue(didPrefer)
+            XCTAssertTrue(didOther)
+            XCTAssertFalse(didDestroy)
+
+            (alert.actions[3] as! MockAlertAction).handler?(alert.actions[3])
+            XCTAssertTrue(didCancel)
+            XCTAssertTrue(didPrefer)
+            XCTAssertTrue(didOther)
+            XCTAssertTrue(didDestroy)
+        }
+        else {
+            XCTFail("Did not present an alert")
+            return
+        }
+    }
+
     func testAlertWithParameters() {
         var didCancel = false
         var didPrefer = false
