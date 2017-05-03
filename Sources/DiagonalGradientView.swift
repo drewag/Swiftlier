@@ -6,6 +6,7 @@
 //  Copyright © 2016 Chronos Interactive. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 public class DiagonalGradientView: UIView {
@@ -58,3 +59,4 @@ public class DiagonalGradientView: UIView {
         self.gradientLayer.add(animation, forKey: "animateColors")
     }
 }
+#endif
