@@ -71,7 +71,7 @@ Code Coverage
 - [ ] CircleBorderView
 - [ ] Coding
 - [ ] CommandLineDecoder
-- [ ] Data+Base64
+- [x] Data+Base64
 - [ ] Data+Processing
 - [x] DataSourceType
 - [ ] Date+Formatting
