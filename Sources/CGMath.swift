@@ -40,6 +40,53 @@ extension CGPoint {
     }
 }
 
+
+extension CGRect {
+    public var aspectRatio: CGFloat {
+        return self.width / self.height
+    }
+
+    public func aspectFittingRect(withAspectRatio ratio: CGFloat) -> CGRect {
+        let width: CGFloat
+        let height: CGFloat
+        if self.aspectRatio < ratio {
+            width = self.width
+            height = self.width / ratio
+        }
+        else {
+            width = self.height * ratio
+            height = self.height
+        }
+
+        return CGRect(
+            x: (self.width - width) / 2 + self.origin.x,
+            y: (self.height - height) / 2 + self.origin.y,
+            width: width,
+            height: height
+        )
+    }
+
+    public func aspectFillingRect(withAspectRatio ratio: CGFloat) -> CGRect {
+        let width: CGFloat
+        let height: CGFloat
+        if self.aspectRatio < ratio {
+            width = self.height * ratio
+            height = self.height
+        }
+        else {
+            width = self.width
+            height = self.width * ratio
+        }
+
+        return CGRect(
+            x: (self.width - width) / 2 + self.origin.x,
+            y: (self.height - height) / 2 + self.origin.y,
+            width: width,
+            height: height
+        )
+    }
+}
+
 public func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }

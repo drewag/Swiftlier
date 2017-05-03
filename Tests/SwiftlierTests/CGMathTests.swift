@@ -81,6 +81,30 @@ final class CGMathTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(CGPoint(x: 1, y: 2) / -4, CGPoint(x: -0.25, y: -0.5))
     }
 
+    func testAspectRatio() {
+        XCTAssertEqual(CGRect(x: 2, y: 1231, width: 1, height: 4).aspectRatio, 0.25)
+    }
+
+    func testAspectFittingRect() {
+        var rect = CGRect(x: 10, y: 100, width: 1000, height: 500).aspectFittingRect(withAspectRatio: 3/4)
+        XCTAssertEqual(rect.origin, CGPoint(x: 312.5 + 10, y: 0 + 100))
+        XCTAssertEqual(rect.size, CGSize(width: 375, height: 500))
+
+        rect = CGRect(x: 10, y: 100, width: 600, height: 500).aspectFittingRect(withAspectRatio: 4/3)
+        XCTAssertEqual(rect.origin, CGPoint(x: 0 + 10, y: 25 + 100))
+        XCTAssertEqual(rect.size, CGSize(width: 600, height: 450))
+    }
+
+    func testAspectFillingRect() {
+        var rect = CGRect(x: 10, y: 100, width: 1000, height: 500).aspectFillingRect(withAspectRatio: 3/4)
+        XCTAssertEqual(rect.origin, CGPoint(x: 0 + 10, y: -125 + 100))
+        XCTAssertEqual(rect.size, CGSize(width: 1000, height: 750))
+
+        rect = CGRect(x: 10, y: 100, width: 700, height: 600).aspectFillingRect(withAspectRatio: 4/3)
+        XCTAssertEqual(rect.origin, CGPoint(x: -50 + 10, y: 0 + 100))
+        XCTAssertEqual(rect.size, CGSize(width: 800, height: 600))
+    }
+
     static var allTests: [(String, (CGMathTests) -> () throws -> Void)] {
         return [
             ("testAngleTo", testAngleTo),
@@ -94,6 +118,9 @@ final class CGMathTests: XCTestCase, LinuxEnforcedTestCase {
             ("testMultiplyingPoint", testMultiplyingPoint),
             ("testMultiplyingPointsInPlace", testMultiplyingPointsInPlace),
             ("testDividingPoint", testDividingPoint),
+            ("testAspectRatio", testAspectRatio),
+            ("testAspectFittingRect", testAspectFittingRect),
+            ("testAspectFillingRect", testAspectFillingRect),
         ]
     }
 }

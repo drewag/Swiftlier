@@ -155,6 +155,7 @@ Code Coverage
 - [ ] UIView+Layout
 - [ ] UIView+Video
 - [ ] UIViewController+Helpers
+- [ ] UIViewController+PhotoViewing
 - [ ] UIViewController+Transitions
 - [ ] URL+Helpers
 - [ ] ValueTypePersistenceService

@@ -129,6 +129,7 @@
 		496FBECD1EB98578006AD5AC /* Array_SortingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FBECB1EB98572006AD5AC /* Array_SortingTests.swift */; };
 		496FBECF1EB98A6C006AD5AC /* Bool_Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FBECE1EB98A6C006AD5AC /* Bool_Formatting.swift */; };
 		496FBED11EB98D01006AD5AC /* CGMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FBED01EB98D01006AD5AC /* CGMathTests.swift */; };
+		496FBEF31EB9A5CF006AD5AC /* UIViewController+PhotoViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FBEF21EB9A5CF006AD5AC /* UIViewController+PhotoViewing.swift */; };
 		499AF5AA1EB1A6C500A13C6B /* PercentEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */; };
 		499AF5AD1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */; };
 		499AF5B41EB1CEAD00A13C6B /* Path_CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */; };
@@ -272,6 +273,7 @@
 		496FBECB1EB98572006AD5AC /* Array_SortingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array_SortingTests.swift; sourceTree = "<group>"; };
 		496FBECE1EB98A6C006AD5AC /* Bool_Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool_Formatting.swift; sourceTree = "<group>"; };
 		496FBED01EB98D01006AD5AC /* CGMathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMathTests.swift; sourceTree = "<group>"; };
+		496FBEF21EB9A5CF006AD5AC /* UIViewController+PhotoViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PhotoViewing.swift"; sourceTree = "<group>"; };
 		499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentEncodable.swift; sourceTree = "<group>"; };
 		499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
 		499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path_CodingTests.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */,
 				499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */,
 				493C45F01EB6A1770022E008 /* CircleBorderView.swift */,
+				496FBEF21EB9A5CF006AD5AC /* UIViewController+PhotoViewing.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -657,6 +660,7 @@
 				4935A6431EB1A50600B0CCF8 /* Array+Sorting.swift in Sources */,
 				4935A64F1EB1A50600B0CCF8 /* Data+Processing.swift in Sources */,
 				4935A6711EB1A50600B0CCF8 /* Menu.swift in Sources */,
+				496FBEF31EB9A5CF006AD5AC /* UIViewController+PhotoViewing.swift in Sources */,
 				4935A6401EB1A50600B0CCF8 /* Alert.swift in Sources */,
 				4935A66B1EB1A50600B0CCF8 /* HTTPStatus.swift in Sources */,
 				4935A6B01EB1A50600B0CCF8 /* XML.swift in Sources */,
