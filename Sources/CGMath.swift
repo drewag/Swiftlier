@@ -6,11 +6,8 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
-#if os(iOS)
-import UIKit
-#else
+#if os(iOS) || os(macOS)
 import Foundation
-#endif
 
 extension CGPoint {
     public func angle(to point: CGPoint) -> Angle<CGFloat> {
@@ -77,3 +74,4 @@ public func *(lhs: CGPoint, rhs: CGFloat) -> CGPoint {
 public func /(lhs: CGPoint, rhs: CGFloat) -> CGPoint {
     return CGPoint(x: lhs.x / rhs, y: lhs.y / rhs)
 }
+#endif

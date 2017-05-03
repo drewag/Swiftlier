@@ -6,6 +6,7 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS) || os(macOS)
 import XCTest
 import Swiftlier
 
@@ -96,3 +97,4 @@ final class CGMathTests: XCTestCase, LinuxEnforcedTestCase {
         ]
     }
 }
+#endif
