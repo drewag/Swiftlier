@@ -538,6 +538,28 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertThrowsError(try file.lastModified())
     }
 
+    func testSize() throws {
+        let url = URL(fileURLWithPath: "tmp/file.txt")
+        try "test".data(using: .utf8)?.write(to: url)
+
+        guard let file = try self.base.file("file.txt").file else {
+            XCTFail("Failed to find file")
+            return
+        }
+
+        XCTAssertEqual(try file.size(), 4)
+
+        try "".data(using: .utf8)?.write(to: url)
+        XCTAssertEqual(try file.size(), 0)
+
+        try "123456".data(using: .utf8)?.write(to: url)
+        XCTAssertEqual(try file.size(), 6)
+
+        try FileManager.default.removeItem(at: url)
+
+        XCTAssertThrowsError(try file.size())
+    }
+
     func testFileContents() throws {
         let url = URL(fileURLWithPath: "tmp/file.txt")
         guard let data = "test".data(using: .utf8) else {
@@ -830,6 +852,7 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
             ("testCopyFileToDifferentDirectoryWithDifferentName", testCopyFileToDifferentDirectoryWithDifferentName),
             ("testCopyFileDirectlyToPath", testCopyFileDirectlyToPath),
             ("testLastModified", testLastModified),
+            ("testSize", testSize),
             ("testFileContents", testFileContents),
             ("testString", testString),
             ("testHandleForReading", testHandleForReading),

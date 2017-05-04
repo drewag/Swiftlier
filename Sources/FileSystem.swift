@@ -249,6 +249,17 @@ public struct FileSystem: ErrorGenerating {
             return attributes[.modificationDate] as? Date ?? Date()
         #endif
     }
+
+    func size(at url: URL) throws -> Int {
+        #if os(Linux)
+            var st = stat()
+            stat(url.relativePath, &st)
+            return st.st_size
+        #else
+            let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
+            return attributes[.size] as? Int ?? 0
+        #endif
+    }
 }
 
 struct ConcreteFilePath: FilePath {

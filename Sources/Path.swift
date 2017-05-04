@@ -103,6 +103,10 @@ extension FilePath {
         return try FileSystem.default.lastModified(at: self.url)
     }
 
+    public func size() throws -> Int {
+        return try FileSystem.default.size(at: self.url)
+    }
+
     public func contents() throws -> Data {
         return try self.handleForReading().readDataToEndOfFile()
     }
