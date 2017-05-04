@@ -208,6 +208,24 @@ extension DirectoryPath {
             throw self.error("Getting File", because: "a directory already exists at \(newUrl.relativePath)")
         }
     }
+
+    public func file(atSubPath path: String) throws -> Path {
+        var directory: DirectoryPath = self
+        let components = path.components(separatedBy: "/")
+        for (index, component) in components.enumerated() {
+            guard index < components.count - 1 else {
+                break
+            }
+
+            try directory = directory.subdirectory(component)
+        }
+        return try directory.file(components.last!)
+    }
+
+    public func subPath(byAppending path: String) -> Path {
+        let newUrl = self.url.appendingPathComponent(path)
+        return FileSystem.default.path(from: newUrl)
+    }
 }
 
 extension Path {

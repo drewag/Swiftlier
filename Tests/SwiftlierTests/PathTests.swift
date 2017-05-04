@@ -791,6 +791,26 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertThrowsError(try self.base.file("sub"))
     }
 
+    func testFileAtSubPath() throws {
+        let directoryUrl = URL(fileURLWithPath: "tmp/sub1/sub2")
+
+        let file = try self.base.file(atSubPath: "sub1/sub2/file.txt")
+        XCTAssertEqual(file.description, "None(./tmp/sub1/sub2/file.txt)")
+
+        let directory = FileSystem.default.path(from: directoryUrl)
+        XCTAssertEqual(directory.description, "Directory(tmp/sub1/sub2)")
+    }
+
+    func testSubPathByAppending() throws {
+        let directoryUrl = URL(fileURLWithPath: "tmp/sub1/sub2")
+
+        let file = self.base.subPath(byAppending: "sub1/sub2/file.txt")
+        XCTAssertEqual(file.description, "None(./tmp/sub1/sub2/file.txt)")
+
+        let directory = FileSystem.default.path(from: directoryUrl)
+        XCTAssertEqual(directory.description, "None(tmp/sub1/sub2)")
+    }
+
     func testCreateFile() throws {
         guard let file = try self.base.file("file.txt").nonExisting else {
             XCTFail("Failed to find file")
@@ -864,6 +884,8 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
             ("testAddLink", testAddLink),
             ("testSubdirectory", testSubdirectory),
             ("testFileNamed", testFileNamed),
+            ("testFileAtSubPath", testFileAtSubPath),
+            ("testSubPathByAppending", testSubPathByAppending),
             ("testCreateFile", testCreateFile),
             ("testCreateDirectory", testCreateDirectory),
             ("testCreateLink", testCreateLink),
