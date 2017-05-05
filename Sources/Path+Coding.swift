@@ -67,7 +67,7 @@ extension Path {
 extension FilePath {
     public func decodable<E: Decodable>(decrypt: (Data) throws -> Data = {return $0}) throws -> E {
         guard let object = try FileArchive.object(from: try self.contents(), decrypt: decrypt) else {
-            throw self.error("unarching \(E.self)", because: "the file is invalid")
+            throw FileSystem.error("unarching \(E.self)", because: "the file is invalid")
         }
 
         let value: E = try NativeTypesDecoder.decodableTypeFromObject(object, mode: .saveLocally)
@@ -76,7 +76,7 @@ extension FilePath {
 
     public func decodableDict<E: Decodable>(decrypt: (Data) throws -> Data = {return $0}) throws -> [String:E] {
         guard let rawDict = try FileArchive.object(from: try self.contents(), decrypt: decrypt) as? [String:[String: Any]] else {
-            throw self.error("unarching \(E.self)", because: "the file is invalid")
+            throw FileSystem.error("unarching \(E.self)", because: "the file is invalid")
         }
 
         var finalDict = [String:E]()
@@ -90,7 +90,7 @@ extension FilePath {
 
     public func decodableArray<E: Decodable>(decrypt: (Data) throws -> Data = {return $0}) throws -> [E] {
         guard let rawArray = try FileArchive.object(from: try self.contents(), decrypt: decrypt) as? [Any] else {
-            throw self.error("unarching \(E.self)", because: "the file is invalid")
+            throw FileSystem.error("unarching \(E.self)", because: "the file is invalid")
         }
 
         var finalArray = [E]()
