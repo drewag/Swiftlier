@@ -252,9 +252,16 @@ public struct FileSystem: ErrorGenerating {
 
     func size(at url: URL) throws -> Int {
         #if os(Linux)
-            var st = stat()
-            stat(url.relativePath, &st)
-            return st.st_size
+            switch try self.itemKind(at: url) {
+            case .directory:
+                return 0
+            case .none:
+                throw self.error("getting size", because: "a file does not exist at \(url.relativePath)")
+            case .file:
+                var st = stat()
+                stat(url.relativePath, &st)
+                return st.st_size
+            }
         #else
             let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
             return attributes[.size] as? Int ?? 0
