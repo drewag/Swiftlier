@@ -54,11 +54,16 @@ open class FormViewController: UITableViewController, ErrorGenerating {
 
     open func didEndEditing(field: Field) {}
 
+    open func style(sectionHeader: UILabel) {}
+    open func style(nameLabel: UILabel) {}
+    open func style(valueField: UITextField) {}
+    open func style(cell: UITableViewCell) {}
+
     func cancel() {
         self.onBack?(true)
     }
 
-    func done() {
+    public func done() {
         do {
             try self.form.validate()
             switch self.extraValidation() {
@@ -165,6 +170,10 @@ extension FormViewController/*: UITableViewDataSource*/ {
                 cell.isUserInteractionEnabled = false
             }
 
+            self.style(nameLabel: cell.nameLabel)
+            self.style(valueField: cell.valueField)
+            self.style(cell: cell)
+
             return cell
         case let boolField as BoolField:
             let cell = tableView.dequeueReusableCell(withIdentifier: BoolFieldTableViewCell.identifier, for: indexPath) as! BoolFieldTableViewCell
@@ -181,6 +190,9 @@ extension FormViewController/*: UITableViewDataSource*/ {
             if !self.isEditable {
                 cell.isUserInteractionEnabled = false
             }
+
+            self.style(nameLabel: cell.nameLabel)
+            self.style(cell: cell)
 
             return cell
         case let customField as CustomViewControllerField:
@@ -214,6 +226,10 @@ extension FormViewController/*: UITableViewDataSource*/ {
                 cell.isUserInteractionEnabled = false
             }
 
+            self.style(nameLabel: cell.nameLabel)
+            self.style(valueField: cell.valueField)
+            self.style(cell: cell)
+
             return cell
         case let actionField as ActionField:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Action")
@@ -224,6 +240,11 @@ extension FormViewController/*: UITableViewDataSource*/ {
             if !self.isEditable {
                 cell.isUserInteractionEnabled = false
             }
+
+            if let label = cell.textLabel {
+                self.style(nameLabel: label)
+            }
+            self.style(cell: cell)
 
             return cell
         case let selectField as SelectField where selectField.options.count <= 3:
@@ -248,6 +269,9 @@ extension FormViewController/*: UITableViewDataSource*/ {
                 cell.isUserInteractionEnabled = false
             }
 
+            self.style(nameLabel: cell.nameLabel)
+            self.style(cell: cell)
+
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: SimpleFieldTableViewCell.identifier, for: indexPath) as! SimpleFieldTableViewCell
@@ -270,6 +294,10 @@ extension FormViewController/*: UITableViewDataSource*/ {
                 cell.isUserInteractionEnabled = false
             }
 
+            self.style(nameLabel: cell.nameLabel)
+            self.style(valueField: cell.valueField)
+            self.style(cell: cell)
+
             return cell
         }
     }
@@ -289,6 +317,7 @@ extension FormViewController/*: UITableViewDelegate*/ {
         label.textColor = UIColor(hex: 0x6d6d72)
         label.font = UIFont.systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
+        self.style(sectionHeader: label)
 
         view.addSubview(label)
         view.addConstraints([

@@ -137,7 +137,7 @@ public class EmailField: SimpleField {
     public let originalValue: String
     public var value: String
 
-    public init(label: String = "Email", placeholder: String = "email@example.com", isRequired: Bool = false, autoCorrect: Bool = false, value: String) {
+    public init(label: String = "Email", placeholder: String = "email@example.com", isRequired: Bool = false, autoCorrect: Bool = false, value: String = "") {
         self.label = label
         self.placeholder = placeholder
         self.originalValue = value
@@ -176,13 +176,48 @@ public class NameField: SimpleField {
     public let originalValue: String
     public var value: String
 
-    public init(label: String, placeholder: String = "", isRequired: Bool = false, autoCorrect: Bool = false, value: String) {
+    public init(label: String, placeholder: String = "", isRequired: Bool = false, autoCorrect: Bool = false, value: String = "") {
         self.label = label
         self.placeholder = placeholder
         self.originalValue = value
         self.value = value
         self.isRequired = isRequired
         self.autoCorrect = autoCorrect
+    }
+
+    public var displayValue: String {
+        return self.value
+    }
+
+    public func update(with string: String) {
+        self.value = string
+    }
+
+    public func validate() -> ValidationResult {
+        guard self.value != "" || !self.isRequired else {
+            return .failedWithReason("must not be empty")
+        }
+        return .passed
+    }
+}
+
+public class PhoneField: SimpleField {
+    public let label: String
+    public let placeholder: String
+    public let keyboard = UIKeyboardType.phonePad
+    public let isSecureEntry = false
+    public let isRequired: Bool
+    public let autoCapitalize = UITextAutocapitalizationType.none
+    public let autoCorrect = false
+    public let originalValue: String
+    public var value: String
+
+    public init(label: String, placeholder: String = "", isRequired: Bool = false, value: String = "") {
+        self.label = label
+        self.placeholder = placeholder
+        self.originalValue = value
+        self.value = value
+        self.isRequired = isRequired
     }
 
     public var displayValue: String {
@@ -409,7 +444,7 @@ public class SelectField: Field {
     public var value: String
     public var options: [String]
 
-    public init(label: String, value: String, options: [String]) {
+    public init(label: String, value: String = "", options: [String]) {
         self.label = label
         self.value = value
         self.options = options
