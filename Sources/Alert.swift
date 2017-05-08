@@ -63,22 +63,42 @@ public final class TextAction: AnyAlertAction {
 }
 
 extension ErrorGenerating where Self: UIViewController {
-    public func showAlert(withError error: Error, _ doing: String) {
-        let error = self.error(doing, from: error)
+    public func showAlert(
+        withError error: Error,
+        _ doing: String,
+        other: [AlertAction] = []
+        )
+    {
+        let error = self.error(doing, from: error).byUserIfBecauseOf([
+            NetworkResponseErrorReason.noInternet,
+            NetworkResponseErrorReason.unauthorized,
+            NetworkResponseErrorReason.gone,
+        ])
         EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: error)
         self.showAlert(
             withTitle: error.alertDescription.title,
-            message: error.alertDescription.message
+            message: error.alertDescription.message,
+            other: other
         )
     }
 }
 
 extension UIViewController {
-    public func showAlert(withError error: ReportableError) {
+    public func showAlert(
+        withError error: ReportableError,
+        other: [AlertAction] = []
+        )
+    {
+        let error = error.byUserIfBecauseOf([
+            NetworkResponseErrorReason.noInternet,
+            NetworkResponseErrorReason.unauthorized,
+            NetworkResponseErrorReason.gone,
+        ])
         EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: error)
         self.showAlert(
             withTitle: error.alertDescription.title,
-            message: error.alertDescription.message
+            message: error.alertDescription.message,
+            other: other
         )
     }
 

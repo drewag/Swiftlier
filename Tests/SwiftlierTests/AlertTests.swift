@@ -78,9 +78,9 @@ final class AlertTests: XCTestCase, ErrorGenerating {
         }
     }
 
-    func testAlertWithError() {
+    func testAlertWithErrorWithNoParameters() {
         let viewController = TestViewController()
-        let error = self.userError("making alert", because: "this was done on purpose")
+        var error = self.userError("making alert", because: "this was done on purpose")
         viewController.showAlert(withError: error)
 
         if let alert = viewController.didPresent as? UIAlertController {
@@ -92,6 +92,100 @@ final class AlertTests: XCTestCase, ErrorGenerating {
             XCTAssertEqual(alert.actions[0].style, .default)
             XCTAssertNil(alert.preferredAction)
             XCTAssertEqual((alert.textFields ?? []).count, 0)
+        }
+        else {
+            XCTFail("Did not present an alert")
+            return
+        }
+
+        viewController.didPresent = nil
+        error = self.error("making alert", because: NetworkResponseErrorReason.noInternet)
+        viewController.showAlert(withError: error)
+        if let alert = viewController.didPresent as? UIAlertController {
+            XCTAssertEqual(alert.title, error.alertDescription.title)
+            XCTAssertEqual(alert.preferredStyle, .alert)
+            XCTAssertEqual(alert.message, "Because \(NetworkResponseErrorReason.noInternet.because)")
+            XCTAssertEqual(alert.actions.count, 1)
+            XCTAssertEqual(alert.actions[0].title, "OK")
+            XCTAssertEqual(alert.actions[0].style, .default)
+            XCTAssertNil(alert.preferredAction)
+            XCTAssertEqual((alert.textFields ?? []).count, 0)
+        }
+        else {
+            XCTFail("Did not present an alert")
+            return
+        }
+
+        viewController.didPresent = nil
+        error = self.error("making alert", because: NetworkResponseErrorReason.gone)
+        viewController.showAlert(withError: error)
+        if let alert = viewController.didPresent as? UIAlertController {
+            XCTAssertEqual(alert.title, error.alertDescription.title)
+            XCTAssertEqual(alert.preferredStyle, .alert)
+            XCTAssertEqual(alert.message, "Because \(NetworkResponseErrorReason.gone.because)")
+            XCTAssertEqual(alert.actions.count, 1)
+            XCTAssertEqual(alert.actions[0].title, "OK")
+            XCTAssertEqual(alert.actions[0].style, .default)
+            XCTAssertNil(alert.preferredAction)
+            XCTAssertEqual((alert.textFields ?? []).count, 0)
+        }
+        else {
+            XCTFail("Did not present an alert")
+            return
+        }
+
+        viewController.didPresent = nil
+        error = self.error("making alert", because: NetworkResponseErrorReason.unauthorized)
+        viewController.showAlert(withError: error)
+        if let alert = viewController.didPresent as? UIAlertController {
+            XCTAssertEqual(alert.title, error.alertDescription.title)
+            XCTAssertEqual(alert.preferredStyle, .alert)
+            XCTAssertEqual(alert.message, "Because \(NetworkResponseErrorReason.unauthorized.because)")
+            XCTAssertEqual(alert.actions.count, 1)
+            XCTAssertEqual(alert.actions[0].title, "OK")
+            XCTAssertEqual(alert.actions[0].style, .default)
+            XCTAssertNil(alert.preferredAction)
+            XCTAssertEqual((alert.textFields ?? []).count, 0)
+        }
+        else {
+            XCTFail("Did not present an alert")
+            return
+        }
+    }
+
+    func testAlertWithErrorWithParameters() {
+        let viewController = TestViewController()
+        let error = self.userError("making alert", because: "this was done on purpose")
+
+        var didOther = false
+        var didDestroy = false
+
+        viewController.showAlert(withError: error, other: [
+            .action("Other", handler: { didOther = true}),
+            .action("Destroy", isDestructive: true, handler: { didDestroy = true}),
+        ])
+
+        if let alert = viewController.didPresent as? UIAlertController {
+            XCTAssertEqual(alert.title, error.alertDescription.title)
+            XCTAssertEqual(alert.preferredStyle, .alert)
+            XCTAssertEqual(alert.message, error.alertDescription.message)
+            XCTAssertEqual(alert.actions.count, 2)
+            XCTAssertNil(alert.preferredAction)
+            XCTAssertEqual((alert.textFields ?? []).count, 0)
+
+            XCTAssertEqual(alert.actions[0].title, "Other")
+            XCTAssertEqual(alert.actions[0].style, .default)
+
+            XCTAssertEqual(alert.actions[1].title, "Destroy")
+            XCTAssertEqual(alert.actions[1].style, .destructive)
+
+            (alert.actions[0] as! MockAlertAction).handler?(alert.actions[0])
+            XCTAssertTrue(didOther)
+            XCTAssertFalse(didDestroy)
+
+            (alert.actions[1] as! MockAlertAction).handler?(alert.actions[1])
+            XCTAssertTrue(didOther)
+            XCTAssertTrue(didDestroy)
         }
         else {
             XCTFail("Did not present an alert")
