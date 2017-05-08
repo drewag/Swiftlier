@@ -279,7 +279,12 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.valueField.isUserInteractionEnabled = false
             cell.selectionStyle = .none
             cell.nameLabel.text = field.label
-            cell.valueField.placeholder = ""
+            if field is SelectField {
+                cell.valueField.placeholder = "Select..."
+            }
+            else {
+                cell.valueField.placeholder = ""
+            }
             cell.valueField.keyboardType = .default
             cell.valueField.autocapitalizationType = .none
             cell.valueField.isSecureTextEntry = false
@@ -479,12 +484,26 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         return self.contentView.bounds.height
     }
 
-    let nameLabel = UILabel()
+    let nameLabel: UILabel
     let valueField = UITextField()
     private(set) var clearButton: RoundedBorderButton?
-    var nameLabelWidth: CGFloat = 100
+    private let nameLabelWidthConstraint: NSLayoutConstraint
+
+    var nameLabelWidth: CGFloat {
+        get {
+            return self.nameLabelWidthConstraint.constant
+        }
+
+        set {
+            self.nameLabelWidthConstraint.constant = newValue
+        }
+    }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        let nameLabel = UILabel()
+        self.nameLabel = nameLabel
+        self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         self.nameLabel.font = FormViewController.font
@@ -494,35 +513,14 @@ private class SimpleFieldTableViewCell: UITableViewCell {
 
         self.contentView.addSubview(self.nameLabel)
         self.contentView.addSubview(self.valueField)
+
+        self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
+        self.nameLabel.addConstraint(forHeight: 50)
+        self.resetConstraints()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    fileprivate override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.nameLabel.frame = CGRect(x: 8, y: 2, width: self.nameLabelWidth, height: self.contentView.bounds.height - 4)
-        var valueFieldWidth = self.contentView.bounds.width - self.nameLabel.frame.maxX - 16
-
-        if let button = self.clearButton {
-            valueFieldWidth -= self.contentView.bounds.height + self.buttonSize
-
-            button.frame = CGRect(
-                x: self.contentView.bounds.width - 44,
-                y: (self.contentView.bounds.height - self.buttonSize) / 2,
-                width: self.buttonSize,
-                height: self.buttonSize
-            )
-        }
-
-        self.valueField.frame = CGRect(
-            x: self.nameLabel.frame.maxX + 8,
-            y: self.nameLabel.frame.minY,
-            width: valueFieldWidth,
-            height: self.nameLabel.frame.height
-        )
     }
 
     func set(clearCallback: @escaping (UIButton) -> ()) {
@@ -531,6 +529,7 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         button.setBlock { [unowned button] in
             clearCallback(button)
         }
+        button.addConstraint(NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1, constant: 0))
         self.contentView.addSubview(button)
         self.clearButton = button
     }
@@ -538,6 +537,34 @@ private class SimpleFieldTableViewCell: UITableViewCell {
     func resetClearCallback() {
         self.clearButton?.removeFromSuperview()
         self.clearButton = nil
+    }
+
+    func resetConstraints() {
+        self.contentView.removeConstraints(self.contentView.constraints)
+
+        self.contentView.addConstraints([
+            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
+            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.contentView),
+            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+
+            NSLayoutConstraint(leftOf: self.valueField, toRightOf: self.nameLabel, distance: 8),
+            NSLayoutConstraint(topOf: self.valueField, to: self.nameLabel),
+            NSLayoutConstraint(bottomOf: self.valueField, to: self.nameLabel),
+        ])
+
+        if let button = self.clearButton {
+            self.contentView.addConstraints([
+                NSLayoutConstraint(rightOf: self.valueField, to: button, distance: 8),
+                NSLayoutConstraint(topOf: button, to: self.nameLabel),
+                NSLayoutConstraint(bottomOf: button, to: self.nameLabel),
+                NSLayoutConstraint(rightOf: button, to: self.contentView, distance: 8),
+            ])
+        }
+        else {
+            self.contentView.addConstraints([
+                NSLayoutConstraint(rightOf: self.valueField, to: self.contentView, distance: 8),
+            ])
+        }
     }
 
     override func prepareForReuse() {
