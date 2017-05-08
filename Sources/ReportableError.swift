@@ -80,6 +80,45 @@ extension ReportableError {
             return "Temporary Error \(self.doing.lowercased()) because \(self.reason.because). Please try again."
         }
     }
+
+    public func doing(_ doing: String) -> ReportableError {
+        return ConcreteReportableError(
+            from: self.source,
+            by: self.perpetrator,
+            doing: doing,
+            because: self.reason
+        )
+    }
+
+    public var byUser: ReportableError {
+        return ConcreteReportableError(
+            from: self.source,
+            by: .user,
+            doing: self.doing,
+            because: self.reason
+        )
+    }
+
+    public func isBecause(of reasons: [AnyErrorReason]) -> Bool {
+        return reasons.contains(where: {$0 === self.reason})
+    }
+
+    public func isBecause(of reasons: AnyErrorReason ...) -> Bool {
+        return self.isBecause(of: reasons)
+    }
+
+    public func byUserIfBecauseOf(_ reasons: [AnyErrorReason]) -> ReportableError {
+        if self.isBecause(of: reasons) {
+            return self.byUser
+        }
+        else {
+            return self
+        }
+    }
+
+    public func byUserIfBecauseOf(_ reasons: AnyErrorReason ...) -> ReportableError {
+        return self.byUserIfBecauseOf(reasons)
+    }
 }
 
 extension ErrorGenerating {
