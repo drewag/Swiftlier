@@ -124,6 +124,45 @@ public class DisplayOnlyField: Field {
     }
 }
 
+public class MultilineField: SimpleField {
+    public let label: String
+    public let placeholder: String
+    public let keyboard = UIKeyboardType.emailAddress
+    public let isSecureEntry = false
+    public let isRequired: Bool
+    public let autoCapitalize = UITextAutocapitalizationType.none
+    public let autoCorrect: Bool
+    public let originalValue: String
+    public var value: String
+
+    public init(label: String, placeholder: String, isRequired: Bool = false, autoCorrect: Bool = true, value: String = "") {
+        self.label = label
+        self.placeholder = placeholder
+        self.originalValue = value
+        self.value = value
+        self.isRequired = isRequired
+        self.autoCorrect = autoCorrect
+    }
+
+    public var displayValue: String {
+        return self.value
+    }
+
+    public func update(with string: String) {
+        self.value = string
+    }
+
+    public func validate() -> ValidationResult {
+        guard self.value != "" else {
+            return .failedWithReason("must not be empty")
+        }
+        guard self.value.isValidEmail else {
+            return .failedWithReason("is not a valid email")
+        }
+        return .passed
+    }
+}
+
 public class EmailField: SimpleField {
     public typealias Value = String
 

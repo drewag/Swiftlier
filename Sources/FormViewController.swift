@@ -36,6 +36,7 @@ open class FormViewController: UITableViewController, ErrorGenerating {
         self.tableView.register(SimpleFieldTableViewCell.self, forCellReuseIdentifier: SimpleFieldTableViewCell.identifier)
         self.tableView.register(BoolFieldTableViewCell.self, forCellReuseIdentifier: BoolFieldTableViewCell.identifier)
         self.tableView.register(SegmentedControlTableViewCell.self, forCellReuseIdentifier: SegmentedControlTableViewCell.identifier)
+        self.tableView.register(TextViewFieldTableViewCell.self, forCellReuseIdentifier: TextViewFieldTableViewCell.identifier)
 
         if self.isEditable {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
@@ -57,6 +58,7 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     open func style(sectionHeader: UILabel) {}
     open func style(nameLabel: UILabel) {}
     open func style(valueField: UITextField) {}
+    open func style(valueTextView: PlaceholderTextView) {}
     open func style(cell: UITableViewCell) {}
 
     func cancel() {
@@ -142,6 +144,30 @@ extension FormViewController/*: UITableViewDataSource*/ {
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let field = self.form.sections.values[indexPath.section].fields.values[indexPath.row]
         switch field {
+        case let multilineField as MultilineField:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TextViewFieldTableViewCell.identifier, for: indexPath) as! TextViewFieldTableViewCell
+
+            cell.selectionStyle = .none
+            cell.nameLabel.text = field.label
+            cell.textView.placeholder = multilineField.placeholder
+            cell.textView.keyboardType = multilineField.keyboard
+            cell.textView.autocapitalizationType = multilineField.autoCapitalize
+            cell.textView.isSecureTextEntry = multilineField.isSecureEntry
+            cell.textView.text = field.displayValue
+            cell.nameLabelWidth = self.nameLabelWidth
+            cell.textView.superview!.tag = indexPath.section
+            cell.textView.tag = indexPath.row
+            cell.accessoryType = .none
+
+            if !self.isEditable {
+                cell.isUserInteractionEnabled = false
+            }
+
+            self.style(nameLabel: cell.nameLabel)
+            self.style(valueTextView: cell.textView)
+            self.style(cell: cell)
+
+            return cell
         case let simpleField as SimpleField:
             let cell = tableView.dequeueReusableCell(withIdentifier: SimpleFieldTableViewCell.identifier, for: indexPath) as! SimpleFieldTableViewCell
 
@@ -620,6 +646,58 @@ private class BoolFieldTableViewCell: UITableViewCell {
         ])
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private class TextViewFieldTableViewCell: UITableViewCell {
+    static let identifier = "TextViewField"
+
+    let nameLabel: UILabel
+    let textView = PlaceholderTextView()
+    private let nameLabelWidthConstraint: NSLayoutConstraint
+
+    var nameLabelWidth: CGFloat {
+        get {
+            return self.nameLabelWidthConstraint.constant
+        }
+
+        set {
+            self.nameLabelWidthConstraint.constant = newValue
+        }
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        let nameLabel = UILabel()
+        self.nameLabel = nameLabel
+        self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        self.nameLabel.font = FormViewController.font
+        self.textView.font = FormViewController.font
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.textView.translatesAutoresizingMaskIntoConstraints = false
+
+        self.contentView.addSubview(self.nameLabel)
+        self.contentView.addSubview(self.textView)
+
+        self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
+        self.nameLabel.addConstraint(forHeight: 50)
+        self.textView.addConstraint(forHeight: 120)
+
+        self.contentView.addConstraints([
+            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
+            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+
+            NSLayoutConstraint(leftOf: self.textView, toRightOf: self.nameLabel, distance: 4),
+            NSLayoutConstraint(topOf: self.textView, to: self.contentView, distance: -4),
+            NSLayoutConstraint(rightOf: self.textView, to: self.contentView, distance: 4),
+            NSLayoutConstraint(verticalCenterOf: self.textView, to: self.contentView),
+        ])
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
