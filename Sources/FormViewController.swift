@@ -577,11 +577,25 @@ private class SimpleFieldTableViewCell: UITableViewCell {
 private class BoolFieldTableViewCell: UITableViewCell {
     static let identifier = "BoolField"
 
-    let nameLabel = UILabel()
+    let nameLabel: UILabel
     let valueSwitch = UISwitch()
-    var nameLabelWidth: CGFloat = 100
+    private let nameLabelWidthConstraint: NSLayoutConstraint
+
+    var nameLabelWidth: CGFloat {
+        get {
+            return self.nameLabelWidthConstraint.constant
+        }
+
+        set {
+            self.nameLabelWidthConstraint.constant = newValue
+        }
+    }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        let nameLabel = UILabel()
+        self.nameLabel = nameLabel
+        self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         self.nameLabel.font = FormViewController.font
@@ -590,18 +604,20 @@ private class BoolFieldTableViewCell: UITableViewCell {
 
         self.contentView.addSubview(self.nameLabel)
         self.contentView.addSubview(self.valueSwitch)
-    }
 
-    fileprivate override func layoutSubviews() {
-        super.layoutSubviews()
+        self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
+        self.nameLabel.addConstraint(forHeight: 50)
 
-        self.nameLabel.frame = CGRect(x: 8, y: 2, width: self.nameLabelWidth, height: self.contentView.bounds.height - 4)
-        self.valueSwitch.frame = CGRect(
-            x: self.nameLabel.frame.maxX + 8,
-            y: (self.contentView.bounds.height - self.valueSwitch.bounds.height) / 2,
-            width: self.contentView.bounds.width - self.nameLabel.frame.maxX - 16,
-            height: self.valueSwitch.bounds.height
-        )
+        self.contentView.addConstraints([
+            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
+            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.contentView),
+            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+
+            NSLayoutConstraint(leftOf: self.valueSwitch, toRightOf: self.nameLabel, distance: 8),
+            NSLayoutConstraint(topOf: self.valueSwitch, to: self.nameLabel),
+            NSLayoutConstraint(bottomOf: self.valueSwitch, to: self.nameLabel),
+            NSLayoutConstraint(rightOf: self.valueSwitch, to: self.contentView, distance: 8),
+        ])
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -612,11 +628,25 @@ private class BoolFieldTableViewCell: UITableViewCell {
 private class SegmentedControlTableViewCell: UITableViewCell {
     static let identifier = "SegmentedField"
 
-    let nameLabel = UILabel()
+    let nameLabel: UILabel
     let segmentedControl = UISegmentedControl()
-    var nameLabelWidth: CGFloat = 100
+    private let nameLabelWidthConstraint: NSLayoutConstraint
+
+    var nameLabelWidth: CGFloat {
+        get {
+            return self.nameLabelWidthConstraint.constant
+        }
+
+        set {
+            self.nameLabelWidthConstraint.constant = newValue
+        }
+    }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        let nameLabel = UILabel()
+        self.nameLabel = nameLabel
+        self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         self.nameLabel.font = FormViewController.font
@@ -625,18 +655,20 @@ private class SegmentedControlTableViewCell: UITableViewCell {
 
         self.contentView.addSubview(self.nameLabel)
         self.contentView.addSubview(self.segmentedControl)
-    }
 
-    fileprivate override func layoutSubviews() {
-        super.layoutSubviews()
+        self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
+        self.nameLabel.addConstraint(forHeight: 50)
+        self.segmentedControl.addConstraint(forHeight: 30)
 
-        self.nameLabel.frame = CGRect(x: 8, y: 2, width: self.nameLabelWidth, height: self.contentView.bounds.height - 4)
-        self.segmentedControl.frame = CGRect(
-            x: self.nameLabel.frame.maxX + 8,
-            y: (self.contentView.bounds.height - 30) / 2,
-            width: self.contentView.bounds.width - self.nameLabel.frame.maxX - 16,
-            height: 30
-        )
+        self.contentView.addConstraints([
+            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
+            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.contentView),
+            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+
+            NSLayoutConstraint(leftOf: self.segmentedControl, toRightOf: self.nameLabel, distance: 8),
+            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.segmentedControl),
+            NSLayoutConstraint(rightOf: self.segmentedControl, to: self.contentView, distance: 8),
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {
