@@ -153,11 +153,8 @@ public class MultilineField: SimpleField {
     }
 
     public func validate() -> ValidationResult {
-        guard self.value != "" else {
+        guard self.value != "" || !self.isRequired else {
             return .failedWithReason("must not be empty")
-        }
-        guard self.value.isValidEmail else {
-            return .failedWithReason("is not a valid email")
         }
         return .passed
     }
@@ -194,11 +191,13 @@ public class EmailField: SimpleField {
     }
 
     public func validate() -> ValidationResult {
-        guard self.value != "" else {
+        guard self.value != "" || !self.isRequired else {
             return .failedWithReason("must not be empty")
         }
-        guard self.value.isValidEmail else {
-            return .failedWithReason("is not a valid email")
+        if self.value != "" {
+            guard self.value.isValidEmail else {
+                return .failedWithReason("is not a valid email")
+            }
         }
         return .passed
     }

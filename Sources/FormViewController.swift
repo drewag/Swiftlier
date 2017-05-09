@@ -157,6 +157,7 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.nameLabelWidth = self.nameLabelWidth
             cell.textView.superview!.tag = indexPath.section
             cell.textView.tag = indexPath.row
+            cell.textView.delegate = self
             cell.accessoryType = .none
 
             if !self.isEditable {
@@ -464,6 +465,13 @@ extension FormViewController: UITextFieldDelegate {
 
         simpleCell.valueField.becomeFirstResponder()
         return true
+    }
+}
+
+extension FormViewController: UITextViewDelegate {
+    public func textViewDidChange(_ textView: UITextView) {
+        let field = self.form.sections.values[textView.superview!.tag].fields.values[textView.tag]
+        (field as! MultilineField).update(with: textView.text ?? "")
     }
 }
 
