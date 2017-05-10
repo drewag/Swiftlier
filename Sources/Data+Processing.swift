@@ -15,7 +15,7 @@ extension Data {
         var search = search ?? 0 ..< self.count
         while let range = self.range(of: of, in: search) {
             output.append(range)
-            search = range.upperBound ..< self.count
+            search = range.upperBound ..< search.upperBound
         }
 
         return output
@@ -28,7 +28,11 @@ extension Data {
             return [search]
         }
 
-        return [search.lowerBound ..< first.upperBound]
+        let last = ranges.last!
+
+        var output: [Range<Data.Index>] = [search.lowerBound ..< first.lowerBound]
             + ranges.enumerateByTwos().map({ $0.upperBound ..< $1.lowerBound})
+        output.append(last.upperBound ..< search.upperBound)
+        return output.filter({$0.count > 0})
     }
 }

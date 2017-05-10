@@ -135,6 +135,7 @@
 		499AF5B41EB1CEAD00A13C6B /* Path_CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */; };
 		499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */; };
 		499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B71EB1D22800A13C6B /* TestCodable.swift */; };
+		49BFE3571EC247E6009A21B0 /* Data_ProcessingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */; };
 		49DB23CA1EBA597200CFF9BF /* Data_Base64Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */; };
 /* End PBXBuildFile section */
 
@@ -280,6 +281,7 @@
 		499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path_CodingTests.swift; sourceTree = "<group>"; };
 		499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
 		499AF5B71EB1D22800A13C6B /* TestCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
+		49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_ProcessingTests.swift; sourceTree = "<group>"; };
 		49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_Base64Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -478,6 +480,7 @@
 				496FBECE1EB98A6C006AD5AC /* Bool_Formatting.swift */,
 				496FBED01EB98D01006AD5AC /* CGMathTests.swift */,
 				49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */,
+				49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -707,6 +710,7 @@
 			files = (
 				493C45B51EB646230022E008 /* AlwaysEqualTests.swift in Sources */,
 				4935A6DD1EB1A52E00B0CCF8 /* PathTests.swift in Sources */,
+				49BFE3571EC247E6009A21B0 /* Data_ProcessingTests.swift in Sources */,
 				4935A6DC1EB1A52E00B0CCF8 /* ObservableTests.swift in Sources */,
 				4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */,
 				496BB90B1EB5003A00D60ECF /* AgeTests.swift in Sources */,

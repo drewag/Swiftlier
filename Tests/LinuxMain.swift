@@ -17,4 +17,5 @@ XCTMain([
      testCase(Array_SortingTests.allTests),
      testCase(Bool_FormattingTests.allTests),
      testCase(Data_Base64Tests.allTests),
+     testCase(Data_ProcessingTests.allTests),
 ])

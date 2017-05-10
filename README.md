@@ -69,10 +69,9 @@ Code Coverage
 - [ ] CGContext+ThreadSafe
 - [x] CGMath
 - [ ] CircleBorderView
-- [ ] Coding
 - [ ] CommandLineDecoder
 - [x] Data+Base64
-- [ ] Data+Processing
+- [x] Data+Processing
 - [x] DataSourceType
 - [ ] Date+Formatting
 - [ ] Date+Helpers
