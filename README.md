@@ -74,7 +74,7 @@ Code Coverage
 - [x] Data+Processing
 - [x] DataSourceType
 - [ ] Date+Formatting
-- [ ] Date+Helpers
+- [x] Date+Helpers
 - [ ] DatePickerViewController
 - [ ] DiagonalGradientView
 - [x] Dictionary+Merging
