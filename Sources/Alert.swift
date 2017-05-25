@@ -69,17 +69,7 @@ extension ErrorGenerating where Self: UIViewController {
         other: [AlertAction] = []
         )
     {
-        let error = self.error(doing, from: error).byUserIfBecauseOf([
-            NetworkResponseErrorReason.noInternet,
-            NetworkResponseErrorReason.unauthorized,
-            NetworkResponseErrorReason.gone,
-        ])
-        EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: error)
-        self.showAlert(
-            withTitle: error.alertDescription.title,
-            message: error.alertDescription.message,
-            other: other
-        )
+        self.showAlert(withError: self.error(doing, from: error))
     }
 }
 
@@ -89,15 +79,17 @@ extension UIViewController {
         other: [AlertAction] = []
         )
     {
-        let error = error.byUserIfBecauseOf([
-            NetworkResponseErrorReason.noInternet,
-            NetworkResponseErrorReason.unauthorized,
-            NetworkResponseErrorReason.gone,
-        ])
-        EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: error)
+        let finalError: ReportableError
+        switch (error.reason as? NetworkResponseErrorReason)?.kind ?? .unknown {
+        case .unauthorized, .noInternet, .gone:
+            finalError = error.byUser
+        case .unknown, .invalid, .notFound, .untrusted:
+            finalError = error
+        }
+        EventCenter.defaultCenter().triggerEvent(ErrorOccured.self, params: finalError)
         self.showAlert(
-            withTitle: error.alertDescription.title,
-            message: error.alertDescription.message,
+            withTitle: finalError.alertDescription.title,
+            message: finalError.alertDescription.message,
             other: other
         )
     }
