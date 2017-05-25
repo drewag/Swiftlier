@@ -10,14 +10,14 @@ import Foundation
 
 extension DirectoryPath {
     @discardableResult
-    public func addFile(named: String, containingEncodable encodable: Encodable, canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func addFile(named: String, containingEncodable encodable: Encodable, canOverwrite: Bool, options: NSData.WritingOptions = .atomic, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         let object = NativeTypesEncoder.objectFromEncodable(encodable, mode: .saveLocally)
         let data = try FileArchive.data(from: object, encrypt: encrypt)
         return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite)
     }
 
     @discardableResult
-    public func addFile<E: Encodable>(named: String, containingEncodableDict dict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func addFile<E: Encodable>(named: String, containingEncodableDict dict: [String:E], canOverwrite: Bool, options: NSData.WritingOptions = .atomic, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         var finalDict = [String:Any]()
 
         for (key, value) in dict {
@@ -25,11 +25,11 @@ extension DirectoryPath {
         }
 
         let data = try FileArchive.data(from: finalDict, encrypt: encrypt)
-        return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite)
+        return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite, options: options)
     }
 
     @discardableResult
-    public func addFile<E: Encodable>(named: String, containingEncodableArray array: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func addFile<E: Encodable>(named: String, containingEncodableArray array: [E], canOverwrite: Bool, options: NSData.WritingOptions = .atomic, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         var finalArray = [Any]()
 
         for value in array {
@@ -37,30 +37,30 @@ extension DirectoryPath {
         }
 
         let data = try FileArchive.data(from: finalArray, encrypt: encrypt)
-        return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite)
+        return try self.addFile(named: named, containing: data, canOverwrite: canOverwrite, options: options)
     }
 }
 
 extension Path {
     @discardableResult
-    public func createFile(containingEncodable encodable: Encodable, canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func createFile(containingEncodable encodable: Encodable, canOverwrite: Bool, options: NSData.WritingOptions = .atomic, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         let name = self.basename
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
-        return try parentDirectory.addFile(named: name, containingEncodable: encodable, canOverwrite: canOverwrite, encrypt: encrypt)
+        return try parentDirectory.addFile(named: name, containingEncodable: encodable, canOverwrite: canOverwrite, options: options, encrypt: encrypt)
     }
 
     @discardableResult
-    public func createFile<E: Encodable>(containingEncodableDict encodableDict: [String:E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func createFile<E: Encodable>(containingEncodableDict encodableDict: [String:E], options: NSData.WritingOptions = .atomic, canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         let name = self.basename
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
-        return try parentDirectory.addFile(named: name, containingEncodableDict: encodableDict, canOverwrite: canOverwrite, encrypt: encrypt)
+        return try parentDirectory.addFile(named: name, containingEncodableDict: encodableDict, canOverwrite: canOverwrite, options: options, encrypt: encrypt)
     }
 
     @discardableResult
-    public func createFile<E: Encodable>(containingEncodableArray encodableArray: [E], canOverwrite: Bool, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
+    public func createFile<E: Encodable>(containingEncodableArray encodableArray: [E], canOverwrite: Bool, options: NSData.WritingOptions = .atomic, encrypt: (Data) throws -> Data = {return $0}) throws -> FilePath {
         let name = self.basename
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
-        return try parentDirectory.addFile(named: name, containingEncodableArray: encodableArray, canOverwrite: canOverwrite, encrypt: encrypt)
+        return try parentDirectory.addFile(named: name, containingEncodableArray: encodableArray, canOverwrite: canOverwrite, options: options, encrypt: encrypt)
     }
 }
 

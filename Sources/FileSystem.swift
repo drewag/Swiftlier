@@ -96,7 +96,7 @@ public struct FileSystem: ErrorGenerating {
         return contents
     }
 
-    func createFile(at url: URL, with data: Data?, canOverwrite: Bool) throws -> FilePath {
+    func createFile(at url: URL, with data: Data?, canOverwrite: Bool, options: NSData.WritingOptions) throws -> FilePath {
         switch (self.itemKind(at: url), canOverwrite) {
         case (.file, false):
             throw self.error("creating file", because: "a file at '\(url.relativePath)' already exists")
@@ -107,7 +107,7 @@ public struct FileSystem: ErrorGenerating {
             fallthrough
         default:
             let data = data ?? Data()
-            try data.write(to: url)
+            try data.write(to: url, options: options)
 
             guard let filePath = self.path(from: url) as? FilePath else {
                 throw self.error("creating File", because: "the new file could not be found")

@@ -184,9 +184,9 @@ extension DirectoryPath {
         return try FileSystem.default.contentsOfDirectory(at: self.url)
     }
 
-    public func addFile(named: String, containing data: Data? = nil, canOverwrite: Bool) throws -> FilePath {
+    public func addFile(named: String, containing data: Data? = nil, canOverwrite: Bool, options: NSData.WritingOptions = .atomic) throws -> FilePath {
         let newUrl = self.url.appendingPathComponent(named)
-        return try FileSystem.default.createFile(at: newUrl, with: data, canOverwrite: canOverwrite)
+        return try FileSystem.default.createFile(at: newUrl, with: data, canOverwrite: canOverwrite, options: options)
     }
 
     public func addLink(named: String, to: FilePath, canOverwrite: Bool) throws -> FilePath {
@@ -229,10 +229,10 @@ extension DirectoryPath {
 }
 
 extension Path {
-    public func createFile(containing data: Data? = nil, canOverwrite: Bool) throws -> FilePath {
+    public func createFile(containing data: Data? = nil, canOverwrite: Bool, options: NSData.WritingOptions = .atomic) throws -> FilePath {
         let name = self.basename
         let parentDirectory = try FileSystem.default.createDirectoryIfNotExists(at: self.withoutLastComponent.url)
-        return try parentDirectory.addFile(named: name, containing: data, canOverwrite: canOverwrite)
+        return try parentDirectory.addFile(named: name, containing: data, canOverwrite: canOverwrite, options: options)
     }
 
     public func createDirectory() throws -> DirectoryPath {
