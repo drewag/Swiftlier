@@ -52,4 +52,12 @@ extension String {
         pos = self.index(pos, offsetBy: index)
         return self.substring(to: pos)
     }
+
+    public func offsetCharacters(by count: Int) -> String {
+        return String(self.utf8.map({ character in
+            let utf8 = character.advanced(by: count)
+            let scalar = UnicodeScalar(utf8)
+            return Character(scalar)
+        }))
+    }
 }

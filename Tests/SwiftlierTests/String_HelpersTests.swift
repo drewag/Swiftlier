@@ -25,11 +25,18 @@ final class String_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(string.substring(to: 1), "H")
     }
 
+    func testOffsetCharactersByCount() {
+        XCTAssertEqual("abcd".offsetCharacters(by: 1), "bcde")
+        XCTAssertEqual("abcd".offsetCharacters(by: 3), "defg")
+        XCTAssertEqual("cdef".offsetCharacters(by: -2), "abcd")
+    }
+
     static var allTests: [(String, (String_HelpersTests) -> () throws -> Void)] {
         return [
             ("testRepeat", testRepeat),
             ("testSubstringFromIndex", testSubstringFromIndex),
             ("testSubstringToIndex", testSubstringToIndex),
+            ("testOffsetCharactersByCount", testOffsetCharactersByCount),
         ]
     }
 }
