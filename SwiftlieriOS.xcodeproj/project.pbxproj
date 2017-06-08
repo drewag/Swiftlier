@@ -274,16 +274,13 @@
 		4935A6D31EB1A52E00B0CCF8 /* PathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathTests.swift; sourceTree = "<group>"; };
 		4935A6D41EB1A52E00B0CCF8 /* String_HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String_HelpersTests.swift; sourceTree = "<group>"; };
 		4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxEnforcedTestCase.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		493C45B41EB646230022E008 /* AlwaysEqualTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysEqualTests.swift; sourceTree = "<group>"; };
 		493C45B61EB648020022E008 /* AngleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleTests.swift; sourceTree = "<group>"; };
 		493C45EA1EB679270022E008 /* DiagonalGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagonalGradientView.swift; sourceTree = "<group>"; };
 		493C45F01EB6A1770022E008 /* CircleBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleBorderView.swift; sourceTree = "<group>"; };
-=======
 		496074871EDFCFCF0051880F /* BinarySearchTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeTests.swift; sourceTree = "<group>"; };
 		4960748C1EE005270051880F /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
->>>>>>> [NF] Added basic PatchyRange type
 		496BB90A1EB5003A00D60ECF /* AgeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeTests.swift; sourceTree = "<group>"; };
 		496BB90C1EB5047E00D60ECF /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		496FBECB1EB98572006AD5AC /* Array_SortingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array_SortingTests.swift; sourceTree = "<group>"; };
@@ -295,16 +292,13 @@
 		499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path_CodingTests.swift; sourceTree = "<group>"; };
 		499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
 		499AF5B71EB1D22800A13C6B /* TestCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		49B730D91ECCAFD0006EE42B /* Date_HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_HelpersTests.swift; sourceTree = "<group>"; };
 		49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_ProcessingTests.swift; sourceTree = "<group>"; };
 		49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_Base64Tests.swift; sourceTree = "<group>"; };
-=======
 		49CEAC741EE67D0400BA0A73 /* VerticalGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalGradientView.swift; sourceTree = "<group>"; };
 		49D8784D1EE2088C0068836C /* PatchyRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchyRange.swift; sourceTree = "<group>"; };
 		49D8784F1EE2146D0068836C /* PatchyRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchyRangeTests.swift; sourceTree = "<group>"; };
 		49F62F131EE8DFD20090D158 /* DayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
->>>>>>> [NF] Added basic PatchyRange type
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,15 +466,12 @@
 				4935A63D1EB1A50600B0CCF8 /* ZipFilePath.swift */,
 				4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */,
 				499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */,
-<<<<<<< HEAD
 				493C45F01EB6A1770022E008 /* CircleBorderView.swift */,
 				496FBEF21EB9A5CF006AD5AC /* UIViewController+PhotoViewing.swift */,
-=======
 				496074871EDFCFCF0051880F /* BinarySearchTree.swift */,
 				4960748C1EE005270051880F /* Day.swift */,
 				49D8784D1EE2088C0068836C /* PatchyRange.swift */,
 				49CEAC741EE67D0400BA0A73 /* VerticalGradientView.swift */,
->>>>>>> [NF] Added basic PatchyRange type
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -503,7 +494,6 @@
 				499AF5B71EB1D22800A13C6B /* TestCodable.swift */,
 				496BB90A1EB5003A00D60ECF /* AgeTests.swift */,
 				496BB90C1EB5047E00D60ECF /* AlertTests.swift */,
-<<<<<<< HEAD
 				493C45B41EB646230022E008 /* AlwaysEqualTests.swift */,
 				493C45B61EB648020022E008 /* AngleTests.swift */,
 				496FBECB1EB98572006AD5AC /* Array_SortingTests.swift */,
@@ -512,11 +502,9 @@
 				49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */,
 				49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */,
 				49B730D91ECCAFD0006EE42B /* Date_HelpersTests.swift */,
-=======
 				496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */,
 				49D8784F1EE2146D0068836C /* PatchyRangeTests.swift */,
 				49F62F131EE8DFD20090D158 /* DayTests.swift */,
->>>>>>> [NF] Added basic PatchyRange type
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
