@@ -79,37 +79,37 @@ public struct Angle<Value: AngleValue>: Equatable, Comparable {
     }
 }
 
-public func ==<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
+public func ==<Value>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
     let left = lhs.normalized(in: lhs.unit)
     let right = rhs.normalized(in: lhs.unit)
     return left == right
 }
 
-public func <<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
+public func <<Value>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
     let left = lhs.normalized(in: lhs.unit)
     let right = rhs.normalized(in: lhs.unit)
     return left < right
 }
 
-public func <=<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
+public func <=<Value>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
     let left = lhs.normalized(in: lhs.unit)
     let right = rhs.normalized(in: lhs.unit)
     return left <= right
 }
 
-public func ><Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
+public func ><Value>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
     let left = lhs.normalized(in: lhs.unit)
     let right = rhs.normalized(in: lhs.unit)
     return left > right
 }
 
-public func >=<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
+public func >=<Value>(lhs: Angle<Value>, rhs: Angle<Value>) -> Bool {
     let left = lhs.normalized(in: lhs.unit)
     let right = rhs.normalized(in: lhs.unit)
     return left >= right
 }
 
-public func +<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Angle<Value> {
+public func +<Value>(lhs: Angle<Value>, rhs: Angle<Value>) -> Angle<Value> {
     if lhs.unit == rhs.unit {
         return Angle(value: Angle.normalized(lhs.value + rhs.value, with: lhs.unit), unit: lhs.unit)
     }
@@ -118,7 +118,7 @@ public func +<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Angle<
     }
 }
 
-public func +=<Value: AngleValue>( lhs: inout Angle<Value>, rhs: Angle<Value>) {
+public func +=<Value>( lhs: inout Angle<Value>, rhs: Angle<Value>) {
     if lhs.unit == rhs.unit {
         lhs = Angle(value: Angle.normalized(lhs.value + rhs.value, with: lhs.unit), unit: lhs.unit)
     }
@@ -127,7 +127,7 @@ public func +=<Value: AngleValue>( lhs: inout Angle<Value>, rhs: Angle<Value>) {
     }
 }
 
-public func -<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Angle<Value> {
+public func -<Value>(lhs: Angle<Value>, rhs: Angle<Value>) -> Angle<Value> {
     if lhs.unit == rhs.unit {
         return Angle(value: Angle.normalized(lhs.value - rhs.value, with: lhs.unit), unit: lhs.unit)
     }
@@ -136,7 +136,7 @@ public func -<Value: AngleValue>(lhs: Angle<Value>, rhs: Angle<Value>) -> Angle<
     }
 }
 
-public func -=<Value: AngleValue>( lhs: inout Angle<Value>, rhs: Angle<Value>) {
+public func -=<Value>( lhs: inout Angle<Value>, rhs: Angle<Value>) {
     if lhs.unit == rhs.unit {
         lhs = Angle(value: Angle.normalized(lhs.value - rhs.value, with: lhs.unit), unit: lhs.unit)
     }
@@ -145,19 +145,19 @@ public func -=<Value: AngleValue>( lhs: inout Angle<Value>, rhs: Angle<Value>) {
     }
 }
 
-public func /<Value: AngleValue>(lhs: Angle<Value>, rhs: Value) -> Angle<Value> {
+public func /<Value>(lhs: Angle<Value>, rhs: Value) -> Angle<Value> {
     return Angle(value: Angle.normalized(lhs.value / rhs, with: lhs.unit), unit: lhs.unit)
 }
 
-public func /=<Value: AngleValue>( lhs: inout Angle<Value>, rhs: Value) {
+public func /=<Value>( lhs: inout Angle<Value>, rhs: Value) {
     lhs = Angle(value: Angle.normalized(lhs.value / rhs, with: lhs.unit), unit: lhs.unit)
 }
 
-public func *<Value: AngleValue>(lhs: Angle<Value>, rhs: Value) -> Angle<Value> {
+public func *<Value>(lhs: Angle<Value>, rhs: Value) -> Angle<Value> {
     return Angle(value: Angle.normalized(lhs.value * rhs, with: lhs.unit), unit: lhs.unit)
 }
 
-public func *=<Value: AngleValue>( lhs: inout Angle<Value>, rhs: Value) {
+public func *=<Value>( lhs: inout Angle<Value>, rhs: Value) {
     lhs = Angle(value: Angle.normalized(lhs.value * rhs, with: lhs.unit), unit: lhs.unit)
 }
 

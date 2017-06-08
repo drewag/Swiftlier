@@ -118,7 +118,7 @@ private class Operation<Result, Identifier: PrioritizedOperationIdentifier>: Any
 }
 
 private extension PrioritizedOperationQueue {
-    func getOperationMatching<Result, Identifier: PrioritizedOperationIdentifier>(identifier: Identifier) -> Operation<Result, Identifier>? {
+    func getOperationMatching<Result, Identifier>(identifier: Identifier) -> Operation<Result, Identifier>? {
         for (index, existingOperation) in self.operations.enumerated() {
             guard let existingOperation = existingOperation as? Operation<Result, Identifier>
                 , identifier == existingOperation.identifier

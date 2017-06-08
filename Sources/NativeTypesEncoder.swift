@@ -34,7 +34,7 @@ public final class NativeTypesEncoder: Encoder {
         self.mode = mode
     }
 
-    public func encode<Value: Encodable>(_ data: Value, forKey key: CoderKey<Value>.Type) {
+    public func encode<Value>(_ data: Value, forKey key: CoderKey<Value>.Type) {
         if let raw = data as? RawCodable {
             self.addValue(raw.asObject, keyPath: key.path)
         }
@@ -43,7 +43,7 @@ public final class NativeTypesEncoder: Encoder {
         }
     }
 
-    public func encode<Value: Encodable>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type) {
+    public func encode<Value>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type) {
         if let data = data {
             if let raw = data as? RawCodable {
                 self.addValue(raw.asObject, keyPath: key.path)
@@ -60,7 +60,7 @@ public final class NativeTypesEncoder: Encoder {
         }
     }
 
-    public func encode<Value: Encodable>(_ data: [Value], forKey key: CoderKey<Value>.Type) {
+    public func encode<Value>(_ data: [Value], forKey key: CoderKey<Value>.Type) {
         var array = [Any]()
         for value in data {
             if let raw = value as? RawCodable {

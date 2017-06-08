@@ -30,7 +30,7 @@ public struct Syncable<Value: Codable>: AnySyncable, Decodable {
         self.status = .remote(Date())
     }
 
-    public var lastChanged: Date {
+    public var lastChanged: Date {  
         switch self.status {
         case .local(let date):
             return date
@@ -69,7 +69,7 @@ public struct Syncable<Value: Codable>: AnySyncable, Decodable {
         }
     }
 
-    public func converted<OtherValue: Encodable>(by: (Value) -> (OtherValue)) -> Syncable<OtherValue> where OtherValue: Decodable {
+    public func converted<OtherValue>(by: (Value) -> (OtherValue)) -> Syncable<OtherValue> {
         let convertedValue = by(self.value)
         var converted = Syncable<OtherValue>(convertedValue)
         if let remoteValue = self.remoteValue {
@@ -174,7 +174,7 @@ public struct SyncableOptional<Value: Codable>: AnySyncable, Decodable {
         }
     }
 
-    public func converted<OtherValue: Encodable>(by: (Value) -> (OtherValue?)) -> SyncableOptional<OtherValue> where OtherValue: Decodable {
+    public func converted<OtherValue>(by: (Value) -> (OtherValue?)) -> SyncableOptional<OtherValue> {
         var convertedValue: OtherValue? = nil
         if let value = self.value {
             convertedValue = by(value)

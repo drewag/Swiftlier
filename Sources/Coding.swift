@@ -50,9 +50,9 @@ public enum EncodingMode {
 public protocol Encoder {
     var mode: EncodingMode {get}
 
-    func encode<Value: Encodable>(_ data: Value, forKey key: CoderKey<Value>.Type)
-    func encode<Value: Encodable>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type)
-    func encode<Value: Encodable>(_ data: [Value], forKey key: CoderKey<Value>.Type)
+    func encode<Value>(_ data: Value, forKey key: CoderKey<Value>.Type)
+    func encode<Value>(_ data: Value?, forKey key: OptionalCoderKey<Value>.Type)
+    func encode<Value>(_ data: [Value], forKey key: CoderKey<Value>.Type)
 
     // Only the last call to this will apply as it replaces the entire value dictionary with this value
     func encodeAsEntireValue<Value: Encodable>(_ data: Value?)
