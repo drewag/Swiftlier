@@ -68,8 +68,8 @@ extension Sequence {
     /**
         - returns: an array of only elements that can be cast to the resulting type
     */
-    public func extractElements<C: Sequence>() -> [C.Iterator.Element] {
-        return self.map({$0 as? C.Iterator.Element}).flatMap({$0})
+    public func extractElements<Element>() -> [Element] {
+        return self.map({$0 as? Element}).flatMap({$0})
     }
 
     public func enumerateByTwos() -> AnySequence<(Self.Iterator.Element, Self.Iterator.Element)> {
