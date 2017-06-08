@@ -51,11 +51,16 @@ public enum ReportableResult<Value> {
 
 extension ReportableError {
     public var alertDescription: (title: String, message: String) {
+        var because = self.reason.because
+        if because.first != nil {
+            let first = because.removeFirst()
+            because = "\(first)".capitalized + because
+        }
         switch self.perpetrator {
         case .user:
             return (
                 title: "Error \(self.doing.capitalized)",
-                message: "Because \(self.reason.because)"
+                message: because
             )
         case .system:
             return (
@@ -65,7 +70,7 @@ extension ReportableError {
         case .temporaryEnvironment:
             return (
                 title: "Temporary Error \(self.doing.capitalized)",
-                message: "Because \(self.reason.because). Please try again."
+                message: "\(because). Please try again."
             )
         }
     }
