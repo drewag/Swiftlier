@@ -39,9 +39,7 @@ public struct PatchyRange<Value: Comparable> {
 
     public mutating func appendRange(from: Value, to: Value) {
         defer {
-            print("Before clean: \(self)")
             self.cleanupNodes()
-            print("After clean: \(self)")
         }
 
         guard from < to else {
@@ -157,9 +155,6 @@ private extension PatchyRange {
         for (index, node) in self.nodes.enumerated().reversed() {
             includeCount -= node.opening
             includeCount += node.closing
-
-            print(node)
-            print(includeCount)
 
             if node.opening > 0 {
                 if includeCount > 0 {
