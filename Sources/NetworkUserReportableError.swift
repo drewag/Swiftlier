@@ -22,7 +22,7 @@ public class NetworkResponseErrorReason: AnyErrorReason {
     public let kind: Kind
     let customMessage: String?
 
-    init(kind: Kind, customMessage: String?) {
+    public init(kind: Kind, customMessage: String? = nil) {
         self.customMessage = customMessage
         self.kind = kind
     }
