@@ -6,6 +6,7 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 @IBDesignable public class VerticalGradientView: UIView {
@@ -22,7 +23,6 @@ import UIKit
 
     public override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-//        context?.setBlendMode(.sourceAtop)
 
         let colors = [startColor.cgColor, endColor.cgColor]
 
@@ -45,3 +45,4 @@ import UIKit
         )
     }
 }
+#endif
