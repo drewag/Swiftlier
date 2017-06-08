@@ -61,6 +61,34 @@ extension Date {
         return (self.timeIntervalSinceNow < 0)
     }
 
+    public var beginningOfDay: Date {
+        let cal = Calendar.current
+        let units = Set<Calendar.Component>([.era, .year, .month, .day])
+        var components = cal.dateComponents(units, from: self)
+        components.second = 0
+        components.nanosecond = 0
+        return cal.date(from: components)!
+    }
+
+    public var beginningOfWeek: Date {
+        let cal = Calendar.current
+        let units = Set<Calendar.Component>([.era, .year, .weekOfYear, .month, .weekOfMonth])
+        var components = cal.dateComponents(units, from: self)
+        components.weekday = cal.firstWeekday
+        components.second = 0
+        components.nanosecond = 0
+        return cal.date(from: components)!
+    }
+
+    public var beginningOfNextDay: Date {
+        let cal = Calendar.current
+        let units = Set<Calendar.Component>([.era, .year, .month, .day])
+        var components = cal.dateComponents(units, from: self.addingTimeInterval(60 * 60 * 24))
+        components.second = 0
+        components.nanosecond = 0
+        return cal.date(from: components)!
+    }
+
     #if os(iOS)
     public var dispatchTime: DispatchWallTime {
         let seconds = self.timeIntervalSince1970
