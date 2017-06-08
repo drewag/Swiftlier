@@ -52,8 +52,8 @@ public enum ReportableResult<Value> {
 extension ReportableError {
     public var alertDescription: (title: String, message: String) {
         var because = self.reason.because
-        if because.first != nil {
-            let first = because.removeFirst()
+        if because.characters.first != nil {
+            let first = because.characters.removeFirst()
             because = "\(first)".capitalized + because
         }
         switch self.perpetrator {
