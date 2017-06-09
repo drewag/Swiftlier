@@ -21,6 +21,31 @@ extension TimeInterval {
         return Int((self / 60 / 60).truncatingRemainder(dividingBy: 60))
     }
 
+    public var shortestDisplay: String {
+        let minutes = self.minutes + Int((Float(self.seconds) / 60).rounded())
+        let hours = self.hours
+
+        var output = ""
+        if minutes < 10 {
+            output = "0\(minutes)"
+        }
+        else {
+            output = "\(minutes)"
+        }
+        if hours > 0 {
+            if hours < 10 {
+                output = "0\(hours):" + output
+            }
+            else {
+                output = "\(hours):" + output
+            }
+        }
+        else {
+            output = "0:" + output
+        }
+        return output
+    }
+
     public var shortDisplay: String {
         let seconds = self.seconds
         let minutes = self.minutes
