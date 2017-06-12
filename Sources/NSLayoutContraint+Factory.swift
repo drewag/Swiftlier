@@ -37,26 +37,26 @@ extension NSLayoutConstraint {
         ]
     }
 
-    public convenience init(sameWidthFor view1: UIView, and view2: UIView, difference: CGFloat = 0) {
+    public convenience init(sameWidthFor view1: UIView, and view2: UIView, difference: CGFloat = 0, multiplier: CGFloat = 1) {
         self.init(
             item: view1,
             attribute: .width,
             relatedBy: .equal,
             toItem: view2,
             attribute: .width,
-            multiplier: 1,
+            multiplier: multiplier,
             constant: difference
         )
     }
 
-    public convenience init(sameHeightFor view1: UIView, and view2: UIView, difference: CGFloat = 0) {
+    public convenience init(sameHeightFor view1: UIView, and view2: UIView, difference: CGFloat = 0, multiplier: CGFloat = 1) {
         self.init(
             item: view1,
             attribute: .height,
             relatedBy: .equal,
             toItem: view2,
             attribute: .height,
-            multiplier: 1,
+            multiplier: multiplier,
             constant: difference
         )
     }
