@@ -157,6 +157,18 @@ extension NSLayoutConstraint {
         )
     }
 
+    public convenience init(horizontalCenterOf view1: UIView, to view2: UIView, distance: CGFloat = 0) {
+        self.init(
+            item: view1,
+            attribute: .centerX,
+            relatedBy: .equal,
+            toItem: view2,
+            attribute: .centerX,
+            multiplier: 1,
+            constant: distance
+        )
+    }
+
     public convenience init(width: CGFloat, of view: UIView, multiplier: CGFloat = 1) {
         self.init(
             item: view,
