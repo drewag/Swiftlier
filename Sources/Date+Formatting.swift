@@ -241,7 +241,11 @@ extension String {
     }
 
     public var localIso8601DateTime: Date? {
-        return localIso8601DateTimeFormatter.date(from: self)
+        var finalString = self.replacingOccurrences(of: " ", with: "T")
+        if !finalString.contains(".") {
+            finalString += ".0"
+        }
+        return localIso8601DateTimeFormatter.date(from: finalString)
     }
 
     public var date: Date? {
