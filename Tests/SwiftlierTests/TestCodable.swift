@@ -13,18 +13,18 @@ struct TestCodable {
     let int: Int
 }
 
-extension TestCodable: Codable {
+extension TestCodable: Swiftlier.Codable {
     struct Keys {
         class string: CoderKey<String> {}
         class int: CoderKey<Int> {}
     }
 
-    init(decoder: Decoder) throws {
+    init(decoder: Swiftlier.Decoder) throws {
         self.string = try decoder.decode(Keys.string.self)
         self.int = try decoder.decode(Keys.int.self)
     }
 
-    func encode(_ encoder: Encoder) {
+    func encode(_ encoder: Swiftlier.Encoder) {
         encoder.encode(self.string, forKey: Keys.string.self)
         encoder.encode(self.int, forKey: Keys.int.self)
     }

@@ -99,12 +99,12 @@ final class AlertTests: XCTestCase, ErrorGenerating {
         }
 
         viewController.didPresent = nil
-        error = self.error("making alert", because: NetworkResponseErrorReason.noInternet)
+        error = self.error("making alert", because: NetworkResponseErrorReason(kind: .noInternet))
         viewController.showAlert(withError: error)
         if let alert = viewController.didPresent as? UIAlertController {
             XCTAssertEqual(alert.title, error.alertDescription.title)
             XCTAssertEqual(alert.preferredStyle, .alert)
-            XCTAssertEqual(alert.message, "Because \(NetworkResponseErrorReason.noInternet.because)")
+            XCTAssertEqual(alert.message, "You are not connected to the internet")
             XCTAssertEqual(alert.actions.count, 1)
             XCTAssertEqual(alert.actions[0].title, "OK")
             XCTAssertEqual(alert.actions[0].style, .default)
@@ -117,12 +117,12 @@ final class AlertTests: XCTestCase, ErrorGenerating {
         }
 
         viewController.didPresent = nil
-        error = self.error("making alert", because: NetworkResponseErrorReason.gone)
+        error = self.error("making alert", because: NetworkResponseErrorReason(kind: .gone))
         viewController.showAlert(withError: error)
         if let alert = viewController.didPresent as? UIAlertController {
             XCTAssertEqual(alert.title, error.alertDescription.title)
             XCTAssertEqual(alert.preferredStyle, .alert)
-            XCTAssertEqual(alert.message, "Because \(NetworkResponseErrorReason.gone.because)")
+            XCTAssertEqual(alert.message, "This app is out of date. Please update to the latest version.")
             XCTAssertEqual(alert.actions.count, 1)
             XCTAssertEqual(alert.actions[0].title, "OK")
             XCTAssertEqual(alert.actions[0].style, .default)
@@ -135,12 +135,12 @@ final class AlertTests: XCTestCase, ErrorGenerating {
         }
 
         viewController.didPresent = nil
-        error = self.error("making alert", because: NetworkResponseErrorReason.unauthorized)
+        error = self.error("making alert", because: NetworkResponseErrorReason(kind: .unauthorized))
         viewController.showAlert(withError: error)
         if let alert = viewController.didPresent as? UIAlertController {
             XCTAssertEqual(alert.title, error.alertDescription.title)
             XCTAssertEqual(alert.preferredStyle, .alert)
-            XCTAssertEqual(alert.message, "Because \(NetworkResponseErrorReason.unauthorized.because)")
+            XCTAssertEqual(alert.message, "You are not authorized")
             XCTAssertEqual(alert.actions.count, 1)
             XCTAssertEqual(alert.actions[0].title, "OK")
             XCTAssertEqual(alert.actions[0].style, .default)
