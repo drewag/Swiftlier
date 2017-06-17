@@ -64,29 +64,40 @@ extension Date {
     public var beginningOfDay: Date {
         let cal = Calendar.current
         let units = Set<Calendar.Component>([.era, .year, .month, .day])
-        var components = cal.dateComponents(units, from: self)
-        components.second = 0
-        components.nanosecond = 0
+        let components = cal.dateComponents(units, from: self)
         return cal.date(from: components)!
     }
 
     public var beginningOfWeek: Date {
         let cal = Calendar.current
-        let units = Set<Calendar.Component>([.era, .year, .weekOfYear, .month, .weekOfMonth])
-        var components = cal.dateComponents(units, from: self)
+        let weekDay = cal.dateComponents([.weekday], from: self).weekday!
+        let units = Set<Calendar.Component>([.era, .year, .month, .day])
+        var components = cal.dateComponents(units, from: cal.date(byAdding: .day, value: -(weekDay - 1), to: self)!)
         components.weekday = cal.firstWeekday
-        components.second = 0
-        components.nanosecond = 0
+        return cal.date(from: components)!
+    }
+
+    public var beginningOfMonth: Date {
+        let cal = Calendar.current
+        let units = Set<Calendar.Component>([.era, .year, .month])
+        var components = cal.dateComponents(units, from: self)
+        components.day = 1
         return cal.date(from: components)!
     }
 
     public var beginningOfNextDay: Date {
         let cal = Calendar.current
-        let units = Set<Calendar.Component>([.era, .year, .month, .day])
-        var components = cal.dateComponents(units, from: self.addingTimeInterval(60 * 60 * 24))
-        components.second = 0
-        components.nanosecond = 0
-        return cal.date(from: components)!
+        return cal.date(byAdding: .day, value: 1, to: self.beginningOfDay)!
+    }
+
+    public var beginningOfNextWeek: Date {
+        let cal = Calendar.current
+        return cal.date(byAdding: .day, value: 7, to: self.beginningOfWeek)!
+    }
+
+    public var beginningOfNextMonth: Date {
+        let cal = Calendar.current
+        return cal.date(byAdding: .month, value: 1, to: self.beginningOfMonth)!
     }
 
     #if os(iOS)
