@@ -63,6 +63,11 @@ extension Path {
         return type(of: self).build(newUrl)
     }
 
+    public func with(extension: String) -> Path {
+        let newUrl = self.url.deletingPathExtension().appendingPathExtension(`extension`)
+        return type(of: self).build(newUrl)
+    }
+
     public var description: String {
         switch FileSystem.default.itemKind(at: self.url) {
         case .directory:

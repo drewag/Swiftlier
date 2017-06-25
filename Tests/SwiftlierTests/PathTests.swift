@@ -108,6 +108,14 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(try self.base.subdirectory("sub").file("name.txt").withoutLastComponent.url.relativePath, "./tmp/sub")
     }
 
+    func testWithExtension() {
+        XCTAssertEqual(try self.base.subdirectory("sub").file("name.txt")
+            .with(extension: "other").url.relativePath, "./tmp/sub/name.other")
+        XCTAssertEqual(try self.base.subdirectory("sub")
+            .with(extension: "other").url.relativePath, "./tmp/sub.other")
+    }
+
+
     func testDescription() throws {
         let toTest = try self.base.subdirectory("sub")
         XCTAssertEqual(toTest.description, "Directory(./tmp/sub)")
@@ -857,6 +865,7 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
             ("testFile", testFile),
             ("testExsiting", testExsiting),
             ("testWithoutLastComponent", testWithoutLastComponent),
+            ("testWithExtension", testWithExtension),
             ("testDescription", testDescription),
             ("testDelete", testDelete),
             ("testMoveFileWithinDirectory", testMoveFileWithinDirectory),
