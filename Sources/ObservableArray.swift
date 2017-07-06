@@ -210,6 +210,16 @@ public final class ObservableArray<Element> {
     }
 }
 
+extension ObservableArray {
+    public func remove(where passes: (Element) throws -> Bool) rethrows {
+        guard let index = try self.values.index(where: passes) else {
+            return
+        }
+
+        self.remove(at: index)
+    }
+}
+
 private extension ObservableArray {
     func index(ofObserver observer: AnyObject) -> Int? {
         var index: Int = 0
