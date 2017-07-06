@@ -80,23 +80,27 @@ extension Double: RawCodable { public var asObject: Any { return self as Any } }
 extension Float: RawCodable { public var asObject: Any { return self as Any } }
 extension Data: RawCodable { public var asObject: Any { return self as Any } }
 
-open class CoderKey<Value: Encodable> {
+public protocol AnyCoderKey {
+    static var path: [String] {get}
+}
+
+open class CoderKey<Value: Encodable>: AnyCoderKey {
     open class var customKey: String? { return nil }
 }
 
-open class OptionalCoderKey<Value: Encodable> {
+open class OptionalCoderKey<Value: Encodable>: AnyCoderKey {
     open class var customKey: String? { return nil }
 }
 
 extension CoderKey {
-    static var path: [String] {
+    public static var path: [String] {
         return self.customKey?.components(separatedBy: ".")
             ?? [String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!]
     }
 }
 
 extension OptionalCoderKey {
-    static var path: [String] {
+    public static var path: [String] {
         return self.customKey?.components(separatedBy: ".")
             ?? [String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!]
     }
