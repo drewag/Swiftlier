@@ -648,8 +648,7 @@ private class BoolFieldTableViewCell: UITableViewCell {
             NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
 
             NSLayoutConstraint(leftOf: self.valueSwitch, toRightOf: self.nameLabel, distance: 8),
-            NSLayoutConstraint(topOf: self.valueSwitch, to: self.nameLabel),
-            NSLayoutConstraint(bottomOf: self.valueSwitch, to: self.nameLabel),
+            NSLayoutConstraint(verticalCenterOf: self.valueSwitch, to: self.contentView),
             NSLayoutConstraint(rightOf: self.valueSwitch, to: self.contentView, distance: 8),
         ])
     }
