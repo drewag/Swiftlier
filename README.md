@@ -98,6 +98,7 @@ Code Coverage
 - [ ] JSON
 - [ ] KeyboardConstraintAdjuster
 - [ ] LimitedSizeViewController
+- [x] Mass
 - [ ] Menu
 - [ ] MenuViewController
 - [ ] MonthAndYearPicker
