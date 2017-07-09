@@ -21,4 +21,5 @@ XCTMain([
      testCase(DayTests.allTests),
      testCase(BinarySearchTreeTests.allTests),
      testCase(PatchyRangeTests.allTests),
+     testCase(MassTests.allTests),
 ])
