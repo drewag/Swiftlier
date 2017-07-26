@@ -520,7 +520,17 @@ private class SimpleFieldTableViewCell: UITableViewCell {
 
     let nameLabel: UILabel
     let valueField = UITextField()
-    private(set) var clearButton: RoundedBorderButton?
+
+    private var customConstraints = [NSLayoutConstraint]()
+    private(set) var clearButton: RoundedBorderButton? {
+        didSet {
+            if let button = clearButton {
+                 button.translatesAutoresizingMaskIntoConstraints = false
+                self.contentView.addSubview(button)
+            }
+            self.resetConstraints()
+        }
+    }
     private let nameLabelWidthConstraint: NSLayoutConstraint
 
     var nameLabelWidth: CGFloat {
@@ -563,6 +573,7 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         button.setBlock { [unowned button] in
             clearCallback(button)
         }
+        button.addConstraint(forHeight: 44)
         button.addConstraint(NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1, constant: 0))
         self.contentView.addSubview(button)
         self.clearButton = button
@@ -574,9 +585,10 @@ private class SimpleFieldTableViewCell: UITableViewCell {
     }
 
     func resetConstraints() {
-        self.contentView.removeConstraints(self.contentView.constraints)
+        self.contentView.removeConstraints(self.customConstraints)
 
-        self.contentView.addConstraints([
+        self.customConstraints = []
+        self.customConstraints += [
             NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
             NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.contentView),
             NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
@@ -584,21 +596,22 @@ private class SimpleFieldTableViewCell: UITableViewCell {
             NSLayoutConstraint(leftOf: self.valueField, toRightOf: self.nameLabel, distance: 8),
             NSLayoutConstraint(topOf: self.valueField, to: self.nameLabel),
             NSLayoutConstraint(bottomOf: self.valueField, to: self.nameLabel),
-        ])
+        ]
 
         if let button = self.clearButton {
-            self.contentView.addConstraints([
-                NSLayoutConstraint(rightOf: self.valueField, to: button, distance: 8),
-                NSLayoutConstraint(topOf: button, to: self.nameLabel),
-                NSLayoutConstraint(bottomOf: button, to: self.nameLabel),
-                NSLayoutConstraint(rightOf: button, to: self.contentView, distance: 8),
-            ])
+            self.customConstraints += [
+                NSLayoutConstraint(rightOf: self.valueField, toLeftOf: button, distance: 8),
+                NSLayoutConstraint(verticalCenterOf: button, to: self.nameLabel),
+                NSLayoutConstraint(rightOf: button, to: self.contentView, distance: -8),
+            ]
         }
         else {
-            self.contentView.addConstraints([
+            self.customConstraints += [
                 NSLayoutConstraint(rightOf: self.valueField, to: self.contentView, distance: 8),
-            ])
+            ]
         }
+
+        self.contentView.addConstraints(self.customConstraints)
     }
 
     override func prepareForReuse() {
