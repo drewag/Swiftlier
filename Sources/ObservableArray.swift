@@ -208,6 +208,52 @@ public final class ObservableArray<Element> {
             toIndex -= 1
         }
     }
+
+    public func sync(with newValues: [Element], isEqual: (Element, Element) -> Bool) {
+        var newIndex = newValues.count - 1
+        var existingIndex = self.values.count - 1
+
+        while newIndex >= 0 && existingIndex >= 0 {
+            let new = newValues[newIndex]
+
+            guard !isEqual(new, self.values[existingIndex]) else {
+                newIndex -= 1
+                existingIndex -= 1
+                continue
+            }
+
+            var index: Int? = nil
+            for i in 0 ... existingIndex {
+                if isEqual(self.values[i], new) {
+                    index = i
+                    break
+                }
+            }
+            if let index = index {
+                self.values.remove(at: index)
+                self.values.insert(new, at: existingIndex)
+                self.executeWithAllHandlers({ handler in
+                    handler.didMove?(new, index, existingIndex)
+                })
+                existingIndex -= 1
+                newIndex -= 1
+            }
+            else {
+                self.insert(new, at: existingIndex + 1)
+                newIndex -= 1
+            }
+        }
+
+        while existingIndex >= 0 {
+            self.remove(at: existingIndex)
+            existingIndex -= 1
+        }
+
+        while newIndex >= 0 {
+            self.insert(newValues[newIndex], at: 0)
+            newIndex -= 1
+        }
+    }
 }
 
 extension ObservableArray {
