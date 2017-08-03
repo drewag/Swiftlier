@@ -13,9 +13,10 @@ import UIKit
 public final class ObservableArray<Element> {
     public typealias DidInsert = (Element, _ at: Int) -> ()
     public typealias DidRemove = (Element, _ at: Int) -> ()
+    public typealias DidUpdate = (Element, _ at: Int) -> ()
     public typealias DidRemoveAll = (_ oldValues: [Element]) -> ()
     public typealias DidMove = (Element, _ from: Int, _ to: Int) -> ()
-    public typealias ObservationHandlers = (insert: DidInsert?, remove: DidRemove?, removeAll: DidRemoveAll?, didMove: DidMove?)
+    public typealias ObservationHandlers = (insert: DidInsert?, update: DidUpdate?, remove: DidRemove?, removeAll: DidRemoveAll?, didMove: DidMove?)
 
     fileprivate var observers: [(observer: WeakWrapper<AnyObject>, handlers: [ObservationHandlers])] = []
     fileprivate var onHasObserversChanged: ((Bool) -> ())?
@@ -41,17 +42,19 @@ public final class ObservableArray<Element> {
     public func add(
         observer: AnyObject,
         onDidInsert: DidInsert? = nil,
+        onDidUpdate: DidUpdate? = nil,
         onDidRemove: DidRemove? = nil,
         onDidRemoveAll: DidRemoveAll? = nil,
         onDidMove: DidMove? = nil
         )
     {
-        guard onDidInsert != nil || onDidRemove != nil || onDidRemoveAll != nil else {
+        guard onDidInsert != nil || onDidRemove != nil || onDidMove != nil || onDidRemoveAll != nil else {
             return
         }
 
         let handlers: ObservationHandlers = (
             insert: onDidInsert,
+            update: onDidUpdate,
             remove: onDidRemove,
             removeAll: onDidRemoveAll,
             didMove: onDidMove
@@ -155,6 +158,13 @@ public final class ObservableArray<Element> {
         self.values.insert(element, at: index)
         self.executeWithAllHandlers({ handler in
             handler.insert?(element, index)
+        })
+    }
+
+    public func replace(elementAt index: Int, with element: Element) {
+        self.values[index] = element
+        self.executeWithAllHandlers({ handler in
+            handler.update?(element, index)
         })
     }
 
@@ -263,6 +273,19 @@ extension ObservableArray {
         }
 
         self.remove(at: index)
+    }
+
+    public func replace(where passes: (Element) throws -> Bool, with element: Element) rethrows {
+        guard let index = try self.values.index(where: passes) else {
+            return
+        }
+
+        self.replace(elementAt: index, with: element)
+    }
+
+    public func insert(_ element: Element, after passing: (Element) throws -> Bool) rethrows {
+        let index = try self.values.index(where: passing) ?? self.values.count - 1
+        self.insert(element, at: index + 1)
     }
 }
 
