@@ -189,7 +189,7 @@ public struct FileSystem: ErrorGenerating {
 
                     var data: Data
                     repeat {
-                        data = source.readData(ofLength: 16000)
+                        data = source.safelyReadData(ofLength: 16000)
                         destination.write(data)
                     } while !data.isEmpty
                 #else

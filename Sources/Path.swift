@@ -172,8 +172,8 @@ extension FilePath {
         var lData: Data
         var rData: Data
         repeat {
-            lData = lFileHandle.readData(ofLength: 16000)
-            rData = rFileHandle.readData(ofLength: 16000)
+            lData = lFileHandle.safelyReadData(ofLength: 16000)
+            rData = rFileHandle.safelyReadData(ofLength: 16000)
 
             guard lData == rData else {
                 return false
