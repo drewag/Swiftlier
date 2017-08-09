@@ -10,11 +10,21 @@
 import UIKit
 
 extension UITableView {
+    @available(*, deprecated, message: "Use registerNibCell instead")
     public func registerCell(withType type: UITableViewCell.Type) {
+        self.registerNibCell(withType: type)
+    }
+    
+    public func registerNibCell(withType type: UITableViewCell.Type) {
         let nibName = self.nibName(fromType: type)
         let bundle = Bundle(for: type)
         let nib = UINib(nibName: nibName, bundle: bundle)
         self.register(nib, forCellReuseIdentifier: nibName)
+    }
+
+    public func registerClassCell(withType type: UITableViewCell.Type) {
+        let nibName = self.nibName(fromType: type)
+        self.register(type, forCellReuseIdentifier: nibName)
     }
 
     public func dequeueCell<CellType: UITableViewCell>() -> CellType {
