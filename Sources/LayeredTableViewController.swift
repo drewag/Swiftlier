@@ -21,6 +21,7 @@ open class LayeredTableViewController: UIViewController {
     fileprivate var bottomTableViewDelegate: UITableViewDelegate?
     fileprivate var baseBottomInset: CGFloat = 0
     fileprivate var openGestureRecognizer: UITapGestureRecognizer!
+    fileprivate var isFirstAppearence: Bool = true
 
     public init(topStyle: UITableViewStyle = .plain, bottomStyle: UITableViewStyle = .plain) {
         self.topTableView = UITableView(frame: CGRect(), style: topStyle)
@@ -58,6 +59,9 @@ open class LayeredTableViewController: UIViewController {
 
     public fileprivate(set) var isOpen: Bool = true {
         didSet {
+            guard isOpen != oldValue else {
+                return
+            }
             self.bottomTableView.allowsSelection = isOpen
             self.openGestureRecognizer.isEnabled = !isOpen
         }
@@ -73,6 +77,8 @@ open class LayeredTableViewController: UIViewController {
 
         self.isOpen = false
         self.bottomTableView.addGestureRecognizer(self.openGestureRecognizer)
+
+        self.bottomTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
 
     open override func viewWillAppear(_ animated: Bool) {
@@ -86,8 +92,10 @@ open class LayeredTableViewController: UIViewController {
             self.bottomTableView.deselectRow(at: indexPath, animated: true)
         }
 
-        self.arrange(for: self.view.bounds.size)
-        self.bottomTableView.addObserver(self, forKeyPath: "contentSize", options: .initial, context: nil)
+        if self.isFirstAppearence {
+            self.isFirstAppearence = false
+            self.arrange(for: self.view.bounds.size)
+        }
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -152,7 +160,7 @@ open class LayeredTableViewController: UIViewController {
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch keyPath ?? "" {
         case "contentSize":
-            self.resetBottomInset()
+            self.resetBottomInset(adjustContentOffset: self.isOpen)
         default:
             break
         }
@@ -193,19 +201,11 @@ open class LayeredTableViewController: UIViewController {
 
     public func openBottom() {
         self.bottomTableView.setContentOffset(CGPoint(x: 0, y: self.bottomOpenYOffset), animated: true)
+        self.isOpen = true
     }
 }
 
 extension LayeredTableViewController: UIScrollViewDelegate {
-    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        switch scrollView {
-        case self.bottomTableView:
-            self.isOpen = scrollView.contentOffset.y >= self.bottomOpenYOffset
-        default:
-            break
-        }
-    }
-
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         self.move(point: &targetContentOffset.pointee, toOutsideOfShowingTransitionRangeFor: scrollView)
     }
@@ -261,6 +261,7 @@ private extension LayeredTableViewController {
         case self.bottomTableView:
             let open = self.bottomOpenYOffset
             guard point.y < open else {
+                self.isOpen = true
                 return
             }
 
@@ -269,16 +270,18 @@ private extension LayeredTableViewController {
             let beyondOpen = point.y - closed
             if beyondOpen / range > 0.5 {
                 point.y = open
+                self.isOpen = true
             }
             else {
                 point.y = closed
+                self.isOpen = false
             }
         default:
             break
         }
     }
 
-    func resetBottomInset(for size: CGSize? = nil) {
+    func resetBottomInset(for size: CGSize? = nil, adjustContentOffset: Bool = false) {
         let size = size ?? self.view.bounds.size
         let inset = self.delegate?.contentInset(forLayeredTableViewController: self) ?? UIEdgeInsets()
         let minimumHeight = size.height - inset.top - inset.bottom
@@ -286,7 +289,12 @@ private extension LayeredTableViewController {
             - UIApplication.shared.statusBarFrame.maxY
         let missingHeight = minimumHeight - self.bottomTableView.contentSize.height
         if missingHeight > 0 {
-            self.bottomTableView.contentInset.bottom = self.baseBottomInset + missingHeight
+            let new = self.baseBottomInset + missingHeight
+            let change = new - self.bottomTableView.contentInset.bottom
+            self.bottomTableView.contentInset.bottom = new
+            if adjustContentOffset {
+                self.bottomTableView.contentOffset.y += change
+            }
         }
         else {
             self.bottomTableView.contentInset.bottom = self.baseBottomInset
