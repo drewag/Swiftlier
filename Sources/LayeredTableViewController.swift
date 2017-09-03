@@ -6,6 +6,7 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 public protocol LayeredTableViewControllerDelegate {
@@ -711,4 +712,4 @@ extension LayeredTableViewController: UITableViewDelegate {
     }
     #endif
 }
-
+#endif
