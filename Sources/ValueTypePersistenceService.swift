@@ -6,12 +6,12 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
-#if os(iOS)
-import Foundation
-
 public protocol InstanceEquatable {
     func isSameInstanceAs(_ other: Self) -> Bool
 }
+
+#if os(iOS)
+import Foundation
 
 open class ValueTypePersistenceService<Value: Codable>: PersistenceService<Value>, ErrorGenerating where Value: InstanceEquatable, Value: Equatable {
     public func save(value: Value) throws {
