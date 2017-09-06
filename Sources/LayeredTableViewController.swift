@@ -9,7 +9,7 @@
 #if os(iOS)
 import UIKit
 
-public protocol LayeredTableViewControllerDelegate {
+public protocol LayeredTableViewControllerDelegate: class {
     func bottomHeight(forLayeredTableViewController controller: LayeredTableViewController) -> CGFloat
     func contentInset(forLayeredTableViewController controller: LayeredTableViewController) -> UIEdgeInsets
 }
@@ -42,7 +42,7 @@ open class LayeredTableViewController: UIViewController {
         self.openGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openBottom))
     }
 
-    public var delegate: LayeredTableViewControllerDelegate? {
+    public weak var delegate: LayeredTableViewControllerDelegate? {
         didSet {
             self.view.setNeedsLayout()
         }
@@ -66,6 +66,10 @@ open class LayeredTableViewController: UIViewController {
             self.bottomTableView.allowsSelection = isOpen
             self.openGestureRecognizer.isEnabled = !isOpen
         }
+    }
+
+    deinit {
+        self.bottomTableView.removeObserver(self, forKeyPath: "contentSize", context: nil)
     }
 
     open override func viewDidLoad() {
