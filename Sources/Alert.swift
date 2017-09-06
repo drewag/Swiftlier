@@ -143,7 +143,7 @@ extension UIViewController {
         )
     {
         var other = other
-        if cancel == nil && other.isEmpty {
+        if cancel == nil && other.isEmpty && preferred == nil {
             other.append(.action("OK"))
         }
 
