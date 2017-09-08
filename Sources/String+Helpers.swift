@@ -60,4 +60,13 @@ extension String {
             return Character(scalar)
         }))
     }
+
+    public func convert(range: NSRange) -> Range<String.Index> {
+        let start16 = self.utf16.index(self.utf16.startIndex, offsetBy: range.location)
+        let end16 = self.utf16.index(start16, offsetBy: range.length)
+
+        let start = String.Index(start16, within: self)!
+        let end = String.Index(end16, within: self)!
+        return start ..< end
+    }
 }
