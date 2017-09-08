@@ -302,8 +302,12 @@ private extension ObservableArray {
     }
 
     func executeWithAllHandlers(_ callback: (_ handlers: ObservationHandlers) -> ()) {
-        for (_, handlers) in self.observers {
-            for handler in handlers {
+        for (index, value) in self.observers.enumerated().reversed() {
+            guard value.observer.value != nil else {
+                self.observers.remove(at: index)
+                continue
+            }
+            for handler in value.handlers {
                 callback(handler)
             }
         }
