@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492C63D61F65020200839AA1 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C63D51F65020200839AA1 /* UIView+Animations.swift */; };
 		4935A5BA1EB1A4AD00B0CCF8 /* Swiftlier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */; };
 		4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5BE1EB1A4AD00B0CCF8 /* SwiftlierTests.swift */; };
 		4935A5C11EB1A4AD00B0CCF8 /* Swiftlier.h in Headers */ = {isa = PBXBuildFile; fileRef = 4935A5B31EB1A4AD00B0CCF8 /* Swiftlier.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,6 +163,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		492C63D51F65020200839AA1 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftlier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4935A5B31EB1A4AD00B0CCF8 /* Swiftlier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftlier.h; sourceTree = "<group>"; };
 		4935A5B41EB1A4AD00B0CCF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				49CEAC741EE67D0400BA0A73 /* VerticalGradientView.swift */,
 				497ECAC81F12BD3800F90B85 /* Mass.swift */,
 				498A6D961F35AE1C00EAB2B7 /* LayeredTableViewController.swift */,
+				492C63D51F65020200839AA1 /* UIView+Animations.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -736,6 +739,7 @@
 				4935A6491EB1A50600B0CCF8 /* CGMath.swift in Sources */,
 				4935A6901EB1A50600B0CCF8 /* SequenceType+Helpers.swift in Sources */,
 				4935A66F1EB1A50600B0CCF8 /* KeyboardConstraintAdjuster.swift in Sources */,
+				492C63D61F65020200839AA1 /* UIView+Animations.swift in Sources */,
 				4935A6461EB1A50600B0CCF8 /* Bool+Formatting.swift in Sources */,
 				4935A6561EB1A50600B0CCF8 /* Dictionary+Merging.swift in Sources */,
 				4935A6871EB1A50600B0CCF8 /* PrioritizedOperationQueue.swift in Sources */,
