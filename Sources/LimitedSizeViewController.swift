@@ -17,10 +17,15 @@ public class LimitedSizeViewController: UIViewController {
     let maxHeight: CGFloat?
     var bottomConstraint: NSLayoutConstraint!
 
-    public init(rootViewController: UIViewController, maxWidth: CGFloat?, maxHeight: CGFloat?) {
+    @available(*, deprecated, message: "Use extension on UIViewController instead")
+    public convenience init(rootViewController: UIViewController, maxWidth: CGFloat?, maxHeight: CGFloat?) {
+        self.init(root: rootViewController, maxWidth: maxWidth, maxHeight: maxHeight)
+    }
+
+    fileprivate init(root: UIViewController, maxWidth: CGFloat?, maxHeight: CGFloat?) {
         self.maxWidth = maxWidth
         self.maxHeight = maxHeight
-        self.rootViewController = rootViewController
+        self.rootViewController = root
 
         super.init(nibName: nil, bundle: nil)
 
@@ -36,12 +41,11 @@ public class LimitedSizeViewController: UIViewController {
         self.keyboardConstraintAdjuster.constraint = self.bottomConstraint
         self.view.addConstraints([
             self.bottomConstraint,
-            NSLayoutConstraint(topOf: self.containerView, to: self.view),
+            NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0),
             NSLayoutConstraint(leftOf: self.containerView, to: self.view),
             NSLayoutConstraint(rightOf: self.containerView, to: self.view),
         ])
 
-        self.modalPresentationStyle = .overCurrentContext
         self.modalTransitionStyle = .crossDissolve
 
         self.addChildViewController(rootViewController)
@@ -66,6 +70,15 @@ public class LimitedSizeViewController: UIViewController {
             rootViewController.view.addConstraint(constraint)
         }
     }
+
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        if (self.maxWidth ?? 99999) < self.view.bounds.width
+            || (self.maxHeight ?? 99999) < self.view.bounds.height
+        {
+            return self.parent?.preferredStatusBarStyle ?? .lightContent
+        }
+        return self.rootViewController.preferredStatusBarStyle
+    }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -83,8 +96,23 @@ public class LimitedSizeViewController: UIViewController {
         else {
             rootViewController.view.clipsToBounds = false
             rootViewController.view.layer.cornerRadius = 0
-
         }
     }
 }
+
+extension UIViewController {
+    public func present(_ viewController: UIViewController, limitedToMaxWidth maxWidth: CGFloat?, maxHeight: CGFloat?, animated: Bool = true) {
+        guard (maxWidth ?? 99999) < self.view.bounds.width
+            || (maxHeight ?? 99999) < self.view.bounds.height
+            else
+        {
+            self.present(viewController, animated: true, completion: nil)
+            return
+        }
+        let limited = LimitedSizeViewController(root: viewController, maxWidth: maxWidth, maxHeight: maxHeight)
+        limited.modalPresentationStyle = .overCurrentContext
+        self.present(limited, animated: animated)
+    }
+}
+
 #endif
