@@ -340,6 +340,10 @@ extension FormViewController/*: UITableViewDelegate*/ {
         return self.form.sections.values[section].name
     }
 
+    open override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.form.sections.values[section].name.isEmpty ? 0 : 40
+    }
+
     open override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let formSection = self.form.sections.values[section]
         let view = UIView()
