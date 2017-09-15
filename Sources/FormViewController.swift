@@ -346,7 +346,9 @@ extension FormViewController/*: UITableViewDelegate*/ {
 
     open override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let formSection = self.form.sections.values[section]
-        let view = UIView()
+        let container = UITableViewHeaderFooterView()
+        container.textLabel?.isHidden = true
+        let view = container.contentView
 
         let label = UILabel()
         label.text = formSection.name.uppercased()
@@ -383,7 +385,7 @@ extension FormViewController/*: UITableViewDelegate*/ {
             view.addConstraint(NSLayoutConstraint(rightOf: label, to: view, distance: 8))
         }
 
-        return view
+        return container
     }
 
     open override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
