@@ -19,10 +19,10 @@ public class LimitedSizeViewController: UIViewController {
 
     @available(*, deprecated, message: "Use extension on UIViewController instead")
     public convenience init(rootViewController: UIViewController, maxWidth: CGFloat?, maxHeight: CGFloat?) {
-        self.init(root: rootViewController, maxWidth: maxWidth, maxHeight: maxHeight)
+        self.init(root: rootViewController, maxWidth: maxWidth ?? .greatestFiniteMagnitude, maxHeight: maxHeight ?? .greatestFiniteMagnitude)
     }
 
-    fileprivate init(root: UIViewController, maxWidth: CGFloat?, maxHeight: CGFloat?) {
+    fileprivate init(root: UIViewController, maxWidth: CGFloat, maxHeight: CGFloat) {
         self.maxWidth = maxWidth
         self.maxHeight = maxHeight
         self.rootViewController = root
@@ -37,13 +37,13 @@ public class LimitedSizeViewController: UIViewController {
         self.containerView.backgroundColor = UIColor.clear
         self.view.addSubview(self.containerView)
 
-        self.bottomConstraint = NSLayoutConstraint(bottomOf: self.containerView, to: self.view)
+        self.bottomConstraint = NSLayoutConstraint(bottomOf: self.containerView, to: self.view, distance: -12)
         self.keyboardConstraintAdjuster.constraint = self.bottomConstraint
         self.view.addConstraints([
             self.bottomConstraint,
-            NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(leftOf: self.containerView, to: self.view),
-            NSLayoutConstraint(rightOf: self.containerView, to: self.view),
+            NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 12),
+            NSLayoutConstraint(leftOf: self.containerView, to: self.view, distance: 12),
+            NSLayoutConstraint(rightOf: self.containerView, to: self.view, distance: 12),
         ])
 
         self.modalTransitionStyle = .crossDissolve
@@ -59,16 +59,13 @@ public class LimitedSizeViewController: UIViewController {
             NSLayoutConstraint(item: rootViewController.view, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: self.containerView, attribute: .top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: rootViewController.view, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: self.containerView, attribute: .left, multiplier: 1, constant: 0),
         ])
-        if let maxWidth = maxWidth {
-            let constraint = NSLayoutConstraint(item: rootViewController.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxWidth)
-            constraint.priority = 750
-            rootViewController.view.addConstraint(constraint)
-        }
-        if let maxHeight = maxHeight {
-            let constraint = NSLayoutConstraint(item: rootViewController.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxHeight)
-            constraint.priority = 750
-            rootViewController.view.addConstraint(constraint)
-        }
+
+        let widthConstraint = NSLayoutConstraint(item: rootViewController.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxWidth)
+        widthConstraint.priority = 750
+        rootViewController.view.addConstraint(widthConstraint)
+        let heightConstraint = NSLayoutConstraint(item: rootViewController.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxHeight)
+        heightConstraint.priority = 750
+        rootViewController.view.addConstraint(heightConstraint)
     }
 
     public override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -102,14 +99,16 @@ public class LimitedSizeViewController: UIViewController {
 
 extension UIViewController {
     public func present(_ viewController: UIViewController, limitedToMaxWidth maxWidth: CGFloat?, maxHeight: CGFloat?, animated: Bool = true) {
-        guard (maxWidth ?? 99999) < self.view.bounds.width
-            || (maxHeight ?? 99999) < self.view.bounds.height
+        let width = maxWidth ?? .greatestFiniteMagnitude
+        let height = maxHeight ?? .greatestFiniteMagnitude
+        guard width < self.view.bounds.width
+            || height < self.view.bounds.height
             else
         {
             self.present(viewController, animated: true, completion: nil)
             return
         }
-        let limited = LimitedSizeViewController(root: viewController, maxWidth: maxWidth, maxHeight: maxHeight)
+        let limited = LimitedSizeViewController(root: viewController, maxWidth: width, maxHeight: height)
         limited.modalPresentationStyle = .overCurrentContext
         self.present(limited, animated: animated)
     }
