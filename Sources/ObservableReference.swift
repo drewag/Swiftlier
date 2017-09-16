@@ -50,7 +50,7 @@ public final class ObservableReference<T: Referenceable> {
                 for handlerIndex in Array((0..<handlers.count).reversed()) {
                     let handlerSpec = handlers[handlerIndex]
                     handlersToCall.append(handlerSpec.handler)
-                    if (handlerSpec.options & ObservationOptions.OnlyOnce).boolValue {
+                    if handlerSpec.options.contains(.onlyOnce) {
                         handlers.remove(at: handlerIndex)
                     }
                 }
@@ -97,7 +97,7 @@ public final class ObservableReference<T: Referenceable> {
      - parameter handler: callback to be called when value is changed
      */
     public func addObserver(_ observer: AnyObject, handler: @escaping Handler) {
-        self.addObserver(observer, options: ObservationOptions.None, handler: handler)
+        self.addObserver(observer, options: [], handler: handler)
     }
 
     /**
@@ -122,7 +122,7 @@ public final class ObservableReference<T: Referenceable> {
             }
         }
 
-        if (options & ObservationOptions.Initial).boolValue {
+        if options.contains(.initial) {
             handler()
         }
     }

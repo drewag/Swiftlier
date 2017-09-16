@@ -61,11 +61,11 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     open func style(valueTextView: PlaceholderTextView) {}
     open func style(cell: UITableViewCell) {}
 
-    func cancel() {
+    @objc func cancel() {
         self.onBack?(true)
     }
 
-    public func done() {
+    @objc public func done() {
         do {
             try self.form.validate()
             switch self.extraValidation() {
@@ -84,12 +84,12 @@ open class FormViewController: UITableViewController, ErrorGenerating {
         }
     }
 
-    func didChange(textField: UITextField) {
+    @objc func didChange(textField: UITextField) {
         let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         (field as! SimpleField).update(with: textField.text ?? "")
     }
 
-    func didStartEditing(textField: UITextField) {
+    @objc func didStartEditing(textField: UITextField) {
         let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         switch field {
         case let numberField as AnyNumberField:
@@ -99,7 +99,7 @@ open class FormViewController: UITableViewController, ErrorGenerating {
         }
     }
 
-    func didEndEditing(textField: UITextField) {
+    @objc func didEndEditing(textField: UITextField) {
         let field = self.form.sections.values[textField.superview!.tag].fields.values[textField.tag]
         switch field {
         case let numberField as AnyNumberField:
@@ -110,19 +110,19 @@ open class FormViewController: UITableViewController, ErrorGenerating {
         self.didEndEditing(field: field)
     }
 
-    func didChange(valueSwitch: UISwitch) {
+    @objc func didChange(valueSwitch: UISwitch) {
         let field = self.form.sections.values[valueSwitch.superview!.tag].fields.values[valueSwitch.tag]
         (field as! BoolField).value = valueSwitch.isOn
         self.didEndEditing(field: field)
     }
 
-    func didChange(segmentedControl: UISegmentedControl) {
+    @objc func didChange(segmentedControl: UISegmentedControl) {
         let field = self.form.sections.values[segmentedControl.superview!.tag].fields.values[segmentedControl.tag]
         (field as! SelectField).value = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!
         self.didEndEditing(field: field)
     }
 
-    func didTap(helpButton: UIButton) {
+    @objc func didTap(helpButton: UIButton) {
         let formSection = self.form.sections.values[helpButton.tag]
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(formSection.helpURL!, options: [:], completionHandler: nil)
@@ -358,11 +358,10 @@ extension FormViewController/*: UITableViewDelegate*/ {
         self.style(sectionHeader: label)
 
         view.addSubview(label)
-        view.addConstraints([
-            NSLayoutConstraint(leftOf: label, to: view, distance: 8),
-            NSLayoutConstraint(topOf: label, to: view, distance: -10),
-            NSLayoutConstraint(bottomOf: label, to: view, distance: 0),
-        ])
+
+        view.constrain(.left, of: label, plus: 16)
+        view.constrain(.top, of: label, plus: 10)
+        view.constrain(.bottom, of: label)
 
         if let _ = formSection.helpURL {
             let button = UIButton()
@@ -374,15 +373,13 @@ extension FormViewController/*: UITableViewDelegate*/ {
             button.addTarget(self, action: #selector(didTap(helpButton:)), for: .touchUpInside)
             view.addSubview(button)
 
-            view.addConstraints([
-                NSLayoutConstraint(rightOf: label, toLeftOf: button, distance: 8),
-                NSLayoutConstraint(topOf: button, to: view, distance: -6),
-                NSLayoutConstraint(bottomOf: label, to: button, distance: 0),
-                NSLayoutConstraint(rightOf: button, to: view, distance: 8),
-            ])
+            NSLayoutConstraint(.left, of: button, to: .right, of: label, plus: 12)
+            NSLayoutConstraint(.top, of: button, to: .top, of: label, plus: 6)
+            NSLayoutConstraint(.bottom, of: button, to: .bottom, of: label)
+            view.constrain(.right, of: button, plus: -16)
         }
         else {
-            view.addConstraint(NSLayoutConstraint(rightOf: label, to: view, distance: 8))
+            view.constrain(.right, of: label, plus: -16)
         }
 
         return container
@@ -505,7 +502,7 @@ private extension FormViewController {
                 guard !(field is ActionField) else {
                     continue
                 }
-                let width = (field.label as NSString).size(attributes: [NSFontAttributeName:self.font]).width
+                let width = (field.label as NSString).size(withAttributes: [NSAttributedStringKey.font:self.font]).width
                 maxWidth = max(maxWidth, width)
             }
         }
@@ -565,7 +562,7 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.valueField)
 
         self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
-        self.nameLabel.addConstraint(forHeight: 50)
+        self.nameLabel.constrain(.height, to: 50)
         self.resetConstraints()
     }
 
@@ -579,7 +576,7 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         button.setBlock { [unowned button] in
             clearCallback(button)
         }
-        button.addConstraint(forHeight: 44)
+        button.constrain(.height, to: 44)
         button.addConstraint(NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1, constant: 0))
         self.contentView.addSubview(button)
         self.clearButton = button
@@ -595,29 +592,27 @@ private class SimpleFieldTableViewCell: UITableViewCell {
 
         self.customConstraints = []
         self.customConstraints += [
-            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
-            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.contentView),
-            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+            self.contentView.constrain(.top, of: self.nameLabel, plus: 2),
+            self.contentView.constrain(.centerY, of: self.nameLabel),
+            self.contentView.constrain(.left, of: self.nameLabel, plus: 16),
 
-            NSLayoutConstraint(leftOf: self.valueField, toRightOf: self.nameLabel, distance: 8),
-            NSLayoutConstraint(topOf: self.valueField, to: self.nameLabel),
-            NSLayoutConstraint(bottomOf: self.valueField, to: self.nameLabel),
+            NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueField, plus: 8),
+            NSLayoutConstraint(.top, of: self.nameLabel, to: .top, of: self.valueField),
+            NSLayoutConstraint(.bottom, of: self.nameLabel, to: .bottom, of: self.valueField),
         ]
 
         if let button = self.clearButton {
             self.customConstraints += [
-                NSLayoutConstraint(rightOf: self.valueField, toLeftOf: button, distance: 8),
-                NSLayoutConstraint(verticalCenterOf: button, to: self.nameLabel),
-                NSLayoutConstraint(rightOf: button, to: self.contentView, distance: -8),
+                NSLayoutConstraint(.right, of: self.valueField, to: .left, of: button, plus: 8),
+                NSLayoutConstraint(.centerY, of: button, to: .centerY, of: self.nameLabel),
+                self.contentView.constrain(.right, of: button, plus: -16),
             ]
         }
         else {
             self.customConstraints += [
-                NSLayoutConstraint(rightOf: self.valueField, to: self.contentView, distance: 8),
+                self.contentView.constrain(.right, of: self.valueField, plus: -16),
             ]
         }
-
-        self.contentView.addConstraints(self.customConstraints)
     }
 
     override func prepareForReuse() {
@@ -659,17 +654,15 @@ private class BoolFieldTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.valueSwitch)
 
         self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
-        self.nameLabel.addConstraint(forHeight: 50)
+        self.nameLabel.constrain(.height, to: 50)
 
-        self.contentView.addConstraints([
-            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
-            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.contentView),
-            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+        self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
+        self.contentView.constrain(.centerY, of: self.nameLabel)
+        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
 
-            NSLayoutConstraint(leftOf: self.valueSwitch, toRightOf: self.nameLabel, distance: 8),
-            NSLayoutConstraint(verticalCenterOf: self.valueSwitch, to: self.contentView),
-            NSLayoutConstraint(rightOf: self.valueSwitch, to: self.contentView, distance: 8),
-        ])
+        self.contentView.constrain(.centerY, of: self.valueSwitch)
+        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueSwitch, plus: 8)
+        self.contentView.constrain(.right, of: self.valueSwitch, plus: -16)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -710,18 +703,16 @@ private class TextViewFieldTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.textView)
 
         self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
-        self.nameLabel.addConstraint(forHeight: 50)
-        self.textView.addConstraint(forHeight: 120)
+        self.nameLabel.constrain(.height, to: 50)
+        self.textView.constrain(.height, to: 120)
 
-        self.contentView.addConstraints([
-            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
-            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+        self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
+        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
 
-            NSLayoutConstraint(leftOf: self.textView, toRightOf: self.nameLabel, distance: 4),
-            NSLayoutConstraint(topOf: self.textView, to: self.contentView, distance: -4),
-            NSLayoutConstraint(rightOf: self.textView, to: self.contentView, distance: 4),
-            NSLayoutConstraint(verticalCenterOf: self.textView, to: self.contentView),
-        ])
+        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.textView, plus: 8)
+        self.contentView.constrain(.top, of: self.textView, plus: 4)
+        self.contentView.constrain(.right, of: self.textView, plus: -16)
+        self.contentView.constrain(.centerY, of: self.textView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -761,18 +752,16 @@ private class SegmentedControlTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.segmentedControl)
 
         self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
-        self.nameLabel.addConstraint(forHeight: 50)
-        self.segmentedControl.addConstraint(forHeight: 30)
+        self.nameLabel.constrain(.height, to: 50)
+        self.segmentedControl.constrain(.height, to: 30)
 
-        self.contentView.addConstraints([
-            NSLayoutConstraint(topOf: self.nameLabel, to: self.contentView, distance: 2),
-            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.contentView),
-            NSLayoutConstraint(leftOf: self.nameLabel, to: self.contentView, distance: 8),
+        self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
+        self.contentView.constrain(.centerY, of: self.nameLabel)
+        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
 
-            NSLayoutConstraint(leftOf: self.segmentedControl, toRightOf: self.nameLabel, distance: 8),
-            NSLayoutConstraint(verticalCenterOf: self.nameLabel, to: self.segmentedControl),
-            NSLayoutConstraint(rightOf: self.segmentedControl, to: self.contentView, distance: 8),
-        ])
+        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.segmentedControl, plus: 8)
+        NSLayoutConstraint(.centerY, of: self.segmentedControl, to: .centerY, of: self.nameLabel)
+        self.contentView.constrain(.right, of: self.segmentedControl, plus: -16)
     }
     
     required init?(coder aDecoder: NSCoder) {

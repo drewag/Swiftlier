@@ -15,14 +15,10 @@ final class String_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual("Hello".repeating(nTimes: 4, separator: " "), "Hello Hello Hello Hello")
     }
 
-    func testSubstringFromIndex() {
+    func testIndexAt() {
         let string = "Hello World"
-        XCTAssertEqual(string.substring(from: 1), "ello World")
-    }
-
-    func testSubstringToIndex() {
-        let string = "Hello World"
-        XCTAssertEqual(string.substring(to: 1), "H")
+        let target = string.index(of: "W")
+        XCTAssertEqual(string.index(at: 6), target)
     }
 
     func testOffsetCharactersByCount() {
@@ -34,8 +30,7 @@ final class String_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
     static var allTests: [(String, (String_HelpersTests) -> () throws -> Void)] {
         return [
             ("testRepeat", testRepeat),
-            ("testSubstringFromIndex", testSubstringFromIndex),
-            ("testSubstringToIndex", testSubstringToIndex),
+            ("testIndexAt", testIndexAt),
             ("testOffsetCharactersByCount", testOffsetCharactersByCount),
         ]
     }

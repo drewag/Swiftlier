@@ -37,14 +37,10 @@ public class LimitedSizeViewController: UIViewController {
         self.containerView.backgroundColor = UIColor.clear
         self.view.addSubview(self.containerView)
 
-        self.bottomConstraint = NSLayoutConstraint(bottomOf: self.containerView, to: self.view, distance: -12)
+        self.bottomConstraint = self.view.constrain(.bottom, of: self.containerView, plus: -12)
         self.keyboardConstraintAdjuster.constraint = self.bottomConstraint
-        self.view.addConstraints([
-            self.bottomConstraint,
-            NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 12),
-            NSLayoutConstraint(leftOf: self.containerView, to: self.view, distance: 12),
-            NSLayoutConstraint(rightOf: self.containerView, to: self.view, distance: 12),
-        ])
+        self.view.addConstraint(NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 12))
+        self.containerView.constrainToFullWidth(of: self.view, insetBy: 12)
 
         self.modalTransitionStyle = .crossDissolve
 
@@ -61,10 +57,10 @@ public class LimitedSizeViewController: UIViewController {
         ])
 
         let widthConstraint = NSLayoutConstraint(item: rootViewController.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxWidth)
-        widthConstraint.priority = 750
+        widthConstraint.priority = UILayoutPriority(rawValue: 750)
         rootViewController.view.addConstraint(widthConstraint)
         let heightConstraint = NSLayoutConstraint(item: rootViewController.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxHeight)
-        heightConstraint.priority = 750
+        heightConstraint.priority = UILayoutPriority(rawValue: 750)
         rootViewController.view.addConstraint(heightConstraint)
     }
 

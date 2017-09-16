@@ -12,6 +12,10 @@ import UIKit
 extension NSLayoutConstraint {
     @available(iOS 8.0, *)
     public func set(multiplier: CGFloat) {
+        guard let firstItem = firstItem else {
+            return
+        }
+
         NSLayoutConstraint.deactivate([self])
 
         let newConstraint = NSLayoutConstraint(

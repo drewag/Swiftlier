@@ -93,6 +93,12 @@ public final class MultiCallback<CallbackArguments> {
     }
 }
 
+extension MultiCallback where CallbackArguments == Void {
+    public func trigger() {
+        self.triggerWithArguments(())
+    }
+}
+
 // MARK - Private Methods
 
 private extension MultiCallback {

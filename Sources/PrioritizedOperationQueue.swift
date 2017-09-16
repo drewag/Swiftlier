@@ -66,11 +66,11 @@ public class PrioritizedOperationQueue {
             self.onFinishedAllRemainingOperations.append(onFinishedAllRemainingOperations)
         }
 
-        guard !self.isExecuting.value else {
+        guard !self.isExecuting.current else {
             return
         }
 
-        self.isExecuting.value = true
+        self.isExecuting.current = true
         self.executeRemainingOperations()
     }
 }
@@ -176,7 +176,7 @@ private extension PrioritizedOperationQueue {
             block(result)
         }
         self.onFinishedAllRemainingOperations.removeAll()
-        self.isExecuting.value = false
+        self.isExecuting.current = false
     }
 }
 

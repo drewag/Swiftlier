@@ -26,26 +26,15 @@
 /**
     Options for observing an observable
 */
-public struct ObservationOptions: BitwiseOperations  {
-    let rawValue: UInt
+public struct ObservationOptions: OptionSet  {
+    public let rawValue: Int
 
-    public static var None: ObservationOptions { return ObservationOptions(rawValue: 0) }
-    /**
-        Call the observation callback immediately with the current value
-    */
-    public static var Initial: ObservationOptions { return ObservationOptions(rawValue: 1) }
-    /**
-        Remove observer after first call
-    */
-    public static var OnlyOnce: ObservationOptions { return ObservationOptions(rawValue: 2) }
-
-    public static var allZeros: ObservationOptions {
-        return self.None
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
     }
 
-    public var boolValue: Bool {
-        return self.rawValue != 0
-    }
+    public static let initial = ObservationOptions(rawValue: 1 << 0)
+    public static let onlyOnce = ObservationOptions(rawValue: 1 << 1)
 }
 
 /**
@@ -62,7 +51,9 @@ public final class Observable<T> {
     /**
         The current value
     */
-    public var value : T {
+    @available(*, deprecated, message:"Use 'current' instead")
+    public var value: T { get{ return self.current } set{self.current = newValue}}
+    public var current : T {
         didSet {
             var handlersToCall: [Handlers] = []
 
@@ -74,7 +65,7 @@ public final class Observable<T> {
                     for handlerIndex in Array((0..<handlers.count).reversed()) {
                         let handlerSpec = handlers[handlerIndex]
                         handlersToCall.append(handlerSpec.handlers)
-                        if (handlerSpec.options & ObservationOptions.OnlyOnce).boolValue {
+                        if handlerSpec.options.contains(.onlyOnce) {
                             handlers.remove(at: handlerIndex)
                         }
                     }
@@ -94,8 +85,8 @@ public final class Observable<T> {
             }
 
             for handlers in handlersToCall {
-                handlers.change?(oldValue, value)
-                handlers.new?(value)
+                handlers.change?(oldValue, self.current)
+                handlers.new?(self.current)
             }
         }
     }
@@ -110,7 +101,7 @@ public final class Observable<T> {
     // MARK: Initializers
 
     public init(_ value: T, onHasObserversChanged: ((Bool) -> ())? = nil) {
-        self.value = value
+        self.current = value
         self.onHasObserverChanged = onHasObserversChanged
     }
 
@@ -122,12 +113,16 @@ public final class Observable<T> {
         - parameter observer: observing object to be referenced later to remove the hundler
         - parameter handler: callback to be called when value is changed
     */
-    public func addNewObserver(_ observer: AnyObject, handler: @escaping NewValueHandler) {
-        self.addNewObserver(observer, options: ObservationOptions.None, handler: handler)
+    @available(*, unavailable, message:"Use addNewValueObserver(:handler:) instead")
+    public func addNewObserver(_ observer: AnyObject, handler: @escaping NewValueHandler) {}
+    public func addNewValueObserver(_ observer: AnyObject, handler: @escaping NewValueHandler) {
+        self.addNewValueObserver(observer, options: [], handler: handler)
     }
 
-    public func addChangeObserver(_ observer: AnyObject, handler: @escaping ChangeValueHandler) {
-        self.addChangeObserver(observer, options: ObservationOptions.None, handler: handler)
+    @available(*, unavailable, message:"Use Use addChangedValuesObserver(:handler:) instead")
+    public func addChangeObserver(_ observer: AnyObject, handler: @escaping ChangeValueHandler) {}
+    public func addChangedValueObserver(_ observer: AnyObject, handler: @escaping ChangeValueHandler) {
+        self.addChangeObserver(observer, options: [], handler: handler)
     }
 
     /**
@@ -137,7 +132,7 @@ public final class Observable<T> {
         - parameter options: observation options
         - parameter handler: callback to be called when value is changed
     */
-    public func addNewObserver(_ observer: AnyObject, options: ObservationOptions, handler: @escaping NewValueHandler) {
+    public func addNewValueObserver(_ observer: AnyObject, options: ObservationOptions, handler: @escaping NewValueHandler) {
         let handlers: Handlers = (new: handler, change: nil)
         self.addObserver(observer, options: options, handlers: handlers)
     }
@@ -194,34 +189,10 @@ private extension Observable {
             }
         }
 
-        if (options & ObservationOptions.Initial).boolValue {
-            handlers.change?(nil, self.value)
-            handlers.new?(self.value)
+        if options.contains(.initial) {
+            handlers.change?(nil, self.current)
+            handlers.new?(self.current)
         }
     }
 }
 
-func ==(lhs: ObservationOptions, rhs: ObservationOptions) -> Bool {
-    return lhs.rawValue == rhs.rawValue
-}
-
-
-public func &(lhs: ObservationOptions, rhs: ObservationOptions) -> ObservationOptions {
-    let raw = lhs.rawValue & rhs.rawValue
-    return ObservationOptions(rawValue: raw)
-}
-
-public func |(lhs: ObservationOptions, rhs: ObservationOptions) -> ObservationOptions {
-    let raw = lhs.rawValue | rhs.rawValue
-    return ObservationOptions(rawValue: raw)
-}
-
-public func ^(lhs: ObservationOptions, rhs: ObservationOptions) -> ObservationOptions {
-    let raw = lhs.rawValue ^ rhs.rawValue
-    return ObservationOptions(rawValue: raw)
-}
-
-public prefix func ~(x: ObservationOptions) -> ObservationOptions {
-    let raw = x.rawValue ^ ~ObservationOptions.allZeros.rawValue
-    return ObservationOptions(rawValue: raw)
-}

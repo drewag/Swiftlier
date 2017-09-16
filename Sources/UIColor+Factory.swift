@@ -9,6 +9,7 @@
 #if os(iOS)
 import UIKit
 
+extension UIColor: ErrorGenerating {}
 public extension UIColor {
     convenience public init(hex : Int) {
         let blue = CGFloat(hex & 0xFF)
@@ -22,17 +23,18 @@ public extension UIColor {
             throw NSError(domain: "UIColor.init(hexString:)", code: 0, userInfo: [NSLocalizedDescriptionKey:"Missing # prefix"])
         }
 
-        var finalHexString = hexString
+        let withoutHash: Substring = hexString[hexString.index(hexString.startIndex, offsetBy: 1)...]
+        let finalHexString: String
         let length = hexString.characters.count
         switch length {
             case 3:
-                finalHexString = "#" + hexString.substring(from: 1).repeating(nTimes: 3)
+                finalHexString = "#" + withoutHash.repeating(nTimes: 3)
             case 4:
-                finalHexString = "#" + hexString.substring(from: 1).repeating(nTimes: 2)
+                finalHexString = "#" + withoutHash.repeating(nTimes: 2)
             case 7:
-                break
+                finalHexString = hexString
             default:
-                throw NSError(domain: "UIColor.init(hexString:)", code: 0, userInfo: [NSLocalizedDescriptionKey:"Invalid length (only 2, 3, or 6 is valid)"])
+                throw UIColor.error("creating color from hex string", because: "it is an invalid length (only 2, 3, or 6 is valid)")
         }
 
         var rgbValue: UInt32 = 0

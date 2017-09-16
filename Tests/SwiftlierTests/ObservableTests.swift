@@ -13,30 +13,30 @@ final class ObservableTests: XCTestCase, LinuxEnforcedTestCase {
     func testSubscribing() {
         let observable = Observable<String>("Old Value")
         var called = false
-        observable.addChangeObserver(self) { oldValue, newValue in
+        observable.addChangedValueObserver(self) { oldValue, newValue in
             XCTAssertEqual(oldValue, "Old Value")
             XCTAssertEqual(newValue, "New Value")
             called = true
         }
-        observable.value = "New Value"
+        observable.current = "New Value"
         XCTAssertTrue(called)
     }
 
     func testUnsubscribing() {
         let observable = Observable<String>("Old Value")
         var called = false
-        observable.addNewObserver(self) { _ in
+        observable.addNewValueObserver(self) { _ in
             called = true
         }
         observable.removeObserver(self)
-        observable.value = "New Value"
+        observable.current = "New Value"
         XCTAssertFalse(called)
     }
 
     func testTriggerImmediately() {
         let observable = Observable<String>("Current Value")
         var called = false
-        observable.addChangeObserver(self, options: ObservationOptions.Initial) { oldValue, newValue in
+        observable.addChangeObserver(self, options: ObservationOptions.initial) { oldValue, newValue in
             XCTAssertNil(oldValue)
             XCTAssertEqual(newValue, "Current Value")
             called = true
@@ -51,45 +51,45 @@ final class ObservableTests: XCTestCase, LinuxEnforcedTestCase {
         var called = false
         func scope() {
             let observer = SomeClass()
-            observable.addNewObserver(observer) { _ in
+            observable.addNewValueObserver(observer) { _ in
                 called = true
             }
         }
         scope()
-        observable.value = "New Value"
+        observable.current = "New Value"
         XCTAssertFalse(called)
     }
     
     func testCallOnceOption() {
         let observable = Observable<String>("Current Value")
         var called = false
-        observable.addNewObserver(self, options: ObservationOptions.OnlyOnce) { newValue in
+        observable.addNewValueObserver(self, options: .onlyOnce) { newValue in
             XCTAssertEqual(newValue, "Second Value")
             called = true
         }
         XCTAssertFalse(called)
         
-        observable.value = "Second Value"
+        observable.current = "Second Value"
         XCTAssertTrue(called)
         
         called = false
-        observable.value = "Third Value"
+        observable.current = "Third Value"
         XCTAssertFalse(called)
     }
     
     func testCallOnceOptionWithInitial() {
         let observable = Observable<String>("Current Value")
         var called = false
-        observable.addNewObserver(self, options: ObservationOptions.Initial | ObservationOptions.OnlyOnce) { _ in
+        observable.addNewValueObserver(self, options: [.initial, .onlyOnce]) { _ in
             called = true
         }
         XCTAssertTrue(called)
         
-        observable.value = "Second Value"
+        observable.current = "Second Value"
         XCTAssertTrue(called)
         
         called = false
-        observable.value = "Third Value"
+        observable.current = "Third Value"
         XCTAssertFalse(called)
     }
 

@@ -12,8 +12,8 @@ import Swiftlier
 
 final class CGMathTests: XCTestCase, LinuxEnforcedTestCase {
     func testAngleTo() {
-        XCTAssertEqualWithAccuracy(CGPoint(x: 1, y: 0).angle(to: CGPoint(x: 2, y: 1)).degrees, 45, accuracy: 0.01)
-        XCTAssertEqualWithAccuracy(CGPoint(x: 1, y: 0).angle(to: CGPoint(x: -2, y: 3)).degrees, 135, accuracy: 0.01)
+        XCTAssertEqual(CGPoint(x: 1, y: 0).angle(to: CGPoint(x: 2, y: 1)).degrees, 45, accuracy: 0.01)
+        XCTAssertEqual(CGPoint(x: 1, y: 0).angle(to: CGPoint(x: -2, y: 3)).degrees, 135, accuracy: 0.01)
     }
 
     func testCenterBetween() {

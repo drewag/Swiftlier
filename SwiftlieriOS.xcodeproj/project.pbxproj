@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		492C63D61F65020200839AA1 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C63D51F65020200839AA1 /* UIView+Animations.swift */; };
+		4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */; };
+		4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */; };
 		4935A5BA1EB1A4AD00B0CCF8 /* Swiftlier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */; };
 		4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5BE1EB1A4AD00B0CCF8 /* SwiftlierTests.swift */; };
 		4935A5C11EB1A4AD00B0CCF8 /* Swiftlier.h in Headers */ = {isa = PBXBuildFile; fileRef = 4935A5B31EB1A4AD00B0CCF8 /* Swiftlier.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -139,7 +141,6 @@
 		497ECACC1F12BD4800F90B85 /* MassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497ECACA1F12BD4500F90B85 /* MassTests.swift */; };
 		498A6D971F35AE1C00EAB2B7 /* LayeredTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A6D961F35AE1C00EAB2B7 /* LayeredTableViewController.swift */; };
 		499AF5AA1EB1A6C500A13C6B /* PercentEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */; };
-		499AF5AD1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */; };
 		499AF5B41EB1CEAD00A13C6B /* Path_CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */; };
 		499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */; };
 		499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B71EB1D22800A13C6B /* TestCodable.swift */; };
@@ -164,6 +165,8 @@
 
 /* Begin PBXFileReference section */
 		492C63D51F65020200839AA1 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_ConstraintsTests.swift; sourceTree = "<group>"; };
 		4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftlier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4935A5B31EB1A4AD00B0CCF8 /* Swiftlier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftlier.h; sourceTree = "<group>"; };
 		4935A5B41EB1A4AD00B0CCF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -298,7 +301,6 @@
 		497ECACA1F12BD4500F90B85 /* MassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassTests.swift; sourceTree = "<group>"; };
 		498A6D961F35AE1C00EAB2B7 /* LayeredTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredTableViewController.swift; sourceTree = "<group>"; };
 		499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentEncodable.swift; sourceTree = "<group>"; };
-		499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUnderTopBarTransition.swift; sourceTree = "<group>"; };
 		499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path_CodingTests.swift; sourceTree = "<group>"; };
 		499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
 		499AF5B71EB1D22800A13C6B /* TestCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
@@ -433,7 +435,6 @@
 				4935A60D1EB1A50600B0CCF8 /* Path.swift */,
 				4935A60F1EB1A50600B0CCF8 /* PersistenceService.swift */,
 				4935A6101EB1A50600B0CCF8 /* PlaceholderTextView.swift */,
-				499AF5AC1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift */,
 				4935A6121EB1A50600B0CCF8 /* Price.swift */,
 				4935A6131EB1A50600B0CCF8 /* PrioritizedOperationQueue.swift */,
 				4935A6141EB1A50600B0CCF8 /* ReferenceTypePersistenceService.swift */,
@@ -486,6 +487,7 @@
 				497ECAC81F12BD3800F90B85 /* Mass.swift */,
 				498A6D961F35AE1C00EAB2B7 /* LayeredTableViewController.swift */,
 				492C63D51F65020200839AA1 /* UIView+Animations.swift */,
+				4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -520,6 +522,7 @@
 				49D8784F1EE2146D0068836C /* PatchyRangeTests.swift */,
 				49F62F131EE8DFD20090D158 /* DayTests.swift */,
 				497ECACA1F12BD4500F90B85 /* MassTests.swift */,
+				4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -587,6 +590,7 @@
 				TargetAttributes = {
 					4935A5AF1EB1A4AD00B0CCF8 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					4935A5B81EB1A4AD00B0CCF8 = {
@@ -640,7 +644,6 @@
 				498A6D971F35AE1C00EAB2B7 /* LayeredTableViewController.swift in Sources */,
 				4935A6411EB1A50600B0CCF8 /* AlwaysEqual.swift in Sources */,
 				4935A6731EB1A50600B0CCF8 /* MonthAndYearPicker.swift in Sources */,
-				499AF5AD1EB1C21600A13C6B /* PresentUnderTopBarTransition.swift in Sources */,
 				4935A6891EB1A50600B0CCF8 /* ReportableError+Coding.swift in Sources */,
 				496074881EDFCFCF0051880F /* BinarySearchTree.swift in Sources */,
 				4935A6A71EB1A50600B0CCF8 /* UIView+ImageCapture.swift in Sources */,
@@ -746,6 +749,7 @@
 				4935A65E1EB1A50600B0CCF8 /* Enum+Convenience.swift in Sources */,
 				4935A6571EB1A50600B0CCF8 /* DispatchQueue+Helpers.swift in Sources */,
 				4935A6AA1EB1A50600B0CCF8 /* UIViewController+Helpers.swift in Sources */,
+				4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */,
 				4935A6B21EB1A50600B0CCF8 /* ZoomThroughTransition.swift in Sources */,
 				4935A6841EB1A50600B0CCF8 /* PlaceholderTextView.swift in Sources */,
 			);
@@ -761,6 +765,7 @@
 				4935A6DC1EB1A52E00B0CCF8 /* ObservableTests.swift in Sources */,
 				49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */,
 				4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */,
+				4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */,
 				49B730DB1ECCB00F006EE42B /* Date_HelpersTests.swift in Sources */,
 				496BB90B1EB5003A00D60ECF /* AgeTests.swift in Sources */,
 				496FBED11EB98D01006AD5AC /* CGMathTests.swift in Sources */,
@@ -924,7 +929,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.drewag.Swiftlier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -942,7 +947,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.drewag.Swiftlier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

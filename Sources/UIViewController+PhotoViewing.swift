@@ -93,11 +93,7 @@ private extension UIViewController {
 
         imageViewClipView.addSubview(overlayImageView)
 
-        imageViewClipView.addConstraints(NSLayoutConstraint.center(
-            with: overlayImageView,
-            in: imageViewClipView,
-            withOffset: CGPoint()
-        ))
+        overlayImageView.constrainToCenter(of: imageViewClipView)
 
         overlayImageView.addConstraint(NSLayoutConstraint(
             item: overlayImageView,
@@ -110,10 +106,10 @@ private extension UIViewController {
         ))
 
         if frame.aspectRatio < imageAspectRatio {
-            imageViewClipView.addConstraint(NSLayoutConstraint(topOf: overlayImageView, to: imageViewClipView))
+            imageViewClipView.constrain(.top, of: overlayImageView)
         }
         else {
-            imageViewClipView.addConstraint(NSLayoutConstraint(leftOf: overlayImageView, to: imageViewClipView))
+            imageViewClipView.constrain(.left, of: overlayImageView)
         }
 
         return imageViewClipView

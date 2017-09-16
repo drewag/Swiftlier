@@ -77,7 +77,7 @@ open class VideoController: NSObject {
 
     // MARK: Notifications
 
-    func moviePlayerPreparedToPlayDidChange(_ notification: NSNotification) {
+    @objc func moviePlayerPreparedToPlayDidChange(_ notification: NSNotification) {
         if self.moviePlayer.isPreparedToPlay {
             if self.moviePlayer.view.superview == nil {
                 self.moviePlayer.view.frame = self.view.bounds

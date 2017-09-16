@@ -309,7 +309,7 @@ public class PasswordField: SimpleField {
     }
 }
 
-public protocol NumberFieldValue: SignedNumber, CustomStringConvertible {
+public protocol NumberFieldValue: SignedNumeric, Comparable, CustomStringConvertible {
     static var max: Self { get }
     static var min: Self { get }
     init?(_ string: String)

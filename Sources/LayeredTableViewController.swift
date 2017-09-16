@@ -204,7 +204,7 @@ open class LayeredTableViewController: UIViewController {
         return -self.topAdjustedContentInset.top
     }
 
-    public func openBottom() {
+    @objc public func openBottom() {
         self.bottomTableView.setContentOffset(CGPoint(x: 0, y: self.bottomOpenYOffset), animated: true)
         self.isOpen = true
     }

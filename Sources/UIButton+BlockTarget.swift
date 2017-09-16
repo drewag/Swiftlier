@@ -33,7 +33,7 @@ extension UIButton {
         objc_setAssociatedObject(self, &ActionBlockKey, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
-    public func handleBlockCall() {
+    @objc public func handleBlockCall() {
         let wrapper =  objc_getAssociatedObject(self, &ActionBlockKey) as! ActionBlockWrapper
         wrapper.block()
     }

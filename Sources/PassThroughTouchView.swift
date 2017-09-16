@@ -13,7 +13,7 @@ public class PassThroughTouchView: UIView {
     public var onDidTouch = MultiCallback<Void>()
 
     override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        self.onDidTouch.triggerWithArguments()
+        self.onDidTouch.trigger()
         return nil
     }
 }

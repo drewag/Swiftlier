@@ -24,7 +24,7 @@
 
 import Foundation
 
-extension String {
+extension StringProtocol {
     /**
         - parameter times: the number of times to repeat the string
 
@@ -40,17 +40,11 @@ extension String {
         }
         return result
     }
+}
 
-    public func substring(from index: Int) -> String {
-        var pos = self.startIndex
-        pos = self.index(pos, offsetBy: index)
-        return self.substring(from: pos)
-    }
-
-    public func substring(to index: Int) -> String {
-        var pos = self.startIndex
-        pos = self.index(pos, offsetBy: index)
-        return self.substring(to: pos)
+extension String {
+    public func index(at: Int) -> String.Index {
+        return self.index(self.startIndex, offsetBy: at)
     }
 
     public func offsetCharacters(by count: Int) -> String {
@@ -59,14 +53,5 @@ extension String {
             let scalar = UnicodeScalar(utf8)
             return Character(scalar)
         }))
-    }
-
-    public func convert(range: NSRange) -> Range<String.Index> {
-        let start16 = self.utf16.index(self.utf16.startIndex, offsetBy: range.location)
-        let end16 = self.utf16.index(start16, offsetBy: range.length)
-
-        let start = String.Index(start16, within: self)!
-        let end = String.Index(end16, within: self)!
-        return start ..< end
     }
 }

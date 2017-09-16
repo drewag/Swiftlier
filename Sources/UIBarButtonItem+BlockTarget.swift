@@ -19,7 +19,7 @@ class ActionBlockTarget: NSObject {
         self.block = block
     }
 
-    func handleBlockCall() {
+    @objc func handleBlockCall() {
         block()
     }
 }

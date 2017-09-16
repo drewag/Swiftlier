@@ -33,8 +33,8 @@ open class SelectListViewController: UITableViewController {
 
         var width: CGFloat = 200
         for option in self.options {
-            width = max(width, (option as NSString).size(attributes: [
-                NSFontAttributeName: SelectListViewController.Font
+            width = max(width, (option as NSString).size(withAttributes: [
+                .font: SelectListViewController.Font
             ]).width + 32)
         }
 

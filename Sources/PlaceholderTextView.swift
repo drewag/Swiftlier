@@ -78,7 +78,7 @@ import UIKit
         self.placeholderTextView.frame = self.bounds
     }
     
-    open func textChanged(_ notification: NSNotification) {
+    @objc open func textChanged(_ notification: NSNotification) {
         if self.placeholder.isEmpty {
             return
         }

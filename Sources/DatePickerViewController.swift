@@ -42,11 +42,9 @@ public class ChooseDateViewController: UIViewController {
 
         self.datePickerView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.datePickerView)
-        self.view.addConstraints([
-            NSLayoutConstraint(leftOf: self.datePickerView, to: self.view),
-            NSLayoutConstraint(rightOf: self.datePickerView, to: self.view),
-            NSLayoutConstraint(topOf: self.datePickerView, to: self.view, distance: -44),
-        ])
+        self.view.constrain(.left, of: self.datePickerView)
+        self.view.constrain(.right, of: self.datePickerView)
+        self.view.constrain(.top, of: self.datePickerView, plus: 44)
 
         self.preferredContentSize = self.datePickerView.frame.size
     }

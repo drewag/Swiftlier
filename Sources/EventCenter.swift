@@ -133,7 +133,7 @@ private func addHandler(_ handler: EventCenter.CallbackSpec, toHandlerCollection
     var index = 0
     for (possibleObserver, var callbacks) in collection {
         if possibleObserver.value === observer {
-            callbacks.append(callback: handler.callback, operationQueue: handler.operationQueue)
+            callbacks.append((callback: handler.callback, operationQueue: handler.operationQueue))
             collection[index] = (possibleObserver, callbacks)
             found = true
             break

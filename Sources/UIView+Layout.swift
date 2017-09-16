@@ -14,19 +14,21 @@ extension UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = self.bounds
         self.addSubview(view)
-        self.addConstraints(NSLayoutConstraint.fill(with: view))
+        view.constrainToFill(self)
     }
 
     public func addCenteredView(_ view: UIView, withOffset offset: CGPoint) {
         view.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
-        self.addConstraints(NSLayoutConstraint.center(with: view, in: self, withOffset: offset))
+        view.constrainToCenter(of: self)
     }
 
+    @available(*, deprecated, message: "Use UIView constraint extension instead")
     public func addConstraint(forWidth width: CGFloat) {
         self.addConstraint(NSLayoutConstraint(width: width, of: self))
     }
 
+    @available(*, deprecated, message: "Use UIView constraint extension instead")
     public func addConstraint(forHeight height: CGFloat) {
         self.addConstraint(NSLayoutConstraint(height: height, of: self))
     }

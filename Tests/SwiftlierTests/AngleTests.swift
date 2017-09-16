@@ -11,33 +11,33 @@ import Swiftlier
 
 final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
     func testPi() {
-        XCTAssertEqualWithAccuracy(π.radians, 3.14159, accuracy: 0.00001)
-        XCTAssertEqualWithAccuracy(π.degrees, 180, accuracy: 0.00001)
+        XCTAssertEqual(π.radians, 3.14159, accuracy: 0.00001)
+        XCTAssertEqual(π.degrees, 180, accuracy: 0.00001)
     }
 
     func testZero() {
-        XCTAssertEqualWithAccuracy(Angle.zero.radians, 0, accuracy: 0.00001)
-        XCTAssertEqualWithAccuracy(Angle.zero.degrees, 0, accuracy: 0.00001)
+        XCTAssertEqual(Angle.zero.radians, 0, accuracy: 0.00001)
+        XCTAssertEqual(Angle.zero.degrees, 0, accuracy: 0.00001)
     }
 
     func testRadians() {
-        XCTAssertEqualWithAccuracy(Angle(radians: .pi).radians, 3.14159, accuracy: 0.00001)
-        XCTAssertEqualWithAccuracy(Angle(radians: .pi).degrees, 180, accuracy: 0.00001)
+        XCTAssertEqual(Angle(radians: .pi).radians, 3.14159, accuracy: 0.00001)
+        XCTAssertEqual(Angle(radians: .pi).degrees, 180, accuracy: 0.00001)
     }
 
     func testDegrees() {
-        XCTAssertEqualWithAccuracy(Angle(degrees: 90).radians, 3.14159 / 2, accuracy: 0.00001)
-        XCTAssertEqualWithAccuracy(Angle(degrees: 90).degrees, 90, accuracy: 0.001)
+        XCTAssertEqual(Angle(degrees: 90).radians, 3.14159 / 2, accuracy: 0.00001)
+        XCTAssertEqual(Angle(degrees: 90).degrees, 90, accuracy: 0.001)
     }
 
     func testCosine() {
-        XCTAssertEqualWithAccuracy(Angle(degrees: 90).cosine, 0, accuracy: 0.00001)
-        XCTAssertEqualWithAccuracy(Angle(radians: .pi/2).cosine, 0, accuracy: 0.00001)
+        XCTAssertEqual(Angle(degrees: 90).cosine, 0, accuracy: 0.00001)
+        XCTAssertEqual(Angle(radians: .pi/2).cosine, 0, accuracy: 0.00001)
     }
 
     func testSine() {
-        XCTAssertEqualWithAccuracy(Angle(degrees: 90).sine, 1, accuracy: 0.00001)
-        XCTAssertEqualWithAccuracy(Angle(radians: .pi/2).sine, 1, accuracy: 0.00001)
+        XCTAssertEqual(Angle(degrees: 90).sine, 1, accuracy: 0.00001)
+        XCTAssertEqual(Angle(radians: .pi/2).sine, 1, accuracy: 0.00001)
     }
 
     func testEquals() {
@@ -144,12 +144,12 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
     func testAdd() {
         XCTAssertEqual((Angle(degrees: 45) + Angle(degrees: 45)).degrees, 90)
-        XCTAssertEqualWithAccuracy((Angle(degrees: 90) + Angle(radians: Float.pi/4)).degrees, 135, accuracy: 0.0001)
+        XCTAssertEqual((Angle(degrees: 90) + Angle(radians: Float.pi/4)).degrees, 135, accuracy: 0.0001)
         XCTAssertEqual((Angle(radians: Float.pi/2) + Angle(radians: .pi/2)).radians, .pi)
         XCTAssertEqual((Angle(radians: Float.pi/2) + Angle(degrees: 45)).radians, 3 * .pi / 4)
 
         XCTAssertEqual((Angle(degrees: 90) + Angle(degrees: 720)).degrees, 90)
-        XCTAssertEqualWithAccuracy((Angle(radians: Float.pi/2) + Angle(radians: 8 * .pi)).radians, .pi/2, accuracy: 0.0001)
+        XCTAssertEqual((Angle(radians: Float.pi/2) + Angle(radians: 8 * .pi)).radians, .pi/2, accuracy: 0.0001)
     }
 
     func testAddInPlace() {
@@ -159,7 +159,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
         angle = Angle(degrees: 90)
         angle += Angle(radians: .pi/4)
-        XCTAssertEqualWithAccuracy(angle.degrees, 135, accuracy: 0.0001)
+        XCTAssertEqual(angle.degrees, 135, accuracy: 0.0001)
 
         angle = Angle(radians: Float.pi/2)
         angle += Angle(radians: .pi/2)
@@ -175,17 +175,17 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
         angle = Angle(radians: Float.pi/2)
         angle += Angle(radians: 8 * .pi)
-        XCTAssertEqualWithAccuracy(angle.radians, .pi/2, accuracy: 0.0001)
+        XCTAssertEqual(angle.radians, .pi/2, accuracy: 0.0001)
     }
 
     func testSubtract() {
         XCTAssertEqual((Angle(degrees: 90) - Angle(degrees: 45)).degrees, 45)
-        XCTAssertEqualWithAccuracy((Angle(degrees: 135) - Angle(radians: Float.pi/4)).degrees, 90, accuracy: 0.0001)
+        XCTAssertEqual((Angle(degrees: 135) - Angle(radians: Float.pi/4)).degrees, 90, accuracy: 0.0001)
         XCTAssertEqual((Angle(radians: Float.pi) - Angle(radians: .pi/2)).radians, .pi/2)
-        XCTAssertEqualWithAccuracy((Angle(radians: 3 * Float.pi / 4) - Angle(degrees: 45)).radians, .pi/2, accuracy: 0.0001)
+        XCTAssertEqual((Angle(radians: 3 * Float.pi / 4) - Angle(degrees: 45)).radians, .pi/2, accuracy: 0.0001)
 
         XCTAssertEqual((Angle(degrees: -90) - Angle(degrees: 720)).degrees, -90)
-        XCTAssertEqualWithAccuracy((Angle(radians: -Float.pi/2) - Angle(radians: 8 * .pi)).radians, -.pi/2, accuracy: 0.0001)
+        XCTAssertEqual((Angle(radians: -Float.pi/2) - Angle(radians: 8 * .pi)).radians, -.pi/2, accuracy: 0.0001)
     }
 
     func testSubtractInPlace() {
@@ -195,7 +195,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
         angle = Angle(degrees: 135)
         angle -= Angle(radians: .pi/4)
-        XCTAssertEqualWithAccuracy(angle.degrees, 90, accuracy: 0.0001)
+        XCTAssertEqual(angle.degrees, 90, accuracy: 0.0001)
 
         angle = Angle(radians: Float.pi)
         angle -= Angle(degrees: 90)
@@ -203,7 +203,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
         angle = Angle(radians: 3 * .pi / 4)
         angle -= Angle(radians: .pi/4)
-        XCTAssertEqualWithAccuracy(angle.radians, .pi/2, accuracy: 0.0001)
+        XCTAssertEqual(angle.radians, .pi/2, accuracy: 0.0001)
 
         angle = Angle(degrees: -90)
         angle -= Angle(degrees: 720)
@@ -211,7 +211,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
         angle = Angle(radians: -.pi/2)
         angle -= Angle(radians: 8 * .pi)
-        XCTAssertEqualWithAccuracy(angle.radians, -.pi/2, accuracy: 0.0001)
+        XCTAssertEqual(angle.radians, -.pi/2, accuracy: 0.0001)
     }
 
     func testMultiplyByValue() {
@@ -219,7 +219,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual((Angle(radians: Float.pi / 4) * 2).degrees, 90)
 
         XCTAssertEqual((Angle(degrees: 45) * 20).degrees, 180)
-        XCTAssertEqualWithAccuracy((Angle(radians: Float.pi / 4) * 20).degrees, 180, accuracy: 0.0001)
+        XCTAssertEqual((Angle(radians: Float.pi / 4) * 20).degrees, 180, accuracy: 0.0001)
     }
 
     func testMultiplyByValueInPlace() {
@@ -237,7 +237,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
         angle = Angle(radians: Float.pi / 4)
         angle *= 20
-        XCTAssertEqualWithAccuracy(angle.degrees, 180, accuracy: 0.0001)
+        XCTAssertEqual(angle.degrees, 180, accuracy: 0.0001)
     }
 
     func testDivideByValue() {
@@ -245,7 +245,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual((Angle(radians: Float.pi / 4) / 0.5).degrees, 90)
 
         XCTAssertEqual((Angle(degrees: 45) / 0.05).degrees, 180)
-        XCTAssertEqualWithAccuracy((Angle(radians: Float.pi / 4) / 0.05).degrees, 180, accuracy: 0.0001)
+        XCTAssertEqual((Angle(radians: Float.pi / 4) / 0.05).degrees, 180, accuracy: 0.0001)
     }
 
     func testDivideByValueInPlace() {
@@ -263,7 +263,7 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
 
         angle = Angle(radians: Float.pi / 4)
         angle /= 0.05
-        XCTAssertEqualWithAccuracy(angle.degrees, 180, accuracy: 0.0001)
+        XCTAssertEqual(angle.degrees, 180, accuracy: 0.0001)
     }
 
     static var allTests: [(String, (AngleTests) -> () throws -> Void)] {
