@@ -1,4 +1,4 @@
-[![Swift](https://img.shields.io/badge/swift-3.1-orange.svg?style=flat)](https://swift.org)
+[![Swift](https://img.shields.io/badge/swift-4-orange.svg?style=flat)](https://swift.org)
 ![platforms](https://img.shields.io/badge/platform-iOS%20macOS%20Linux-orange.svg?style=flat)
 ![SPM](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange.svg?style=flat)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
