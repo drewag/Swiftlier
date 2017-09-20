@@ -6,6 +6,7 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 import XCTest
 import Swiftlier
 
@@ -111,4 +112,4 @@ final class UIView_ConstraintsTests: XCTestCase, LinuxEnforcedTestCase {
         ]
     }
 }
-
+#endif

@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class PersistenceService<Value: Swiftlier.Codable> {
+open class PersistenceService<Value: Codable> {
     public var values: [Value]!
     let directory: DirectoryPath
 

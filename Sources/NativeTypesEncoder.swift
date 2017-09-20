@@ -8,13 +8,21 @@
 
 import Foundation
 
-public final class NativeTypesEncoder: Encoder {
+public final class NativeTypesEncoder: Swiftlier.Encoder {
     fileprivate var raw: Any?
     fileprivate var wasCanceled = false
     public let mode: EncodingMode
+    public let codingPath: [CodingKey] = []
+    public var userInfo: [CodingUserInfoKey : Any] = [:]
 
     public class func objectFromEncodable(_ encodable: Encodable, mode: EncodingMode) -> Any {
         return self.objectFromCombiningEncodables([encodable], mode: mode)
+    }
+
+    public class func object<T: Swift.Encodable>(from encodable: T) throws -> Any {
+        let data = try JSONEncoder().encode(encodable)
+        let object = try JSONSerialization.jsonObject(with: data, options: [])
+        return object
     }
 
     public class func objectFromCombiningEncodables(_ encodables: [Encodable], mode: EncodingMode) -> Any {
