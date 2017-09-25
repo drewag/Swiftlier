@@ -26,6 +26,11 @@ public struct FileSystem: ErrorGenerating {
         return try! self.createDirectoryIfNotExists(at: url)
     }
 
+    public var libraryDirectory: DirectoryPath {
+        let url = try! self.manager.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        return try! self.createDirectoryIfNotExists(at: url)
+    }
+
     public var workingDirectory: DirectoryPath {
         let path = self.path(from: URL(fileURLWithPath: ""))
         return path as! DirectoryPath
