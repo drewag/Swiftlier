@@ -10,6 +10,7 @@ import Foundation
 
 /* ---------------- Core Protocols ---------------- */
 
+@available(*, deprecated, message: "Use Swift native Codable instead")
 public protocol Codable: Encodable, Decodable, ErrorGenerating {}
 
 public protocol RawCodable: Codable {
@@ -17,10 +18,12 @@ public protocol RawCodable: Codable {
     var asObject: Any { get }
 }
 
+@available(*, deprecated, message: "Use Swift native Decodable instead")
 public protocol Decodable {
     init(decoder: Decoder) throws
 }
 
+@available(*, deprecated, message: "Use Swift native Encodable instead")
 public protocol Encodable {
     func encode(_ encoder: Encoder)
 }
@@ -30,6 +33,7 @@ public enum DecodingMode {
     case remote
 }
 
+@available(*, deprecated, message: "Use Swift native Decoder instead")
 public protocol Decoder {
     var mode: DecodingMode {get}
 
@@ -47,6 +51,7 @@ public enum EncodingMode {
     case update
 }
 
+@available(*, deprecated, message: "Use Swift native Encoder instead")
 public protocol Encoder {
     var mode: EncodingMode {get}
 

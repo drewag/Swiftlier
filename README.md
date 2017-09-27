@@ -86,6 +86,7 @@ Code Coverage
 - [ ] Enum+Convenience
 - [ ] ErrorGenerating+ErrorFactory
 - [x] EventCenter
+- [ ] Path+Coding
 - [ ] FileSystem
 - [ ] Float+Factory
 - [ ] Form
@@ -115,12 +116,12 @@ Code Coverage
 - [ ] ObservableReference
 - [ ] OrderedDictionary
 - [ ] PassThroughTouchView
+- [x] PatchyRange
 - [x] Path+Coding
 - [x] Path
 - [ ] PercentEncodable
 - [x] PersistenceService
 - [ ] PlaceholderTextView
-- [ ] PresentUnderTopBarTransition
 - [ ] Price
 - [ ] PrioritizedOperationQueue
 - [ ] ReferenceTypePersistenceService
