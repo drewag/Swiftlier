@@ -83,7 +83,7 @@ Code Coverage
 - [ ] Email
 - [x] EmailAddress
 - [ ] EnergyFormatting
-- [ ] Enum+Convenience
+- [x] Enum+Convenience
 - [ ] ErrorGenerating+ErrorFactory
 - [x] EventCenter
 - [ ] Path+Coding
