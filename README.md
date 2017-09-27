@@ -91,7 +91,7 @@ Code Coverage
 - [ ] Form
 - [ ] FormViewController
 - [x] HTML
-- [ ] HTTPStatus
+- [x] HTTPStatus
 - [ ] HeartRateFormatter
 - [ ] Int+Random
 - [ ] JSON+Encoding

@@ -133,15 +133,15 @@ public enum HTTPStatus: RawRepresentable {
 
         case 500:
             self = .internalServerError
-        case 500:
+        case 501:
             self = .notImplemented
-        case 500:
+        case 502:
             self = .badGateway
-        case 500:
+        case 503:
             self = .serviceUnavailable
-        case 500:
+        case 504:
             self = .gatewayTimeout
-        case 500:
+        case 505:
             self = .httpVersionNotSupported
         default:
             self = .other(rawValue)
@@ -322,5 +322,11 @@ extension HTTPStatus: CustomStringConvertible {
         case .other(let other):
             return "OTHER(\(other))"
         }
+    }
+}
+
+extension HTTPStatus: Equatable {
+    public static func ==(lhs: HTTPStatus, rhs: HTTPStatus) -> Bool {
+        return lhs.rawValue == rhs.rawValue
     }
 }
