@@ -93,7 +93,7 @@ Code Coverage
 - [x] HTML
 - [x] HTTPStatus
 - [x] HeartRateFormatter
-- [ ] Int+Random
+- [x] Int+Random
 - [ ] JSON+Encoding
 - [ ] JSON
 - [ ] KeyboardConstraintAdjuster
