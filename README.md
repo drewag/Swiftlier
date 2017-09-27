@@ -86,12 +86,11 @@ Code Coverage
 - [x] Enum+Convenience
 - [ ] ErrorGenerating+ErrorFactory
 - [x] EventCenter
-- [ ] Path+Coding
 - [ ] FileSystem
 - [ ] Float+Factory
 - [ ] Form
 - [ ] FormViewController
-- [ ] HTML
+- [x] HTML
 - [ ] HTTPStatus
 - [ ] HeartRateFormatter
 - [ ] Int+Random

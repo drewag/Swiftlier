@@ -151,6 +151,7 @@
 		49DB23CA1EBA597200CFF9BF /* Data_Base64Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */; };
 		49EB68CB1F7B692F00D89D40 /* Double_FormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68CA1F7B692F00D89D40 /* Double_FormattingTests.swift */; };
 		49EB68CD1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68CC1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift */; };
+		49EB68CF1F7B6C1F00D89D40 /* HTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68CE1F7B6C1F00D89D40 /* HTMLTests.swift */; };
 		49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F62F131EE8DFD20090D158 /* DayTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -312,6 +313,7 @@
 		49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_Base64Tests.swift; sourceTree = "<group>"; };
 		49EB68CA1F7B692F00D89D40 /* Double_FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double_FormattingTests.swift; sourceTree = "<group>"; };
 		49EB68CC1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_ConvenienceTests.swift; sourceTree = "<group>"; };
+		49EB68CE1F7B6C1F00D89D40 /* HTMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTests.swift; sourceTree = "<group>"; };
 		49F62F131EE8DFD20090D158 /* DayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -526,6 +528,7 @@
 				497ECACA1F12BD4500F90B85 /* MassTests.swift */,
 				4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */,
 				49EB68CC1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift */,
+				49EB68CE1F7B6C1F00D89D40 /* HTMLTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -779,6 +782,7 @@
 				4935A6D91EB1A52E00B0CCF8 /* EmailAddressTests.swift in Sources */,
 				4935A6DA1EB1A52E00B0CCF8 /* EventCenterTests.swift in Sources */,
 				4960748B1EDFF43C0051880F /* BinarySearchTreeTests.swift in Sources */,
+				49EB68CF1F7B6C1F00D89D40 /* HTMLTests.swift in Sources */,
 				4935A6DE1EB1A52E00B0CCF8 /* String_HelpersTests.swift in Sources */,
 				497ECACC1F12BD4800F90B85 /* MassTests.swift in Sources */,
 				4935A6DB1EB1A52E00B0CCF8 /* MultiCallbackTests.swift in Sources */,
