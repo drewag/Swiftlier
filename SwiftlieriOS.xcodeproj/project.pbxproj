@@ -153,6 +153,7 @@
 		49EB68CD1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68CC1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift */; };
 		49EB68CF1F7B6C1F00D89D40 /* HTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68CE1F7B6C1F00D89D40 /* HTMLTests.swift */; };
 		49EB68D11F7B6CD800D89D40 /* HTTPStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68D01F7B6CD800D89D40 /* HTTPStatusTests.swift */; };
+		49EB68D31F7B728F00D89D40 /* HeartRateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68D21F7B728F00D89D40 /* HeartRateFormatterTests.swift */; };
 		49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F62F131EE8DFD20090D158 /* DayTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -316,6 +317,7 @@
 		49EB68CC1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_ConvenienceTests.swift; sourceTree = "<group>"; };
 		49EB68CE1F7B6C1F00D89D40 /* HTMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTests.swift; sourceTree = "<group>"; };
 		49EB68D01F7B6CD800D89D40 /* HTTPStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusTests.swift; sourceTree = "<group>"; };
+		49EB68D21F7B728F00D89D40 /* HeartRateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateFormatterTests.swift; sourceTree = "<group>"; };
 		49F62F131EE8DFD20090D158 /* DayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -532,6 +534,7 @@
 				49EB68CC1F7B6A9600D89D40 /* Enum_ConvenienceTests.swift */,
 				49EB68CE1F7B6C1F00D89D40 /* HTMLTests.swift */,
 				49EB68D01F7B6CD800D89D40 /* HTTPStatusTests.swift */,
+				49EB68D21F7B728F00D89D40 /* HeartRateFormatterTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -772,6 +775,7 @@
 				49BFE3571EC247E6009A21B0 /* Data_ProcessingTests.swift in Sources */,
 				4935A6DC1EB1A52E00B0CCF8 /* ObservableTests.swift in Sources */,
 				49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */,
+				49EB68D31F7B728F00D89D40 /* HeartRateFormatterTests.swift in Sources */,
 				49EB68CB1F7B692F00D89D40 /* Double_FormattingTests.swift in Sources */,
 				4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */,
 				4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */,

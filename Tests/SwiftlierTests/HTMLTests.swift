@@ -21,6 +21,3 @@ final class HTMLTests: XCTestCase, LinuxEnforcedTestCase {
         ]
     }
 }
-
-
-
