@@ -79,7 +79,7 @@ Code Coverage
 - [ ] DiagonalGradientView
 - [x] Dictionary+Merging
 - [ ] DispatchQueue+Helpers
-- [ ] Double+Formatting
+- [x] Double+Formatting
 - [ ] Email
 - [x] EmailAddress
 - [ ] EnergyFormatting

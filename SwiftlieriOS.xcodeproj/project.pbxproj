@@ -149,6 +149,7 @@
 		49D8784E1EE2088C0068836C /* PatchyRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8784D1EE2088C0068836C /* PatchyRange.swift */; };
 		49D878501EE2146D0068836C /* PatchyRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8784F1EE2146D0068836C /* PatchyRangeTests.swift */; };
 		49DB23CA1EBA597200CFF9BF /* Data_Base64Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */; };
+		49EB68CB1F7B692F00D89D40 /* Double_FormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68CA1F7B692F00D89D40 /* Double_FormattingTests.swift */; };
 		49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F62F131EE8DFD20090D158 /* DayTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -308,6 +309,7 @@
 		49D8784D1EE2088C0068836C /* PatchyRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchyRange.swift; sourceTree = "<group>"; };
 		49D8784F1EE2146D0068836C /* PatchyRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchyRangeTests.swift; sourceTree = "<group>"; };
 		49DB23C91EBA597200CFF9BF /* Data_Base64Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_Base64Tests.swift; sourceTree = "<group>"; };
+		49EB68CA1F7B692F00D89D40 /* Double_FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double_FormattingTests.swift; sourceTree = "<group>"; };
 		49F62F131EE8DFD20090D158 /* DayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -495,6 +497,7 @@
 				4935A6CC1EB1A52E00B0CCF8 /* ColorTests.swift */,
 				4935A6CD1EB1A52E00B0CCF8 /* DataSourceTypeTests.swift */,
 				4935A6CE1EB1A52E00B0CCF8 /* Dictionary_MergingTests.swift */,
+				49EB68CA1F7B692F00D89D40 /* Double_FormattingTests.swift */,
 				4935A6CF1EB1A52E00B0CCF8 /* EmailAddressTests.swift */,
 				4935A6D01EB1A52E00B0CCF8 /* EventCenterTests.swift */,
 				4935A6D11EB1A52E00B0CCF8 /* MultiCallbackTests.swift */,
@@ -760,6 +763,7 @@
 				49BFE3571EC247E6009A21B0 /* Data_ProcessingTests.swift in Sources */,
 				4935A6DC1EB1A52E00B0CCF8 /* ObservableTests.swift in Sources */,
 				49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */,
+				49EB68CB1F7B692F00D89D40 /* Double_FormattingTests.swift in Sources */,
 				4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */,
 				4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */,
 				49B730DB1ECCB00F006EE42B /* Date_HelpersTests.swift in Sources */,
