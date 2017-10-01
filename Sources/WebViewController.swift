@@ -30,11 +30,6 @@ public class WebViewController: UIViewController {
 
         self.view.addFillingSubview(self.webView)
     }
-
-    override public func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        self.webView.scrollView.isScrollEnabled = self.webView.scrollView.contentSize.height > self.webView.bounds.height
-    }
 }
+
 #endif
