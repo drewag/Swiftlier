@@ -6,6 +6,8 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+import Foundation
+
 extension Encodable where Self: Decodable {
     public func copyUsingEncoding() throws -> Self {
         let data = try JSONEncoder().encode(self)
