@@ -31,10 +31,6 @@ public struct XML: NativeTypesStructured {
     public init(object: Any) {
         self.object = object
     }
-
-    public func toData() throws -> Data {
-        return try JSON.encode(self.object)
-    }
 }
 
 extension XML.ParserDelegate: XMLParserDelegate {

@@ -404,7 +404,6 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
     func testCopyFileWithinDirectory() throws {
         let fromFileUrl = URL(fileURLWithPath: "tmp/file.txt")
-        let toFileUrl = URL(fileURLWithPath: "tmp/other.txt")
         try "test".data(using: .utf8)?.write(to: fromFileUrl)
 
         guard let file = try self.base.file("file.txt").file else {

@@ -8,24 +8,17 @@
 
 import Swiftlier
 
-struct TestCodable {
+struct TestCodable: Codable {
     let string: String
     let int: Int
 }
 
-extension TestCodable: Swiftlier.Codable {
-    struct Keys {
-        class string: CoderKey<String> {}
-        class int: CoderKey<Int> {}
-    }
+class TestReferenceCodable: Codable {
+    let string: String
+    let int: Int
 
-    init(decoder: Swiftlier.Decoder) throws {
-        self.string = try decoder.decode(Keys.string.self)
-        self.int = try decoder.decode(Keys.int.self)
-    }
-
-    func encode(_ encoder: Swiftlier.Encoder) {
-        encoder.encode(self.string, forKey: Keys.string.self)
-        encoder.encode(self.int, forKey: Keys.int.self)
+    init(string: String, int: Int) {
+        self.string = string
+        self.int = int
     }
 }

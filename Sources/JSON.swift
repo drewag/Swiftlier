@@ -21,4 +21,8 @@ public struct JSON: NativeTypesStructured {
     public init(object: Any) {
         self.object = object
     }
+
+    public func data() throws -> Data {
+        return try JSONSerialization.data(withJSONObject: self.object, options: [])
+    }
 }

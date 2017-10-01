@@ -6,28 +6,29 @@
 //
 //
 
-internal struct ReportableErrorKeys {
-    class message: CoderKey<String> {}
-    class doing: OptionalCoderKey<String> {}
-    class because: OptionalCoderKey<String> {}
-    class perpitrator: OptionalCoderKey<ErrorPerpitrator> {}
+extension ErrorPerpitrator {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        self = ErrorPerpitrator(rawValue: try container.decode(String.self)) ?? .system
+    }
+
+    public func encode(_ encoder: Encoder)  throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.rawValue)
+    }
 }
 
-extension ErrorPerpitrator {
-    public init(decoder: Decoder) throws {
-        self = ErrorPerpitrator(rawValue: try decoder.decodeAsEntireValue()) ?? .system
-    }
-
-    public func encode(_ encoder: Encoder) {
-        encoder.encodeAsEntireValue(self.rawValue)
-    }
+enum ReportableErrorCodingKeys: String, CodingKey {
+    case message, doing, because, perpitrator
 }
 
 extension ReportableError {
-    public func encodeStandard(_ encoder: Encoder) {
-        encoder.encode(self.description, forKey: ReportableErrorKeys.message.self)
-        encoder.encode(self.doing, forKey: ReportableErrorKeys.doing.self)
-        encoder.encode(self.reason.because, forKey: ReportableErrorKeys.because.self)
-        encoder.encode(self.perpetrator, forKey: ReportableErrorKeys.perpitrator.self)
+    public func encodeStandard(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ReportableErrorCodingKeys.self)
+        try container.encode(self.description, forKey: .message)
+        try container.encode(self.doing, forKey: .doing)
+        try container.encode(self.reason.because, forKey: .because)
+        try container.encode(self.perpetrator, forKey: .perpitrator)
     }
 }
+

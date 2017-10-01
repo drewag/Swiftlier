@@ -11,6 +11,7 @@ import Foundation
 open class PersistenceService<Value: Codable> {
     public var values: [Value]!
     let directory: DirectoryPath
+    open let codingUserInfo: [CodingUserInfoKey:Any] = [:]
 
     public init(to: DirectoryPath = FileSystem.default.documentsDirectory) throws {
         self.directory = to
@@ -39,7 +40,7 @@ extension PersistenceService {
         guard let archive = try self.archivePath().file else {
             return []
         }
-        return try archive.decodableArray()
+        return try archive.decodableArray(userInfo: self.codingUserInfo)
     }
 
     func save(values: [Value]) throws {

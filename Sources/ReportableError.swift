@@ -216,11 +216,12 @@ struct ConcreteReportableError: ReportableError, ErrorGenerating, Codable {
     let reason: AnyErrorReason
     let source: ErrorGenerating.Type
 
-    init(decoder: Decoder) throws {
-        self.perpetrator = try decoder.decode(ReportableErrorKeys.perpitrator.self) ?? .system
-        self.doing = try decoder.decode(ReportableErrorKeys.doing.self) ?? ""
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ReportableErrorCodingKeys.self)
+        self.perpetrator = try container.decodeIfPresent(ErrorPerpitrator.self, forKey: .perpitrator) ?? .system
+        self.doing = try container.decodeIfPresent(String.self, forKey: .doing) ?? ""
         self.source = ConcreteReportableError.self
-        self.reason = ErrorReason(try decoder.decode(ReportableErrorKeys.message.self))
+        self.reason = ErrorReason(try container.decode(String.self, forKey: .message))
     }
 
     init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason) {
@@ -230,7 +231,7 @@ struct ConcreteReportableError: ReportableError, ErrorGenerating, Codable {
         self.reason = because
     }
 
-    func encode(_ encoder: Encoder) {
-        self.encodeStandard(encoder)
+    public func encode(to encoder: Encoder) throws {
+        try self.encodeStandard(to: encoder)
     }
 }

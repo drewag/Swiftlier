@@ -58,8 +58,8 @@ public struct NetworkError: ReportableError {
     public let source: ErrorGenerating.Type
     public let status: HTTPStatus
 
-    struct Keys {
-        class status: CoderKey<Int> {}
+    enum CodingKeys: String, CodingKey {
+        case status
     }
 
     public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason, status: HTTPStatus) {
@@ -78,9 +78,10 @@ public struct NetworkError: ReportableError {
         self.status = status
     }
 
-    public func encode(_ encoder: Encoder) {
-        self.encodeStandard(encoder)
-        encoder.encode(self.status.rawValue, forKey: Keys.status.self)
+    public func encode(to encoder: Encoder) throws {
+        try self.encodeStandard(to: encoder)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.status.rawValue, forKey: .status)
     }
 }
 

@@ -45,12 +45,14 @@ extension EmailAddress: Equatable {
 }
 
 extension EmailAddress: Codable {
-    public func encode(_ encoder: Encoder) {
-        encoder.encodeAsEntireValue(self.string)
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.string)
     }
 
-    public init(decoder: Decoder) throws {
-        let string: String = try decoder.decodeAsEntireValue()
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let string = try container.decode(String.self)
         try self.init(string: string)
     }
 }

@@ -217,7 +217,7 @@ extension Date {
     }
 }
 
-extension String {
+extension String: ErrorGenerating {
     public var railsDateTime: Date? {
         return railsDateTimeFormatter.date(from: self)
     }

@@ -9,43 +9,168 @@
 import Foundation
 
 public class CommandLineDecoder: Decoder {
-    public let mode = DecodingMode.saveLocally
-
-    public class func prompt<E: Decodable>() throws -> E {
-        let decoder = CommandLineDecoder()
-
-        return try E(decoder: decoder)
+    public class func prompt<D: Decodable>(userInfo: [CodingUserInfoKey:Any]) throws -> D {
+        let decoder = CommandLineDecoder(userInfo: userInfo)
+        return try D(from: decoder)
     }
 
-    fileprivate init() {}
+    public var codingPath: [CodingKey] = []
+    public let userInfo: [CodingUserInfoKey: Any]
 
-    public func decode<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> Value {
-        var value: Value?
-        repeat {
-            value = self.promptForValue(withName: key.path.joined(separator: " "))
-            if value == nil {
-                print("This value is required")
-                continue
-            }
-        } while value == nil
-
-        return value!
+    fileprivate init(userInfo: [CodingUserInfoKey:Any]) {
+        self.userInfo = userInfo
     }
 
-    public func decode<Value: Decodable>(_ key: OptionalCoderKey<Value>.Type) throws -> Value? {
-        return self.promptForValue(withName: key.path.joined(separator: " "))
+    public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
+        return KeyedDecodingContainer(CommandLineDecodingContainer())
     }
 
-    public func decodeArray<Value: Decodable>(_ key: CoderKey<Value>.Type) throws -> [Value] {
-        fatalError("Not available")
+    public func unkeyedContainer() throws -> UnkeyedDecodingContainer {
+        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "decoding an unkeyed container is not supported"))
     }
 
-    public func decodeAsEntireValue<Value: Decodable>() throws -> Value {
-        fatalError("Not available")
+    public func singleValueContainer() throws -> SingleValueDecodingContainer {
+        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "decoding a single value container is not supported"))
     }
 }
 
-private extension CommandLineDecoder {
+private class CommandLineDecodingContainer<MyKey: CodingKey>: KeyedDecodingContainerProtocol {
+    typealias Key = MyKey
+
+    let codingPath: [CodingKey] = []
+    var lastInput = [String:String]()
+
+    var allKeys: [Key] {
+        return []
+    }
+
+    func contains(_ key: Key) -> Bool {
+        return true
+    }
+
+    func decodeNil(forKey key: Key) throws -> Bool {
+        print("\(key.stringValue) (optional)? ", terminator: "")
+        let input = readLine(strippingNewline: true) ?? ""
+        self.lastInput[key.stringValue] = input
+        return input.isEmpty
+    }
+
+    func decode(_ type: Bool.Type, forKey key: Key) throws -> Bool {
+        var input: String
+        if let lastInput = self.lastInput[key.stringValue] {
+            input = lastInput
+        }
+        else {
+            print("\(key.stringValue)? ", terminator: "")
+            input = readLine(strippingNewline: true) ?? ""
+        }
+        return (input.lowercased() == "y") || (input.lowercased() == "yes")
+    }
+
+    func decode(_ type: Int.Type, forKey key: Key) throws -> Int {
+        return self.promptForValue(withName: key.stringValue, create: { Int($0) }, errorString: "Must be an integer")
+    }
+
+    func decode(_ type: Int8.Type, forKey key: Key) throws -> Int8 {
+        return self.promptForValue(withName: key.stringValue, create: { Int8($0) }, errorString: "Must be an Int8")
+    }
+
+    func decode(_ type: Int16.Type, forKey key: Key) throws -> Int16 {
+        return self.promptForValue(withName: key.stringValue, create: { Int16($0) }, errorString: "Must be an Int16")
+    }
+
+    func decode(_ type: Int32.Type, forKey key: Key) throws -> Int32 {
+        return self.promptForValue(withName: key.stringValue, create: { Int32($0) }, errorString: "Must be an Int32")
+    }
+
+    func decode(_ type: Int64.Type, forKey key: Key) throws -> Int64 {
+        return self.promptForValue(withName: key.stringValue, create: { Int64($0) }, errorString: "Must be an Int64")
+    }
+
+    func decode(_ type: UInt.Type, forKey key: Key) throws -> UInt {
+        return self.promptForValue(withName: key.stringValue, create: { UInt($0) }, errorString: "Must be an UInt")
+
+    }
+
+    func decode(_ type: UInt8.Type, forKey key: Key) throws -> UInt8 {
+        return self.promptForValue(withName: key.stringValue, create: { UInt8($0) }, errorString: "Must be an UInt8")
+    }
+
+    func decode(_ type: UInt16.Type, forKey key: Key) throws -> UInt16 {
+        return self.promptForValue(withName: key.stringValue, create: { UInt16($0) }, errorString: "Must be an UInt16")
+    }
+
+    func decode(_ type: UInt32.Type, forKey key: Key) throws -> UInt32 {
+        return self.promptForValue(withName: key.stringValue, create: { UInt32($0) }, errorString: "Must be an UInt32")
+    }
+
+    func decode(_ type: UInt64.Type, forKey key: Key) throws -> UInt64 {
+        return self.promptForValue(withName: key.stringValue, create: { UInt64($0) }, errorString: "Must be an UInt64")
+    }
+
+    func decode(_ type: Float.Type, forKey key: Key) throws -> Float {
+        return self.promptForValue(withName: key.stringValue, create: { Float($0) }, errorString: "Must be a decimal")
+    }
+
+    func decode(_ type: Double.Type, forKey key: Key) throws -> Double {
+        return self.promptForValue(withName: key.stringValue, create: { Double($0) }, errorString: "Must be an decimal")
+    }
+
+    func decode(_ type: String.Type, forKey key: Key) throws -> String {
+        return self.promptForValue(withName: key.stringValue, create: { $0.isEmpty ? nil : $0 }, errorString: "Must not be empty")
+    }
+
+    func decode<T>(_ type: T.Type, forKey key: Key) throws -> T where T: Swift.Decodable {
+        if type == Date.self {
+            return self.promptForValue(withName: key.stringValue, create: { input in
+                return input.date ?? input.railsDateTime ?? input.railsDate ?? input.iso8601DateTime
+            }, errorString: "Invalid date/time") as! T
+        }
+        else {
+            throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "an unsupported type was found"))
+        }
+    }
+
+    func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type, forKey key: Key) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
+        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "decoding nested containers is not supported"))
+    }
+
+    func nestedUnkeyedContainer(forKey key: Key) throws -> UnkeyedDecodingContainer {
+        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "decoding unkeyed containers is not supported"))
+    }
+
+    func superDecoder() throws -> Swift.Decoder {
+        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "decoding super encoders containers is not supported"))
+    }
+
+    func superDecoder(forKey key: Key) throws -> Swift.Decoder {
+        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "decoding super decoders is not supported"))
+    }
+}
+
+private extension CommandLineDecodingContainer {
+    func promptForValue<Value>(withName name: String, create: (String) -> (Value?), errorString: String) -> Value {
+        var input: String
+        if let lastInput = self.lastInput[name] {
+            input = lastInput
+        }
+        else {
+            print("\(name)? ", terminator: "")
+            input = readLine(strippingNewline: true) ?? ""
+        }
+
+        repeat {
+            if let value = create(input) {
+                return value
+            }
+            print(errorString)
+            print("\(name)? ", terminator: "")
+            input = readLine(strippingNewline: true) ?? ""
+        } while input.isEmpty
+
+        fatalError()
+    }
+
     func promptForValue<Value: Decodable>(withName name: String) -> Value? {
         var input: String = ""
         repeat {

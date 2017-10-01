@@ -10,37 +10,36 @@
 import UIKit
 
 public struct Color: Codable {
+    enum CodingKeys: String, CodingKey {
+        case red, green, blue, alpha
+    }
+
     public let color: UIColor
 
     public init(_ color: UIColor) {
         self.color = color
     }
 
-    fileprivate struct Keys {
-        class red: CoderKey<Float> {}
-        class green: CoderKey<Float> {}
-        class blue: CoderKey<Float> {}
-        class alpha: CoderKey<Float> {}
-    }
-
-    public func encode(_ encoder: Encoder) {
+    public func encode(to encoder: Encoder) throws {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
         self.color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
 
-        encoder.encode(Float(red), forKey: Keys.red.self)
-        encoder.encode(Float(green), forKey: Keys.green.self)
-        encoder.encode(Float(blue), forKey: Keys.blue.self)
-        encoder.encode(Float(alpha), forKey: Keys.alpha.self)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(Float(red), forKey: .red)
+        try container.encode(Float(green), forKey: .green)
+        try container.encode(Float(blue), forKey: .blue)
+        try container.encode(Float(alpha), forKey: .alpha)
     }
 
-    public init(decoder: Decoder) throws {
-        let red = CGFloat(try decoder.decode(Keys.red.self))
-        let green = CGFloat(try decoder.decode(Keys.red.self))
-        let blue = CGFloat(try decoder.decode(Keys.red.self))
-        let alpha = CGFloat(try decoder.decode(Keys.red.self))
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let red = CGFloat(try container.decode(Float.self, forKey: .red))
+        let green = CGFloat(try container.decode(Float.self, forKey: .green))
+        let blue = CGFloat(try container.decode(Float.self, forKey: .blue))
+        let alpha = CGFloat(try container.decode(Float.self, forKey: .alpha))
 
         self.color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }

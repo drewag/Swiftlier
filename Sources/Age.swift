@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Age {
+public struct Age: Codable {
     public let years: Int
 
     public init(date: Date) {
@@ -23,19 +23,5 @@ public struct Age {
             )
             self.years = components.year!
         #endif
-    }
-}
-
-extension Age: Codable {
-    struct Keys {
-        class years: CoderKey<Int> {}
-    }
-
-    public init(decoder: Decoder) throws {
-        self.years = try decoder.decode(Keys.years.self)
-    }
-
-    public func encode(_ encoder: Encoder) {
-        encoder.encode(self.years, forKey: Keys.years.self)
     }
 }
