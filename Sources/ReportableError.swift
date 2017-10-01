@@ -36,12 +36,34 @@ open class ErrorReasonWithExtraInfo<Params>: AnyErrorReason {
     }
 }
 public protocol ErrorGenerating {}
+public protocol ReportableErrorConvertible {
+    var reportableError: ReportableError {get}
+}
 
-public protocol ReportableError: Error, CustomStringConvertible, Encodable {
-    var perpetrator: ErrorPerpitrator {get}
-    var doing: String {get}
-    var reason: AnyErrorReason {get}
-    var source: ErrorGenerating.Type {get}
+open class ReportableError: Error, CustomStringConvertible, Encodable {
+    enum CodingKeys: String, CodingKey {
+        case message, doing, because, perpitrator
+    }
+
+    public let perpetrator: ErrorPerpitrator
+    public let doing: String
+    public let reason: AnyErrorReason
+    public let source: ErrorGenerating.Type
+
+    public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason) {
+        self.source = source
+        self.perpetrator = by
+        self.doing = doing
+        self.reason = because
+    }
+
+    open func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.description, forKey: .message)
+        try container.encode(self.doing, forKey: .doing)
+        try container.encode(self.reason.because, forKey: .because)
+        try container.encode(self.perpetrator, forKey: .perpitrator)
+    }
 }
 
 public enum ReportableResult<Value> {
@@ -87,7 +109,7 @@ extension ReportableError {
     }
 
     public func doing(_ doing: String) -> ReportableError {
-        return ConcreteReportableError(
+        return ReportableError(
             from: self.source,
             by: self.perpetrator,
             doing: doing,
@@ -96,7 +118,7 @@ extension ReportableError {
     }
 
     public var byUser: ReportableError {
-        return ConcreteReportableError(
+        return ReportableError(
             from: self.source,
             by: .user,
             doing: self.doing,
@@ -139,7 +161,7 @@ extension ErrorGenerating {
         }
         catch let error as ReportableError {
             if reasons.contains(where: {$0 === error.reason}) {
-                throw ConcreteReportableError(
+                throw ReportableError(
                     from: error.source,
                     by: perpitrator,
                     doing: doing ?? error.doing,
@@ -162,7 +184,7 @@ extension ErrorGenerating {
         }
         catch let error as ReportableError {
             if (types ?? [self]).contains(where: {$0 == error.source}) {
-                throw ConcreteReportableError(
+                throw ReportableError(
                     from: error.source,
                     by: perpitrator,
                     doing: doing ?? error.doing,
@@ -178,7 +200,7 @@ extension ErrorGenerating {
             return try execute()
         }
         catch let error as ReportableError {
-            throw ConcreteReportableError(
+            throw ReportableError(
                 from: error.source,
                 by: error.perpetrator,
                 doing: doing,
@@ -207,31 +229,5 @@ extension ErrorGenerating {
 
     public func executeWhileRephrasingErrors<Returning>(as doing: String, execute: () throws -> Returning) throws -> Returning {
         return try type(of: self).executeWhileRephrasingErrors(as: doing, execute: execute)
-    }
-}
-
-struct ConcreteReportableError: ReportableError, ErrorGenerating, Codable {
-    let perpetrator: ErrorPerpitrator
-    let doing: String
-    let reason: AnyErrorReason
-    let source: ErrorGenerating.Type
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: ReportableErrorCodingKeys.self)
-        self.perpetrator = try container.decodeIfPresent(ErrorPerpitrator.self, forKey: .perpitrator) ?? .system
-        self.doing = try container.decodeIfPresent(String.self, forKey: .doing) ?? ""
-        self.source = ConcreteReportableError.self
-        self.reason = ErrorReason(try container.decode(String.self, forKey: .message))
-    }
-
-    init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason) {
-        self.source = source
-        self.perpetrator = by
-        self.doing = doing
-        self.reason = because
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        try self.encodeStandard(to: encoder)
     }
 }

@@ -18,17 +18,3 @@ extension ErrorPerpitrator {
     }
 }
 
-enum ReportableErrorCodingKeys: String, CodingKey {
-    case message, doing, because, perpitrator
-}
-
-extension ReportableError {
-    public func encodeStandard(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: ReportableErrorCodingKeys.self)
-        try container.encode(self.description, forKey: .message)
-        try container.encode(self.doing, forKey: .doing)
-        try container.encode(self.reason.because, forKey: .because)
-        try container.encode(self.perpetrator, forKey: .perpitrator)
-    }
-}
-

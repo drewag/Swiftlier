@@ -15,7 +15,7 @@ extension ErrorGenerating {
     }
 
     public static func error(_ doing: String, because reason: AnyErrorReason) -> ReportableError {
-        return ConcreteReportableError(from: self, by: .system, doing: doing, because: reason)
+        return ReportableError(from: self, by: .system, doing: doing, because: reason)
     }
 
     public static func error(_ doing: String, from: Error) -> ReportableError {
@@ -44,7 +44,7 @@ extension ErrorGenerating {
     }
 
     public static func userError(_ doing: String, because reason: AnyErrorReason) -> ReportableError {
-        return ConcreteReportableError(from: self, by: .user, doing: doing, because: reason)
+        return ReportableError(from: self, by: .user, doing: doing, because: reason)
     }
 
     public func error(_ doing: String, because: String) -> ReportableError {

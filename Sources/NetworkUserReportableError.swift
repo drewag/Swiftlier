@@ -51,36 +51,26 @@ public class NetworkResponseErrorReason: AnyErrorReason {
     }
 }
 
-public struct NetworkError: ReportableError {
-    public let perpetrator: ErrorPerpitrator
-    public let doing: String
-    public let reason: AnyErrorReason
-    public let source: ErrorGenerating.Type
+open class NetworkError: ReportableError {
     public let status: HTTPStatus
 
-    enum CodingKeys: String, CodingKey {
+    enum NetworkCodingKeys: String, CodingKey {
         case status
     }
 
     public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason, status: HTTPStatus) {
-        self.source = source
-        self.perpetrator = by
-        self.doing = doing
-        self.reason = because
         self.status = status
+        super.init(from: source, by: by, doing: doing, because: because)
     }
 
     public init(from error: ReportableError, status: HTTPStatus) {
-        self.source = error.source
-        self.perpetrator = error.perpetrator
-        self.doing = error.doing
-        self.reason = error.reason
         self.status = status
+        super.init(from: error.source, by: error.perpetrator, doing: error.doing, because: error.reason)
     }
 
-    public func encode(to encoder: Encoder) throws {
-        try self.encodeStandard(to: encoder)
-        var container = encoder.container(keyedBy: CodingKeys.self)
+    open override func encode(to encoder: Encoder) throws {
+        try super.encode(to: encoder)
+        var container = encoder.container(keyedBy: NetworkCodingKeys.self)
         try container.encode(self.status.rawValue, forKey: .status)
     }
 }
@@ -122,7 +112,7 @@ extension ErrorGenerating {
         }
 
         let reason = ErrorReasonWithExtraInfo(because: parsed.because, extraInfo: parsed.json)
-        let error = ConcreteReportableError(from: self, by: parsed.perpitrator, doing: parsed.doing, because: reason)
+        let error = ReportableError(from: self, by: parsed.perpitrator, doing: parsed.doing, because: reason)
         return NetworkError(from: error, status: HTTPStatus(from: response))
     }
 

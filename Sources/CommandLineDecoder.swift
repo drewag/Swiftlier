@@ -9,7 +9,7 @@
 import Foundation
 
 public class CommandLineDecoder: Decoder {
-    public class func prompt<D: Decodable>(userInfo: [CodingUserInfoKey:Any]) throws -> D {
+    public class func prompt<D: Decodable>(userInfo: [CodingUserInfoKey:Any] = [:]) throws -> D {
         let decoder = CommandLineDecoder(userInfo: userInfo)
         return try D(from: decoder)
     }

@@ -13,7 +13,7 @@ public class SpecDecoder: Decoder {
     public let codingPath: [CodingKey] = []
     public let userInfo: [CodingUserInfoKey:Any]
 
-    public class func spec<D: Decodable>(forType: D.Type, userInfo: [CodingUserInfoKey:Any]) throws -> String {
+    public class func spec<D: Decodable>(forType: D.Type, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> String {
         let decoder = SpecDecoder(userInfo: userInfo)
 
         let _ = try D(from: decoder)
@@ -21,7 +21,7 @@ public class SpecDecoder: Decoder {
         return String(data: data, encoding: .utf8)!
     }
 
-    fileprivate init(userInfo: [CodingUserInfoKey:Any]) {
+    fileprivate init(userInfo: [CodingUserInfoKey:Any] = [:]) {
         self.userInfo = userInfo
     }
 
