@@ -96,6 +96,13 @@ final class JSONTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(codable.int, 4)
     }
 
+    func testEncode() throws {
+        let codable = TestCodable(string: "some", int: 4)
+        let json = try JSON(encodable: codable)
+        XCTAssertEqual(json["string"]?.string, "some")
+        XCTAssertEqual(json["int"]?.int, 4)
+    }
+
     static var allTests: [(String, (JSONTests) -> () throws -> Void)] {
         return [
             ("testInitFromData", testInitFromData),

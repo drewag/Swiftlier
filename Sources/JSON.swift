@@ -22,6 +22,16 @@ public struct JSON: NativeTypesStructured {
         self.object = object
     }
 
+    public init<E: Encodable>(encodable: E, purpose: EncodingPurpose = .saveLocally, userInfo: [CodingUserInfoKey:Any] = [:]) throws {
+        let encoder = JSONEncoder()
+        var userInfo = userInfo
+        userInfo[CodingOptions.encodingPurpose] = purpose
+        encoder.userInfo = userInfo
+        let data = try encoder.encode(encodable)
+        let object = try JSONSerialization.jsonObject(with: data, options: [])
+        self.init(object: object)
+    }
+
     public func data() throws -> Data {
         return try JSONSerialization.data(withJSONObject: self.object, options: [])
     }
