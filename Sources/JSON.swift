@@ -25,4 +25,12 @@ public struct JSON: NativeTypesStructured {
     public func data() throws -> Data {
         return try JSONSerialization.data(withJSONObject: self.object, options: [])
     }
+
+    public func decode<D: Decodable>(source: DecodingSource = .local, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> D {
+        let decoder = JSONDecoder()
+        var userInfo = userInfo
+        userInfo[CodingOptions.decodingSource] = source
+        decoder.userInfo = userInfo
+        return try decoder.decode(D.self, from: self.data())
+    }
 }

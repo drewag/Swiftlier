@@ -6,15 +6,31 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
-public enum EncodingPurpose {
+public protocol UserInfoConvertible {
+    var info: [CodingUserInfoKey:Any] {get}
+}
+
+public enum EncodingPurpose: UserInfoConvertible {
     case saveLocally
     case create
     case update
+
+    public var info: [CodingUserInfoKey:Any] {
+        return [
+            CodingOptions.encodingPurpose:self
+        ]
+    }
 }
 
-public enum DecodingSource {
+public enum DecodingSource: UserInfoConvertible {
     case local
     case remote
+
+    public var info: [CodingUserInfoKey:Any] {
+        return [
+            CodingOptions.encodingPurpose:self
+        ]
+    }
 }
 
 public struct CodingOptions {

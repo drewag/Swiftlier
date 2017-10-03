@@ -82,11 +82,26 @@ final class JSONTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertTrue(json["null"]?.object is NSNull)
     }
 
+    func testDecode() throws {
+        let jsonString = """
+            {
+                "string": "some",
+                "int": 4
+            }
+            """
+        let data = jsonString.data(using: .utf8)!
+        let json = try JSON(data: data)
+        let codable: TestCodable = try json.decode()
+        XCTAssertEqual(codable.string, "some")
+        XCTAssertEqual(codable.int, 4)
+    }
+
     static var allTests: [(String, (JSONTests) -> () throws -> Void)] {
         return [
             ("testInitFromData", testInitFromData),
             ("testInitFromObject", testInitFromObject),
             ("testData", testData),
+            ("testDecode", testDecode),
         ]
     }
 }
