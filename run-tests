@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $PLATFORM = "iOS" ]; then
+    xcodebuild test -project SwiftlieriOS.xcodeproj -scheme Swiftlier -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.0'
+else
+  ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
+fi
