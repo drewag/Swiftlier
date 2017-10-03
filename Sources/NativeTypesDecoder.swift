@@ -9,12 +9,6 @@
 import Foundation
 
 public final class NativeTypesDecoder: ErrorGenerating {
-    let raw: Any
-
-    init(raw: Any) {
-        self.raw = raw
-    }
-
     public class func decodable<E: Decodable>(from raw: Any, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> E {
         guard !(raw is NSNull) else {
             throw self.error("decoding a \(self)", because: "root value was null")

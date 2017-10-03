@@ -67,6 +67,7 @@ All Platforms
 - [x] AlwaysEqual
 - [x] Angle
 - [x] Array+Sorting
+- [ ] BinarySearchTree
 - [x] Bool+Formatting
 - [x] CGMath
 - [x] Coding+Helpers
@@ -76,6 +77,7 @@ All Platforms
 - [x] DataSourceType
 - [ ] Date+Formatting
 - [x] Date+Helpers
+- [x] Day
 - [x] Dictionary+Merging
 - [x] Double+Formatting
 - [x] EmailAddress
@@ -90,7 +92,7 @@ All Platforms
 - [x] JSON
 - [x] Mass
 - [x] MultiCallback
-- [ ] NativeTypesDecoder
+- [x] NativeTypesDecoder
 - [ ] NativeTypesEncoder
 - [x] NativeTypesStructured
 - [ ] NetworkUserReportableError
