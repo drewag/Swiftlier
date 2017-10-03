@@ -12,7 +12,6 @@
 		4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */; };
 		4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */; };
 		4935A5BA1EB1A4AD00B0CCF8 /* Swiftlier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */; };
-		4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5BE1EB1A4AD00B0CCF8 /* SwiftlierTests.swift */; };
 		4935A5C11EB1A4AD00B0CCF8 /* Swiftlier.h in Headers */ = {isa = PBXBuildFile; fileRef = 4935A5B31EB1A4AD00B0CCF8 /* Swiftlier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4935A63F1EB1A50600B0CCF8 /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5CB1EB1A50600B0CCF8 /* Age.swift */; };
 		4935A6401EB1A50600B0CCF8 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5CC1EB1A50600B0CCF8 /* Alert.swift */; };
@@ -178,7 +177,6 @@
 		4935A5B31EB1A4AD00B0CCF8 /* Swiftlier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftlier.h; sourceTree = "<group>"; };
 		4935A5B41EB1A4AD00B0CCF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4935A5B91EB1A4AD00B0CCF8 /* SwiftlierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftlierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4935A5BE1EB1A4AD00B0CCF8 /* SwiftlierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftlierTests.swift; sourceTree = "<group>"; };
 		4935A5C01EB1A4AD00B0CCF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4935A5CB1EB1A50600B0CCF8 /* Age.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
 		4935A5CC1EB1A50600B0CCF8 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 		4935A5BD1EB1A4AD00B0CCF8 /* SwiftlierTests */ = {
 			isa = PBXGroup;
 			children = (
-				4935A5BE1EB1A4AD00B0CCF8 /* SwiftlierTests.swift */,
 				4935A5C01EB1A4AD00B0CCF8 /* Info.plist */,
 				4935A6CB1EB1A52E00B0CCF8 /* SwiftlierTests */,
 			);
@@ -783,7 +780,6 @@
 				49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */,
 				49EB68D31F7B728F00D89D40 /* HeartRateFormatterTests.swift in Sources */,
 				49EB68CB1F7B692F00D89D40 /* Double_FormattingTests.swift in Sources */,
-				4935A5BF1EB1A4AD00B0CCF8 /* SwiftlierTests.swift in Sources */,
 				4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */,
 				49B730DB1ECCB00F006EE42B /* Date_HelpersTests.swift in Sources */,
 				496BB90B1EB5003A00D60ECF /* AgeTests.swift in Sources */,
