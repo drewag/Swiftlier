@@ -26,6 +26,7 @@ XCTMain([
     testCase(MassTests.allTests),
     testCase(MultiCallbackTests.allTests),
     testCase(NativeTypesDecoderTests.allTests),
+    testCase(NativeTypesEncoderTests.allTests),
     testCase(ObservableTests.allTests),
     testCase(PatchyRangeTests.allTests),
     testCase(Path_CodingTests.allTests),

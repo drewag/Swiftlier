@@ -93,7 +93,7 @@ All Platforms
 - [x] Mass
 - [x] MultiCallback
 - [x] NativeTypesDecoder
-- [ ] NativeTypesEncoder
+- [x] NativeTypesEncoder
 - [x] NativeTypesStructured
 - [ ] NetworkUserReportableError
 - [x] Observable
