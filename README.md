@@ -95,8 +95,7 @@ Code Coverage
 - [x] HTTPStatus
 - [x] HeartRateFormatter
 - [x] Int+Random
-- [ ] JSON+Encoding
-- [ ] JSON
+- [x] JSON
 - [ ] KeyboardConstraintAdjuster
 - [ ] LimitedSizeViewController
 - [x] Mass
@@ -162,6 +161,6 @@ Code Coverage
 - [ ] ValueTypePersistenceService
 - [ ] WeakWrapper
 - [ ] WebViewController
-- [ ] XML
+- [x] XML
 - [ ] ZipFilePath
 - [ ] ZoomThroughTransition

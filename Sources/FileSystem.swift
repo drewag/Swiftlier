@@ -16,6 +16,7 @@ public protocol FileSystemReference {
 public struct FileSystem: ErrorGenerating {
     public static let `default` = FileSystem()
 
+    #if os(iOS)
     public var documentsDirectory: DirectoryPath {
         let url = try! self.manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return try! self.createDirectoryIfNotExists(at: url)
@@ -30,6 +31,7 @@ public struct FileSystem: ErrorGenerating {
         let url = try! self.manager.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return try! self.createDirectoryIfNotExists(at: url)
     }
+    #endif
 
     public var workingDirectory: DirectoryPath {
         let path = self.path(from: URL(fileURLWithPath: ""))

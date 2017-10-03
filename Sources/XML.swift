@@ -23,7 +23,12 @@ public struct XML: NativeTypesStructured {
         let delegate = ParserDelegate()
         parser.delegate = delegate
         guard parser.parse(), let object = delegate.object else {
-            throw XML.error("parsing xml", because: "of an unknown reason")
+            if let error = parser.parserError {
+                throw XML.error("parsing xml", from: error)
+            }
+            else {
+                throw XML.error("parsing xml", because: "of an unknown reason")
+            }
         }
         self.object = object
     }
@@ -35,6 +40,10 @@ public struct XML: NativeTypesStructured {
 
 extension XML.ParserDelegate: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        if let last = self.workingValues.last, last.value is String {
+            let _ = self.workingValues.popLast()
+            self.workingValues.append((key: last.key, value: nil))
+        }
         self.workingValues.append((key: elementName, value: nil))
     }
 
@@ -43,12 +52,18 @@ extension XML.ParserDelegate: XMLParserDelegate {
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        let (finalKey, possibleFinalValue) = self.workingValues.popLast()!
-        guard let finalValue = possibleFinalValue else {
+        guard let (finalKey, possibleFinalValue) = self.workingValues.popLast() else {
             return
         }
 
-        let (key, value) = self.workingValues.popLast()!
+        guard let finalValue = possibleFinalValue
+            , let (key, value) = self.workingValues.popLast()
+            else
+        {
+            self.workingValues.append((finalKey, possibleFinalValue))
+            return
+        }
+
         switch value {
         case nil:
             self.workingValues.append((key, [finalKey:finalValue]))
@@ -63,15 +78,24 @@ extension XML.ParserDelegate: XMLParserDelegate {
         case var array as [Any]:
             array.append(finalValue)
             self.workingValues.append((key: key, value: array))
+        case let string as String:
+            self.workingValues.append((key: key, value: [string]))
         default:
-            fatalError("Unexpected value")
+            fatalError("Unexpected value: \(value ?? "nil")")
         }
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        let (_, value) = self.workingValues.last!
-        if let value = value as? String {
-            self.workingValues[self.workingValues.count - 1].value = value + string
+        guard let (_, value) = self.workingValues.last else {
+            return
+        }
+        if let value = value {
+            if let oldString = value as? String {
+                self.workingValues[self.workingValues.count - 1].value = oldString + string
+            }
+            else {
+                return
+            }
         }
         else {
             self.workingValues[self.workingValues.count - 1].value = string

@@ -125,6 +125,8 @@
 		493C45B71EB648020022E008 /* AngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C45B61EB648020022E008 /* AngleTests.swift */; };
 		493C45EB1EB679270022E008 /* DiagonalGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C45EA1EB679270022E008 /* DiagonalGradientView.swift */; };
 		493C45F11EB6A1770022E008 /* CircleBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C45F01EB6A1770022E008 /* CircleBorderView.swift */; };
+		494740771F8326E400AC2EEA /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494740761F8326E400AC2EEA /* JSONTests.swift */; };
+		494740791F832B7E00AC2EEA /* XMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494740781F832B7E00AC2EEA /* XMLTests.swift */; };
 		494B59A61F80816900D22FA5 /* Coding_HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B59A51F80816900D22FA5 /* Coding_HelpersTests.swift */; };
 		496074881EDFCFCF0051880F /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496074871EDFCFCF0051880F /* BinarySearchTree.swift */; };
 		4960748B1EDFF43C0051880F /* BinarySearchTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */; };
@@ -290,6 +292,8 @@
 		493C45B61EB648020022E008 /* AngleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleTests.swift; sourceTree = "<group>"; };
 		493C45EA1EB679270022E008 /* DiagonalGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagonalGradientView.swift; sourceTree = "<group>"; };
 		493C45F01EB6A1770022E008 /* CircleBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleBorderView.swift; sourceTree = "<group>"; };
+		494740761F8326E400AC2EEA /* JSONTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTests.swift; sourceTree = "<group>"; };
+		494740781F832B7E00AC2EEA /* XMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTests.swift; sourceTree = "<group>"; };
 		494B59A51F80816900D22FA5 /* Coding_HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding_HelpersTests.swift; sourceTree = "<group>"; };
 		496074871EDFCFCF0051880F /* BinarySearchTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeTests.swift; sourceTree = "<group>"; };
@@ -538,6 +542,8 @@
 				49EB68D21F7B728F00D89D40 /* HeartRateFormatterTests.swift */,
 				49EB68D41F7B742500D89D40 /* Int_RandomTests.swift */,
 				494B59A51F80816900D22FA5 /* Coding_HelpersTests.swift */,
+				494740761F8326E400AC2EEA /* JSONTests.swift */,
+				494740781F832B7E00AC2EEA /* XMLTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -786,6 +792,7 @@
 				496FBED11EB98D01006AD5AC /* CGMathTests.swift in Sources */,
 				4935A6DF1EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift in Sources */,
 				4935A6D71EB1A52E00B0CCF8 /* DataSourceTypeTests.swift in Sources */,
+				494740791F832B7E00AC2EEA /* XMLTests.swift in Sources */,
 				496BB90D1EB5047E00D60ECF /* AlertTests.swift in Sources */,
 				496FBECD1EB98578006AD5AC /* Array_SortingTests.swift in Sources */,
 				4935A6D91EB1A52E00B0CCF8 /* EmailAddressTests.swift in Sources */,
@@ -804,6 +811,7 @@
 				499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */,
 				49D878501EE2146D0068836C /* PatchyRangeTests.swift in Sources */,
 				4935A6D81EB1A52E00B0CCF8 /* Dictionary_MergingTests.swift in Sources */,
+				494740771F8326E400AC2EEA /* JSONTests.swift in Sources */,
 				496FBECF1EB98A6C006AD5AC /* Bool_Formatting.swift in Sources */,
 				49DB23CA1EBA597200CFF9BF /* Data_Base64Tests.swift in Sources */,
 				49EB68D11F7B6CD800D89D40 /* HTTPStatusTests.swift in Sources */,
