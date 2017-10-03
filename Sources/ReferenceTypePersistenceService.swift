@@ -6,7 +6,6 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
-#if os(iOS)
 import Foundation
 
 open class ReferencePersistenceService<Value: Codable>: PersistenceService<Value>, ErrorGenerating where Value: AnyObject {
@@ -38,4 +37,3 @@ open class ReferencePersistenceService<Value: Codable>: PersistenceService<Value
         throw self.error("deleting \(self.valueName.lowercased())", because: "\(self.valueName) could not be not found")
     }
 }
-#endif

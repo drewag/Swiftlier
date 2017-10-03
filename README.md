@@ -59,16 +59,16 @@ High Level Tasks
 Code Coverage
 ==============
 
+All Platforms
+-----------
+
 - [x] Age
 - [x] Alert
 - [x] AlwaysEqual
 - [x] Angle
 - [x] Array+Sorting
 - [x] Bool+Formatting
-- [ ] BubbleView
-- [ ] CGContext+ThreadSafe
 - [x] CGMath
-- [ ] CircleBorderView
 - [x] Coding+Helpers
 - [ ] CommandLineDecoder
 - [x] Data+Base64
@@ -76,72 +76,88 @@ Code Coverage
 - [x] DataSourceType
 - [ ] Date+Formatting
 - [x] Date+Helpers
-- [ ] DatePickerViewController
-- [ ] DiagonalGradientView
 - [x] Dictionary+Merging
-- [ ] DispatchQueue+Helpers
 - [x] Double+Formatting
-- [ ] Email
 - [x] EmailAddress
-- [ ] EnergyFormatting
 - [x] Enum+Convenience
 - [ ] ErrorGenerating+ErrorFactory
 - [x] EventCenter
 - [ ] FileSystem
-- [ ] Float+Factory
-- [ ] Form
-- [ ] FormViewController
 - [x] HTML
 - [x] HTTPStatus
 - [x] HeartRateFormatter
 - [x] Int+Random
 - [x] JSON
-- [ ] KeyboardConstraintAdjuster
-- [ ] LimitedSizeViewController
 - [x] Mass
-- [ ] Menu
-- [ ] MenuViewController
-- [ ] MonthAndYearPicker
 - [x] MultiCallback
-- [ ] NSLayoutConstraint+SwifPlusPlus
-- [ ] NSLayoutContraint+Factory
 - [ ] NativeTypesDecoder
 - [ ] NativeTypesEncoder
-- [ ] NativeTypesStructured
+- [x] NativeTypesStructured
 - [ ] NetworkUserReportableError
 - [x] Observable
 - [ ] ObservableArray
 - [ ] ObservableDictionary
 - [ ] ObservableReference
 - [ ] OrderedDictionary
-- [ ] PassThroughTouchView
 - [x] PatchyRange
 - [x] Path+Coding
 - [x] Path
 - [ ] PercentEncodable
 - [x] PersistenceService
-- [ ] PlaceholderTextView
 - [ ] Price
 - [ ] PrioritizedOperationQueue
 - [ ] ReferenceTypePersistenceService
 - [ ] ReportableError+Coding
 - [ ] ReportableError
-- [ ] RoundedBorderButton
-- [ ] RoundedBorderView
-- [ ] SelectListViewController
 - [ ] SelectableValue
 - [ ] SequenceType+Helpers
-- [ ] ShadowView
-- [ ] ShellCommand
 - [ ] SpecDecoder
 - [x] String+Helpers
 - [ ] String+Random
-- [ ] Structured
+- [x] Structured
 - [ ] Syncable
-- [ ] TaskService
-- [ ] ThinLayoutConstraint
 - [ ] TimeInterval+Formatting
 - [ ] Transformation
+- [ ] URL+Helpers
+- [ ] ValueTypePersistenceService
+- [ ] WeakWrapper
+- [x] XML
+
+macOS and Linux only
+-----------
+
+- [ ] Email
+- [ ] ShellCommand
+- [ ] ZipFilePath
+
+iOS Only
+-----------
+
+- [ ] BubbleView
+- [ ] CGContext+ThreadSafe
+- [ ] CircleBorderView
+- [ ] DatePickerViewController
+- [ ] DiagonalGradientView
+- [ ] DispatchQueue+Helpers
+- [ ] EnergyFormatting
+- [ ] Float+Factory
+- [ ] Form
+- [ ] FormViewController
+- [ ] KeyboardConstraintAdjuster
+- [ ] LimitedSizeViewController
+- [ ] Menu
+- [ ] MenuViewController
+- [ ] MonthAndYearPicker
+- [ ] NSLayoutConstraint+SwifPlusPlus
+- [ ] NSLayoutContraint+Factory
+- [ ] PassThroughTouchView
+- [ ] PlaceholderTextView
+- [ ] RoundedBorderButton
+- [ ] RoundedBorderView
+- [ ] SelectListViewController
+- [ ] ShadowView
+- [ ] TaskService
+- [ ] ThinLayoutConstraint
 - [ ] UIBarButtonItem+BlockTarget
 - [ ] UIButton+BlockTarget
 - [ ] UICollectionView+EasyRegister
@@ -157,10 +173,5 @@ Code Coverage
 - [ ] UIViewController+Helpers
 - [ ] UIViewController+PhotoViewing
 - [ ] UIViewController+Transitions
-- [ ] URL+Helpers
-- [ ] ValueTypePersistenceService
-- [ ] WeakWrapper
 - [ ] WebViewController
-- [x] XML
-- [ ] ZipFilePath
 - [ ] ZoomThroughTransition

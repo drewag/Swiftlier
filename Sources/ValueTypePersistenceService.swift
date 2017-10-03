@@ -10,7 +10,6 @@ public protocol InstanceEquatable {
     func isSameInstanceAs(_ other: Self) -> Bool
 }
 
-#if os(iOS)
 import Foundation
 
 open class ValueTypePersistenceService<Value: Codable>: PersistenceService<Value>, ErrorGenerating where Value: InstanceEquatable, Value: Equatable {
@@ -65,4 +64,4 @@ open class ValueTypePersistenceService<Value: Codable>: PersistenceService<Value
         self.values = values
     }
 }
-#endif
+
