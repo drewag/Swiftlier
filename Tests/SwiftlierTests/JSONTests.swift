@@ -109,6 +109,7 @@ final class JSONTests: XCTestCase, LinuxEnforcedTestCase {
             ("testInitFromObject", testInitFromObject),
             ("testData", testData),
             ("testDecode", testDecode),
+            ("testEncode", testEncode),
         ]
     }
 }
