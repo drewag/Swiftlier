@@ -160,6 +160,7 @@
 		49EB68D31F7B728F00D89D40 /* HeartRateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68D21F7B728F00D89D40 /* HeartRateFormatterTests.swift */; };
 		49EB68D51F7B742500D89D40 /* Int_RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB68D41F7B742500D89D40 /* Int_RandomTests.swift */; };
 		49F62F151EE8DFD50090D158 /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F62F131EE8DFD20090D158 /* DayTests.swift */; };
+		49F7ED411F868B9C00EFB5EF /* UniquelyIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7ED401F868B9C00EFB5EF /* UniquelyIdentifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -329,6 +330,7 @@
 		49EB68D21F7B728F00D89D40 /* HeartRateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateFormatterTests.swift; sourceTree = "<group>"; };
 		49EB68D41F7B742500D89D40 /* Int_RandomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_RandomTests.swift; sourceTree = "<group>"; };
 		49F62F131EE8DFD20090D158 /* DayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
+		49F7ED401F868B9C00EFB5EF /* UniquelyIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniquelyIdentifiable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,6 +506,7 @@
 				4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */,
 				491CBC621F7EDB5300E117EB /* CodingPurpose.swift */,
 				496841B51F8008D5001562EC /* Coding+Helpers.swift */,
+				49F7ED401F868B9C00EFB5EF /* UniquelyIdentifiable.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -750,6 +753,7 @@
 				4935A6601EB1A50600B0CCF8 /* EventCenter.swift in Sources */,
 				4935A63F1EB1A50600B0CCF8 /* Age.swift in Sources */,
 				4935A6681EB1A50600B0CCF8 /* FormViewController.swift in Sources */,
+				49F7ED411F868B9C00EFB5EF /* UniquelyIdentifiable.swift in Sources */,
 				4935A6A61EB1A50600B0CCF8 /* UIView+Helpers.swift in Sources */,
 				4935A6701EB1A50600B0CCF8 /* LimitedSizeViewController.swift in Sources */,
 				4935A69F1EB1A50600B0CCF8 /* UIButton+BlockTarget.swift in Sources */,
@@ -892,6 +896,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -944,6 +949,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -965,7 +971,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.drewag.Swiftlier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -983,7 +988,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.drewag.Swiftlier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -995,7 +999,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.drewag.SwiftlierTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1007,7 +1010,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.drewag.SwiftlierTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
