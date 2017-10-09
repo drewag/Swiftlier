@@ -22,6 +22,8 @@ extension ErrorGenerating {
         switch from {
         case let reportable as ReportableError:
             return reportable
+        case let convertible as ReportableErrorConvertible:
+            return convertible.reportableError
         case let nsError as NSError where nsError.domain == "NSURLErrorDomain":
             switch nsError.code {
             case -1009:
