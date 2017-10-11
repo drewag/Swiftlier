@@ -10,49 +10,85 @@ public protocol UserInfoConvertible {
     var info: [CodingUserInfoKey:Any] {get}
 }
 
-public enum EncodingPurpose: UserInfoConvertible {
-    case saveLocally
+public enum CodingPurpose: UserInfoConvertible {
     case create
     case update
+    case replace
 
     public var info: [CodingUserInfoKey:Any] {
         return [
-            CodingOptions.encodingPurpose:self
+            CodingOptions.codingPurpose:self
         ]
     }
 }
 
-public enum DecodingSource: UserInfoConvertible {
+public enum CodingLocation: UserInfoConvertible {
     case local
     case remote
 
     public var info: [CodingUserInfoKey:Any] {
         return [
-            CodingOptions.encodingPurpose:self
+            CodingOptions.codingLocation:self
         ]
     }
 }
 
 public struct CodingOptions {
-    public static let encodingPurpose = CodingUserInfoKey(rawValue: "swiftlier.encodingPurpose")!
-    public static let decodingSource = CodingUserInfoKey(rawValue: "swiftlier.decodingSource")!
+    public static let codingPurpose = CodingUserInfoKey(rawValue: "swiftlier.codingPurpose")!
+    public static let codingLocation = CodingUserInfoKey(rawValue: "swiftlier.codingLocation")!
 }
 
 extension Encoder {
-    public var purpose: EncodingPurpose {
-        guard let mode = self.userInfo[CodingOptions.encodingPurpose] as? EncodingPurpose else {
-            return .saveLocally
-        }
-        return mode
+    public var purpose: CodingPurpose {
+        return self.userInfo.purpose ?? .create
+    }
+
+    public var destination: CodingLocation {
+        return self.userInfo.location ?? .local
     }
 }
 
 extension Decoder {
-    public var source: DecodingSource {
-        guard let mode = self.userInfo[CodingOptions.decodingSource] as? DecodingSource else {
-            return .local
+    public var purpose: CodingPurpose {
+        return self.userInfo.purpose ?? .create
+    }
+
+    public var source: CodingLocation {
+        return self.userInfo.location ?? .local
+    }
+}
+
+extension Dictionary where Key == CodingUserInfoKey, Value == Any {
+    public mutating func set(purposeDefault purpose: CodingPurpose) {
+        if self.purpose == nil {
+            self.purpose = purpose
         }
-        return mode
+    }
+
+    public var purpose: CodingPurpose? {
+        get {
+            return self[CodingOptions.codingPurpose] as? CodingPurpose
+        }
+
+        set {
+            self[CodingOptions.codingPurpose] = newValue
+        }
+    }
+
+    public mutating func set(locationDefault location: CodingLocation) {
+        if self.location == nil {
+            self.location = location
+        }
+    }
+
+    public var location: CodingLocation? {
+        get{
+            return self[CodingOptions.codingLocation] as? CodingLocation
+        }
+
+        set {
+            self[CodingOptions.codingLocation] = newValue
+        }
     }
 }
 

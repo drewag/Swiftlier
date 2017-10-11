@@ -245,21 +245,24 @@ enum SyncableCodingKeys: String, CodingKey {
 
 extension Syncable: Encodable {
     public func encode(to encoder: Encoder) throws {
-        switch encoder.purpose {
-        case .saveLocally:
+        switch encoder.destination {
+        case .local:
             var container = encoder.container(keyedBy: SyncableCodingKeys.self)
             try container.encode(self.value, forKey: .value)
             try container.encode(self.remoteValue, forKey: .remoteValue)
             try container.encode(self.lastLocalChanged?.iso8601DateTime, forKey: .lastLocalChanged)
             try container.encode(self.lastRemoteChanged?.iso8601DateTime, forKey: .lastRemoteChanged)
-        case .update:
-            if self.isDifferentLocally {
+        case .remote:
+            switch encoder.purpose {
+            case .update:
+                if self.isDifferentLocally {
+                    var container = encoder.singleValueContainer()
+                    try container.encode(self.value)
+                }
+            case .create, .replace:
                 var container = encoder.singleValueContainer()
                 try container.encode(self.value)
             }
-        case .create:
-            var container = encoder.singleValueContainer()
-            try container.encode(self.value)
         }
     }
 }
@@ -340,21 +343,24 @@ fileprivate extension Syncable {
 
 extension SyncableOptional: Encodable {
     public func encode(to encoder: Encoder) throws {
-        switch encoder.purpose {
-        case .saveLocally:
+        switch encoder.destination {
+        case .local:
             var container = encoder.container(keyedBy: SyncableCodingKeys.self)
             try container.encode(self.value, forKey: .optionalValue)
             try container.encode(self.remoteValue, forKey: .remoteValue)
             try container.encode(self.lastLocalChanged?.iso8601DateTime, forKey: .lastLocalChanged)
             try container.encode(self.lastRemoteChanged?.iso8601DateTime, forKey: .lastRemoteChanged)
-        case .update:
-            if self.isDifferentLocally {
+        case .remote:
+            switch encoder.purpose {
+            case .update:
+                if self.isDifferentLocally {
+                    var container = encoder.singleValueContainer()
+                    try container.encode(self.value)
+                }
+            case .create, .replace:
                 var container = encoder.singleValueContainer()
                 try container.encode(self.value)
             }
-        case .create:
-            var container = encoder.singleValueContainer()
-            try container.encode(self.value)
         }
     }
 }

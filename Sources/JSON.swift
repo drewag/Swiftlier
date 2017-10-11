@@ -22,11 +22,11 @@ public struct JSON: NativeTypesStructured {
         self.object = object
     }
 
-    public init<E: Encodable>(encodable: E, purpose: EncodingPurpose = .saveLocally, userInfo: [CodingUserInfoKey:Any] = [:]) throws {
+    public init<E: Encodable>(encodable: E, destination: CodingLocation = .local, purpose: CodingPurpose = .create, userInfo: [CodingUserInfoKey:Any] = [:]) throws {
         let encoder = JSONEncoder()
-        var userInfo = userInfo
-        userInfo[CodingOptions.encodingPurpose] = purpose
         encoder.userInfo = userInfo
+        encoder.userInfo.set(purposeDefault: purpose)
+        encoder.userInfo.set(locationDefault: destination)
         let data = try encoder.encode(encodable)
         let object = try JSONSerialization.jsonObject(with: data, options: [])
         self.init(object: object)
@@ -36,11 +36,11 @@ public struct JSON: NativeTypesStructured {
         return try JSONSerialization.data(withJSONObject: self.object, options: [])
     }
 
-    public func decode<D: Decodable>(source: DecodingSource = .local, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> D {
+    public func decode<D: Decodable>(source: CodingLocation = .local, purpose: CodingPurpose = .create, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> D {
         let decoder = JSONDecoder()
-        var userInfo = userInfo
-        userInfo[CodingOptions.decodingSource] = source
         decoder.userInfo = userInfo
+        decoder.userInfo.set(purposeDefault: purpose)
+        decoder.userInfo.set(locationDefault: source)
         return try decoder.decode(D.self, from: self.data())
     }
 }
