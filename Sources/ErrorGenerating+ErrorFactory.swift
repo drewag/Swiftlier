@@ -33,6 +33,37 @@ extension ErrorGenerating {
             default:
                 break
             }
+        case let error as DecodingError:
+            switch error {
+            case .dataCorrupted(let context):
+                let path = context.codingPath.map({$0.stringValue}).joined(separator: ".")
+                return self.error(doing, because: "the value at \(path) is corrupted. More information: `\(context.debugDescription)`")
+            case .keyNotFound(let key, let context):
+                if context.codingPath.isEmpty {
+                    return self.error(doing, because: "the key for \(key.stringValue) was not found. More information: `\(context.debugDescription)`")
+                }
+                else {
+                    let path = context.codingPath.map({$0.stringValue}).joined(separator: ".")
+                    return self.error(doing, because: "the key at \(path) for \(key.stringValue) was not found. More information: `\(context.debugDescription)`")
+                }
+            case .valueNotFound(let type, let context):
+                if context.codingPath.isEmpty {
+                    return self.error(doing, because: "the value for \(type) was not found. More information: `\(context.debugDescription)`")
+                }
+                else {
+                    let path = context.codingPath.map({$0.stringValue}).joined(separator: ".")
+                    return self.error(doing, because: "the value at \(path) for \(type) was not found. More information: `\(context.debugDescription)`")
+                }
+            case .typeMismatch(let type, let context):
+                let path = context.codingPath.map({$0.stringValue}).joined(separator: ".")
+                return self.error(doing, because: "the value at \(path) is not an \(type). More information: `\(context.debugDescription)`")
+            }
+        case let error as EncodingError:
+            switch error {
+            case .invalidValue(let value, let context):
+                let path = context.codingPath.map({$0.stringValue}).joined(separator: ".")
+                return self.error(doing, because: "the value (\(value)) at \(path) is invalid. More information: `\(context.debugDescription)`")
+            }
         default:
             break
         }
