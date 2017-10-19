@@ -19,25 +19,40 @@ public enum PopoverPosition {
 
 extension UIViewController {
     @discardableResult
-    public func present(popoverViewController viewController: UIViewController, from sourceBarButtonItem: UIBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection = .any) -> UIPopoverPresentationController {
+    public func present(
+        popoverViewController viewController: UIViewController,
+        from sourceBarButtonItem: UIBarButtonItem,
+        permittedArrowDirections: UIPopoverArrowDirection = .any,
+        delegate: UIPopoverPresentationControllerDelegate? = nil
+        ) -> UIPopoverPresentationController
+    {
         viewController.modalPresentationStyle = .popover
 
-        self.present(viewController, animated: true, completion: nil)
-
+        viewController.popoverPresentationController!.delegate = delegate
         viewController.popoverPresentationController!.permittedArrowDirections = permittedArrowDirections
         viewController.popoverPresentationController!.barButtonItem = sourceBarButtonItem
+
+        self.present(viewController, animated: true, completion: nil)
 
         return viewController.popoverPresentationController!
     }
 
     @discardableResult
-    public func present(popoverViewController viewController: UIViewController, fromSourceView sourceView: UIView, permittedArrowDirections: UIPopoverArrowDirection = .any, position: PopoverPosition = .default) -> UIPopoverPresentationController {
+    public func present(
+        popoverViewController viewController: UIViewController,
+        fromSourceView sourceView: UIView,
+        permittedArrowDirections: UIPopoverArrowDirection = .any,
+        position: PopoverPosition = .default,
+        delegate: UIPopoverPresentationControllerDelegate? = nil
+        ) -> UIPopoverPresentationController
+    {
         viewController.modalPresentationStyle = .popover
 
         self.present(viewController, animated: true, completion: nil)
 
         viewController.popoverPresentationController!.permittedArrowDirections = permittedArrowDirections
         viewController.popoverPresentationController!.sourceView = sourceView
+        viewController.popoverPresentationController!.delegate = delegate
 
         switch position {
         case .default:
