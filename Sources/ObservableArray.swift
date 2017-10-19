@@ -267,25 +267,31 @@ public final class ObservableArray<Element> {
 }
 
 extension ObservableArray {
-    public func remove(where passes: (Element) throws -> Bool) rethrows {
+    @discardableResult
+    public func remove(where passes: (Element) throws -> Bool) rethrows -> Int?  {
         guard let index = try self.values.index(where: passes) else {
-            return
+            return nil
         }
 
         self.remove(at: index)
+        return index
     }
 
-    public func replace(where passes: (Element) throws -> Bool, with element: Element) rethrows {
+    @discardableResult
+    public func replace(where passes: (Element) throws -> Bool, with element: Element) rethrows -> Int? {
         guard let index = try self.values.index(where: passes) else {
-            return
+            return nil
         }
 
         self.replace(elementAt: index, with: element)
+        return index
     }
 
-    public func insert(_ element: Element, after passing: (Element) throws -> Bool) rethrows {
+    @discardableResult
+    public func insert(_ element: Element, after passing: (Element) throws -> Bool) rethrows -> Int {
         let index = try self.values.index(where: passing) ?? self.values.count - 1
         self.insert(element, at: index + 1)
+        return index + 1
     }
 }
 
