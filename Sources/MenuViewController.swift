@@ -10,51 +10,72 @@
 import UIKit
 import MessageUI
 
-class MenuViewController: UITableViewController {
+public class MenuViewController: UITableViewController {
     static let ReuseIdentifier = "Cell"
+    static let font = UIFont.systemFont(ofSize: 17)
 
     let menu: Menu
 
-    init(menu: Menu) {
+    public init(menu: Menu) {
         self.menu = menu
-        super.init(style: .grouped)
+
+        let hasSingleUnnamedSection = (menu.sections.count == 1 && menu.sections[0].name == nil)
+        super.init(style: hasSingleUnnamedSection ? .plain : .grouped)
+
+        if hasSingleUnnamedSection {
+            var textWidth: CGFloat = 50
+            for item in menu.sections[0].items {
+                let size = (item.displayText() as NSString).size(withAttributes: [.font: MenuViewController.font])
+                textWidth = max(textWidth, size.width)
+            }
+            self.preferredContentSize = CGSize(
+                width: textWidth + 81,
+                height: CGFloat(menu.sections[0].items.count * 44)
+            )
+        }
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: MenuViewController.ReuseIdentifier)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.tableView.isScrollEnabled = size.height > self.tableView.bounds.height
     }
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.menu.section.count
+    public override func numberOfSections(in tableView: UITableView) -> Int {
+        return self.menu.sections.count
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = self.menu.section[section]
-        return section.name.uppercased()
+    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = self.menu.sections[section]
+        return section.name?.uppercased()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.menu.section[section].items.count
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.menu.sections[section].items.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuViewController.ReuseIdentifier, for: indexPath)
 
         let menuItem = self.menuItem(for: indexPath)
         cell.textLabel?.text = menuItem.displayText()
+        cell.textLabel?.font = type(of: self).font
         cell.imageView?.image = menuItem.icon
-        switch menuItem.type {
-        case .html(_):
+        switch menuItem.action {
+        case .html:
             cell.accessoryType = .disclosureIndicator
-        case .email(_), .externalURL(_):
+        case .email, .externalURL, .callback:
             break
         }
 
@@ -63,9 +84,9 @@ class MenuViewController: UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menuItem = self.menuItem(for: indexPath)
-        switch menuItem.type {
+        switch menuItem.action {
         case let .email(address, subject):
             let viewController = MFMailComposeViewController()
             viewController.setSubject(subject)
@@ -97,19 +118,23 @@ class MenuViewController: UITableViewController {
                 transition: NavigationPushTransition()
             )
             break
+        case let .callback(callback):
+            callback({ [weak self] completion in
+                self?.dismiss(animated: true, completion: completion)
+            })
         }
     }
 }
 
 extension MenuViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.transitionBack(animated: true, onComplete: nil)
     }
 }
 
 private extension MenuViewController {
     func menuItem(for indexPath: IndexPath) -> MenuItem {
-        return self.menu.section[indexPath.section].items[indexPath.row]
+        return self.menu.sections[indexPath.section].items[indexPath.row]
     }
 }
 #endif
