@@ -24,10 +24,28 @@ class ActionBlockTarget: NSObject {
     }
 }
 
+class ButtonItemActionBlockTarget: NSObject {
+    let block: (UIBarButtonItem) -> ()
+
+    init(block: @escaping (UIBarButtonItem) -> ()) {
+        self.block = block
+    }
+
+    @objc func handleBlockCall(item: UIBarButtonItem) {
+        block(item)
+    }
+}
+
 extension UIBarButtonItem {
     public convenience init(barButtonSystemItem systemItem: UIBarButtonSystemItem, target: @escaping () -> ()) {
         let target = ActionBlockTarget(block: target)
         self.init(barButtonSystemItem: systemItem, target: target, action: #selector(ActionBlockTarget.handleBlockCall))
+        objc_setAssociatedObject(self, &ActionBlockKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+
+    public convenience init(barButtonSystemItem systemItem: UIBarButtonSystemItem, target: @escaping (UIBarButtonItem) -> ()) {
+        let target = ButtonItemActionBlockTarget(block: target)
+        self.init(barButtonSystemItem: systemItem, target: target, action: #selector(ButtonItemActionBlockTarget.handleBlockCall))
         objc_setAssociatedObject(self, &ActionBlockKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
