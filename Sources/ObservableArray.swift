@@ -277,6 +277,14 @@ extension ObservableArray {
         return index
     }
 
+    public func removeAll(where passes: (Element) throws -> Bool) rethrows  {
+        for (index, value) in self.values.enumerated().reversed() {
+            if try passes(value) {
+                self.remove(at: index)
+            }
+        }
+    }
+
     @discardableResult
     public func replace(where passes: (Element) throws -> Bool, with element: Element) rethrows -> Int? {
         guard let index = try self.values.index(where: passes) else {
