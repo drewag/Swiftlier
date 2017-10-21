@@ -23,6 +23,15 @@ extension UIView {
         view.constrainToCenter(of: self)
     }
 
+    public var crossPlatformSafeLayoutGuide: UILayoutGuide {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide
+        }
+        else {
+            return self.layoutMarginsGuide
+        }
+    }
+
     @available(*, deprecated, message: "Use UIView constraint extension instead")
     public func addConstraint(forWidth width: CGFloat) {
         self.addConstraint(NSLayoutConstraint(width: width, of: self))
