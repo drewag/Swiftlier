@@ -15,6 +15,8 @@ public class MenuViewController: UITableViewController {
     static let font = UIFont.systemFont(ofSize: 17)
 
     let menu: Menu
+    public var textColor = UIColor.black
+    public var selectionColor: UIColor?
 
     public init(menu: Menu) {
         self.menu = menu
@@ -69,9 +71,15 @@ public class MenuViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuViewController.ReuseIdentifier, for: indexPath)
 
         let menuItem = self.menuItem(for: indexPath)
+        cell.textLabel?.textColor = self.textColor
         cell.textLabel?.text = menuItem.displayText()
         cell.textLabel?.font = type(of: self).font
         cell.imageView?.image = menuItem.icon
+        cell.backgroundColor = tableView.backgroundColor
+        if let color = self.selectionColor {
+            cell.selectedBackgroundView = UIView()
+            cell.selectedBackgroundView?.backgroundColor = color
+        }
         switch menuItem.action {
         case .html:
             cell.accessoryType = .disclosureIndicator
