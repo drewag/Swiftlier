@@ -22,7 +22,7 @@ open class LayeredTableViewController: UIViewController {
     fileprivate var bottomTableViewDelegate: UITableViewDelegate?
     fileprivate var baseBottomInset: CGFloat = 0
     fileprivate var openGestureRecognizer: UITapGestureRecognizer!
-    fileprivate var isFirstAppearence: Bool = true
+    fileprivate var arrangedSize = CGSize()
 
     public init(topStyle: UITableViewStyle = .plain, bottomStyle: UITableViewStyle = .plain) {
         self.topTableView = UITableView(frame: CGRect(), style: topStyle)
@@ -96,32 +96,41 @@ open class LayeredTableViewController: UIViewController {
         for indexPath in self.bottomTableView.indexPathsForSelectedRows ?? [] {
             self.bottomTableView.deselectRow(at: indexPath, animated: true)
         }
-
-        if self.isFirstAppearence {
-            self.isFirstAppearence = false
-            self.arrange(for: self.view.bounds.size)
-        }
     }
 
-    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.arrange(for: size)
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        self.arrange(for: self.view.bounds.size)
     }
 
     open func arrange(for size: CGSize) {
+        guard size != self.arrangedSize else {
+            return
+        }
+
+        defer {
+            self.arrangedSize = size
+        }
+
         let bottomHeight = self.delegate?.bottomHeight(forLayeredTableViewController: self) ?? 300
         var inset = self.delegate?.contentInset(forLayeredTableViewController: self) ?? UIEdgeInsets()
         var top = size.height - bottomHeight
-        var topBottom = bottomHeight
-        #if SDK11
-            top -= self.bottomAdjustedContentInset.bottom + self.bottomAdjustedContentInset.topasdf
-        #else
+        var bottomOfTop = bottomHeight
+        if #available(iOS 11.0, *) {
+            top -= self.view.safeAreaInsets.bottom + self.view.safeAreaInsets.top
+        }
+        else {
+            top -= (self.tabBarController?.tabBar.frame.height ?? 0)
+            bottomOfTop += (self.topTableView.tableHeaderView?.frame.height ?? 0)
+                + (self.tabBarController?.tabBar.frame.height ?? 0)
             inset.bottom += (self.tabBarController?.tabBar.frame.height ?? 0)
-            topBottom -= (self.tabBarController?.tabBar.frame.height ?? 0)
-        #endif
+        }
+
         self.topTableView.contentInset = UIEdgeInsets(
             top: inset.top,
             left: inset.left,
-            bottom: topBottom,
+            bottom: bottomOfTop,
             right: inset.right
         )
 
@@ -138,13 +147,7 @@ open class LayeredTableViewController: UIViewController {
             bottom: inset.bottom,
             right: inset.right
         )
-
-        self.topTableView.scrollIndicatorInsets = UIEdgeInsets(
-            top: inset.top,
-            left: inset.left,
-            bottom: topBottom,
-            right: inset.right
-        )
+        self.topTableView.scrollIndicatorInsets = self.topTableView.contentInset
 
         if self.topTableView.delegate !== self {
             self.topTableViewDelegate = self.topTableView.delegate
@@ -158,7 +161,7 @@ open class LayeredTableViewController: UIViewController {
 
         self.maskBottomTableView()
 
-        self.bottomTableView.contentOffset.y = -(self.view.bounds.height - bottomHeight)
+        self.bottomTableView.contentOffset.y = self.bottomClosedYOffset
         self.resetBottomInset(for: size)
     }
 
@@ -172,32 +175,23 @@ open class LayeredTableViewController: UIViewController {
     }
 
     public var topAdjustedContentInset: UIEdgeInsets {
-        #if SDK11
-            if #available(iOS 11.0, *) {
-                return self.topTableView.adjustedContentInset
-            } else {
-                return self.topTableView.contentInset
-            }
-        #else
-            return self.topTableView.contentInset
-        #endif
-    }
-
-
-    public var bottomAdjustedContentInset: UIEdgeInsets {
-        #if SDK11
-            if #available(iOS 11.0, *) {
-                return self.bottomTableView.adjustedContentInset
-            } else {
-                return self.bottomTableView.contentInset
-            }
-        #else
-            return self.bottomTableView.contentInset
-        #endif
+        if #available(iOS 11.0, *) {
+            return self.topTableView.adjustedContentInset
+        } else {
+            var insets = self.topTableView.contentInset
+            insets.top += UIApplication.shared.statusBarFrame.maxY
+            insets.bottom += (self.tabBarController?.tabBar.frame.height ?? 0)
+            return insets
+        }
     }
 
     public var bottomClosedYOffset: CGFloat {
-        return -self.bottomAdjustedContentInset.top
+        if #available(iOS 11.0, *) {
+            return -self.bottomTableView.adjustedContentInset.top
+        } else {
+            return -self.bottomTableView.contentInset.top
+                - UIApplication.shared.statusBarFrame.maxY
+        }
     }
 
     public var bottomOpenYOffset: CGFloat {
@@ -216,9 +210,11 @@ extension LayeredTableViewController: UIScrollViewDelegate {
     }
 
     public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        self.bottomTableView.setContentOffset(CGPoint(x: 0, y: -self.bottomAdjustedContentInset.top), animated: true)
+        self.bottomTableView.setContentOffset(CGPoint(x: 0, y: -self.bottomClosedYOffset), animated: true)
         return true
     }
+
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {}
 }
 
 private class TapThroughAboveTableView: UITableView {
@@ -231,22 +227,6 @@ private class TapThroughAboveTableView: UITableView {
 }
 
 private extension LayeredTableViewController {
-    var topInset: CGFloat {
-        let delegateInset: CGFloat = self.delegate?.contentInset(forLayeredTableViewController: self).top ?? 0
-        return self.topAdjustedContentInset.top + delegateInset
-    }
-
-    var bottomInset: CGFloat {
-        let delegateInset: CGFloat = self.delegate?.contentInset(forLayeredTableViewController: self).bottom ?? 0
-        return self.topAdjustedContentInset.bottom + delegateInset
-    }
-
-    var distanceBetweenTopAndBottom: CGFloat {
-        let topOfBottom = -self.bottomTableView.contentOffset.y - (self.bottomAdjustedContentInset.top - self.bottomTableView.contentInset.top)
-        let bottomOfTop = self.topTableView.contentSize.height - self.topTableView.contentOffset.y - self.topAdjustedContentInset.top
-        return topOfBottom - bottomOfTop
-    }
-
     func maskBottomTableView() {
         let layer = CAShapeLayer()
         let rect = CGRect(x: 0, y: 0, width: self.bottomTableView.bounds.width, height: 9999999)
@@ -270,7 +250,7 @@ private extension LayeredTableViewController {
                 return
             }
 
-            let closed = self.bottomClosedYOffset
+            let closed: CGFloat = self.bottomClosedYOffset
             let range = open - closed
             let beyondOpen = point.y - closed
             if beyondOpen / range > 0.5 {
@@ -289,9 +269,15 @@ private extension LayeredTableViewController {
     func resetBottomInset(for size: CGSize? = nil, adjustContentOffset: Bool = false) {
         let size = size ?? self.view.bounds.size
         let inset = self.delegate?.contentInset(forLayeredTableViewController: self) ?? UIEdgeInsets()
-        let minimumHeight = size.height - inset.top - inset.bottom
-            - (self.tabBarController?.tabBar.frame.height ?? 0)
-            - UIApplication.shared.statusBarFrame.maxY
+        var minimumHeight = size.height - inset.top - inset.bottom
+        if #available(iOS 11.0, *) {
+            minimumHeight -= self.view.safeAreaInsets.top
+                + self.view.safeAreaInsets.bottom
+        }
+        else {
+            minimumHeight -= (self.tabBarController?.tabBar.frame.height ?? 0)
+                + UIApplication.shared.statusBarFrame.maxY
+        }
         let missingHeight = minimumHeight - self.bottomTableView.contentSize.height
         if missingHeight > 0 {
             let new = self.baseBottomInset + missingHeight
@@ -558,7 +544,6 @@ extension LayeredTableViewController: UITableViewDelegate {
             return nil
         }
     }
-    #if SDK11
     @available(iOS 11.0, *)
     public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         switch tableView {
@@ -581,7 +566,6 @@ extension LayeredTableViewController: UITableViewDelegate {
             return nil
         }
     }
-    #endif
     public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         switch tableView {
         case self.topTableView:
@@ -702,7 +686,6 @@ extension LayeredTableViewController: UITableViewDelegate {
             return nil
         }
     }
-    #if SDK11
     @available(iOS 11.0, *)
     public func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
         switch tableView {
@@ -714,6 +697,5 @@ extension LayeredTableViewController: UITableViewDelegate {
             return true
         }
     }
-    #endif
 }
 #endif
