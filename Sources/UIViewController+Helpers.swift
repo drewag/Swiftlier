@@ -48,8 +48,6 @@ extension UIViewController {
     {
         viewController.modalPresentationStyle = .popover
 
-        self.present(viewController, animated: true, completion: nil)
-
         viewController.popoverPresentationController!.permittedArrowDirections = permittedArrowDirections
         viewController.popoverPresentationController!.sourceView = sourceView
         viewController.popoverPresentationController!.delegate = delegate
@@ -69,6 +67,9 @@ extension UIViewController {
         case .custom(sourceRect: let rect):
             viewController.popoverPresentationController!.sourceRect = rect
         }
+
+        self.present(viewController, animated: true, completion: nil)
+
         return viewController.popoverPresentationController!
     }
 
