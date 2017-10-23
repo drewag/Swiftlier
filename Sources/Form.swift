@@ -346,6 +346,7 @@ public protocol AnyNumberField: SimpleField {
 }
 
 public class IntegerField: NumberField<Int> {}
+public class PercentField: NumberField<Float> {}
 public class NumberField<Value: NumberFieldValue>: AnyNumberField {
     public let label: String
     public let placeholder: String

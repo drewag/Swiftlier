@@ -37,6 +37,7 @@ open class FormViewController: UITableViewController, ErrorGenerating {
         self.tableView.register(BoolFieldTableViewCell.self, forCellReuseIdentifier: BoolFieldTableViewCell.identifier)
         self.tableView.register(SegmentedControlTableViewCell.self, forCellReuseIdentifier: SegmentedControlTableViewCell.identifier)
         self.tableView.register(TextViewFieldTableViewCell.self, forCellReuseIdentifier: TextViewFieldTableViewCell.identifier)
+        self.tableView.register(SliderTableViewCell.self, forCellReuseIdentifier: SliderTableViewCell.identifier)
 
         if self.isEditable {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
@@ -130,6 +131,16 @@ open class FormViewController: UITableViewController, ErrorGenerating {
             UIApplication.shared.openURL(formSection.helpURL!)
         }
     }
+    @objc func didChange(slider: UISlider) {
+        let indexPath = IndexPath(row: slider.tag, section: slider.superview!.tag)
+
+        let field = self.form.sections.values[indexPath.section].fields.values[indexPath.row] as! PercentField
+        field.value = slider.value
+
+        if let cell = self.tableView.cellForRow(at: indexPath) as? SliderTableViewCell {
+            cell.valueLabel.text = "\(Int((slider.value * 100).rounded()))%"
+        }
+    }
 }
 
 extension FormViewController/*: UITableViewDataSource*/ {
@@ -144,6 +155,22 @@ extension FormViewController/*: UITableViewDataSource*/ {
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let field = self.form.sections.values[indexPath.section].fields.values[indexPath.row]
         switch field {
+        case let percentField as PercentField:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SliderTableViewCell.identifier, for: indexPath) as! SliderTableViewCell
+
+            cell.selectionStyle = .none
+            cell.nameLabel.text = field.label
+            cell.accessoryType = .none
+            cell.nameLabelWidth = self.nameLabelWidth
+            cell.slider.minimumValue = percentField.minimumValue
+            cell.slider.maximumValue = percentField.maximumValue
+            cell.slider.value = percentField.value ?? 0
+            cell.slider.superview!.tag = indexPath.section
+            cell.slider.tag = indexPath.row
+            cell.valueLabel.text = "\(Int(round((percentField.value ?? 0) * 100)))%"
+            cell.slider.addTarget(self, action: #selector(didChange(slider:)), for: .valueChanged)
+
+            return cell
         case let multilineField as MultilineField:
             let cell = tableView.dequeueReusableCell(withIdentifier: TextViewFieldTableViewCell.identifier, for: indexPath) as! TextViewFieldTableViewCell
 
@@ -596,14 +623,14 @@ private class SimpleFieldTableViewCell: UITableViewCell {
             self.contentView.constrain(.centerY, of: self.nameLabel),
             self.contentView.constrain(.left, of: self.nameLabel, plus: 16),
 
-            NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueField, plus: 8),
+            NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueField, plus: -8),
             NSLayoutConstraint(.top, of: self.nameLabel, to: .top, of: self.valueField),
             NSLayoutConstraint(.bottom, of: self.nameLabel, to: .bottom, of: self.valueField),
         ]
 
         if let button = self.clearButton {
             self.customConstraints += [
-                NSLayoutConstraint(.right, of: self.valueField, to: .left, of: button, plus: 8),
+                NSLayoutConstraint(.right, of: self.valueField, to: .left, of: button, plus: -8),
                 NSLayoutConstraint(.centerY, of: button, to: .centerY, of: self.nameLabel),
                 self.contentView.constrain(.right, of: button, plus: -16),
             ]
@@ -661,7 +688,7 @@ private class BoolFieldTableViewCell: UITableViewCell {
         self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
 
         self.contentView.constrain(.centerY, of: self.valueSwitch)
-        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueSwitch, plus: 8)
+        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueSwitch, plus: -8)
         self.contentView.constrain(.right, of: self.valueSwitch, plus: -16)
     }
 
@@ -709,7 +736,7 @@ private class TextViewFieldTableViewCell: UITableViewCell {
         self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
         self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
 
-        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.textView, plus: 8)
+        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.textView, plus: -8)
         self.contentView.constrain(.top, of: self.textView, plus: 4)
         self.contentView.constrain(.right, of: self.textView, plus: -16)
         self.contentView.constrain(.centerY, of: self.textView)
@@ -759,11 +786,67 @@ private class SegmentedControlTableViewCell: UITableViewCell {
         self.contentView.constrain(.centerY, of: self.nameLabel)
         self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
 
-        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.segmentedControl, plus: 8)
+        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.segmentedControl, plus: -8)
         NSLayoutConstraint(.centerY, of: self.segmentedControl, to: .centerY, of: self.nameLabel)
         self.contentView.constrain(.right, of: self.segmentedControl, plus: -16)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private class SliderTableViewCell: UITableViewCell {
+    static let identifier = "SliderField"
+
+    let nameLabel: UILabel
+    let slider = UISlider()
+    let valueLabel = UILabel()
+    private let nameLabelWidthConstraint: NSLayoutConstraint
+
+    var nameLabelWidth: CGFloat {
+        get {
+            return self.nameLabelWidthConstraint.constant
+        }
+
+        set {
+            self.nameLabelWidthConstraint.constant = newValue
+        }
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        let nameLabel = UILabel()
+        self.nameLabel = nameLabel
+        self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        self.nameLabel.font = FormViewController.font
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.slider.translatesAutoresizingMaskIntoConstraints = false
+        self.valueLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.valueLabel.textAlignment = .center
+
+        self.contentView.addSubview(self.nameLabel)
+        self.contentView.addSubview(self.slider)
+        self.contentView.addSubview(self.valueLabel)
+
+        self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
+        self.nameLabel.constrain(.height, to: 50)
+        self.valueLabel.constrain(.width, to: 56)
+        NSLayoutConstraint(.height, of: self.nameLabel, to: .height, of: self.valueLabel)
+        NSLayoutConstraint(.centerY, of: self.nameLabel, to: .centerY, of: self.valueLabel)
+
+        self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
+        self.contentView.constrain(.centerY, of: self.nameLabel)
+        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
+
+        NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.slider, plus: -8)
+        NSLayoutConstraint(.right, of: self.slider, to: .left, of: self.valueLabel, plus: -8)
+        NSLayoutConstraint(.centerY, of: self.slider, to: .centerY, of: self.nameLabel)
+        self.contentView.constrain(.right, of: self.valueLabel, plus: -16)
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
