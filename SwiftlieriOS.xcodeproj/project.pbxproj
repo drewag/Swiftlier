@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4914CF3A1F9FC96B00751394 /* UIView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914CF391F9FC96B00751394 /* UIView+Drawing.swift */; };
 		491CBC631F7EDB5300E117EB /* CodingPurpose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CBC621F7EDB5300E117EB /* CodingPurpose.swift */; };
 		492C63D61F65020200839AA1 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C63D51F65020200839AA1 /* UIView+Animations.swift */; };
 		4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */; };
@@ -175,6 +176,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4914CF391F9FC96B00751394 /* UIView+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drawing.swift"; sourceTree = "<group>"; };
 		491CBC621F7EDB5300E117EB /* CodingPurpose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingPurpose.swift; sourceTree = "<group>"; };
 		492C63D51F65020200839AA1 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 				4935A63C1EB1A50600B0CCF8 /* XML.swift */,
 				4935A63D1EB1A50600B0CCF8 /* ZipFilePath.swift */,
 				4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */,
+				4914CF391F9FC96B00751394 /* UIView+Drawing.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -708,6 +711,7 @@
 				4935A6661EB1A50600B0CCF8 /* Float+Factory.swift in Sources */,
 				4935A69E1EB1A50600B0CCF8 /* UIBarButtonItem+BlockTarget.swift in Sources */,
 				4935A65A1EB1A50600B0CCF8 /* EmailAddress.swift in Sources */,
+				4914CF3A1F9FC96B00751394 /* UIView+Drawing.swift in Sources */,
 				4935A6A01EB1A50600B0CCF8 /* UICollectionView+EasyRegister.swift in Sources */,
 				4935A66E1EB1A50600B0CCF8 /* JSON.swift in Sources */,
 				497BC64E1F8EB7CD0001D227 /* HTTPMethod.swift in Sources */,
