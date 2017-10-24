@@ -6,6 +6,7 @@
 //  Copyright © 2017 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension UIView {
@@ -52,3 +53,4 @@ extension CGContext {
         self.restoreGState()
     }
 }
+#endif
