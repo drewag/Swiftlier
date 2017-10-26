@@ -527,11 +527,11 @@ extension LayeredTableViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         switch tableView {
         case self.topTableView:
-            return self.topTableViewDelegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: indexPath) ?? nil
+            return self.topTableViewDelegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: indexPath) ?? "Delete"
         case self.bottomTableView:
-            return self.bottomTableViewDelegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: indexPath) ?? nil
+            return self.bottomTableViewDelegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: indexPath) ?? "Delete"
         default:
-            return nil
+            return "Delete"
         }
     }
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
