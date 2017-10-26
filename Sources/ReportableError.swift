@@ -39,6 +39,7 @@ public protocol ErrorGenerating {}
 public protocol ReportableErrorConvertible {
     var reportableError: ReportableError {get}
 }
+public struct UnknownErrorGenerating: ErrorGenerating {}
 
 open class ReportableError: Error, CustomStringConvertible, Encodable {
     enum CodingKeys: String, CodingKey {
