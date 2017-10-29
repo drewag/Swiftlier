@@ -21,6 +21,35 @@ extension TimeInterval {
         return Int((self / 60 / 60).truncatingRemainder(dividingBy: 60))
     }
 
+    public var days: Int {
+        return Int((self / 60 / 60 / 24).truncatingRemainder(dividingBy: 24))
+
+    }
+
+    public var roughly: String {
+        if self.days > 1 {
+            return "\(self.days) days"
+        }
+        else if self.days == 1 {
+            return "\(self.days) day"
+        }
+        else if self.hours > 1 {
+            return "\(self.hours) hours"
+        }
+        else if self.hours == 1 {
+            return "\(self.hours) hour"
+        }
+        else if self.minutes > 1 {
+            return "\(self.minutes) minutes"
+        }
+        else if self.minutes == 1 {
+            return "\(self.minutes) minute"
+        }
+        else {
+            return "seconds"
+        }
+    }
+
     public var shortestDisplay: String {
         let minutes = self.minutes + Int((Float(self.seconds) / 60).rounded())
         let hours = self.hours
