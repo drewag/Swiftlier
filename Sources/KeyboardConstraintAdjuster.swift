@@ -20,6 +20,13 @@ public class KeyboardConstraintAdjuster: NSObject {
     public var onKeyboardIsBeingHidden: (() -> ())?
     public var onKeyboardWasHidden: (() -> ())?
 
+    public override init() {
+        super.init()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+
     override public func awakeFromNib() {
         super.awakeFromNib()
 
