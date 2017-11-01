@@ -27,11 +27,19 @@ final class String_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual("cdef".offsetCharacters(by: -2), "abcd")
     }
 
+    func testNumberOfCommonSuffixCharacters() {
+        XCTAssertEqual("abcd".numberOfCommonSuffixCharacters(with: "efcd"), 2)
+        XCTAssertEqual("abd".numberOfCommonSuffixCharacters(with: "efcd"), 1)
+        XCTAssertEqual("abd".numberOfCommonSuffixCharacters(with: "abc"), 0)
+        XCTAssertEqual("astring".numberOfCommonSuffixCharacters(with: "string"), 6)
+    }
+
     static var allTests: [(String, (String_HelpersTests) -> () throws -> Void)] {
         return [
             ("testRepeat", testRepeat),
             ("testIndexAt", testIndexAt),
             ("testOffsetCharactersByCount", testOffsetCharactersByCount),
+            ("testNumberOfCommonSuffixCharacters", testNumberOfCommonSuffixCharacters),
         ]
     }
 }

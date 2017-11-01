@@ -40,6 +40,27 @@ extension StringProtocol {
         }
         return result
     }
+
+    public func numberOfCommonSuffixCharacters<Other: StringProtocol>(with other: Other) -> Int {
+        if self.startIndex == self.endIndex || other.startIndex == other.endIndex{
+            return 0
+        }
+
+        var thisIndex = self.index(before: self.endIndex)
+        var otherIndex = other.index(before: other.endIndex)
+
+        var count = 0
+        while thisIndex >= self.startIndex && otherIndex >= other.startIndex, self[thisIndex] == other[otherIndex] {
+            count += 1
+
+            guard thisIndex > self.startIndex && otherIndex > other.startIndex else {
+                break
+            }
+            thisIndex = self.index(before: thisIndex)
+            otherIndex = other.index(before: otherIndex)
+        }
+        return count
+    }
 }
 
 extension String {
