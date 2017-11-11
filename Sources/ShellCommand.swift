@@ -73,7 +73,7 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
         self.removeFromCommandsToKill()
 
         guard self.process.terminationStatus == 0 else {
-            let command = self.command.joined(separator: "")
+            let command = self.command.joined(separator: " ")
             throw self.error("executing command", because: "it returned a bad response code \(self.process.terminationStatus). The command was '\(command)'.")
         }
 
