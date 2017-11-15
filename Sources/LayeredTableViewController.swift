@@ -202,6 +202,11 @@ open class LayeredTableViewController: UIViewController {
         self.bottomTableView.setContentOffset(CGPoint(x: 0, y: self.bottomOpenYOffset), animated: true)
         self.isOpen = true
     }
+
+    public func closeBottom() {
+        self.bottomTableView.setContentOffset(CGPoint(x: 0, y: self.bottomClosedYOffset), animated: true)
+        self.isOpen = false
+    }
 }
 
 extension LayeredTableViewController: UIScrollViewDelegate {
@@ -210,8 +215,13 @@ extension LayeredTableViewController: UIScrollViewDelegate {
     }
 
     public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        self.bottomTableView.setContentOffset(CGPoint(x: 0, y: -self.bottomClosedYOffset), animated: true)
-        return true
+        if self.isOpen {
+            self.closeBottom()
+        }
+        else {
+            self.topTableView.setContentOffset(CGPoint(x: 0, y: -self.topTableView.contentInset.top), animated: true)
+        }
+        return false
     }
 
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {}
