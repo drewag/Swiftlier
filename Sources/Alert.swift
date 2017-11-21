@@ -81,7 +81,7 @@ extension UIViewController {
     {
         let finalError: ReportableError
         switch (error.reason as? NetworkResponseErrorReason)?.kind ?? .unknown {
-        case .unauthorized, .noInternet, .gone:
+        case .unauthorized, .forbidden, .noInternet, .gone:
             finalError = error.byUser
         case .unknown, .invalid, .notFound, .untrusted:
             finalError = error

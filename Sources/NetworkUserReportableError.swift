@@ -11,6 +11,7 @@ import Foundation
 public class NetworkResponseErrorReason: AnyErrorReason {
     public enum Kind {
         case unauthorized
+        case forbidden
         case noInternet
         case notFound
         case gone
@@ -41,7 +42,7 @@ public class NetworkResponseErrorReason: AnyErrorReason {
             return "you are not connected to the internet"
         case .notFound:
             return "the requested endpoint could not be found"
-        case .unauthorized:
+        case .unauthorized, .forbidden:
             return "you are not authorized"
         case .unknown:
             return "there was an unknown error"
@@ -85,6 +86,8 @@ extension ErrorGenerating {
                 return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .notFound, customMessage: customMessage)), status: HTTPStatus(from: response))
             case 401:
                 return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unauthorized, customMessage: customMessage)), status: HTTPStatus(from: response))
+            case 403:
+                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .forbidden, customMessage: customMessage)), status: HTTPStatus(from: response))
             case 410:
                 return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .gone, customMessage: customMessage)), status: HTTPStatus(from: response))
             case let x where x >= 400 && x < 500:
