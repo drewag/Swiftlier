@@ -11,11 +11,11 @@ public struct EmailAddress: CustomStringConvertible, ErrorGenerating {
 
     public init(userString: String?, for purpose: String) throws {
         guard let string = userString, !string.isEmpty else {
-            throw EmailAddress.userError(purpose, because: "email is required")
+            throw EmailAddress.userError(purpose, because: "an email is required")
         }
 
         guard string.isValidEmail else {
-            throw EmailAddress.error(purpose, because: "the email is invalid")
+            throw EmailAddress.userError(purpose, because: "that is not a valid email")
         }
 
         self.string = string.lowercased()
