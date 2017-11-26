@@ -668,6 +668,27 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertThrowsError(try file.handleForWriting())
     }
 
+    func testHandleForReadingAndWriting() throws {
+        let url = URL(fileURLWithPath: "tmp/file.txt")
+
+        let filePath = try self.base.addFile(named: "file.txt", canOverwrite: true)
+
+        guard let file = filePath.file else {
+            XCTFail("Failed to find file")
+            return
+        }
+
+        let handle = try file.handleForReadingAndWriting()
+        handle.write("contents".data(using: .utf8)!)
+
+        XCTAssertEqual(try file.string(), "contents")
+        handle.seek(toFileOffset: 0)
+        XCTAssertEqual("contents", String(data: handle.readDataToEndOfFile(), encoding: .utf8)!)
+
+        try FileManager.default.removeItem(at: url)
+        XCTAssertThrowsError(try file.handleForReadingAndWriting())
+    }
+
     func testResolveSymLink() throws {
         let originalUrl = URL(fileURLWithPath: "tmp/orig.txt")
         try "content".data(using: .utf8)?.write(to: originalUrl)

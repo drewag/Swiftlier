@@ -145,6 +145,15 @@ extension FilePath {
         }
     }
 
+    public func handleForReadingAndWriting() throws -> FileHandle {
+        do {
+            return try FileHandle(forUpdating: self.url)
+        }
+        catch {
+            throw FileSystem.error("opening file", because: "the file no longer exists")
+        }
+    }
+
     public func copy(into: DirectoryPath, named: String? = nil, canOverwrite: Bool) throws -> FilePath {
         let named = named ?? self.basename
         let to = into.url.appendingPathComponent(named)
