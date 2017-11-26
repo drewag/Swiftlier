@@ -75,6 +75,31 @@ extension TimeInterval {
         return output
     }
 
+    public var shortestWithSeconds: String {
+        let seconds = self.seconds
+        let minutes = self.minutes
+
+        var output = ""
+        if seconds < 10 {
+            output = "0\(seconds)"
+        }
+        else {
+            output = "\(seconds)"
+        }
+        if minutes > 0 {
+            if minutes < 10 {
+                output = "0\(minutes):" + output
+            }
+            else {
+                output = "\(minutes):" + output
+            }
+        }
+        else {
+            output = "0:" + output
+        }
+        return output
+    }
+
     public var shortDisplay: String {
         let seconds = self.seconds
         let minutes = self.minutes
