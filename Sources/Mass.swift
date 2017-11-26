@@ -30,6 +30,13 @@ public struct Mass {
                 return "st"
             }
         }
+
+        public static func from(_ rawValue: Int?) -> Unit? {
+            guard let value = rawValue else {
+                return nil
+            }
+            return Unit(rawValue: value)
+        }
     }
 
     public let unit: Unit
@@ -38,6 +45,13 @@ public struct Mass {
     public init(_ value: Double, in unit: Unit) {
         self.unit = unit
         self.value = value
+    }
+
+    public init?(_ value: Double?, in unit: Unit) {
+        guard let value = value else {
+            return nil
+        }
+        self.init(value, in: unit)
     }
 
     public func description(in unit: Unit) -> String {
@@ -144,5 +158,15 @@ public struct Mass {
         case .stones:
             return self.value
         }
+    }
+}
+
+extension Mass: Codable {
+    public init(from decoder: Decoder) throws {
+        self.init(try Double(from: decoder), in: .pounds)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        try self.pounds.encode(to: encoder)
     }
 }

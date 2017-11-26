@@ -11,6 +11,13 @@ import Foundation
 public struct Age: Codable {
     public let years: Int
 
+    public init?(date: Date?) {
+        guard let date = date else {
+            return nil
+        }
+        self.init(date: date)
+    }
+
     public init(date: Date) {
         #if os(Linux)
             let seconds = Date().timeIntervalSince1970 - date.timeIntervalSince1970
