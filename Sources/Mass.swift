@@ -47,7 +47,30 @@ public struct Mass {
         self.value = value
     }
 
+    public init(_ value: Double, in unit: MassFormatter.Unit) {
+        switch unit {
+        case .gram:
+            self.unit = .grams
+        case .kilogram:
+            self.unit = .kilograms
+        case .ounce:
+            self.unit = .ounces
+        case .pound:
+            self.unit = .pounds
+        case .stone:
+            self.unit = .stones
+        }
+        self.value = value
+    }
+
     public init?(_ value: Double?, in unit: Unit) {
+        guard let value = value else {
+            return nil
+        }
+        self.init(value, in: unit)
+    }
+
+    public init?(_ value: Double?, in unit: MassFormatter.Unit) {
         guard let value = value else {
             return nil
         }
@@ -81,6 +104,21 @@ public struct Mass {
         case .pounds:
             return self.pounds
         case .stones:
+            return self.stones
+        }
+    }
+
+    public func `in`(_ unit: MassFormatter.Unit) -> Double {
+        switch unit {
+        case .gram:
+            return self.grams
+        case .kilogram:
+            return self.kilograms
+        case .ounce:
+            return self.ounces
+        case .pound:
+            return self.pounds
+        case .stone:
             return self.stones
         }
     }
