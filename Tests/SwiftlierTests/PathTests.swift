@@ -913,6 +913,7 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
             ("testString", testString),
             ("testHandleForReading", testHandleForReading),
             ("testHandleForWriting", testHandleForWriting),
+            ("testHandleForReadingAndWriting", testHandleForReadingAndWriting),
             ("testResolveSymLink", testResolveSymLink),
             ("testIsIdenticalTo", testIsIdenticalTo),
             ("testDirectoryContents", testDirectoryContents),
