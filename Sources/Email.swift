@@ -130,7 +130,7 @@ public struct Email {
 
                 task.launch()
                 task.waitUntilExit()
-                let _ = try? file.delete()
+                let _ = try? file.file?.delete()
                 return task.terminationStatus == 0
             #else
                 var body = """
