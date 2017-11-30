@@ -38,6 +38,11 @@ public struct FileSystem: ErrorGenerating {
         return path as! DirectoryPath
     }
 
+    public var rootDirectory: DirectoryPath {
+        let path = self.path(from: URL(fileURLWithPath: "/"))
+        return path as! DirectoryPath
+    }
+
     enum ItemKind {
         case none
         case file
