@@ -34,12 +34,20 @@ final class String_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual("astring".numberOfCommonSuffixCharacters(with: "string"), 6)
     }
 
+    func testTrimmingWhitespaceOnEnds() {
+        XCTAssertEqual("abcd".trimmingWhitespaceOnEnds, "abcd")
+        XCTAssertEqual(" abcd  ".trimmingWhitespaceOnEnds, "abcd")
+        XCTAssertEqual("\t \nabcd \n\n ".trimmingWhitespaceOnEnds, "abcd")
+        XCTAssertEqual("\t \na\t\nb cd \n\n ".trimmingWhitespaceOnEnds, "a\t\nb cd")
+    }
+
     static var allTests: [(String, (String_HelpersTests) -> () throws -> Void)] {
         return [
             ("testRepeat", testRepeat),
             ("testIndexAt", testIndexAt),
             ("testOffsetCharactersByCount", testOffsetCharactersByCount),
             ("testNumberOfCommonSuffixCharacters", testNumberOfCommonSuffixCharacters),
+            ("testTrimmingWhitespaceOnEnds", testTrimmingWhitespaceOnEnds),
         ]
     }
 }

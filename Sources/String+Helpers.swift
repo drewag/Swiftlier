@@ -61,6 +61,31 @@ extension StringProtocol {
         }
         return count
     }
+
+    public var trimmingWhitespaceOnEnds: String {
+        var output = ""
+        var pending = ""
+        var foundNonWhitespace = false
+        for char in self {
+            switch char {
+            case "\n", "\t", " ":
+                if foundNonWhitespace {
+                    pending.append(char)
+                }
+                else {
+                    continue
+                }
+            default:
+                foundNonWhitespace = true
+                if !pending.isEmpty {
+                    output += pending
+                    pending = ""
+                }
+                output.append(char)
+            }
+        }
+        return output
+    }
 }
 
 extension String {

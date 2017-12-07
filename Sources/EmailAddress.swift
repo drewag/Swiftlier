@@ -10,7 +10,7 @@ public struct EmailAddress: CustomStringConvertible, ErrorGenerating {
     public let string: String
 
     public init(userString: String?, for purpose: String) throws {
-        guard let string = userString, !string.isEmpty else {
+        guard let string = userString?.trimmingWhitespaceOnEnds, !string.isEmpty else {
             throw EmailAddress.userError(purpose, because: "an email is required")
         }
 
@@ -22,7 +22,7 @@ public struct EmailAddress: CustomStringConvertible, ErrorGenerating {
     }
 
     public init(string: String?) throws {
-        guard let string = string, !string.isEmpty else {
+        guard let string = string?.trimmingWhitespaceOnEnds, !string.isEmpty else {
             throw EmailAddress.error("creating email address", because: "email is required")
         }
 
@@ -59,7 +59,7 @@ extension EmailAddress: Codable {
 
 extension String {
     public var isValidEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegEx = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
         return self.range(of: emailRegEx, options: .regularExpression) != nil
     }
 }
