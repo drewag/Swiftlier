@@ -124,7 +124,7 @@ private extension ShellCommand {
         var output = [String]()
 
         var currentCommand = ""
-        for character in from.characters {
+        for character in from {
             switch (character, mode) {
             case (" ", .none):
                 if !currentCommand.isEmpty {

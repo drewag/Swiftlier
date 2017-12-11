@@ -11,7 +11,7 @@ import Foundation
 extension String {
     public init(randomOfLength length: Int) {
         let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let allowedCharsCount = UInt32(allowedChars.characters.count)
+        let allowedCharsCount = UInt32(allowedChars.count)
 
         var output = ""
         for _ in 0 ..< length {
