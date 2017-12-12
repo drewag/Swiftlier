@@ -43,7 +43,7 @@ import PackageDescription
 let package = Package(
     name: "web",
     dependencies: [
-        .Package(url: "https://github.com/drewag/Swiftlier.git", majorVersion: 3),
+        .Package(url: "https://github.com/drewag/Swiftlier.git", majorVersion: 4),
     ]
 )
 ```
