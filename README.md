@@ -37,16 +37,16 @@ Linux and macOS
 ----------------
 
 ### Using Swift Package Manager
+```swift
+import PackageDescription
 
-    import PackageDescription
-
-    let package = Package(
-        name: "web",
-        dependencies: [
-            .Package(url: "https://github.com/drewag/Swiftlier.git", majorVersion: 3),
-        ]
-    )
-
+let package = Package(
+    name: "web",
+    dependencies: [
+        .Package(url: "https://github.com/drewag/Swiftlier.git", majorVersion: 3),
+    ]
+)
+```
 High Level Tasks
 =================
 
