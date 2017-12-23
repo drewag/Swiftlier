@@ -10,6 +10,12 @@
 import Foundation
 
 public struct Email {
+    public static var DebugMode = false
+
+    public struct Events {
+        public class Sent: EventType { public typealias CallbackParam = Email }
+    }
+
     public struct Builder {
         let id: String
 
@@ -48,16 +54,16 @@ public struct Email {
             if !self.html.isEmpty && !self.plain.isEmpty {
                 // Alternate
                 return """
-                    --\(self.id)
-                    Content-Type: text/plain; charset="UTF-8"
+                --\(self.id)
+                Content-Type: text/plain; charset="UTF-8"
 
-                    \(self.plain)
-                    --\(self.id)
-                    Content-Type: text/html; charset="UTF-8"
+                \(self.plain)
+                --\(self.id)
+                Content-Type: text/html; charset="UTF-8"
 
-                    \(self.html)
-                    --\(self.id)--
-                    """
+                \(self.html)
+                --\(self.id)--
+                """
             }
             else if !self.html.isEmpty {
                 // HTML
@@ -80,11 +86,11 @@ public struct Email {
     }
 
     let id: String
-    let subject: String
-    let recipient: String
-    let from: String
-    let body: String
-    var headers = [String:String]()
+    public let subject: String
+    public let recipient: String
+    public let from: String
+    public let body: String
+    public var headers = [String:String]()
 
     public init(to: String, subject: String, from: String, replyTo: String? = nil, HTMLBody: String) {
         try! self.init(to: to, subject: subject, from: from) { builder in
@@ -118,7 +124,26 @@ public struct Email {
             print("Sending email to '\(self.recipient)' with subject '\(self.subject)'")
             let file = try self.file()
 
+            func debug() throws -> Bool {
+                var body = """
+                Subject: \(self.subject)
+                From: \(self.from)
+                """
+
+                for (key,value) in self.headers {
+                    body += "\n\(key): \(value)"
+                }
+                body += "\n\(self.body)"
+                let _ = try file.createFile(containing: body.data(using: .utf8), canOverwrite: true)
+                print("Debug mode. See \(file.url.relativePath) for content.")
+                EventCenter.defaultCenter().triggerEvent(Events.Sent.self, params: self)
+                return true
+            }
+
             #if os(Linux)
+                guard !type(of:self).DebugMode else {
+                    return try debug()
+                }
                 let _ = try file.createFile(containing: self.body.data(using: .utf8), canOverwrite: true)
                 let task = Process()
                 task.launchPath = "/bin/sh"
@@ -131,20 +156,13 @@ public struct Email {
                 task.launch()
                 task.waitUntilExit()
                 let _ = try? file.file?.delete()
-                return task.terminationStatus == 0
-            #else
-                var body = """
-                    Subject: \(self.subject)
-                    From: \(self.from)
-                    """
-
-                for (key,value) in self.headers {
-                    body += "\n\(key): \(value)"
+                guard task.terminationStatus == 0 else {
+                    return false
                 }
-                body += "\n\(self.body)"
-                let _ = try file.createFile(containing: body.data(using: .utf8), canOverwrite: true)
-                print("Debug mode. See \(file.url.relativePath) for content.")
+                EventCenter.defaultCenter().triggerEvent(Events.Sent.self, params: self)
                 return true
+            #else
+                return try debug()
             #endif
 
         }
