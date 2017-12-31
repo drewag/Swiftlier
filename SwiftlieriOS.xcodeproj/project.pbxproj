@@ -10,6 +10,7 @@
 		4914CF3A1F9FC96B00751394 /* UIView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914CF391F9FC96B00751394 /* UIView+Drawing.swift */; };
 		491CBC631F7EDB5300E117EB /* CodingPurpose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CBC621F7EDB5300E117EB /* CodingPurpose.swift */; };
 		492C63D61F65020200839AA1 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C63D51F65020200839AA1 /* UIView+Animations.swift */; };
+		493211181FF8989700ABA72A /* Date+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493211171FF8989700ABA72A /* Date+Testable.swift */; };
 		4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */; };
 		4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */; };
 		4935A5BA1EB1A4AD00B0CCF8 /* Swiftlier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */; };
@@ -180,6 +181,7 @@
 		4914CF391F9FC96B00751394 /* UIView+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drawing.swift"; sourceTree = "<group>"; };
 		491CBC621F7EDB5300E117EB /* CodingPurpose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingPurpose.swift; sourceTree = "<group>"; };
 		492C63D51F65020200839AA1 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		493211171FF8989700ABA72A /* Date+Testable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Testable.swift"; sourceTree = "<group>"; };
 		4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_ConstraintsTests.swift; sourceTree = "<group>"; };
 		4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftlier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -516,6 +518,7 @@
 				4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */,
 				4914CF391F9FC96B00751394 /* UIView+Drawing.swift */,
 				4937035C1FC3E22800D2DAA6 /* SectionHeaderWithButtonView.swift */,
+				493211171FF8989700ABA72A /* Date+Testable.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -768,6 +771,7 @@
 				49F7ED411F868B9C00EFB5EF /* UniquelyIdentifiable.swift in Sources */,
 				4935A6A61EB1A50600B0CCF8 /* UIView+Helpers.swift in Sources */,
 				4935A6701EB1A50600B0CCF8 /* LimitedSizeViewController.swift in Sources */,
+				493211181FF8989700ABA72A /* Date+Testable.swift in Sources */,
 				4935A69F1EB1A50600B0CCF8 /* UIButton+BlockTarget.swift in Sources */,
 				4935A64D1EB1A50600B0CCF8 /* CommandLineDecoder.swift in Sources */,
 				4935A65F1EB1A50600B0CCF8 /* ErrorGenerating+ErrorFactory.swift in Sources */,
