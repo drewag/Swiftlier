@@ -157,7 +157,7 @@ public struct Email {
                 guard task.terminationStatus == 0 else {
                     return false
                 }
-                EventCenter.defaultCenter().triggerEvent(Events.Sent.self, params: self)
+                EventCenter.defaultCenter().triggerEvent(EmailSentEvent.self, params: self)
                 return true
             #else
                 return try debug()
