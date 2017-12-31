@@ -9,12 +9,10 @@
 #if os(macOS) || os(Linux)
 import Foundation
 
+public class EmailSentEvent: EventType { public typealias CallbackParam = Email }
+
 public struct Email {
     public static var DebugMode = false
-
-    public struct Events {
-        public class Sent: EventType { public typealias CallbackParam = Email }
-    }
 
     public struct Builder {
         let id: String
@@ -136,7 +134,7 @@ public struct Email {
                 body += "\n\(self.body)"
                 let _ = try file.createFile(containing: body.data(using: .utf8), canOverwrite: true)
                 print("Debug mode. See \(file.url.relativePath) for content.")
-                EventCenter.defaultCenter().triggerEvent(Events.Sent.self, params: self)
+                EventCenter.defaultCenter().triggerEvent(EmailSentEvent.self, params: self)
                 return true
             }
 
