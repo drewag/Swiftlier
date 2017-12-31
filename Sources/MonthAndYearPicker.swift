@@ -36,12 +36,12 @@ public class MonthAndYearPicker: UIPickerView, DatePicker {
             dateComponents.day = 1
             dateComponents.month = self.selectedRow(inComponent: Component.month.rawValue) + 1
             dateComponents.year = self.currentYear - self.selectedRow(inComponent: Component.year.rawValue)
-            return Calendar.current.date(from: dateComponents) ?? Date()
+            return Calendar.current.date(from: dateComponents) ?? Date.now
         }
     }
 
     public override init(frame: CGRect) {
-        self.currentYear = Int(Date().year) ?? 2000
+        self.currentYear = Int(Date.now.year) ?? 2000
 
         super.init(frame: frame)
 

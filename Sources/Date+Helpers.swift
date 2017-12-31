@@ -12,7 +12,7 @@ extension Date {
     public var isToday: Bool {
         let cal = Calendar.current
         let units = Set<Calendar.Component>([.era, .year, .month, .day])
-        var components = cal.dateComponents(units, from: Date())
+        var components = cal.dateComponents(units, from: Date.now)
         let today = cal.date(from: components)
         components = cal.dateComponents(units, from: self)
         let otherDate = cal.date(from: components)
@@ -34,7 +34,7 @@ extension Date {
     public var isThisWeek: Bool {
         let cal = Calendar.current
         let units = Set<Calendar.Component>([.era, .year, .weekOfYear])
-        let today = cal.dateComponents(units, from: Date())
+        let today = cal.dateComponents(units, from: Date.now)
         let other = cal.dateComponents(units, from: self)
 
         return today.era == other.era
@@ -45,7 +45,7 @@ extension Date {
     public var isThisYear: Bool {
         let cal = Calendar.current
         let units = Set<Calendar.Component>([.era, .year])
-        var components = cal.dateComponents(units, from: Date())
+        var components = cal.dateComponents(units, from: Date.now)
         let today = cal.date(from: components)
         components = cal.dateComponents(units, from: self)
         let otherDate = cal.date(from: components)

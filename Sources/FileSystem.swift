@@ -258,7 +258,7 @@ public struct FileSystem: ErrorGenerating {
             return Date(timeIntervalSince1970: double)
         #else
             let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
-            return attributes[.modificationDate] as? Date ?? Date()
+            return attributes[.modificationDate] as? Date ?? Date.now
         #endif
     }
 

@@ -20,13 +20,13 @@ public struct Age: Codable {
 
     public init(date: Date) {
         #if os(Linux)
-            let seconds = Date().timeIntervalSince1970 - date.timeIntervalSince1970
+            let seconds = Date.now.timeIntervalSince1970 - date.timeIntervalSince1970
             self.years = Int(seconds / 365 / 24 / 60 / 60)
         #else
             let components = Calendar.current.dateComponents(
                 Set([Calendar.Component.year]),
                 from: date,
-                to: Date()
+                to: Date.now
             )
             self.years = components.year!
         #endif

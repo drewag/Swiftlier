@@ -136,7 +136,7 @@ private class SpecDecodingContainer<MyKey: CodingKey>: KeyedDecodingContainerPro
     func decode<T>(_ type: T.Type, forKey key: Key) throws -> T where T: Swift.Decodable {
         if type == Date.self {
             self.recordType(named: "date", for: key)
-            return Date() as! T
+            return Date.now as! T
         }
         else if type == Data.self {
             self.recordType(named: "data", for: key)

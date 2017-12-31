@@ -27,7 +27,7 @@ public struct Syncable<Value: Codable>: AnySyncable, Decodable {
 
     public init(_ value: Value) {
         self.value = value
-        self.status = .remote(Date())
+        self.status = .remote(Date.now)
     }
 
     public var lastChanged: Date {  
@@ -62,10 +62,10 @@ public struct Syncable<Value: Codable>: AnySyncable, Decodable {
         case .remote:
             self.remoteValue = value
             self.value = value
-            self.lastRemoteChanged = Date()
+            self.lastRemoteChanged = Date.now
         case .local:
             self.value = value
-            self.lastLocalChanged = Date()
+            self.lastLocalChanged = Date.now
         }
     }
 
@@ -121,7 +121,7 @@ public struct Syncable<Value: Codable>: AnySyncable, Decodable {
             let value = try container.decode(Value.self)
             self.value = value
             self.remoteValue = value
-            self.status = .remote(Date())
+            self.status = .remote(Date.now)
         }
     }
 }
@@ -134,7 +134,7 @@ public struct SyncableOptional<Value: Codable>: AnySyncable, Decodable {
 
     public init(_ value: Value?) {
         self.value = value
-        self.status = .remote(Date())
+        self.status = .remote(Date.now)
     }
 
     public var lastChanged: Date {
@@ -169,10 +169,10 @@ public struct SyncableOptional<Value: Codable>: AnySyncable, Decodable {
         case .remote:
             self.remoteValue = value
             self.value = value
-            self.lastRemoteChanged = Date()
+            self.lastRemoteChanged = Date.now
         case .local:
             self.value = value
-            self.lastLocalChanged = Date()
+            self.lastLocalChanged = Date.now
         }
     }
 
@@ -232,7 +232,7 @@ public struct SyncableOptional<Value: Codable>: AnySyncable, Decodable {
             let value = try container.decode(Value.self)
             self.value = value
             self.remoteValue = value
-            self.status = .remote(Date())
+            self.status = .remote(Date.now)
         }
     }
 }
