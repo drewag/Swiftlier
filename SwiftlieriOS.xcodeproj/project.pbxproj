@@ -10,7 +10,6 @@
 		4914CF3A1F9FC96B00751394 /* UIView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914CF391F9FC96B00751394 /* UIView+Drawing.swift */; };
 		491CBC631F7EDB5300E117EB /* CodingPurpose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CBC621F7EDB5300E117EB /* CodingPurpose.swift */; };
 		492C63D61F65020200839AA1 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C63D51F65020200839AA1 /* UIView+Animations.swift */; };
-		493211181FF8989700ABA72A /* Date+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493211171FF8989700ABA72A /* Date+Testable.swift */; };
 		4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */; };
 		4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */; };
 		4935A5BA1EB1A4AD00B0CCF8 /* Swiftlier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */; };
@@ -132,6 +131,7 @@
 		494740791F832B7E00AC2EEA /* XMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494740781F832B7E00AC2EEA /* XMLTests.swift */; };
 		4947407B1F833F1400AC2EEA /* NativeTypesDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947407A1F833F1400AC2EEA /* NativeTypesDecoderTests.swift */; };
 		4947407D1F834A2A00AC2EEA /* NativeTypesEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947407C1F834A2A00AC2EEA /* NativeTypesEncoderTests.swift */; };
+		4947A5101FFDC84C004A1FF8 /* Date+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947A50F1FFDC84B004A1FF8 /* Date+Testable.swift */; };
 		494B59A61F80816900D22FA5 /* Coding_HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B59A51F80816900D22FA5 /* Coding_HelpersTests.swift */; };
 		496074881EDFCFCF0051880F /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496074871EDFCFCF0051880F /* BinarySearchTree.swift */; };
 		4960748B1EDFF43C0051880F /* BinarySearchTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */; };
@@ -181,7 +181,6 @@
 		4914CF391F9FC96B00751394 /* UIView+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drawing.swift"; sourceTree = "<group>"; };
 		491CBC621F7EDB5300E117EB /* CodingPurpose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingPurpose.swift; sourceTree = "<group>"; };
 		492C63D51F65020200839AA1 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
-		493211171FF8989700ABA72A /* Date+Testable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Testable.swift"; sourceTree = "<group>"; };
 		4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_ConstraintsTests.swift; sourceTree = "<group>"; };
 		4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftlier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +305,7 @@
 		494740781F832B7E00AC2EEA /* XMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTests.swift; sourceTree = "<group>"; };
 		4947407A1F833F1400AC2EEA /* NativeTypesDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTypesDecoderTests.swift; sourceTree = "<group>"; };
 		4947407C1F834A2A00AC2EEA /* NativeTypesEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTypesEncoderTests.swift; sourceTree = "<group>"; };
+		4947A50F1FFDC84B004A1FF8 /* Date+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Testable.swift"; sourceTree = "<group>"; };
 		494B59A51F80816900D22FA5 /* Coding_HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding_HelpersTests.swift; sourceTree = "<group>"; };
 		496074871EDFCFCF0051880F /* BinarySearchTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeTests.swift; sourceTree = "<group>"; };
@@ -421,6 +421,7 @@
 				4935A5DC1EB1A50600B0CCF8 /* DataSourceType.swift */,
 				4935A5DD1EB1A50600B0CCF8 /* Date+Formatting.swift */,
 				4935A5DE1EB1A50600B0CCF8 /* Date+Helpers.swift */,
+				4947A50F1FFDC84B004A1FF8 /* Date+Testable.swift */,
 				4935A5DF1EB1A50600B0CCF8 /* DatePickerViewController.swift */,
 				4960748C1EE005270051880F /* Day.swift */,
 				493C45EA1EB679270022E008 /* DiagonalGradientView.swift */,
@@ -518,7 +519,6 @@
 				4935A63E1EB1A50600B0CCF8 /* ZoomThroughTransition.swift */,
 				4914CF391F9FC96B00751394 /* UIView+Drawing.swift */,
 				4937035C1FC3E22800D2DAA6 /* SectionHeaderWithButtonView.swift */,
-				493211171FF8989700ABA72A /* Date+Testable.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -730,6 +730,7 @@
 				4935A68E1EB1A50600B0CCF8 /* SelectableValue.swift in Sources */,
 				4935A6591EB1A50600B0CCF8 /* Email.swift in Sources */,
 				4935A6421EB1A50600B0CCF8 /* Angle.swift in Sources */,
+				4947A5101FFDC84C004A1FF8 /* Date+Testable.swift in Sources */,
 				4935A6611EB1A50600B0CCF8 /* Path+Coding.swift in Sources */,
 				4935A6971EB1A50600B0CCF8 /* Structured.swift in Sources */,
 				4935A6991EB1A50600B0CCF8 /* Syncable.swift in Sources */,
@@ -771,7 +772,6 @@
 				49F7ED411F868B9C00EFB5EF /* UniquelyIdentifiable.swift in Sources */,
 				4935A6A61EB1A50600B0CCF8 /* UIView+Helpers.swift in Sources */,
 				4935A6701EB1A50600B0CCF8 /* LimitedSizeViewController.swift in Sources */,
-				493211181FF8989700ABA72A /* Date+Testable.swift in Sources */,
 				4935A69F1EB1A50600B0CCF8 /* UIButton+BlockTarget.swift in Sources */,
 				4935A64D1EB1A50600B0CCF8 /* CommandLineDecoder.swift in Sources */,
 				4935A65F1EB1A50600B0CCF8 /* ErrorGenerating+ErrorFactory.swift in Sources */,

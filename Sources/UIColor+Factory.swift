@@ -25,7 +25,7 @@ public extension UIColor {
 
         let withoutHash: Substring = hexString[hexString.index(hexString.startIndex, offsetBy: 1)...]
         let finalHexString: String
-        let length = hexString.characters.count
+        let length = hexString.count
         switch length {
             case 3:
                 finalHexString = "#" + withoutHash.repeating(nTimes: 3)
