@@ -424,6 +424,8 @@ extension FormViewController/*: UITableViewDelegate*/ {
                 return
             }
 
+            self.view.endEditing(true)
+
             let viewController = customField.buildViewController() { [unowned customField, unowned self] newValue in
                 customField.value = newValue
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
