@@ -80,7 +80,12 @@ extension WebViewController: UIWebViewDelegate {
         self.activityIndicator.stopAnimating()
         self.showAlert(withError: error, "loading", other: [
             .action("OK", handler: {
-                self.dismiss(animated: true, completion: nil)
+                if let navController = self.navigationController {
+                    navController.popViewController(animated: true)
+                }
+                else {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }),
             .action("Try Again", handler: {
                 self.reload()
