@@ -69,7 +69,7 @@ extension ErrorGenerating where Self: UIViewController {
         other: [AlertAction] = []
         )
     {
-        self.showAlert(withError: self.error(doing, from: error))
+        self.showAlert(withError: self.error(doing, from: error), other: other)
     }
 }
 
