@@ -127,6 +127,12 @@ extension FilePath {
     }
     #endif
 
+    public func lines(separatedBy delimeter: String = "\n", encoding: String.Encoding = .utf8, chunkSize: Int = 4096) throws -> AnySequence<String> {
+        let fileHandle = try self.handleForReading()
+        let reader = DelimeterStreamReader(fileHandle: fileHandle, delimeter: delimeter, encoding: encoding, chunkSize: chunkSize)
+        return AnySequence(reader)
+    }
+
     public func handleForReading() throws -> FileHandle {
         do {
             return try FileHandle(forReadingFrom: self.url)
