@@ -184,6 +184,11 @@ public final class ObservableArray<Element> {
         })
     }
 
+    public func startSorting(by sort: ((_ lhs: Element, _ rhs: Element) -> Bool)?) {
+        self.isOrderedBefore = sort
+        self.resort()
+    }
+
     public func resort() {
         guard let isOrderedBefore = self.isOrderedBefore else {
             return
