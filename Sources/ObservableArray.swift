@@ -263,7 +263,7 @@ public final class ObservableArray<Element> {
                 newIndex -= 1
             }
             else {
-                self.values.insert(new, at: existingIndex + 1)
+                self.insert(new, at: existingIndex + 1)
                 newIndex -= 1
             }
         }
@@ -274,7 +274,7 @@ public final class ObservableArray<Element> {
         }
 
         while newIndex >= 0 {
-            self.values.insert(targetValues[newIndex], at: 0)
+            self.insert(targetValues[newIndex], at: 0)
             newIndex -= 1
         }
     }
