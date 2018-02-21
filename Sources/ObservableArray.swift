@@ -153,6 +153,7 @@ public final class ObservableArray<Element> {
     public func insert(_ element: Element, at index: Int) {
         if self.isOrderedBefore != nil {
             self.append(element)
+            return
         }
 
         self.values.insert(element, at: index)
@@ -225,11 +226,19 @@ public final class ObservableArray<Element> {
     }
 
     public func sync(with newValues: [Element], isEqual: (Element, Element) -> Bool) {
-        var newIndex = newValues.count - 1
+        let targetValues: [Element]
+        if let block = self.isOrderedBefore {
+            targetValues = newValues.sorted(by: block)
+        }
+        else {
+            targetValues = newValues
+        }
+
+        var newIndex = targetValues.count - 1
         var existingIndex = self.values.count - 1
 
         while newIndex >= 0 && existingIndex >= 0 {
-            let new = newValues[newIndex]
+            let new = targetValues[newIndex]
 
             guard !isEqual(new, self.values[existingIndex]) else {
                 newIndex -= 1
@@ -254,7 +263,7 @@ public final class ObservableArray<Element> {
                 newIndex -= 1
             }
             else {
-                self.insert(new, at: existingIndex + 1)
+                self.values.insert(new, at: existingIndex + 1)
                 newIndex -= 1
             }
         }
@@ -265,7 +274,7 @@ public final class ObservableArray<Element> {
         }
 
         while newIndex >= 0 {
-            self.insert(newValues[newIndex], at: 0)
+            self.values.insert(targetValues[newIndex], at: 0)
             newIndex -= 1
         }
     }

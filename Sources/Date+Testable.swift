@@ -20,6 +20,9 @@ extension Date {
     }
 
     public static func addFake(interval: TimeInterval) {
+        if faked == nil {
+            self.startFakingNow(from: Date())
+        }
         if let old = faked {
             faked = (old.base.addingTimeInterval(interval), started: old.started)
         }
