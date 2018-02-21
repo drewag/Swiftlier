@@ -27,7 +27,10 @@ public class MenuViewController: UITableViewController {
         if hasSingleUnnamedSection {
             var textWidth: CGFloat = 50
             for item in menu.sections[0].items {
-                let size = (item.displayText() as NSString).size(withAttributes: [.font: MenuViewController.font])
+                var size = (item.displayText() as NSString).size(withAttributes: [.font: MenuViewController.font])
+                if item.isSelected {
+                    size.width += 20
+                }
                 textWidth = max(textWidth, size.width)
             }
             self.preferredContentSize = CGSize(
@@ -76,6 +79,7 @@ public class MenuViewController: UITableViewController {
         cell.textLabel?.font = type(of: self).font
         cell.imageView?.image = menuItem.icon
         cell.backgroundColor = tableView.backgroundColor
+        cell.accessoryType = menuItem.isSelected ? .checkmark : .none
         if let color = self.selectionColor {
             cell.selectedBackgroundView = UIView()
             cell.selectedBackgroundView?.backgroundColor = color

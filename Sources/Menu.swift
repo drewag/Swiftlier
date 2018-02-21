@@ -22,12 +22,14 @@ public struct MenuItem {
     let displayText: () -> String
     let icon: UIImage?
     let action: Action
+    let isSelected: Bool
 
-    public static func item(named: String, icon: UIImage? = nil, action: Action) -> MenuItem {
+    public static func item(named: String, icon: UIImage? = nil, action: Action, isSelected: Bool = false) -> MenuItem {
         return MenuItem(
             displayText: { return named },
             icon: icon,
-            action: action
+            action: action,
+            isSelected: isSelected
         )
     }
 }
