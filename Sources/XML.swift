@@ -69,7 +69,14 @@ extension XML.ParserDelegate: XMLParserDelegate {
             self.workingValues.append((key, [finalKey:finalValue]))
         case var dict as [String:Any]:
             if let existingValue = dict[finalKey] {
-                self.workingValues.append((key: key, value: [existingValue, finalValue]))
+                if var array = existingValue as? [Any] {
+                    array.append(finalValue)
+                    dict[finalKey] = array
+                }
+                else {
+                    dict[finalKey] = [existingValue, finalValue]
+                }
+                self.workingValues.append((key: key, value: dict))
             }
             else {
                 dict[finalKey] = finalValue
