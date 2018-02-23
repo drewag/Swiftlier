@@ -68,7 +68,7 @@ extension StringProtocol {
         var foundNonWhitespace = false
         for char in self {
             switch char {
-            case "\n", "\t", " ":
+            case "\n", "\t", " ", "\r":
                 if foundNonWhitespace {
                     pending.append(char)
                 }
