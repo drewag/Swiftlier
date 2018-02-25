@@ -42,11 +42,16 @@ public class KeyboardConstraintAdjuster: NSObject {
     // MARK: Notifications
 
     @objc func keyboardWillShow(_ notification: Notification) {
-        guard let frame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else { return }
+        guard let window = self.view.window else {
+            return
+        }
+
+        guard let screenRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else { return }
         guard let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue else { return }
+        let windowRect = window.convert(screenRect, from: nil)
+        let viewRect = self.view.convert(windowRect, from: nil)
         let options = UIViewAnimationOptions(rawValue: UInt((notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue << 16))
-        let keyboard = self.view.convert(frame, from:self.view.window)
-        let displayHeight = self.view.frame.height - keyboard.minY
+        let displayHeight = self.view.bounds.height - viewRect.origin.y
 
         UIView.animate(
             withDuration: duration,
