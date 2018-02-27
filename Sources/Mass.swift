@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Mass {
-    public enum Unit: Int, CustomStringConvertible {
+    public enum Unit: Int, CustomStringConvertible, Codable {
         case grams = 11
         case kilograms = 14
         case ounces = 1537
