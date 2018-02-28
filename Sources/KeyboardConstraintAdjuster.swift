@@ -42,24 +42,22 @@ public class KeyboardConstraintAdjuster: NSObject {
     // MARK: Notifications
 
     @objc func keyboardWillShow(_ notification: Notification) {
-        guard let window = self.view.window else {
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else { return }
+        guard let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue else { return }
+        let options = UIViewAnimationOptions(rawValue: UInt((notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue << 16))
+
+        let newConstant = keyboardRect.height + self.offset
+        guard self.constraint.constant != newConstant else {
             return
         }
-
-        guard let screenRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else { return }
-        guard let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue else { return }
-        let windowRect = window.convert(screenRect, from: nil)
-        let viewRect = self.view.convert(windowRect, from: nil)
-        let options = UIViewAnimationOptions(rawValue: UInt((notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue << 16))
-        let displayHeight = self.view.bounds.height - viewRect.origin.y
 
         UIView.animate(
             withDuration: duration,
             delay: 0,
             options: options,
             animations: { () -> Void in
+                self.constraint.constant = newConstant
                 self.onKeyboardIsBeingShown?()
-                self.constraint.constant = displayHeight + self.offset
                 self.view.layoutIfNeeded()
             },
             completion: { _ in
@@ -72,13 +70,18 @@ public class KeyboardConstraintAdjuster: NSObject {
         guard let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue else { return }
         let options = UIViewAnimationOptions(rawValue: UInt((notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue << 16))
 
+        let newConstant = self.offset
+        guard self.constraint.constant != newConstant else {
+            return
+        }
+
         UIView.animate(
             withDuration: duration,
             delay: 0,
             options: options,
             animations: {
+                self.constraint.constant = newConstant
                 self.onKeyboardIsBeingHidden?()
-                self.constraint.constant = self.offset
                 self.view.layoutIfNeeded()
             },
             completion: { _ in
