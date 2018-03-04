@@ -36,6 +36,24 @@ public struct EmailAddress: CustomStringConvertible, ErrorGenerating {
     public var description: String {
         return "Email(\(self.string))"
     }
+
+    public var domain: String {
+        var output = ""
+        var beganDomain = false
+        for character in self.string {
+            guard !beganDomain else {
+                output.append(character)
+                continue
+            }
+            switch character {
+            case "@":
+                beganDomain = true
+            default:
+                continue
+            }
+        }
+        return output
+    }
 }
 
 extension EmailAddress: Equatable {
