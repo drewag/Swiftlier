@@ -33,7 +33,6 @@
 		4935A6561EB1A50600B0CCF8 /* Dictionary+Merging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5E21EB1A50600B0CCF8 /* Dictionary+Merging.swift */; };
 		4935A6571EB1A50600B0CCF8 /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5E31EB1A50600B0CCF8 /* DispatchQueue+Helpers.swift */; };
 		4935A6581EB1A50600B0CCF8 /* Double+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5E41EB1A50600B0CCF8 /* Double+Formatting.swift */; };
-		4935A6591EB1A50600B0CCF8 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5E51EB1A50600B0CCF8 /* Email.swift */; };
 		4935A65A1EB1A50600B0CCF8 /* EmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5E61EB1A50600B0CCF8 /* EmailAddress.swift */; };
 		4935A65D1EB1A50600B0CCF8 /* EnergyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5E91EB1A50600B0CCF8 /* EnergyFormatting.swift */; };
 		4935A65E1EB1A50600B0CCF8 /* Enum+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A5EA1EB1A50600B0CCF8 /* Enum+Convenience.swift */; };
@@ -212,7 +211,6 @@
 		4935A5E21EB1A50600B0CCF8 /* Dictionary+Merging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merging.swift"; sourceTree = "<group>"; };
 		4935A5E31EB1A50600B0CCF8 /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 		4935A5E41EB1A50600B0CCF8 /* Double+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Formatting.swift"; sourceTree = "<group>"; };
-		4935A5E51EB1A50600B0CCF8 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		4935A5E61EB1A50600B0CCF8 /* EmailAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAddress.swift; sourceTree = "<group>"; };
 		4935A5E91EB1A50600B0CCF8 /* EnergyFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyFormatting.swift; sourceTree = "<group>"; };
 		4935A5EA1EB1A50600B0CCF8 /* Enum+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+Convenience.swift"; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 				4935A5E21EB1A50600B0CCF8 /* Dictionary+Merging.swift */,
 				4935A5E31EB1A50600B0CCF8 /* DispatchQueue+Helpers.swift */,
 				4935A5E41EB1A50600B0CCF8 /* Double+Formatting.swift */,
-				4935A5E51EB1A50600B0CCF8 /* Email.swift */,
 				4935A5E61EB1A50600B0CCF8 /* EmailAddress.swift */,
 				4935A5E91EB1A50600B0CCF8 /* EnergyFormatting.swift */,
 				4935A5EA1EB1A50600B0CCF8 /* Enum+Convenience.swift */,
@@ -743,7 +740,6 @@
 				4935A6911EB1A50600B0CCF8 /* ShadowView.swift in Sources */,
 				4935A67B1EB1A50600B0CCF8 /* Observable.swift in Sources */,
 				4935A68E1EB1A50600B0CCF8 /* SelectableValue.swift in Sources */,
-				4935A6591EB1A50600B0CCF8 /* Email.swift in Sources */,
 				4935A6421EB1A50600B0CCF8 /* Angle.swift in Sources */,
 				4947A5101FFDC84C004A1FF8 /* Date+Testable.swift in Sources */,
 				4935A6611EB1A50600B0CCF8 /* Path+Coding.swift in Sources */,
