@@ -78,29 +78,32 @@ open class NetworkError: ReportableError {
 
 extension ErrorGenerating {
     public static func error(_ doing: String, from response: URLResponse?, and data: Data?) -> NetworkError? {
-        if let response = response as? HTTPURLResponse {
-            let parsed = self.parseErrorBody(from: data)
-            let customMessage = parsed?.because
-            switch response.statusCode {
-            case 404:
-                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .notFound, customMessage: customMessage)), status: HTTPStatus(from: response))
-            case 401:
-                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unauthorized, customMessage: customMessage)), status: HTTPStatus(from: response))
-            case 403:
-                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .forbidden, customMessage: customMessage)), status: HTTPStatus(from: response))
-            case 410:
-                return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .gone, customMessage: customMessage)), status: HTTPStatus(from: response))
-            case let x where x >= 400 && x < 500:
-                return self.error(doing, fromNetworkData: data, for: response)
-                    ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .invalid, customMessage: customMessage)), status: HTTPStatus(from: response))
-            case let x where x >= 500 && x < 600:
-                return self.error(doing, fromNetworkData: data, for: response)
-                    ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unknown, customMessage: customMessage)), status: HTTPStatus(from: response))
-            default:
-                return nil
-            }
+        guard let response = response as? HTTPURLResponse else {
+            return nil
         }
-        else {
+        return self.error(doing, from: data, status: HTTPStatus(rawValue: response.statusCode))
+    }
+
+    public static func error(_ doing: String, from data: Data?, status: HTTPStatus) -> NetworkError? {
+        let parsed = self.parseErrorBody(from: data)
+        let customMessage = parsed?.because
+        let perpitrator = parsed?.perpitrator ?? .system
+        switch status.rawValue {
+        case 404:
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .notFound, customMessage: customMessage), by: perpitrator), status: status)
+        case 401:
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unauthorized, customMessage: customMessage), by: perpitrator), status: status)
+        case 403:
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .forbidden, customMessage: customMessage), by: perpitrator), status: status)
+        case 410:
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .gone, customMessage: customMessage), by: perpitrator), status: status)
+        case let x where x >= 400 && x < 500:
+            return self.error(doing, fromNetworkData: data, status: status)
+                ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .invalid, customMessage: customMessage), by: perpitrator), status: status)
+        case let x where x >= 500 && x < 600:
+            return self.error(doing, fromNetworkData: data, status: status)
+                ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unknown, customMessage: customMessage), by: perpitrator), status: status)
+        default:
             return nil
         }
     }
@@ -109,14 +112,18 @@ extension ErrorGenerating {
         return type(of: self).error(doing, from: response, and: data)
     }
 
-    private static func error(_ doing: String, fromNetworkData data: Data?, for response: HTTPURLResponse) -> NetworkError? {
+    public func error(_ doing: String, from data: Data?, status: HTTPStatus) -> NetworkError? {
+        return type(of: self).error(doing, from: data, status: status)
+    }
+
+    private static func error(_ doing: String, fromNetworkData data: Data?, status: HTTPStatus) -> NetworkError? {
         guard let parsed = self.parseErrorBody(from: data) else {
             return nil
         }
 
         let reason = ErrorReasonWithExtraInfo(because: parsed.because, extraInfo: parsed.json)
         let error = ReportableError(from: self, by: parsed.perpitrator, doing: parsed.doing, because: reason)
-        return NetworkError(from: error, status: HTTPStatus(from: response))
+        return NetworkError(from: error, status: status)
     }
 
     fileprivate static func parseErrorBody(from data: Data?) -> (doing: String, because: String, json: JSON?, perpitrator: ErrorPerpitrator)? {

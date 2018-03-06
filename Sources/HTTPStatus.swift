@@ -59,10 +59,9 @@ public enum HTTPStatus: RawRepresentable {
 
     public init(from response: HTTPURLResponse) {
         self = HTTPStatus(rawValue: response.statusCode)
-            ?? .other(response.statusCode)
     }
 
-    public init?(rawValue: Int) {
+    public init(rawValue: Int) {
         switch rawValue {
         case 200:
             self = .ok
