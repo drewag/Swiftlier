@@ -15,7 +15,7 @@ public struct EmailAddress: CustomStringConvertible, ErrorGenerating {
         }
 
         guard string.isValidEmail else {
-            throw EmailAddress.userError(purpose, because: "that is not a valid email")
+            throw EmailAddress.userError(purpose, because: "'\(string)' is not a valid email. Please make sure you typed it correctly.")
         }
 
         self.string = string.lowercased()
@@ -27,7 +27,7 @@ public struct EmailAddress: CustomStringConvertible, ErrorGenerating {
         }
 
         guard string.isValidEmail else {
-            throw EmailAddress.error("creating email address", because: "the email is invalid")
+            throw EmailAddress.error("creating email address", because: "'\(string)' is not a valid email")
         }
 
         self.string = string.lowercased()
