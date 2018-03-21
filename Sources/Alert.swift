@@ -79,6 +79,16 @@ extension UIViewController {
         other: [AlertAction] = []
         )
     {
+        guard let window = self.view?.window else {
+            print("Attempt to present error alert on view controller without a window")
+            return
+        }
+
+        guard window.isKeyWindow else {
+            print("Attempt to present error alert on window that is not the key window")
+            return
+        }
+
         let finalError: ReportableError
         switch (error.reason as? NetworkResponseErrorReason)?.kind ?? .unknown {
         case .unauthorized, .forbidden, .noInternet, .gone:
@@ -102,6 +112,16 @@ extension UIViewController {
         other: [AlertAction] = []
         )
     {
+        guard let window = self.view?.window else {
+            print("Attempt to present action sheet on view controller without a window")
+            return
+        }
+
+        guard window.isKeyWindow else {
+            print("Attempt to present action sheet on window that is not the key window")
+            return
+        }
+
         var other = other
         if cancel == nil && other.isEmpty {
             other.append(.action("OK"))
@@ -142,6 +162,16 @@ extension UIViewController {
         other: [AlertAction] = []
         )
     {
+        guard let window = self.view?.window else {
+            print("Attempt to present alert on view controller without a window")
+            return
+        }
+
+        guard window.isKeyWindow else {
+            print("Attempt to present alert on window that is not the key window")
+            return
+        }
+
         var other = other
         if cancel == nil && other.isEmpty && preferred == nil {
             other.append(.action("OK"))
@@ -185,6 +215,16 @@ extension UIViewController {
         other: [TextAction] = []
         )
     {
+        guard let window = self.view?.window else {
+            print("Attempt to present text input on view controller without a window")
+            return
+        }
+
+        guard window.isKeyWindow else {
+            print("Attempt to present text input on window that is not the key window")
+            return
+        }
+
         var other = other
         if cancel == nil && other.isEmpty {
             other.append(.action("OK"))
