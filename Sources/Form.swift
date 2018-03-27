@@ -438,10 +438,14 @@ public class NumberField<Value: NumberFieldValue>: AnyNumberField {
 public class BoolField: Field {
     public let label: String
     public var value: Bool
+    public let isEditable: Bool
+    public let message: String?
 
-    public init(label: String, value: Bool) {
+    public init(label: String, value: Bool, isEditable: Bool = true, message: String? = nil) {
         self.label = label
         self.value = value
+        self.isEditable = isEditable
+        self.message = message
     }
 
     public var displayValue: String {

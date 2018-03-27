@@ -235,7 +235,9 @@ extension FormViewController/*: UITableViewDataSource*/ {
             cell.selectionStyle = .none
             cell.nameLabel.text = field.label
             cell.valueSwitch.isOn = boolField.value
+            cell.valueSwitch.isEnabled = boolField.isEditable
             cell.nameLabelWidth = self.nameLabelWidth
+            cell.messageLabel.text = boolField.message
             cell.valueSwitch.superview!.tag = indexPath.section
             cell.valueSwitch.tag = indexPath.row
             cell.valueSwitch.removeTarget(self, action: #selector(didChange(valueSwitch:)), for: .allEvents)
@@ -656,6 +658,7 @@ private class BoolFieldTableViewCell: UITableViewCell {
 
     let nameLabel: UILabel
     let valueSwitch = UISwitch()
+    let messageLabel = UILabel()
     private let nameLabelWidthConstraint: NSLayoutConstraint
 
     var nameLabelWidth: CGFloat {
@@ -676,14 +679,20 @@ private class BoolFieldTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         self.nameLabel.font = FormViewController.font
+        self.messageLabel.font = FormViewController.font
+        self.messageLabel.textColor = UIColor.darkGray
+
         self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.valueSwitch.translatesAutoresizingMaskIntoConstraints = false
+        self.messageLabel.translatesAutoresizingMaskIntoConstraints = false
 
         self.contentView.addSubview(self.nameLabel)
         self.contentView.addSubview(self.valueSwitch)
+        self.contentView.addSubview(self.messageLabel)
 
         self.nameLabel.addConstraint(self.nameLabelWidthConstraint)
         self.nameLabel.constrain(.height, to: 50)
+        self.messageLabel.constrain(.height, to: 50)
 
         self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
         self.contentView.constrain(.centerY, of: self.nameLabel)
@@ -691,7 +700,10 @@ private class BoolFieldTableViewCell: UITableViewCell {
 
         self.contentView.constrain(.centerY, of: self.valueSwitch)
         NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueSwitch, plus: -8)
-        self.contentView.constrain(.right, of: self.valueSwitch, plus: -16)
+
+        self.contentView.constrain(.centerY, of: self.messageLabel)
+        NSLayoutConstraint(.right, of: self.valueSwitch, to: .left, of: self.messageLabel, plus: -8)
+        self.contentView.constrain(.right, of: self.messageLabel, plus: -16)
     }
 
     required init?(coder aDecoder: NSCoder) {
