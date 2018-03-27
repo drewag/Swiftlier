@@ -121,9 +121,9 @@ extension FilePath {
     }
 
     #if os(iOS)
-    public func image() throws -> UIImage? {
+    public func image(scale: CGFloat = 1) throws -> UIImage? {
         let data = try self.contents()
-        return UIImage(data: data)
+        return UIImage(data: data, scale: scale)
     }
     #endif
 
