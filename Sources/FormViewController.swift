@@ -622,10 +622,12 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         self.contentView.removeConstraints(self.customConstraints)
 
         self.customConstraints = []
+        let leftConstraint = self.contentView.readableContentGuide.leftAnchor.constraint(equalTo: self.nameLabel.leftAnchor)
+        leftConstraint.isActive = true
         self.customConstraints += [
             self.contentView.constrain(.top, of: self.nameLabel, plus: 2),
             self.contentView.constrain(.centerY, of: self.nameLabel),
-            self.contentView.constrain(.left, of: self.nameLabel, plus: 16),
+            leftConstraint,
 
             NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueField, plus: -8),
             NSLayoutConstraint(.top, of: self.nameLabel, to: .top, of: self.valueField),
@@ -633,15 +635,19 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         ]
 
         if let button = self.clearButton {
+            let rightConstraint = self.contentView.readableContentGuide.rightAnchor.constraint(equalTo: button.rightAnchor)
+            rightConstraint.isActive = true
             self.customConstraints += [
                 NSLayoutConstraint(.right, of: self.valueField, to: .left, of: button, plus: -8),
                 NSLayoutConstraint(.centerY, of: button, to: .centerY, of: self.nameLabel),
-                self.contentView.constrain(.right, of: button, plus: -16),
+                rightConstraint,
             ]
         }
         else {
+            let rightConstraint = self.contentView.readableContentGuide.rightAnchor.constraint(equalTo: self.valueField.rightAnchor)
+            rightConstraint.isActive = true
             self.customConstraints += [
-                self.contentView.constrain(.right, of: self.valueField, plus: -16),
+                rightConstraint,
             ]
         }
     }
@@ -696,14 +702,14 @@ private class BoolFieldTableViewCell: UITableViewCell {
 
         self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
         self.contentView.constrain(.centerY, of: self.nameLabel)
-        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
+        self.contentView.readableContentGuide.leftAnchor.constraint(equalTo: self.nameLabel.leftAnchor).isActive = true
 
         self.contentView.constrain(.centerY, of: self.valueSwitch)
         NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.valueSwitch, plus: -8)
 
         self.contentView.constrain(.centerY, of: self.messageLabel)
         NSLayoutConstraint(.right, of: self.valueSwitch, to: .left, of: self.messageLabel, plus: -8)
-        self.contentView.constrain(.right, of: self.messageLabel, plus: -16)
+        self.contentView.readableContentGuide.rightAnchor.constraint(equalTo: self.messageLabel.rightAnchor).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -748,14 +754,14 @@ private class TextViewFieldTableViewCell: UITableViewCell {
         self.textView.constrain(.height, to: 120)
 
         self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
-        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
+        self.contentView.readableContentGuide.leftAnchor.constraint(equalTo: self.nameLabel.leftAnchor).isActive = true
 
         NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.textView, plus: -8)
         self.contentView.constrain(.top, of: self.textView, plus: 4)
-        self.contentView.constrain(.right, of: self.textView, plus: -16)
+        self.contentView.readableContentGuide.rightAnchor.constraint(equalTo: self.textView.rightAnchor).isActive = true
         self.contentView.constrain(.centerY, of: self.textView)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -798,13 +804,13 @@ private class SegmentedControlTableViewCell: UITableViewCell {
 
         self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
         self.contentView.constrain(.centerY, of: self.nameLabel)
-        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
+        self.contentView.readableContentGuide.leftAnchor.constraint(equalTo: self.nameLabel.leftAnchor).isActive = true
 
         NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.segmentedControl, plus: -8)
         NSLayoutConstraint(.centerY, of: self.segmentedControl, to: .centerY, of: self.nameLabel)
-        self.contentView.constrain(.right, of: self.segmentedControl, plus: -16)
+        self.contentView.readableContentGuide.rightAnchor.constraint(equalTo: self.segmentedControl.rightAnchor).isActive = true
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -853,12 +859,12 @@ private class SliderTableViewCell: UITableViewCell {
 
         self.contentView.constrain(.top, of: self.nameLabel, plus: 2)
         self.contentView.constrain(.centerY, of: self.nameLabel)
-        self.contentView.constrain(.left, of: self.nameLabel, plus: 16)
+        self.contentView.readableContentGuide.leftAnchor.constraint(equalTo: self.nameLabel.leftAnchor).isActive = true
 
         NSLayoutConstraint(.right, of: self.nameLabel, to: .left, of: self.slider, plus: -8)
         NSLayoutConstraint(.right, of: self.slider, to: .left, of: self.valueLabel, plus: -8)
         NSLayoutConstraint(.centerY, of: self.slider, to: .centerY, of: self.nameLabel)
-        self.contentView.constrain(.right, of: self.valueLabel, plus: -16)
+        self.contentView.readableContentGuide.rightAnchor.constraint(equalTo: self.valueLabel.rightAnchor).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

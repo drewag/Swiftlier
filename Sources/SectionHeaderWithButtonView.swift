@@ -31,7 +31,7 @@ extension SectionHeaderWithButtonView {
         self.contentView.addSubview(self.button)
         self.button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.constrain([.top, .bottom], of: self.button)
-        self.contentView.constrain(.right, of: self.button, plus: -16)
+        self.contentView.readableContentGuide.rightAnchor.constraint(equalTo: self.button.rightAnchor).isActive = true
     }
 }
 #endif
