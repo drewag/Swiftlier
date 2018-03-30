@@ -109,7 +109,8 @@ extension UIViewController {
         message: String? = nil,
         cancel: AlertAction? = nil,
         preferred: AlertAction? = nil,
-        other: [AlertAction] = []
+        other: [AlertAction] = [],
+        delegate: UIPopoverPresentationControllerDelegate? = nil
         )
     {
         guard let window = self.view?.window else {
@@ -152,6 +153,7 @@ extension UIViewController {
             }
         )
         self.present(alert, animated: true, completion: nil)
+        alert.popoverPresentationController?.delegate = delegate
     }
 
     public func showAlert(
