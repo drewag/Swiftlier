@@ -161,7 +161,12 @@ open class LayeredTableViewController: UIViewController {
 
         self.maskBottomTableView()
 
-        self.bottomTableView.contentOffset.y = self.bottomClosedYOffset
+        if self.isOpen {
+            self.bottomTableView.contentOffset.y = max(self.bottomOpenYOffset, self.bottomTableView.contentOffset.y)
+        }
+        else {
+            self.bottomTableView.contentOffset.y = self.bottomClosedYOffset
+        }
         self.resetBottomInset(for: size)
     }
 
