@@ -124,7 +124,7 @@ extension XML.ParserDelegate: XMLParserDelegate {
     func parser(_ parser: Foundation.XMLParser, foundComment comment: String) {}
     func parser(_ parser: Foundation.XMLParser, foundCDATA CDATABlock: Foundation.Data) {}
     func parser(_ parser: Foundation.XMLParser, resolveExternalEntityName name: String, systemID: String?) -> Foundation.Data? { return nil }
-    func parser(_ parser: Foundation.XMLParser, parseErrorOccurred parseError: Foundation.NSError) {}
-    func parser(_ parser: Foundation.XMLParser, validationErrorOccurred validationError: Foundation.NSError) {}
+    func parser(_ parser: Foundation.XMLParser, parseErrorOccurred parseError: Error) {}
+    func parser(_ parser: Foundation.XMLParser, validationErrorOccurred validationError: Error) {}
     #endif
 }

@@ -69,17 +69,17 @@ public struct FileSystem: ErrorGenerating {
 
     func itemKind(at url: URL) -> ItemKind {
         #if os(Linux)
-            var isDirectory = false
-        #else
             var isDirectory = ObjCBool(false)
+        #else
+            var isDirectory = false
         #endif
         guard FileManager.default.fileExists(atPath: url.relativePath, isDirectory: &isDirectory) else {
             return .none
         }
         #if os(Linux)
-            return isDirectory ? .directory : .file
-        #else
             return isDirectory.boolValue ? .directory : .file
+        #else
+            return isDirectory ? .directory : .file
         #endif
     }
 
@@ -264,7 +264,7 @@ public struct FileSystem: ErrorGenerating {
 
     func size(at url: URL) throws -> Int {
         #if os(Linux)
-            switch try self.itemKind(at: url) {
+            switch self.itemKind(at: url) {
             case .directory:
                 return 0
             case .none:
