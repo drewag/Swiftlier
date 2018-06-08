@@ -68,19 +68,11 @@ public struct FileSystem: ErrorGenerating {
     }
 
     func itemKind(at url: URL) -> ItemKind {
-        #if os(Linux)
-            var isDirectory = ObjCBool(false)
-        #else
-            var isDirectory = false
-        #endif
+        var isDirectory = ObjCBool(false)
         guard FileManager.default.fileExists(atPath: url.relativePath, isDirectory: &isDirectory) else {
             return .none
         }
-        #if os(Linux)
-            return isDirectory.boolValue ? .directory : .file
-        #else
-            return isDirectory ? .directory : .file
-        #endif
+        return isDirectory.boolValue ? .directory : .file
     }
 
     func contentsOfDirectory(at url: URL) throws -> [ExistingPath] {
