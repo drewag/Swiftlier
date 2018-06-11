@@ -21,6 +21,14 @@ extension URL {
         return components.url ?? self
     }
 
+    public func https() -> URL {
+        guard var components = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
+            return self
+        }
+        components.scheme = "https"
+        return components.url ?? self
+    }
+
     public func pathComponents(differentFrom URL: URL) -> [String] {
         let left = self.resolvingSymlinksInPath().pathComponents
         let right = URL.resolvingSymlinksInPath().pathComponents
