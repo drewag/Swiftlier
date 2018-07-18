@@ -40,7 +40,7 @@ public struct Mass {
     }
 
     public let unit: Unit
-    private(set) var value: Double
+    fileprivate(set) var value: Double
 
     public init(_ value: Double, in unit: Unit) {
         self.unit = unit
@@ -206,5 +206,11 @@ extension Mass: Codable {
 
     public func encode(to encoder: Encoder) throws {
         try self.pounds.encode(to: encoder)
+    }
+}
+
+extension Mass: Equatable {
+    public static func == (lhs: Mass, rhs: Mass) -> Bool {
+        return lhs.value == rhs.in(lhs.unit)
     }
 }
