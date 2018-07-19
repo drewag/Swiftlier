@@ -37,22 +37,32 @@ public struct EmailAddress: CustomStringConvertible, ErrorGenerating {
         return "Email(\(self.string))"
     }
 
-    public var domain: String {
-        var output = ""
+    public var components: (user: String, domain: String) {
+        var user = ""
+        var domain = ""
         var beganDomain = false
         for character in self.string {
             guard !beganDomain else {
-                output.append(character)
+                domain.append(character)
                 continue
             }
             switch character {
             case "@":
                 beganDomain = true
             default:
-                continue
+                user.append(character)
             }
         }
-        return output
+        return (user: user, domain: domain)
+
+    }
+
+    public var domain: String {
+        return self.components.domain
+    }
+
+    public var user: String {
+        return self.components.user
     }
 }
 
