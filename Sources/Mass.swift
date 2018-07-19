@@ -37,6 +37,21 @@ public struct Mass {
             }
             return Unit(rawValue: value)
         }
+
+        public var formatterUnit: MassFormatter.Unit {
+            switch self {
+            case .grams:
+                return .gram
+            case .kilograms:
+                return .kilogram
+            case .ounces:
+                return .ounce
+            case .pounds:
+                return .pound
+            case .stones:
+                return .stone
+            }
+        }
     }
 
     public let unit: Unit
