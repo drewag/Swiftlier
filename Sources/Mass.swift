@@ -229,3 +229,20 @@ extension Mass: Equatable {
         return lhs.value == rhs.in(lhs.unit)
     }
 }
+
+extension MassFormatter.Unit {
+    public var massUnit: Mass.Unit {
+        switch self {
+        case .gram:
+            return .grams
+        case .kilogram:
+            return .kilograms
+        case .ounce:
+            return .ounces
+        case .pound:
+            return .pounds
+        case .stone:
+            return .stones
+        }
+    }
+}
