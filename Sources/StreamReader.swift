@@ -55,7 +55,9 @@ public class StreamReader  {
 
         switch self.source {
         case let .data(data, index: start):
-            let end = data.index(start, offsetBy: other.count)
+            guard let end = data.index(start, offsetBy: other.count, limitedBy: data.count) else {
+                return false
+            }
             return data.subdata(in: start ..< end) == other
         case .file(let fileHandle, var buffer, let chunkSize):
             while buffer.count < other.count && !self.isAtEndOfFile {
