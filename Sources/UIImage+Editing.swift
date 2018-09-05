@@ -47,5 +47,26 @@ extension UIImage {
 
         return scaledImage!
     }
+
+    public func desaturated(brightness: CGFloat = 0.7) -> UIImage {
+        guard let currentCGImage = self.cgImage else { return self }
+
+        let currentCIImage = CIImage(cgImage: currentCGImage)
+
+        let filter = CIFilter(name: "CIColorMonochrome")
+        filter?.setValue(currentCIImage, forKey: "inputImage")
+
+        // set a gray value for the tint color
+        filter?.setValue(CIColor(red: brightness, green: brightness, blue: brightness), forKey: "inputColor")
+
+        filter?.setValue(1.0, forKey: "inputIntensity")
+        guard let outputImage = filter?.outputImage else { return self }
+
+        let context = CIContext()
+
+        guard let cgimg = context.createCGImage(outputImage, from: outputImage.extent) else { return self }
+
+        return UIImage(cgImage: cgimg)
+    }
 }
 #endif
