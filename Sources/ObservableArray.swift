@@ -241,6 +241,7 @@ public final class ObservableArray<Element> {
             let new = targetValues[newIndex]
 
             guard !isEqual(new, self.values[existingIndex]) else {
+                self.values[existingIndex] = new
                 newIndex -= 1
                 existingIndex -= 1
                 continue
