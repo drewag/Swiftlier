@@ -13,6 +13,7 @@ public enum HTTPMethod: String {
     case put
     case delete
     case options
+    case patch
 }
 
 extension HTTPMethod {
@@ -51,6 +52,13 @@ extension HTTPMethod {
         case .options:
             switch other {
             case .options, .any:
+                return true
+            default:
+                return false
+            }
+        case .patch:
+            switch other {
+            case .patch, .any:
                 return true
             default:
                 return false
