@@ -12,8 +12,8 @@ import UIKit
 open class CustomGradientView: UIView {
     @IBInspectable public var startXPercent: CGFloat = 0
     @IBInspectable public var startYPercent: CGFloat = 0
-    @IBInspectable public var endXPercent: CGFloat = 0
-    @IBInspectable public var endYPercent: CGFloat = 0
+    @IBInspectable public var endXPercent: CGFloat = 1
+    @IBInspectable public var endYPercent: CGFloat = 1
 
     @IBInspectable
     public var startColor: UIColor = UIColor.red {
@@ -42,11 +42,13 @@ open class CustomGradientView: UIView {
     }
 
     open override func awakeFromNib() {
-        self.gradientLayer.colors = self.colors
+        self.refresh()
     }
 
     open override func layoutSubviews() {
         super.layoutSubviews()
+
+        self.refresh()
 
         self.gradientLayer.startPoint = CGPoint(
             x: self.startXPercent,
@@ -73,6 +75,12 @@ open class CustomGradientView: UIView {
         animation.isCumulative = true
 
         self.gradientLayer.add(animation, forKey: "animateColors")
+    }
+}
+
+private extension CustomGradientView {
+    func refresh()  {
+        self.gradientLayer.colors = self.colors
     }
 }
 #endif
