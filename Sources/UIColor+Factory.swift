@@ -19,20 +19,22 @@ public extension UIColor {
     }
 
     convenience public init(hexString: String) throws {
-        if !hexString.hasPrefix("#") {
-            throw NSError(domain: "UIColor.init(hexString:)", code: 0, userInfo: [NSLocalizedDescriptionKey:"Missing # prefix"])
+        let withoutHash: String
+        if hexString.hasPrefix("#") {
+            withoutHash = String(hexString[hexString.index(hexString.startIndex, offsetBy: 1)...])
+        }
+        else {
+            withoutHash = hexString
         }
 
-        let withoutHash: Substring = hexString[hexString.index(hexString.startIndex, offsetBy: 1)...]
         let finalHexString: String
-        let length = hexString.count
-        switch length {
-            case 3:
+        switch withoutHash.count {
+            case 2:
                 finalHexString = "#" + withoutHash.repeating(nTimes: 3)
-            case 4:
+            case 3:
                 finalHexString = "#" + withoutHash.repeating(nTimes: 2)
-            case 7:
-                finalHexString = hexString
+            case 6:
+                finalHexString = "#" + withoutHash
             default:
                 throw UIColor.error("creating color from hex string", because: "it is an invalid length (only 2, 3, or 6 is valid)")
         }
