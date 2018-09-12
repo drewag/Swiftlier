@@ -122,6 +122,7 @@
 		4935A6DE1EB1A52E00B0CCF8 /* String_HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6D41EB1A52E00B0CCF8 /* String_HelpersTests.swift */; };
 		4935A6DF1EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */; };
 		4937035D1FC3E22800D2DAA6 /* SectionHeaderWithButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4937035C1FC3E22800D2DAA6 /* SectionHeaderWithButtonView.swift */; };
+		493937062148AE2F00CC2EB8 /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493937052148AE2F00CC2EB8 /* CustomGradientView.swift */; };
 		493B820F20334F540077B00C /* DelimiterStreamReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B820E20334F540077B00C /* DelimiterStreamReaderTests.swift */; };
 		493B82112033546E0077B00C /* CSVStreamReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B82102033546E0077B00C /* CSVStreamReaderTests.swift */; };
 		493C45B51EB646230022E008 /* AlwaysEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C45B41EB646230022E008 /* AlwaysEqualTests.swift */; };
@@ -300,6 +301,7 @@
 		4935A6D41EB1A52E00B0CCF8 /* String_HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String_HelpersTests.swift; sourceTree = "<group>"; };
 		4935A6D51EB1A52E00B0CCF8 /* LinuxEnforcedTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxEnforcedTestCase.swift; sourceTree = "<group>"; };
 		4937035C1FC3E22800D2DAA6 /* SectionHeaderWithButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderWithButtonView.swift; sourceTree = "<group>"; };
+		493937052148AE2F00CC2EB8 /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
 		493B820E20334F540077B00C /* DelimiterStreamReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelimiterStreamReaderTests.swift; sourceTree = "<group>"; };
 		493B82102033546E0077B00C /* CSVStreamReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVStreamReaderTests.swift; sourceTree = "<group>"; };
 		493C45B41EB646230022E008 /* AlwaysEqualTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysEqualTests.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				496E7AA92030D2F6001B6823 /* DelimiterStreamReader.swift */,
 				49ED57742032916600AC19CB /* StreamReader.swift */,
 				49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */,
+				493937052148AE2F00CC2EB8 /* CustomGradientView.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -812,6 +815,7 @@
 				4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */,
 				4935A6B21EB1A50600B0CCF8 /* ZoomThroughTransition.swift in Sources */,
 				4935A6841EB1A50600B0CCF8 /* PlaceholderTextView.swift in Sources */,
+				493937062148AE2F00CC2EB8 /* CustomGradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
