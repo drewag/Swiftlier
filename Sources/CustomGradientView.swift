@@ -9,11 +9,11 @@
 #if os(iOS)
 import UIKit
 
-public class CustomGradientView: UIView {
-    @IBInspectable var startXPercent: CGFloat = 0
-    @IBInspectable var startYPercent: CGFloat = 0
-    @IBInspectable var endXPercent: CGFloat = 0
-    @IBInspectable var endYPercent: CGFloat = 0
+open class CustomGradientView: UIView {
+    @IBInspectable public var startXPercent: CGFloat = 0
+    @IBInspectable public var startYPercent: CGFloat = 0
+    @IBInspectable public var endXPercent: CGFloat = 0
+    @IBInspectable public var endYPercent: CGFloat = 0
 
     @IBInspectable
     public var startColor: UIColor = UIColor.red {
@@ -29,7 +29,7 @@ public class CustomGradientView: UIView {
         }
     }
 
-    public override class var layerClass: AnyClass {
+    open override class var layerClass: AnyClass {
         return CAGradientLayer.self
     }
 
@@ -41,11 +41,11 @@ public class CustomGradientView: UIView {
         return [startColor.cgColor, endColor.cgColor]
     }
 
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         self.gradientLayer.colors = self.colors
     }
 
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
 
         self.gradientLayer.startPoint = CGPoint(
