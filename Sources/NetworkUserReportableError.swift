@@ -18,10 +18,11 @@ public class NetworkResponseErrorReason: AnyErrorReason {
         case untrusted
         case invalid
         case unknown
+        case badGateway
     }
 
     public let kind: Kind
-    let customMessage: String?
+    public let customMessage: String?
 
     public init(kind: Kind, customMessage: String? = nil) {
         self.customMessage = customMessage
@@ -48,6 +49,8 @@ public class NetworkResponseErrorReason: AnyErrorReason {
             return "there was an unknown error"
         case .untrusted:
             return "the web server can no longer be trusted. Please update to the latest version of this app."
+        case .badGateway:
+            return "the web server appears to be down"
         }
     }
 }
@@ -90,13 +93,15 @@ extension ErrorGenerating {
         let perpitrator = parsed?.perpitrator ?? .system
         switch status.rawValue {
         case 404:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .notFound, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .notFound, customMessage: nil), by: perpitrator), status: status)
         case 401:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unauthorized, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unauthorized, customMessage: nil), by: perpitrator), status: status)
         case 403:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .forbidden, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .forbidden, customMessage: nil), by: perpitrator), status: status)
         case 410:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .gone, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .gone, customMessage: nil), by: perpitrator), status: status)
+        case 502:
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .badGateway, customMessage: nil), by: perpitrator), status: status)
         case let x where x >= 400 && x < 500:
             return self.error(doing, fromNetworkData: data, status: status)
                 ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .invalid, customMessage: customMessage), by: perpitrator), status: status)
