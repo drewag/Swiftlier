@@ -6,14 +6,14 @@
 //
 
 public enum HTTPMethod: String {
-    case any
+    case any = "ANY"
 
-    case get
-    case post
-    case put
-    case delete
-    case options
-    case patch
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+    case options = "OPTIONS"
+    case patch = "PATCH"
 }
 
 extension HTTPMethod {
