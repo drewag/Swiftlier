@@ -13,14 +13,14 @@ public class DiagonalGradientView: UIView {
     @IBInspectable
     public var startColor: UIColor = UIColor.red {
         didSet {
-            self.setNeedsDisplay()
+            self.gradientLayer.colors = self.colors
         }
     }
 
     @IBInspectable
     public var endColor: UIColor = UIColor.blue {
         didSet {
-            self.setNeedsDisplay()
+            self.gradientLayer.colors = self.colors
         }
     }
 

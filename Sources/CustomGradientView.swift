@@ -18,14 +18,14 @@ open class CustomGradientView: UIView {
     @IBInspectable
     public var startColor: UIColor = UIColor.red {
         didSet {
-            self.setNeedsDisplay()
+            self.refresh()
         }
     }
 
     @IBInspectable
     public var endColor: UIColor = UIColor.blue {
         didSet {
-            self.setNeedsDisplay()
+            self.refresh()
         }
     }
 
