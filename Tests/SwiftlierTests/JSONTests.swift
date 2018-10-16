@@ -103,6 +103,98 @@ final class JSONTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(json["int"]?.int, 4)
     }
 
+    func testEquatable() throws {
+        let one = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let two = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentArray = JSON(object: [
+            "array": ["value1","different","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentDictValue = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"different"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentDictKey = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["different":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentString = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "different",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentInteger = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 21,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentDecimal = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.31,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentBool = JSON(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": false,
+            "null": NSNull(),
+        ])
+        XCTAssertEqual(one, two)
+        XCTAssertNotEqual(one, differentArray)
+        XCTAssertNotEqual(one, differentDictValue)
+        XCTAssertNotEqual(one, differentDictKey)
+        XCTAssertNotEqual(one, differentString)
+        XCTAssertNotEqual(one, differentInteger)
+        XCTAssertNotEqual(one, differentDecimal)
+        XCTAssertNotEqual(one, differentBool)
+    }
+
     static var allTests: [(String, (JSONTests) -> () throws -> Void)] {
         return [
             ("testInitFromData", testInitFromData),
@@ -110,6 +202,7 @@ final class JSONTests: XCTestCase, LinuxEnforcedTestCase {
             ("testData", testData),
             ("testDecode", testDecode),
             ("testEncode", testEncode),
+            ("testEquatable", testEquatable),
         ]
     }
 }

@@ -6,7 +6,7 @@
 //
 //
 
-public protocol NativeTypesStructured: Structured, CustomStringConvertible, ErrorGenerating {
+public protocol NativeTypesStructured: Structured, CustomStringConvertible, ErrorGenerating, Equatable {
     var object: Any {get}
     init(object: Any)
 }
@@ -93,5 +93,14 @@ extension NativeTypesStructured {
 
     public var description: String {
         return "\(self.object)"
+    }
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        return lhs.string == rhs.string
+            && lhs.int == rhs.int
+            && lhs.double == rhs.double
+            && lhs.bool == rhs.bool
+            && lhs.array == rhs.array
+            && lhs.dictionary == rhs.dictionary
     }
 }

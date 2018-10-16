@@ -67,10 +67,104 @@ final class XMLTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertTrue(xml["null"]?.object is NSNull)
     }
 
+
+    func testEquatable() throws {
+        let one = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let two = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentArray = XML(object: [
+            "array": ["value1","different","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentDictValue = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"different"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentDictKey = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["different":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentString = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "different",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentInteger = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 21,
+            "decimal": 0.3,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentDecimal = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.31,
+            "boolean": true,
+            "null": NSNull(),
+        ])
+        let differentBool = XML(object: [
+            "array": ["value1","value2","value3"],
+            "dict": ["key":"value"],
+            "string": "value",
+            "integer": 20,
+            "decimal": 0.3,
+            "boolean": false,
+            "null": NSNull(),
+        ])
+        XCTAssertEqual(one, two)
+        XCTAssertNotEqual(one, differentArray)
+        XCTAssertNotEqual(one, differentDictValue)
+        XCTAssertNotEqual(one, differentDictKey)
+        XCTAssertNotEqual(one, differentString)
+        XCTAssertNotEqual(one, differentInteger)
+        XCTAssertNotEqual(one, differentDecimal)
+        XCTAssertNotEqual(one, differentBool)
+    }
+
     static var allTests: [(String, (XMLTests) -> () throws -> Void)] {
         return [
             ("testInitFromData", testInitFromData),
             ("testInitFromObject", testInitFromObject),
+            ("testEquatable", testEquatable),
         ]
     }
 }

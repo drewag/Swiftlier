@@ -10,12 +10,28 @@
 import XCTest
 @testable import Swiftlier
 
+class TestWindow: UIWindow {
+    override var isKeyWindow: Bool {
+        return true
+    }
+}
+
+class TestView: UIView {
+    override var window: UIWindow? {
+        return TestWindow()
+    }
+}
+
 class TestViewController: UIViewController {
     var didPresent: UIViewController?
 
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         self.didPresent = viewControllerToPresent
         completion?()
+    }
+
+    override func loadView() {
+        self.view = TestView()
     }
 }
 
