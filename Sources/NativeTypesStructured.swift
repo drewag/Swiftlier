@@ -96,11 +96,25 @@ extension NativeTypesStructured {
     }
 
     public static func ==(lhs: Self, rhs: Self) -> Bool {
-        return lhs.string == rhs.string
-            && lhs.int == rhs.int
-            && lhs.double == rhs.double
-            && lhs.bool == rhs.bool
-            && lhs.array == rhs.array
-            && lhs.dictionary == rhs.dictionary
+        return self.isOptionallyEqual(lhs.string, rhs.string)
+            && self.isOptionallyEqual(lhs.int, rhs.int)
+            && self.isOptionallyEqual(lhs.double, rhs.double)
+            && self.isOptionallyEqual(lhs.bool, rhs.bool)
+            && self.isOptionallyEqual(lhs.array, rhs.array)
+            && self.isOptionallyEqual(lhs.dictionary, rhs.dictionary)
+    }
+}
+
+private extension NativeTypesStructured {
+    static func isOptionallyEqual<E: Equatable>(_ lhs: E?, _ rhs: E?) -> Bool {
+        if let lhs = lhs {
+            guard let rhs = rhs else {
+                return false
+            }
+            return lhs == rhs
+        }
+        else {
+            return rhs == nil
+        }
     }
 }
