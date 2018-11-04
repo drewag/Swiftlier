@@ -11,7 +11,7 @@ import Foundation
 open class PersistenceService<Value: Codable> {
     public var values: [Value]!
     let directory: DirectoryPath
-    open let codingUserInfo: [CodingUserInfoKey:Any] = [:]
+    public let codingUserInfo: [CodingUserInfoKey:Any] = [:]
 
     #if os(iOS)
     public init() throws {

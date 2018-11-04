@@ -43,7 +43,7 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     }
 
     public var values: [Value] {
-        return self.valueStore.flatMap({$0})
+        return self.valueStore.compactMap({$0})
     }
 
     public var keys: [Key] {
