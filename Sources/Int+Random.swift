@@ -11,19 +11,11 @@ import Foundation
 
 extension Int {
     public init(randomIn range: Range<Int>) {
-        #if os(Linux)
-            self = Int(random()) % range.count + range.lowerBound
-        #else
-            self = Int(arc4random_uniform(UInt32(range.count))) + range.lowerBound
-        #endif
+	self = Int.random(in: range)
     }
 
     public init(randomIn range: ClosedRange<Int>) {
-        #if os(Linux)
-            self = Int(random()) % range.count + range.lowerBound
-        #else
-            self = Int(arc4random_uniform(UInt32(range.count))) + range.lowerBound
-        #endif
+	self = Int.random(in: range)
     }
 
     public init(randomOfLength length: Int) {
