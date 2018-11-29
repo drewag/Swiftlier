@@ -68,7 +68,7 @@ extension ErrorGenerating {
             break
         }
 
-        return self.error(doing, because: from.localizedDescription)
+        return self.error(doing, because: "\(from)")
     }
 
     public static func userError(_ doing: String, because: String) -> ReportableError {
