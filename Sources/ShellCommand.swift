@@ -78,7 +78,7 @@ public final class ShellCommand: CustomStringConvertible, ErrorGenerating {
         }
 
         if let outputPipe = process.standardOutput as? Pipe {
-            let outputString = String(data: outputPipe.fileHandleForReading.availableData, encoding: .utf8) ?? ""
+            let outputString = String(data: outputPipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8) ?? ""
             return outputString
         }
         else {
