@@ -85,7 +85,7 @@ public struct FileSystem: ErrorGenerating {
             break
         }
 
-        guard let enumerator = self.manager.enumerator(at: url, includingPropertiesForKeys: nil) else {
+        guard let enumerator = self.manager.enumerator(at: url.resolvingSymlinksInPath(), includingPropertiesForKeys: nil) else {
             throw self.error("loading Contents of Directory", because: "a directory at '\(url.relativePath)' does not exist")
         }
 
