@@ -26,6 +26,7 @@ extension TimeInterval {
 
     }
 
+    /// Largest unit
     public var roughly: String {
         if self.days > 1 {
             return "\(self.days) days"
@@ -50,6 +51,7 @@ extension TimeInterval {
         }
     }
 
+    /// H:M with rounded minutes
     public var shortestDisplay: String {
         let minutes = self.minutes + Int((Float(self.seconds) / 60).rounded())
         let hours = self.hours
@@ -75,9 +77,10 @@ extension TimeInterval {
         return output
     }
 
+    /// M:S with hours as minutes
     public var shortestWithSeconds: String {
         let seconds = self.seconds
-        let minutes = self.minutes
+        let minutes = self.minutes + self.hours * 60
 
         var output = ""
         if seconds < 10 {
@@ -100,6 +103,7 @@ extension TimeInterval {
         return output
     }
 
+    /// Hh Mm Ss hiding smallest units of 0 length
     public var shortDisplay: String {
         let seconds = self.seconds
         let minutes = self.minutes
@@ -127,6 +131,26 @@ extension TimeInterval {
         }
     }
 
+    /// Hh Mm
+    public var shortDisplayRoundedMinutes: String {
+        let minutes = self.minutes + Int((Double(self.seconds)/60).rounded())
+        let hours = self.hours
+        switch self {
+        case 0:
+            return "0"
+        case let x where x < 60 * 60:
+            return "\(minutes)m"
+        default:
+            if minutes > 0 {
+                return "\(hours)h \(minutes)m"
+            }
+            else {
+                return "\(hours)h"
+            }
+        }
+    }
+
+    /// H hours M minutes S seconds
     public var longDisplay: String {
         let seconds = Int(self.truncatingRemainder(dividingBy: 60))
         let minutes = Int((self / 60).truncatingRemainder(dividingBy: 60))
