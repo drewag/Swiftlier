@@ -15,7 +15,7 @@ extension ErrorGenerating {
     }
 
     public static func error(_ doing: String, because reason: AnyErrorReason, by perpitrator: ErrorPerpitrator = .system) -> ReportableError {
-        return ReportableError(from: self, by: perpitrator, doing: doing, because: reason)
+        return ReportableError(from: self, by: perpitrator, doing: doing, because: reason, backtrace: Thread.callStackSymbols)
     }
 
     public static func error(_ doing: String, from: Error) -> ReportableError {
@@ -77,7 +77,7 @@ extension ErrorGenerating {
     }
 
     public static func userError(_ doing: String, because reason: AnyErrorReason) -> ReportableError {
-        return ReportableError(from: self, by: .user, doing: doing, because: reason)
+        return ReportableError(from: self, by: .user, doing: doing, because: reason, backtrace: Thread.callStackSymbols)
     }
 
     public func error(_ doing: String, because: String) -> ReportableError {

@@ -43,19 +43,21 @@ public struct UnknownErrorGenerating: ErrorGenerating {}
 
 open class ReportableError: Error, CustomStringConvertible, Encodable {
     enum CodingKeys: String, CodingKey {
-        case message, doing, because, perpitrator
+        case message, doing, because, perpitrator, backtrace
     }
 
     public let perpetrator: ErrorPerpitrator
     public let doing: String
     public let reason: AnyErrorReason
     public let source: ErrorGenerating.Type
+    public let backtrace: [String]?
 
-    public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason) {
+    public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason, backtrace: [String]?) {
         self.source = source
         self.perpetrator = by
         self.doing = doing
         self.reason = because
+        self.backtrace = backtrace
     }
 
     open func encode(to encoder: Encoder) throws {
@@ -64,6 +66,7 @@ open class ReportableError: Error, CustomStringConvertible, Encodable {
         try container.encode(self.doing, forKey: .doing)
         try container.encode(self.reason.because, forKey: .because)
         try container.encode(self.perpetrator, forKey: .perpitrator)
+        try container.encode(self.backtrace, forKey: .backtrace)
     }
 }
 
@@ -114,7 +117,8 @@ extension ReportableError {
             from: self.source,
             by: self.perpetrator,
             doing: doing,
-            because: self.reason
+            because: self.reason,
+            backtrace: self.backtrace
         )
     }
 
@@ -123,7 +127,8 @@ extension ReportableError {
             from: self.source,
             by: .user,
             doing: self.doing,
-            because: self.reason
+            because: self.reason,
+            backtrace: self.backtrace
         )
     }
 
@@ -166,7 +171,8 @@ extension ErrorGenerating {
                     from: error.source,
                     by: perpitrator,
                     doing: doing ?? error.doing,
-                    because: error.reason
+                    because: error.reason,
+                    backtrace: error.backtrace
                 )
             }
             throw error
@@ -189,7 +195,8 @@ extension ErrorGenerating {
                     from: error.source,
                     by: perpitrator,
                     doing: doing ?? error.doing,
-                    because: error.reason
+                    because: error.reason,
+                    backtrace: error.backtrace
                 )
             }
             throw error
@@ -205,7 +212,8 @@ extension ErrorGenerating {
                 from: error.source,
                 by: error.perpetrator,
                 doing: doing,
-                because: error.reason
+                because: error.reason,
+                backtrace: error.backtrace
             )
         }
     }

@@ -62,14 +62,14 @@ open class NetworkError: ReportableError {
         case status
     }
 
-    public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason, status: HTTPStatus) {
+    public init(from source: ErrorGenerating.Type, by: ErrorPerpitrator, doing: String, because: AnyErrorReason, status: HTTPStatus, backtrace: [String]?) {
         self.status = status
-        super.init(from: source, by: by, doing: doing, because: because)
+        super.init(from: source, by: by, doing: doing, because: because, backtrace: backtrace)
     }
 
-    public init(from error: ReportableError, status: HTTPStatus) {
+    public init(from error: ReportableError, status: HTTPStatus, backtrace: [String]?) {
         self.status = status
-        super.init(from: error.source, by: error.perpetrator, doing: error.doing, because: error.reason)
+        super.init(from: error.source, by: error.perpetrator, doing: error.doing, because: error.reason, backtrace: backtrace)
     }
 
     open override func encode(to encoder: Encoder) throws {
@@ -93,21 +93,21 @@ extension ErrorGenerating {
         let perpitrator = parsed?.perpitrator ?? .system
         switch status.rawValue {
         case 404:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .notFound, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .notFound, customMessage: customMessage), by: perpitrator), status: status, backtrace: Thread.callStackSymbols)
         case 401:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unauthorized, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unauthorized, customMessage: customMessage), by: perpitrator), status: status, backtrace: Thread.callStackSymbols)
         case 403:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .forbidden, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .forbidden, customMessage: customMessage), by: perpitrator), status: status, backtrace: Thread.callStackSymbols)
         case 410:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .gone, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .gone, customMessage: customMessage), by: perpitrator), status: status, backtrace: Thread.callStackSymbols)
         case 502:
-            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .badGateway, customMessage: customMessage), by: perpitrator), status: status)
+            return NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .badGateway, customMessage: customMessage), by: perpitrator), status: status, backtrace: Thread.callStackSymbols)
         case let x where x >= 400 && x < 500:
-            return self.error(doing, fromNetworkData: data, status: status)
-                ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .invalid, customMessage: customMessage), by: perpitrator), status: status)
+            return self.error(doing, fromNetworkData: data, status: status, backtrace: Thread.callStackSymbols)
+                ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .invalid, customMessage: customMessage), by: perpitrator), status: status, backtrace: Thread.callStackSymbols)
         case let x where x >= 500 && x < 600:
-            return self.error(doing, fromNetworkData: data, status: status)
-                ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unknown, customMessage: customMessage), by: perpitrator), status: status)
+            return self.error(doing, fromNetworkData: data, status: status, backtrace: Thread.callStackSymbols)
+                ?? NetworkError(from: self.error(doing, because: NetworkResponseErrorReason(kind: .unknown, customMessage: customMessage), by: perpitrator), status: status, backtrace: Thread.callStackSymbols)
         default:
             return nil
         }
@@ -121,14 +121,14 @@ extension ErrorGenerating {
         return type(of: self).error(doing, from: data, status: status)
     }
 
-    private static func error(_ doing: String, fromNetworkData data: Data?, status: HTTPStatus) -> NetworkError? {
+    private static func error(_ doing: String, fromNetworkData data: Data?, status: HTTPStatus, backtrace: [String]?) -> NetworkError? {
         guard let parsed = self.parseErrorBody(from: data) else {
             return nil
         }
 
         let reason = ErrorReasonWithExtraInfo(because: parsed.because, extraInfo: parsed.json)
-        let error = ReportableError(from: self, by: parsed.perpitrator, doing: parsed.doing, because: reason)
-        return NetworkError(from: error, status: status)
+        let error = ReportableError(from: self, by: parsed.perpitrator, doing: parsed.doing, because: reason, backtrace: backtrace)
+        return NetworkError(from: error, status: status, backtrace: backtrace)
     }
 
     fileprivate static func parseErrorBody(from data: Data?) -> (doing: String, because: String, json: JSON?, perpitrator: ErrorPerpitrator)? {
@@ -140,7 +140,8 @@ extension ErrorGenerating {
         if let json = try? JSON(data: data)
             , let message = json["because"]?.string
         {
-            return (doing: json["doing"]?.string ?? "unknown", because: message, json: json, perpitrator: ErrorPerpitrator(rawValue: json["perpitrator"]?.string ?? "") ?? .system)        }
+            return (doing: json["doing"]?.string ?? "unknown", because: message, json: json, perpitrator: ErrorPerpitrator(rawValue: json["perpitrator"]?.string ?? "") ?? .system)
+        }
         else {
             return (doing: "unknown", because: String(data: data, encoding: encoding) ?? "of an unknown reason", json: nil, perpitrator: .system)
         }
