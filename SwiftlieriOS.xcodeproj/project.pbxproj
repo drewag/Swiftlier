@@ -154,6 +154,7 @@
 		499AF5B41EB1CEAD00A13C6B /* Path_CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */; };
 		499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */; };
 		499AF5B81EB1D22800A13C6B /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B71EB1D22800A13C6B /* TestCodable.swift */; };
+		49AD1FE021B871DB0072B19E /* UINavigationController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD1FDF21B871DB0072B19E /* UINavigationController+Helpers.swift */; };
 		49B730DB1ECCB00F006EE42B /* Date_HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B730D91ECCAFD0006EE42B /* Date_HelpersTests.swift */; };
 		49BD1A3D2032980400BCDBD5 /* CSVStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */; };
 		49BFE3571EC247E6009A21B0 /* Data_ProcessingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */; };
@@ -333,6 +334,7 @@
 		499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path_CodingTests.swift; sourceTree = "<group>"; };
 		499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
 		499AF5B71EB1D22800A13C6B /* TestCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
+		49AD1FDF21B871DB0072B19E /* UINavigationController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Helpers.swift"; sourceTree = "<group>"; };
 		49B730D91ECCAFD0006EE42B /* Date_HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_HelpersTests.swift; sourceTree = "<group>"; };
 		49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVStreamReader.swift; sourceTree = "<group>"; };
 		49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_ProcessingTests.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				49ED57742032916600AC19CB /* StreamReader.swift */,
 				49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */,
 				493937052148AE2F00CC2EB8 /* CustomGradientView.swift */,
+				49AD1FDF21B871DB0072B19E /* UINavigationController+Helpers.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -772,6 +775,7 @@
 				4935A6941EB1A50600B0CCF8 /* SpecDecoder.swift in Sources */,
 				4935A6AC1EB1A50600B0CCF8 /* URL+Helpers.swift in Sources */,
 				4935A67C1EB1A50600B0CCF8 /* ObservableArray.swift in Sources */,
+				49AD1FE021B871DB0072B19E /* UINavigationController+Helpers.swift in Sources */,
 				4935A6431EB1A50600B0CCF8 /* Array+Sorting.swift in Sources */,
 				4935A64F1EB1A50600B0CCF8 /* Data+Processing.swift in Sources */,
 				4935A6711EB1A50600B0CCF8 /* Menu.swift in Sources */,
