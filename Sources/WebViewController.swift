@@ -10,7 +10,7 @@
 import UIKit
 
 public class WebViewController: UIViewController, ErrorGenerating {
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    let activityOverlay = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     let webView = UIWebView()
 
     enum Content {
@@ -43,15 +43,15 @@ public class WebViewController: UIViewController, ErrorGenerating {
         super.viewDidLoad()
 
         self.view.addFillingSubview(self.webView)
-        self.view.addCenteredView(self.activityIndicator, withOffset: CGPoint())
+        self.view.addCenteredView(self.activityOverlay, withOffset: CGPoint())
     }
 }
 
 private extension WebViewController {
     func sharedInit() {
         self.webView.delegate = self
-        self.activityIndicator.color = UIColor.darkGray
-        self.activityIndicator.hidesWhenStopped = true
+        self.activityOverlay.color = UIColor.darkGray
+        self.activityOverlay.hidesWhenStopped = true
 
         self.reload()
     }
@@ -69,15 +69,15 @@ private extension WebViewController {
 
 extension WebViewController: UIWebViewDelegate {
     public func webViewDidStartLoad(_ webView: UIWebView) {
-        self.activityIndicator.startAnimating()
+        self.activityOverlay.startAnimating()
     }
 
     public func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.activityIndicator.stopAnimating()
+        self.activityOverlay.stopAnimating()
     }
 
     public func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        self.activityIndicator.stopAnimating()
+        self.activityOverlay.stopAnimating()
         self.showAlert(withError: error, "loading", other: [
             .action("OK", handler: {
                 if let navController = self.navigationController {
