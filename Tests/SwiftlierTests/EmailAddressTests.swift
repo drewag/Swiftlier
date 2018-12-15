@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class EmailAddressTests: XCTestCase, LinuxEnforcedTestCase {
+final class EmailAddressTests: XCTestCase {
     func testNilString() {
         XCTAssertThrowsError(try EmailAddress(string: nil))
     }
@@ -66,18 +66,5 @@ final class EmailAddressTests: XCTestCase, LinuxEnforcedTestCase {
 
         email = try EmailAddress(userString: "Us.er@exam.Ple.COm", for: "testing")
         XCTAssertEqual(email.string, "us.er@exam.ple.com")
-    }
-
-    static var allTests: [(String, (EmailAddressTests) -> () throws -> Void)] {
-        return [
-            ("testNilString", testNilString),
-            ("testEmptyString", testEmptyString),
-            ("testInvalidStrings", testInvalidStrings),
-            ("testValidStrings", testValidStrings),
-            ("testNilUserString", testNilUserString),
-            ("testEmptyUserString", testEmptyUserString),
-            ("testInvalidUserStrings", testInvalidUserStrings),
-            ("testValidUserStrings", testValidUserStrings),
-        ]
     }
 }

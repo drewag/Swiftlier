@@ -10,7 +10,7 @@ import XCTest
 import Foundation
 import Swiftlier
 
-final class PathTests: XCTestCase, LinuxEnforcedTestCase {
+final class PathTests: XCTestCase {
     var base: DirectoryPath {
         return try! FileSystem.default.workingDirectory.subdirectory("tmp")
     }
@@ -28,7 +28,6 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
     override func tearDown() {
         let _ = try? self.base.delete()
 
-        self.checkTestIncludedForLinux()
         super.tearDown()
     }
 
@@ -880,53 +879,6 @@ final class PathTests: XCTestCase, LinuxEnforcedTestCase {
 
         try orig1.delete()
         XCTAssertThrowsError(try link.createLink(to: orig1, canOverwrite: true))
-    }
-
-    static var allTests: [(String, (PathTests) -> () throws -> Void)] {
-        return [
-            ("testBaseName", testBaseName),
-            ("testName", testName),
-            ("testExtension", testExtension),
-            ("testDirectory", testDirectory),
-            ("testNonExisting", testNonExisting),
-            ("testFile", testFile),
-            ("testExsiting", testExsiting),
-            ("testWithoutLastComponent", testWithoutLastComponent),
-            ("testWithExtension", testWithExtension),
-            ("testDescription", testDescription),
-            ("testDelete", testDelete),
-            ("testMoveFileWithinDirectory", testMoveFileWithinDirectory),
-            ("testMoveFileToDifferentDirectoryWithSameName", testMoveFileToDifferentDirectoryWithSameName),
-            ("testMoveFileToDifferentDirectoryWithDifferentName", testMoveFileToDifferentDirectoryWithDifferentName),
-            ("testMoveFileDirectlyToPath", testMoveFileDirectlyToPath),
-            ("testMoveDirectoryWithinDirectory", testMoveDirectoryWithinDirectory),
-            ("testMoveDirectoryToDifferentDirectoryWithSameName", testMoveDirectoryToDifferentDirectoryWithSameName),
-            ("testMoveDirectoryToDifferentDirectoryWithDifferentName", testMoveDirectoryToDifferentDirectoryWithDifferentName),
-            ("testMoveDirectoryDirectlyToPath", testMoveDirectoryDirectlyToPath),
-            ("testCopyFileWithinDirectory", testCopyFileWithinDirectory),
-            ("testCopyFileToDifferentDirectoryWithSameName", testCopyFileToDifferentDirectoryWithSameName),
-            ("testCopyFileToDifferentDirectoryWithDifferentName", testCopyFileToDifferentDirectoryWithDifferentName),
-            ("testCopyFileDirectlyToPath", testCopyFileDirectlyToPath),
-            ("testLastModified", testLastModified),
-            ("testSize", testSize),
-            ("testFileContents", testFileContents),
-            ("testString", testString),
-            ("testHandleForReading", testHandleForReading),
-            ("testHandleForWriting", testHandleForWriting),
-            ("testHandleForReadingAndWriting", testHandleForReadingAndWriting),
-            ("testResolveSymLink", testResolveSymLink),
-            ("testIsIdenticalTo", testIsIdenticalTo),
-            ("testDirectoryContents", testDirectoryContents),
-            ("testAddFile", testAddFile),
-            ("testAddLink", testAddLink),
-            ("testSubdirectory", testSubdirectory),
-            ("testFileNamed", testFileNamed),
-            ("testFileAtSubPath", testFileAtSubPath),
-            ("testSubPathByAppending", testSubPathByAppending),
-            ("testCreateFile", testCreateFile),
-            ("testCreateDirectory", testCreateDirectory),
-            ("testCreateLink", testCreateLink),
-        ]
     }
 }
 

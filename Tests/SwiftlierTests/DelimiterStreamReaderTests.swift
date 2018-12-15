@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class DelimiterStreamReaderTests: XCTestCase, LinuxEnforcedTestCase {
+final class DelimiterStreamReaderTests: XCTestCase {
     var tempFile: Path {
         return try! FileSystem.default.workingDirectory.subdirectory("tmp").file("stream.txt")
     }
@@ -66,15 +66,6 @@ final class DelimiterStreamReaderTests: XCTestCase, LinuxEnforcedTestCase {
             XCTAssertEqual(components[2], "")
             XCTAssertEqual(components[3], "three")
         }
-    }
-
-    static var allTests: [(String, (DelimiterStreamReaderTests) -> () throws -> Void)] {
-        return [
-            ("testTabsFromData", testTabsFromData),
-            ("testNewLinesFromData", testNewLinesFromData),
-            ("testTabsFromFile", testTabsFromFile),
-            ("testNewLinesFromFile", testNewLinesFromFile),
-        ]
     }
 }
 

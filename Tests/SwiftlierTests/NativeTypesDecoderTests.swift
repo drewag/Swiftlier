@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class NativeTypesDecoderTests: XCTestCase, LinuxEnforcedTestCase {
+final class NativeTypesDecoderTests: XCTestCase {
     func testDecodableFromRaw() throws {
         let raw: [String:Any] = [
             "string": "some",
@@ -18,12 +18,6 @@ final class NativeTypesDecoderTests: XCTestCase, LinuxEnforcedTestCase {
         let codable: TestCodable = try NativeTypesDecoder.decodable(from: raw)
         XCTAssertEqual(codable.string, "some")
         XCTAssertEqual(codable.int, 4)
-    }
-
-    static var allTests: [(String, (NativeTypesDecoderTests) -> () throws -> Void)] {
-        return [
-            ("testDecodableFromRaw", testDecodableFromRaw),
-        ]
     }
 }
 

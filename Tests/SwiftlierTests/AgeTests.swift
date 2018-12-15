@@ -9,16 +9,10 @@
 import XCTest
 import Swiftlier
 
-final class AgeTests: XCTestCase, LinuxEnforcedTestCase {
+final class AgeTests: XCTestCase {
     func testYears() {
         XCTAssertEqual(Age(date: Date()).years, 0)
         XCTAssertEqual(Age(date: Date(timeIntervalSinceNow: -6 * 366 * 24 * 60 * 60)).years, 6)
         XCTAssertEqual(Age(date: Date(timeIntervalSinceNow: -123 * 366 * 24 * 60 * 60)).years, 123)
-    }
-
-    static var allTests: [(String, (AgeTests) -> () throws -> Void)] {
-        return [
-            ("testYears", testYears),
-        ]
     }
 }

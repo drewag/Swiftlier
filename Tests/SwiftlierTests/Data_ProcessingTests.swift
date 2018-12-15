@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class Data_ProcessingTests: XCTestCase, LinuxEnforcedTestCase {
+final class Data_ProcessingTests: XCTestCase {
     func testsRangesOf() {
         let sourceString = "SEPoneSEPtwoSEPthreeSEP"
         let data = sourceString.data(using: .utf8)!
@@ -73,12 +73,5 @@ final class Data_ProcessingTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(String(data: data.subdata(in: ranges[0]), encoding: .utf8), "Pone")
         XCTAssertEqual(String(data: data.subdata(in: ranges[1]), encoding: .utf8), "two")
         XCTAssertEqual(String(data: data.subdata(in: ranges[2]), encoding: .utf8), "threeSE")
-    }
-
-    static var allTests: [(String, (Data_ProcessingTests) -> () throws -> Void)] {
-        return [
-            ("testsRangesOf", testsRangesOf),
-            ("testRangesSeparatedBy", testRangesSeparatedBy),
-        ]
     }
 }

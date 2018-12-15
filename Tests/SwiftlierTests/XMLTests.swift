@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class XMLTests: XCTestCase, LinuxEnforcedTestCase {
+final class XMLTests: XCTestCase {
     func testInitFromData() {
         let xmlString =
             """
@@ -158,13 +158,5 @@ final class XMLTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertNotEqual(one, differentInteger)
         XCTAssertNotEqual(one, differentDecimal)
         XCTAssertNotEqual(one, differentBool)
-    }
-
-    static var allTests: [(String, (XMLTests) -> () throws -> Void)] {
-        return [
-            ("testInitFromData", testInitFromData),
-            ("testInitFromObject", testInitFromObject),
-            ("testEquatable", testEquatable),
-        ]
     }
 }

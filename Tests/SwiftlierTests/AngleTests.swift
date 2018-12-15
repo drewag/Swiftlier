@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
+final class AngleTests: XCTestCase {
     func testPi() {
         XCTAssertEqual(π.radians, 3.14159, accuracy: 0.00001)
         XCTAssertEqual(π.degrees, 180, accuracy: 0.00001)
@@ -264,29 +264,5 @@ final class AngleTests: XCTestCase, LinuxEnforcedTestCase {
         angle = Angle(radians: Float.pi / 4)
         angle /= 0.05
         XCTAssertEqual(angle.degrees, 180, accuracy: 0.0001)
-    }
-
-    static var allTests: [(String, (AngleTests) -> () throws -> Void)] {
-        return [
-            ("testPi", testPi),
-            ("testZero", testZero),
-            ("testRadians", testRadians),
-            ("testDegrees", testDegrees),
-            ("testCosine", testCosine),
-            ("testSine", testSine),
-            ("testEquals", testEquals),
-            ("testLessThan", testLessThan),
-            ("testLessThanOrEqual", testLessThanOrEqual),
-            ("testGreaterThan", testGreaterThan),
-            ("testGreaterThanOrEqual", testGreaterThanOrEqual),
-            ("testAdd", testAdd),
-            ("testAddInPlace", testAddInPlace),
-            ("testSubtract", testSubtract),
-            ("testSubtractInPlace", testSubtractInPlace),
-            ("testMultiplyByValue", testMultiplyByValue),
-            ("testMultiplyByValueInPlace", testMultiplyByValueInPlace),
-            ("testDivideByValue", testDivideByValue),
-            ("testDivideByValueInPlace", testDivideByValueInPlace),
-        ]
     }
 }

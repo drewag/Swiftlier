@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class Date_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
+final class Date_HelpersTests: XCTestCase {
     func testIsToday() {
         XCTAssertTrue(Date().isToday)
         XCTAssertFalse(Date(timeIntervalSinceNow: -60 * 60 * 24).isToday)
@@ -89,22 +89,5 @@ final class Date_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual("2017-06-17T18:09:04.6".localIso8601DateTime!.beginningOfNextMonth.localIso8601DateTime, "2017-07-01T00:00:00.0")
         XCTAssertEqual("2017-06-30T18:09:04.6".localIso8601DateTime!.beginningOfNextMonth.localIso8601DateTime, "2017-07-01T00:00:00.0")
         XCTAssertEqual("2017-04-28T18:09:04.6".localIso8601DateTime!.beginningOfNextMonth.localIso8601DateTime, "2017-05-01T00:00:00.0")
-    }
-
-    static var allTests: [(String, (Date_HelpersTests) -> () throws -> Void)] {
-        return [
-            ("testIsToday", testIsToday),
-            ("testIsTomorrow", testIsTomorrow),
-            ("testIsThisWeek", testIsThisWeek),
-            ("testIsThisYear", testIsThisYear),
-            ("testIsInFuture", testIsInFuture),
-            ("testIsInPast", testIsInPast),
-            ("testBeginningOfDay", testBeginningOfDay),
-            ("testBeginningOfWeek", testBeginningOfWeek),
-            ("testBeginningOfMonth", testBeginningOfMonth),
-            ("testBeginningOfNextDay", testBeginningOfNextDay),
-            ("testBeginningOfNextWeek", testBeginningOfNextWeek),
-            ("testBeginningOfNextMonth", testBeginningOfNextMonth),
-        ]
     }
 }

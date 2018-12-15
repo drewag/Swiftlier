@@ -9,19 +9,13 @@
 import XCTest
 import Swiftlier
 
-final class NativeTypesEncoderTests: XCTestCase, LinuxEnforcedTestCase {
+final class NativeTypesEncoderTests: XCTestCase {
     func testObjectFromEncodable() throws {
         let codable = TestCodable(string: "some", int: 4)
         let object = try NativeTypesEncoder.object(from: codable)
         let dict = object as? [String:Any]
         XCTAssertEqual(dict?["string"] as? String, "some")
         XCTAssertEqual(dict?["int"] as? Int, 4)
-    }
-
-    static var allTests: [(String, (NativeTypesEncoderTests) -> () throws -> Void)] {
-        return [
-            ("testObjectFromEncodable", testObjectFromEncodable),
-        ]
     }
 }
 

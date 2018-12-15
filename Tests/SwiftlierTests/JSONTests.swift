@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class JSONTests: XCTestCase, LinuxEnforcedTestCase {
+final class JSONTests: XCTestCase {
     func testInitFromData() throws {
         let jsonString = """
             {
@@ -193,17 +193,6 @@ final class JSONTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertNotEqual(one, differentInteger)
         XCTAssertNotEqual(one, differentDecimal)
         XCTAssertNotEqual(one, differentBool)
-    }
-
-    static var allTests: [(String, (JSONTests) -> () throws -> Void)] {
-        return [
-            ("testInitFromData", testInitFromData),
-            ("testInitFromObject", testInitFromObject),
-            ("testData", testData),
-            ("testDecode", testDecode),
-            ("testEncode", testEncode),
-            ("testEquatable", testEquatable),
-        ]
     }
 }
 

@@ -10,7 +10,7 @@ import XCTest
 import Foundation
 import Swiftlier
 
-final class PatchyRangeTests: XCTestCase, LinuxEnforcedTestCase {
+final class PatchyRangeTests: XCTestCase {
     func testAppendRange() throws {
         var range = PatchyRange<Int>()
         XCTAssertFalse(range.contains(5))
@@ -207,11 +207,5 @@ final class PatchyRangeTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertTrue(range.contains(15))
         XCTAssertTrue(range.contains(16))
         XCTAssertFalse(range.contains(17))
-    }
-
-    static var allTests: [(String, (PatchyRangeTests) -> () throws -> Void)] {
-        return [
-            ("testAppendRange", testAppendRange),
-        ]
     }
 }

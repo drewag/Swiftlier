@@ -9,19 +9,13 @@
 import XCTest
 import Swiftlier
 
-final class HeartRateFormatterTests: XCTestCase, LinuxEnforcedTestCase {
+final class HeartRateFormatterTests: XCTestCase {
     func testStringForObject() {
         let formatter = HeartRateFormatter()
 
         XCTAssertEqual(formatter.string(for: 12), "12 bpm")
         XCTAssertEqual(formatter.string(for: 3.7), "3.7 bpm")
         XCTAssertEqual(formatter.string(for: "some"), "some bpm")
-    }
-
-    static var allTests: [(String, (HeartRateFormatterTests) -> () throws -> Void)] {
-        return [
-            ("testStringForObject", testStringForObject),
-        ]
     }
 }
 

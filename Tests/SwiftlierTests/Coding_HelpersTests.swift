@@ -9,19 +9,13 @@
 import XCTest
 import Swiftlier
 
-final class Coding_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
+final class Coding_HelpersTests: XCTestCase {
     func testCopyUsingCoding() throws {
         let reference = TestReferenceCodable(string: "some", int: 4)
         let copy = try reference.copyUsingEncoding()
         XCTAssertFalse(copy === reference)
         XCTAssertEqual(copy.string, "some")
         XCTAssertEqual(copy.int, 4)
-    }
-
-    static var allTests: [(String, (Coding_HelpersTests) -> () throws -> Void)] {
-        return [
-            ("testCopyUsingCoding", testCopyUsingCoding),
-        ]
     }
 }
 

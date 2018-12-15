@@ -22,7 +22,7 @@ class TestOptionalEvent: EventType {
 }
 
 
-final class EventCenterTests: XCTestCase, LinuxEnforcedTestCase {
+final class EventCenterTests: XCTestCase {
     let eventCenter = EventCenter()
 
     func testObserving() {
@@ -122,16 +122,5 @@ final class EventCenterTests: XCTestCase, LinuxEnforcedTestCase {
 
         eventCenter.triggerEvent(TestOptionalEvent.self, params: nil)
         XCTAssertNil(triggeredString)
-    }
-
-    static var allTests : [(String, (EventCenterTests) -> () throws -> Void)] {
-        return [
-            ("testObserving", testObserving),
-            ("testRemovingObserverForEvent", testRemovingObserverForEvent),
-            ("testRemovingObserverForAllEvents", testRemovingObserverForAllEvents),
-            ("testWithOperationQueue", testWithOperationQueue),
-            ("testMultipleEvents", testMultipleEvents),
-            ("testOptionalEvent", testOptionalEvent),
-        ]
     }
 }

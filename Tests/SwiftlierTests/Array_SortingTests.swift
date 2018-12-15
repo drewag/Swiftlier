@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class Array_SortingTests: XCTestCase, LinuxEnforcedTestCase {
+final class Array_SortingTests: XCTestCase {
     func testInsertAssumingAlreadySorted() {
         var values: [Int] = []
 
@@ -32,11 +32,5 @@ final class Array_SortingTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(values.insert(6, assumingAlreadySortedBy: sort), 3)
         XCTAssertEqual(values.count, 4)
         XCTAssertEqual(values[3], 6)
-    }
-
-    static var allTests: [(String, (Array_SortingTests) -> () throws -> Void)] {
-        return [
-            ("testInsertAssumingAlreadySorted", testInsertAssumingAlreadySorted),
-        ]
     }
 }

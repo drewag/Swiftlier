@@ -10,7 +10,7 @@ import XCTest
 import Foundation
 import Swiftlier
 
-final class PersistenceServiceTests: XCTestCase, LinuxEnforcedTestCase {
+final class PersistenceServiceTests: XCTestCase {
     var base: DirectoryPath {
         return try! FileSystem.default.workingDirectory.subdirectory("tmp")
     }
@@ -24,7 +24,6 @@ final class PersistenceServiceTests: XCTestCase, LinuxEnforcedTestCase {
     override func tearDown() {
         let _ = try? self.base.delete()
 
-        self.checkTestIncludedForLinux()
         super.tearDown()
     }
 
@@ -53,12 +52,5 @@ final class PersistenceServiceTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(service2.values[0].int, 1)
         XCTAssertEqual(service2.values[1].string, "two")
         XCTAssertEqual(service2.values[1].int, 2)
-    }
-
-    static var allTests: [(String, (PersistenceServiceTests) -> () throws -> Void)] {
-        return [
-            ("testEmpty", testEmpty),
-            ("testWithValues", testWithValues),
-        ]
     }
 }

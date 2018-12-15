@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class Dictionary_MergingTests: XCTestCase, LinuxEnforcedTestCase {
+final class Dictionary_MergingTests: XCTestCase {
     func testMerge() {
         let dict1 = ["Apples": 2, "Oranges": 3]
         let dict2 = ["Apples": 3, "Cantaloupe": 1]
@@ -19,11 +19,5 @@ final class Dictionary_MergingTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(result["Cantaloupe"]!, 1)
         XCTAssertEqual(result["Oranges"]!, 3)
         XCTAssertEqual(result.count, 3)
-    }
-
-    static var allTests: [(String, (Dictionary_MergingTests) -> () throws -> Void)] {
-        return [
-            ("testMerge", testMerge),
-        ]
     }
 }

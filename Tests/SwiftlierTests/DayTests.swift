@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class DayTests: XCTestCase, LinuxEnforcedTestCase {
+final class DayTests: XCTestCase {
     func testDayFromDate() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -32,12 +32,5 @@ final class DayTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertTrue(Day(year: 2000, month: 6, day: 16) > Day(year: 2000, month: 6, day: 15))
         XCTAssertFalse(Day(year: 2000, month: 5, day: 16) > Day(year: 2000, month: 6, day: 15))
         XCTAssertFalse(Day(year: 1999, month: 6, day: 16) > Day(year: 2000, month: 6, day: 15))
-    }
-
-    static var allTests: [(String, (DayTests) -> () throws -> Void)] {
-        return [
-            ("testDayFromDate", testDayFromDate),
-            ("testComparison", testComparison),
-        ]
     }
 }

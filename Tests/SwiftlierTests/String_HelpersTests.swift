@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class String_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
+final class String_HelpersTests: XCTestCase {
     func testRepeat() {
         XCTAssertEqual("Hello".repeating(nTimes: 3), "HelloHelloHello")
         XCTAssertEqual("Hello".repeating(nTimes: 4, separator: " "), "Hello Hello Hello Hello")
@@ -39,15 +39,5 @@ final class String_HelpersTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(" abcd  ".trimmingWhitespaceOnEnds, "abcd")
         XCTAssertEqual("\t \nabcd \n\n ".trimmingWhitespaceOnEnds, "abcd")
         XCTAssertEqual("\t \na\t\nb cd \n\n ".trimmingWhitespaceOnEnds, "a\t\nb cd")
-    }
-
-    static var allTests: [(String, (String_HelpersTests) -> () throws -> Void)] {
-        return [
-            ("testRepeat", testRepeat),
-            ("testIndexAt", testIndexAt),
-            ("testOffsetCharactersByCount", testOffsetCharactersByCount),
-            ("testNumberOfCommonSuffixCharacters", testNumberOfCommonSuffixCharacters),
-            ("testTrimmingWhitespaceOnEnds", testTrimmingWhitespaceOnEnds),
-        ]
     }
 }

@@ -9,15 +9,9 @@
 import XCTest
 import Swiftlier
 
-final class HTMLTests: XCTestCase, LinuxEnforcedTestCase {
+final class HTMLTests: XCTestCase {
     func testDescription() {
         let html: HTML = "<h1>title</h1>"
         XCTAssertEqual(html.description, "<h1>title</h1>")
-    }
-
-    static var allTests: [(String, (HTMLTests) -> () throws -> Void)] {
-        return [
-            ("testDescription", testDescription),
-        ]
     }
 }

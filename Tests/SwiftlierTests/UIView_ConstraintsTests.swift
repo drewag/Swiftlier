@@ -10,7 +10,7 @@
 import XCTest
 import Swiftlier
 
-final class UIView_ConstraintsTests: XCTestCase, LinuxEnforcedTestCase {
+final class UIView_ConstraintsTests: XCTestCase {
     let container = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 300))
     let view1 = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -98,18 +98,6 @@ final class UIView_ConstraintsTests: XCTestCase, LinuxEnforcedTestCase {
 
         container.layoutIfNeeded()
         XCTAssertEqual(view1.frame.width, 45)
-    }
-
-    static var allTests: [(String, (UIView_ConstraintsTests) -> () throws -> Void)] {
-        return [
-            ("testConstrainToFullWidth", testConstrainToFullWidth),
-            ("testConstrainToFullHeight", testConstrainToFullHeight),
-            ("testConstrainToFill", testConstrainToFill),
-            ("testConstrainToCenter", testConstrainToCenter),
-            ("testConstrainToOtherView", testConstrainToOtherView),
-            ("testConstrainToOtherViewWithAttribute", testConstrainToOtherViewWithAttribute),
-            ("testConstrainToConstant", testConstrainToConstant),
-        ]
     }
 }
 #endif

@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class MultiCallbackTests: XCTestCase, LinuxEnforcedTestCase {
+final class MultiCallbackTests: XCTestCase {
     var callback = MultiCallback<String>()
 
     func testAddingObservers() {
@@ -56,13 +56,5 @@ final class MultiCallbackTests: XCTestCase, LinuxEnforcedTestCase {
         callback.triggerWithArguments("Trigger 2")
         XCTAssertEqual(triggeredString, "Trigger 1")
         XCTAssertEqual(triggeredString2, "Trigger 1")
-    }
-
-    static var allTests: [(String, (MultiCallbackTests) -> () throws -> Void)] {
-        return [
-            ("testAddingObservers", testAddingObservers),
-            ("testRemovingObservers", testRemovingObservers),
-            ("testWithMultipleObservers", testWithMultipleObservers),
-        ]
     }
 }

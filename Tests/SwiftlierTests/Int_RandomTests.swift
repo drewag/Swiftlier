@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class Int_RandomTests: XCTestCase, LinuxEnforcedTestCase {
+final class Int_RandomTests: XCTestCase {
     func testRandomInOpenRange() {
         for _ in 0 ..< 50 {
             XCTAssertTrue((5 ..< 10).contains(Int(randomIn: 5 ..< 10)))
@@ -26,14 +26,6 @@ final class Int_RandomTests: XCTestCase, LinuxEnforcedTestCase {
         for _ in 0 ..< 1000 {
             XCTAssertTrue((10 ... 99).contains(Int(randomOfLength: 2)))
         }
-    }
-
-    static var allTests: [(String, (Int_RandomTests) -> () throws -> Void)] {
-        return [
-            ("testRandomInOpenRange", testRandomInOpenRange),
-            ("testRandomInClosedRange", testRandomInClosedRange),
-            ("testRandomOfLength", testRandomOfLength),
-        ]
     }
 }
 

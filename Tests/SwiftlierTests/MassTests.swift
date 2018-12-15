@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class MassTests: XCTestCase, LinuxEnforcedTestCase {
+final class MassTests: XCTestCase {
     func testUnitDisplay() {
         XCTAssertEqual(Mass.Unit.grams.description, "g")
         XCTAssertEqual(Mass.Unit.kilograms.description, "kg")
@@ -121,16 +121,5 @@ final class MassTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(Mass(5, in: .stones).stones, 5)
         XCTAssertEqual(Mass(5, in: .stones).in(.stones), 5)
         XCTAssertEqual(Mass(5, in: .stones).description(in: .stones), "5 st")
-    }
-
-    static var allTests: [(String, (MassTests) -> () throws -> Void)] {
-        return [
-            ("testUnitDisplay", testUnitDisplay),
-            ("testGramsConversions", testGramsConversions),
-            ("testKilogramsConversions", testKilogramsConversions),
-            ("testOuncesConversions", testOuncesConversions),
-            ("testPoundsConversions", testPoundsConversions),
-            ("testStonesConversions", testStonesConversions),
-        ]
     }
 }

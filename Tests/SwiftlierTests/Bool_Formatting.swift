@@ -9,15 +9,9 @@
 import XCTest
 import Swiftlier
 
-final class Bool_FormattingTests: XCTestCase, LinuxEnforcedTestCase {
+final class Bool_FormattingTests: XCTestCase {
     func testInWords() {
         XCTAssertEqual(true.inWords, "Yes")
         XCTAssertEqual(false.inWords, "No")
-    }
-
-    static var allTests: [(String, (Bool_FormattingTests) -> () throws -> Void)] {
-        return [
-            ("testInWords", testInWords),
-        ]
     }
 }

@@ -10,7 +10,7 @@
 import XCTest
 import Swiftlier
 
-final class CGMathTests: XCTestCase, LinuxEnforcedTestCase {
+final class CGMathTests: XCTestCase {
     func testAngleTo() {
         XCTAssertEqual(CGPoint(x: 1, y: 0).angle(to: CGPoint(x: 2, y: 1)).degrees, 45, accuracy: 0.01)
         XCTAssertEqual(CGPoint(x: 1, y: 0).angle(to: CGPoint(x: -2, y: 3)).degrees, 135, accuracy: 0.01)
@@ -103,25 +103,6 @@ final class CGMathTests: XCTestCase, LinuxEnforcedTestCase {
         rect = CGRect(x: 10, y: 100, width: 700, height: 600).aspectFillingRect(withAspectRatio: 4/3)
         XCTAssertEqual(rect.origin, CGPoint(x: -50 + 10, y: 0 + 100))
         XCTAssertEqual(rect.size, CGSize(width: 800, height: 600))
-    }
-
-    static var allTests: [(String, (CGMathTests) -> () throws -> Void)] {
-        return [
-            ("testAngleTo", testAngleTo),
-            ("testCenterBetween", testCenterBetween),
-            ("testDistanceTo", testDistanceTo),
-            ("testAddingPoints", testAddingPoints),
-            ("testAddingPointsInPlace", testAddingPointsInPlace),
-            ("testSubtractingPoints", testSubtractingPoints),
-            ("testSubtractingPointsInPlace", testSubtractingPointsInPlace),
-            ("testMultiplyingPoints", testMultiplyingPoints),
-            ("testMultiplyingPoint", testMultiplyingPoint),
-            ("testMultiplyingPointsInPlace", testMultiplyingPointsInPlace),
-            ("testDividingPoint", testDividingPoint),
-            ("testAspectRatio", testAspectRatio),
-            ("testAspectFittingRect", testAspectFittingRect),
-            ("testAspectFillingRect", testAspectFillingRect),
-        ]
     }
 }
 #endif

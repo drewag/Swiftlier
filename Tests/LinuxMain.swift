@@ -1,37 +1,8 @@
 import XCTest
-@testable import SwiftlierTests
 
-XCTMain([
-    testCase(AgeTests.allTests),
-    testCase(AlwaysEqualTests.allTests),
-    testCase(AngleTests.allTests),
-    testCase(Array_SortingTests.allTests),
-    testCase(BinarySearchTreeTests.allTests),
-    testCase(Bool_FormattingTests.allTests),
-    testCase(Coding_HelpersTests.allTests),
-    testCase(Data_Base64Tests.allTests),
-    testCase(Data_ProcessingTests.allTests),
-    testCase(Date_HelpersTests.allTests),
-    testCase(DayTests.allTests),
-    testCase(Dictionary_MergingTests.allTests),
-    testCase(Double_FormattingTests.allTests),
-    testCase(EmailAddressTests.allTests),
-    testCase(Enum_ConvenienceTests.allTests),
-    testCase(EventCenterTests.allTests),
-    testCase(HTMLTests.allTests),
-    testCase(HTTPStatusTests.allTests),
-    testCase(HeartRateFormatterTests.allTests),
-    testCase(Int_RandomTests.allTests),
-    testCase(JSONTests.allTests),
-    testCase(MassTests.allTests),
-    testCase(MultiCallbackTests.allTests),
-    testCase(NativeTypesDecoderTests.allTests),
-    testCase(NativeTypesEncoderTests.allTests),
-    testCase(ObservableTests.allTests),
-    testCase(PatchyRangeTests.allTests),
-    testCase(Path_CodingTests.allTests),
-    testCase(PathTests.allTests),
-    testCase(PersistenceServiceTests.allTests),
-    testCase(String_HelpersTests.allTests),
-    testCase(XMLTests.allTests),
-])
+import SwiftlierTests
+
+var tests = [XCTestCaseEntry]()
+tests += SwiftlierTests.__allTests()
+
+XCTMain(tests)

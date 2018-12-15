@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class BinarySearchTreeTests: XCTestCase, LinuxEnforcedTestCase {
+final class BinarySearchTreeTests: XCTestCase {
     var tree: BinarySearchTree<Int> {
         return BinarySearchTree(values: [4, 2, 4, 1, 4, 8, 9, 3, 1, 7, 9, 6, 5])
     }
@@ -87,13 +87,5 @@ final class BinarySearchTreeTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(tree.elements(between: 5, and: 6), [])
         XCTAssertEqual(tree.elements(between: 7, and: 6), [])
         XCTAssertEqual(tree.elements(between: -5, and: -1), [])
-    }
-
-    static var allTests: [(String, (BinarySearchTreeTests) -> () throws -> Void)] {
-        return [
-            ("testIterating", testIterating),
-            ("testInsert", testInsert),
-            ("testElementsBetween", testElementsBetween),
-        ]
     }
 }

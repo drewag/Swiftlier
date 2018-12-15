@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class HTTPStatusTests: XCTestCase, LinuxEnforcedTestCase {
+final class HTTPStatusTests: XCTestCase {
     func testInitFromRawValues() {
         XCTAssertEqual(HTTPStatus(rawValue: 200), .ok)
         XCTAssertEqual(HTTPStatus(rawValue: 201), .created)
@@ -144,14 +144,6 @@ final class HTTPStatusTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(HTTPStatus.httpVersionNotSupported.description, "HTTP VERSION NOT SUPPORTED")
 
         XCTAssertEqual(HTTPStatus.other(153).description, "OTHER(153)")
-    }
-
-    static var allTests: [(String, (HTTPStatusTests) -> () throws -> Void)] {
-        return [
-            ("testInitFromRawValues", testInitFromRawValues),
-            ("testRawValues", testRawValues),
-            ("testDescription", testDescription),
-        ]
     }
 }
 

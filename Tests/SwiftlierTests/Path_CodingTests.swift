@@ -19,7 +19,7 @@ func decode(_ data: Data) throws -> Data {
     return Data(base64Encoded: string)!
 }
 
-final class Path_CodingTests: XCTestCase, LinuxEnforcedTestCase {
+final class Path_CodingTests: XCTestCase {
     var base: DirectoryPath {
         return try! FileSystem.default.workingDirectory.subdirectory("tmp")
     }
@@ -33,7 +33,6 @@ final class Path_CodingTests: XCTestCase, LinuxEnforcedTestCase {
     override func tearDown() {
         let _ = try? self.base.delete()
 
-        self.checkTestIncludedForLinux()
         super.tearDown()
     }
 
@@ -163,16 +162,5 @@ final class Path_CodingTests: XCTestCase, LinuxEnforcedTestCase {
         XCTAssertEqual(decoded.count, 1)
         XCTAssertEqual(decoded["three"]?.string, "three")
         XCTAssertEqual(decoded["three"]?.int, 3)
-    }
-
-    static var allTests: [(String, (Path_CodingTests) -> () throws -> Void)] {
-        return [
-            ("testAddEncodable", testAddEncodable),
-            ("testCreateEncodable", testCreateEncodable),
-            ("testAddEncodableArray", testAddEncodableArray),
-            ("testCreateEncodableArray", testCreateEncodableArray),
-            ("testAddEncodableDictionary", testAddEncodableDictionary),
-            ("testCreateEncodableDictionary", testCreateEncodableDictionary),
-        ]
     }
 }

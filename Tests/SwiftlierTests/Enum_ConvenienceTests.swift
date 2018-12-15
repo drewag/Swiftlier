@@ -15,15 +15,9 @@ private enum TestEnum: Int {
     case three
 }
 
-final class Enum_ConvenienceTests: XCTestCase, LinuxEnforcedTestCase {
+final class Enum_ConvenienceTests: XCTestCase {
     func testCount() {
         XCTAssertEqual(TestEnum.count, 3)
-    }
-
-    static var allTests: [(String, (Enum_ConvenienceTests) -> () throws -> Void)] {
-        return [
-            ("testCount", testCount),
-        ]
     }
 }
 

@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class ObservableTests: XCTestCase, LinuxEnforcedTestCase {
+final class ObservableTests: XCTestCase {
     func testSubscribing() {
         let observable = Observable<String>("Old Value")
         var called = false
@@ -91,16 +91,5 @@ final class ObservableTests: XCTestCase, LinuxEnforcedTestCase {
         called = false
         observable.current = "Third Value"
         XCTAssertFalse(called)
-    }
-
-    static var allTests: [(String, (ObservableTests) -> () throws -> Void)] {
-        return [
-            ("testSubscribing", testSubscribing),
-            ("testUnsubscribing", testUnsubscribing),
-            ("testTriggerImmediately", testTriggerImmediately),
-            ("testAutomaticUnsubscribing", testAutomaticUnsubscribing),
-            ("testCallOnceOption", testCallOnceOption),
-            ("testCallOnceOptionWithInitial", testCallOnceOptionWithInitial),
-        ]
     }
 }

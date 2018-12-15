@@ -9,7 +9,7 @@
 import XCTest
 import Swiftlier
 
-final class CSVStreamReaderTests: XCTestCase, LinuxEnforcedTestCase {
+final class CSVStreamReaderTests: XCTestCase {
     var tempFile: Path {
         return try! FileSystem.default.workingDirectory.subdirectory("tmp").file("stream.txt")
     }
@@ -70,14 +70,5 @@ final class CSVStreamReaderTests: XCTestCase, LinuxEnforcedTestCase {
             XCTAssertEqual(components[4], ["Card 4\r\nWith new line","Back 4"])
             XCTAssertEqual(components[5], ["Card 5","Back 5 trailing\r\n"])
         }
-    }
-
-    static var allTests: [(String, (CSVStreamReaderTests) -> () throws -> Void)] {
-        return [
-            ("testSimpleFromData", testSimpleFromData),
-            ("testComplexFromData", testComplexFromData),
-            ("testSimpleFromFile", testSimpleFromFile),
-            ("testComplexFromFile", testComplexFromFile),
-        ]
     }
 }
