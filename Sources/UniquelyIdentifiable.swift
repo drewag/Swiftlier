@@ -8,6 +8,17 @@
 
 import Foundation
 
-public protocol UniquelyIdentifiable {
+public protocol RawIdentifiable {
+    var rawIdentifier: String {get}
+}
+
+public protocol UniquelyIdentifiable: RawIdentifiable {
     var id: UUID {get}
 }
+
+extension UniquelyIdentifiable {
+    public var rawIdentifier: String {
+        return self.id.uuidString
+    }
+}
+
