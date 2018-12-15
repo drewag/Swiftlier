@@ -56,25 +56,6 @@ extension Bool_FormattingTests {
     ]
 }
 
-extension CGMathTests {
-    static let __allTests = [
-        ("testAddingPoints", testAddingPoints),
-        ("testAddingPointsInPlace", testAddingPointsInPlace),
-        ("testAngleTo", testAngleTo),
-        ("testAspectFillingRect", testAspectFillingRect),
-        ("testAspectFittingRect", testAspectFittingRect),
-        ("testAspectRatio", testAspectRatio),
-        ("testCenterBetween", testCenterBetween),
-        ("testDistanceTo", testDistanceTo),
-        ("testDividingPoint", testDividingPoint),
-        ("testMultiplyingPoint", testMultiplyingPoint),
-        ("testMultiplyingPoints", testMultiplyingPoints),
-        ("testMultiplyingPointsInPlace", testMultiplyingPointsInPlace),
-        ("testSubtractingPoints", testSubtractingPoints),
-        ("testSubtractingPointsInPlace", testSubtractingPointsInPlace),
-    ]
-}
-
 extension CSVStreamReaderTests {
     static let __allTests = [
         ("testComplexFromData", testComplexFromData),
@@ -360,7 +341,6 @@ public func __allTests() -> [XCTestCaseEntry] {
         testCase(Array_SortingTests.__allTests),
         testCase(BinarySearchTreeTests.__allTests),
         testCase(Bool_FormattingTests.__allTests),
-        testCase(CGMathTests.__allTests),
         testCase(CSVStreamReaderTests.__allTests),
         testCase(Coding_HelpersTests.__allTests),
         testCase(Data_Base64Tests.__allTests),
