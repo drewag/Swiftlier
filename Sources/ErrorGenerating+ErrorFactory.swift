@@ -27,9 +27,11 @@ extension ErrorGenerating {
         case let nsError as NSError where nsError.domain == "NSURLErrorDomain":
             switch nsError.code {
             case -1009:
-                return self.error(doing, because: NetworkResponseErrorReason(kind: .noInternet, customMessage: nil))
+                return self.userError(doing, because: NetworkResponseErrorReason(kind: .noInternet, customMessage: nil))
             case -999:
                 return self.error(doing, because: NetworkResponseErrorReason(kind: .untrusted, customMessage: nil))
+            case -1004:
+                return self.error(doing, because: NetworkResponseErrorReason(kind: .badGateway, customMessage: nil))
             default:
                 break
             }
