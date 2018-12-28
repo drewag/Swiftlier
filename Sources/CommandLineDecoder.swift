@@ -9,20 +9,22 @@
 import Foundation
 
 public class CommandLineDecoder: Decoder {
-    public class func prompt<D: Decodable>(userInfo: [CodingUserInfoKey:Any] = [:]) throws -> D {
-        let decoder = CommandLineDecoder(userInfo: userInfo)
+    public class func prompt<D: Decodable>(defaults: [String:String] = [:], userInfo: [CodingUserInfoKey:Any] = [:]) throws -> D {
+        let decoder = CommandLineDecoder(defaults: defaults, userInfo: userInfo)
         return try D(from: decoder)
     }
 
     public var codingPath: [CodingKey] = []
     public let userInfo: [CodingUserInfoKey: Any]
+    public let defaults: [String:String]
 
-    fileprivate init(userInfo: [CodingUserInfoKey:Any]) {
+    fileprivate init(defaults: [String:String], userInfo: [CodingUserInfoKey:Any]) {
+        self.defaults = defaults
         self.userInfo = userInfo
     }
 
     public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
-        return KeyedDecodingContainer(CommandLineDecodingContainer())
+        return KeyedDecodingContainer(CommandLineDecodingContainer(defaults: self.defaults))
     }
 
     public func unkeyedContainer() throws -> UnkeyedDecodingContainer {
@@ -38,7 +40,12 @@ private class CommandLineDecodingContainer<MyKey: CodingKey>: KeyedDecodingConta
     typealias Key = MyKey
 
     let codingPath: [CodingKey] = []
+    let defaults: [String:String]
     var lastInput = [String:String]()
+
+    init(defaults: [String:String]) {
+        self.defaults = defaults
+    }
 
     var allKeys: [Key] {
         return []
@@ -153,6 +160,9 @@ private extension CommandLineDecodingContainer {
         var input: String
         if let lastInput = self.lastInput[name] {
             input = lastInput
+        }
+        else if let existing = self.defaults[name] {
+            input = existing
         }
         else {
             print("\(name)? ", terminator: "")
