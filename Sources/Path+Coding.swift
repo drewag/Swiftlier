@@ -110,16 +110,21 @@ private struct FileArchive: ErrorGenerating {
         #if os(Linux)
             return try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
         #else
-            return try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
+            do {
+                return try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+            }
+            catch {
+                if #available(OSX 10.11, *) {
+                    return try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
+                } else {
+                    throw self.error("encoding data", because: "Mac OS 10.11 or newer is required")
+                }
+            }
         #endif
     }
 
     static func object(from data: Data, decrypt: (Data) throws -> Data) throws -> Any? {
-        #if os(Linux)
-            return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
-        #else
-            return NSKeyedUnarchiver.unarchiveObject(with: try decrypt(data))
-        #endif
+        return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
     }
 }
 
