@@ -44,24 +44,26 @@ public class LimitedSizeViewController: UIViewController {
 
         self.modalTransitionStyle = .crossDissolve
 
-        self.addChildViewController(rootViewController)
+        self.addChild(rootViewController)
 
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.8)
         self.containerView.addSubview(rootViewController.view)
 
         self.containerView.addCenteredView(rootViewController.view, withOffset: CGPoint())
 
-        self.containerView.addConstraints([
-            NSLayoutConstraint(item: rootViewController.view, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: self.containerView, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: rootViewController.view, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: self.containerView, attribute: .left, multiplier: 1, constant: 0),
-        ])
+        if let rootView = rootViewController.view {
+            self.containerView.addConstraints([
+                NSLayoutConstraint(item: rootView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: self.containerView, attribute: .top, multiplier: 1, constant: 0),
+                NSLayoutConstraint(item: rootView, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: self.containerView, attribute: .left, multiplier: 1, constant: 0),
+            ])
 
-        let widthConstraint = NSLayoutConstraint(item: rootViewController.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxWidth)
-        widthConstraint.priority = UILayoutPriority(rawValue: 750)
-        rootViewController.view.addConstraint(widthConstraint)
-        let heightConstraint = NSLayoutConstraint(item: rootViewController.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxHeight)
-        heightConstraint.priority = UILayoutPriority(rawValue: 750)
-        rootViewController.view.addConstraint(heightConstraint)
+            let widthConstraint = NSLayoutConstraint(item: rootView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxWidth)
+            widthConstraint.priority = UILayoutPriority(rawValue: 750)
+            rootViewController.view.addConstraint(widthConstraint)
+            let heightConstraint = NSLayoutConstraint(item: rootView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: maxHeight)
+            heightConstraint.priority = UILayoutPriority(rawValue: 750)
+            rootViewController.view.addConstraint(heightConstraint)
+        }
     }
 
     public override var preferredStatusBarStyle: UIStatusBarStyle {

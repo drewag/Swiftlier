@@ -24,7 +24,7 @@ open class LayeredTableViewController: UIViewController {
     fileprivate var openGestureRecognizer: UITapGestureRecognizer!
     fileprivate var arrangedSize = CGSize()
 
-    public init(topStyle: UITableViewStyle = .plain, bottomStyle: UITableViewStyle = .plain) {
+    public init(topStyle: UITableView.Style = .plain, bottomStyle: UITableView.Style = .plain) {
         self.topTableView = UITableView(frame: CGRect(), style: topStyle)
         self.bottomTableView = TapThroughAboveTableView(frame: CGRect(), style: bottomStyle)
 
@@ -529,7 +529,7 @@ extension LayeredTableViewController: UITableViewDelegate {
             break
         }
     }
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         switch tableView {
         case self.topTableView:
             return self.topTableViewDelegate?.tableView?(tableView, editingStyleForRowAt: indexPath) ?? .none

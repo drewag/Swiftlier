@@ -11,7 +11,7 @@ import UIKit
 
 extension NSLayoutConstraint {
     @discardableResult
-    public convenience init(_ attribute: NSLayoutAttribute, of view1: UIView, to otherAttribute: NSLayoutAttribute, of view2: UIView, relatedBy: NSLayoutRelation = .equal, multiplier: CGFloat = 1, plus: CGFloat = 0, active: Bool = true) {
+    public convenience init(_ attribute: NSLayoutConstraint.Attribute, of view1: UIView, to otherAttribute: NSLayoutConstraint.Attribute, of view2: UIView, relatedBy: NSLayoutConstraint.Relation = .equal, multiplier: CGFloat = 1, plus: CGFloat = 0, active: Bool = true) {
         self.init(
             item: view1,
             attribute: attribute,
@@ -27,7 +27,7 @@ extension NSLayoutConstraint {
     @available(*, deprecated, message: "Use init(:of:to:) or UIView extension instead")
     public class func fullWidth(with view: UIView) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
-            options: NSLayoutFormatOptions.directionLeftToRight,
+            options: .directionLeftToRight,
             metrics: nil,
             views:["view": view]
         )
@@ -36,7 +36,7 @@ extension NSLayoutConstraint {
     @available(*, deprecated, message: "Use init(:of:to:) or UIView extension instead")
     public class func fullHeight(with view: UIView) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|",
-            options: NSLayoutFormatOptions.directionLeftToRight,
+            options: .directionLeftToRight,
             metrics: nil,
             views:["view": view]
         )

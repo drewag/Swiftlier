@@ -10,7 +10,7 @@
 import UIKit
 
 extension UIColor: ErrorGenerating {}
-public extension UIColor {
+extension UIColor {
     convenience public init(hex : Int) {
         let blue = CGFloat(hex & 0xFF)
         let green = CGFloat((hex >> 8) & 0xFF)

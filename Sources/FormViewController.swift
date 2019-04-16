@@ -31,7 +31,7 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 44
         self.tableView.register(SimpleFieldTableViewCell.self, forCellReuseIdentifier: SimpleFieldTableViewCell.identifier)
         self.tableView.register(BoolFieldTableViewCell.self, forCellReuseIdentifier: BoolFieldTableViewCell.identifier)
@@ -126,7 +126,7 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     @objc func didTap(helpButton: UIButton) {
         let formSection = self.form.sections.values[helpButton.tag]
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(formSection.helpURL!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(formSection.helpURL!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         } else {
             UIApplication.shared.openURL(formSection.helpURL!)
         }
@@ -533,7 +533,7 @@ private extension FormViewController {
                 guard !(field is ActionField) else {
                     continue
                 }
-                let width = (field.label as NSString).size(withAttributes: [NSAttributedStringKey.font:self.font]).width
+                let width = (field.label as NSString).size(withAttributes: [NSAttributedString.Key.font:self.font]).width
                 maxWidth = max(maxWidth, width)
             }
         }
@@ -577,7 +577,7 @@ private class SimpleFieldTableViewCell: UITableViewCell {
         }
     }
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         let nameLabel = UILabel()
         self.nameLabel = nameLabel
         self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
@@ -677,7 +677,7 @@ private class BoolFieldTableViewCell: UITableViewCell {
         }
     }
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         let nameLabel = UILabel()
         self.nameLabel = nameLabel
         self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
@@ -734,7 +734,7 @@ private class TextViewFieldTableViewCell: UITableViewCell {
         }
     }
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         let nameLabel = UILabel()
         self.nameLabel = nameLabel
         self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
@@ -784,7 +784,7 @@ private class SegmentedControlTableViewCell: UITableViewCell {
         }
     }
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         let nameLabel = UILabel()
         self.nameLabel = nameLabel
         self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
@@ -834,7 +834,7 @@ private class SliderTableViewCell: UITableViewCell {
         }
     }
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         let nameLabel = UILabel()
         self.nameLabel = nameLabel
         self.nameLabelWidthConstraint = NSLayoutConstraint(item: nameLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
@@ -872,3 +872,8 @@ private class SliderTableViewCell: UITableViewCell {
     }
 }
 #endif
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

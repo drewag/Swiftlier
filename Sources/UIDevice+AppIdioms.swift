@@ -20,6 +20,8 @@ extension UIDevice {
             return .pad
         case .phone:
             return .phone
+        @unknown default:
+            fatalError()
         }
     }
 

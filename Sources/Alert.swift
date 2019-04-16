@@ -11,7 +11,7 @@
 import UIKit
 import ObjectiveC
 
-var MakeAlertAction: (String?, UIAlertActionStyle, ((UIAlertAction) -> Swift.Void)?) -> UIAlertAction = UIAlertAction.init
+var MakeAlertAction: (String?, UIAlertAction.Style, ((UIAlertAction) -> Swift.Void)?) -> UIAlertAction = UIAlertAction.init
 
 public class ErrorOccured: EventType { public typealias CallbackParam = ReportableError }
 
@@ -276,7 +276,7 @@ private extension Alert {
     class func buildAlert(
         withTitle title: String,
         message: String?,
-        style: UIAlertControllerStyle,
+        style: UIAlertController.Style,
         cancel: AnyAlertAction? = nil,
         preferred: AnyAlertAction? = nil,
         other: [AnyAlertAction] = [],

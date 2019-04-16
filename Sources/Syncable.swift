@@ -268,7 +268,7 @@ extension Syncable: Encodable {
 }
 
 fileprivate extension Syncable {
-    fileprivate var lastLocalChanged: Date? {
+    var lastLocalChanged: Date? {
         set {
             switch self.status {
             case .both(local: _, remote: let remote):
@@ -304,7 +304,7 @@ fileprivate extension Syncable {
         }
     }
 
-    fileprivate var lastRemoteChanged: Date? {
+    var lastRemoteChanged: Date? {
         set {
             switch self.status {
             case .both(local: let local, remote: _):
@@ -366,7 +366,7 @@ extension SyncableOptional: Encodable {
 }
 
 fileprivate extension SyncableOptional {
-    fileprivate var lastLocalChanged: Date? {
+    var lastLocalChanged: Date? {
         set {
             switch self.status {
             case .both(local: _, remote: let remote):
@@ -402,7 +402,7 @@ fileprivate extension SyncableOptional {
         }
     }
 
-    fileprivate var lastRemoteChanged: Date? {
+    var lastRemoteChanged: Date? {
         set {
             switch self.status {
             case .both(local: let local, remote: _):

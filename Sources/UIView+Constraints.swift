@@ -41,12 +41,12 @@ extension UIView {
     }
 
     @discardableResult
-    public func constrain(_ attribute: NSLayoutAttribute, of view: UIView, relatedBy: NSLayoutRelation = .equal, multiplier: CGFloat = 1, plus: CGFloat = 0, active: Bool = true) -> NSLayoutConstraint {
+    public func constrain(_ attribute: NSLayoutConstraint.Attribute, of view: UIView, relatedBy: NSLayoutConstraint.Relation = .equal, multiplier: CGFloat = 1, plus: CGFloat = 0, active: Bool = true) -> NSLayoutConstraint {
         return NSLayoutConstraint(attribute, of: self, to: attribute, of: view, relatedBy: relatedBy, multiplier: multiplier, plus: -plus, active: active)
     }
 
     @discardableResult
-    public func constrain(_ attributes: [NSLayoutAttribute], of view: UIView, relatedBy: NSLayoutRelation = .equal, multiplier: CGFloat = 1, plus: CGFloat = 0, active: Bool = true) -> [NSLayoutConstraint] {
+    public func constrain(_ attributes: [NSLayoutConstraint.Attribute], of view: UIView, relatedBy: NSLayoutConstraint.Relation = .equal, multiplier: CGFloat = 1, plus: CGFloat = 0, active: Bool = true) -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
 
         for attribute in attributes {
@@ -57,7 +57,7 @@ extension UIView {
     }
 
     @discardableResult
-    public func constrain(_ attribute: NSLayoutAttribute, to constant: CGFloat, relatedBy: NSLayoutRelation = .equal, multiplier: CGFloat = 1, active: Bool = true) -> NSLayoutConstraint {
+    public func constrain(_ attribute: NSLayoutConstraint.Attribute, to constant: CGFloat, relatedBy: NSLayoutConstraint.Relation = .equal, multiplier: CGFloat = 1, active: Bool = true) -> NSLayoutConstraint {
         return type(of: self).finalize(NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: nil, attribute: .notAnAttribute, multiplier: multiplier, constant: constant), active: active)
     }
 }

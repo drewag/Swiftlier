@@ -123,11 +123,11 @@ extension UIViewController {
         self.transitionBack(animated: true, onComplete: nil)
     }
 
-    func backBarButtonSystemItem(withType type: UIBarButtonSystemItem) -> UIBarButtonItem {
+    func backBarButtonSystemItem(withType type: UIBarButtonItem.SystemItem) -> UIBarButtonItem {
         return UIBarButtonItem(barButtonSystemItem: type, target: self, action: #selector(didTapBackButton(_:)))
     }
 
-    func backBarButtonItem(withTitle title: String, style: UIBarButtonItemStyle) -> UIBarButtonItem {
+    func backBarButtonItem(withTitle title: String, style: UIBarButtonItem.Style) -> UIBarButtonItem {
         return UIBarButtonItem(title: title, style: style, target: self, action: #selector(didTapBackButton(_:)))
     }
 }

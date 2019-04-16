@@ -71,7 +71,7 @@ open class CustomGradientView: UIView {
         animation.toValue = toColors
         animation.duration = duration
         animation.isRemovedOnCompletion = true
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = .forwards
         animation.isCumulative = true
 
         self.gradientLayer.add(animation, forKey: "animateColors")

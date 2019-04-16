@@ -10,7 +10,7 @@
 import UIKit
 
 public class WebViewController: UIViewController, ErrorGenerating {
-    let activityOverlay = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    let activityOverlay = UIActivityIndicatorView(style: .whiteLarge)
     let webView = UIWebView()
 
     enum Content {

@@ -74,6 +74,8 @@ public struct Mass {
             self.unit = .pounds
         case .stone:
             self.unit = .stones
+        @unknown default:
+            fatalError()
         }
         self.value = value
     }
@@ -135,6 +137,8 @@ public struct Mass {
             return self.pounds
         case .stone:
             return self.stones
+        @unknown default:
+            fatalError()
         }
     }
 
@@ -243,6 +247,8 @@ extension MassFormatter.Unit {
             return .pounds
         case .stone:
             return .stones
+        @unknown default:
+            fatalError()
         }
     }
 }

@@ -28,7 +28,7 @@ extension UIView {
 
 extension CGContext {
     public func draw(text: String, at: CGPoint, alignment: NSTextAlignment, size: CGFloat = 12, color: UIColor = .black, weight: UIFont.Weight = .regular, rotation: CGFloat = 0) {
-        let labelAttributes: [NSAttributedStringKey:Any] = [
+        let labelAttributes: [NSAttributedString.Key:Any] = [
             .font:UIFont.systemFont(ofSize: size, weight: weight),
             .foregroundColor: color,
         ]
@@ -45,6 +45,8 @@ extension CGContext {
         case .right:
             x = at.x - size.width * 1.5
             rotationPoint = CGPoint(x: size.width / 2, y: -size.height / 2)
+        @unknown default:
+            fatalError()
         }
         self.saveGState()
         self.translateBy(x: x, y: at.y)

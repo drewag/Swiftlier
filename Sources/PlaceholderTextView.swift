@@ -27,7 +27,7 @@ import UIKit
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .UITextViewTextDidChange, object: self)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: self)
     }
     
     @IBInspectable public var placeholder: String {
@@ -88,7 +88,7 @@ import UIKit
 
 private extension PlaceholderTextView {
     func sharedSetup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(textChanged(_:)), name: .UITextViewTextDidChange, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChanged(_:)), name: UITextField.textDidChangeNotification, object: self)
         
         self.placeholderTextView.isUserInteractionEnabled = false
         self.addSubview(placeholderTextView)

@@ -59,12 +59,16 @@ extension ErrorGenerating {
             case .typeMismatch(let type, let context):
                 let path = context.codingPath.map({$0.stringValue}).joined(separator: ".")
                 return self.error(doing, because: "the value at \(path) is not an \(type). More information: `\(context.debugDescription)`")
+            @unknown default:
+                return self.error(doing, because: "an unknown decoding error occured")
             }
         case let error as EncodingError:
             switch error {
             case .invalidValue(let value, let context):
                 let path = context.codingPath.map({$0.stringValue}).joined(separator: ".")
                 return self.error(doing, because: "the value (\(value)) at \(path) is invalid. More information: `\(context.debugDescription)`")
+            @unknown default:
+                return self.error(doing, because: "an unknown encoding error occured")
             }
         default:
             break
