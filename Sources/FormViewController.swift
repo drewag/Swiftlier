@@ -126,7 +126,7 @@ open class FormViewController: UITableViewController, ErrorGenerating {
     @objc func didTap(helpButton: UIButton) {
         let formSection = self.form.sections.values[helpButton.tag]
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(formSection.helpURL!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            UIApplication.shared.open(formSection.helpURL!, options: [:], completionHandler: nil)
         } else {
             UIApplication.shared.openURL(formSection.helpURL!)
         }
@@ -872,8 +872,3 @@ private class SliderTableViewCell: UITableViewCell {
     }
 }
 #endif
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
-}
