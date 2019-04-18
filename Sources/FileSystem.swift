@@ -186,19 +186,7 @@ public struct FileSystem: ErrorGenerating {
                 try self.manager.removeItem(at: to)
                 fallthrough
             default:
-                #if os(Linux)
-                    let source = try FileHandle(forReadingFrom: at)
-                    try Data().write(to: to)
-                    let destination = try FileHandle(forWritingTo: to)
-
-                    var data: Data
-                    repeat {
-                        data = source.readData(ofLength: 16000)
-                        destination.write(data)
-                    } while !data.isEmpty
-                #else
-                    try self.manager.copyItem(at: at, to: to)
-                #endif
+                try self.manager.copyItem(at: at, to: to)
             }
 
             guard let existingPath = self.path(from: to) as? ExistingPath else {
@@ -239,37 +227,13 @@ public struct FileSystem: ErrorGenerating {
     }
 
     func lastModified(at url: URL) throws -> Date {
-        #if os(Linux)
-            var st = stat()
-            stat(url.relativePath, &st)
-            let ts = st.st_mtim
-            let double = Double(ts.tv_nsec) * 1.0E-9 + Double(ts.tv_sec)
-            guard double > 0 else {
-                throw self.error("getting last modified", because: "\(url.relativePath) is not a file")
-            }
-            return Date(timeIntervalSince1970: double)
-        #else
-            let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
-            return attributes[.modificationDate] as? Date ?? Date.now
-        #endif
+        let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
+        return attributes[.modificationDate] as? Date ?? Date.now
     }
 
     func size(at url: URL) throws -> Int {
-        #if os(Linux)
-            switch self.itemKind(at: url) {
-            case .directory:
-                return 0
-            case .none:
-                throw self.error("getting size", because: "a file does not exist at \(url.relativePath)")
-            case .file:
-                var st = stat()
-                stat(url.relativePath, &st)
-                return st.st_size
-            }
-        #else
-            let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
-            return attributes[.size] as? Int ?? 0
-        #endif
+        let attributes = try self.manager.attributesOfItem(atPath: url.relativePath)
+        return attributes[.size] as? Int ?? 0
     }
 }
 
