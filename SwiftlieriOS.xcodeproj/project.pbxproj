@@ -133,6 +133,7 @@
 		4947407D1F834A2A00AC2EEA /* NativeTypesEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947407C1F834A2A00AC2EEA /* NativeTypesEncoderTests.swift */; };
 		4947A5101FFDC84C004A1FF8 /* Date+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947A50F1FFDC84B004A1FF8 /* Date+Testable.swift */; };
 		494B59A61F80816900D22FA5 /* Coding_HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B59A51F80816900D22FA5 /* Coding_HelpersTests.swift */; };
+		49562155227239E8002D8500 /* KeyboardTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49562154227239E8002D8500 /* KeyboardTracker.swift */; };
 		496074881EDFCFCF0051880F /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496074871EDFCFCF0051880F /* BinarySearchTree.swift */; };
 		4960748B1EDFF43C0051880F /* BinarySearchTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */; };
 		4960748D1EE005270051880F /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4960748C1EE005270051880F /* Day.swift */; };
@@ -311,6 +312,7 @@
 		4947407C1F834A2A00AC2EEA /* NativeTypesEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTypesEncoderTests.swift; sourceTree = "<group>"; };
 		4947A50F1FFDC84B004A1FF8 /* Date+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Testable.swift"; sourceTree = "<group>"; };
 		494B59A51F80816900D22FA5 /* Coding_HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding_HelpersTests.swift; sourceTree = "<group>"; };
+		49562154227239E8002D8500 /* KeyboardTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTracker.swift; sourceTree = "<group>"; };
 		496074871EDFCFCF0051880F /* BinarySearchTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		496074891EDFF3A60051880F /* BinarySearchTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeTests.swift; sourceTree = "<group>"; };
 		4960748C1EE005270051880F /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */,
 				493937052148AE2F00CC2EB8 /* CustomGradientView.swift */,
 				49AD1FDF21B871DB0072B19E /* UINavigationController+Helpers.swift */,
+				49562154227239E8002D8500 /* KeyboardTracker.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -777,6 +780,7 @@
 				4935A6401EB1A50600B0CCF8 /* Alert.swift in Sources */,
 				4935A66B1EB1A50600B0CCF8 /* HTTPStatus.swift in Sources */,
 				4935A6B01EB1A50600B0CCF8 /* XML.swift in Sources */,
+				49562155227239E8002D8500 /* KeyboardTracker.swift in Sources */,
 				4935A67D1EB1A50600B0CCF8 /* ObservableDictionary.swift in Sources */,
 				4935A69D1EB1A50600B0CCF8 /* Transformation.swift in Sources */,
 				4935A6601EB1A50600B0CCF8 /* EventCenter.swift in Sources */,
