@@ -39,17 +39,17 @@ class MockAlertAction : UIAlertAction {
     typealias Handler = ((UIAlertAction) -> Void)
     var handler: Handler?
     var mockTitle: String?
-    var mockStyle: UIAlertActionStyle
+    var mockStyle: UIAlertAction.Style
 
     override var title: String? {
         return mockTitle
     }
 
-    override var style: UIAlertActionStyle {
+    override var style: UIAlertAction.Style {
         return mockStyle
     }
 
-    convenience init(title: String?, style: UIAlertActionStyle, handler: ((UIAlertAction) -> Void)?) {
+    convenience init(title: String?, style: UIAlertAction.Style, handler: ((UIAlertAction) -> Void)?) {
         self.init()
 
         self.mockTitle = title

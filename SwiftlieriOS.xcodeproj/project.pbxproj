@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4914CF3A1F9FC96B00751394 /* UIView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914CF391F9FC96B00751394 /* UIView+Drawing.swift */; };
+		49185DE1227CFD3B005452C6 /* ObfuscatedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49185DE0227CFD3B005452C6 /* ObfuscatedDataTests.swift */; };
 		491CBC631F7EDB5300E117EB /* CodingPurpose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CBC621F7EDB5300E117EB /* CodingPurpose.swift */; };
 		492C63D61F65020200839AA1 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C63D51F65020200839AA1 /* UIView+Animations.swift */; };
+		492E107D227CD7A40051EF79 /* ObfuscatedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E107C227CD7A40051EF79 /* ObfuscatedData.swift */; };
 		4932CD0F1F6CB06A00892A4F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */; };
 		4932CD111F6CBCC000892A4F /* UIView_ConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */; };
 		4935A5BA1EB1A4AD00B0CCF8 /* Swiftlier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */; };
@@ -184,8 +186,10 @@
 
 /* Begin PBXFileReference section */
 		4914CF391F9FC96B00751394 /* UIView+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drawing.swift"; sourceTree = "<group>"; };
+		49185DE0227CFD3B005452C6 /* ObfuscatedDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatedDataTests.swift; sourceTree = "<group>"; };
 		491CBC621F7EDB5300E117EB /* CodingPurpose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingPurpose.swift; sourceTree = "<group>"; };
 		492C63D51F65020200839AA1 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		492E107C227CD7A40051EF79 /* ObfuscatedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatedData.swift; sourceTree = "<group>"; };
 		4932CD0E1F6CB06A00892A4F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4932CD101F6CBCC000892A4F /* UIView_ConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_ConstraintsTests.swift; sourceTree = "<group>"; };
 		4935A5B01EB1A4AD00B0CCF8 /* Swiftlier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftlier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -533,6 +537,7 @@
 				493937052148AE2F00CC2EB8 /* CustomGradientView.swift */,
 				49AD1FDF21B871DB0072B19E /* UINavigationController+Helpers.swift */,
 				49562154227239E8002D8500 /* KeyboardTracker.swift */,
+				492E107C227CD7A40051EF79 /* ObfuscatedData.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -580,6 +585,7 @@
 				4947407C1F834A2A00AC2EEA /* NativeTypesEncoderTests.swift */,
 				493B820E20334F540077B00C /* DelimiterStreamReaderTests.swift */,
 				493B82102033546E0077B00C /* CSVStreamReaderTests.swift */,
+				49185DE0227CFD3B005452C6 /* ObfuscatedDataTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -756,6 +762,7 @@
 				4935A6471EB1A50600B0CCF8 /* BubbleView.swift in Sources */,
 				49ED57752032916600AC19CB /* StreamReader.swift in Sources */,
 				4935A6861EB1A50600B0CCF8 /* Price.swift in Sources */,
+				492E107D227CD7A40051EF79 /* ObfuscatedData.swift in Sources */,
 				493C45F11EB6A1770022E008 /* CircleBorderView.swift in Sources */,
 				4935A68D1EB1A50600B0CCF8 /* RoundedBorderView.swift in Sources */,
 				4935A6811EB1A50600B0CCF8 /* Path.swift in Sources */,
@@ -826,6 +833,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				493C45B51EB646230022E008 /* AlwaysEqualTests.swift in Sources */,
+				49185DE1227CFD3B005452C6 /* ObfuscatedDataTests.swift in Sources */,
 				4935A6DD1EB1A52E00B0CCF8 /* PathTests.swift in Sources */,
 				49BFE3571EC247E6009A21B0 /* Data_ProcessingTests.swift in Sources */,
 				4935A6DC1EB1A52E00B0CCF8 /* ObservableTests.swift in Sources */,
