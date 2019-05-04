@@ -70,6 +70,8 @@ extension ErrorGenerating {
             @unknown default:
                 return self.error(doing, because: "an unknown encoding error occured")
             }
+        case let error as NSError:
+            return self.error(doing, because: error.localizedDescription)
         default:
             break
         }
