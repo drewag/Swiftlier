@@ -458,9 +458,13 @@ extension FormViewController/*: UITableViewDelegate*/ {
         case let selectField as SelectField where selectField.options.count > 3:
             let viewController = SelectListViewController(options: selectField.options, onOptionChosen: { [weak self] option in
                 selectField.value = option
-                self?.dismiss(animated: true, completion: nil)
                 tableView.reloadRows(at: [indexPath], with: .automatic)
-                self?.didEndEditing(field: selectField)
+
+                guard let self = self else {
+                    return
+                }
+                self.dismiss(animated: true, completion: nil)
+                self.didEndEditing(field: selectField)
             })
             let navController = UINavigationController(rootViewController: viewController)
             viewController.title = "Choose Option"
