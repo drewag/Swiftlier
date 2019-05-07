@@ -33,7 +33,7 @@ protocol AnyAlertAction {
 public final class AlertAction: AnyAlertAction {
     let name: String
     let isDestructive: Bool
-    let handler: (() -> ())?
+    public let handler: (() -> ())?
 
     init(name: String, isDestructive: Bool = false, handler: (() -> ())?) {
         self.name = name
