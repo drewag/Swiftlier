@@ -124,7 +124,16 @@ private struct FileArchive: ErrorGenerating {
     }
 
     static func object(from data: Data, decrypt: (Data) throws -> Data) throws -> Any? {
-        return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
+        }
+        catch {
+            #if os(Linux)
+                throw error
+            #else
+                return NSKeyedUnarchiver.unarchiveObject(with: try decrypt(data))
+            #endif
+        }
     }
 }
 
