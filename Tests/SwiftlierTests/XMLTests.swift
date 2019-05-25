@@ -10,39 +10,34 @@ import XCTest
 import Swiftlier
 
 final class XMLTests: XCTestCase {
-    func testInitFromData() {
+    func testInitFromData() throws {
         let xmlString =
             """
             <root>
-                <array>
-                    <value>value1</value>
-                    <value>value2</value>
-                    <value>value3</value>
-                </array>
+                <array>value1</array>
+                <array>value2</array>
+                <array>value3</array>
                 <dict>
                     <key>value</key>
                 </dict>
+                <empty></empty>
                 <string>value</string>
                 <integer>20</integer>
                 <decimal>0.3</decimal>
                 <boolean>true</boolean>
             </root>
             """
-        do {
-            let data = xmlString.data(using: .utf8)!
-            let xml = try XML(data: data)
-            XCTAssertEqual(xml["root"]?["array"]?.array?.count, 3)
-            XCTAssertEqual(xml["root"]?["array"]?[0]?.string, "value1")
-            XCTAssertEqual(xml["root"]?["array"]?[1]?.string, "value2")
-            XCTAssertEqual(xml["root"]?["array"]?[2]?.string, "value3")
-            XCTAssertEqual(xml["root"]?["dict"]?.dictionary?.count, 1)
-            XCTAssertEqual(xml["root"]?["dict"]?["key"]?.string, "value")
-            XCTAssertEqual(xml["root"]?["integer"]?.int, 20)
-            XCTAssertEqual(xml["root"]?["decimal"]?.double, 0.3)
-        }
-        catch {
-            XCTFail("\(error)")
-        }
+        let data = xmlString.data(using: .utf8)!
+        let xml = try XML(data)
+        print(xml)
+        XCTAssertEqual(xml["root"]?["array"]?.array?.count, 3)
+        XCTAssertEqual(xml["root"]?["array"]?[0]?.string, "value1")
+        XCTAssertEqual(xml["root"]?["array"]?[1]?.string, "value2")
+        XCTAssertEqual(xml["root"]?["array"]?[2]?.string, "value3")
+        XCTAssertEqual(xml["root"]?["dict"]?.dictionary?.count, 1)
+        XCTAssertEqual(xml["root"]?["dict"]?["key"]?.string, "value")
+        XCTAssertEqual(xml["root"]?["integer"]?.int, 20)
+        XCTAssertEqual(xml["root"]?["decimal"]?.double, 0.3)
     }
 
     func testInitFromObject() throws {
@@ -66,7 +61,6 @@ final class XMLTests: XCTestCase {
         XCTAssertEqual(xml["boolean"]?.bool, true)
         XCTAssertTrue(xml["null"]?.object is NSNull)
     }
-
 
     func testEquatable() throws {
         let one = XML(object: [
