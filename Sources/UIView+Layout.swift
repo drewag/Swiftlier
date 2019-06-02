@@ -10,11 +10,11 @@
 import UIKit
 
 extension UIView {
-    public func addFillingSubview(_ view: UIView) {
+    public func addFillingSubview(_ view: UIView, insetBy inset: CGPoint = .zero) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = self.bounds
         self.addSubview(view)
-        view.constrainToFill(self)
+        view.constrainToFill(self, insetBy: inset)
     }
 
     public func addCenteredView(_ view: UIView, withOffset offset: CGPoint) {
