@@ -6,6 +6,7 @@
 //  Copyright © 2019 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 extension Data {
@@ -85,3 +86,4 @@ private extension Data {
     }
 
 }
+#endif

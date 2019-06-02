@@ -6,6 +6,7 @@
 //  Copyright © 2019 Drewag. All rights reserved.
 //
 
+#if os(iOS)
 import XCTest
 import Swiftlier
 
@@ -56,3 +57,4 @@ final class ObfuscatedDataTests: XCTestCase {
         XCTAssertThrowsError(try ObfuscatedData(obfuscated: tooShort, keptPlainCount: 3))
     }
 }
+#endif
