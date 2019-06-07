@@ -48,7 +48,7 @@ extension Structured {
 
         var components = keyPath.components(separatedBy: ".")
         let next = components.removeFirst()
-        guard let startIndex = next.index(of: "[") else {
+        guard let startIndex = next.firstIndex(of: "[") else {
             return try self[next]?.object(atKeyPath: components.joined(separator: "."))
         }
 

@@ -316,6 +316,12 @@ extension ObservableArray {
         self.insert(element, at: index + 1)
         return index + 1
     }
+
+    public func didUpdateElement(at index: Int) {
+        self.executeWithAllHandlers({ handler in
+            handler.update?(self.values[index], index)
+        })
+    }
 }
 
 private extension ObservableArray {
