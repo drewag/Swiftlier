@@ -154,6 +154,12 @@ extension ReportableError {
     }
 }
 
+extension ReportableError: LocalizedError {
+    public var errorDescription: String? {
+        return self.description
+    }
+}
+
 extension ErrorGenerating {
     public static func executeWhileReattributingErrors<Returning>(
         withReasons reasons: [AnyErrorReason],
