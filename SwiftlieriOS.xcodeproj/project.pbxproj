@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4901FA8922BC9ADC004237D8 /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901FA8822BC9ADC004237D8 /* SimpleError.swift */; };
 		4914CF3A1F9FC96B00751394 /* UIView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914CF391F9FC96B00751394 /* UIView+Drawing.swift */; };
 		49185DE1227CFD3B005452C6 /* ObfuscatedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49185DE0227CFD3B005452C6 /* ObfuscatedDataTests.swift */; };
 		491CBC631F7EDB5300E117EB /* CodingPurpose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CBC621F7EDB5300E117EB /* CodingPurpose.swift */; };
@@ -185,6 +186,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4901FA8822BC9ADC004237D8 /* SimpleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleError.swift; sourceTree = "<group>"; };
 		4914CF391F9FC96B00751394 /* UIView+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drawing.swift"; sourceTree = "<group>"; };
 		49185DE0227CFD3B005452C6 /* ObfuscatedDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatedDataTests.swift; sourceTree = "<group>"; };
 		491CBC621F7EDB5300E117EB /* CodingPurpose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingPurpose.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				4914CF391F9FC96B00751394 /* UIView+Drawing.swift */,
 				4937035C1FC3E22800D2DAA6 /* SectionHeaderWithButtonView.swift */,
 				496E7AA92030D2F6001B6823 /* DelimiterStreamReader.swift */,
+				4901FA8822BC9ADC004237D8 /* SimpleError.swift */,
 				49ED57742032916600AC19CB /* StreamReader.swift */,
 				49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */,
 				493937052148AE2F00CC2EB8 /* CustomGradientView.swift */,
@@ -825,6 +828,7 @@
 				4935A6B21EB1A50600B0CCF8 /* ZoomThroughTransition.swift in Sources */,
 				4935A6841EB1A50600B0CCF8 /* PlaceholderTextView.swift in Sources */,
 				493937062148AE2F00CC2EB8 /* CustomGradientView.swift in Sources */,
+				4901FA8922BC9ADC004237D8 /* SimpleError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
