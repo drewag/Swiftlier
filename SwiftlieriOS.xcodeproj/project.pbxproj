@@ -160,6 +160,7 @@
 		49B730DB1ECCB00F006EE42B /* Date_HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B730D91ECCAFD0006EE42B /* Date_HelpersTests.swift */; };
 		49BD1A3D2032980400BCDBD5 /* CSVStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */; };
 		49BFE3571EC247E6009A21B0 /* Data_ProcessingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */; };
+		49CD487D22DEB90A007DD076 /* URLSession+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD487C22DEB90A007DD076 /* URLSession+Testing.swift */; };
 		49CEAC751EE67D0400BA0A73 /* VerticalGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEAC741EE67D0400BA0A73 /* VerticalGradientView.swift */; };
 		49D8784E1EE2088C0068836C /* PatchyRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8784D1EE2088C0068836C /* PatchyRange.swift */; };
 		49D878501EE2146D0068836C /* PatchyRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8784F1EE2146D0068836C /* PatchyRangeTests.swift */; };
@@ -342,6 +343,7 @@
 		49B730D91ECCAFD0006EE42B /* Date_HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_HelpersTests.swift; sourceTree = "<group>"; };
 		49BD1A3C2032980400BCDBD5 /* CSVStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVStreamReader.swift; sourceTree = "<group>"; };
 		49BFE3561EC247E6009A21B0 /* Data_ProcessingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_ProcessingTests.swift; sourceTree = "<group>"; };
+		49CD487C22DEB90A007DD076 /* URLSession+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Testing.swift"; sourceTree = "<group>"; };
 		49CEAC741EE67D0400BA0A73 /* VerticalGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalGradientView.swift; sourceTree = "<group>"; };
 		49D8784D1EE2088C0068836C /* PatchyRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchyRange.swift; sourceTree = "<group>"; };
 		49D8784F1EE2146D0068836C /* PatchyRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchyRangeTests.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				49AD1FDF21B871DB0072B19E /* UINavigationController+Helpers.swift */,
 				49562154227239E8002D8500 /* KeyboardTracker.swift */,
 				492E107C227CD7A40051EF79 /* ObfuscatedData.swift */,
+				49CD487C22DEB90A007DD076 /* URLSession+Testing.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -737,6 +740,7 @@
 				4935A6531EB1A50600B0CCF8 /* DatePickerViewController.swift in Sources */,
 				4935A67A1EB1A50600B0CCF8 /* NSLayoutContraint+Factory.swift in Sources */,
 				4935A6771EB1A50600B0CCF8 /* NativeTypesStructured.swift in Sources */,
+				49CD487D22DEB90A007DD076 /* URLSession+Testing.swift in Sources */,
 				49D8784E1EE2088C0068836C /* PatchyRange.swift in Sources */,
 				4935A6691EB1A50600B0CCF8 /* HeartRateFormatter.swift in Sources */,
 				4935A6661EB1A50600B0CCF8 /* Float+Factory.swift in Sources */,
