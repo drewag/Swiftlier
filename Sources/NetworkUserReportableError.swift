@@ -19,6 +19,7 @@ public class NetworkResponseErrorReason: AnyErrorReason {
         case invalid
         case unknown
         case badGateway
+        case timedOut
     }
 
     public let kind: Kind
@@ -51,6 +52,8 @@ public class NetworkResponseErrorReason: AnyErrorReason {
             return "the web server can no longer be trusted. Please update to the latest version of this app."
         case .badGateway:
             return "the web server appears to be down"
+        case .timedOut:
+            return "the request timed out. Please make sure your internet is working and try again. If it continues to happen, please reach out to support."
         }
     }
 }
