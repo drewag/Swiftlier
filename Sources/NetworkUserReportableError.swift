@@ -21,6 +21,7 @@ public class NetworkResponseErrorReason: AnyErrorReason {
         case badGateway
         case timedOut
         case connectionLost
+        case insecureConnection
     }
 
     public let kind: Kind
@@ -57,6 +58,8 @@ public class NetworkResponseErrorReason: AnyErrorReason {
             return "the request timed out. Please make sure your internet is working and try again. If it continues to happen, please reach out to support."
         case .connectionLost:
             return "your internet connection was lost. Please make sure your internet is working and try again. If it continues to happen, please reach out to support."
+        case .insecureConnection:
+            return "a secure connection could not be made to our server. Please try again later."
         }
     }
 }
