@@ -38,6 +38,8 @@ extension ErrorGenerating {
                 return self.userError(doing, because: NetworkResponseErrorReason(kind: .connectionLost, customMessage: nil))
             case -1200:
                 return self.userError(doing, because: NetworkResponseErrorReason(kind: .insecureConnection, customMessage: nil))
+            case 53:
+                return self.userError(doing, because: NetworkResponseErrorReason(kind: .interrupted, customMessage: nil))
             default:
                 break
             }

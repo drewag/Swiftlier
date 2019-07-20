@@ -22,6 +22,7 @@ public class NetworkResponseErrorReason: AnyErrorReason {
         case timedOut
         case connectionLost
         case insecureConnection
+        case interrupted
     }
 
     public let kind: Kind
@@ -60,6 +61,8 @@ public class NetworkResponseErrorReason: AnyErrorReason {
             return "your internet connection was lost. Please make sure your internet is working and try again. If it continues to happen, please reach out to support."
         case .insecureConnection:
             return "a secure connection could not be made to our server. Please try again later."
+        case .interrupted:
+            return "your internet connection was interrupted. Please try again."
         }
     }
 }
