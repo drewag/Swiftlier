@@ -20,6 +20,7 @@ public class NetworkResponseErrorReason: AnyErrorReason {
         case unknown
         case badGateway
         case timedOut
+        case connectionLost
     }
 
     public let kind: Kind
@@ -54,6 +55,8 @@ public class NetworkResponseErrorReason: AnyErrorReason {
             return "the web server appears to be down"
         case .timedOut:
             return "the request timed out. Please make sure your internet is working and try again. If it continues to happen, please reach out to support."
+        case .connectionLost:
+            return "your internet connection was lost. Please make sure your internet is working and try again. If it continues to happen, please reach out to support."
         }
     }
 }

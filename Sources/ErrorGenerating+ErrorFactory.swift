@@ -34,6 +34,8 @@ extension ErrorGenerating {
                 return self.error(doing, because: NetworkResponseErrorReason(kind: .badGateway, customMessage: nil))
             case -1001:
                 return self.userError(doing, because: NetworkResponseErrorReason(kind: .timedOut, customMessage: nil))
+            case -1005:
+                return self.userError(doing, because: NetworkResponseErrorReason(kind: .connectionLost, customMessage: nil))
             default:
                 break
             }
