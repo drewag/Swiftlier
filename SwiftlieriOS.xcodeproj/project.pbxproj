@@ -152,6 +152,8 @@
 		497ECAC91F12BD3800F90B85 /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497ECAC81F12BD3800F90B85 /* Mass.swift */; };
 		497ECACC1F12BD4800F90B85 /* MassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497ECACA1F12BD4500F90B85 /* MassTests.swift */; };
 		498A6D971F35AE1C00EAB2B7 /* LayeredTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A6D961F35AE1C00EAB2B7 /* LayeredTableViewController.swift */; };
+		499468C122E2DD9C00B69FFC /* LimitedQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499468C022E2DD9C00B69FFC /* LimitedQueue.swift */; };
+		499468C322E2E03A00B69FFC /* LimitedQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499468C222E2E03A00B69FFC /* LimitedQueueTests.swift */; };
 		499AF5AA1EB1A6C500A13C6B /* PercentEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */; };
 		499AF5B41EB1CEAD00A13C6B /* Path_CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */; };
 		499AF5B61EB1D19F00A13C6B /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */; };
@@ -335,6 +337,8 @@
 		497ECAC81F12BD3800F90B85 /* Mass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mass.swift; sourceTree = "<group>"; };
 		497ECACA1F12BD4500F90B85 /* MassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassTests.swift; sourceTree = "<group>"; };
 		498A6D961F35AE1C00EAB2B7 /* LayeredTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredTableViewController.swift; sourceTree = "<group>"; };
+		499468C022E2DD9C00B69FFC /* LimitedQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedQueue.swift; sourceTree = "<group>"; };
+		499468C222E2E03A00B69FFC /* LimitedQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedQueueTests.swift; sourceTree = "<group>"; };
 		499AF5A91EB1A6C500A13C6B /* PercentEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentEncodable.swift; sourceTree = "<group>"; };
 		499AF5B21EB1CEA000A13C6B /* Path_CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path_CodingTests.swift; sourceTree = "<group>"; };
 		499AF5B51EB1D19F00A13C6B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
@@ -544,6 +548,7 @@
 				49562154227239E8002D8500 /* KeyboardTracker.swift */,
 				492E107C227CD7A40051EF79 /* ObfuscatedData.swift */,
 				49CD487C22DEB90A007DD076 /* URLSession+Testing.swift */,
+				499468C022E2DD9C00B69FFC /* LimitedQueue.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -592,6 +597,7 @@
 				493B820E20334F540077B00C /* DelimiterStreamReaderTests.swift */,
 				493B82102033546E0077B00C /* CSVStreamReaderTests.swift */,
 				49185DE0227CFD3B005452C6 /* ObfuscatedDataTests.swift */,
+				499468C222E2E03A00B69FFC /* LimitedQueueTests.swift */,
 			);
 			name = SwiftlierTests;
 			path = Tests/SwiftlierTests;
@@ -802,6 +808,7 @@
 				4935A6681EB1A50600B0CCF8 /* FormViewController.swift in Sources */,
 				49F7ED411F868B9C00EFB5EF /* UniquelyIdentifiable.swift in Sources */,
 				4935A6A61EB1A50600B0CCF8 /* UIView+Helpers.swift in Sources */,
+				499468C122E2DD9C00B69FFC /* LimitedQueue.swift in Sources */,
 				4935A6701EB1A50600B0CCF8 /* LimitedSizeViewController.swift in Sources */,
 				4935A69F1EB1A50600B0CCF8 /* UIButton+BlockTarget.swift in Sources */,
 				4935A64D1EB1A50600B0CCF8 /* CommandLineDecoder.swift in Sources */,
@@ -858,6 +865,7 @@
 				496BB90D1EB5047E00D60ECF /* AlertTests.swift in Sources */,
 				496FBECD1EB98578006AD5AC /* Array_SortingTests.swift in Sources */,
 				4935A6D91EB1A52E00B0CCF8 /* EmailAddressTests.swift in Sources */,
+				499468C322E2E03A00B69FFC /* LimitedQueueTests.swift in Sources */,
 				4935A6DA1EB1A52E00B0CCF8 /* EventCenterTests.swift in Sources */,
 				4960748B1EDFF43C0051880F /* BinarySearchTreeTests.swift in Sources */,
 				49EB68CF1F7B6C1F00D89D40 /* HTMLTests.swift in Sources */,
