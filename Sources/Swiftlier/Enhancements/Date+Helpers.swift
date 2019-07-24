@@ -99,14 +99,4 @@ extension Date {
         let cal = Calendar.current
         return cal.date(byAdding: .month, value: 1, to: self.beginningOfMonth)!
     }
-
-    public var dispatchTime: DispatchWallTime {
-        let seconds = self.timeIntervalSince1970
-        let wholeSecsFloor = floor(seconds)
-        let nanosOnly = seconds - wholeSecsFloor
-        let nanosFloor = floor(nanosOnly * Double(NSEC_PER_SEC))
-        let spec = timespec(tv_sec: Int(wholeSecsFloor),
-                                  tv_nsec: Int(nanosFloor))
-        return DispatchWallTime(timespec: spec)
-    }
 }
