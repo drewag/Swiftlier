@@ -51,8 +51,6 @@ public final class Observable<T> {
     /**
         The current value
     */
-    @available(*, deprecated, message:"Use 'current' instead")
-    public var value: T { get{ return self.current } set{self.current = newValue}}
     public var current : T {
         didSet {
             var handlersToCall: [Handlers] = []
@@ -113,14 +111,10 @@ public final class Observable<T> {
         - parameter observer: observing object to be referenced later to remove the hundler
         - parameter handler: callback to be called when value is changed
     */
-    @available(*, unavailable, message:"Use addNewValueObserver(:handler:) instead")
-    public func addNewObserver(_ observer: AnyObject, handler: @escaping NewValueHandler) {}
     public func addNewValueObserver(_ observer: AnyObject, handler: @escaping NewValueHandler) {
         self.addNewValueObserver(observer, options: [], handler: handler)
     }
 
-    @available(*, unavailable, message:"Use Use addChangedValuesObserver(:handler:) instead")
-    public func addChangeObserver(_ observer: AnyObject, handler: @escaping ChangeValueHandler) {}
     public func addChangedValueObserver(_ observer: AnyObject, handler: @escaping ChangeValueHandler) {
         self.addChangeObserver(observer, options: [], handler: handler)
     }

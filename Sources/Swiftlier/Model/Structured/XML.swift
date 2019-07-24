@@ -45,25 +45,6 @@ public struct XML: NativeTypesStructured {
         self.object = object
     }
 
-    @available(*, deprecated, message: "use unnamed data intializer that parses arrays named after the repeated tag name")
-    public init(data: Data) throws {
-        let parser = XMLParser(data: data)
-        let delegate = OldParserDelegate()
-        parser.delegate = delegate
-        guard parser.parse(), let object = delegate.object else {
-            if let error = parser.parserError {
-                throw ReportableError("parsing xml", from: error)
-            }
-            else if let error = delegate.error {
-                throw ReportableError("parsing xml", from: error)
-            }
-            else {
-                throw ReportableError("parsing xml", because: "of an unknown reason")
-            }
-        }
-        self.object = object
-    }
-
     public init(object: Any) {
         self.object = object
     }
