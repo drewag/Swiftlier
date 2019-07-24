@@ -129,7 +129,12 @@ extension Day: CustomStringConvertible {
 
 extension Date {
     public var day: Day {
+        #if os(Linux)
+        // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
+        let cal = Calendar(identifier: .gregorian)
+        #else
         let cal = Calendar.current
+        #endif
         let units = Set<Calendar.Component>([.year, .month, .day])
         let components = cal.dateComponents(units, from: self)
 
