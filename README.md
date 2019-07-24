@@ -1,8 +1,12 @@
-[![Swift](https://img.shields.io/badge/swift-4-orange.svg?style=flat)](https://swift.org)
-![platforms](https://img.shields.io/badge/platform-iOS%20macOS%20Linux-orange.svg?style=flat)
-![SPM](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange.svg?style=flat)
+![Swiftlier - Enhanced SwiftLang](https://github.com/drewag/Swiftlier/raw/master/Assets/Header.jpg)
+
+[![Swift](https://img.shields.io/badge/Swift-5.1-lightgrey.svg?colorA=28a745&colorB=4E4E4E)](https://swift.org)
+![platforms](https://img.shields.io/badge/Platforms-iOS%208%20%7C%20macOS%2010.10%20%7C%20Linux-lightgrey.svg?colorA=28a745&colorB=4E4E4E)
+[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
-[![Build Status](https://travis-ci.org/drewag/Swiftlier.svg?branch=master)](https://travis-ci.org/drewag/Swiftlier)
+
+[![Twitter @drewag](https://img.shields.io/badge/Twitter-@drewag-blue.svg?style=flat)](http://twitter.com/drewag)
+[![Blog drewag.me](https://img.shields.io/badge/Blog-drewag.me-blue.svg?style=flat)](http://drewag.me)
 
 Swiftlier
 =============
@@ -43,7 +47,7 @@ import PackageDescription
 let package = Package(
     name: "web",
     dependencies: [
-        .Package(url: "https://github.com/drewag/Swiftlier.git", majorVersion: 4),
+        .package(url: "https://github.com/drewag/Swiftlier.git", from: "4.0.0"),
     ]
 )
 ```

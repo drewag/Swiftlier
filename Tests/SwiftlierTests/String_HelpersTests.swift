@@ -17,7 +17,7 @@ final class String_HelpersTests: XCTestCase {
 
     func testIndexAt() {
         let string = "Hello World"
-        let target = string.index(of: "W")
+        let target = string.firstIndex(of: "W")
         XCTAssertEqual(string.index(at: 6), target)
     }
 
