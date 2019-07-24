@@ -6,11 +6,7 @@
 //  Copyright © 2016 Drewag LLC. All rights reserved.
 //
 
-#if os(iOS)
-    import UIKit
-#else
-    import Foundation
-#endif
+import Foundation
 
 public protocol AngleValue: FloatingPoint, ExpressibleByFloatLiteral {
     var cosine: Self {get}
@@ -177,16 +173,6 @@ extension Double: AngleValue {
     }
 
     public var cosine: Double {
-        return cos(self)
-    }
-}
-
-extension CGFloat: AngleValue {
-    public var sine: CGFloat {
-        return sin(self)
-    }
-
-    public var cosine: CGFloat {
         return cos(self)
     }
 }

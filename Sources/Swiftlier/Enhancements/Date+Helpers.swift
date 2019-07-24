@@ -100,7 +100,6 @@ extension Date {
         return cal.date(byAdding: .month, value: 1, to: self.beginningOfMonth)!
     }
 
-    #if os(iOS)
     public var dispatchTime: DispatchWallTime {
         let seconds = self.timeIntervalSince1970
         let wholeSecsFloor = floor(seconds)
@@ -110,5 +109,4 @@ extension Date {
                                   tv_nsec: Int(nanosFloor))
         return DispatchWallTime(timespec: spec)
     }
-    #endif
 }

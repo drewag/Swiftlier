@@ -7,9 +7,6 @@
 //
 
 import Foundation
-#if os(iOS)
-    import UIKit
-#endif
 
 // Protocol Definitions
 
@@ -119,13 +116,6 @@ extension FilePath {
     public func string(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.contents(), encoding: encoding)
     }
-
-    #if os(iOS)
-    public func image(scale: CGFloat = 1) throws -> UIImage? {
-        let data = try self.contents()
-        return UIImage(data: data, scale: scale)
-    }
-    #endif
 
     public func lines(separatedBy delimeter: String = "\n", encoding: String.Encoding = .utf8, chunkSize: Int = 4096) throws -> AnySequence<String> {
         let fileHandle = try self.handleForReading()

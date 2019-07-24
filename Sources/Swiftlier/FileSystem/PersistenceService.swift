@@ -13,13 +13,6 @@ open class PersistenceService<Value: Codable> {
     let directory: DirectoryPath
     public let codingUserInfo: [CodingUserInfoKey:Any] = [:]
 
-    #if os(iOS)
-    public init() throws {
-        self.directory = FileSystem.default.documentsDirectory
-        try self.reload()
-    }
-    #endif
-
     public init(to: DirectoryPath) throws {
         self.directory = to
         try self.reload()
