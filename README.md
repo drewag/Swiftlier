@@ -9,9 +9,6 @@
 [![Twitter @drewag](https://img.shields.io/badge/Twitter-@drewag-blue.svg?style=flat)](http://twitter.com/drewag)
 [![Blog drewag.me](https://img.shields.io/badge/Blog-drewag.me-blue.svg?style=flat)](http://drewag.me)
 
-Swiftlier
-=============
-
 Library for common enhancements to the Swift language as well as for Foundation and UIKit frameworks with
 support for iOS, macOS, and Linux.
 
@@ -35,7 +32,7 @@ iOS
 ### As git submodule
 
 - Run `git submodle add https://github.com/drewag/Swiftlier.git external/Swiftlier`
-- Drag 'SwiftlieriOS.xcodeproj' into your project
+- Drag 'Swiftlier.xcodeproj' into your project
 - Add `import Swiftlier` to the top of any file you would like to use this library in
 
 Linux and macOS
@@ -48,24 +45,13 @@ import PackageDescription
 let package = Package(
     name: "web",
     dependencies: [
-        .package(url: "https://github.com/drewag/Swiftlier.git", from: "4.0.0"),
+        .package(url: "https://github.com/drewag/Swiftlier.git", from: "5.0.0"),
     ]
 )
 ```
-High Level Tasks
-=================
-
-- [x] CI for macOS and Linux
-- [ ] CI for iOS
-- [ ] Comprehensive unit test coverage
-- [ ] High level documentation to describe the major components
-- [ ] In-line documentation for quick help in Xcode
 
 Code Coverage
 ==============
-
-All Platforms
------------
 
 - [x] Age
 - [x] Alert
@@ -129,56 +115,3 @@ All Platforms
 - [ ] ValueTypePersistenceService
 - [ ] WeakWrapper
 - [x] XML
-
-macOS and Linux only
------------
-
-- [ ] Email
-- [ ] ShellCommand
-- [ ] ZipFilePath
-
-iOS Only
------------
-
-- [ ] BubbleView
-- [ ] CGContext+ThreadSafe
-- [ ] CircleBorderView
-- [ ] DatePickerViewController
-- [ ] DiagonalGradientView
-- [ ] DispatchQueue+Helpers
-- [ ] EnergyFormatting
-- [ ] Float+Factory
-- [ ] Form
-- [ ] FormViewController
-- [ ] KeyboardConstraintAdjuster
-- [ ] LimitedSizeViewController
-- [ ] Menu
-- [ ] MenuViewController
-- [ ] MonthAndYearPicker
-- [ ] NSLayoutConstraint+SwifPlusPlus
-- [ ] NSLayoutContraint+Factory
-- [ ] PassThroughTouchView
-- [ ] PlaceholderTextView
-- [ ] RoundedBorderButton
-- [ ] RoundedBorderView
-- [ ] SelectListViewController
-- [ ] ShadowView
-- [ ] TaskService
-- [ ] ThinLayoutConstraint
-- [ ] UIBarButtonItem+BlockTarget
-- [ ] UIButton+BlockTarget
-- [ ] UICollectionView+EasyRegister
-- [ ] UIColor+Encodable
-- [x] UIColor+Factory
-- [ ] UIDevice+AppIdioms
-- [ ] UIImage+Editing
-- [ ] UITableView+EasyRegister
-- [ ] UIView+Helpers
-- [ ] UIView+ImageCapture
-- [ ] UIView+Layout
-- [ ] UIView+Video
-- [ ] UIViewController+Helpers
-- [ ] UIViewController+PhotoViewing
-- [ ] UIViewController+Transitions
-- [ ] WebViewController
-- [ ] ZoomThroughTransition
