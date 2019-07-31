@@ -11,7 +11,7 @@ import Foundation
 public final class NativeTypesDecoder {
     public class func decodable<E: Decodable>(from raw: Any, source: CodingLocation = .local, purpose: CodingPurpose = .create, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> E {
         guard !(raw is NSNull) else {
-            throw ReportableError("decoding a \(self)", because: "root value was null")
+            throw GenericSwiftlierError(while: "decoding a \(self)", reason: "The root value was null", details: nil)
         }
 
         let data = try JSONSerialization.data(withJSONObject: raw, options: [])

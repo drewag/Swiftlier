@@ -33,11 +33,11 @@ public struct Day {
             // YYYY-MM-DD
             let components = string.components(separatedBy: "-")
             guard components.count == 3 else {
-                throw SimpleError(message: "'\(string)' is not a valid date" )
+                throw GenericSwiftlierError("creating day", because: "'\(string)' is not a valid date")
             }
-            guard let parsedYear = Int(components[0]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
-            guard let parsedMonth = Int(components[1]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
-            guard let parsedDay = Int(components[2]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
+            guard let parsedYear = Int(components[0]) else { throw Day.invalidDateError(string: string) }
+            guard let parsedMonth = Int(components[1]) else { throw Day.invalidDateError(string: string) }
+            guard let parsedDay = Int(components[2]) else { throw Day.invalidDateError(string: string) }
 
             rawYear = parsedYear
             rawMonth = parsedMonth
@@ -49,26 +49,26 @@ public struct Day {
             switch components.count {
             case 2:
                 // MM/DD
-                guard let parsedMonth = Int(components[0]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
-                guard let parsedDay = Int(components[1]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
+                guard let parsedMonth = Int(components[0]) else { throw Day.invalidDateError(string: string) }
+                guard let parsedDay = Int(components[1]) else { throw Day.invalidDateError(string: string) }
                 rawYear = Date.now.day.year
                 rawMonth = parsedMonth
                 rawDay = parsedDay
             case 3:
                 // MM/DD/YYYY, MM/DD/YY
-                guard let parsedYear = Int(components[2]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
-                guard let parsedMonth = Int(components[0]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
-                guard let parsedDay = Int(components[1]) else { throw SimpleError(message: "'\(string)' is not a valid date" ) }
+                guard let parsedYear = Int(components[2]) else { throw Day.invalidDateError(string: string) }
+                guard let parsedMonth = Int(components[0]) else { throw Day.invalidDateError(string: string) }
+                guard let parsedDay = Int(components[1]) else { throw Day.invalidDateError(string: string) }
                 rawYear = parsedYear
                 rawMonth = parsedMonth
                 rawDay = parsedDay
             default:
-                throw SimpleError(message: "'\(string)' is not a valid date" )
+                throw GenericSwiftlierError("creating day", because: "'\(string)' is not a valid date")
             }
         }
 
         guard rawYear > 0 else {
-            throw SimpleError(message: "'\(string)' is not a valid date" )
+            throw GenericSwiftlierError("creating day", because: "'\(string)' is not a valid date")
         }
 
         if rawYear < 50 {
@@ -91,11 +91,11 @@ public struct Day {
             // Non-leap year
             maxDay = 28
         default:
-            throw SimpleError(message: "'\(string)' is not a valid date" )
+            throw Day.invalidDateError(string: string)
         }
 
         guard rawDay > 0 && rawDay <= maxDay else {
-            throw SimpleError(message: "'\(string)' is not a valid date" )
+            throw Day.invalidDateError(string: string)
         }
 
         self.year = rawYear
@@ -170,5 +170,11 @@ extension Day: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.description)
+    }
+}
+
+private extension Day {
+    static func invalidDateError(string: String) -> GenericSwiftlierError {
+        return GenericSwiftlierError("creating day", because: "'\(string)' is not a valid date")
     }
 }

@@ -11,13 +11,11 @@ import Swiftlier
 
 final class DayTests: XCTestCase {
     func testDayFromDate() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        let date = dateFormatter.date(from: "Jun 7, 2017")!
+        let date = Date(timeIntervalSince1970: 1564546459)
         let day = date.day
-        XCTAssertEqual(day.year, 2017)
-        XCTAssertEqual(day.month, 6)
-        XCTAssertEqual(day.day, 7)
+        XCTAssertEqual(day.year, 2019)
+        XCTAssertEqual(day.month, 7)
+        XCTAssertEqual(day.day, 30)
     }
 
     func testComparison() {

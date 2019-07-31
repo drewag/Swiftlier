@@ -67,7 +67,7 @@ extension Path {
 extension FilePath {
     public func decodable<E: Swift.Decodable>(userInfo: [CodingUserInfoKey:Any] = [:], decrypt: (Data) throws -> Data = {return $0}) throws -> E {
         guard let object = try FileArchive.object(from: try self.contents(), decrypt: decrypt) else {
-            throw ReportableError("unarching \(E.self)", because: "the file is invalid")
+            throw GenericSwiftlierError("unarching \(E.self)", because: "the file is invalid")
         }
 
         let value: E = try NativeTypesDecoder.decodable(from: object, userInfo: userInfo)
@@ -76,7 +76,7 @@ extension FilePath {
 
     public func decodableDict<E: Swift.Decodable>(userInfo: [CodingUserInfoKey:Any] = [:], decrypt: (Data) throws -> Data = {return $0}) throws -> [String:E] {
         guard let rawDict = try FileArchive.object(from: try self.contents(), decrypt: decrypt) as? [String:[String: Any]] else {
-            throw ReportableError("unarching \(E.self)", because: "the file is invalid")
+            throw GenericSwiftlierError("unarching \(E.self)", because: "the file is invalid")
         }
 
         var finalDict = [String:E]()
@@ -90,7 +90,7 @@ extension FilePath {
 
     public func decodableArray<E: Swift.Decodable>(userInfo: [CodingUserInfoKey:Any] = [:], decrypt: (Data) throws -> Data = {return $0}) throws -> [E] {
         guard let rawArray = try FileArchive.object(from: try self.contents(), decrypt: decrypt) as? [Any] else {
-            throw ReportableError("unarching \(E.self)", because: "the file is invalid")
+            throw GenericSwiftlierError("unarching \(E.self)", because: "the file is invalid")
         }
 
         var finalArray = [E]()
@@ -117,7 +117,7 @@ private struct FileArchive {
                 if #available(OSX 10.11, *) {
                     return try encrypt(NSKeyedArchiver.archivedData(withRootObject: object))
                 } else {
-                    throw ReportableError("encoding data", because: "Mac OS 10.11 or newer is required")
+                    throw GenericSwiftlierError("encoding data", because: "Mac OS 10.11 or newer is required")
                 }
             }
         #endif

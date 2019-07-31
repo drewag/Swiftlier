@@ -87,14 +87,14 @@ extension ExistingPath {
         let named = named ?? self.basename
         let to = into.url.appendingPathComponent(named)
         guard let sameType = try FileSystem.default.moveItem(at: self.url, to: to, canOverwrite: canOverwrite) as? Self else {
-            throw ReportableError("moving item", because: "an item of the wrong type was found after moving")
+            throw GenericSwiftlierError("moving item", because: "an item of the wrong type was found after moving")
         }
         return sameType
     }
 
     public func move(to: Path, canOverwrite: Bool) throws -> Self {
         guard let sameType = try FileSystem.default.moveItem(at: self.url, to: to.url, canOverwrite: canOverwrite) as? Self else {
-            throw ReportableError("moving item", because: "an item of the wrong type was found after moving")
+            throw GenericSwiftlierError("moving item", because: "an item of the wrong type was found after moving")
         }
         return sameType
     }
@@ -128,7 +128,7 @@ extension FilePath {
             return try FileHandle(forReadingFrom: self.url)
         }
         catch {
-            throw ReportableError("opening file", because: "the file no longer exists")
+            throw GenericSwiftlierError("opening file", because: "the file no longer exists")
         }
     }
 
@@ -137,7 +137,7 @@ extension FilePath {
             return try FileHandle(forWritingTo: self.url)
         }
         catch {
-            throw ReportableError("opening file", because: "the file no longer exists")
+            throw GenericSwiftlierError("opening file", because: "the file no longer exists")
         }
     }
 
@@ -146,7 +146,7 @@ extension FilePath {
             return try FileHandle(forUpdating: self.url)
         }
         catch {
-            throw ReportableError("opening file", because: "the file no longer exists")
+            throw GenericSwiftlierError("opening file", because: "the file no longer exists")
         }
     }
 
@@ -154,14 +154,14 @@ extension FilePath {
         let named = named ?? self.basename
         let to = into.url.appendingPathComponent(named)
         guard let sameType = try FileSystem.default.copyFile(at: self.url, to: to, canOverwrite: canOverwrite) as? FilePath else {
-            throw ReportableError("copying file", because: "a directory was found after copying")
+            throw GenericSwiftlierError("copying file", because: "a directory was found after copying")
         }
         return sameType
     }
 
     public func copy(to: Path, canOverwrite: Bool) throws -> FilePath {
         guard let sameType = try FileSystem.default.copyFile(at: self.url, to: to.url, canOverwrite: canOverwrite) as? Self else {
-            throw ReportableError("copying file", because: "a directory was found after copying")
+            throw GenericSwiftlierError("copying file", because: "a directory was found after copying")
         }
         return sameType
     }
@@ -215,7 +215,7 @@ extension DirectoryPath {
         case .file, .none:
             return FileSystem.default.path(from: newUrl)
         case .directory:
-            throw ReportableError("Getting File", because: "a directory already exists at \(newUrl.relativePath)")
+            throw GenericSwiftlierError("Getting File", because: "a directory already exists at \(newUrl.relativePath)")
         }
     }
 
@@ -250,9 +250,9 @@ extension Path {
 
         switch FileSystem.default.itemKind(at: self.url) {
         case .directory:
-            throw ReportableError("creating directory", because: "a directory already exists at \(self.url.relativePath)")
+            throw GenericSwiftlierError("creating directory", because: "a directory already exists at \(self.url.relativePath)")
         case .file:
-            throw ReportableError("creating directory", because: "a file already exists at \(self.url.relativePath)")
+            throw GenericSwiftlierError("creating directory", because: "a file already exists at \(self.url.relativePath)")
         case .none:
             break
         }

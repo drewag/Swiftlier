@@ -61,15 +61,15 @@ public struct FileSystem {
     func contentsOfDirectory(at url: URL) throws -> [ExistingPath] {
         switch self.itemKind(at: url) {
         case .file:
-            throw ReportableError("loading Contents of Directory", because: "'\(url.relativePath)' is a file")
+            throw GenericSwiftlierError(while: "loading contents of directory", reason: "A file was found instead.", details: "Path was '\(url.relativePath)'")
         case .none:
-            throw ReportableError("loading Contents of Directory", because: "a directory at '\(url.relativePath)' does not exist")
+            throw GenericSwiftlierError(while: "loading contents of directory", reason: "No directory was found.", details: "Path was '\(url.relativePath)'")
         case .directory:
             break
         }
 
         guard let enumerator = self.manager.enumerator(at: url.resolvingSymlinksInPath(), includingPropertiesForKeys: nil) else {
-            throw ReportableError("loading Contents of Directory", because: "a directory at '\(url.relativePath)' does not exist")
+            throw GenericSwiftlierError(while: "loading contents of directory", reason: "No directory was found.", details: "Path was '\(url.relativePath)'")
         }
 
         var contents = [ExistingPath]()
@@ -86,9 +86,9 @@ public struct FileSystem {
     func createFile(at url: URL, with data: Data?, canOverwrite: Bool, options: NSData.WritingOptions) throws -> FilePath {
         switch (self.itemKind(at: url), canOverwrite) {
         case (.file, false):
-            throw ReportableError("creating file", because: "a file at '\(url.relativePath)' already exists")
+            throw GenericSwiftlierError(while: "creating file", reason: "A file already exists.", details: "Path was '\(url.relativePath)'")
         case (.directory, _):
-            throw ReportableError("creating file", because: "'\(url.relativePath)' is already a directory")
+            throw GenericSwiftlierError(while: "creating file", reason: "A directory already exists there.", details: "Path was '\(url.relativePath)'")
         case (.file, true):
             try self.manager.removeItem(at: url)
             fallthrough
@@ -97,7 +97,7 @@ public struct FileSystem {
             try data.write(to: url, options: options)
 
             guard let filePath = self.path(from: url) as? FilePath else {
-                throw ReportableError("creating File", because: "the new file could not be found")
+                throw GenericSwiftlierError(while: "creating file", reason: "The newly created file could not be found.", details: "Path was '\(url.relativePath)'")
             }
             return filePath
         }
@@ -106,9 +106,9 @@ public struct FileSystem {
     func createLink(at: URL, to: URL, canOverwrite: Bool) throws -> FilePath {
         switch (self.itemKind(at: at), canOverwrite) {
         case (.file, false):
-            throw ReportableError("creating link", because: "a file at '\(at.relativePath)' already exists")
+            throw GenericSwiftlierError(while: "creating link", reason: "A file already exists there.", details: "Path was '\(at.relativePath)'")
         case (.directory, false):
-            throw ReportableError("creating link", because: "'\(at.relativePath)' is already a directory")
+            throw GenericSwiftlierError(while: "creating link", reason: "A directory already exists there.", details: "Path was '\(at.relativePath)'")
         case (.file, true), (.directory, true):
             try self.manager.removeItem(at: at)
             fallthrough
@@ -117,13 +117,13 @@ public struct FileSystem {
             case .file:
                 try self.manager.createSymbolicLink(at: at, withDestinationURL: to)
             case .none:
-                throw ReportableError("creating link", because: "the destination '\(to.relativePath)' does not exist")
+                throw GenericSwiftlierError(while: "creating link", reason: "The destination does not exist.", details: "Path was '\(to.relativePath)'")
             case .directory:
-                throw ReportableError("creating link", because: "the destination '\(to.relativePath)' is a directory")
+                throw GenericSwiftlierError(while: "creating link", reason: "The destination is a directory.", details: "Path was '\(to.relativePath)'")
             }
 
             guard let filePath = self.path(from: at) as? FilePath else {
-                throw ReportableError("creating link", because: "the new link could not be found")
+                throw GenericSwiftlierError(while: "creating link", reason: "The newly created link could not be found", details: "Path was '\(at.relativePath)'")
             }
             return filePath
         }
@@ -134,9 +134,9 @@ public struct FileSystem {
         case .file, .directory:
             switch (self.itemKind(at: to), canOverwrite) {
             case (.file, false):
-                throw ReportableError("moving item", because: "a file at '\(to.relativePath)' already exists")
+                throw GenericSwiftlierError(while: "moving item", reason: "A file already exists there.", details: "Path was '\(to.relativePath)'")
             case (.directory, false):
-                throw ReportableError("moving item", because: "a directory at '\(to.relativePath)' already exists")
+                throw GenericSwiftlierError(while: "moving item", reason: "A directory already exists there.", details: "Path was '\(to.relativePath)'")
             case (.file, true), (.directory, true):
                 try self.manager.removeItem(at: to)
                 fallthrough
@@ -145,26 +145,26 @@ public struct FileSystem {
             }
 
             guard let existingPath = self.path(from: to) as? ExistingPath else {
-                throw ReportableError("moving item", because: "the item at the new location could not be found")
+                throw GenericSwiftlierError(while: "moving item", reason: "The item at the new location could not be found.", details: "Path was '\(to.relativePath)'")
             }
             return existingPath
         case .none:
-            throw ReportableError("moving item", because: "an item at '\(at.relativePath)' does not exist")
+            throw GenericSwiftlierError(while: "moving item", reason: "An item does not exist there.", details: "Path was '\(at.relativePath)'")
         }
     }
 
     func copyFile(at: URL, to: URL, canOverwrite: Bool) throws -> ExistingPath {
         switch self.itemKind(at: at) {
         case .directory:
-            throw ReportableError("copying file", because: "'\(at.relativePath)' is a directory")
+            throw GenericSwiftlierError(while: "copying file", reason: "It is a directory.", details: "Path was '\(at.relativePath)'")
         case .none:
-            throw ReportableError("copying file", because: "an item at '\(at.relativePath)' does not exist")
+            throw GenericSwiftlierError(while: "copying file", reason: "It does not exist.", details: "Path was '\(at.relativePath)'")
         case .file:
             switch (self.itemKind(at: to), canOverwrite) {
             case (.file, false):
-                throw ReportableError("copying file", because: "a file at '\(to.relativePath)' already exists")
+                throw GenericSwiftlierError(while: "copying file", reason: "A file at the destination already exists.", details: "Destination was '\(to.relativePath)'")
             case (.directory, _):
-                throw ReportableError("copying item", because: "'\(to.relativePath)' is a directory")
+                throw GenericSwiftlierError(while: "copying file", reason: "The destination is a directory.", details: "Destination was '\(to.relativePath)'")
             case (.file, true):
                 try self.manager.removeItem(at: to)
                 fallthrough
@@ -173,7 +173,7 @@ public struct FileSystem {
             }
 
             guard let existingPath = self.path(from: to) as? ExistingPath else {
-                throw ReportableError("moving item", because: "the item at the new location could not be found")
+                throw GenericSwiftlierError(while: "copying file", reason: "The copy could not be found.", details: "Path was '\(at.relativePath)'")
             }
             return existingPath
         }
@@ -184,13 +184,13 @@ public struct FileSystem {
         case .none:
             try self.manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         case .file:
-            throw ReportableError("creating directory", because: "a file already exists at '\(url.relativePath)'")
+            throw GenericSwiftlierError(while: "creating directory", reason: "It is already a file.", details: "Path was '\(url.relativePath)'")
         case .directory:
             break
         }
 
         guard let directoryPath = self.path(from: url) as? DirectoryPath else {
-            throw ReportableError("creating directory", because: "the new directory could not be found")
+            throw GenericSwiftlierError(while: "creating directory", reason: "The newly created directory could not be found.", details: "Path was '\(url.relativePath)'")
         }
         return directoryPath
     }
@@ -198,13 +198,13 @@ public struct FileSystem {
     func deleteItem(at url: URL) throws -> NonExistingPath {
         switch self.itemKind(at: url) {
         case .none:
-            throw ReportableError("deleting item", because: "an item does not exist at '\(url.relativePath)'")
+            throw GenericSwiftlierError(while: "deleting item", reason: "It does not exist.", details: "Path was '\(url.relativePath)'")
         case .file, .directory:
             try self.manager.removeItem(at: url)
         }
 
         guard let nonExistingPath = self.path(from: url) as? NonExistingPath else {
-            throw ReportableError("deleting item", because: "the item still exists after deleting")
+            throw GenericSwiftlierError(while: "deleting item", reason: "It still exists after being deleted.", details: "Path was '\(url.relativePath)'")
         }
         return nonExistingPath
     }

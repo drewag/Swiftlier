@@ -34,6 +34,6 @@ open class ReferencePersistenceService<Value: Codable>: PersistenceService<Value
             }
         }
 
-        throw ReportableError("deleting \(self.valueName.lowercased())", because: "\(self.valueName) could not be not found")
+        throw GenericSwiftlierError("deleting \(self.valueName.lowercased())", because: "\(self.valueName) could not be not found")
     }
 }

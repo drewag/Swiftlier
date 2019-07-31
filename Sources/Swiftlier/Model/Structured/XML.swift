@@ -33,13 +33,13 @@ public struct XML: NativeTypesStructured {
         parser.delegate = delegate
         guard parser.parse(), let object = delegate.object else {
             if let error = parser.parserError {
-                throw ReportableError("parsing xml", from: error)
+                throw OtherSwiftlierError(error, while: "parsing xml")
             }
             else if let error = delegate.error {
-                throw ReportableError("parsing xml", from: error)
+                throw OtherSwiftlierError(error, while: "parsing xml")
             }
             else {
-                throw ReportableError("parsing xml", because: "of an unknown reason")
+                throw GenericSwiftlierError("parsing xml", because: "of an unknown reason")
             }
         }
         self.object = object

@@ -11,11 +11,11 @@ public struct EmailAddress: CustomStringConvertible {
 
     public init(userString: String?, for purpose: String) throws {
         guard let string = userString?.trimmingWhitespaceOnEnds, !string.isEmpty else {
-            throw ReportableError(purpose, because: "an email is required", by: .user)
+            throw GenericSwiftlierError(purpose, because: "an email is required", byUser: true)
         }
 
         guard string.isValidEmail else {
-            throw ReportableError(purpose, because: "'\(string)' is not a valid email. Please make sure you typed it correctly.", by: .user)
+            throw GenericSwiftlierError(purpose, because: "'\(string)' is not a valid email. Please make sure you typed it correctly.", byUser: true)
         }
 
         self.string = string.lowercased()
@@ -23,11 +23,11 @@ public struct EmailAddress: CustomStringConvertible {
 
     public init(string: String?) throws {
         guard let string = string?.trimmingWhitespaceOnEnds, !string.isEmpty else {
-            throw ReportableError("creating email address", because: "email is required")
+            throw GenericSwiftlierError("creating email address", because: "email is required")
         }
 
         guard string.isValidEmail else {
-            throw ReportableError("creating email address", because: "'\(string)' is not a valid email")
+            throw GenericSwiftlierError("creating email address", because: "'\(string)' is not a valid email")
         }
 
         self.string = string.lowercased()

@@ -16,7 +16,7 @@ open class ValueTypePersistenceService<Value: Codable>: PersistenceService<Value
     public func save(value: Value) throws {
         for existingValue in self.values {
             if value.isSameInstanceAs(existingValue) {
-                throw ReportableError("creating \(self.valueName.lowercased())", because: "it already exists")
+                throw GenericSwiftlierError("creating \(self.valueName.lowercased())", because: "it already exists")
             }
         }
 
@@ -37,7 +37,7 @@ open class ValueTypePersistenceService<Value: Codable>: PersistenceService<Value
             }
         }
 
-        throw ReportableError("deleting \(self.valueName.lowercased())", because: "it could not be found")
+        throw GenericSwiftlierError("deleting \(self.valueName.lowercased())", because: "it could not be found")
     }
 
     public func update(value: Value, withUpdatedValue updatedValue: Value) throws {
@@ -56,7 +56,7 @@ open class ValueTypePersistenceService<Value: Codable>: PersistenceService<Value
             }
         }
 
-        throw ReportableError("updating \(self.valueName.lowercased())", because: "it could not be found")
+        throw GenericSwiftlierError("updating \(self.valueName.lowercased())", because: "it could not be found")
     }
 
     public func replace(values: [Value]) throws {

@@ -53,14 +53,14 @@ extension Structured {
         }
 
         guard next.last == "]" else {
-            throw ReportableError("parsing keypath", because: "no matching bracket ']' was found at the end")
+            throw GenericSwiftlierError("parsing keypath", because: "no matching bracket ']' was found at the end")
         }
 
         let name = String(next[next.startIndex...next.index(before: startIndex)])
         let lastIndex = next.index(next.endIndex, offsetBy: -2)
         let indexString = String(next[next.index(after: startIndex)...lastIndex])
         guard let index = Int(indexString) else {
-            throw ReportableError("parsing keypath", because: "invalid index '\(indexString)'")
+            throw GenericSwiftlierError("parsing keypath", because: "invalid index '\(indexString)'")
         }
 
         guard let array = self[name]?.array, index < array.count else {

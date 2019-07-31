@@ -245,7 +245,7 @@ extension String {
 
     public func asIso8601DateTime() throws -> Date {
         guard let date = self.iso8601DateTime else {
-            throw ReportableError("parsing date", because: "the date is invalid")
+            throw GenericSwiftlierError("parsing date", because: "the date is invalid")
         }
         return date
     }
