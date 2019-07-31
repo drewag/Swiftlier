@@ -41,5 +41,3 @@ public struct AnySwiftlierError: SwiftlierError {
         self.error = error
     }
 }
-
-public typealias SwiftlierResult<Success> = Result<Success, AnySwiftlierError>
