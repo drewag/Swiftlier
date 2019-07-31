@@ -84,6 +84,7 @@ private let railsDateTimeFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
     let timeZone = TimeZone(identifier: "UTC")
     dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+    dateFormatter.locale = Locale(identifier: "en_US")
     dateFormatter.timeZone = timeZone
     return dateFormatter
 }()
@@ -92,22 +93,27 @@ public let ISO8601DateTimeFormatters: [DateFormatter] = {
     var dateFormatter1 = DateFormatter()
     let timeZone = TimeZone(identifier: "UTC")
     dateFormatter1.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'S'Z'"
+    dateFormatter1.locale = Locale(identifier: "en_US")
     dateFormatter1.timeZone = timeZone
 
     var dateFormatter2 = DateFormatter()
     dateFormatter2.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'S'Z'"
+    dateFormatter2.locale = Locale(identifier: "en_US")
     dateFormatter2.timeZone = timeZone
 
     var dateFormatter3 = DateFormatter()
     dateFormatter3.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'SSSSSS'Z'"
+    dateFormatter3.locale = Locale(identifier: "en_US")
     dateFormatter3.timeZone = timeZone
 
     var dateFormatter4 = DateFormatter()
     dateFormatter4.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSSSS'Z'"
+    dateFormatter4.locale = Locale(identifier: "en_US")
     dateFormatter4.timeZone = timeZone
 
     var dateFormatter5 = DateFormatter()
     dateFormatter5.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'Z'"
+    dateFormatter5.locale = Locale(identifier: "en_US")
     dateFormatter5.timeZone = timeZone
 
     return [dateFormatter1, dateFormatter2, dateFormatter3, dateFormatter4, dateFormatter5]
@@ -116,6 +122,7 @@ public let ISO8601DateTimeFormatters: [DateFormatter] = {
 private let localIso8601DateTimeFormatter: DateFormatter = {
     var dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'S"
+    dateFormatter.locale = Locale(identifier: "en_US")
     return dateFormatter
 }()
 
