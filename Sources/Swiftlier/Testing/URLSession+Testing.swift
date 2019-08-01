@@ -8,7 +8,13 @@
 
 import Foundation
 
-public class TestURLSession: URLSession {
+public protocol Session {
+    func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask
+    func downloadTask(with url: URL, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+}
+
+public class TestURLSession: Session {
     public enum Kind {
         case fileUpload(URL, (Data?, URLResponse?, Error?) -> Void)
         case download
@@ -22,15 +28,15 @@ public class TestURLSession: URLSession {
 
     public var startedTasks = [StartedTask]()
 
-    public override func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask {
+    public func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask {
         return TestURLSessionUploadTask(session: self, request: request, file: fileURL, completionHandler: completionHandler)
     }
 
-    public override func downloadTask(with url: URL, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
+    public func downloadTask(with url: URL, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
         return TestURLSessionDownloadTask(session: self, url: url, completionHandler: completionHandler)
     }
 
-    public override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    public func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return TestURLSessionDataTask(session: self, request: request, completionHandler: completionHandler)
     }
 }
