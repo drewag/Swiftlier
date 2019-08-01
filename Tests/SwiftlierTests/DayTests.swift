@@ -11,7 +11,7 @@ import Swiftlier
 
 final class DayTests: XCTestCase {
     func testDayFromDate() {
-        let date = Date(timeIntervalSince1970: 1564546459)
+        let date = "2019-07-30".railsDate!
         let day = date.day
         XCTAssertEqual(day.year, 2019)
         XCTAssertEqual(day.month, 7)
