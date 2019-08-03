@@ -4,7 +4,7 @@
 ![platforms](https://img.shields.io/badge/Platforms-iOS%208%20%7C%20macOS%2010.10%20%7C%20Linux-lightgrey.svg?colorA=28a745&colorB=4E4E4E)
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
-[![Build Status](https://dev.azure.com/accounts-microsoft/Decree/_apis/build/status/drewag.Swiftlier?branchName=master)](https://dev.azure.com/accounts-microsoft/Decree/_build/latest?definitionId=3&branchName=master)
+[![Build Status](https://dev.azure.com/accounts-microsoft/Drewag/_apis/build/status/drewag.Swiftlier?branchName=master)](https://dev.azure.com/accounts-microsoft/Drewag/_build/latest?definitionId=3&branchName=master)
 
 [![Twitter @drewag](https://img.shields.io/badge/Twitter-@drewag-blue.svg?style=flat)](http://twitter.com/drewag)
 [![Blog drewag.me](https://img.shields.io/badge/Blog-drewag.me-blue.svg?style=flat)](http://drewag.me)
