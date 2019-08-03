@@ -27,12 +27,12 @@ public struct GenericSwiftlierError: SwiftlierError {
         self.backtrace = backtrace
     }
 
-    public init<E: SwiftlierError>(_ error: E, backtrace: [String]? = Thread.callStackSymbols) {
+    public init<E: SwiftlierError>(_ error: E) {
         self.title = error.title
         self.alertMessage = error.alertMessage
         self.details = error.details
         self.isInternal = error.isInternal
-        self.backtrace = backtrace
+        self.backtrace = error.backtrace
     }
 
     public init(while operation: String, reason: String, details: String? = nil, backtrace: [String]? = Thread.callStackSymbols) {
@@ -66,7 +66,7 @@ public struct GenericSwiftlierError: SwiftlierError {
     }
 }
 
-extension GenericSwiftlierError {
+extension GenericSwiftlierError: Codable {
     enum CodingKeys: String, CodingKey {
         // Core
         case title, alertMessage, details, isInternal, backtrace
@@ -104,5 +104,20 @@ extension GenericSwiftlierError {
         }
 
         self.backtrace = try container.decodeIfPresent([String].self, forKey: .backtrace)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(self.title, forKey: .title)
+        try container.encode(self.alertMessage, forKey: .alertMessage)
+        try container.encode(self.details, forKey: .details)
+        try container.encode(self.isInternal, forKey: .isInternal)
+        try container.encode(self.backtrace, forKey: .backtrace)
+
+        // Backwards compatability
+        try container.encode("Making Request", forKey: .doing)
+        try container.encode(self.alertMessage, forKey: .because)
+        try container.encode(self.isInternal ? "system" : "user", forKey: .perpitrator)
     }
 }
