@@ -8,13 +8,13 @@
 
 import Foundation
 
-public protocol Session {
+public protocol AnyURLSession {
     func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask
     func downloadTask(with url: URL, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
 }
 
-public class TestURLSession: Session {
+public class TestURLSession: AnyURLSession {
     public enum Kind {
         case fileUpload(URL, (Data?, URLResponse?, Error?) -> Void)
         case download
