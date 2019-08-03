@@ -9,11 +9,11 @@
 [![Twitter @drewag](https://img.shields.io/badge/Twitter-@drewag-blue.svg?style=flat)](http://twitter.com/drewag)
 [![Blog drewag.me](https://img.shields.io/badge/Blog-drewag.me-blue.svg?style=flat)](http://drewag.me)
 
-Library for common enhancements to the Swift language as well as for Foundation and UIKit frameworks with
-support for iOS, macOS, and Linux.
+Library for common enhancements to the Swift language.
 
-**Note:** Certain functionality is only available on specific platforms. For example, helpers on UIViewController
-will only be available on iOS while the ability to run a shell command is only available on OS X and Linux.
+For additional enhancments to more specific platforms see these other repositories:
+- [SwiftlierUIKit](https://github.com/drewag/SwiftlierUIKit) – UIKit helpers and improvements
+- [SwiftlierCLI](https://github.com/drewag/SwiftlierCLI) – Command-Line Enhancements for macOS and Linux 
 
 Goals
 =====
@@ -25,18 +25,6 @@ that we can discuss to see if they should be added.
 
 Installation
 ========
-
-iOS
---------------
-
-### As git submodule
-
-- Run `git submodle add https://github.com/drewag/Swiftlier.git external/Swiftlier`
-- Drag 'Swiftlier.xcodeproj' into your project
-- Add `import Swiftlier` to the top of any file you would like to use this library in
-
-Linux and macOS
-----------------
 
 ### Using Swift Package Manager
 ```swift
