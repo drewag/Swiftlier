@@ -267,7 +267,7 @@ extension Path {
         return try parentDirectory.addLink(named: name, to: to, canOverwrite: canOverwrite)
     }
 
-    func refresh() -> Path {
+    public func refresh() -> Path {
         return type(of: self).build(self.url)
     }
 }
