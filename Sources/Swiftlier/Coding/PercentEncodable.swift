@@ -8,13 +8,15 @@
 
 import Foundation
 
+/// A type that can be percent encoded
 public protocol PercentEncodable {
     func addingPercentEncoding(withAllowedCharacters allowedCharacters: CharacterSet) -> String?
 }
 extension String: PercentEncodable {}
 
 extension Dictionary where Key: PercentEncodable, Value: PercentEncodable {
-    public var URLEncodedDictionary: [String:String]? {
+    /// Percent encode all the keys and values of a dictionary of strings
+    public var percentEncoded: [String:String]? {
         var returnDict = [String:String]()
         for (key, value) in self {
             if let encodedKey = key.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
@@ -29,10 +31,12 @@ extension Dictionary where Key: PercentEncodable, Value: PercentEncodable {
         return returnDict
     }
 
+    /// String URL query from this dictionary
     public var URLEncodedString: String? {
-        return self.URLEncodedDictionary?.map({"\($0)=\($1)"}).joined(separator: "&")
+        return self.percentEncoded?.map({"\($0)=\($1)"}).joined(separator: "&")
     }
 
+    /// Data URL query from this dictionary
     public var URLEncodedData: Data? {
         return self.URLEncodedString?.data(using: String.Encoding.utf8, allowLossyConversion: false)
     }

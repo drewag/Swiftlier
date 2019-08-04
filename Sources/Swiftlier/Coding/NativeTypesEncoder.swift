@@ -8,8 +8,18 @@
 
 import Foundation
 
-public final class NativeTypesEncoder  {
-    public class func object<E: Swift.Encodable>(from encodable: E, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> Any {
+/// Generate native types object from an encodable object
+///
+/// - Top level object is an array or dictionary
+/// - All objects are String, NSNumber, array, dictionary, or NSNull
+/// - All dictionary keys are String
+public final class NativeTypesEncoder {
+    /// Generate native types object from an encodable object
+    ///
+    /// - Top level object is an array or dictionary
+    /// - All objects are String, NSNumber, array, dictionary, or NSNull
+    /// - All dictionary keys are String
+    public class func object<E: Encodable>(from encodable: E, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> Any {
         let encoder = JSONEncoder()
         encoder.userInfo = userInfo
         let data = try encoder.encode(encodable)

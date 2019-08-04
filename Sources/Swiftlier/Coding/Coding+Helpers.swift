@@ -9,6 +9,8 @@
 import Foundation
 
 extension Encodable where Self: Decodable {
+    /// Copy a Codable object by first encoding it to JSON and then decoding
+    /// a copy from that JSON
     public func copyUsingEncoding() throws -> Self {
         let data = try JSONEncoder().encode(self)
         return try JSONDecoder().decode(type(of: self), from: data)

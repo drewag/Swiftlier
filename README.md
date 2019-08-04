@@ -41,65 +41,98 @@ let package = Package(
 Code Coverage
 ==============
 
-- [x] Age
-- [x] Alert
-- [x] AlwaysEqual
-- [x] Angle
-- [x] Array+Sorting
-- [ ] BinarySearchTree
-- [x] Bool+Formatting
-- [x] CGMath
+Coding
+-----------
 - [x] Coding+Helpers
-- [ ] CommandLineDecoder
-- [x] Data+Base64
-- [x] Data+Processing
-- [x] DataSourceType
-- [ ] Date+Formatting
-- [x] Date+Helpers
-- [x] Day
-- [x] Dictionary+Merging
-- [x] Double+Formatting
-- [x] EmailAddress
-- [x] Enum+Convenience
-- [ ] ErrorGenerating+ErrorFactory
-- [x] EventCenter
-- [ ] FileSystem
-- [x] HTML
-- [x] HTTPStatus
-- [x] HeartRateFormatter
-- [x] Int+Random
-- [x] JSON
-- [x] Mass
-- [x] MultiCallback
+- [x] CodingKeys
 - [x] NativeTypesDecoder
 - [x] NativeTypesEncoder
-- [x] NativeTypesStructured
-- [ ] NetworkUserReportableError
+- [x] PercentEncodable
+- [x] SpecDecoder
+
+Enhancements
+----------------
+- [x] Array+Sorting
+- [x] Data+Processing
+- [x] Date+Helpers
+- [ ] DispatchQueue+Helpers
+- [ ] SequenceType+Helpers
+- [x] String+Helpers
+- [ ] String+Random
+- [ ] URL+Helpers
+
+Errors
+---------
+- [ ] AnySwiftlierError
+- [ ] GenericSwiftlierError
+- [ ] OperationBasedError
+- [ ] OtherSwiftlierError
+- [ ] SwiftlierError
+- [ ] SwiftlierResult
+
+FileSystem
+------------
+- [ ] FileSystem+iOSDirectories
+- [ ] FileSystem
+- [x] Path+Coding
+- [x] Path
+- [x] PersistenceService
+- [ ] ReferenceTypePersistenceService
+- [ ] ValueTypePersistenceService
+
+Formatting
+----------
+- [x] Bool+Formatting
+- [x] Data+Base64
+- [ ] Date+Formatting
+- [x] Double+Formatting
+- [x] HeartRateFormatter
+- [ ] TimeInterval+Formatting
+
+Model
+--------------
+
+### Containers
+- [ ] BinarySearchTree
+- [ ] LimitedQueue
+- [ ] OrderedDictionary
+- [x] PatchyRange
+- [ ] SelectableValue
+- [ ] Syncable
+- [ ] WeakWrapper
+
+### Observable
+- [x] EventCenter
+- [x] MultiCallback
 - [x] Observable
 - [ ] ObservableArray
 - [ ] ObservableDictionary
 - [ ] ObservableReference
-- [ ] OrderedDictionary
-- [x] PatchyRange
-- [x] Path+Coding
-- [x] Path
-- [ ] PercentEncodable
-- [x] PersistenceService
-- [ ] Price
-- [ ] PrioritizedOperationQueue
-- [ ] ReferenceTypePersistenceService
-- [ ] ReportableError+Coding
-- [ ] ReportableError
-- [ ] SelectableValue
-- [ ] SequenceType+Helpers
-- [ ] SpecDecoder
-- [x] String+Helpers
-- [ ] String+Random
+
+### Structured
+- [x] JSON
+- [x] NativeTypesStructured
 - [x] Structured
-- [ ] Syncable
-- [ ] TimeInterval+Formatting
-- [ ] Transformation
-- [ ] URL+Helpers
-- [ ] ValueTypePersistenceService
-- [ ] WeakWrapper
 - [x] XML
+
+### Types
+- [x] Age
+- [x] AlwaysEqual
+- [x] Angle
+- [x] Day
+- [x] EmailAddress
+- [x] HTML
+- [x] Mass
+- [ ] Price
+- [ ] UniquelyIdentifiable
+
+Streams
+------------
+- [ ] CSVStreamReader
+- [ ] DelimiterStreamReader
+- [ ] StreamReader
+
+Testing
+------------
+- [ ] Date+Testable
+- [ ] URLSession+Testing

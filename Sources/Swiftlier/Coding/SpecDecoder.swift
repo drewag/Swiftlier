@@ -8,12 +8,31 @@
 
 import Foundation
 
+/// Decode a JSON dictionary representing the properties and their types
+/// of the given decodable type.
+///
+/// For example:
+/// ```
+/// struct MyType: Decodable {
+///     let prop1: String
+///     let prop2: Int?
+/// }
+/// ```
+/// will produce:
+/// { "prop1": "string", "prop2": "int?" }
 public class SpecDecoder: Decoder {
     fileprivate var specDict = [String:String]()
     public let codingPath: [CodingKey] = []
     public let userInfo: [CodingUserInfoKey:Any]
 
-    public class func spec<D: Decodable>(forType: D.Type, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> String {
+    /// Generate a JSON spec from the given docodable type
+    ///
+    /// - Parameters:
+    ///     - type: Any decodable type to generate the spec for
+    ///     - userInfo: Optional user info dict
+    ///
+    /// - Returns: JSON string representation of the spec
+    public class func spec<D: Decodable>(forType type: D.Type, userInfo: [CodingUserInfoKey:Any] = [:]) throws -> String {
         let decoder = SpecDecoder(userInfo: userInfo)
 
         let _ = try D(from: decoder)
