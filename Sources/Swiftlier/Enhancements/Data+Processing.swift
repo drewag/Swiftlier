@@ -9,11 +9,18 @@
 import Foundation
 
 extension Data {
-    public func ranges(of: Data, in search: Range<Data.Index>? = nil) -> [Range<Data.Index>] {
+    /// Find all ranges of the given data
+    ///
+    /// - Parameters:
+    ///     - data: data to find
+    ///     - search: range to search in (nil indicates to search all aata)
+    ///
+    /// - Returns: an array of ranges where the data was found
+    public func ranges(of data: Data, in search: Range<Data.Index>? = nil) -> [Range<Data.Index>] {
         var output = [Range<Data.Index>]()
 
         var search = search ?? 0 ..< self.count
-        while let range = self.range(of: of, in: search) {
+        while let range = self.range(of: data, in: search) {
             output.append(range)
             search = range.upperBound ..< search.upperBound
         }
@@ -21,6 +28,13 @@ extension Data {
         return output
     }
 
+    /// Find all ranges separated by the given data
+    ///
+    /// - Parameters:
+    ///     - separator: data to separate the ranges
+    ///     - search: range to search in (nil indicates to search all aata)
+    ///
+    /// - Returns: an array of ranges separated by the given separator
     public func ranges(separatedBy separator: Data, in search: Range<Data.Index>? = nil) -> [Range<Data.Index>] {
         let search = search ?? 0 ..< self.count
         let ranges = self.ranges(of: separator, in: search)

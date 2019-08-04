@@ -52,14 +52,12 @@ Coding
 
 Enhancements
 ----------------
-- [x] Array+Sorting
+- [x] Collection+Enhancements
 - [x] Data+Processing
 - [x] Date+Helpers
-- [ ] DispatchQueue+Helpers
-- [ ] SequenceType+Helpers
-- [x] String+Helpers
-- [ ] String+Random
-- [ ] URL+Helpers
+- [x] DispatchQueue+Enhancements
+- [x] String+Enhancements
+- [x] URL+Helpers
 
 Errors
 ---------

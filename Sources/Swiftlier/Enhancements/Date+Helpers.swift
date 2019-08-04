@@ -9,6 +9,7 @@
 import Foundation
 
 extension Date {
+    /// Return true if during today
     public var isToday: Bool {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -25,6 +26,7 @@ extension Date {
         return today == otherDate
     }
 
+    /// Return true if during tomorrow
     public var isTomorrow: Bool {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -41,6 +43,7 @@ extension Date {
         return tomorrow == otherDate
     }
 
+    /// Return true if during this week
     public var isThisWeek: Bool {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -57,6 +60,7 @@ extension Date {
             && today.weekOfYear == other.weekOfYear
     }
 
+    /// Return true if during this year
     public var isThisYear: Bool {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -73,14 +77,17 @@ extension Date {
         return today == otherDate
     }
 
+    /// Return true if in the future
     public var isInFuture: Bool {
         return (self.timeIntervalSinceNow > 0)
     }
 
+    /// Return true if in the past
     public var isInPast: Bool {
         return (self.timeIntervalSinceNow < 0)
     }
 
+    /// version of date at midnight on the same day
     public var beginningOfDay: Date {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -93,6 +100,7 @@ extension Date {
         return cal.date(from: components)!
     }
 
+    /// version of date at midnight on the first weekday the same week
     public var beginningOfWeek: Date {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -107,6 +115,7 @@ extension Date {
         return cal.date(from: components)!
     }
 
+    /// version of the date at midnight on the 1st of the same month
     public var beginningOfMonth: Date {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -120,6 +129,7 @@ extension Date {
         return cal.date(from: components)!
     }
 
+    /// version of date at midnight of next day
     public var beginningOfNextDay: Date {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -130,6 +140,7 @@ extension Date {
         return cal.date(byAdding: .day, value: 1, to: self.beginningOfDay)!
     }
 
+    /// version of date at midnight on the first weekday the next week
     public var beginningOfNextWeek: Date {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
@@ -140,6 +151,7 @@ extension Date {
         return cal.date(byAdding: .day, value: 7, to: self.beginningOfWeek)!
     }
 
+    /// version of date at midnight on the first of the next month
     public var beginningOfNextMonth: Date {
         #if os(Linux)
         // https://forums.swift.org/t/possible-bug-in-datecomponents-method-running-on-ubuntu-16-04/25702/2
