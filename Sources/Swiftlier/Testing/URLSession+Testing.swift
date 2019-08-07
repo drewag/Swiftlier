@@ -39,7 +39,11 @@ public class TestURLSession: AnyURLSession {
     public func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return TestURLSessionDataTask(session: self, request: request, completionHandler: completionHandler)
     }
+
+    public init() {}
 }
+
+extension URLSession: AnyURLSession {}
 
 private class TestURLSessionUploadTask: URLSessionUploadTask {
     let session: TestURLSession
