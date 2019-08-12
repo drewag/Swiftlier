@@ -156,10 +156,14 @@ extension DayTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__DayTests = [
+        ("testCentury", testCentury),
+        ("testCoding", testCoding),
         ("testComparison", testComparison),
         ("testDayFromDate", testDayFromDate),
+        ("testDayOfWeek", testDayOfWeek),
         ("testDescription", testDescription),
         ("testInitFromString", testInitFromString),
+        ("testIsLeapYear", testIsLeapYear),
     ]
 }
 

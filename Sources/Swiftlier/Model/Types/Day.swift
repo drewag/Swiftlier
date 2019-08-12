@@ -102,6 +102,67 @@ public struct Day {
         self.month = rawMonth
         self.day = rawDay
     }
+
+    public enum Weekday: Int {
+        case sunday = 1
+        case monday
+        case tuesday
+        case wednesday
+        case thursday
+        case friday
+        case saturday
+    }
+
+    public var isLeapYear: Bool {
+        return self.year % 4 == 0 && (self.year % 100 != 0 || self.year % 400 == 0)
+    }
+
+    public var century: Int {
+        return self.year / 100
+    }
+
+    public var dayOfWeek: Weekday {
+        // The Key Value Method
+        // http://mathforum.org/dr.math/faq/faq.calendar.html
+        let value: Int
+        switch self.month {
+        case 1, 10:
+            value = 1
+        case 2,3,11:
+            value = 4
+        case 4, 7:
+            value = 0
+        case 5:
+            value = 2
+        case 8:
+            value = 3
+        default:
+            value = 6
+        }
+
+        let leapYearAdjustment: Int
+        if self.isLeapYear && (self.month == 1 || self.month == 2) {
+            leapYearAdjustment = -1
+        }
+        else {
+            leapYearAdjustment = 0
+        }
+
+        let centuryCode: Int
+        switch self.century % 4 {
+        case 0:
+            centuryCode = 6
+        case 1:
+            centuryCode = 4
+        case 2:
+            centuryCode = 2
+        default:
+            centuryCode = 0
+        }
+
+        let rawWeekDay = ((self.year % 100) / 4 + self.day + value + leapYearAdjustment + centuryCode + (self.year % 100)) % 7
+        return Weekday(rawValue: rawWeekDay) ?? .saturday
+    }
 }
 
 extension Day: CustomStringConvertible {
