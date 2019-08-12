@@ -30,6 +30,8 @@ final class DayTests: XCTestCase {
         XCTAssertTrue(Day(year: 2000, month: 6, day: 16) > Day(year: 2000, month: 6, day: 15))
         XCTAssertFalse(Day(year: 2000, month: 5, day: 16) > Day(year: 2000, month: 6, day: 15))
         XCTAssertFalse(Day(year: 1999, month: 6, day: 16) > Day(year: 2000, month: 6, day: 15))
+
+        XCTAssertTrue(Day(year: 2019, month: 8, day: 14) < Day(year: 2019, month: 9, day: 13))
     }
 
     func testDescription() {

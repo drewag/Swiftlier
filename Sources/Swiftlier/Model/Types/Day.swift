@@ -163,6 +163,10 @@ public struct Day {
         let rawWeekDay = ((self.year % 100) / 4 + self.day + value + leapYearAdjustment + centuryCode + (self.year % 100)) % 7
         return Weekday(rawValue: rawWeekDay) ?? .saturday
     }
+
+    public var midnight: Date {
+        return self.description.railsDate!
+    }
 }
 
 extension Day: CustomStringConvertible {
@@ -209,9 +213,15 @@ extension Date {
 
 extension Day: Comparable {
     public static func <(lhs: Day, rhs: Day) -> Bool {
-        return lhs.year <= rhs.year
-            && lhs.month <= rhs.month
-            && lhs.day < rhs.day
+        if lhs.year != rhs.year {
+            return lhs.year < rhs.year
+        }
+
+        if lhs.month != rhs.month {
+            return lhs.month < rhs.month
+        }
+
+        return lhs.day < rhs.day
     }
 
     public static func ==(lhs: Day, rhs: Day) -> Bool {
