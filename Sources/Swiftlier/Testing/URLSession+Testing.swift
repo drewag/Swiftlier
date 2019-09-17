@@ -36,6 +36,10 @@ public class TestURLSession: AnyURLSession {
         return TestURLSessionDownloadTask(session: self, url: url, completionHandler: completionHandler)
     }
 
+    public func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
+        return TestURLSessionDownloadTask(session: self, url: request.url, completionHandler: completionHandler)
+    }
+
     public func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return TestURLSessionDataTask(session: self, request: request, completionHandler: completionHandler)
     }
@@ -63,7 +67,7 @@ private class TestURLSessionDownloadTask: URLSessionDownloadTask {
     let session: TestURLSession
     let task: TestURLSession.StartedTask
 
-    init(session: TestURLSession, url: URL, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) {
+    init(session: TestURLSession, url: URL?, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) {
         self.session = session
         self.task = .init(url: url, kind: .download)
     }
