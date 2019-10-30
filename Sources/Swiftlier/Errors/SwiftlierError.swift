@@ -25,6 +25,9 @@ public protocol SwiftlierError: LocalizedError, CustomStringConvertible, CustomD
 
     /// Backtrace for where this error occured
     var backtrace: [String]? {get}
+
+    /// Provide any extra information about the error
+    func getExtraInfo() -> [String:String]
 }
 
 extension SwiftlierError {
@@ -40,5 +43,9 @@ extension SwiftlierError {
         }
 
         return "\(basic)\n\(details)"
+    }
+
+    public func getExtraInfo() -> [String:String] {
+        return [:]
     }
 }

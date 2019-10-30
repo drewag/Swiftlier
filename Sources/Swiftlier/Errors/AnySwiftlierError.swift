@@ -37,6 +37,10 @@ public struct AnySwiftlierError: SwiftlierError {
         return self.error.backtrace
     }
 
+    public func getExtraInfo() -> [String : String] {
+        return self.error.getExtraInfo()
+    }
+
     public init(_ error: SwiftlierError) {
         self.error = error
     }

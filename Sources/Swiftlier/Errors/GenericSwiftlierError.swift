@@ -14,17 +14,19 @@ public struct GenericSwiftlierError: SwiftlierError {
     public let details: String?
     public let isInternal: Bool
     public let backtrace: [String]?
+    public let extraInfo: [String:String]
 
     public var description: String {
         return "\(self.title): \(self.alertMessage)"
     }
 
-    public init(title: String, alertMessage: String, details: String?, isInternal: Bool, backtrace: [String]? = Thread.callStackSymbols) {
+    public init(title: String, alertMessage: String, details: String?, isInternal: Bool, backtrace: [String]? = Thread.callStackSymbols, extraInfo: [String:String] = [:]) {
         self.title = title
         self.alertMessage = alertMessage
         self.details = details
         self.isInternal = isInternal
         self.backtrace = backtrace
+        self.extraInfo = extraInfo
     }
 
     public init<E: SwiftlierError>(_ error: E) {
@@ -33,22 +35,25 @@ public struct GenericSwiftlierError: SwiftlierError {
         self.details = error.details
         self.isInternal = error.isInternal
         self.backtrace = error.backtrace
+        self.extraInfo = error.getExtraInfo()
     }
 
-    public init(while operation: String, reason: String, details: String? = nil, backtrace: [String]? = Thread.callStackSymbols) {
+    public init(while operation: String, reason: String, details: String? = nil, backtrace: [String]? = Thread.callStackSymbols, extraInfo: [String:String] = [:]) {
         self.title = "Error \(operation.titleCased)"
         self.alertMessage = "Internal Error. Please try again. If the problem persists please contact support with the following description: \(reason)"
         self.details = details
         self.isInternal = true
         self.backtrace = backtrace
+        self.extraInfo = extraInfo
     }
 
-    public init(userErrorWhile operation: String, reason: String, details: String? = nil, backtrace: [String]? = Thread.callStackSymbols) {
+    public init(userErrorWhile operation: String, reason: String, details: String? = nil, backtrace: [String]? = Thread.callStackSymbols, extraInfo: [String:String] = [:]) {
         self.title = "Error \(operation.titleCased)"
         self.alertMessage = reason
         self.details = details
         self.isInternal = false
         self.backtrace = backtrace
+        self.extraInfo = extraInfo
     }
 
     public init(_ doing: String, because: String, byUser: Bool = false) {
@@ -63,16 +68,35 @@ public struct GenericSwiftlierError: SwiftlierError {
         }
         self.details = nil
         self.backtrace = Thread.callStackSymbols
+        self.extraInfo = [:]
+    }
+
+    public func getExtraInfo() -> [String : String] {
+        return self.extraInfo
     }
 }
 
 extension GenericSwiftlierError: Codable {
     enum CodingKeys: String, CodingKey {
         // Core
-        case title, alertMessage, details, isInternal, backtrace
+        case title, alertMessage, details, isInternal, backtrace, extraInfo
 
         // ReportableError backwards compatability
         case doing, because, perpitrator
+    }
+
+    struct VariableKey: CodingKey {
+        let stringValue: String
+        let intValue: Int?
+
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+            self.intValue = nil
+        }
+
+        init?(intValue: Int) {
+            return nil
+        }
     }
 
     public init(from decoder: Decoder) throws {
@@ -104,6 +128,7 @@ extension GenericSwiftlierError: Codable {
         }
 
         self.backtrace = try container.decodeIfPresent([String].self, forKey: .backtrace)
+        self.extraInfo = try container.decodeIfPresent([String:String].self, forKey: .extraInfo) ?? [:]
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -114,10 +139,18 @@ extension GenericSwiftlierError: Codable {
         try container.encode(self.details, forKey: .details)
         try container.encode(self.isInternal, forKey: .isInternal)
         try container.encode(self.backtrace, forKey: .backtrace)
+        try container.encode(self.extraInfo, forKey: .extraInfo)
 
         // Backwards compatability
         try container.encode("Making Request", forKey: .doing)
         try container.encode(self.alertMessage, forKey: .because)
         try container.encode(self.isInternal ? "system" : "user", forKey: .perpitrator)
+        var variableContainer = encoder.container(keyedBy: VariableKey.self)
+        for (key, value) in self.extraInfo {
+            guard let key = VariableKey(stringValue: key) else {
+                continue
+            }
+            try variableContainer.encode(value, forKey: key)
+        }
     }
 }
