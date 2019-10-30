@@ -82,7 +82,7 @@ extension GenericSwiftlierError: Codable {
         case title, alertMessage, details, isInternal, backtrace, extraInfo
 
         // ReportableError backwards compatability
-        case doing, because, perpitrator
+        case doing, because, perpitrator, message
     }
 
     struct VariableKey: CodingKey {
@@ -142,9 +142,10 @@ extension GenericSwiftlierError: Codable {
         try container.encode(self.extraInfo, forKey: .extraInfo)
 
         // Backwards compatability
-        try container.encode("Making Request", forKey: .doing)
+        try container.encode(self.title, forKey: .doing)
         try container.encode(self.alertMessage, forKey: .because)
         try container.encode(self.isInternal ? "system" : "user", forKey: .perpitrator)
+        try container.encode(self.description, forKey: .message)
         var variableContainer = encoder.container(keyedBy: VariableKey.self)
         for (key, value) in self.extraInfo {
             guard let key = VariableKey(stringValue: key) else {
