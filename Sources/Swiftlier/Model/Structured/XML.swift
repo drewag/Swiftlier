@@ -7,6 +7,9 @@
 //
 
 import Foundation
+#if canImport(FoundationXML)
+    import FoundationXML
+#endif
 
 public struct XML: NativeTypesStructured {
     public let object: Any
@@ -129,19 +132,19 @@ extension XML.ParserDelegate: XMLParserDelegate {
 
     #if os(Linux)
     func parserDidEndDocument(_ parser: XMLParser) {}
-    func parser(_ parser: Foundation.XMLParser, foundUnparsedEntityDeclarationWithName name: String, publicID: String?, systemID: String?, notationName: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundAttributeDeclarationWithName attributeName: String, forElement elementName: String, type: String?, defaultValue: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundElementDeclarationWithName elementName: String, model: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundInternalEntityDeclarationWithName name: String, value: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundExternalEntityDeclarationWithName name: String, publicID: String?, systemID: String?) {}
-    func parser(_ parser: Foundation.XMLParser, didStartMappingPrefix prefix: String, toURI namespaceURI: String) {}
-    func parser(_ parser: Foundation.XMLParser, didEndMappingPrefix prefix: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundIgnorableWhitespace whitespaceString: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundProcessingInstructionWithTarget target: String, data: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundComment comment: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundCDATA CDATABlock: Foundation.Data) {}
-    func parser(_ parser: Foundation.XMLParser, resolveExternalEntityName name: String, systemID: String?) -> Foundation.Data? { return nil }
+    func parser(_ parser: XMLParser, foundUnparsedEntityDeclarationWithName name: String, publicID: String?, systemID: String?, notationName: String?) {}
+    func parser(_ parser: XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?) {}
+    func parser(_ parser: XMLParser, foundAttributeDeclarationWithName attributeName: String, forElement elementName: String, type: String?, defaultValue: String?) {}
+    func parser(_ parser: XMLParser, foundElementDeclarationWithName elementName: String, model: String) {}
+    func parser(_ parser: XMLParser, foundInternalEntityDeclarationWithName name: String, value: String?) {}
+    func parser(_ parser: XMLParser, foundExternalEntityDeclarationWithName name: String, publicID: String?, systemID: String?) {}
+    func parser(_ parser: XMLParser, didStartMappingPrefix prefix: String, toURI namespaceURI: String) {}
+    func parser(_ parser: XMLParser, didEndMappingPrefix prefix: String) {}
+    func parser(_ parser: XMLParser, foundIgnorableWhitespace whitespaceString: String) {}
+    func parser(_ parser: XMLParser, foundProcessingInstructionWithTarget target: String, data: String?) {}
+    func parser(_ parser: XMLParser, foundComment comment: String) {}
+    func parser(_ parser: XMLParser, foundCDATA CDATABlock: Foundation.Data) {}
+    func parser(_ parser: XMLParser, resolveExternalEntityName name: String, systemID: String?) -> Foundation.Data? { return nil }
     #endif
 }
 
@@ -218,18 +221,18 @@ extension XML.OldParserDelegate: XMLParserDelegate {
 
     #if os(Linux)
     func parserDidEndDocument(_ parser: XMLParser) {}
-    func parser(_ parser: Foundation.XMLParser, foundUnparsedEntityDeclarationWithName name: String, publicID: String?, systemID: String?, notationName: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundAttributeDeclarationWithName attributeName: String, forElement elementName: String, type: String?, defaultValue: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundElementDeclarationWithName elementName: String, model: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundInternalEntityDeclarationWithName name: String, value: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundExternalEntityDeclarationWithName name: String, publicID: String?, systemID: String?) {}
-    func parser(_ parser: Foundation.XMLParser, didStartMappingPrefix prefix: String, toURI namespaceURI: String) {}
-    func parser(_ parser: Foundation.XMLParser, didEndMappingPrefix prefix: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundIgnorableWhitespace whitespaceString: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundProcessingInstructionWithTarget target: String, data: String?) {}
-    func parser(_ parser: Foundation.XMLParser, foundComment comment: String) {}
-    func parser(_ parser: Foundation.XMLParser, foundCDATA CDATABlock: Foundation.Data) {}
-    func parser(_ parser: Foundation.XMLParser, resolveExternalEntityName name: String, systemID: String?) -> Foundation.Data? { return nil }
+    func parser(_ parser: XMLParser, foundUnparsedEntityDeclarationWithName name: String, publicID: String?, systemID: String?, notationName: String?) {}
+    func parser(_ parser: XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?) {}
+    func parser(_ parser: XMLParser, foundAttributeDeclarationWithName attributeName: String, forElement elementName: String, type: String?, defaultValue: String?) {}
+    func parser(_ parser: XMLParser, foundElementDeclarationWithName elementName: String, model: String) {}
+    func parser(_ parser: XMLParser, foundInternalEntityDeclarationWithName name: String, value: String?) {}
+    func parser(_ parser: XMLParser, foundExternalEntityDeclarationWithName name: String, publicID: String?, systemID: String?) {}
+    func parser(_ parser: XMLParser, didStartMappingPrefix prefix: String, toURI namespaceURI: String) {}
+    func parser(_ parser: XMLParser, didEndMappingPrefix prefix: String) {}
+    func parser(_ parser: XMLParser, foundIgnorableWhitespace whitespaceString: String) {}
+    func parser(_ parser: XMLParser, foundProcessingInstructionWithTarget target: String, data: String?) {}
+    func parser(_ parser: XMLParser, foundComment comment: String) {}
+    func parser(_ parser: XMLParser, foundCDATA CDATABlock: Foundation.Data) {}
+    func parser(_ parser: XMLParser, resolveExternalEntityName name: String, systemID: String?) -> Foundation.Data? { return nil }
     #endif
 }
