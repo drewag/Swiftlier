@@ -30,11 +30,16 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         }
         set {
             if let existingIndex = lookup[key] {
-                valueStore[existingIndex] = nil
-                lookup[key] = nil
-                count -= 1
+                if let newValue = newValue {
+                    valueStore[existingIndex] = newValue
+                }
+                else {
+                    valueStore[existingIndex] = nil
+                    lookup[key] = nil
+                    count -= 1
+                }
             }
-            if let index = newValue {
+            else if let index = newValue {
                 valueStore.append(index)
                 lookup[key] = valueStore.count - 1
                 count += 1
